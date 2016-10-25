@@ -1,6 +1,8 @@
-doctype
-html(lang="en")
-	head
-		title="test page"
-	body
-		h1 Test Page
+//- test page.
+extends ./layout/layout.pug
+
+block title
+	title= 'Test Page'
+
+block content
+	h1 Hello, World!

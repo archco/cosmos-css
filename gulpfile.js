@@ -15,7 +15,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('sass:watch', function () {
-	gulp.watch('./src/sass/*.scss', ['sass']);
+	gulp.watch('./src/sass/**/*.scss', ['sass']);
 });
 
 gulp.task('pug', function () {
@@ -25,4 +25,8 @@ gulp.task('pug', function () {
 			pretty: true,
 		}))
 		.pipe(gulp.dest('./tests/'));
+});
+
+gulp.task('pug:watch', function () {
+	gulp.watch('./tests/views/**/*.pug', ['pug']);
 });
