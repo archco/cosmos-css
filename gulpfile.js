@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var pug = require('gulp-pug');
 
 gulp.task('default', function() {
 	//
@@ -15,4 +16,13 @@ gulp.task('sass', function() {
 
 gulp.task('sass:watch', function () {
 	gulp.watch('./src/sass/*.scss', ['sass']);
+});
+
+gulp.task('pug', function () {
+	return gulp.src('./tests/views/*.pug')
+		.pipe(pug({
+			// options.
+			pretty: true,
+		}))
+		.pipe(gulp.dest('./tests/'));
 });
