@@ -1,0 +1,33 @@
+/** pagination */
+ul.pagination {
+	padding: 0; 
+	margin: 1rem 0;
+	display: flex;
+	justify-content: center;
+	list-style-type: none;
+
+	li {
+		margin: 0 0.2rem;
+		display: inline-block;
+		border-radius: $radius-button;
+		&.active {
+			color: white;
+			background-color: $primary-color;
+		}
+		&.disabled {
+			color: $gray;
+		}
+		span, a {
+			padding: 0.25rem 0.5rem;
+			display: block;
+		}
+
+		a {
+			color: $black;
+			transition: background-color $transition-time;
+			&:hover {
+				background-color: $lightgray;
+			}
+		}
+	}
+}

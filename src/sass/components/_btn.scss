@@ -1,0 +1,14 @@
+/** btn */
+.btn {
+	@extend %btn;
+	@include btnColor(white, $primary-color);
+}
+.btn-danger {
+	color: white;
+	background-color: $error-color !important;
+}
+.btn-icon {
+	@extend %btn-icon;
+	color: white;
+	background-color: $gray;
+}

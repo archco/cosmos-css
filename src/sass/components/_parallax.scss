@@ -1,0 +1,19 @@
+[class*='parallax'] {
+	/* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.parallax-index-1 {
+	background-image: url('../img/index-bg/index-1.jpg');
+	height: 500px;
+}
+.parallax-index-2 {
+	background-image: url('../img/index-bg/index-2.jpg');
+	height: 300px;
+}
+.parallax-index-3 {
+	background-image: url('../img/index-bg/index-3.jpg');
+	height: 400px;
+}

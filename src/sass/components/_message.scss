@@ -1,0 +1,46 @@
+/** message  */
+.error, .danger { color: $error-color; }
+.success { color: $success-color; }
+.comment { color: $gray; font-size: 0.8rem; }
+.info { color: $info-color; }
+
+/** message-box */
+@mixin messageBox($color) {
+	border: 1px solid $color;
+	background-color: rgba($color, 0.2);
+	color: $color;
+}
+.message-box {
+	z-index: 2;
+	position: relative;
+	padding: 1rem 1.5rem;
+	margin: 8px;
+	border-radius: $radius-normal;
+	vertical-align: middle;
+	transition: opacity ($transition-time * 2);
+	@include messageBox($secondary-color);
+}
+.message-error {
+	@include messageBox($error-color);
+}
+.message-success {
+	@include messageBox($success-color);	
+}
+.message-info {
+	@include messageBox($info-color);
+}
+.btn-close-message {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 1rem;
+	padding: 0;
+	font-size: 1.5rem;
+	color: rgba($black, 0.3);
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: color $transition-time;
+	&:hover { color: rgba($black, 0.7); }
+}

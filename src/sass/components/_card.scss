@@ -1,0 +1,71 @@
+/** card */
+ul.card-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+// default - vertical
+.card {
+	z-index: 2;
+	margin: 0.5rem 0;
+	padding: 0;
+	background-color: $card-bg-color;
+	border-radius: $radius-small;
+	box-shadow: $shadow-normal;
+	width: $card-size-small;
+
+	.card-image {
+		max-height: 60%;
+		width: 100%;
+		
+		img {
+			width: 100%;
+			display: block;
+			border-radius: $radius-small $radius-small 0 0;
+		}
+	}
+	.card-content {
+		max-height: 40%;
+		padding: 0.25rem 0.5rem;
+	}
+
+	// horizontal
+	&.horizontal {
+		width: auto;
+		height: $card-size-small;
+
+		%card-horizontal-child {
+			vertical-align: middle;
+			display: inline-block;
+			max-height: none;
+			width: auto;
+			height: 100%;
+		}
+		.card-image {
+			@extend %card-horizontal-child;
+			max-width: 40%;
+
+			img { 
+				height: 100%;
+				width: auto;
+				border-radius: $radius-small 0 0 $radius-small;
+			}
+		}
+		.card-content {
+			@extend %card-horizontal-child;
+			max-width: 60%;
+		}
+	}
+
+	&.inline {
+		margin: 0.5rem;
+		display: inline-block;
+		vertical-align: text-top;
+	}
+
+	a:not(.btn) {
+		color: $card-link-color;
+		transition: color $transition-time;
+		&:hover { color: lighten($card-link-color, 20%); }
+	}
+}

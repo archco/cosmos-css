@@ -1,0 +1,60 @@
+/** form default */
+form {
+	//
+}
+fieldset {
+	margin: 0.5rem 0;
+	padding: 0 1rem;
+	border: 2px solid $primary-color;
+	border-radius: $radius-normal;
+}
+legend {
+	padding: 0.5em 1em;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: $primary-color;
+}
+label {
+	font-weight: bold;
+	color: $secondary-color;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+	width: 100%;
+	padding: 0.5em 1em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 1px solid $gray;
+	border-radius: $radius-normal - 2px;
+	transition: border $transition-time;
+	&:focus { border: 1px solid $primary-color; }
+}
+input[type="text"].password {
+	-webkit-text-security: disc;
+}
+textarea { height: 12em; }
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+	@extend .btn;
+}
+input[type="checkbox"] {
+	width: 1.2em;
+	height: 1.2em;
+	vertical-align: middle;
+}
+input[type="file"] {
+	margin: 0.5em 0;
+	padding: 0.5em 0;
+	width: 100%;
+}
+.form-inline {
+	margin: 0; padding: 0;
+	display: inline;
+	input { width: auto; }
+}
+.form-group {
+	@extend .group;
+}
