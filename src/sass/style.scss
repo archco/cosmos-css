@@ -67,6 +67,7 @@ $card-bg-color: white !default;
 $card-link-color: $link-color !default;
 
 // import components
+@import 'lib/normalize'; // normalize.css v5.0.0
 @import 'placeholder';
 @import 'mixing';
 @import 'functions/decimal';
