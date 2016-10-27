@@ -1,0 +1,27 @@
+/** Helpers */
+.box-line { border: 1px solid $secondary-color; }
+.no-margin { margin: 0; padding: 0; }
+.hide { display: none !important; }
+.show { display: block !important; }
+.font-cursive { font-family: $font-cursive; }
+.font-accent { font-family: $font-accent; }
+.font-sans-serif { font-family: $font-sans-serif; }
+.center { text-align: center; }
+.vertical-center-container {
+	display: flex;
+	align-items: center; // vertical alignment.
+
+	.flex-item {
+		display: block;
+	}
+}
+.flex-center-container {
+	@extend .vertical-center-container; // horizontal alignment.
+	justify-content: center;
+}
+.right { text-align: right; }
+.color-primary { color: $primary-color; }
+.color-secondary { color: $secondary-color; }
+.full-width { width: 100%; }
+.full-height { height: 100%; }
+.group { margin: 1rem 0; }

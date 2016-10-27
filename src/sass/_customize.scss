@@ -1,0 +1,345 @@
+/** Company */
+section.company {
+	@extend %flex-center;
+	padding: 6em 0;
+	h1 { font-size: 3em; }
+}
+
+/** Process */
+section.process {
+	@extend %flex-center;
+}
+.process-list {
+	text-align: center;
+
+	.process-item {
+		display: inline-block;
+		vertical-align: text-top;
+		width: 100%;
+		max-width: 360px;
+		padding: 0.5rem;
+
+		.process-summary {
+			margin: 0;
+			padding: 0.5rem;
+			border-bottom: 1px dotted $secondary-color;
+
+			.process-num {
+				font-family: $font-serif;
+				font-style: italic;
+				font-size: 1.5em;
+				color: $primary-color;
+			}
+		}
+		.process-description {
+			padding: 0.5rem;
+		}
+	}
+}
+@media #{$media-tablet} {
+	.process-list {
+		.process-item {
+			margin: 0.5rem;
+		}
+	}
+}
+
+/************************************************************
+	Location
+*************************************************************
+*	
+*/
+#map { height: 500px; }
+.location-info-list {
+	@extend .flex-center-container;
+	background-color: $black;
+	height : 150px;
+
+	figure.location-info-item {
+		margin: 4px;
+		display: inline-block;
+		figcaption { display: none; }
+	}
+}
+
+/** Gallery */
+.write-link {
+	margin: 1em 0;
+	text-align: right;
+	a { padding: 0.5em 1em; }
+}
+.gallery {
+	padding: 1em 0;
+	clear: both;
+	text-align: center;
+	figure {
+		margin: 0;
+		display: inline-block;
+		transition: opacity $transition-time;
+		&:hover { opacity: 0.8; }
+	}
+	figcaption { display: none; }
+	img {
+			object-fit: none; /* Do not scale the image */
+			object-position: center; /* Center the image within the element */
+			width: 150px;
+			height: 100px;
+			border-radius: $radius-normal;
+	}
+}
+
+/************************************************************
+	post (gallery, dress, styling, news)
+*************************************************************
+*	
+*/
+ /** list common */
+.post-item {
+	width: 200px;
+
+	.post-title { 
+		margin: 1rem 0;
+		font-family: $font-accent;
+	}
+	.post-meta {
+		font-size: 0.8rem;
+		color: $gray;
+	}
+	.post-content {
+		font-size: 0.9rem;
+		color: $black;
+	}
+}
+[class*="post-list"] { 
+	@extend %app-list;
+}
+/** list style : text, simple, thumb */
+.post-list-text {
+	.post-item {
+		@extend %app-list-item;
+		width: auto;
+		border-left: 3px solid $primary-color;
+	}
+}
+.post-list-simple {
+	// use card.
+	text-align: center;
+
+	.post-item {
+		text-align: left;
+
+		.post-data {
+			padding: 0 0.25em;
+			.post-title { text-align: center; }
+		}
+	}
+}
+.post-list-thumb {
+	@extend .post-list-simple;
+	
+	.post-item {
+		display: inline-block;
+		vertical-align: text-top;
+		padding: 0.5rem;
+		margin: 1rem 0.5rem;
+		border-radius: $radius-normal;
+		transition: box-shadow $transition-time;
+
+		&:hover { box-shadow: $shadow-normal; }
+	}
+	.post-thumb {
+		@extend %post-thumb;
+		margin: 0 auto;
+		width: 180px; 
+		height: 240px;
+	}
+}
+
+/** post page view */
+article.post {
+	.post-meta {
+		@extend %article-meta;
+	}
+	.post-content {
+		@extend %article-content;
+	}
+}
+/** post page images */
+.post-images {
+	padding: 1em 0;
+	clear: both;
+	figure {
+		display: inline-block;
+		margin: 0;
+	}
+	img {
+		width: 100%; height: auto;
+		max-width: 800px;
+	}
+	figcaption { display: none; }
+}
+/** post edit image-list */
+#image-panel {
+	.image-item { height: 100px; }
+}
+/** Resource Image.index (image-list) */
+.image-list.card-list {
+	.image-item { height: 120px; }
+}
+
+/************************************************************
+	Notice
+*************************************************************
+*	
+*/
+/** carousel */
+.carousel {
+	margin: 0 auto;
+	width: 100%;
+}
+.carousel-item {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.carousel-image {
+	width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+.carousel-text {
+	color: white;
+	background-color: transparent;
+	.carousel-title {
+		margin: 0;
+		padding: 0.5em 1em;
+		border-radius: 0 0.5em 0.5em 0;
+		position: absolute;
+		left: 0;
+		top: 5%;
+		display: inline;
+		border-bottom: 0.25em solid $primary-color-dark;
+		background-color: rgba($primary-color, 0.5);
+	}
+	.carousel-content {
+		margin: 0;
+		padding: 1em 2em;
+		position: absolute;
+		bottom: 0;
+		display: block;
+		width: 100%;
+		background-color: rgba(black, 0.5);
+	}
+
+	@media #{$media-tablet} {
+		.carousel-title { font-size: 2rem; }
+		.carousel-content { font-size: 1.5rem; }
+	}
+}
+
+/************************************************************
+	About
+*************************************************************
+*	
+*/
+section.about { 
+	padding: 0;
+	[class*='about'] {
+		padding: 2em 0;
+		h1 {
+			padding: 0;
+			text-align: center;
+		}
+	}
+
+	.about-company {
+		text-align: center;
+		background-color: $primary-color-light;
+
+		h1 {
+			font-family: $font-cursive;
+			font-size: 3em;
+		}
+	}
+	.about-processes {
+		background-color: darken($secondary-color, 10%);
+		color: white;
+	}
+	.about-contact {
+		background-color: $primary-color-dark;
+		color: white;
+		address {
+			text-align: center;
+		}
+	}
+}
+
+/************************************************************
+	Contact
+*************************************************************
+*	
+*/
+// contact index
+.contact-list {
+	@extend %app-list;
+
+	.contact-item {
+		@extend %app-list-item;
+		padding: 1rem;
+		border-left: 3px solid $primary-color;
+		border-radius: 16px 0 0 16px;
+
+		.contact-subject {}
+		.contact-meta {
+			@extend .comment;
+		}
+
+		&.contact-notice {
+			border-left: 3px solid $error-color;
+			.contact-subject {
+				color: $error-color;
+			}
+		}
+	}
+}
+// contact show
+article.contact {
+	.contact-meta {
+		@extend %article-meta;
+	}
+	.contact-content {
+		@extend %article-content;
+	}
+
+	&.contact-notice {
+		.contact-subject {
+			color: $error-color;
+		}
+	}
+}
+.contact-pw-check {
+	height: 20rem;
+}
+
+/************************************************************
+	Misc
+*************************************************************
+*	
+*/
+/** btn-to-top */
+#btn-to-top {
+	@extend %btn-common;
+	position: fixed;
+	right: 4%;
+	bottom: 4%;
+	outline: none;
+	padding: 1rem;
+	border-radius: 50%;
+	background-color: rgba($primary-color-dark, 0.5);
+	color: $secondary-color;
+	transition: background-color $transition-time;
+	display: none;
+	&:hover {
+		background-color: $primary-color-dark;
+	}
+}
