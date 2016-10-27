@@ -43,10 +43,10 @@
 %nav-link {
 	display: inline-block;
 	padding: 12px 18px;
-	color: white;
+	color: $nav-link-color;
 	border-radius: 4px 4px 0 0;
 	transition: color $transition-time;
-	&:hover { color: $secondary-color; }
+	&:hover { color: $nav-link-hover-color; }
 }
 %nav-button {
 	border: none;

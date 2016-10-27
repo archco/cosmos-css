@@ -3,16 +3,16 @@ nav {
 	z-index: 10;
 	display: block;
 	margin: 0 auto;
-	font-family: $font-nav;
-	background-color: $primary-color;
-	font-size: 1.25em;
+	font-family: $nav-font;
+	background-color: $nav-bg-color;
+	font-size: $nav-font-size;
 
 	.menu-wrapper { text-align: center; }
 
 	ul {
 		display: inline-block;
-		margin: 0; padding: 0;
-		border-top: 2px solid $primary-color;
+		margin: 0;
+		padding: 0;
 		list-style: none;
 		text-align: center;
 	}
@@ -20,8 +20,8 @@ nav {
 	li {
 		display: inline;
 		&.active a { 
-			color: $primary-color;
-			background-color: white;
+			color: $nav-bg-color;
+			background-color: $nav-link-color;
 		}
 	}
 
@@ -55,7 +55,7 @@ nav {
 				width: $icon-size; height: round($icon-size / 7);
 				margin: round($icon-size * 6 / 35);
 				border-radius: $radius-normal - 2;
-				background-color: white;
+				background-color: $nav-link-color;
 				transition: $transition-time;
 			}
 

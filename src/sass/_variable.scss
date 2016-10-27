@@ -8,16 +8,15 @@ $font-monospace: "Lucida Console", Monaco, monospace;
 $font-cursive: 'Pinyon Script', cursive;
 
 // font set
-$font-base: $font-sans-serif;
-$font-nav: $font-sans-serif-2;
-$font-accent: $font-sans-serif-2;
+$font-base: $font-sans-serif !default;
+$font-accent: $font-sans-serif-2 !default;
 
 // size
-$app-max-width: 1280px;
+$app-max-width: 1280px !default;
 
 // responsive size
-$mobile-size: 768px;
-$tablet-size: 992px;
+$mobile-size: 768px !default;
+$tablet-size: 992px !default;
 $media-mobile: "only screen and (max-width : #{$mobile-size})";
 $media-tablet: "only screen and (min-width : #{$mobile-size})";
 
@@ -33,25 +32,25 @@ $darkgray: #555;
 $yellow: #ffcc00;
 
 // theme
-$primary-color: $teal;
-$primary-color-light: lighten($teal, 20%);
-$primary-color-dark: darken($teal, 20%);
-$secondary-color: $gray;
-$info-color: $lightblue;
-$success-color: $green;
-$error-color: $red;
-$warning-color: $yellow;
-$link-color: $lightblue;
+$primary-color: $teal !default;
+$primary-color-light: lighten($primary-color, 20%);
+$primary-color-dark: darken($primary-color, 20%);
+$secondary-color: $gray !default;
+$info-color: $lightblue !default;
+$success-color: $green !default;
+$error-color: $red !default;
+$warning-color: $yellow !default;
+$link-color: $lightblue !default;
 
 // else
-$radius-normal: 4px;
+$radius-normal: 4px !default;
 $radius-small: round($radius-normal / 2);
 $radius-large: round($radius-normal * 2);
 $radius-button: $radius-small;
 $shadow-near: 0 0 4px rgba(black, 0.3);
 $shadow-normal: 0 2px 8px rgba(black, 0.3);
 $shadow-far: 2px 4px 16px rgba(black, 0.3);
-$transition-time: 0.3s;
+$transition-time: 0.3s !default;
 $icon-size: 35px; // nav toggle button's width
 
 // grid
@@ -64,3 +63,10 @@ $card-size-small: 150px !default;
 $card-size-large: 500px !default;
 $card-bg-color: white !default;
 $card-link-color: $link-color !default;
+
+// nav
+$nav-bg-color: $primary-color !default;
+$nav-link-color: white !default;
+$nav-link-hover-color: $secondary-color !default;
+$nav-font: $font-accent !default;
+$nav-font-size: 1.25em !default;

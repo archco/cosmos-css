@@ -515,7 +515,6 @@ body {
   color: #333; }
 
 header {
-  height: 110px;
   z-index: 10; }
 
 footer {
@@ -926,7 +925,6 @@ nav {
     display: inline-block;
     margin: 0;
     padding: 0;
-    border-top: 2px solid #9dc8c8;
     list-style: none;
     text-align: center; }
   nav li {
@@ -1013,6 +1011,14 @@ nav {
   background-image: url("../img/index-bg/index-3.jpg");
   height: 400px; }
 
+header {
+  height: 110px; }
+
+/************************************************************
+	Pages (company, process, location)
+*************************************************************
+*	
+*/
 /** Company */
 section.company {
   padding: 6em 0; }
@@ -1044,11 +1050,7 @@ section.company {
   .process-list .process-item {
     margin: 0.5rem; } }
 
-/************************************************************
-	Location
-*************************************************************
-*	
-*/
+/** Location */
 #map {
   height: 500px; }
 
@@ -1060,34 +1062,6 @@ section.company {
     display: inline-block; }
     .location-info-list figure.location-info-item figcaption {
       display: none; }
-
-/** Gallery */
-.write-link {
-  margin: 1em 0;
-  text-align: right; }
-  .write-link a {
-    padding: 0.5em 1em; }
-
-.gallery {
-  padding: 1em 0;
-  clear: both;
-  text-align: center; }
-  .gallery figure {
-    margin: 0;
-    display: inline-block;
-    transition: opacity 0.3s; }
-    .gallery figure:hover {
-      opacity: 0.8; }
-  .gallery figcaption {
-    display: none; }
-  .gallery img {
-    object-fit: none;
-    /* Do not scale the image */
-    object-position: center;
-    /* Center the image within the element */
-    width: 150px;
-    height: 100px;
-    border-radius: 4px; }
 
 /************************************************************
 	post (gallery, dress, styling, news)
@@ -1207,7 +1181,7 @@ section.company {
       font-size: 1.5rem; } }
 
 /************************************************************
-	About
+	About (index, landing page)
 *************************************************************
 *	
 */
