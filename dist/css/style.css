@@ -96,6 +96,14 @@ article.post .post-content, article.contact .contact-content {
   .post-list-text .post-item a, .contact-list .contact-item a {
     display: block; }
 
+@media only screen and (min-width: 768px) {
+  nav .nav-header {
+    display: none; } }
+
+@media only screen and (max-width: 768px) {
+  nav .menu-left, nav .menu-right {
+    display: none; } }
+
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -920,7 +928,22 @@ nav {
   background-color: #9dc8c8;
   font-size: 1.25em; }
   nav .menu-wrapper {
-    text-align: center; }
+    margin: 0 auto;
+    text-align: left; }
+    nav .menu-wrapper:after {
+      clear: both;
+      display: block;
+      content: ""; }
+  nav .menu-left {
+    float: initial; }
+    @media only screen and (min-width: 768px) {
+      nav .menu-left {
+        float: left; } }
+  nav .menu-right {
+    float: initial; }
+    @media only screen and (min-width: 768px) {
+      nav .menu-right {
+        float: right; } }
   nav ul {
     display: inline-block;
     margin: 0;
@@ -960,17 +983,12 @@ nav {
       nav .nav-header button.menu-toggle.change .icon-bar3 {
         transform: rotate(45deg) translate(-8px, -7px); }
 
-@media only screen and (min-width: 768px) {
-  .nav-header {
-    display: none; } }
-
 @media only screen and (max-width: 768px) {
   /* nav */
+  nav ul,
   nav li,
   nav a {
-    width: 100%; }
-  .menu-main, .menu-right {
-    display: none; } }
+    width: 100%; } }
 
 /* dropdown */
 .dropdown {

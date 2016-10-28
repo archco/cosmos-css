@@ -7,7 +7,34 @@ nav {
 	background-color: $nav-bg-color;
 	font-size: $nav-font-size;
 
-	.menu-wrapper { text-align: center; }
+	.menu-wrapper {
+		margin: 0 auto;
+		text-align: left;
+
+		&:after {
+			clear: both;
+			display: block;
+			content: "";
+		}
+	}
+	.menu-left {
+		@extend %responsive-mobile-hide;
+
+		float: initial;
+
+		@media #{$media-tablet} {
+			float: left;	
+		}
+	}
+	.menu-right {
+		@extend %responsive-mobile-hide;
+
+		float: initial;
+
+		@media #{$media-tablet} {
+			float: right;
+		}
+	}
 
 	ul {
 		display: inline-block;
@@ -30,7 +57,7 @@ nav {
 	}
 
 	.nav-header {
-		@extend %position-center-container;
+		@extend %position-center-container, %resopnsive-tablet-hide;
 		height: 50px;
 
 		.nav-brand {
@@ -76,11 +103,11 @@ nav {
 
 // Responsive
 @media #{$media-tablet} {
-	.nav-header { display: none; }
+	//
 }
 @media #{$media-mobile} {
 	/* nav */
-	nav li, 
+	nav ul, 
+	nav li,
 	nav a { width: 100%; }
-	.menu-main, .menu-right { display: none; }
 }

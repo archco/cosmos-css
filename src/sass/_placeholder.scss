@@ -113,3 +113,16 @@
 	font-size: 1rem;
 	color: $black;
 }
+
+// responsive
+// 
+%resopnsive-tablet-hide {
+	@media #{$media-tablet} {
+		& { display: none; }
+	}
+}
+%responsive-mobile-hide {
+	@media #{$media-mobile} {
+		& { display: none; }
+	}
+}
