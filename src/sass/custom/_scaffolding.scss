@@ -1,3 +1,69 @@
+//======================================================================
+// Scaffolding
+//======================================================================
+
 header {
 	height: 110px;
+}
+
+//======================================================================
+// Placeholders
+//======================================================================
+
+// parts > post
+// 
+%post-thumb {
+	position: relative;
+	overflow: hidden;
+	border-radius: $radius-normal;
+	img {
+		position: absolute;
+		left: 50%; top: 50%;
+		width: auto; height: 100%;
+		max-width: none;
+		-webkit-transform: translate(-50%,-50%); /* Safari */
+		-ms-transform: translate(-50%,-50%); /* IE 9 */
+		transform: translate(-50%,-50%);
+	}
+}
+
+// parts > article
+// 
+%article-meta {
+	font-size: 0.8em;
+	color: $gray;
+}
+%article-content {
+	padding: 1em 0;
+	white-space: pre-wrap;
+}
+
+// parts > list, item style.
+// 
+%app-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+%app-list-item {
+	margin: 1rem 0;
+	padding: 0.2rem 1rem;
+	transition: background-color $transition-time;
+
+	&:hover { background-color: $lightgray; }
+	a { display: block; }
+}
+
+%app-ol {
+	font-family: $font-serif;
+	font-style: italic;
+	font-size: 1.75rem;
+	color: $primary-color;
+	vertical-align: text-top;
+}
+%app-ol-item {
+	font-family: $font-base;
+	font-style: normal;
+	font-size: 1rem;
+	color: $black;
 }

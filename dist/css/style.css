@@ -57,45 +57,6 @@ nav .nav-header button.menu-toggle, button.dropdown-toggle {
   cursor: pointer;
   display: inline-block; }
 
-.post-list-thumb .post-thumb {
-  position: relative;
-  overflow: hidden;
-  border-radius: 4px; }
-  .post-list-thumb .post-thumb img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: auto;
-    height: 100%;
-    max-width: none;
-    -webkit-transform: translate(-50%, -50%);
-    /* Safari */
-    -ms-transform: translate(-50%, -50%);
-    /* IE 9 */
-    transform: translate(-50%, -50%); }
-
-article.post .post-meta, article.contact .contact-meta {
-  font-size: 0.8em;
-  color: #999999; }
-
-article.post .post-content, article.contact .contact-content {
-  padding: 1em 0;
-  white-space: pre-wrap; }
-
-[class*="post-list"], .contact-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0; }
-
-.post-list-text .post-item, .contact-list .contact-item {
-  margin: 1rem 0;
-  padding: 0.2rem 1rem;
-  transition: background-color 0.3s; }
-  .post-list-text .post-item:hover, .contact-list .contact-item:hover {
-    background-color: #f2f2f2; }
-  .post-list-text .post-item a, .contact-list .contact-item a {
-    display: block; }
-
 @media only screen and (min-width: 768px) {
   nav .nav-header {
     display: none; } }
@@ -1031,6 +992,45 @@ nav {
 
 header {
   height: 110px; }
+
+.post-list-thumb .post-thumb {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px; }
+  .post-list-thumb .post-thumb img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: auto;
+    height: 100%;
+    max-width: none;
+    -webkit-transform: translate(-50%, -50%);
+    /* Safari */
+    -ms-transform: translate(-50%, -50%);
+    /* IE 9 */
+    transform: translate(-50%, -50%); }
+
+article.post .post-meta, article.contact .contact-meta {
+  font-size: 0.8em;
+  color: #999999; }
+
+article.post .post-content, article.contact .contact-content {
+  padding: 1em 0;
+  white-space: pre-wrap; }
+
+[class*="post-list"], .contact-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+.post-list-text .post-item, .contact-list .contact-item {
+  margin: 1rem 0;
+  padding: 0.2rem 1rem;
+  transition: background-color 0.3s; }
+  .post-list-text .post-item:hover, .contact-list .contact-item:hover {
+    background-color: #f2f2f2; }
+  .post-list-text .post-item a, .contact-list .contact-item a {
+    display: block; }
 
 /************************************************************
 	Pages (company, process, location)
