@@ -7,6 +7,7 @@ html
         meta(charset='utf-8')
         block title
             title "Default title"
+        link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
         link(rel="stylesheet" href="../dist/css/style.css")
     body
         header(class='bg-primary')
@@ -27,6 +28,16 @@ html
                         - for (var i = 0; i < 3; i++)
                             li 
                                 a(href='#')= 'link ' + num[i]
+                        li(class='dropdown')
+                            button(class='dropdown-toggle' onClick='dropdownToggle(this)') dropdown 
+                                i(class='fa fa-caret-down' aria-hidden='true')
+                            ul(class='dropdown-content')
+                                li
+                                    a(href='#') link1
+                                li
+                                    a(href='#') link2
+                                li
+                                    a(href='#') link3
                     ul(class='menu-right')
                         li
                             a(href='#') Login
@@ -37,3 +48,5 @@ html
 
         footer
             p copyright &copy; 2016 cosmos all rights reserved.
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+        script(src='../dist/js/script.js')

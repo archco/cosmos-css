@@ -2,16 +2,19 @@
   "name": "cosmos-css",
   "version": "1.0.0",
   "description": "personal practice",
-  "main": "src/js/cosmos-css.js",
+  "main": "dist/js/script.js",
   "directories": {
     "test": "tests"
   },
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
     "gulp-pug": "^3.1.0",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.2.0",
+    "jquery": "^3.1.1",
     "pug": "^2.0.0-beta6"
   },
   "scripts": {
