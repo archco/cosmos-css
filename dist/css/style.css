@@ -24,7 +24,7 @@ nav .nav-header .nav-brand, nav .nav-header button.menu-toggle {
 
 .btn, input[type="submit"],
 input[type="button"],
-input[type="reset"], .btn-icon, #btn-to-top {
+input[type="reset"], .btn-icon, nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle, .dropdown button.dropdown-toggle, #btn-to-top {
   border: none;
   cursor: pointer; }
 
@@ -41,20 +41,20 @@ input[type="reset"] {
   .btn-icon:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
 
-nav a:not(.nav-brand), button.dropdown-toggle {
+nav a:not(.nav-brand), nav .dropdown > button.dropdown-toggle {
   display: inline-block;
   padding: 12px 18px;
   color: white;
+  font-family: inherit;
+  font-size: inherit;
   border-radius: 4px 4px 0 0;
   transition: color 0.3s; }
-  nav a:hover:not(.nav-brand), button.dropdown-toggle:hover {
+  nav a:hover:not(.nav-brand), nav .dropdown > button.dropdown-toggle:hover {
     color: #999999; }
 
-nav .nav-header button.menu-toggle, button.dropdown-toggle {
-  border: none;
+nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle {
   outline: none;
   background-color: transparent;
-  cursor: pointer;
   display: inline-block; }
 
 @media only screen and (min-width: 768px) {
@@ -934,21 +934,35 @@ nav {
   nav a {
     width: 100%; } }
 
-/* dropdown */
 .dropdown {
   position: relative;
   display: inline-block; }
+  .dropdown button.dropdown-toggle {
+    outline: none; }
+  .dropdown ul.dropdown-content {
+    position: absolute;
+    z-index: 12;
+    display: none;
+    min-width: 150px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
+    .dropdown ul.dropdown-content > li > a {
+      display: block;
+      padding: 0.5em 1em;
+      font-family: inherit;
+      font-size: inherit;
+      color: #999999;
+      transition: color 0.3s, background-color 0.3s; }
+      .dropdown ul.dropdown-content > li > a:hover, .dropdown ul.dropdown-content > li > a:focus {
+        text-decoration: none;
+        color: #666666;
+        background-color: #e6e6e6; }
 
-.dropdown-content {
-  z-index: 12;
-  display: none;
-  position: absolute;
-  min-width: 150px;
-  background-color: #f2f2f2;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
-  .dropdown-content > li > a {
-    font-size: 1rem;
-    color: #555; }
+nav .dropdown > button.dropdown-toggle:before {
+  all: initial; }
 
 @media only screen and (max-width: 768px) {
   .dropdown-content {

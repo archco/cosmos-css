@@ -1,0 +1,20 @@
+//- button test page.
+extends ./layout/layout.pug
+
+block title
+	title= 'Button Test Page'
+
+block content
+	section
+		h1 Buttons
+		hr
+		h2 dropdown
+		div(class='dropdown')
+			button(class='dropdown-toggle btn' onClick='dropdownToggle(this)') dropdown
+			ul(class='dropdown-content')
+				li
+					a(href='#') hello
+				li
+					a(href='#') drop
+				li
+					a(href='#') down

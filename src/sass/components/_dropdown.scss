@@ -1,23 +1,51 @@
-/* dropdown */
+//======================================================================
+// dropdown
+//======================================================================
+
 .dropdown {
 	position: relative;
 	display: inline-block;
-}
-button.dropdown-toggle {
-	@extend %nav-button, %nav-link;
-}
-.dropdown-content {
-	z-index: 12;
-	display: none;
-	position: absolute;
-	min-width: 150px;
-	background-color: $lightgray;
-	box-shadow: $shadow-normal;
-	> li > a {
-		font-size: 1rem;
-		color: $darkgray;
+
+	button.dropdown-toggle {
+		@extend %btn-common;
+		outline: none;
+	}
+	ul.dropdown-content {
+		position: absolute;
+		z-index: 12;
+		display: none;
+		min-width: 150px;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		background-color: $dropdown-bg-color;
+		box-shadow: $shadow-normal;
+		> li > a {
+			display: block;
+			padding: 0.5em 1em;
+			font-family: inherit;
+			font-size: inherit;
+			color: $dropdown-link-color;
+			transition: color $transition-time, background-color $transition-time;
+
+			&:hover,
+			&:focus {
+				text-decoration: none;
+				color: $dropdown-link-hover-color;
+				background-color: $dropdown-bg-hover-color;
+			}
+		}
 	}
 }
+
+// nav dropdown
+nav .dropdown > button.dropdown-toggle {
+	@extend %nav-button, %nav-link;
+	&:before {
+		all: initial;
+	}
+}
+
 // Responsive
 @media #{$media-mobile} {
 	.dropdown-content { width: 100%; }
