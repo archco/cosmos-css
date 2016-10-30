@@ -11,9 +11,6 @@ $font-cursive: 'Pinyon Script', cursive;
 $font-base: $font-sans-serif !default;
 $font-accent: $font-sans-serif-2 !default;
 
-// size
-$app-max-width: 1280px !default;
-
 // responsive size
 $mobile-size: 768px !default;
 $tablet-size: 992px !default;
@@ -31,16 +28,31 @@ $lightgray: #f2f2f2;
 $darkgray: #555;
 $yellow: #ffcc00;
 
-// theme
+// theme-colors
 $primary-color: $teal !default;
 $primary-color-light: lighten($primary-color, 20%);
 $primary-color-dark: darken($primary-color, 20%);
 $secondary-color: $gray !default;
+// base colors
+$text-color: $black !default;
+$body-bg-color: initial !default;
+// link colors
+$link-color: $lightblue !default;
+$link-hover-color: lighten($link-color, 20%) !default;
+$link-hover-decoration: none !default;
+// message dialog colors
 $info-color: $lightblue !default;
 $success-color: $green !default;
 $error-color: $red !default;
 $warning-color: $yellow !default;
-$link-color: $lightblue !default;
+// table colors
+$table-head-color: $primary-color !default;
+$table-head-text-color: white !default;
+$table-text-color: inherit !default;
+$table-row-even-bg: $lightgray !default;
+$table-link-color: $link-color !default;
+$table-link-hover-color: $link-hover-color !default;
+$table-link-hover-decoration: underline !default;
 
 // else
 $radius-normal: 4px !default;

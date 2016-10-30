@@ -1,9 +1,26 @@
 //======================================================================
 // Scaffolding
 //======================================================================
-
+body {
+	margin: 0 auto;
+	max-width: $app-max-width;
+}
 header {
+	@extend %flex-center;
 	height: 110px;
+	z-index: 10;
+}
+footer {
+	background-color: $primary-color;
+	color: white;
+	z-index: 10;
+	a { 
+		padding: 0.5em 1em;
+		color: white;
+		transition: color $transition-time;
+		&:hover { color: $secondary-color; }
+	}
+	.footer-box { padding: 1rem; }
 }
 
 //======================================================================

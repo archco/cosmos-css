@@ -1,37 +1,36 @@
-/** Scaffolding - tag defualt */
-* { box-sizing: border-box; }
-img { max-width: 100%; height: auto; }
+//======================================================================
+// Scaffolding - tag default
+//======================================================================
+
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
 body {
 	font-family: $font-base;
-	max-width: $app-max-width;
-	margin: 0 auto;
-	color: $black;
+	color: $text-color;
+	background-color: $body-bg-color;
 }
-header {
-	@extend %flex-center;
-	z-index: 10;
-}
-footer {
-	background-color: $primary-color;
-	color: white;
-	z-index: 10;
-	a { 
-		padding: 0.5em 1em;
-		color: white;
-		transition: color $transition-time;
-		&:hover { color: $secondary-color; }
-	}
-	.footer-box { padding: 1rem; }
-}
+
 address { font-style: normal; }
+
 hr {
 	border: 0;
 	border-bottom: 1px solid $gray;
 }
+
 article { padding: 1em 0.5em; }
+
 input[type="text"].pw { -webkit-text-security: disc; }
 
-/** section */
+// images
+// 
+// responsive 를 따로 설정할 필요가 있을지도 모르겠다.
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+// section
 @media #{$media-tablet} {
 	section { padding: 2rem 5%; }
 }
@@ -43,30 +42,41 @@ section h1 {
 	padding-left: 1rem;
 }
 
-/** link default */
+// link
 a {
 	color: $link-color;
 	text-decoration: none;
-	&:hover { color: lighten($link-color, 20%); }
+
+	&:hover,
+	&:focus {
+		color: $link-hover-color;
+		text-decoration: $link-hover-decoration;
+	}
 }
 
-/** table default */
+// table
 table {
 	width: 100%;
 	max-width: 800px;
 	margin: 0 auto;
-	color: $gray;
 	font-size: 0.9em;
+	color: $table-text-color;
+
 	th, td { padding: 0.5em 1em; }
 	th {
 		text-align: left;
-		background-color: $primary-color;
-		color: white;
+		background-color: $table-head-color;
+		color: $table-head-text-color;
 	}
-	tr:nth-child(even) { background-color: $lightgray; }
+	tr:nth-child(even) { background-color: $table-row-even-bg; }
 	a {
-		color: $black;
+		color: $table-link-color;
 		transition: text-decoration $transition-time;
-		&:hover { text-decoration: underline; }
+	
+		&:hover,
+		&:focus {
+			color: $table-link-hover-color;
+			text-decoration: $table-link-hover-decoration;
+		}
 	}
 }

@@ -1,7 +1,6 @@
 /** container */
 .container {
 	margin: 0 auto;
-	max-width: $app-max-width;
 	width: 90%;
 }
 @media #{$media-tablet} {
