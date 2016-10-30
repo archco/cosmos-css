@@ -9,7 +9,7 @@ ul.pagination {
 	li {
 		margin: 0 0.2rem;
 		display: inline-block;
-		border-radius: $radius-button;
+		border-radius: $radius-small;
 		&.active {
 			color: white;
 			background-color: $primary-color;

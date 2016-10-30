@@ -29,8 +29,8 @@
 %btn {
 	@extend %btn-common;
 	padding: 0.5em 1em;
-	margin: 0.5em 0;
-	border-radius: $radius-button;
+	outline-color: $secondary-color;
+	border-radius: $button-radius;
 }
 %btn-icon {
 	@extend %btn-common;

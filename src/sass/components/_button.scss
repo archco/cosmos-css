@@ -1,0 +1,17 @@
+//======================================================================
+// button
+//======================================================================
+
+.btn {
+	@extend %btn;
+	@include btnColor($button-color, $button-bg-color);
+}
+.btn-danger {
+	color: $button-color;
+	background-color: $error-color !important;
+}
+.btn-icon {
+	@extend %btn-icon;
+	color: $button-color;
+	background-color: $button-bg-color;
+}

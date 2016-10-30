@@ -5,66 +5,6 @@
 @import url(https://fonts.googleapis.com/css?family=Advent+Pro:400,600,700,300);
 /* font-family: 'Nanum Gothic', serif; */
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-header, section.company, section.process {
-  display: flex;
-  align-items: center;
-  /* vertically */
-  justify-content: center;
-  /* horizontally*/
-  flex-direction: column;
-  clear: both; }
-
-nav .nav-header {
-  position: relative; }
-
-nav .nav-header .nav-brand, nav .nav-header button.menu-toggle {
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%); }
-
-.btn, input[type="submit"],
-input[type="button"],
-input[type="reset"], .btn-icon, nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle, .dropdown button.dropdown-toggle, #btn-to-top {
-  border: none;
-  cursor: pointer; }
-
-.btn, input[type="submit"],
-input[type="button"],
-input[type="reset"] {
-  padding: 0.5em 1em;
-  margin: 0.5em 0;
-  border-radius: 2px; }
-
-.btn-icon {
-  border-radius: 50%;
-  transition: box-shadow 0.3s; }
-  .btn-icon:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
-
-nav a:not(.nav-brand), nav .dropdown > button.dropdown-toggle {
-  display: inline-block;
-  padding: 12px 18px;
-  color: white;
-  font-family: inherit;
-  font-size: inherit;
-  border-radius: 4px 4px 0 0;
-  transition: color 0.3s; }
-  nav a:hover:not(.nav-brand), nav .dropdown > button.dropdown-toggle:hover {
-    color: #999999; }
-
-nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle {
-  outline: none;
-  background-color: transparent;
-  display: inline-block; }
-
-@media only screen and (min-width: 768px) {
-  nav .nav-header {
-    display: none; } }
-
-@media only screen and (max-width: 768px) {
-  nav .menu-left, nav .menu-right {
-    display: none; } }
-
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -469,6 +409,66 @@ template {
 [hidden] {
   display: none; }
 
+section.company, section.process {
+  display: flex;
+  align-items: center;
+  /* vertically */
+  justify-content: center;
+  /* horizontally*/
+  flex-direction: column;
+  clear: both; }
+
+nav .nav-header {
+  position: relative; }
+
+nav .nav-header .nav-brand, nav .nav-header button.menu-toggle {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%); }
+
+.btn, input[type="submit"],
+input[type="button"],
+input[type="reset"], .btn-icon, nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle, .dropdown button.dropdown-toggle, #btn-to-top {
+  border: none;
+  cursor: pointer; }
+
+.btn, input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  padding: 0.5em 1em;
+  outline-color: #999999;
+  border-radius: 2px; }
+
+.btn-icon {
+  border-radius: 50%;
+  transition: box-shadow 0.3s; }
+  .btn-icon:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
+
+nav a:not(.nav-brand), nav .dropdown > button.dropdown-toggle {
+  display: inline-block;
+  padding: 12px 18px;
+  color: white;
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: 4px 4px 0 0;
+  transition: color 0.3s; }
+  nav a:hover:not(.nav-brand), nav .dropdown > button.dropdown-toggle:hover {
+    color: #999999; }
+
+nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle {
+  outline: none;
+  background-color: transparent;
+  display: inline-block; }
+
+@media only screen and (min-width: 768px) {
+  nav .nav-header {
+    display: none; } }
+
+@media only screen and (max-width: 768px) {
+  nav .menu-left, nav .menu-right {
+    display: none; } }
+
 html {
   box-sizing: border-box; }
 
@@ -646,27 +646,26 @@ table {
   .col-12 {
     width: 100%; } }
 
-/** btn */
 .btn, input[type="submit"],
 input[type="button"],
 input[type="reset"] {
-  color: white;
+  color: #fff;
   background-color: #9dc8c8;
   transition: background-color 0.3s, box-shadow 0.3s; }
   .btn:hover, input[type="submit"]:hover,
   input[type="button"]:hover,
   input[type="reset"]:hover {
-    color: white;
+    color: #fff;
     background-color: #8dbfbf;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
 
 .btn-danger {
-  color: white;
+  color: #fff;
   background-color: #e1553e !important; }
 
 .btn-icon {
-  color: white;
-  background-color: #999999; }
+  color: #fff;
+  background-color: #9dc8c8; }
 
 /** message  */
 .error, .danger {
@@ -992,7 +991,6 @@ body {
   max-width: 1280px; }
 
 header {
-  height: 110px;
   z-index: 10; }
 
 footer {
