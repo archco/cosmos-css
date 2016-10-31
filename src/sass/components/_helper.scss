@@ -1,12 +1,21 @@
-/** Helpers */
-.box-line { border: 1px solid $secondary-color; }
-.no-margin { margin: 0; padding: 0; }
+//======================================================================
+// Helpers
+//======================================================================
+
+// toggling content
 .hide { display: none !important; }
 .show { display: block !important; }
+.invisible { visibility: hidden; }
+
+// font
 .font-cursive { font-family: $font-cursive; }
 .font-accent { font-family: $font-accent; }
 .font-sans-serif { font-family: $font-sans-serif; }
+
+// align
 .center { text-align: center; }
+.right { text-align: right; }
+.left { text-align: left; }
 .vertical-center-container {
 	display: flex;
 	align-items: center; // vertical alignment.
@@ -19,9 +28,35 @@
 	@extend .vertical-center-container; // horizontal alignment.
 	justify-content: center;
 }
-.right { text-align: right; }
+.center-position-container {
+	@extend %position-center-container;
+
+	.center-position {
+		@extend %position-center;
+	}
+}
+.center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// float
+.float-clear {
+	@include clear-both;
+}
+.float-left { float: left !important; }
+.float-right { float: right !important; }
+
+// color
 .color-primary { color: $primary-color; }
 .color-secondary { color: $secondary-color; }
+.bg-color-primary { background-color: $primary-color; }
+.bg-color-secondary { background-color: $secondary-color; }
+
+// misc
+.box-line { border: 1px solid $secondary-color; }
+.no-margin { margin: 0; padding: 0; }
 .full-width { width: 100%; }
 .full-height { height: 100%; }
 .group { margin: 1rem 0; }

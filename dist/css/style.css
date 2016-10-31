@@ -418,10 +418,10 @@ section.company, section.process {
   flex-direction: column;
   clear: both; }
 
-nav .nav-header {
+.center-position-container, nav .nav-header {
   position: relative; }
 
-nav .nav-header .nav-brand, nav .nav-header button.menu-toggle {
+.center-position-container .center-position, nav .nav-header .nav-brand, nav .nav-header button.menu-toggle {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%); }
@@ -537,19 +537,14 @@ table {
       color: #9cb8de;
       text-decoration: underline; }
 
-/** Helpers */
-.box-line {
-  border: 1px solid #999999; }
-
-.no-margin {
-  margin: 0;
-  padding: 0; }
-
 .hide {
   display: none !important; }
 
 .show {
   display: block !important; }
+
+.invisible {
+  visibility: hidden; }
 
 .font-cursive {
   font-family: "Pinyon Script", cursive; }
@@ -563,6 +558,12 @@ table {
 .center {
   text-align: center; }
 
+.right {
+  text-align: right; }
+
+.left {
+  text-align: left; }
+
 .vertical-center-container, .flex-center-container, .location-info-list {
   display: flex;
   align-items: center; }
@@ -572,14 +573,40 @@ table {
 .flex-center-container, .location-info-list {
   justify-content: center; }
 
-.right {
-  text-align: right; }
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.float-clear:after {
+  content: "";
+  display: block;
+  clear: both; }
+
+.float-left {
+  float: left !important; }
+
+.float-right {
+  float: right !important; }
 
 .color-primary {
   color: #9dc8c8; }
 
 .color-secondary {
   color: #999999; }
+
+.bg-color-primary {
+  background-color: #9dc8c8; }
+
+.bg-color-secondary {
+  background-color: #999999; }
+
+.box-line {
+  border: 1px solid #999999; }
+
+.no-margin {
+  margin: 0;
+  padding: 0; }
 
 .full-width {
   width: 100%; }
@@ -609,9 +636,9 @@ table {
   margin-right: auto;
   margin-bottom: 1rem; }
   .row:after {
-    clear: both;
+    content: "";
     display: block;
-    content: ""; }
+    clear: both; }
 
 [class*="col-"] {
   width: 100%;

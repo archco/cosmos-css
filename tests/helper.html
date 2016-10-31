@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Helper</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../dist/css/style.css">
+  </head>
+  <body>
+    <header class="bg-primary">
+      <nav>
+        <div class="nav-header"><a class="nav-brand" href="#">Brand Logo</a>
+          <button class="menu-toggle" type="button"><span class="hide">Toggle Navigation</span>
+            <div class="icon-bar1"></div>
+            <div class="icon-bar2"></div>
+            <div class="icon-bar3"></div>
+          </button>
+        </div>
+        <div class="menu-wrapper">
+          <ul class="menu-left">
+            <li><a href="test.html">test</a></li>
+            <li class="active"><a href="#">active</a></li>
+            <li> <a href="#">link one</a></li>
+            <li> <a href="#">link two</a></li>
+            <li> <a href="#">link three</a></li>
+            <li class="dropdown">
+              <button class="dropdown-toggle" onClick="dropdownToggle(this)">dropdown <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+              <ul class="dropdown-content">
+                <li><a href="#">link1</a></li>
+                <li><a href="#">link2</a></li>
+                <li><a href="#">link3</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="menu-right">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <h1>Helper Classes</h1>
+      <hr>
+      <h2>Toggling content</h2>
+      <p class="box-line show">test page.</p>
+      <p class="box-line hide">test page.</p>
+      <p class="box-line invisible">test page.</p>
+      <h2>font</h2>
+      <p class="font-sans-serif">Hello, World!</p>
+      <p class="font-accent">Hello, World!</p>
+      <p class="font-cursive">Hello, World!</p>
+      <h2>Align</h2>
+      <div class="box-line">
+        <p class="center">center align.</p>
+        <p class="left">left align.</p>
+        <p class="right">right align.</p>
+      </div><div class="flex-center-container box-line" style="height:360px;">
+      <div class="center-block">
+        <p>vertically centering.</p>
+      </div></div>
+      <h2>Float</h2>
+      <div class="float-clear">
+        <div class="float-right box-line">this is right.</div>
+        <div class="float-left box-line">this is left.</div>
+      </div>
+      <h2>Color</h2>
+      <div class="bg-color-secondary"><span class="color-primary">Primary color.</span></div>
+      <div class="bg-color-primary"><span class="color-secondary">Secondary color.</span></div>
+    </section>
+    <footer>
+      <p>copyright &copy; 2016 cosmos all rights reserved.</p>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../dist/js/script.js"></script>
+  </body>
+</html>

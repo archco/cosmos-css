@@ -13,15 +13,10 @@
 
 /** Grid */
 .row {
+	@include clear-both;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 1rem;
-
-	&:after {
-		clear: both;
-		display: block;
-		content: "";
-	}
 }
 // Grid mobile (default)
 [class*="col-"] {
