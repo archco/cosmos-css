@@ -18,10 +18,3 @@
 		clear: both;
 	}
 }
-
-// focus-outline
-@mixin focus-outline($outline: $default-focus-outline) {
-	&:focus {
-		outline: $outline;
-	}
-}

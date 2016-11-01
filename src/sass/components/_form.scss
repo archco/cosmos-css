@@ -23,14 +23,11 @@ label {
 input,
 select,
 textarea {
+	outline-color: $input-outline-color;
+	
 	&.inline {
 		display: inline;
 		width: auto;
-	}
-
-	&:not([readonly]) {
-		// input focus outline
-		@include focus-outline($input-focus-outline);	
 	}
 }
 

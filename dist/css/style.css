@@ -436,12 +436,8 @@ input[type="reset"], .btn-icon, nav .nav-header button.menu-toggle, nav .dropdow
 input[type="button"],
 input[type="reset"] {
   padding: 0.5em 1em;
-  outline-color: #999999;
+  outline-color: #9dc8c8;
   border-radius: 2px; }
-  .btn:focus, input[type="submit"]:focus,
-  input[type="button"]:focus,
-  input[type="reset"]:focus {
-    outline: 2px solid #9dc8c8; }
 
 .btn-icon {
   border-radius: 50%;
@@ -821,16 +817,15 @@ label {
   font-weight: bold;
   color: #999999; }
 
-input.inline,
-select.inline,
-textarea.inline {
-  display: inline;
-  width: auto; }
-
-input:not([readonly]):focus,
-select:not([readonly]):focus,
-textarea:not([readonly]):focus {
-  outline: 2px solid #9dc8c8; }
+input,
+select,
+textarea {
+  outline-color: #9dc8c8; }
+  input.inline,
+  select.inline,
+  textarea.inline {
+    display: inline;
+    width: auto; }
 
 input:not([type]),
 input[type="text"],
