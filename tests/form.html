@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../dist/css/style.css">
+  </head>
+  <body>
+    <header class="bg-primary">
+      <nav>
+        <div class="nav-header"><a class="nav-brand" href="#">Brand Logo</a>
+          <button class="menu-toggle" type="button"><span class="hide">Toggle Navigation</span>
+            <div class="icon-bar1"></div>
+            <div class="icon-bar2"></div>
+            <div class="icon-bar3"></div>
+          </button>
+        </div>
+        <div class="menu-wrapper">
+          <ul class="menu-left">
+            <li><a href="test.html">test</a></li>
+            <li class="active"><a href="#">active</a></li>
+            <li> <a href="#">link one</a></li>
+            <li> <a href="#">link two</a></li>
+            <li> <a href="#">link three</a></li>
+            <li class="dropdown">
+              <button class="dropdown-toggle" onClick="dropdownToggle(this)">dropdown <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+              <ul class="dropdown-content">
+                <li><a href="#">link1</a></li>
+                <li><a href="#">link2</a></li>
+                <li><a href="#">link3</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="menu-right">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <h1>Form</h1>
+      <hr>
+      <form>
+        <fieldset>
+          <legend>Form</legend>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="name">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input type="email" id="email" name="email" disabled placeholder="read only">
+            <input type="email" id="email" name="email" readonly placeholder="read only">
+          </div>
+          <div class="form-group">
+            <label>checkbox
+              <input type="checkbox">
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="radio" name="gender" value="0" checked>male
+            </label><br>
+            <label>
+              <input type="radio" name="gender" value="1">female
+            </label>
+          </div>
+          <div class="form-group">
+            <input type="file">
+            <input type="range">
+          </div>
+          <div class="form-group">
+            <select name="select">
+              <option value="0">one</option>
+              <option value="1">two</option>
+              <option value="2">three</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea>hello, world!</textarea>
+          </div>
+          <div class="form-group">
+            <button class="btn" type="submit">Submit</button>
+          </div>
+        </fieldset>
+      </form>
+      <form class="form-inline">
+        <fieldset>
+          <legend>Form inline</legend>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="name">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password">
+          <label for="email">email</label>
+          <input type="email" id="email" name="email" disabled placeholder="read only">
+          <input type="email" id="email" name="email" readonly placeholder="read only">
+          <label>checkbox</label>
+          <input type="checkbox">
+          <label>
+            <input type="radio" name="gender" value="0" checked>male
+          </label>
+          <label>
+            <input type="radio" name="gender" value="1">female
+          </label>
+          <input type="file">
+          <input type="range">
+          <select name="select">
+            <option value="0">one</option>
+            <option value="1">two</option>
+            <option value="2">three</option>
+          </select>
+          <textarea>hello, world!</textarea>
+          <button class="btn" type="submit">Submit</button>
+        </fieldset>
+      </form>
+    </section>
+    <footer>
+      <p>copyright &copy; 2016 cosmos all rights reserved.</p>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../dist/js/script.js"></script>
+  </body>
+</html>

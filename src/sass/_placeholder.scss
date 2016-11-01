@@ -28,6 +28,7 @@
 }
 %btn {
 	@extend %btn-common;
+	@include focus-outline($button-focus-outline);
 	padding: 0.5em 1em;
 	outline-color: $secondary-color;
 	border-radius: $button-radius;
@@ -75,7 +76,3 @@
 		& { display: none; }
 	}
 }
-
-//======================================================================
-// dropdown
-//======================================================================

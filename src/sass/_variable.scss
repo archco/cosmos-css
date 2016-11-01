@@ -68,11 +68,13 @@ $shadow-normal: 0 2px 8px rgba(black, 0.3);
 $shadow-far: 2px 4px 16px rgba(black, 0.3);
 $transition-time: 0.3s !default;
 $icon-size: 35px; // nav toggle button's width
+$default-focus-outline: 2px solid $primary-color;
 
 // button
 $button-radius: $radius-small !default;
 $button-color: $white !default;
 $button-bg-color: $primary-color !default;
+$button-focus-outline: $default-focus-outline;
 
 // dropdown
 $dropdown-bg-color: $white !default;
@@ -97,3 +99,15 @@ $nav-link-color: white !default;
 $nav-link-hover-color: $secondary-color !default;
 $nav-font: $font-accent !default;
 $nav-font-size: 1.25em !default;
+
+// form
+$filedset-border: 2px solid $primary-color;
+$legend-color: $primary-color;
+$label-color : $secondary-color;
+$input-padding: 0.5em 1em;
+$input-margin: 0.5em 0;
+$input-border: 1px solid $gray;
+$input-border-focus: 1px solid $primary-color;
+$input-radius: $radius-small;
+$input-focus-outline: $default-focus-outline;
+$input-bg-disabled: $lightgray;
