@@ -746,7 +746,6 @@ input[type="reset"] {
   .btn-close-message:hover {
     color: rgba(51, 51, 51, 0.7); }
 
-/** card */
 ul.card-list {
   margin: 0;
   padding: 0;
@@ -759,7 +758,11 @@ ul.card-list {
   background-color: white;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  width: 150px; }
+  width: 300px; }
+  .card.small {
+    width: 150px; }
+  .card.large {
+    width: 500px; }
   .card .card-image {
     max-height: 60%;
     width: 100%; }
@@ -772,7 +775,11 @@ ul.card-list {
     padding: 0.25rem 0.5rem; }
   .card.horizontal {
     width: auto;
-    height: 150px; }
+    height: 300px; }
+    .card.horizontal.small {
+      height: 150px; }
+    .card.horizontal.large {
+      height: 500px; }
     .card.horizontal .card-image, .card.horizontal .card-content {
       vertical-align: middle;
       display: inline-block;

@@ -1,0 +1,77 @@
+//- test page.
+extends ./layout/layout.pug
+
+block title
+	title= 'Card'
+
+block content
+	section
+		h1 Card
+		hr
+		h2 Vertical Card (default)
+		ul(class='card-list')
+			li(class='card small')
+				div(class='card-image')
+					img(src='./img/sample_1.jpg' alt='image' width='150')
+				div(class='card-content')
+					|Card Content 1
+			li(class='card')
+				div(class='card-image')
+					img(src='./img/sample_2.jpg' alt='image' width='300')
+				div(class='card-content')
+					|Card Content 2
+			li(class='card large')
+				div(class='card-image')
+					img(src='./img/sample_3.jpg' alt='image' width='500')
+				div(class='card-content')
+					|Card Content 2
+		h2 Horizontal Card
+		ul(class='card-list')
+			li(class='card horizontal small')
+				div(class='card-image')
+					img(src='./img/sample_1.jpg' alt='image' width='150')
+				div(class='card-content')
+					|Card Content 1
+			li(class='card horizontal')
+				div(class='card-image')
+					img(src='./img/sample_2.jpg' alt='image' width='300')
+				div(class='card-content')
+					|Card Content 2
+			li(class='card horizontal large')
+				div(class='card-image')
+					img(src='./img/sample_3.jpg' alt='image' width='500')
+				div(class='card-content')
+					|Card Content 2
+		h2 Card Inline
+		ul(class='card-list')
+			li(class='card inline small')
+				div(class='card-image')
+					img(src='./img/sample_1.jpg' alt='image' width='150')
+				div(class='card-content')
+					|Card Content 1
+			li(class='card inline')
+				div(class='card-image')
+					img(src='./img/sample_2.jpg' alt='image' width='300')
+				div(class='card-content')
+					|Card Content 2
+			li(class='card inline large')
+				div(class='card-image')
+					img(src='./img/sample_3.jpg' alt='image' width='500')
+				div(class='card-content')
+					|Card Content 2
+		ul(class='card-list')
+			li(class='card horizontal inline small')
+				div(class='card-image')
+					img(src='./img/sample_1.jpg' alt='image' width='150')
+				div(class='card-content')
+					|Card Content 1
+			li(class='card horizontal inline')
+				div(class='card-image')
+					img(src='./img/sample_2.jpg' alt='image' width='300')
+				div(class='card-content')
+					|Card Content 2
+			li(class='card horizontal inline large')
+				div(class='card-image')
+					img(src='./img/sample_3.jpg' alt='image' width='500')
+				div(class='card-content')
+					|Card Content 2

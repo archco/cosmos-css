@@ -1,4 +1,8 @@
-/** card */
+//======================================================================
+// Card
+//======================================================================
+
+// card list
 ul.card-list {
 	margin: 0;
 	padding: 0;
@@ -10,9 +14,17 @@ ul.card-list {
 	margin: 0.5rem 0;
 	padding: 0;
 	background-color: $card-bg-color;
-	border-radius: $radius-small;
-	box-shadow: $shadow-normal;
-	width: $card-size-small;
+	border-radius: $card-radius;
+	box-shadow: $card-shadow;
+	width: $card-size;
+
+	// card size
+	&.small {
+		width: $card-size-small;
+	}
+	&.large {
+		width: $card-size-large;
+	}
 
 	.card-image {
 		max-height: 60%;
@@ -21,7 +33,7 @@ ul.card-list {
 		img {
 			width: 100%;
 			display: block;
-			border-radius: $radius-small $radius-small 0 0;
+			border-radius: $card-radius $card-radius 0 0;
 		}
 	}
 	.card-content {
@@ -32,7 +44,15 @@ ul.card-list {
 	// horizontal
 	&.horizontal {
 		width: auto;
-		height: $card-size-small;
+		height: $card-size;
+
+		// card size
+		&.small {
+			height: $card-size-small;
+		}
+		&.large {
+			height: $card-size-large;
+		}
 
 		%card-horizontal-child {
 			vertical-align: middle;
@@ -48,7 +68,7 @@ ul.card-list {
 			img { 
 				height: 100%;
 				width: auto;
-				border-radius: $radius-small 0 0 $radius-small;
+				border-radius: $card-radius 0 0 $card-radius;
 			}
 		}
 		.card-content {
