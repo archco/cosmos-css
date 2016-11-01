@@ -102,13 +102,15 @@ $nav-font: $font-accent !default;
 $nav-font-size: 1.25em !default;
 
 // form
-$filedset-border: 2px solid $primary-color;
-$legend-color: $primary-color;
-$label-color : $secondary-color;
-$input-padding: 0.5em 1em;
-$input-margin: 0.5em 0;
-$input-border: 1px solid $gray;
-$input-border-focus: 1px solid $primary-color;
-$input-radius: $radius-small;
-$input-outline-color: $outline-color;
-$input-bg-disabled: $lightgray;
+$filedset-border: 2px solid $primary-color !default;
+$legend-color: $primary-color !default;
+$label-color: $black !default;
+$label-color-focused: $primary-color !default;
+$label-color-disabled: $gray !default;
+$input-padding: 0.5em 1em !default;
+$input-margin: 0.5em 0 !default;
+$input-border: 1px solid $gray !default;
+$input-border-focus: 1px solid $primary-color !default;
+$input-radius: $radius-small !default;
+$input-outline-color: $outline-color !default;
+$input-bg-disabled: $lightgray !default;

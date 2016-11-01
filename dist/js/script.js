@@ -130,6 +130,9 @@ function dropdownToggle(x) {
 function scrollListener() {
 	var top = scrollTop(),
 	    btnToTop = document.querySelector('#btn-to-top');
+	if (!btnToTop) {
+		return;
+	}
 	// btn-to-top
 	if (top > 500) {
 		btnToTop.style.display = 'block';
