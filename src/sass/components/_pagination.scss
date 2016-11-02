@@ -10,24 +10,36 @@ ul.pagination {
 		margin: 0 0.2rem;
 		display: inline-block;
 		border-radius: $radius-small;
-		&.active {
-			color: white;
-			background-color: $primary-color;
-		}
-		&.disabled {
-			color: $gray;
-		}
+		color: $pagination-color;
+		background-color: $pagination-bg;
+		
 		span, a {
+			color: inherit;
+			background-color: inherit;
 			padding: 0.25rem 0.5rem;
 			display: block;
 		}
 
 		a {
-			color: $black;
-			transition: background-color $transition-time;
+			transition: color $transition-time, background-color $transition-time;
+
 			&:hover {
-				background-color: $lightgray;
+				color: $pagination-hover-color;
+				background-color: $pagination-hover-bg;
 			}
+		}
+
+		&.active {
+			color: $pagination-active-color;
+			background-color: $pagination-active-bg;
+
+			> a:hover {
+				color: $pagination-active-hover-color;
+				background-color: $pagination-active-hover-bg;
+			}
+		}
+		&.disabled {
+			color: $pagination-disabled-color;
 		}
 	}
 }

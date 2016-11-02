@@ -109,6 +109,7 @@ $legend-color: $primary-color !default;
 $label-color: $black !default;
 $label-color-focused: $primary-color !default;
 $label-color-disabled: $gray !default;
+
 $input-padding: 0.5em 1em !default;
 $input-margin: 0.5em 0 !default;
 $input-border: 1px solid $gray !default;
@@ -116,3 +117,16 @@ $input-border-focus: 1px solid $primary-color !default;
 $input-radius: $radius-small !default;
 $input-outline-color: $outline-color !default;
 $input-bg-disabled: $lightgray !default;
+
+// pagination
+$pagination-color: $text-color !default;
+$pagination-bg: transparent !default;
+$pagination-hover-color: $text-color !default;
+$pagination-hover-bg: $lightgray !default;
+
+$pagination-active-color: $white !default;
+$pagination-active-bg: $primary-color !default;
+$pagination-active-hover-color: $white !default;
+$pagination-active-hover-bg: $primary-color-dark !default;
+
+$pagination-disabled-color: $gray !default;
