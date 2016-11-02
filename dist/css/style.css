@@ -695,12 +695,12 @@ input[type="reset"] {
 .success {
   color: #507d3a; }
 
+.info {
+  color: #4f81c5; }
+
 .comment, .contact-list .contact-item .contact-meta {
   color: #999999;
   font-size: 0.8rem; }
-
-.info {
-  color: #4f81c5; }
 
 /** message-box */
 .message-box {
@@ -714,37 +714,33 @@ input[type="reset"] {
   border: 1px solid #999999;
   background-color: rgba(153, 153, 153, 0.2);
   color: #999999; }
-
-.message-error {
-  border: 1px solid #e1553e;
-  background-color: rgba(225, 85, 62, 0.2);
-  color: #e1553e; }
-
-.message-success {
-  border: 1px solid #507d3a;
-  background-color: rgba(80, 125, 58, 0.2);
-  color: #507d3a; }
-
-.message-info {
-  border: 1px solid #4f81c5;
-  background-color: rgba(79, 129, 197, 0.2);
-  color: #4f81c5; }
-
-.btn-close-message {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 1rem;
-  padding: 0;
-  font-size: 1.5rem;
-  color: rgba(51, 51, 51, 0.3);
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: color 0.3s; }
-  .btn-close-message:hover {
-    color: rgba(51, 51, 51, 0.7); }
+  .message-box.error, .message-box.message-error {
+    border: 1px solid #e1553e;
+    background-color: rgba(225, 85, 62, 0.2);
+    color: #e1553e; }
+  .message-box.success, .message-box.message-success {
+    border: 1px solid #507d3a;
+    background-color: rgba(80, 125, 58, 0.2);
+    color: #507d3a; }
+  .message-box.info, .message-box.message-info {
+    border: 1px solid #4f81c5;
+    background-color: rgba(79, 129, 197, 0.2);
+    color: #4f81c5; }
+  .message-box .btn-close-message {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1rem;
+    padding: 0;
+    font-size: 1.5rem;
+    color: rgba(51, 51, 51, 0.3);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: color 0.3s; }
+    .message-box .btn-close-message:hover {
+      color: rgba(51, 51, 51, 0.7); }
 
 ul.card-list {
   margin: 0;

@@ -1,0 +1,49 @@
+//- test page.
+extends ./layout/layout.pug
+
+block title
+	title= 'Message'
+
+block content
+	section
+		h1 Message
+		hr
+		h2 Message text color
+		ul
+			li
+				p(class='info') Infomation message.
+			li
+				p(class='success') Success message.
+			li
+				p(class='error') Error message.
+			li
+				p(class='comment') Comment message.
+		h2 Message box
+		div(class='message-box')
+			span This is message box.
+			button(class='btn-close-message')
+				i(class="fa fa-times" aria-hidden="true")
+		div(class='message-box error')
+			span This is error message box.
+			button(class='btn-close-message')
+				i(class="fa fa-times" aria-hidden="true")
+		div(class='message-box success')
+			span This is success message box.
+			button(class='btn-close-message')
+				i(class="fa fa-times" aria-hidden="true")
+		div(class='message-box info')
+			span This is information message box.
+			button(class='btn-close-message')
+				i(class="fa fa-times" aria-hidden="true")
+		h2 Show message
+		div(id='message-container')
+		div
+			input(type='text' id='input-msg')
+			button(type='button' id='btn-msg') show message
+		|<script>
+		|	var b = document.querySelector('#btn-msg');
+		|	b.onclick = function () {
+		|		var i = document.querySelector('#input-msg');
+		|		showMessage(i.value);
+		|	};
+		|</script>

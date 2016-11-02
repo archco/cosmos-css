@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Message</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../dist/css/style.css">
+  </head>
+  <body>
+    <header class="bg-primary">
+      <nav>
+        <div class="nav-header"><a class="nav-brand" href="#">Brand Logo</a>
+          <button class="menu-toggle" type="button"><span class="hide">Toggle Navigation</span>
+            <div class="icon-bar1"></div>
+            <div class="icon-bar2"></div>
+            <div class="icon-bar3"></div>
+          </button>
+        </div>
+        <div class="menu-wrapper">
+          <ul class="menu-left">
+            <li><a href="test.html">test</a></li>
+            <li class="active"><a href="#">active</a></li>
+            <li> <a href="#">link one</a></li>
+            <li> <a href="#">link two</a></li>
+            <li> <a href="#">link three</a></li>
+            <li class="dropdown">
+              <button class="dropdown-toggle" onClick="dropdownToggle(this)">dropdown <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+              <ul class="dropdown-content">
+                <li><a href="#">link1</a></li>
+                <li><a href="#">link2</a></li>
+                <li><a href="#">link3</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="menu-right">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <h1>Message</h1>
+      <hr>
+      <h2>Message text color</h2>
+      <ul>
+        <li>
+          <p class="info">Infomation message.</p>
+        </li>
+        <li>
+          <p class="success">Success message.</p>
+        </li>
+        <li>
+          <p class="error">Error message.</p>
+        </li>
+        <li>
+          <p class="comment">Comment message.</p>
+        </li>
+      </ul>
+      <h2>Message box</h2>
+      <div class="message-box"><span>This is message box.</span>
+        <button class="btn-close-message"><i class="fa fa-times" aria-hidden="true"></i></button>
+      </div>
+      <div class="message-box error"><span>This is error message box.</span>
+        <button class="btn-close-message"><i class="fa fa-times" aria-hidden="true"></i></button>
+      </div>
+      <div class="message-box success"><span>This is success message box.</span>
+        <button class="btn-close-message"><i class="fa fa-times" aria-hidden="true"></i></button>
+      </div>
+      <div class="message-box info"><span>This is information message box.</span>
+        <button class="btn-close-message"><i class="fa fa-times" aria-hidden="true"></i></button>
+      </div>
+      <h2>Show message</h2>
+      <div id="message-container"></div>
+      <div>
+        <input type="text" id="input-msg">
+        <button type="button" id="btn-msg">show message</button>
+      </div>
+      <script>
+      	var b = document.querySelector('#btn-msg');
+      	b.onclick = function () {
+      		var i = document.querySelector('#input-msg');
+      		showMessage(i.value);
+      	};
+      </script>
+    </section>
+    <footer>
+      <p>copyright &copy; 2016 cosmos all rights reserved.</p>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../dist/js/script.js"></script>
+  </body>
+</html>
