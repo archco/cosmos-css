@@ -20,19 +20,20 @@ $media-mobile: "only screen and (max-width : #{$mobile-size})";
 $media-tablet: "only screen and (min-width : #{$mobile-size})";
 
 // colors
-$teal: #9dc8c8; 
-$lightblue: #4f81c5;
-$gray: #999999;
-$green: #507d3a;
-$red: #e1553e;
+// --------------------
+$white: #fff;
 $black: #333;
+$gray: #999999;
 $lightgray: #f2f2f2;
 $darkgray: #555;
+$teal: #9dc8c8; 
+$lightblue: #4f81c5;
+$green: #507d3a;
+$red: #e1553e;
 $yellow: #ffcc00;
-$white: #fff;
 
 // theme-colors
-$primary-color: $teal !default;
+$primary-color: $lightblue !default;
 $primary-color-light: lighten($primary-color, 20%);
 $primary-color-dark: darken($primary-color, 20%);
 $secondary-color: $gray !default;
@@ -98,10 +99,16 @@ $card-link-color: $link-color !default;
 
 // nav
 $nav-bg-color: $primary-color !default;
-$nav-link-color: white !default;
+$nav-link-color: $white !default;
 $nav-link-hover-color: $secondary-color !default;
 $nav-font: $font-accent !default;
 $nav-font-size: 1.25em !default;
+
+// footer
+$footer-color: $white !default;
+$footer-bg-color: $primary-color !default;
+$footer-link-color: $white !default;
+$footer-link-hover-color: $secondary-color !default;
 
 // form
 $filedset-border: 2px solid $primary-color !default;

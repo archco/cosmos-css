@@ -11,6 +11,28 @@ body {
 	background-color: $body-bg-color;
 }
 
+header,
+footer {
+	z-index: 10;
+}
+
+footer {
+	color: $footer-color;
+	background-color: $footer-bg-color;
+
+	a {
+		color: $footer-link-color;
+		transition: color $transition-time;
+		&:hover { color: $footer-link-hover-color; }
+	}
+	.footer-copyright {
+		padding: 0.5rem 0;
+		text-align: center;
+		color: rgba($footer-color, 0.8);
+		background-color: rgba(#000, 0.15);
+	}
+}
+
 address { font-style: normal; }
 
 hr {
