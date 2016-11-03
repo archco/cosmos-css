@@ -6,8 +6,8 @@ var pug = require('gulp-pug');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var babel = require('gulp-babel');
-/** dist filename */
-var jsFile = 'script.js';
+var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
 
 /**
  * Default
@@ -15,6 +15,8 @@ var jsFile = 'script.js';
 gulp.task('default', ['sass', 'pug', 'babel']);
 
 gulp.task('watch', ['sass:watch', 'pug:watch', 'babel:watch']);
+
+gulp.task('min', ['sass:min', 'babel:min']);
 
 /**
  * Sass
@@ -29,6 +31,15 @@ gulp.task('sass', function () {
 
 gulp.task('sass:watch', function () {
 	gulp.watch('src/sass/**/*.scss', ['sass']);
+});
+
+gulp.task('sass:min', function () {
+	return gulp.src('src/sass/style.scss')
+		.pipe(sourcemaps.init())
+		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+		.pipe(rename('style.min.css'))
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest('dist/css/'));
 });
 
 /**
@@ -50,6 +61,7 @@ gulp.task('pug:watch', function () {
 /**
  * Babel
  */
+var jsFile = 'script.js';
 var jsList = [
 	'src/js/init.js',
 	'src/js/modules/util.js',
@@ -58,6 +70,7 @@ var jsList = [
 	'src/js/modules/scrolltop.js',
 	'src/js/modules/message.js',
 ];
+
 gulp.task('babel', function () {
 	return gulp.src(jsList)
 		.pipe(sourcemaps.init())
@@ -69,4 +82,15 @@ gulp.task('babel', function () {
 
 gulp.task('babel:watch', function () {
 	gulp.watch('src/js/**/*.js', ['babel']);
+});
+
+gulp.task('babel:min', function () {
+	return gulp.src(jsList)
+		.pipe(sourcemaps.init())
+		.pipe(babel())
+		.pipe(concat(jsFile))
+		.pipe(uglify())
+		.pipe(rename('script.min.js'))
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest('dist/js/'));
 });
