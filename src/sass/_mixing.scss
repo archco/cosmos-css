@@ -25,3 +25,12 @@
 	background-color: rgba($color, 0.2);
 	color: $color;
 }
+
+// calculate card size
+@mixin calCardSize($size, $direction:"vertical") {
+	@if ($direction == "vertical") {
+		width: $size * 1.25;
+	} @else if ($direction == "horizontal") {
+		width: $size * 1.25;
+	}
+}
