@@ -11,6 +11,15 @@ function dropdownToggle(x) {
 }
 /** IIFE - Add Event Listeners */
 (function () {
+	// toggle button add click event listener.
+	var btns = document.querySelectorAll('.dropdown-toggle');
+	if (btns) {
+		for (btn of btns) {
+			btn.onclick = function () {
+				dropdownToggle(this);
+			};
+		}
+	}
 	// Close the dropdown menu if the user clicks outside of it
 	window.onclick = function(event) {
 		if (! event.target.classList.contains('dropdown-toggle')) {
