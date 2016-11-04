@@ -14,12 +14,13 @@
 		position: absolute;
 		z-index: 12;
 		display: none;
-		min-width: 150px;
+		min-width: $dropdown-min-width;
 		padding: 0;
 		margin: 0;
 		list-style: none;
 		background-color: $dropdown-bg-color;
 		box-shadow: $shadow-normal;
+
 		> li > a {
 			display: block;
 			padding: 0.5em 1em;
@@ -41,6 +42,8 @@
 // nav dropdown
 nav .dropdown > button.dropdown-toggle {
 	@extend %nav-button, %nav-link;
+	min-width: $dropdown-min-width;
+	
 	&:before {
 		all: initial;
 	}
