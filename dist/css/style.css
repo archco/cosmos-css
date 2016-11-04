@@ -1068,8 +1068,10 @@ nav {
         color: #666666;
         background-color: #e6e6e6; }
 
-nav .dropdown > button.dropdown-toggle:before {
-  all: initial; }
+nav .dropdown > button.dropdown-toggle {
+  min-width: 150px; }
+  nav .dropdown > button.dropdown-toggle:before {
+    all: initial; }
 
 @media only screen and (max-width: 768px) {
   .dropdown-content {
