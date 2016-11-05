@@ -8,6 +8,24 @@ ul.card-list {
 	padding: 0;
 	list-style: none;
 }
+
+// card-image position placeholder
+%card-image-position {
+	position: relative;
+	overflow: hidden;
+
+	img {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: auto;
+		height: auto;
+		max-width: none;
+		-webkit-transform: translate(-50%,-50%);
+		transform: translate(-50%,-50%);
+	}
+}
+
 // default - vertical
 .card {
 	z-index: 2;
@@ -40,14 +58,11 @@ ul.card-list {
 	}
 
 	.card-image {
-		background-color: $black;
+		@extend %card-image-position;
 		border-radius: $card-radius $card-radius 0 0;
 
 		img {
-			width: 100%;
-			height: 100%;
-			display: block;
-			object-fit: fill;
+			@include cardImageSize("vertical");
 		}
 	}
 	.card-content {
@@ -72,8 +87,12 @@ ul.card-list {
 		}
 		.card-image {
 			@extend %card-horizontal-child;
-			width: 39%;
+			width: 40%;
 			border-radius: $card-radius 0 0 $card-radius;
+
+			img {
+				@include cardImageSize("horizontal");
+			}
 		}
 		.card-content {
 			@extend %card-horizontal-child;
@@ -81,14 +100,14 @@ ul.card-list {
 		}
 		.card-image + .card-content {
 			@extend %card-horizontal-child;
-			width: 59%;
+			width: 58%;
 		}
 	}
 
 	&.inline {
-		margin: 0.5rem;
 		display: inline-block;
 		vertical-align: text-top;
+		max-width: 100%;
 		
 		// width size
 		& { @include calCardSize($card-size); }

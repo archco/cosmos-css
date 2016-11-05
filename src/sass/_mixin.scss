@@ -34,3 +34,13 @@
 		width: $size * 1.25;
 	}
 }
+
+@mixin cardImageSize($direction:"vertical") {
+	@if ($direction == "vertical") {
+		width: 105%;
+		height: auto;
+	} @else if ($direction == "horizontal") {
+		height: 105%;
+		width: auto;
+	}
+}
