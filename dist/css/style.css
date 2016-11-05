@@ -472,7 +472,7 @@ nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle {
   nav .nav-header {
     display: none; } }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   nav .menu-left, nav .menu-right {
     display: none; } }
 
@@ -523,7 +523,7 @@ img {
   section {
     padding: 2rem 5%; } }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   section {
     padding: 2rem 0.5rem; } }
 
@@ -1067,7 +1067,7 @@ nav {
       nav .nav-header button.menu-toggle.change .icon-bar3 {
         transform: rotate(45deg) translate(-8px, -7px); }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   /* nav */
   nav ul,
   nav li,
@@ -1106,7 +1106,7 @@ nav .dropdown > button.dropdown-toggle {
   nav .dropdown > button.dropdown-toggle:before {
     all: initial; }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .dropdown-content {
     width: 100%; } }
 

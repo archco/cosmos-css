@@ -22,8 +22,8 @@ nav {
 
 		float: initial;
 
-		@media #{$media-tablet} {
-			float: left;	
+		@include media-tablet-up() {
+			float: left;
 		}
 	}
 	.menu-right {
@@ -31,7 +31,7 @@ nav {
 
 		float: initial;
 
-		@media #{$media-tablet} {
+		@include media-tablet-up() {
 			float: right;
 		}
 	}
@@ -102,10 +102,7 @@ nav {
 }
 
 // Responsive
-@media #{$media-tablet} {
-	//
-}
-@media #{$media-mobile} {
+@include media-only-mobile() {
 	/* nav */
 	nav ul, 
 	nav li,

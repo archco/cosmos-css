@@ -44,3 +44,52 @@
 		width: auto;
 	}
 }
+
+// media queries
+//======================================================================
+
+// base mixins
+@mixin media-up($width) {
+	@media only screen and (min-width: $width) {
+		@content;
+	}
+}
+@mixin media-down($width) {
+	$width: $width - 1;
+	@media only screen and (max-width: $width) {
+		@content;
+	}
+}
+@mixin media-between($min, $max) {
+	$max: $max - 1;
+	@media only screen and (min-width: $min) and (max-width: $max) {
+		@content;
+	}
+}
+
+// functions
+@mixin media-only-mobile() {
+	@include media-down($mobile-size) {
+		@content;
+	}
+}
+@mixin media-tablet-up() {
+	@include media-up($mobile-size) {
+		@content;
+	}
+}
+@mixin media-tablet-down() {
+	@include media-down($tablet-size) {
+		@content;
+	}
+}
+@mixin media-only-tablet() {
+	@include media-between($mobile-size, $tablet-size) {
+		@content;
+	}
+}
+@mixin media-only-desktop() {
+	@include media-up($tablet-size) {
+		@content;
+	}
+}

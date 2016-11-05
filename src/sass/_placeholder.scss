@@ -66,12 +66,12 @@
 //======================================================================
 
 %resopnsive-tablet-hide {
-	@media #{$media-tablet} {
+	@include media-tablet-up() {
 		& { display: none; }
 	}
 }
 %responsive-mobile-hide {
-	@media #{$media-mobile} {
+	@include media-only-mobile() {
 		& { display: none; }
 	}
 }

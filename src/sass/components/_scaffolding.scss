@@ -51,10 +51,10 @@ img {
 }
 
 // section
-@media #{$media-tablet} {
+@include media-tablet-up() {
 	section { padding: 2rem 5%; }
 }
-@media #{$media-mobile} {
+@include media-only-mobile {
 	section { padding: 2rem 0.5rem; }
 }
 section h1 {

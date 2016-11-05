@@ -50,6 +50,6 @@ nav .dropdown > button.dropdown-toggle {
 }
 
 // Responsive
-@media #{$media-mobile} {
+@include media-only-mobile() {
 	.dropdown-content { width: 100%; }
 }

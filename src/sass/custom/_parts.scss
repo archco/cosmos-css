@@ -41,7 +41,7 @@ section.process {
 		}
 	}
 }
-@media #{$media-tablet} {
+@include media-tablet-up() {
 	.process-list {
 		.process-item {
 			margin: 0.5rem;
@@ -206,7 +206,7 @@ article.post {
 		background-color: rgba(black, 0.5);
 	}
 
-	@media #{$media-tablet} {
+	@include media-tablet-up() {
 		.carousel-title { font-size: 2rem; }
 		.carousel-content { font-size: 1.5rem; }
 	}
