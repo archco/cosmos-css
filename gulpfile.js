@@ -75,9 +75,7 @@ var jsList = [
 gulp.task('babel', function () {
 	return gulp.src(jsList)
 		.pipe(sourcemaps.init())
-		.pipe(babel({
-            presets: ['es2015']
-        }))
+		.pipe(babel())
 		.pipe(concat(jsFile))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist/js/'));
