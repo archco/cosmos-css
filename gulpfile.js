@@ -64,11 +64,11 @@ gulp.task('pug:watch', function () {
 var jsFile = 'script.js';
 var jsList = [
 	'src/js/init.js',
-	'src/js/modules/util.js',
-	'src/js/modules/nav.js',
-	'src/js/modules/dropdown.js',
-	'src/js/modules/scrolltop.js',
-	'src/js/modules/message.js',
+	'src/js/cosmos_modules/util.js',
+	'src/js/cosmos_modules/nav.js',
+	'src/js/cosmos_modules/dropdown.js',
+	'src/js/cosmos_modules/scrolltop.js',
+	'src/js/cosmos_modules/message.js',
 ];
 
 gulp.task('babel', function () {
