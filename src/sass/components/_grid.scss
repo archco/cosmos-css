@@ -2,7 +2,7 @@
 // Grid
 //======================================================================
 
-// container
+/** container */
 .container {
 	margin: 0 auto;
 	width: 90%;
@@ -12,13 +12,11 @@
 		margin-right: (-1 * $gutter-width / 2);
 	}
 }
-
-@include media-tablet-up() {
+@include media-tablet-up {
 	.container { width: 75%; }
 }
 
-// Grid
-// ---------------------
+/** Grid */
 .row {
 	@include clear-both;
 	margin-left: auto;
@@ -33,12 +31,34 @@
 	padding: 0 $gutter-width / 2;
 	min-height: 1px;
 }
-// Grid tablet, desktop
-@include media-tablet-up() {
-	@for $i from 1 through $num-cols {
-		$perc: percentage($i / $num-cols);
-		.col-#{$i} {
+
+@mixin make-columns($term: null, $count: $num-cols) {
+	$colname:".col-";
+	@if ($term != null) {
+		$colname: $colname + $term + "-";
+	}
+	@for $i from 1 through $count {
+		$perc: percentage($i / $count);
+		#{$colname + $i} {
 			width: decimal-round($perc, 2);
 		}
 	}
+}
+
+// (default) tablet, desktop
+@include media-tablet-up {
+	@include make-columns();
+}
+
+// sm - small device and up.
+@include make-columns("sm");
+
+// md - tablet device and up.
+@include media-tablet-up {
+	@include make-columns("md");
+}
+
+// lg - desktop.
+@include media-only-desktop {
+	@include make-columns("lg");
 }
