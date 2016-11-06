@@ -69,12 +69,15 @@ var jsList = [
 	'src/js/cosmos_modules/dropdown.js',
 	'src/js/cosmos_modules/scrolltop.js',
 	'src/js/cosmos_modules/message.js',
+	'src/js/cosmos_modules/parallax.js',
 ];
 
 gulp.task('babel', function () {
 	return gulp.src(jsList)
 		.pipe(sourcemaps.init())
-		.pipe(babel())
+		.pipe(babel({
+            presets: ['es2015']
+        }))
 		.pipe(concat(jsFile))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist/js/'));

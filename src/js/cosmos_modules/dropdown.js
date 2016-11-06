@@ -14,8 +14,8 @@ function dropdownToggle(x) {
 	// toggle button add click event listener.
 	var btns = document.querySelectorAll('.dropdown-toggle');
 	if (btns) {
-		for (btn of btns) {
-			btn.onclick = function () {
+		for (var i = 0; i < btns.length; i++) {
+			btns[i].onclick = function () {
 				dropdownToggle(this);
 			};
 		}
