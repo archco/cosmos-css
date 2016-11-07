@@ -1,0 +1,11 @@
+{
+	"list": [
+		"src/js/init.js",
+		"src/js/cosmos_modules/util.js",
+		"src/js/cosmos_modules/nav.js",
+		"src/js/cosmos_modules/dropdown.js",
+		"src/js/cosmos_modules/scrolltop.js",
+		"src/js/cosmos_modules/message.js",
+		"src/js/cosmos_modules/parallax.js"
+	]
+}

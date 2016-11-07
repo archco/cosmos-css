@@ -59,26 +59,37 @@ gulp.task('pug:watch', function () {
 /**
  * Babel
  */
-var jsFile = 'script.js';
-var jsList = [
-	'src/js/init.js',
-	'src/js/cosmos_modules/util.js',
-	'src/js/cosmos_modules/nav.js',
-	'src/js/cosmos_modules/dropdown.js',
-	'src/js/cosmos_modules/scrolltop.js',
-	'src/js/cosmos_modules/message.js',
-	'src/js/cosmos_modules/parallax.js',
-];
+var jsOption = {
+	fileName: 'script.js',
+	minFileName: 'script.min.js',
+	srcDir: './src/js/',
+	dest: './dist/js/',
+};
+var jsInfo = require('./src/js/info.json');
+
+/**
+ * jsFiles 
+ * 
+ * @param  {array} f file list
+ * @param  {String} d directory path
+ * @return {Array}
+ */
+function jsFiles(f, d) {
+	f.forEach(function (v, i, a){
+		a[i] = d + v;
+	});
+	return f;
+}
 
 gulp.task('babel', function () {
-	return gulp.src(jsList)
+	return gulp.src(jsFiles(jsInfo.list, jsOption.srcDir))
 		.pipe(sourcemaps.init())
 		.pipe(babel({
 			presets: ["es2015"]
 		}))
-		.pipe(concat(jsFile))
+		.pipe(concat(jsOption.fileName))
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('dist/js/'));
+		.pipe(gulp.dest(jsOption.dest));
 });
 
 gulp.task('babel:watch', function () {
@@ -86,12 +97,11 @@ gulp.task('babel:watch', function () {
 });
 
 gulp.task('babel:min', function () {
-	return gulp.src(jsList)
+	return gulp.src(jsFiles(jsInfo.list, jsOption.srcDir))
 		.pipe(babel({
 			presets: ["es2015"]
 		}))
-		.pipe(concat(jsFile))
+		.pipe(concat(jsOption.minFileName))
 		.pipe(uglify())
-		.pipe(rename('script.min.js'))
-		.pipe(gulp.dest('dist/js/'));
+		.pipe(gulp.dest(jsOption.dest));
 });
