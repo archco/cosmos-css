@@ -346,4 +346,8 @@ function parallaxProcess(p) {
 	// set parallax height.
 	p.style.height = h + 'px';
 }
+"use strict";
+
+// Just example
+console.log("Hello, World!");
 //# sourceMappingURL=script.js.map

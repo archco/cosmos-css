@@ -64,25 +64,19 @@ var jsOption = {
 	minFileName: 'script.min.js',
 	srcDir: './src/js/',
 	dest: './dist/js/',
+	baseList: require('./src/js/cosmos.json'),
+	customList: require('./src/js/custom.json')
 };
-var jsInfo = require('./src/js/info.json');
-
-/**
- * jsFiles 
- * 
- * @param  {array} f file list
- * @param  {String} d directory path
- * @return {Array}
- */
-function jsFiles(f, d) {
-	f.forEach(function (v, i, a){
-		a[i] = d + v;
+var jsFiles = (function () {
+	var list = jsOption.baseList.concat(jsOption.customList);
+	list.forEach(function (v, i, a) {
+		a[i] = jsOption.srcDir + v;
 	});
-	return f;
-}
+	return list;
+})();
 
 gulp.task('babel', function () {
-	return gulp.src(jsFiles(jsInfo.list, jsOption.srcDir))
+	return gulp.src(jsFiles)
 		.pipe(sourcemaps.init())
 		.pipe(babel({
 			presets: ["es2015"]
@@ -97,7 +91,7 @@ gulp.task('babel:watch', function () {
 });
 
 gulp.task('babel:min', function () {
-	return gulp.src(jsFiles(jsInfo.list, jsOption.srcDir))
+	return gulp.src(jsFiles)
 		.pipe(babel({
 			presets: ["es2015"]
 		}))
