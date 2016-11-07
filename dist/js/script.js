@@ -1,3 +1,5 @@
+'use strict';
+
 /*!
  * cosmos-css
  *
@@ -20,6 +22,8 @@ if (typeof jQuery === 'undefined') {
     jQuery = $;
   }
 }
+'use strict';
+
 /************************************************************
 	util
 *************************************************************
@@ -53,6 +57,8 @@ function checkMobileSize() {
 		return false;
 	}
 }
+'use strict';
+
 /************************************************************
 	nav
 *************************************************************
@@ -77,6 +83,8 @@ function checkMobileSize() {
 		}
 	});
 })();
+'use strict';
+
 /************************************************************
 	dropdown
 *************************************************************
@@ -93,26 +101,68 @@ function dropdownToggle(x) {
 	// toggle button add click event listener.
 	var btns = document.querySelectorAll('.dropdown-toggle');
 	if (btns) {
-		for (var i = 0; i < btns.length; i++) {
-			btns[i].onclick = function () {
-				dropdownToggle(this);
-			};
+		var _iteratorNormalCompletion = true;
+		var _didIteratorError = false;
+		var _iteratorError = undefined;
+
+		try {
+			for (var _iterator = btns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+				var btn = _step.value;
+
+				btn.onclick = function () {
+					dropdownToggle(this);
+				};
+			}
+		} catch (err) {
+			_didIteratorError = true;
+			_iteratorError = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion && _iterator.return) {
+					_iterator.return();
+				}
+			} finally {
+				if (_didIteratorError) {
+					throw _iteratorError;
+				}
+			}
 		}
 	}
 	// Close the dropdown menu if the user clicks outside of it
 	window.onclick = function (event) {
 		if (!event.target.classList.contains('dropdown-toggle')) {
 			var dropdowns = document.querySelectorAll('.dropdown-content');
-			var i;
-			for (i = 0; i < dropdowns.length; i++) {
-				var d = dropdowns[i];
-				if (d.classList.contains('show')) {
-					d.classList.remove('show');
+			var _iteratorNormalCompletion2 = true;
+			var _didIteratorError2 = false;
+			var _iteratorError2 = undefined;
+
+			try {
+				for (var _iterator2 = dropdowns[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+					var d = _step2.value;
+
+					if (d.classList.contains('show')) {
+						d.classList.remove('show');
+					}
+				}
+			} catch (err) {
+				_didIteratorError2 = true;
+				_iteratorError2 = err;
+			} finally {
+				try {
+					if (!_iteratorNormalCompletion2 && _iterator2.return) {
+						_iterator2.return();
+					}
+				} finally {
+					if (_didIteratorError2) {
+						throw _iteratorError2;
+					}
 				}
 			}
 		}
 	};
 })();
+'use strict';
+
 /************************************************************
 	scrolltop
 *************************************************************
@@ -174,6 +224,8 @@ function scrollTop() {
 	}
 	return top;
 }
+'use strict';
+
 /************************************************************
 	message
 *************************************************************
@@ -232,6 +284,8 @@ function messageCloseBtnEventHandler(element) {
 		}, false);
 	}
 })();
+'use strict';
+
 /************************************************************
 	Parallax
 *************************************************************
@@ -239,14 +293,35 @@ function messageCloseBtnEventHandler(element) {
 */
 
 (function () {
-	const TAG = "parallax";
+	// const TAG = "parallax";
 	var ps = document.querySelectorAll('.parallax');
 	if (ps.length == 0) {
 		return;
 	}
-	//console.log(TAG, ps);
-	for (var i = 0; i < ps.length; i++) {
-		parallaxProcess(ps[i]);
+	// console.log(TAG, ps);
+	var _iteratorNormalCompletion = true;
+	var _didIteratorError = false;
+	var _iteratorError = undefined;
+
+	try {
+		for (var _iterator = ps[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+			var p = _step.value;
+
+			parallaxProcess(p);
+		}
+	} catch (err) {
+		_didIteratorError = true;
+		_iteratorError = err;
+	} finally {
+		try {
+			if (!_iteratorNormalCompletion && _iterator.return) {
+				_iterator.return();
+			}
+		} finally {
+			if (_didIteratorError) {
+				throw _iteratorError;
+			}
+		}
 	}
 })();
 
@@ -257,17 +332,18 @@ function messageCloseBtnEventHandler(element) {
  * @return {void}
  */
 function parallaxProcess(p) {
-	const TAG = this.name || "parallaxProcess";
+	// const TAG = parallaxProcess.name;
 	var i = p.querySelector('img');
 	if (!i) {
 		return;
 	}
 	var h = p.dataset.height || i.clientHeight;
-	//console.log(TAG, h);
-	// img는 가리고, p의 background에 src적용.
+	// console.log(TAG, h);
+	// hide img tag.
 	i.classList.add('hide');
-	p.style.backgroundImage = "url('" + i.src + "')";
-	// p.dataset.height 가 있으면 이를 기준으로, 아니면 image height.
-	p.style.height = h + "px";
+	// set parallax background image.
+	p.style.backgroundImage = 'url(\'' + i.src + '\')';
+	// set parallax height.
+	p.style.height = h + 'px';
 }
 //# sourceMappingURL=script.js.map

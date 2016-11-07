@@ -5,14 +5,13 @@
 */
 
 (function () {
-	const TAG = "parallax";
+	// const TAG = "parallax";
 	var ps = document.querySelectorAll('.parallax');
 	if (ps.length == 0) { return; }
-	//console.log(TAG, ps);
-	for (var i = 0; i < ps.length; i++) {
-		parallaxProcess(ps[i]);
+	// console.log(TAG, ps);
+	for (let p of ps) {
+		parallaxProcess(p);
 	}
-
 })();
 
 /**
@@ -22,14 +21,15 @@
  * @return {void}
  */
 function parallaxProcess(p) {
-	const TAG = this.name || "parallaxProcess";
+	// const TAG = parallaxProcess.name;
 	var i = p.querySelector('img');
 	if (! i) { return; }
 	var h = p.dataset.height || i.clientHeight;
-	//console.log(TAG, h);
-	// img는 가리고, p의 background에 src적용.
+	// console.log(TAG, h);
+	// hide img tag.
 	i.classList.add('hide');
-	p.style.backgroundImage = "url('" + i.src + "')";
-	// p.dataset.height 가 있으면 이를 기준으로, 아니면 image height.
-	p.style.height = h + "px";
+	// set parallax background image.
+	p.style.backgroundImage = `url('${i.src}')`;
+	// set parallax height.
+	p.style.height = `${h}px`;
 }

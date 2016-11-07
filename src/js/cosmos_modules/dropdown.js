@@ -14,8 +14,8 @@ function dropdownToggle(x) {
 	// toggle button add click event listener.
 	var btns = document.querySelectorAll('.dropdown-toggle');
 	if (btns) {
-		for (var i = 0; i < btns.length; i++) {
-			btns[i].onclick = function () {
+		for (let btn of btns) {
+			btn.onclick = function () {
 				dropdownToggle(this);
 			};
 		}
@@ -24,9 +24,7 @@ function dropdownToggle(x) {
 	window.onclick = function(event) {
 		if (! event.target.classList.contains('dropdown-toggle')) {
 			var dropdowns = document.querySelectorAll('.dropdown-content');
-			var i;
-			for (i = 0; i < dropdowns.length; i++) {
-				var d = dropdowns[i];
+			for (let d of dropdowns) {
 				if (d.classList.contains('show')) {
 					d.classList.remove('show');
 				}

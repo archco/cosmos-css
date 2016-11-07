@@ -35,10 +35,8 @@ gulp.task('sass:watch', function () {
 
 gulp.task('sass:min', function () {
 	return gulp.src('src/sass/style.scss')
-		.pipe(sourcemaps.init())
 		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 		.pipe(rename('style.min.css'))
-		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('dist/css/'));
 });
 
@@ -75,7 +73,9 @@ var jsList = [
 gulp.task('babel', function () {
 	return gulp.src(jsList)
 		.pipe(sourcemaps.init())
-		.pipe(babel())
+		.pipe(babel({
+			presets: ["es2015"]
+		}))
 		.pipe(concat(jsFile))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist/js/'));
@@ -87,11 +87,11 @@ gulp.task('babel:watch', function () {
 
 gulp.task('babel:min', function () {
 	return gulp.src(jsList)
-		.pipe(sourcemaps.init())
-		.pipe(babel())
+		.pipe(babel({
+			presets: ["es2015"]
+		}))
 		.pipe(concat(jsFile))
 		.pipe(uglify())
 		.pipe(rename('script.min.js'))
-		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist/js/'));
 });
