@@ -6,20 +6,17 @@
  * @link: https://github.com/archco/cosmos-css
  */
 
-/** Fonts */
-/* font-family: 'Pinyon Script', cursive; */
-@import url(https://fonts.googleapis.com/css?family=Pinyon+Script);
-/* font-family: 'Advent Pro', sans-serif; */
-@import url(https://fonts.googleapis.com/css?family=Advent+Pro:400,600,700,300);
-/* font-family: 'Nanum Gothic', serif; */
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+//======================================================================
+// Import
+//======================================================================
 
-//----- Import -----
 // library.
 @import 'lib/normalize'; // normalize.css v5.0.0
 @import 'lib/decimal';
 @import 'lib/functions';
+
 // base.
+@import 'custom-variable';
 @import 'variable';
 @import 'mixin';
 @import 'placeholder';
@@ -36,5 +33,6 @@
 @import 'components/nav';
 @import 'components/dropdown';
 @import 'components/parallax';
+
 // customize.
-@import 'customize';
+@import 'custom';

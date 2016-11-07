@@ -3,34 +3,31 @@
 //======================================================================
 
 // fonts
-$font-serif: Georgia, serif;
-$font-sans-serif: 'Nanum Gothic', Geneva, sans-serif;
-$font-sans-serif-2: 'Advent Pro', Verdana, sans-serif;
-$font-monospace: "Lucida Console", Monaco, monospace;
-$font-cursive: 'Pinyon Script', cursive;
+$font-serif: Georgia, serif !default;
+$font-sans-serif: Geneva, sans-serif !default;
+$font-monospace: "Lucida Console", Monaco, monospace !default;
+$font-cursive: cursive !default;
 
 // font set
 $font-base: $font-sans-serif !default;
-$font-accent: $font-sans-serif-2 !default;
+$font-accent: $font-serif !default;
 
 // responsive size
 $mobile-size: 768px !default;
 $tablet-size: 992px !default;
-$media-mobile: "only screen and (max-width : #{$mobile-size})";
-$media-tablet: "only screen and (min-width : #{$mobile-size})";
 
 // colors
 // --------------------
-$white: #fff;
-$black: #333;
-$gray: #999999;
-$lightgray: #f2f2f2;
-$darkgray: #555;
-$teal: #9dc8c8; 
-$lightblue: #4f81c5;
-$green: #507d3a;
-$red: #e1553e;
-$yellow: #ffcc00;
+$white: #fff !default;
+$black: #333 !default;
+$gray: #999999 !default;
+$lightgray: #f2f2f2 !default;
+$darkgray: #555 !default;
+$teal: #9dc8c8 !default;
+$lightblue: #4f81c5 !default;
+$green: #507d3a !default;
+$red: #e1553e !default;
+$yellow: #ffcc00 !default;
 
 // theme-colors
 $primary-color: $lightblue !default;
@@ -64,26 +61,31 @@ $radius-normal: 4px !default;
 $radius-small: round($radius-normal / 2);
 $radius-large: round($radius-normal * 2);
 $radius-button: $radius-small;
-$shadow-near: 0 0 4px rgba(black, 0.3);
-$shadow-normal: 0 2px 8px rgba(black, 0.3);
-$shadow-far: 2px 4px 16px rgba(black, 0.3);
+$shadow-near: 0 0 4px rgba(black, 0.3) !default;
+$shadow-normal: 0 2px 8px rgba(black, 0.3) !default;
+$shadow-far: 2px 4px 16px rgba(black, 0.3) !default;
 $transition-time: 0.3s !default;
-$icon-size: 35px; // nav toggle button's width
-$default-focus-outline: 2px solid $primary-color;
-$outline-color: $primary-color;
+$icon-size: 35px !default; // nav toggle button's width
+$default-focus-outline: 2px solid $primary-color !default;
+$outline-color: $primary-color !default;
+
+
+//======================================================================
+// Component's Variables
+//======================================================================
 
 // button
 $button-radius: $radius-small !default;
 $button-color: $white !default;
 $button-bg-color: $primary-color !default;
-$button-outline-color: $outline-color;
+$button-outline-color: $outline-color !default;
 
 // dropdown
 $dropdown-bg-color: $white !default;
 $dropdown-bg-hover-color: darken($dropdown-bg-color, 10%) !default;
 $dropdown-link-color: $gray !default;
 $dropdown-link-hover-color: darken($dropdown-link-color, 20%) !default;
-$dropdown-min-width: 150px;
+$dropdown-min-width: 150px !default;
 
 // grid
 $num-cols: 12 !default;

@@ -5,13 +5,6 @@
  * @updated: 2016-11-06
  * @link: https://github.com/archco/cosmos-css
  */
-/** Fonts */
-/* font-family: 'Pinyon Script', cursive; */
-@import url(https://fonts.googleapis.com/css?family=Pinyon+Script);
-/* font-family: 'Advent Pro', sans-serif; */
-@import url(https://fonts.googleapis.com/css?family=Advent+Pro:400,600,700,300);
-/* font-family: 'Nanum Gothic', serif; */
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -21,6 +14,9 @@
  */
 /* Document
    ========================================================================== */
+@import url(https://fonts.googleapis.com/css?family=Pinyon+Script);
+@import url(https://fonts.googleapis.com/css?family=Advent+Pro:400,600,700,300);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -416,6 +412,10 @@ template {
 [hidden] {
   display: none; }
 
+/** Fonts */
+/* font-family: 'Pinyon Script', cursive; */
+/* font-family: 'Advent Pro', sans-serif; */
+/* font-family: 'Nanum Gothic', serif; */
 section.company, section.process {
   display: flex;
   align-items: center;
@@ -443,7 +443,7 @@ input[type="reset"], .btn-icon, nav .nav-header button.menu-toggle, nav .dropdow
 input[type="button"],
 input[type="reset"] {
   padding: 0.5em 1em;
-  outline-color: #4f81c5;
+  outline-color: #9dc8c8;
   border-radius: 2px; }
 
 .btn-icon {
@@ -493,7 +493,7 @@ footer {
 
 footer {
   color: #fff;
-  background-color: #4f81c5; }
+  background-color: #9dc8c8; }
   footer a {
     color: #fff;
     transition: color 0.3s; }
@@ -548,7 +548,7 @@ table {
     padding: 0.5em 1em; }
   table th {
     text-align: left;
-    background-color: #4f81c5;
+    background-color: #9dc8c8;
     color: white; }
   table tr:nth-child(even) {
     background-color: #f2f2f2; }
@@ -612,13 +612,13 @@ table {
   float: right !important; }
 
 .color-primary {
-  color: #4f81c5; }
+  color: #9dc8c8; }
 
 .color-secondary {
   color: #999999; }
 
 .bg-color-primary {
-  background-color: #4f81c5; }
+  background-color: #9dc8c8; }
 
 .bg-color-secondary {
   background-color: #999999; }
@@ -786,13 +786,13 @@ table {
 input[type="button"],
 input[type="reset"] {
   color: #fff;
-  background-color: #4f81c5;
+  background-color: #9dc8c8;
   transition: background-color 0.3s, box-shadow 0.3s; }
   .btn:hover, input[type="submit"]:hover,
   input[type="button"]:hover,
   input[type="reset"]:hover {
     color: #fff;
-    background-color: #3e74bc;
+    background-color: #8dbfbf;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
 
 .btn-danger {
@@ -801,7 +801,7 @@ input[type="reset"] {
 
 .btn-icon {
   color: #fff;
-  background-color: #4f81c5; }
+  background-color: #9dc8c8; }
 
 /** message  */
 .error, .danger {
@@ -955,14 +955,14 @@ ul.card-list {
 fieldset {
   margin: 0.5rem 0;
   padding: 0 1rem;
-  border: 2px solid #4f81c5;
+  border: 2px solid #9dc8c8;
   border-radius: 4px; }
 
 legend {
   padding: 0.5em 1em;
   font-size: 1.2em;
   font-weight: bold;
-  color: #4f81c5; }
+  color: #9dc8c8; }
 
 label {
   font-weight: bold;
@@ -971,7 +971,7 @@ label {
 input,
 select,
 textarea {
-  outline-color: #4f81c5; }
+  outline-color: #9dc8c8; }
   input.inline,
   select.inline,
   textarea.inline {
@@ -1086,10 +1086,10 @@ ul.pagination {
         background-color: #f2f2f2; }
     ul.pagination li.active {
       color: #fff;
-      background-color: #4f81c5; }
+      background-color: #9dc8c8; }
       ul.pagination li.active > a:hover {
         color: #fff;
-        background-color: #2b5083; }
+        background-color: #5ca3a3; }
     ul.pagination li.disabled {
       color: #999999; }
 
@@ -1099,7 +1099,7 @@ nav {
   display: block;
   margin: 0 auto;
   font-family: "Advent Pro", Verdana, sans-serif;
-  background-color: #4f81c5;
+  background-color: #9dc8c8;
   font-size: 1.25em; }
   nav .menu-wrapper {
     margin: 0 auto;
@@ -1127,7 +1127,7 @@ nav {
   nav li {
     display: inline; }
     nav li.active a {
-      color: #4f81c5;
+      color: #9dc8c8;
       background-color: #fff; }
   nav .nav-header {
     height: 50px;
@@ -1291,7 +1291,7 @@ section.company {
         font-family: Georgia, serif;
         font-style: italic;
         font-size: 1.5em;
-        color: #4f81c5; }
+        color: #9dc8c8; }
     .process-list .process-item .process-description {
       padding: 0.5rem; }
 
@@ -1333,7 +1333,7 @@ section.company {
 /** list style : text, simple, thumb */
 .post-list-text .post-item {
   width: auto;
-  border-left: 3px solid #4f81c5; }
+  border-left: 3px solid #9dc8c8; }
 
 .post-list-simple, .post-list-thumb {
   text-align: center; }
@@ -1413,8 +1413,8 @@ section.company {
     left: 0;
     top: 5%;
     display: inline;
-    border-bottom: 0.25em solid #2b5083;
-    background-color: rgba(79, 129, 197, 0.5); }
+    border-bottom: 0.25em solid #5ca3a3;
+    background-color: rgba(157, 200, 200, 0.5); }
   .carousel-text .carousel-content {
     margin: 0;
     padding: 1em 2em;
@@ -1443,7 +1443,7 @@ section.about {
       text-align: center; }
   section.about .about-company {
     text-align: center;
-    background-color: #9cb8de; }
+    background-color: #deeded; }
     section.about .about-company h1 {
       font-family: "Pinyon Script", cursive;
       font-size: 3em; }
@@ -1451,7 +1451,7 @@ section.about {
     background-color: gray;
     color: white; }
   section.about .about-contact {
-    background-color: #2b5083;
+    background-color: #5ca3a3;
     color: white; }
     section.about .about-contact address {
       text-align: center; }
@@ -1463,7 +1463,7 @@ section.about {
 */
 .contact-list .contact-item {
   padding: 1rem;
-  border-left: 3px solid #4f81c5;
+  border-left: 3px solid #9dc8c8;
   border-radius: 16px 0 0 16px; }
   .contact-list .contact-item.contact-notice {
     border-left: 3px solid #e1553e; }
@@ -1489,12 +1489,12 @@ article.contact.contact-notice .contact-subject {
   outline: none;
   padding: 1rem;
   border-radius: 50%;
-  background-color: rgba(43, 80, 131, 0.5);
+  background-color: rgba(92, 163, 163, 0.5);
   color: #999999;
   transition: background-color 0.3s;
   display: none; }
   #btn-to-top:hover {
-    background-color: #2b5083; }
+    background-color: #5ca3a3; }
 
 /************************************************************
 	Parallax

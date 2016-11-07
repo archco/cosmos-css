@@ -1,0 +1,36 @@
+/** Fonts */
+/* font-family: 'Pinyon Script', cursive; */
+@import url(https://fonts.googleapis.com/css?family=Pinyon+Script);
+/* font-family: 'Advent Pro', sans-serif; */
+@import url(https://fonts.googleapis.com/css?family=Advent+Pro:400,600,700,300);
+/* font-family: 'Nanum Gothic', serif; */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+
+//======================================================================
+// Setting Variables.
+//======================================================================
+
+// fonts
+$font-serif: Georgia, serif;
+$font-sans-serif: 'Nanum Gothic', Geneva, sans-serif;
+$font-sans-serif-2: 'Advent Pro', Verdana, sans-serif;
+$font-cursive: 'Pinyon Script', cursive;
+
+// font set
+$font-base: $font-sans-serif;
+$font-accent: $font-sans-serif-2;
+
+// colors
+$teal: #9dc8c8;
+$gray: #999999;
+
+// theme-colors
+$primary-color: $teal;
+$secondary-color: $gray;
+
+//======================================================================
+// Custom Variables.
+//======================================================================
+
+$app-max-width: 1280px !default;
