@@ -3,8 +3,8 @@
 /*!
  * cosmos-css
  *
- * @version: v0.1.1
- * @updated: 2016-11-06
+ * @version: v0.1.2
+ * @updated: 2016-11-08
  * @link: https://github.com/archco/cosmos-css
  */
 
@@ -346,8 +346,7 @@ function parallaxProcess(p) {
 	// set parallax height.
 	p.style.height = h + 'px';
 }
-"use strict";
-
 // Just example
-console.log("Hello, World!");
+// console.log("Hello, World!");
+"use strict";
 //# sourceMappingURL=script.js.map
