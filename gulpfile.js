@@ -9,6 +9,40 @@ var babel = require('gulp-babel');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 
+/************************************************************
+	Config
+*************************************************************
+*	
+*/
+var config = {
+	// sass
+	sassSrc: './src/sass/style.scss',
+	sassDest: './dist/css/',
+	cssFile: 'style.css',
+	cssMinFile: 'style.min.css',
+	// js
+	jsSrcDir: './src/js/',
+	jsBase: require('./src/js/cosmos.json'),
+	jsCustom: require('./src/js/custom.json'),
+	jsDest: './dist/js/',
+	jsFile: 'script.js',
+	jsMinFile: 'script.min.js',
+};
+var jsSources = (function () {
+	var list = config.jsBase.concat(config.jsCustom);
+	list.forEach(function (v, i, a) {
+		a[i] = config.jsSrcDir + v;
+	});
+	return list;
+})();
+
+
+/************************************************************
+	Tasks
+*************************************************************
+*	
+*/
+
 /**
  * Default
  */
@@ -22,11 +56,12 @@ gulp.task('min', ['sass:min', 'babel:min']);
  * Sass
  */
 gulp.task('sass', function () {
-	return gulp.src('src/sass/style.scss')
+	return gulp.src(config.sassSrc)
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
+		.pipe(rename(config.cssFile))
 		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('dist/css/'));
+		.pipe(gulp.dest(config.sassDest));
 });
 
 gulp.task('sass:watch', function () {
@@ -34,10 +69,10 @@ gulp.task('sass:watch', function () {
 });
 
 gulp.task('sass:min', function () {
-	return gulp.src('src/sass/style.scss')
+	return gulp.src(config.sassSrc)
 		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-		.pipe(rename('style.min.css'))
-		.pipe(gulp.dest('dist/css/'));
+		.pipe(rename(config.cssMinFile))
+		.pipe(gulp.dest(config.sassDest));
 });
 
 /**
@@ -59,31 +94,15 @@ gulp.task('pug:watch', function () {
 /**
  * Babel
  */
-var jsOption = {
-	fileName: 'script.js',
-	minFileName: 'script.min.js',
-	srcDir: './src/js/',
-	dest: './dist/js/',
-	baseList: require('./src/js/cosmos.json'),
-	customList: require('./src/js/custom.json')
-};
-var jsFiles = (function () {
-	var list = jsOption.baseList.concat(jsOption.customList);
-	list.forEach(function (v, i, a) {
-		a[i] = jsOption.srcDir + v;
-	});
-	return list;
-})();
-
 gulp.task('babel', function () {
-	return gulp.src(jsFiles)
+	return gulp.src(jsSources)
 		.pipe(sourcemaps.init())
 		.pipe(babel({
 			presets: ["es2015"]
 		}))
-		.pipe(concat(jsOption.fileName))
+		.pipe(concat(config.jsFile))
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(jsOption.dest));
+		.pipe(gulp.dest(config.jsDest));
 });
 
 gulp.task('babel:watch', function () {
@@ -91,11 +110,11 @@ gulp.task('babel:watch', function () {
 });
 
 gulp.task('babel:min', function () {
-	return gulp.src(jsFiles)
+	return gulp.src(jsSources)
 		.pipe(babel({
 			presets: ["es2015"]
 		}))
-		.pipe(concat(jsOption.minFileName))
+		.pipe(concat(config.jsMinFile))
 		.pipe(uglify())
-		.pipe(gulp.dest(jsOption.dest));
+		.pipe(gulp.dest(config.jsDest));
 });
