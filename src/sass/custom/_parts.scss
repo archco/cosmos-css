@@ -320,7 +320,9 @@ article.contact {
 }
 
 /************************************************************
-	Parallax
+	Parallax (Unnecessary)
+	
+	@link https://github.com/archco/cosmos-css/issues/5
 *************************************************************
 *	
 */
@@ -334,13 +336,5 @@ article.contact {
 }
 .parallax-index-3 {
 	background-image: url('../img/index-bg/index-3.jpg');
-	height: 400px;
-}
-.parallax-index-4 {
-	background-image: url('../../tests/img/sample_big_1.jpg');
-	height: 300px;
-}
-.parallax-index-5 {
-	background-image: url('../../tests/img/sample_big_2.jpg');
 	height: 400px;
 }
