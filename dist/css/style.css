@@ -971,7 +971,8 @@ label {
 input,
 select,
 textarea {
-  outline-color: #9dc8c8; }
+  outline-color: #9dc8c8;
+  vertical-align: middle; }
   input.inline,
   select.inline,
   textarea.inline {
@@ -994,7 +995,8 @@ select,
 textarea {
   display: block;
   width: 100%;
-  padding: 0.5em 1em;
+  min-height: 2.5rem;
+  padding: 0.25rem 0.5rem;
   margin: 0.5em 0;
   border: 1px solid #999999;
   border-radius: 2px;
@@ -1497,7 +1499,9 @@ article.contact.contact-notice .contact-subject {
     background-color: #5ca3a3; }
 
 /************************************************************
-	Parallax
+	Parallax (Unnecessary)
+	
+	@link https://github.com/archco/cosmos-css/issues/5
 *************************************************************
 *	
 */
@@ -1511,14 +1515,6 @@ article.contact.contact-notice .contact-subject {
 
 .parallax-index-3 {
   background-image: url("../img/index-bg/index-3.jpg");
-  height: 400px; }
-
-.parallax-index-4 {
-  background-image: url("../../tests/img/sample_big_1.jpg");
-  height: 300px; }
-
-.parallax-index-5 {
-  background-image: url("../../tests/img/sample_big_2.jpg");
   height: 400px; }
 
 /*# sourceMappingURL=style.css.map */

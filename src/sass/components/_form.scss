@@ -24,6 +24,7 @@ input,
 select,
 textarea {
 	outline-color: $input-outline-color;
+	vertical-align: middle;
 	
 	&.inline {
 		display: inline;
@@ -48,6 +49,7 @@ select,
 textarea {
 	display: block;
 	width: 100%;
+	min-height: 2.5rem;
 	padding: $input-padding;
 	margin: $input-margin;
 	border: $input-border;
