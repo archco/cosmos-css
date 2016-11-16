@@ -15,15 +15,15 @@
 		border-radius: 50%;
 		width: $ajax-loading-size;
 		height: $ajax-loading-size;
-		animation: spin 1s linear infinite;
 	}
 	
 	&.show {
 		display: flex !important;
 		height: $ajax-loading-size * 2;
-		
+
 		.loader {
 			display: block;
+			animation: spin 1s linear infinite;
 		}
 	}
 }

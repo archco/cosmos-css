@@ -1231,13 +1231,13 @@ nav .dropdown > button.dropdown-toggle {
     border-top: 0.33333rem solid #9dc8c8;
     border-radius: 50%;
     width: 2rem;
-    height: 2rem;
-    animation: spin 1s linear infinite; }
+    height: 2rem; }
   #ajax-loading.show {
     display: flex !important;
     height: 4rem; }
     #ajax-loading.show .loader {
-      display: block; }
+      display: block;
+      animation: spin 1s linear infinite; }
 
 body {
   margin: 0 auto;
