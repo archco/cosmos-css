@@ -39,10 +39,16 @@
         </div>
       </nav>
     </header>
+    <div id="ajax-loading"></div>
     <section>
       <h1>Hello, World!</h1>
       <p>test page.</p>
-    </section>
+      <button onclick="toggle()">toggle</button>
+    </section><script>
+    	function toggle() {
+    		var a = document.querySelector('#ajax-loading');
+    		a.classList.toggle('show');
+    	}</script>
     <footer>
       <div class="container">
         <div class="row">

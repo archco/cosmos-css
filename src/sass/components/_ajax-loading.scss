@@ -1,0 +1,29 @@
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+#ajax-loading {
+	@extend .flex-center-container;
+	height: 0;
+	transition: height 0.5s;
+
+	.loader {
+		display: none;
+		border: $ajax-loading-size / 6 solid $lightgray;
+		border-top: $ajax-loading-size / 6 solid $ajax-loading-color;
+		border-radius: 50%;
+		width: $ajax-loading-size;
+		height: $ajax-loading-size;
+		animation: spin 1s linear infinite;
+	}
+	
+	&.show {
+		display: flex !important;
+		height: $ajax-loading-size * 2;
+		
+		.loader {
+			display: block;
+		}
+	}
+}

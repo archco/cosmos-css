@@ -5,6 +5,14 @@ block title
 	title= 'Test Page'
 
 block content
+	div(id='ajax-loading')
 	section
 		h1 Hello, World!
 		p test page.
+		button(onclick='toggle()') toggle
+	<script>
+	|	function toggle() {
+	|		var a = document.querySelector('#ajax-loading');
+	|		a.classList.toggle('show');
+	|	}
+	</script>

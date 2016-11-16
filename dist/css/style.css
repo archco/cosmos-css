@@ -586,13 +586,13 @@ table {
 .left {
   text-align: left; }
 
-.vertical-center-container, .flex-center-container, .location-info-list {
+.vertical-center-container, .flex-center-container, #ajax-loading, .location-info-list {
   display: flex;
   align-items: center; }
-  .vertical-center-container .flex-item, .flex-center-container .flex-item, .location-info-list .flex-item {
+  .vertical-center-container .flex-item, .flex-center-container .flex-item, #ajax-loading .flex-item, .location-info-list .flex-item {
     display: block; }
 
-.flex-center-container, .location-info-list {
+.flex-center-container, #ajax-loading, .location-info-list {
   justify-content: center; }
 
 .center-block {
@@ -1216,6 +1216,29 @@ nav .dropdown > button.dropdown-toggle {
 	height: 500px;
 }
  */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+#ajax-loading {
+  height: 0;
+  transition: height 0.5s; }
+  #ajax-loading .loader {
+    display: none;
+    border: 0.33333rem solid #f2f2f2;
+    border-top: 0.33333rem solid #9dc8c8;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    animation: spin 1s linear infinite; }
+  #ajax-loading.show {
+    display: flex !important;
+    height: 4rem; }
+    #ajax-loading.show .loader {
+      display: block; }
+
 body {
   margin: 0 auto;
   max-width: 1280px; }

@@ -5,5 +5,6 @@
 	"cosmos_modules/dropdown.js",
 	"cosmos_modules/scrolltop.js",
 	"cosmos_modules/message.js",
-	"cosmos_modules/parallax.js"
+	"cosmos_modules/parallax.js",
+	"cosmos_modules/ajax-loading.js"
 ]
