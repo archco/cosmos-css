@@ -977,21 +977,8 @@ input[type="reset"] {
   border-radius: 4px;
   vertical-align: middle;
   transition: opacity 0.6s;
-  border: 1px solid #999999;
-  background-color: rgba(153, 153, 153, 0.2);
-  color: #999999; }
-  .message-box.error, .message-box.message-error {
-    border: 1px solid #e1553e;
-    background-color: rgba(225, 85, 62, 0.2);
-    color: #e1553e; }
-  .message-box.success, .message-box.message-success {
-    border: 1px solid #507d3a;
-    background-color: rgba(80, 125, 58, 0.2);
-    color: #507d3a; }
-  .message-box.info, .message-box.message-info {
-    border: 1px solid #4f81c5;
-    background-color: rgba(79, 129, 197, 0.2);
-    color: #4f81c5; }
+  color: #fff;
+  background-color: #999999; }
   .message-box .btn-close-message {
     position: absolute;
     top: 50%;
@@ -999,14 +986,42 @@ input[type="reset"] {
     right: 1rem;
     padding: 0;
     font-size: 1.5rem;
-    color: rgba(51, 51, 51, 0.3);
-    background-color: transparent;
     border: none;
     outline: none;
-    cursor: pointer;
+    cursor: pointer; }
+  .message-box .btn-close-message {
+    color: #fff;
+    background-color: transparent;
     transition: color 0.3s; }
     .message-box .btn-close-message:hover {
-      color: rgba(51, 51, 51, 0.7); }
+      color: rgba(0, 0, 0, 0.3); }
+  .message-box.error, .message-box.message-error {
+    color: #fff;
+    background-color: #e1553e; }
+    .message-box.error .btn-close-message, .message-box.message-error .btn-close-message {
+      color: #fff;
+      background-color: transparent;
+      transition: color 0.3s; }
+      .message-box.error .btn-close-message:hover, .message-box.message-error .btn-close-message:hover {
+        color: rgba(0, 0, 0, 0.3); }
+  .message-box.success, .message-box.message-success {
+    color: #fff;
+    background-color: #507d3a; }
+    .message-box.success .btn-close-message, .message-box.message-success .btn-close-message {
+      color: #fff;
+      background-color: transparent;
+      transition: color 0.3s; }
+      .message-box.success .btn-close-message:hover, .message-box.message-success .btn-close-message:hover {
+        color: rgba(0, 0, 0, 0.3); }
+  .message-box.info, .message-box.message-info {
+    color: #fff;
+    background-color: #4f81c5; }
+    .message-box.info .btn-close-message, .message-box.message-info .btn-close-message {
+      color: #fff;
+      background-color: transparent;
+      transition: color 0.3s; }
+      .message-box.info .btn-close-message:hover, .message-box.message-info .btn-close-message:hover {
+        color: rgba(0, 0, 0, 0.3); }
 
 ul.card-list {
   margin: 0;

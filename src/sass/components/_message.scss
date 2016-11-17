@@ -13,6 +13,7 @@
 
 /** message-box */
 .message-box {
+	// common attributes.
 	z-index: 2;
 	position: relative;
 	padding: 1rem 1.5rem;
@@ -20,6 +21,20 @@
 	border-radius: $radius-normal;
 	vertical-align: middle;
 	transition: opacity ($transition-time * 2);
+
+	.btn-close-message {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 1rem;
+		padding: 0;
+		font-size: 1.5rem;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+	
+	// color attributes.
 	@include messageBox($secondary-color);
 
 	&.error,
@@ -35,21 +50,5 @@
 	&.info,
 	&.message-info {
 		@include messageBox($info-color);
-	}
-
-	.btn-close-message {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		right: 1rem;
-		padding: 0;
-		font-size: 1.5rem;
-		color: rgba($black, 0.3);
-		background-color: transparent;
-		border: none;
-		outline: none;
-		cursor: pointer;
-		transition: color $transition-time;
-		&:hover { color: rgba($black, 0.7); }
 	}
 }

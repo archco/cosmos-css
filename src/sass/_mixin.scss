@@ -1,4 +1,7 @@
-// btn
+//======================================================================
+// Button
+//======================================================================
+
 @mixin btnColor($color, $back) {
 	color: $color;
 	background-color: $back;
@@ -31,6 +34,11 @@
 	}
 }
 
+
+//======================================================================
+// Utilities
+//======================================================================
+
 // clear-both
 @mixin clear-both() {
 	&:after {
@@ -40,12 +48,29 @@
 	}
 }
 
-// message box
-@mixin messageBox($color) {
-	border: 1px solid $color;
-	background-color: rgba($color, 0.2);
+
+//======================================================================
+// Message
+//======================================================================
+
+@mixin messageBox($bg-color) {
+	$color: contrast-color($bg-color, $message-dark-color, $message-light-color);
+
 	color: $color;
+	background-color: $bg-color;
+
+	.btn-close-message {
+		color: $color;
+		background-color: transparent;
+		transition: color $transition-time;
+		&:hover { color: rgba(#000, 0.3); }
+	}
 }
+
+
+//======================================================================
+// Card
+//======================================================================
 
 // calculate card size
 @mixin calCardSize($size, $direction:"vertical") {
@@ -66,7 +91,9 @@
 	}
 }
 
-// media queries
+
+//======================================================================
+// Media queries
 //======================================================================
 
 // base mixins
