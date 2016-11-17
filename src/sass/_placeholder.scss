@@ -29,6 +29,7 @@
 %btn {
 	@extend %btn-common;
 	padding: 0.5em 1em;
+	margin: 0.2em;
 	outline-color: $button-outline-color;
 	border-radius: $button-radius;
 }

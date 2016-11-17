@@ -4,11 +4,30 @@
 	background-color: $back;
 	outline-color: $back;
 	transition: background-color $transition-time, box-shadow $transition-time;
-
+	
+	&:focus,
 	&:hover {
 		color: $color;
 		background-color: lighten($back, 4%);
 		box-shadow: $shadow-normal;
+	}
+	&:active {
+		color: $color;
+		background-color: darken($back, 4%);
+		box-shadow: $shadow-near;
+	}
+}
+@mixin btnFlatColor($color) {
+	color: $color;
+	background-color: transparent;
+	outline: none;
+	transition: color $transition-time, background-color $transition-time;
+
+	&:hover {
+		background-color: rgba($color, 0.1);
+	}
+	&:active {
+		background-color: rgba($color, 0.2);
 	}
 }
 
