@@ -2,10 +2,12 @@
 @mixin btnColor($color, $back) {
 	color: $color;
 	background-color: $back;
+	outline-color: $back;
 	transition: background-color $transition-time, box-shadow $transition-time;
+
 	&:hover {
 		color: $color;
-		background-color: darken($back, 5%);
+		background-color: lighten($back, 4%);
 		box-shadow: $shadow-normal;
 	}
 }

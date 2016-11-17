@@ -23,8 +23,8 @@ label {
 input,
 select,
 textarea {
+	// default outline color
 	outline-color: $input-outline-color;
-	vertical-align: middle;
 	
 	&.inline {
 		display: inline;

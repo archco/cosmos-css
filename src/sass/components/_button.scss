@@ -5,10 +5,23 @@
 .btn {
 	@extend %btn;
 	@include btnColor($button-color, $button-bg-color);
+
+	&.danger {
+		@include btnColor($button-color, $danger-color);
+	}
+	&.info {
+		@include btnColor($button-color, $info-color);
+	}
+	&.success {
+		@include btnColor($button-color, $success-color);
+	}
+	&.warning {
+		@include btnColor($button-color, $warning-color);
+	}
 }
 .btn-danger {
-	color: $button-color;
-	background-color: $error-color !important;
+	@extend %btn;
+	@include btnColor($button-color, $danger-color);
 }
 .btn-icon {
 	@extend %btn-icon;
