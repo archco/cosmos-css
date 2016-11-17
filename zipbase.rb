@@ -19,7 +19,7 @@ def get_src_base_part
 	return src_files - src_custom_field
 end
 
-zipfile_name = 'cosmos-css-0.1.2-basesrc.zip'
+zipfile_name = 'cosmos-css-0.1.3-basesrc.zip'
 filelist = get_src_base_part()
 
 Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
