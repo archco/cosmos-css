@@ -6,6 +6,10 @@
 .hide { display: none !important; }
 .show { display: block !important; }
 .invisible { visibility: hidden; }
+// responsive hiding
+.hide-only-mobile {
+	@extend %responsive-mobile-hide;
+}
 
 // font
 .font-cursive { font-family: $font-cursive; }

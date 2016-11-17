@@ -70,6 +70,11 @@ nav {
 				width: auto;
 				height: inherit;
 			}
+			&.text {
+				@extend %nav-link;
+				margin: 0;
+				padding: 0.5rem 0;
+			}
 		}
 		/* nav toggle button */
 		button.menu-toggle {
