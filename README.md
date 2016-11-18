@@ -2,6 +2,8 @@
 personal practice css framework.
 
 ## Usage
+[wiki](https://github.com/archco/cosmos-css/wiki)
+
 - in `<head>`
 ```
   <link rel="stylesheet" href="dist/css/style.css">
@@ -14,19 +16,16 @@ personal practice css framework.
 ```
 
 ## Sass Components
-- Grid
 - Button
-- Message
 - Card
+- Grid
+- helper
 - Form
 - Pagination
-- Nav
-- Dropdown
-- Parallax
 
 ## JS Modules
-- Nav
+- Ajax-loading
 - Dropdown
-- ScrollTop
 - Message
+- Nav
 - Parallax
