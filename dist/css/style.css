@@ -1138,11 +1138,6 @@ input,
 select,
 textarea {
   outline-color: #9dc8c8; }
-  input.inline,
-  select.inline,
-  textarea.inline {
-    display: inline;
-    width: auto; }
 
 input:not([type]),
 input[type="text"],
@@ -1227,6 +1222,12 @@ input[type="range"] {
     width: auto; }
   .form-inline textarea {
     height: auto; }
+
+input.inline,
+select.inline,
+textarea.inline {
+  display: inline;
+  width: auto; }
 
 /** pagination */
 ul.pagination {

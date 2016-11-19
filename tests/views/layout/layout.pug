@@ -1,6 +1,3 @@
--
-	num = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
-
 doctype html
 html
 	head
@@ -15,7 +12,7 @@ html
 		header(class='bg-primary')
 			nav
 				div(class='nav-header')
-					a(class='nav-brand text' href='#') Brand Logo
+					a(class='nav-brand text' href='test.html') Brand Logo
 					button(class='menu-toggle' type='button')
 						span(class='hide') Toggle Navigation
 						div(class='icon-bar1')
@@ -24,12 +21,13 @@ html
 				div(class='menu-wrapper')
 					ul(class='menu-left')
 						li(class='hide-only-mobile')
-							a(href='#') Home
+							a(href='test.html') Home
 						li(class='active')
 							a(href='#') active
-						- for (var i = 0; i < 3; i++)
-							li 
-								a(href='#')= 'link ' + num[i]
+						li
+							a(href='components.html') components
+						li
+							a(href='modules.html') modules
 						li(class='dropdown')
 							button(class='dropdown-toggle') dropdown 
 								i(class='fa fa-caret-down' aria-hidden='true')

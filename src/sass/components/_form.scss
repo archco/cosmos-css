@@ -25,11 +25,6 @@ select,
 textarea {
 	// default outline color
 	outline-color: $input-outline-color;
-	
-	&.inline {
-		display: inline;
-		width: auto;
-	}
 }
 
 // input generalize
@@ -115,6 +110,16 @@ input[type="range"] {
 		height: auto;
 	}
 }
+
+input,
+select,
+textarea {
+	&.inline {
+		display: inline;
+		width: auto;
+	}
+}
+
 .form-group {
 	@extend .group;
 }

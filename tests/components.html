@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sass components page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../dist/css/style.css">
+  </head>
+  <body>
+    <header class="bg-primary">
+      <nav>
+        <div class="nav-header"><a class="nav-brand text" href="test.html">Brand Logo</a>
+          <button class="menu-toggle" type="button"><span class="hide">Toggle Navigation</span>
+            <div class="icon-bar1"></div>
+            <div class="icon-bar2"></div>
+            <div class="icon-bar3"></div>
+          </button>
+        </div>
+        <div class="menu-wrapper">
+          <ul class="menu-left">
+            <li class="hide-only-mobile"><a href="test.html">Home</a></li>
+            <li class="active"><a href="#">active</a></li>
+            <li><a href="components.html">components</a></li>
+            <li><a href="modules.html">modules</a></li>
+            <li class="dropdown">
+              <button class="dropdown-toggle">dropdown <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+              <ul class="dropdown-content">
+                <li><a href="#">link1</a></li>
+                <li><a href="#">link2</a></li>
+                <li><a href="#">link3</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="menu-right">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <h1>Buttons</h1>
+      <hr>
+      <h2>Button</h2>
+      <button class="btn">btn</button>
+      <button class="btn info">info</button>
+      <button class="btn success">success</button>
+      <button class="btn warning">warning</button>
+      <button class="btn danger">danger</button><br>
+      <input type="submit">
+      <button class="btn btn-danger">btn-danger</button><a class="btn info" href="#">link button</a>
+      <h2>Flat button</h2>
+      <button class="btn-flat">btn-flat</button>
+      <button class="btn-flat info">info</button>
+      <button class="btn-flat success">success</button>
+      <button class="btn-flat warning">warning</button>
+      <button class="btn-flat danger">danger</button><br><a class="btn-flat info" href="#">link button</a>
+    </section>
+    <section>
+      <h1>Card</h1>
+      <hr>
+      <h2>Vertical Card (default)</h2>
+      <div class="row">
+        <div class="col-3">
+          <div class="card small">
+            <div class="card-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Chase_of_the_Constitution%2C_July_1812.jpg/1024px-Chase_of_the_Constitution%2C_July_1812.jpg" width="150"></div>
+            <div class="card-content">Card Content 1</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Constitution1803.jpg/800px-Constitution1803.jpg" alt="image" width="300"></div>
+            <div class="card-content">Card Content 2</div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="card large">
+            <div class="card-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Burning_of_the_uss_philadelphia.jpg/800px-Burning_of_the_uss_philadelphia.jpg" alt="image" width="500"></div>
+            <div class="card-content">Card Content 2</div>
+          </div>
+        </div>
+      </div>
+      <h2>Horizontal Card</h2>
+      <div class="row">
+        <div class="col-4">
+          <div class="card horizontal small">
+            <div class="card-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Burning_of_the_uss_philadelphia.jpg/800px-Burning_of_the_uss_philadelphia.jpg" alt="image" width="150"></div>
+            <div class="card-content">Card Content 1</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="card horizontal">
+            <div class="card-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Constitution1803.jpg/800px-Constitution1803.jpg" alt="image" width="300"></div>
+            <div class="card-content">Card Content 2</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8">
+          <div class="card horizontal large">
+            <div class="card-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Chase_of_the_Constitution%2C_July_1812.jpg/1024px-Chase_of_the_Constitution%2C_July_1812.jpg" alt="image" width="500"></div>
+            <div class="card-content">Card Content 2</div>
+          </div>
+        </div>
+      </div>
+      <h2>Card Inline</h2>
+      <ul class="card-list">
+        <li class="card inline small">
+          <div class="card-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Constitution1803.jpg/800px-Constitution1803.jpg" alt="image" width="150"></div>
+          <div class="card-content">Card Content 1</div>
+        </li>
+        <li class="card inline">
+          <div class="card-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Burning_of_the_uss_philadelphia.jpg/800px-Burning_of_the_uss_philadelphia.jpg" alt="image" width="300"></div>
+          <div class="card-content">Card Content 2</div>
+        </li>
+        <li class="card inline large">
+          <div class="card-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Chase_of_the_Constitution%2C_July_1812.jpg/1024px-Chase_of_the_Constitution%2C_July_1812.jpg" alt="image" width="500"></div>
+          <div class="card-content">Card Content 2</div>
+        </li>
+      </ul>
+      <ul class="card-list">
+        <li class="card horizontal inline small">
+          <div class="card-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Chase_of_the_Constitution%2C_July_1812.jpg/1024px-Chase_of_the_Constitution%2C_July_1812.jpg" alt="image" width="150"></div>
+          <div class="card-content">Card Content 1</div>
+        </li>
+        <li class="card horizontal inline">
+          <div class="card-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Constitution1803.jpg/800px-Constitution1803.jpg" alt="image" width="300"></div>
+          <div class="card-content">Card Content 2</div>
+        </li>
+        <li class="card horizontal inline large">
+          <div class="card-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Burning_of_the_uss_philadelphia.jpg/800px-Burning_of_the_uss_philadelphia.jpg" alt="image" width="500"></div>
+          <div class="card-content">Card Content 2</div>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h1>Form</h1>
+      <hr>
+      <form>
+        <fieldset>
+          <legend>Form</legend>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="name">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input type="email" id="email" name="email" disabled placeholder="read only">
+            <input type="email" id="email" name="email" readonly placeholder="read only">
+          </div>
+          <div class="form-group">
+            <label>checkbox
+              <input type="checkbox">
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="radio" name="gender" value="0" checked>male
+            </label><br>
+            <label>
+              <input type="radio" name="gender" value="1">female
+            </label>
+          </div>
+          <div class="form-group">
+            <input type="file">
+            <input type="range">
+          </div>
+          <div class="form-group">
+            <select name="select">
+              <option value="0">one</option>
+              <option value="1">two</option>
+              <option value="2">three</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea>hello, world!</textarea>
+          </div>
+          <div class="form-group">
+            <button class="btn" type="submit">Submit</button>
+          </div>
+        </fieldset>
+      </form>
+      <form class="form-inline">
+        <fieldset>
+          <legend>Form inline</legend>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="name">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password">
+          <label for="email">email</label>
+          <input type="email" id="email" name="email" disabled placeholder="read only">
+          <input type="email" id="email" name="email" readonly placeholder="read only">
+          <label>checkbox</label>
+          <input type="checkbox">
+          <label>
+            <input type="radio" name="gender" value="0" checked>male
+          </label>
+          <label>
+            <input type="radio" name="gender" value="1">female
+          </label>
+          <input type="file">
+          <input type="range">
+          <select name="select">
+            <option value="0">one</option>
+            <option value="1">two</option>
+            <option value="2">three</option>
+          </select>
+          <textarea>hello, world!</textarea>
+          <button class="btn" type="submit">Submit</button>
+        </fieldset>
+      </form>
+      <hr>
+      <form class="form-inline">
+        <fieldset>
+          <legend>Select</legend>
+          <select name="select">
+            <option value="1">option1</option>
+            <option value="2">option2</option>
+            <option value="3">option3</option>
+          </select>
+          <input type="text" placeholder="text">
+          <input type="date">
+        </fieldset>
+      </form>
+    </section>
+    <section>
+      <h1>Grid</h1>
+      <hr>
+      <h2>Defualt Grid</h2>
+      <div class="row">
+        <div class="col-1 box-line bg-color-primary">col-1</div>
+        <div class="col-1 box-line bg-color-primary">col-1</div>
+        <div class="col-1 box-line bg-color-primary">col-1</div>
+        <div class="col-1 box-line bg-color-primary">col-1</div>
+        <div class="col-1 box-line bg-color-primary">col-1</div>
+        <div class="col-1 box-line bg-color-primary">col-1</div>
+        <div class="col-1 box-line bg-color-primary">col-1</div>
+        <div class="col-1 box-line bg-color-primary">col-1</div>
+        <div class="col-1 box-line bg-color-primary">col-1</div>
+        <div class="col-1 box-line bg-color-primary">col-1</div>
+        <div class="col-1 box-line bg-color-primary">col-1</div>
+        <div class="col-1 box-line bg-color-primary">col-1</div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-4 bg-color-primary">
+            <p>4/12 columns</p>
+          </div>
+          <div class="col-8 bg-color-secondary">
+            <p>8/12 columns</p>
+          </div>
+        </div>
+      </div>
+      <h2>Mobile Grid</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 bg-color-primary">
+            <p>col-sm-6</p>
+          </div>
+          <div class="col-sm-6 bg-color-secondary">
+            <p>col-sm-6</p>
+          </div>
+        </div>
+      </div>
+      <h2>Tablet Grid</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 bg-color-secondary">
+            <p>col-md-6</p>
+          </div>
+          <div class="col-md-5 bg-color-primary">
+            <p>col-md-6</p>
+          </div>
+          <div class="col-md-4 bg-color-secondary">
+            <p>col-md-6</p>
+          </div>
+        </div>
+      </div>
+      <h2>Desktop Grid</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 bg-color-secondary">
+            <p>col-lg-6</p>
+          </div>
+          <div class="col-lg-3 col-md-6 bg-color-primary">
+            <p>col-lg-6</p>
+          </div>
+          <div class="col-lg-3 col-md-6 bg-color-secondary">
+            <p>col-lg-6</p>
+          </div>
+          <div class="col-lg-3 col-md-6 bg-color-primary">
+            <p>col-lg-6</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h1>Helper Classes</h1>
+      <hr>
+      <h2>Toggling content</h2>
+      <p class="box-line show">test page.</p>
+      <p class="box-line hide">test page.</p>
+      <p class="box-line invisible">test page.</p>
+      <h2>font</h2>
+      <p class="font-sans-serif">Hello, World!</p>
+      <p class="font-accent">Hello, World!</p>
+      <p class="font-cursive">Hello, World!</p>
+      <h2>Align</h2>
+      <div class="box-line">
+        <p class="center">center align.</p>
+        <p class="left">left align.</p>
+        <p class="right">right align.</p>
+      </div><div class="flex-center-container box-line" style="height:360px;">
+      <div class="center-block">
+        <p>vertically centering.</p>
+      </div></div>
+      <h2>Float</h2>
+      <div class="float-clear">
+        <div class="float-right box-line">this is right.</div>
+        <div class="float-left box-line">this is left.</div>
+      </div>
+      <h2>Color</h2>
+      <div class="bg-color-secondary"><span class="color-primary">Primary color.</span></div>
+      <div class="bg-color-primary"><span class="color-secondary">Secondary color.</span></div>
+    </section>
+    <section>
+      <h1>Pagination</h1>
+      <hr>
+      <ul class="pagination">
+        <li class="disabled"><span>Prev</span></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li class="active"><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">Next</a></li>
+      </ul>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <h3>Footer content</h3>
+            <p>footer content here..</p>
+          </div>
+          <div class="col-6">
+            <h3>Links</h3>
+            <p><a href="#">Link1</a><a href="#">Link2</a><a href="#">Link3</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">copyright &copy; 2016 cosmos all rights reserved.</div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.min.js"></script>
+    <script src="../dist/js/script.js"></script>
+  </body>
+</html>

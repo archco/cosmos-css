@@ -1,0 +1,78 @@
+section
+	h1 Card
+	hr
+	h2 Vertical Card (default)
+	div(class='row')
+		div(class='col-3')
+			div(class='card small')
+				div(class='card-image')
+					img(src=imageSrc[0] width='150')
+				div(class='card-content')
+					|Card Content 1
+		div(class='col-4')
+			div(class='card')
+				div(class='card-image')
+					img(src=imageSrc[1] alt='image' width='300')
+				div(class='card-content')
+					|Card Content 2
+		div(class='col-5')
+			div(class='card large')
+				div(class='card-image')
+					img(src=imageSrc[2] alt='image' width='500')
+				div(class='card-content')
+					|Card Content 2
+	h2 Horizontal Card
+	div(class='row')
+		div(class='col-4')
+			div(class='card horizontal small')
+				div(class='card-image')
+					img(src=imageSrc[2] alt='image' width='150')
+				div(class='card-content')
+					|Card Content 1
+	div(class='row')
+		div(class='col-6')
+			div(class='card horizontal')
+				div(class='card-image')
+					img(src=imageSrc[1] alt='image' width='300')
+				div(class='card-content')
+					|Card Content 2
+	div(class='row')
+		div(class='col-8')
+			div(class='card horizontal large')
+				div(class='card-image')
+					img(src=imageSrc[0] alt='image' width='500')
+				div(class='card-content')
+					|Card Content 2
+	h2 Card Inline
+	ul(class='card-list')
+		li(class='card inline small')
+			div(class='card-image')
+				img(src=imageSrc[1] alt='image' width='150')
+			div(class='card-content')
+				|Card Content 1
+		li(class='card inline')
+			div(class='card-image')
+				img(src=imageSrc[2] alt='image' width='300')
+			div(class='card-content')
+				|Card Content 2
+		li(class='card inline large')
+			div(class='card-image')
+				img(src=imageSrc[0] alt='image' width='500')
+			div(class='card-content')
+				|Card Content 2
+	ul(class='card-list')
+		li(class='card horizontal inline small')
+			div(class='card-image')
+				img(src=imageSrc[0] alt='image' width='150')
+			div(class='card-content')
+				|Card Content 1
+		li(class='card horizontal inline')
+			div(class='card-image')
+				img(src=imageSrc[1] alt='image' width='300')
+			div(class='card-content')
+				|Card Content 2
+		li(class='card horizontal inline large')
+			div(class='card-image')
+				img(src=imageSrc[2] alt='image' width='500')
+			div(class='card-content')
+				|Card Content 2
