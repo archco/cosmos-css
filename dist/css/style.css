@@ -416,15 +416,6 @@ template {
 /* font-family: 'Pinyon Script', cursive; */
 /* font-family: 'Advent Pro', sans-serif; */
 /* font-family: 'Nanum Gothic', serif; */
-section.company, section.process {
-  display: flex;
-  align-items: center;
-  /* vertically */
-  justify-content: center;
-  /* horizontally*/
-  flex-direction: column;
-  clear: both; }
-
 .center-position-container, nav .nav-header {
   position: relative; }
 
@@ -587,13 +578,13 @@ table {
 .left {
   text-align: left; }
 
-.vertical-center-container, .flex-center-container, #ajax-loading, .location-info-list {
+.vertical-center-container, .flex-center-container, #ajax-loading {
   display: flex;
   align-items: center; }
-  .vertical-center-container .flex-item, .flex-center-container .flex-item, #ajax-loading .flex-item, .location-info-list .flex-item {
+  .vertical-center-container .flex-item, .flex-center-container .flex-item, #ajax-loading .flex-item {
     display: block; }
 
-.flex-center-container, #ajax-loading, .location-info-list {
+.flex-center-container, #ajax-loading {
   justify-content: center; }
 
 .center-block {
@@ -964,7 +955,7 @@ input[type="reset"] {
 .info {
   color: #4f81c5; }
 
-.comment, .contact-list .contact-item .contact-meta {
+.comment {
   color: #999999;
   font-size: 0.8rem; }
 
@@ -1418,258 +1409,6 @@ footer a {
 footer .footer-box {
   padding: 1rem; }
 
-.post-list-thumb .post-thumb {
-  position: relative;
-  overflow: hidden;
-  border-radius: 4px; }
-  .post-list-thumb .post-thumb img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: auto;
-    height: 100%;
-    max-width: none;
-    -webkit-transform: translate(-50%, -50%);
-    /* Safari */
-    -ms-transform: translate(-50%, -50%);
-    /* IE 9 */
-    transform: translate(-50%, -50%); }
-
-article.post .post-meta, article.contact .contact-meta {
-  font-size: 0.8em;
-  color: #999999; }
-
-article.post .post-content, article.contact .contact-content {
-  padding: 1em 0;
-  white-space: pre-wrap; }
-
-[class*="post-list"], .contact-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0; }
-
-.post-list-text .post-item, .contact-list .contact-item {
-  margin: 1rem 0;
-  padding: 0.2rem 1rem;
-  transition: background-color 0.3s; }
-  .post-list-text .post-item:hover, .contact-list .contact-item:hover {
-    background-color: #f2f2f2; }
-  .post-list-text .post-item a, .contact-list .contact-item a {
-    display: block; }
-
-/************************************************************
-	Pages (company, process, location)
-*************************************************************
-*	
-*/
-/** Company */
-section.company {
-  padding: 6em 0; }
-  section.company h1 {
-    font-size: 3em; }
-
-/** Process */
-.process-list {
-  text-align: center; }
-  .process-list .process-item {
-    display: inline-block;
-    vertical-align: text-top;
-    width: 100%;
-    max-width: 360px;
-    padding: 0.5rem; }
-    .process-list .process-item .process-summary {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px dotted #999999; }
-      .process-list .process-item .process-summary .process-num {
-        font-family: Georgia, serif;
-        font-style: italic;
-        font-size: 1.5em;
-        color: #9dc8c8; }
-    .process-list .process-item .process-description {
-      padding: 0.5rem; }
-
-@media only screen and (min-width: 768px) {
-  .process-list .process-item {
-    margin: 0.5rem; } }
-
-/** Location */
-#map {
-  height: 500px; }
-
-.location-info-list {
-  background-color: #333;
-  height: 150px; }
-  .location-info-list figure.location-info-item {
-    margin: 4px;
-    display: inline-block; }
-    .location-info-list figure.location-info-item figcaption {
-      display: none; }
-
-/************************************************************
-	post (gallery, dress, styling, news)
-*************************************************************
-*	
-*/
-/** list common */
-.post-item {
-  width: 200px; }
-  .post-item .post-title {
-    margin: 1rem 0;
-    font-family: "Advent Pro", Verdana, sans-serif; }
-  .post-item .post-meta {
-    font-size: 0.8rem;
-    color: #999999; }
-  .post-item .post-content {
-    font-size: 0.9rem;
-    color: #333; }
-
-/** list style : text, simple, thumb */
-.post-list-text .post-item {
-  width: auto;
-  border-left: 3px solid #9dc8c8; }
-
-.post-list-simple, .post-list-thumb {
-  text-align: center; }
-  .post-list-simple .post-item, .post-list-thumb .post-item {
-    text-align: left; }
-    .post-list-simple .post-item .post-data, .post-list-thumb .post-item .post-data {
-      padding: 0 0.25em; }
-      .post-list-simple .post-item .post-data .post-title, .post-list-thumb .post-item .post-data .post-title {
-        text-align: center; }
-
-.post-list-thumb .post-item {
-  display: inline-block;
-  vertical-align: text-top;
-  padding: 0.5rem;
-  margin: 1rem 0.5rem;
-  border-radius: 4px;
-  transition: box-shadow 0.3s; }
-  .post-list-thumb .post-item:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
-
-.post-list-thumb .post-thumb {
-  margin: 0 auto;
-  width: 180px;
-  height: 240px; }
-
-/** post page view */
-/** post page images */
-.post-images {
-  padding: 1em 0;
-  clear: both; }
-  .post-images figure {
-    display: inline-block;
-    margin: 0; }
-  .post-images img {
-    width: 100%;
-    height: auto;
-    max-width: 800px; }
-  .post-images figcaption {
-    display: none; }
-
-/** post edit image-list */
-#image-panel .image-item {
-  height: 100px; }
-
-/** Resource Image.index (image-list) */
-.image-list.card-list .image-item {
-  height: 120px; }
-
-/************************************************************
-	Notice
-*************************************************************
-*	
-*/
-/** carousel */
-.carousel {
-  margin: 0 auto;
-  width: 100%; }
-
-.carousel-item {
-  width: 100%;
-  position: relative;
-  overflow: hidden; }
-
-.carousel-image {
-  width: 100%;
-  height: auto;
-  vertical-align: middle; }
-
-.carousel-text {
-  color: white;
-  background-color: transparent; }
-  .carousel-text .carousel-title {
-    margin: 0;
-    padding: 0.5em 1em;
-    border-radius: 0 0.5em 0.5em 0;
-    position: absolute;
-    left: 0;
-    top: 5%;
-    display: inline;
-    border-bottom: 0.25em solid #5ca3a3;
-    background-color: rgba(157, 200, 200, 0.5); }
-  .carousel-text .carousel-content {
-    margin: 0;
-    padding: 1em 2em;
-    position: absolute;
-    bottom: 0;
-    display: block;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5); }
-  @media only screen and (min-width: 768px) {
-    .carousel-text .carousel-title {
-      font-size: 2rem; }
-    .carousel-text .carousel-content {
-      font-size: 1.5rem; } }
-
-/************************************************************
-	About (index, landing page)
-*************************************************************
-*	
-*/
-section.about {
-  padding: 0; }
-  section.about [class*='about'] {
-    padding: 2em 0; }
-    section.about [class*='about'] h1 {
-      padding: 0;
-      text-align: center; }
-  section.about .about-company {
-    text-align: center;
-    background-color: #deeded; }
-    section.about .about-company h1 {
-      font-family: "Pinyon Script", cursive;
-      font-size: 3em; }
-  section.about .about-processes {
-    background-color: gray;
-    color: white; }
-  section.about .about-contact {
-    background-color: #5ca3a3;
-    color: white; }
-    section.about .about-contact address {
-      text-align: center; }
-
-/************************************************************
-	Contact
-*************************************************************
-*	
-*/
-.contact-list .contact-item {
-  padding: 1rem;
-  border-left: 3px solid #9dc8c8;
-  border-radius: 16px 0 0 16px; }
-  .contact-list .contact-item.contact-notice {
-    border-left: 3px solid #e1553e; }
-    .contact-list .contact-item.contact-notice .contact-subject {
-      color: #e1553e; }
-
-article.contact.contact-notice .contact-subject {
-  color: #e1553e; }
-
-.contact-pw-check {
-  height: 20rem; }
-
 /************************************************************
 	Misc
 *************************************************************
@@ -1689,24 +1428,5 @@ article.contact.contact-notice .contact-subject {
   display: none; }
   #btn-to-top:hover {
     background-color: #5ca3a3; }
-
-/************************************************************
-	Parallax (Unnecessary)
-	
-	@link https://github.com/archco/cosmos-css/issues/5
-*************************************************************
-*	
-*/
-.parallax-index-1 {
-  background-image: url("../img/index-bg/index-1.jpg");
-  height: 500px; }
-
-.parallax-index-2 {
-  background-image: url("../img/index-bg/index-2.jpg");
-  height: 300px; }
-
-.parallax-index-3 {
-  background-image: url("../img/index-bg/index-3.jpg");
-  height: 400px; }
 
 /*# sourceMappingURL=style.css.map */
