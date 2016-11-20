@@ -8,13 +8,13 @@
 	outline-color: $back;
 	transition: background-color $transition-time, box-shadow $transition-time;
 	
-	&:focus,
-	&:hover {
+	&:focus:not([disabled]),
+	&:hover:not([disabled]) {
 		color: $color;
 		background-color: lighten($back, 4%);
 		box-shadow: $shadow-normal;
 	}
-	&:active {
+	&:active:not([disabled]) {
 		color: $color;
 		background-color: darken($back, 4%);
 		box-shadow: $shadow-near;
@@ -26,10 +26,10 @@
 	outline: none;
 	transition: color $transition-time, background-color $transition-time;
 
-	&:hover {
+	&:hover:not([disabled]) {
 		background-color: rgba($color, 0.1);
 	}
-	&:active {
+	&:active:not([disabled]) {
 		background-color: rgba($color, 0.2);
 	}
 }

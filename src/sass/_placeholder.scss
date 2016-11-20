@@ -33,6 +33,13 @@
 	outline-color: $button-outline-color;
 	border-radius: $button-radius;
 }
+%btn-disabled {
+	&[disabled] {
+		cursor: default;
+		box-shadow: none;
+		opacity: 0.7;
+	}
+}
 %btn-icon {
 	@extend %btn-common;
 	border-radius: 50%;

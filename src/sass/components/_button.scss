@@ -3,7 +3,7 @@
 //======================================================================
 
 .btn {
-	@extend %btn;
+	@extend %btn, %btn-disabled;
 	@include btnColor($button-color, $button-bg-color);
 	
 	&.info {
@@ -32,7 +32,7 @@
 }
 
 .btn-flat {
-	@extend %btn;
+	@extend %btn, %btn-disabled;
 	margin: 0;
 
 	@include btnFlatColor($text-color);

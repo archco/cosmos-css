@@ -438,6 +438,13 @@ input[type="reset"], .btn-danger, .btn-flat {
   outline-color: #9dc8c8;
   border-radius: 2px; }
 
+[disabled].btn, input[disabled][type="submit"],
+input[disabled][type="button"],
+input[disabled][type="reset"], [disabled].btn-flat {
+  cursor: default;
+  box-shadow: none;
+  opacity: 0.7; }
+
 .btn-icon {
   border-radius: 50%;
   transition: box-shadow 0.3s; }
@@ -781,17 +788,17 @@ input[type="reset"] {
   background-color: #9dc8c8;
   outline-color: #9dc8c8;
   transition: background-color 0.3s, box-shadow 0.3s; }
-  .btn:focus, input[type="submit"]:focus,
-  input[type="button"]:focus,
-  input[type="reset"]:focus, .btn:hover, input[type="submit"]:hover,
-  input[type="button"]:hover,
-  input[type="reset"]:hover {
+  .btn:focus:not([disabled]), input[type="submit"]:focus:not([disabled]),
+  input[type="button"]:focus:not([disabled]),
+  input[type="reset"]:focus:not([disabled]), .btn:hover:not([disabled]), input[type="submit"]:hover:not([disabled]),
+  input[type="button"]:hover:not([disabled]),
+  input[type="reset"]:hover:not([disabled]) {
     color: #fff;
     background-color: #aacfcf;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
-  .btn:active, input[type="submit"]:active,
-  input[type="button"]:active,
-  input[type="reset"]:active {
+  .btn:active:not([disabled]), input[type="submit"]:active:not([disabled]),
+  input[type="button"]:active:not([disabled]),
+  input[type="reset"]:active:not([disabled]) {
     color: #fff;
     background-color: #90c1c1;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
@@ -802,17 +809,17 @@ input[type="reset"] {
     background-color: #4f81c5;
     outline-color: #4f81c5;
     transition: background-color 0.3s, box-shadow 0.3s; }
-    .btn.info:focus, input.info[type="submit"]:focus,
-    input.info[type="button"]:focus,
-    input.info[type="reset"]:focus, .btn.info:hover, input.info[type="submit"]:hover,
-    input.info[type="button"]:hover,
-    input.info[type="reset"]:hover {
+    .btn.info:focus:not([disabled]), input.info[type="submit"]:focus:not([disabled]),
+    input.info[type="button"]:focus:not([disabled]),
+    input.info[type="reset"]:focus:not([disabled]), .btn.info:hover:not([disabled]), input.info[type="submit"]:hover:not([disabled]),
+    input.info[type="button"]:hover:not([disabled]),
+    input.info[type="reset"]:hover:not([disabled]) {
       color: #fff;
       background-color: #5e8cca;
       box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
-    .btn.info:active, input.info[type="submit"]:active,
-    input.info[type="button"]:active,
-    input.info[type="reset"]:active {
+    .btn.info:active:not([disabled]), input.info[type="submit"]:active:not([disabled]),
+    input.info[type="button"]:active:not([disabled]),
+    input.info[type="reset"]:active:not([disabled]) {
       color: #fff;
       background-color: #4076c0;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
@@ -823,17 +830,17 @@ input[type="reset"] {
     background-color: #507d3a;
     outline-color: #507d3a;
     transition: background-color 0.3s, box-shadow 0.3s; }
-    .btn.success:focus, input.success[type="submit"]:focus,
-    input.success[type="button"]:focus,
-    input.success[type="reset"]:focus, .btn.success:hover, input.success[type="submit"]:hover,
-    input.success[type="button"]:hover,
-    input.success[type="reset"]:hover {
+    .btn.success:focus:not([disabled]), input.success[type="submit"]:focus:not([disabled]),
+    input.success[type="button"]:focus:not([disabled]),
+    input.success[type="reset"]:focus:not([disabled]), .btn.success:hover:not([disabled]), input.success[type="submit"]:hover:not([disabled]),
+    input.success[type="button"]:hover:not([disabled]),
+    input.success[type="reset"]:hover:not([disabled]) {
       color: #fff;
       background-color: #598b40;
       box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
-    .btn.success:active, input.success[type="submit"]:active,
-    input.success[type="button"]:active,
-    input.success[type="reset"]:active {
+    .btn.success:active:not([disabled]), input.success[type="submit"]:active:not([disabled]),
+    input.success[type="button"]:active:not([disabled]),
+    input.success[type="reset"]:active:not([disabled]) {
       color: #fff;
       background-color: #476f34;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
@@ -844,17 +851,17 @@ input[type="reset"] {
     background-color: #ffcc00;
     outline-color: #ffcc00;
     transition: background-color 0.3s, box-shadow 0.3s; }
-    .btn.warning:focus, input.warning[type="submit"]:focus,
-    input.warning[type="button"]:focus,
-    input.warning[type="reset"]:focus, .btn.warning:hover, input.warning[type="submit"]:hover,
-    input.warning[type="button"]:hover,
-    input.warning[type="reset"]:hover {
+    .btn.warning:focus:not([disabled]), input.warning[type="submit"]:focus:not([disabled]),
+    input.warning[type="button"]:focus:not([disabled]),
+    input.warning[type="reset"]:focus:not([disabled]), .btn.warning:hover:not([disabled]), input.warning[type="submit"]:hover:not([disabled]),
+    input.warning[type="button"]:hover:not([disabled]),
+    input.warning[type="reset"]:hover:not([disabled]) {
       color: #fff;
       background-color: #ffd014;
       box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
-    .btn.warning:active, input.warning[type="submit"]:active,
-    input.warning[type="button"]:active,
-    input.warning[type="reset"]:active {
+    .btn.warning:active:not([disabled]), input.warning[type="submit"]:active:not([disabled]),
+    input.warning[type="button"]:active:not([disabled]),
+    input.warning[type="reset"]:active:not([disabled]) {
       color: #fff;
       background-color: #ebbc00;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
@@ -865,17 +872,17 @@ input[type="reset"] {
     background-color: #e1553e;
     outline-color: #e1553e;
     transition: background-color 0.3s, box-shadow 0.3s; }
-    .btn.danger:focus, input.danger[type="submit"]:focus,
-    input.danger[type="button"]:focus,
-    input.danger[type="reset"]:focus, .btn.danger:hover, input.danger[type="submit"]:hover,
-    input.danger[type="button"]:hover,
-    input.danger[type="reset"]:hover {
+    .btn.danger:focus:not([disabled]), input.danger[type="submit"]:focus:not([disabled]),
+    input.danger[type="button"]:focus:not([disabled]),
+    input.danger[type="reset"]:focus:not([disabled]), .btn.danger:hover:not([disabled]), input.danger[type="submit"]:hover:not([disabled]),
+    input.danger[type="button"]:hover:not([disabled]),
+    input.danger[type="reset"]:hover:not([disabled]) {
       color: #fff;
       background-color: #e46550;
       box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
-    .btn.danger:active, input.danger[type="submit"]:active,
-    input.danger[type="button"]:active,
-    input.danger[type="reset"]:active {
+    .btn.danger:active:not([disabled]), input.danger[type="submit"]:active:not([disabled]),
+    input.danger[type="button"]:active:not([disabled]),
+    input.danger[type="reset"]:active:not([disabled]) {
       color: #fff;
       background-color: #de452c;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
@@ -885,11 +892,11 @@ input[type="reset"] {
   background-color: #e1553e;
   outline-color: #e1553e;
   transition: background-color 0.3s, box-shadow 0.3s; }
-  .btn-danger:focus, .btn-danger:hover {
+  .btn-danger:focus:not([disabled]), .btn-danger:hover:not([disabled]) {
     color: #fff;
     background-color: #e46550;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
-  .btn-danger:active {
+  .btn-danger:active:not([disabled]) {
     color: #fff;
     background-color: #de452c;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
@@ -904,45 +911,45 @@ input[type="reset"] {
   background-color: transparent;
   outline: none;
   transition: color 0.3s, background-color 0.3s; }
-  .btn-flat:hover {
+  .btn-flat:hover:not([disabled]) {
     background-color: rgba(51, 51, 51, 0.1); }
-  .btn-flat:active {
+  .btn-flat:active:not([disabled]) {
     background-color: rgba(51, 51, 51, 0.2); }
   .btn-flat.info {
     color: #4f81c5;
     background-color: transparent;
     outline: none;
     transition: color 0.3s, background-color 0.3s; }
-    .btn-flat.info:hover {
+    .btn-flat.info:hover:not([disabled]) {
       background-color: rgba(79, 129, 197, 0.1); }
-    .btn-flat.info:active {
+    .btn-flat.info:active:not([disabled]) {
       background-color: rgba(79, 129, 197, 0.2); }
   .btn-flat.success {
     color: #507d3a;
     background-color: transparent;
     outline: none;
     transition: color 0.3s, background-color 0.3s; }
-    .btn-flat.success:hover {
+    .btn-flat.success:hover:not([disabled]) {
       background-color: rgba(80, 125, 58, 0.1); }
-    .btn-flat.success:active {
+    .btn-flat.success:active:not([disabled]) {
       background-color: rgba(80, 125, 58, 0.2); }
   .btn-flat.warning {
     color: #ffcc00;
     background-color: transparent;
     outline: none;
     transition: color 0.3s, background-color 0.3s; }
-    .btn-flat.warning:hover {
+    .btn-flat.warning:hover:not([disabled]) {
       background-color: rgba(255, 204, 0, 0.1); }
-    .btn-flat.warning:active {
+    .btn-flat.warning:active:not([disabled]) {
       background-color: rgba(255, 204, 0, 0.2); }
   .btn-flat.danger {
     color: #e1553e;
     background-color: transparent;
     outline: none;
     transition: color 0.3s, background-color 0.3s; }
-    .btn-flat.danger:hover {
+    .btn-flat.danger:hover:not([disabled]) {
       background-color: rgba(225, 85, 62, 0.1); }
-    .btn-flat.danger:active {
+    .btn-flat.danger:active:not([disabled]) {
       background-color: rgba(225, 85, 62, 0.2); }
 
 /** message  */
