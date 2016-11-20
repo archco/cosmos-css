@@ -52,7 +52,7 @@ $message-light-color: $text-contrast-color !default;
 $message-dark-color: $text-color !default;
 // table colors
 $table-head-color: $primary-color !default;
-$table-head-text-color: white !default;
+$table-head-text-color: $white !default;
 $table-text-color: inherit !default;
 $table-row-even-bg: $lightgray !default;
 $table-link-color: $link-color !default;
@@ -64,9 +64,9 @@ $radius-normal: 4px !default;
 $radius-small: round($radius-normal / 2);
 $radius-large: round($radius-normal * 2);
 $radius-button: $radius-small;
-$shadow-near: 0 0 4px rgba(black, 0.3) !default;
-$shadow-normal: 0 2px 8px rgba(black, 0.3) !default;
-$shadow-far: 2px 4px 16px rgba(black, 0.3) !default;
+$shadow-near: 1px 1px 4px rgba(#000, 0.3) !default;
+$shadow-normal: 2px 2px 8px rgba(#000, 0.3) !default;
+$shadow-far: 4px 4px 16px rgba(#000, 0.3) !default;
 $transition-time: 0.3s !default;
 $icon-size: 35px !default; // nav toggle button's width
 $default-focus-outline: 2px solid $primary-color !default;
@@ -100,7 +100,8 @@ $card-size-small: 200px !default;
 $card-size-large: 400px !default;
 $card-radius: $radius-small !default;
 $card-shadow: $shadow-normal !default;
-$card-bg-color: white !default;
+$card-hover-shadow: $shadow-far !default;
+$card-bg-color: $white !default;
 $card-link-color: $link-color !default;
 
 // nav

@@ -99,4 +99,13 @@ ul.card-list {
 		transition: color $transition-time;
 		&:hover { color: lighten($card-link-color, 20%); }
 	}
+
+	&.hoverable {
+		transition: box-shadow $transition-time;
+
+		&:focus,
+		&:hover {
+			box-shadow: $card-hover-shadow;
+		}
+	}
 }
