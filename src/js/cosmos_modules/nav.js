@@ -8,10 +8,22 @@
 (function () {
 	// Responsive Nav
 	$(".menu-toggle").click(function(){
+		// parent nav
+		let nav = this.parentNode.parentNode;
+		// menu groups
+		let menuGroups = [
+			'.menu-main',
+			'.menu-left',
+			'.menu-right',
+			'.menu-center',
+		];
+
+		// button toggle
 		this.classList.toggle('change');
-		$('.menu-main').slideToggle();
-		$('.menu-left').slideToggle();
-		$('.menu-right').slideToggle();
+		// menu display toggle
+		for (let m of menuGroups) {
+			$(nav).find(m).slideToggle();
+		}
 	});
 
 	$(window).resize(function(){

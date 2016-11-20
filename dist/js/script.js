@@ -69,10 +69,38 @@ function checkMobileSize() {
 (function () {
 	// Responsive Nav
 	$(".menu-toggle").click(function () {
+		// parent nav
+		var nav = this.parentNode.parentNode;
+		// menu groups
+		var menuGroups = ['.menu-main', '.menu-left', '.menu-right', '.menu-center'];
+
+		// button toggle
 		this.classList.toggle('change');
-		$('.menu-main').slideToggle();
-		$('.menu-left').slideToggle();
-		$('.menu-right').slideToggle();
+		// menu display toggle
+		var _iteratorNormalCompletion = true;
+		var _didIteratorError = false;
+		var _iteratorError = undefined;
+
+		try {
+			for (var _iterator = menuGroups[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+				var m = _step.value;
+
+				$(nav).find(m).slideToggle();
+			}
+		} catch (err) {
+			_didIteratorError = true;
+			_iteratorError = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion && _iterator.return) {
+					_iterator.return();
+				}
+			} finally {
+				if (_didIteratorError) {
+					throw _iteratorError;
+				}
+			}
+		}
 	});
 
 	$(window).resize(function () {

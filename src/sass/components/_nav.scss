@@ -7,37 +7,7 @@ nav {
 	background-color: $nav-bg-color;
 	font-size: $nav-font-size;
 
-	.menu-wrapper {
-		margin: 0 auto;
-		text-align: left;
-
-		&:after {
-			clear: both;
-			display: block;
-			content: "";
-		}
-	}
-	.menu-left {
-		@extend %responsive-mobile-hide;
-
-		float: initial;
-
-		@include media-tablet-up() {
-			float: left;
-		}
-	}
-	.menu-right {
-		@extend %responsive-mobile-hide;
-
-		float: initial;
-
-		@include media-tablet-up() {
-			float: right;
-		}
-	}
-
 	ul {
-		display: inline-block;
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -54,6 +24,42 @@ nav {
 
 	a:not(.nav-brand) {
 		@extend %nav-link;
+	}
+
+	.menu-wrapper {
+		margin: 0 auto;
+		text-align: left;
+
+		&:after {
+			clear: both;
+			display: block;
+			content: "";
+		}
+	}
+
+	.menu-left {
+		@extend %responsive-mobile-hide;
+
+		float: initial;
+
+		@include media-tablet-up() {
+			float: left;
+		}
+	}
+
+	.menu-right {
+		@extend %responsive-mobile-hide;
+
+		float: initial;
+
+		@include media-tablet-up() {
+			float: right;
+		}
+	}
+	
+	.menu-center {
+		@extend %responsive-mobile-hide;
+		text-align: center;
 	}
 
 	.nav-header {

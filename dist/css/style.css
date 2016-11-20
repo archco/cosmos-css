@@ -465,7 +465,7 @@ nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle {
     display: none; } }
 
 @media only screen and (max-width: 767px) {
-  .hide-only-mobile, nav .menu-left, nav .menu-right {
+  .hide-only-mobile, nav .menu-left, nav .menu-right, nav .menu-center {
     display: none; } }
 
 html {
@@ -1249,6 +1249,16 @@ nav {
   font-family: "Advent Pro", Verdana, sans-serif;
   background-color: #9dc8c8;
   font-size: 1.25em; }
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center; }
+  nav li {
+    display: inline; }
+    nav li.active a {
+      color: #9dc8c8;
+      background-color: #fff; }
   nav .menu-wrapper {
     margin: 0 auto;
     text-align: left; }
@@ -1266,17 +1276,8 @@ nav {
     @media only screen and (min-width: 768px) {
       nav .menu-right {
         float: right; } }
-  nav ul {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  nav .menu-center {
     text-align: center; }
-  nav li {
-    display: inline; }
-    nav li.active a {
-      color: #9dc8c8;
-      background-color: #fff; }
   nav .nav-header {
     height: 50px;
     /* nav toggle button */ }
