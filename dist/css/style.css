@@ -1019,20 +1019,9 @@ ul.card-list {
   padding: 0;
   list-style: none; }
 
-.card .card-image {
-  position: relative;
-  overflow: hidden; }
-  .card .card-image img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: auto;
-    height: auto;
-    max-width: none;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); }
-
 .card {
+  display: flex;
+  flex-direction: column;
   z-index: 2;
   margin: 0.5rem 0;
   padding: 0;
@@ -1040,53 +1029,49 @@ ul.card-list {
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   height: 300px; }
-  .card .card-image, .card.small .card-image, .card.large .card-image {
-    height: 70%;
-    overflow: hidden; }
-  .card .card-content, .card.small .card-content, .card.large .card-content {
-    max-height: 100%;
-    overflow: hidden; }
-  .card .card-image + .card-content, .card.small .card-image + .card-content, .card.large .card-image + .card-content {
-    height: 30%; }
   .card.small {
     height: 200px; }
   .card.large {
     height: 400px; }
   .card .card-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    max-height: 70%;
     border-radius: 2px 2px 0 0; }
     .card .card-image img {
+      max-width: none;
       width: 105%;
       height: auto; }
   .card .card-content {
-    max-height: 40%;
-    padding: 0.25rem 0.5rem; }
+    flex: 1;
+    padding: 0.25rem 0.5rem;
+    overflow: hidden; }
   .card.horizontal {
-    display: flex; }
+    flex-direction: row; }
     .card.horizontal {
       height: 180px; }
     .card.horizontal.small {
       height: 120px; }
     .card.horizontal.large {
       height: 240px; }
-    .card.horizontal .card-image, .card.horizontal .card-content, .card.horizontal .card-image + .card-content {
+    .card.horizontal .card-image, .card.horizontal .card-content {
       display: inline-block;
-      max-height: initial;
+      max-height: none;
       width: auto;
       height: 100%; }
     .card.horizontal .card-image {
-      width: 40%;
+      max-width: 40%;
       border-radius: 2px 0 0 2px; }
       .card.horizontal .card-image img {
         height: 105%;
         width: auto; }
-    .card.horizontal .card-content {
-      width: 100%; }
-    .card.horizontal .card-image + .card-content {
-      width: 58%; }
   .card.inline {
-    display: inline-block;
+    display: inline-flex;
     vertical-align: text-top;
-    max-width: 100%; }
+    max-width: 100%;
+    margin: 0.5rem; }
     .card.inline {
       width: 375px; }
     .card.inline.small {

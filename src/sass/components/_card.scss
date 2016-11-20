@@ -9,25 +9,10 @@ ul.card-list {
 	list-style: none;
 }
 
-// card-image position placeholder
-%card-image-position {
-	position: relative;
-	overflow: hidden;
-
-	img {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		width: auto;
-		height: auto;
-		max-width: none;
-		-webkit-transform: translate(-50%,-50%);
-		transform: translate(-50%,-50%);
-	}
-}
-
 // default - vertical
 .card {
+	display: flex;
+	flex-direction: column;
 	z-index: 2;
 	margin: 0.5rem 0;
 	padding: 0;
@@ -37,19 +22,6 @@ ul.card-list {
 	height: $card-size;
 	
 	// card size
-	&, &.small, &.large {
-		.card-image {
-			height: 70%;
-			overflow: hidden;
-		}
-		.card-content {
-			max-height: 100%;
-			overflow: hidden;
-		}
-		.card-image + .card-content {
-			height: 30%;
-		}
-	}
 	&.small {
 		height: $card-size-small;
 	}
@@ -58,21 +30,27 @@ ul.card-list {
 	}
 
 	.card-image {
-		@extend %card-image-position;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		max-height: 70%;
 		border-radius: $card-radius $card-radius 0 0;
 
 		img {
+			max-width: none;
 			@include cardImageSize("vertical");
 		}
 	}
 	.card-content {
-		max-height: 40%;
+		flex: 1;
 		padding: 0.25rem 0.5rem;
+		overflow: hidden;
 	}
 
 	// horizontal
 	&.horizontal {
-		display: flex;
+		flex-direction: row;
 
 		// card size
 		& { height: $card-size * 0.6; }
@@ -81,13 +59,13 @@ ul.card-list {
 
 		%card-horizontal-child {
 			display: inline-block;
-			max-height: initial;
+			max-height: none;
 			width: auto;
 			height: 100%;
 		}
 		.card-image {
 			@extend %card-horizontal-child;
-			width: 40%;
+			max-width: 40%;
 			border-radius: $card-radius 0 0 $card-radius;
 
 			img {
@@ -96,18 +74,14 @@ ul.card-list {
 		}
 		.card-content {
 			@extend %card-horizontal-child;
-			width: 100%;
-		}
-		.card-image + .card-content {
-			@extend %card-horizontal-child;
-			width: 58%;
 		}
 	}
 
 	&.inline {
-		display: inline-block;
+		display: inline-flex;
 		vertical-align: text-top;
 		max-width: 100%;
+		margin: 0.5rem;
 		
 		// width size
 		& { @include calCardSize($card-size); }
