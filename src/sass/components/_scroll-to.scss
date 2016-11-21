@@ -1,0 +1,35 @@
+//======================================================================
+// Scroll-to
+//======================================================================
+
+/** scroll to top button */
+#scroll-to-top {
+	@extend %btn-common;
+	// positioning
+	position: fixed;
+	right: 4%;
+	bottom: 4%;
+	z-index: 15;
+	// box model
+	display: none;
+	box-sizing: content-box;
+	outline: none;
+	min-width: 1rem;
+	min-height: 1rem;
+	padding: 1rem;
+	// typographic
+	color: $scroll-to-color;
+	// visual
+	border-radius: 50%;
+	background-color: rgba($scroll-to-bg-color, 0.5);
+	// misc
+	transition: background-color $transition-time;
+
+	&.show {
+		display: block;
+	}
+
+	&:hover {
+		background-color: $scroll-to-bg-color;
+	}
+}

@@ -426,7 +426,7 @@ template {
 
 .btn, input[type="submit"],
 input[type="button"],
-input[type="reset"], .btn-danger, .btn-flat, .btn-icon, nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle, .dropdown button.dropdown-toggle, #btn-to-top {
+input[type="reset"], .btn-danger, .btn-flat, .btn-icon, nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle, .dropdown button.dropdown-toggle, #scroll-to-top {
   border: none;
   cursor: pointer; }
 
@@ -1396,6 +1396,27 @@ nav .dropdown > button.dropdown-toggle {
       display: block;
       animation: spin 1s linear infinite; }
 
+/** scroll to top button */
+#scroll-to-top {
+  position: fixed;
+  right: 4%;
+  bottom: 4%;
+  z-index: 15;
+  display: none;
+  box-sizing: content-box;
+  outline: none;
+  min-width: 1rem;
+  min-height: 1rem;
+  padding: 1rem;
+  color: #fff;
+  border-radius: 50%;
+  background-color: rgba(92, 163, 163, 0.5);
+  transition: background-color 0.3s; }
+  #scroll-to-top.show {
+    display: block; }
+  #scroll-to-top:hover {
+    background-color: #5ca3a3; }
+
 body {
   margin: 0 auto;
   max-width: 1280px; }
@@ -1405,25 +1426,5 @@ footer a {
 
 footer .footer-box {
   padding: 1rem; }
-
-/************************************************************
-	Misc
-*************************************************************
-*	
-*/
-/** btn-to-top */
-#btn-to-top {
-  position: fixed;
-  right: 4%;
-  bottom: 4%;
-  outline: none;
-  padding: 1rem;
-  border-radius: 50%;
-  background-color: rgba(92, 163, 163, 0.5);
-  color: #999999;
-  transition: background-color 0.3s;
-  display: none; }
-  #btn-to-top:hover {
-    background-color: #5ca3a3; }
 
 /*# sourceMappingURL=style.css.map */

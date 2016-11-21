@@ -215,49 +215,32 @@ function checkMobileSize() {
 'use strict';
 
 /************************************************************
-	scrolltop
-*************************************************************
-*	
-*/
+	scroll-to
+*************************************************************/
 
-/**
- * scrollTop 
- * 
- * @return void
- */
 (function () {
-	// btn-to-top addEventListener.
-	var b = document.querySelector('#btn-to-top');
-	if (b) {
-		b.addEventListener('click', function () {
-			$('html,body').animate({ scrollTop: 0 }, 'slow', 'swing');
-		});
-	}
-
-	// scroll addEventListener.
-	window.addEventListener('scroll', function () {
-		scrollListener();
-	});
-})();
-
-/**
- * scrollListener
- * 
- * @return void
- */
-function scrollListener() {
-	var top = scrollTop(),
-	    btnToTop = document.querySelector('#btn-to-top');
-	if (!btnToTop) {
+	var scrollToTop = document.querySelector('#scroll-to-top');
+	if (!scrollToTop) {
 		return;
 	}
-	// btn-to-top
-	if (top > 500) {
-		btnToTop.style.display = 'block';
-	} else {
-		btnToTop.style.display = 'none';
-	}
-}
+
+	// scroll-to-top click listener.
+	scrollToTop.addEventListener('click', function () {
+		$('html,body').animate({ scrollTop: 0 }, 'slow', 'swing');
+	});
+
+	// scroll Listener.
+	window.addEventListener('scroll', function () {
+		var top = scrollTop();
+		var isShow = scrollToTop.classList.contains('show');
+
+		if (top > 500 && !isShow) {
+			scrollToTop.classList.add('show');
+		} else if (top <= 500 && isShow) {
+			scrollToTop.classList.remove('show');
+		}
+	});
+})();
 
 /**
  * scrollTop
