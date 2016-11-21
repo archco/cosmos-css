@@ -115,18 +115,10 @@ function checkMobileSize() {
 
 /************************************************************
 	dropdown
-*************************************************************
-*	
-*/
+*************************************************************/
 
-/** dropdown toggle button */
-function dropdownToggle(x) {
-	var c = x.parentNode.querySelector('.dropdown-content');
-	c.classList.toggle('show');
-}
-/** IIFE - Add Event Listeners */
 (function () {
-	// toggle button add click event listener.
+	// add button's listener.
 	var btns = document.querySelectorAll('.dropdown-toggle');
 	if (btns) {
 		var _iteratorNormalCompletion = true;
@@ -159,35 +151,66 @@ function dropdownToggle(x) {
 	// Close the dropdown menu if the user clicks outside of it
 	window.onclick = function (event) {
 		if (!event.target.classList.contains('dropdown-toggle')) {
-			var dropdowns = document.querySelectorAll('.dropdown-content');
-			var _iteratorNormalCompletion2 = true;
-			var _didIteratorError2 = false;
-			var _iteratorError2 = undefined;
+			closeElseDropdown();
+		} else {
+			var t = event.target.parentNode; // .dropdown
+			closeElseDropdown(t);
+		}
+	};
 
-			try {
-				for (var _iterator2 = dropdowns[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-					var d = _step2.value;
+	/**
+  * toggling dropdown contents
+  * 
+  * @param  {element} x  .dropdown-toggle
+  * @return {void}
+  */
+	function dropdownToggle(x) {
+		var c = x.parentNode.querySelector('.dropdown-content');
+		c.classList.toggle('show');
+	}
 
-					if (d.classList.contains('show')) {
-						d.classList.remove('show');
-					}
+	/**
+  * close dropdown contents
+  * 
+  * @param  {element|null} t  except target
+  * @return {void}
+  */
+	function closeElseDropdown() {
+		var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+		var ds = document.querySelectorAll('.dropdown');
+
+		var _iteratorNormalCompletion2 = true;
+		var _didIteratorError2 = false;
+		var _iteratorError2 = undefined;
+
+		try {
+			for (var _iterator2 = ds[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+				var d = _step2.value;
+
+				var c = d.querySelector('.dropdown-content');
+				if (t && t == d) {
+					continue;
+				} // except target
+				if (c.classList.contains('show')) {
+					c.classList.remove('show');
 				}
-			} catch (err) {
-				_didIteratorError2 = true;
-				_iteratorError2 = err;
+			}
+		} catch (err) {
+			_didIteratorError2 = true;
+			_iteratorError2 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion2 && _iterator2.return) {
+					_iterator2.return();
+				}
 			} finally {
-				try {
-					if (!_iteratorNormalCompletion2 && _iterator2.return) {
-						_iterator2.return();
-					}
-				} finally {
-					if (_didIteratorError2) {
-						throw _iteratorError2;
-					}
+				if (_didIteratorError2) {
+					throw _iteratorError2;
 				}
 			}
 		}
-	};
+	}
 })();
 'use strict';
 
