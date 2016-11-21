@@ -1,6 +1,7 @@
 #!ruby
 #
 require 'rubygems'
+require 'json'
 require 'zip'
 # @link: https://github.com/rubyzip/rubyzip
 
@@ -19,7 +20,13 @@ def get_src_base_part
 	return src_files - src_custom_field
 end
 
-zipfile_name = 'cosmos-css-0.1.3-basesrc.zip'
+def genarate_zipfile_name
+	file = File.read('package.json')
+	package = JSON.parse(file)
+	return "cosmos-css-#{package['version']}-base.zip"
+end
+
+zipfile_name = genarate_zipfile_name()
 filelist = get_src_base_part()
 
 Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
