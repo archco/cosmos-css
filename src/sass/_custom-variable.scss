@@ -1,33 +1,29 @@
-/** Fonts */
-/* font-family: 'Pinyon Script', cursive; */
-@import url(https://fonts.googleapis.com/css?family=Pinyon+Script);
-/* font-family: 'Advent Pro', sans-serif; */
-@import url(https://fonts.googleapis.com/css?family=Advent+Pro:400,600,700,300);
-/* font-family: 'Nanum Gothic', serif; */
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
+// font import
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina|Lora|Roboto');
+// font-family: 'Roboto', sans-serif;
+// font-family: 'Lora', serif;
+// font-family: 'Baloo Bhaina', cursive;
 
 //======================================================================
 // Setting Variables.
 //======================================================================
 
 // fonts
-$font-serif: Georgia, serif;
-$font-sans-serif: 'Nanum Gothic', Geneva, sans-serif;
-$font-sans-serif-2: 'Advent Pro', Verdana, sans-serif;
-$font-cursive: 'Pinyon Script', cursive;
+$font-serif: 'Lora', serif;
+$font-sans-serif: 'Roboto', sans-serif;
+$font-cursive: 'Baloo Bhaina', cursive;
 
 // font set
 $font-base: $font-sans-serif;
-$font-accent: $font-sans-serif-2;
+$font-accent: $font-cursive;
 
 // colors
-$teal: #9dc8c8;
-$gray: #999999;
+$light-violet: #c9a8ce;
+$smoke-gray: #7b93a3;
 
 // theme-colors
-$primary-color: $teal;
-$secondary-color: $gray;
+$primary-color: $light-violet;
+$secondary-color: $smoke-gray;
 
 //======================================================================
 // Custom Variables.
