@@ -23,7 +23,7 @@
 .btn-flat {
 	@extend %btn, %btn-disabled;
 	margin: 0;
-	@include btnFlatColor($text-color);
+	@include btnFlatColor($link-color);
 
 	&.info {
 		@include btnFlatColor($info-color);

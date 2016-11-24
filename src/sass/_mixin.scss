@@ -25,11 +25,14 @@
 	background-color: transparent;
 	outline-color: rgba($color, 0.2);
 	transition: color $transition-time, background-color $transition-time;
-
+	
+	&:focus:not([disabled]),
 	&:hover:not([disabled]) {
+		color: $color;
 		background-color: rgba($color, 0.1);
 	}
 	&:active:not([disabled]) {
+		color: $color;
 		background-color: rgba($color, 0.2);
 	}
 }

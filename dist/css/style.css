@@ -421,8 +421,13 @@ template {
 .btn, input[type="submit"],
 input[type="button"],
 input[type="reset"], .btn-danger, .btn-flat, nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle, .btn-icon, .dropdown button.dropdown-toggle, #scroll-to-top {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap;
   border: none;
-  cursor: pointer; }
+  cursor: pointer;
+  user-select: none; }
 
 .btn, input[type="submit"],
 input[type="button"],
@@ -912,49 +917,59 @@ input[type="reset"] {
 
 .btn-flat {
   margin: 0;
-  color: #333;
+  color: #4f81c5;
   background-color: transparent;
-  outline-color: rgba(51, 51, 51, 0.2);
+  outline-color: rgba(79, 129, 197, 0.2);
   transition: color 0.3s, background-color 0.3s; }
-  .btn-flat:hover:not([disabled]) {
-    background-color: rgba(51, 51, 51, 0.1); }
+  .btn-flat:focus:not([disabled]), .btn-flat:hover:not([disabled]) {
+    color: #4f81c5;
+    background-color: rgba(79, 129, 197, 0.1); }
   .btn-flat:active:not([disabled]) {
-    background-color: rgba(51, 51, 51, 0.2); }
+    color: #4f81c5;
+    background-color: rgba(79, 129, 197, 0.2); }
   .btn-flat.info {
     color: #4f81c5;
     background-color: transparent;
     outline-color: rgba(79, 129, 197, 0.2);
     transition: color 0.3s, background-color 0.3s; }
-    .btn-flat.info:hover:not([disabled]) {
+    .btn-flat.info:focus:not([disabled]), .btn-flat.info:hover:not([disabled]) {
+      color: #4f81c5;
       background-color: rgba(79, 129, 197, 0.1); }
     .btn-flat.info:active:not([disabled]) {
+      color: #4f81c5;
       background-color: rgba(79, 129, 197, 0.2); }
   .btn-flat.success {
     color: #507d3a;
     background-color: transparent;
     outline-color: rgba(80, 125, 58, 0.2);
     transition: color 0.3s, background-color 0.3s; }
-    .btn-flat.success:hover:not([disabled]) {
+    .btn-flat.success:focus:not([disabled]), .btn-flat.success:hover:not([disabled]) {
+      color: #507d3a;
       background-color: rgba(80, 125, 58, 0.1); }
     .btn-flat.success:active:not([disabled]) {
+      color: #507d3a;
       background-color: rgba(80, 125, 58, 0.2); }
   .btn-flat.warning {
     color: #ffcc00;
     background-color: transparent;
     outline-color: rgba(255, 204, 0, 0.2);
     transition: color 0.3s, background-color 0.3s; }
-    .btn-flat.warning:hover:not([disabled]) {
+    .btn-flat.warning:focus:not([disabled]), .btn-flat.warning:hover:not([disabled]) {
+      color: #ffcc00;
       background-color: rgba(255, 204, 0, 0.1); }
     .btn-flat.warning:active:not([disabled]) {
+      color: #ffcc00;
       background-color: rgba(255, 204, 0, 0.2); }
   .btn-flat.danger {
     color: #e1553e;
     background-color: transparent;
     outline-color: rgba(225, 85, 62, 0.2);
     transition: color 0.3s, background-color 0.3s; }
-    .btn-flat.danger:hover:not([disabled]) {
+    .btn-flat.danger:focus:not([disabled]), .btn-flat.danger:hover:not([disabled]) {
+      color: #e1553e;
       background-color: rgba(225, 85, 62, 0.1); }
     .btn-flat.danger:active:not([disabled]) {
+      color: #e1553e;
       background-color: rgba(225, 85, 62, 0.2); }
 
 /** message  */
