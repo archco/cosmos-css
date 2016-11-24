@@ -24,10 +24,11 @@ $gray: #999999 !default;
 $lightgray: #f2f2f2 !default;
 $darkgray: #555 !default;
 $teal: #9dc8c8 !default;
+$turquoise: #098587 !default;
 $lightblue: #4f81c5 !default;
-$green: #507d3a !default;
+$green: #5da039 !default;
 $red: #e1553e !default;
-$yellow: #ffcc00 !default;
+$yellow: #ffcb05 !default;
 
 // theme-colors
 $primary-color: $lightblue !default;
@@ -40,10 +41,10 @@ $text-contrast-color: $white !default;
 $body-bg-color: initial !default;
 // link colors
 $link-color: $lightblue !default;
-$link-hover-color: lighten($link-color, 20%) !default;
-$link-hover-decoration: none !default;
+$link-hover-color: darken($link-color, 8%) !default;
+$link-hover-decoration: underline !default;
 // message dialog colors
-$info-color: $lightblue !default;
+$info-color: $turquoise !default;
 $success-color: $green !default;
 $danger-color: $red !default;
 $error-color: $red !default;
