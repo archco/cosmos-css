@@ -103,8 +103,7 @@ input[type="range"] {
 	input,
 	select,
 	textarea {
-		display: inline;
-		width: auto;
+		@extend %form-inline;
 	}
 	textarea {
 		height: auto;
@@ -115,9 +114,14 @@ input,
 select,
 textarea {
 	&.inline {
-		display: inline;
-		width: auto;
+		@extend %form-inline;
 	}
+}
+
+%form-inline {
+	display: inline-block;
+	vertical-align: middle;
+	width: auto;
 }
 
 .form-group {

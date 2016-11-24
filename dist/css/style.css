@@ -1234,18 +1234,16 @@ input[type="range"] {
   margin: 0;
   padding: 0;
   display: inline; }
-  .form-inline input,
-  .form-inline select,
-  .form-inline textarea {
-    display: inline;
-    width: auto; }
   .form-inline textarea {
     height: auto; }
 
-input.inline,
+.form-inline input,
+.form-inline select,
+.form-inline textarea, input.inline,
 select.inline,
 textarea.inline {
-  display: inline;
+  display: inline-block;
+  vertical-align: middle;
   width: auto; }
 
 /** pagination */
