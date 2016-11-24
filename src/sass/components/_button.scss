@@ -3,21 +3,8 @@
 //======================================================================
 
 .btn {
-	@extend %btn, %btn-disabled;
+	@extend %btn, %btn-disabled, %btn-color-set;
 	@include btnColor($button-color, $button-bg-color);
-	
-	&.info {
-		@include btnColor($button-color, $info-color);
-	}
-	&.success {
-		@include btnColor($button-color, $success-color);
-	}
-	&.warning {
-		@include btnColor($button-color, $warning-color);
-	}
-	&.danger {
-		@include btnColor($button-color, $danger-color);
-	}
 }
 
 .btn-danger {
@@ -26,15 +13,16 @@
 }
 
 .btn-icon {
-	@extend %btn-icon;
-	color: $button-color;
-	background-color: $button-bg-color;
+	@extend %btn-common, %btn-disabled, %btn-color-set;
+	border-radius: 50%;
+	width: 2em;
+	height: 2em;
+	@include btnColor($button-color, $button-bg-color);
 }
 
 .btn-flat {
 	@extend %btn, %btn-disabled;
 	margin: 0;
-
 	@include btnFlatColor($text-color);
 
 	&.info {

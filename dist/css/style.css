@@ -420,7 +420,7 @@ template {
 
 .btn, input[type="submit"],
 input[type="button"],
-input[type="reset"], .btn-danger, .btn-flat, .btn-icon, nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle, .dropdown button.dropdown-toggle, #scroll-to-top {
+input[type="reset"], .btn-danger, .btn-flat, nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle, .btn-icon, .dropdown button.dropdown-toggle, #scroll-to-top {
   border: none;
   cursor: pointer; }
 
@@ -434,16 +434,98 @@ input[type="reset"], .btn-danger, .btn-flat {
 
 [disabled].btn, input[disabled][type="submit"],
 input[disabled][type="button"],
-input[disabled][type="reset"], [disabled].btn-flat {
+input[disabled][type="reset"], [disabled].btn-icon, [disabled].btn-flat {
   cursor: default;
   box-shadow: none;
   opacity: 0.7; }
 
-.btn-icon {
-  border-radius: 50%;
-  transition: box-shadow 0.3s; }
-  .btn-icon:hover {
+.info.btn, input.info[type="submit"],
+input.info[type="button"],
+input.info[type="reset"], .info.btn-icon {
+  color: #fff;
+  background-color: #4f81c5;
+  outline-color: #4f81c5;
+  transition: background-color 0.3s, box-shadow 0.3s; }
+  .info.btn:focus:not([disabled]), input.info[type="submit"]:focus:not([disabled]),
+  input.info[type="button"]:focus:not([disabled]),
+  input.info[type="reset"]:focus:not([disabled]), .info.btn-icon:focus:not([disabled]), .info.btn:hover:not([disabled]), input.info[type="submit"]:hover:not([disabled]),
+  input.info[type="button"]:hover:not([disabled]),
+  input.info[type="reset"]:hover:not([disabled]), .info.btn-icon:hover:not([disabled]) {
+    color: #fff;
+    background-color: #5e8cca;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
+  .info.btn:active:not([disabled]), input.info[type="submit"]:active:not([disabled]),
+  input.info[type="button"]:active:not([disabled]),
+  input.info[type="reset"]:active:not([disabled]), .info.btn-icon:active:not([disabled]) {
+    color: #fff;
+    background-color: #4076c0;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
+
+.success.btn, input.success[type="submit"],
+input.success[type="button"],
+input.success[type="reset"], .success.btn-icon {
+  color: #fff;
+  background-color: #507d3a;
+  outline-color: #507d3a;
+  transition: background-color 0.3s, box-shadow 0.3s; }
+  .success.btn:focus:not([disabled]), input.success[type="submit"]:focus:not([disabled]),
+  input.success[type="button"]:focus:not([disabled]),
+  input.success[type="reset"]:focus:not([disabled]), .success.btn-icon:focus:not([disabled]), .success.btn:hover:not([disabled]), input.success[type="submit"]:hover:not([disabled]),
+  input.success[type="button"]:hover:not([disabled]),
+  input.success[type="reset"]:hover:not([disabled]), .success.btn-icon:hover:not([disabled]) {
+    color: #fff;
+    background-color: #598b40;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
+  .success.btn:active:not([disabled]), input.success[type="submit"]:active:not([disabled]),
+  input.success[type="button"]:active:not([disabled]),
+  input.success[type="reset"]:active:not([disabled]), .success.btn-icon:active:not([disabled]) {
+    color: #fff;
+    background-color: #476f34;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
+
+.warning.btn, input.warning[type="submit"],
+input.warning[type="button"],
+input.warning[type="reset"], .warning.btn-icon {
+  color: #fff;
+  background-color: #ffcc00;
+  outline-color: #ffcc00;
+  transition: background-color 0.3s, box-shadow 0.3s; }
+  .warning.btn:focus:not([disabled]), input.warning[type="submit"]:focus:not([disabled]),
+  input.warning[type="button"]:focus:not([disabled]),
+  input.warning[type="reset"]:focus:not([disabled]), .warning.btn-icon:focus:not([disabled]), .warning.btn:hover:not([disabled]), input.warning[type="submit"]:hover:not([disabled]),
+  input.warning[type="button"]:hover:not([disabled]),
+  input.warning[type="reset"]:hover:not([disabled]), .warning.btn-icon:hover:not([disabled]) {
+    color: #fff;
+    background-color: #ffd014;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
+  .warning.btn:active:not([disabled]), input.warning[type="submit"]:active:not([disabled]),
+  input.warning[type="button"]:active:not([disabled]),
+  input.warning[type="reset"]:active:not([disabled]), .warning.btn-icon:active:not([disabled]) {
+    color: #fff;
+    background-color: #ebbc00;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
+
+.danger.btn, input.danger[type="submit"],
+input.danger[type="button"],
+input.danger[type="reset"], .danger.btn-icon {
+  color: #fff;
+  background-color: #e1553e;
+  outline-color: #e1553e;
+  transition: background-color 0.3s, box-shadow 0.3s; }
+  .danger.btn:focus:not([disabled]), input.danger[type="submit"]:focus:not([disabled]),
+  input.danger[type="button"]:focus:not([disabled]),
+  input.danger[type="reset"]:focus:not([disabled]), .danger.btn-icon:focus:not([disabled]), .danger.btn:hover:not([disabled]), input.danger[type="submit"]:hover:not([disabled]),
+  input.danger[type="button"]:hover:not([disabled]),
+  input.danger[type="reset"]:hover:not([disabled]), .danger.btn-icon:hover:not([disabled]) {
+    color: #fff;
+    background-color: #e46550;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
+  .danger.btn:active:not([disabled]), input.danger[type="submit"]:active:not([disabled]),
+  input.danger[type="button"]:active:not([disabled]),
+  input.danger[type="reset"]:active:not([disabled]), .danger.btn-icon:active:not([disabled]) {
+    color: #fff;
+    background-color: #de452c;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
 
 nav a:not(.nav-brand), nav .nav-header .nav-brand.text, nav .dropdown > button.dropdown-toggle {
   display: inline-block;
@@ -796,90 +878,6 @@ input[type="reset"] {
     color: #fff;
     background-color: #c19bc7;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
-  .btn.info, input.info[type="submit"],
-  input.info[type="button"],
-  input.info[type="reset"] {
-    color: #fff;
-    background-color: #4f81c5;
-    outline-color: #4f81c5;
-    transition: background-color 0.3s, box-shadow 0.3s; }
-    .btn.info:focus:not([disabled]), input.info[type="submit"]:focus:not([disabled]),
-    input.info[type="button"]:focus:not([disabled]),
-    input.info[type="reset"]:focus:not([disabled]), .btn.info:hover:not([disabled]), input.info[type="submit"]:hover:not([disabled]),
-    input.info[type="button"]:hover:not([disabled]),
-    input.info[type="reset"]:hover:not([disabled]) {
-      color: #fff;
-      background-color: #5e8cca;
-      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
-    .btn.info:active:not([disabled]), input.info[type="submit"]:active:not([disabled]),
-    input.info[type="button"]:active:not([disabled]),
-    input.info[type="reset"]:active:not([disabled]) {
-      color: #fff;
-      background-color: #4076c0;
-      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
-  .btn.success, input.success[type="submit"],
-  input.success[type="button"],
-  input.success[type="reset"] {
-    color: #fff;
-    background-color: #507d3a;
-    outline-color: #507d3a;
-    transition: background-color 0.3s, box-shadow 0.3s; }
-    .btn.success:focus:not([disabled]), input.success[type="submit"]:focus:not([disabled]),
-    input.success[type="button"]:focus:not([disabled]),
-    input.success[type="reset"]:focus:not([disabled]), .btn.success:hover:not([disabled]), input.success[type="submit"]:hover:not([disabled]),
-    input.success[type="button"]:hover:not([disabled]),
-    input.success[type="reset"]:hover:not([disabled]) {
-      color: #fff;
-      background-color: #598b40;
-      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
-    .btn.success:active:not([disabled]), input.success[type="submit"]:active:not([disabled]),
-    input.success[type="button"]:active:not([disabled]),
-    input.success[type="reset"]:active:not([disabled]) {
-      color: #fff;
-      background-color: #476f34;
-      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
-  .btn.warning, input.warning[type="submit"],
-  input.warning[type="button"],
-  input.warning[type="reset"] {
-    color: #fff;
-    background-color: #ffcc00;
-    outline-color: #ffcc00;
-    transition: background-color 0.3s, box-shadow 0.3s; }
-    .btn.warning:focus:not([disabled]), input.warning[type="submit"]:focus:not([disabled]),
-    input.warning[type="button"]:focus:not([disabled]),
-    input.warning[type="reset"]:focus:not([disabled]), .btn.warning:hover:not([disabled]), input.warning[type="submit"]:hover:not([disabled]),
-    input.warning[type="button"]:hover:not([disabled]),
-    input.warning[type="reset"]:hover:not([disabled]) {
-      color: #fff;
-      background-color: #ffd014;
-      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
-    .btn.warning:active:not([disabled]), input.warning[type="submit"]:active:not([disabled]),
-    input.warning[type="button"]:active:not([disabled]),
-    input.warning[type="reset"]:active:not([disabled]) {
-      color: #fff;
-      background-color: #ebbc00;
-      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
-  .btn.danger, input.danger[type="submit"],
-  input.danger[type="button"],
-  input.danger[type="reset"] {
-    color: #fff;
-    background-color: #e1553e;
-    outline-color: #e1553e;
-    transition: background-color 0.3s, box-shadow 0.3s; }
-    .btn.danger:focus:not([disabled]), input.danger[type="submit"]:focus:not([disabled]),
-    input.danger[type="button"]:focus:not([disabled]),
-    input.danger[type="reset"]:focus:not([disabled]), .btn.danger:hover:not([disabled]), input.danger[type="submit"]:hover:not([disabled]),
-    input.danger[type="button"]:hover:not([disabled]),
-    input.danger[type="reset"]:hover:not([disabled]) {
-      color: #fff;
-      background-color: #e46550;
-      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
-    .btn.danger:active:not([disabled]), input.danger[type="submit"]:active:not([disabled]),
-    input.danger[type="button"]:active:not([disabled]),
-    input.danger[type="reset"]:active:not([disabled]) {
-      color: #fff;
-      background-color: #de452c;
-      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
 
 .btn-danger {
   color: #fff;
@@ -896,14 +894,27 @@ input[type="reset"] {
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
 
 .btn-icon {
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
   color: #fff;
-  background-color: #c9a8ce; }
+  background-color: #c9a8ce;
+  outline-color: #c9a8ce;
+  transition: background-color 0.3s, box-shadow 0.3s; }
+  .btn-icon:focus:not([disabled]), .btn-icon:hover:not([disabled]) {
+    color: #fff;
+    background-color: #d1b5d5;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
+  .btn-icon:active:not([disabled]) {
+    color: #fff;
+    background-color: #c19bc7;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
 
 .btn-flat {
   margin: 0;
   color: #333;
   background-color: transparent;
-  outline: none;
+  outline-color: rgba(51, 51, 51, 0.2);
   transition: color 0.3s, background-color 0.3s; }
   .btn-flat:hover:not([disabled]) {
     background-color: rgba(51, 51, 51, 0.1); }
@@ -912,7 +923,7 @@ input[type="reset"] {
   .btn-flat.info {
     color: #4f81c5;
     background-color: transparent;
-    outline: none;
+    outline-color: rgba(79, 129, 197, 0.2);
     transition: color 0.3s, background-color 0.3s; }
     .btn-flat.info:hover:not([disabled]) {
       background-color: rgba(79, 129, 197, 0.1); }
@@ -921,7 +932,7 @@ input[type="reset"] {
   .btn-flat.success {
     color: #507d3a;
     background-color: transparent;
-    outline: none;
+    outline-color: rgba(80, 125, 58, 0.2);
     transition: color 0.3s, background-color 0.3s; }
     .btn-flat.success:hover:not([disabled]) {
       background-color: rgba(80, 125, 58, 0.1); }
@@ -930,7 +941,7 @@ input[type="reset"] {
   .btn-flat.warning {
     color: #ffcc00;
     background-color: transparent;
-    outline: none;
+    outline-color: rgba(255, 204, 0, 0.2);
     transition: color 0.3s, background-color 0.3s; }
     .btn-flat.warning:hover:not([disabled]) {
       background-color: rgba(255, 204, 0, 0.1); }
@@ -939,7 +950,7 @@ input[type="reset"] {
   .btn-flat.danger {
     color: #e1553e;
     background-color: transparent;
-    outline: none;
+    outline-color: rgba(225, 85, 62, 0.2);
     transition: color 0.3s, background-color 0.3s; }
     .btn-flat.danger:hover:not([disabled]) {
       background-color: rgba(225, 85, 62, 0.1); }
@@ -1019,7 +1030,7 @@ ul.card-list {
   margin: 0;
   padding: 0;
   list-style: none; }
-  ul.card-list li {
+  ul.card-list li:not(.card) {
     display: inline-block;
     vertical-align: top; }
 

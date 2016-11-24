@@ -23,7 +23,7 @@
 @mixin btnFlatColor($color) {
 	color: $color;
 	background-color: transparent;
-	outline: none;
+	outline-color: rgba($color, 0.2);
 	transition: color $transition-time, background-color $transition-time;
 
 	&:hover:not([disabled]) {

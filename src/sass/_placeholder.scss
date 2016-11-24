@@ -40,11 +40,19 @@
 		opacity: 0.7;
 	}
 }
-%btn-icon {
-	@extend %btn-common;
-	border-radius: 50%;
-	transition: box-shadow $transition-time;
-	&:hover { box-shadow: $shadow-normal; }
+%btn-color-set {
+	&.info {
+		@include btnColor($button-color, $info-color);
+	}
+	&.success {
+		@include btnColor($button-color, $success-color);
+	}
+	&.warning {
+		@include btnColor($button-color, $warning-color);
+	}
+	&.danger {
+		@include btnColor($button-color, $danger-color);
+	}
 }
 
 //======================================================================

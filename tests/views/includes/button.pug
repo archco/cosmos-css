@@ -1,6 +1,7 @@
 section
 	h1 Buttons
 	hr
+	
 	h2 Button
 	button(class='btn') btn
 	button(class='btn info') info
@@ -11,6 +12,7 @@ section
 	input(type='submit')
 	button(class='btn btn-danger') btn-danger
 	a(href='#' class='btn info') link button
+	
 	h2 Flat button
 	button(class='btn-flat') btn-flat
 	button(class='btn-flat info') info
@@ -19,7 +21,22 @@ section
 	button(class='btn-flat danger') danger
 	br
 	a(href='#' class='btn-flat info') link button
+	
+	h2 Icon Button
+	button(class='btn-icon')
+		<i class="fa fa-calendar" aria-hidden="true"></i>
+	button(class='btn-icon info')
+		<i class="fa fa-comment" aria-hidden="true"></i>
+	button(class='btn-icon success')
+		<i class="fa fa-code" aria-hidden="true"></i>
+	button(class='btn-icon warning')
+		<i class="fa fa-exclamation" aria-hidden="true"></i>
+	button(class='btn-icon danger')
+		<i class="fa fa-times" aria-hidden="true"></i>
+
 	h2 Disabled
 	button(class='btn' disabled) btn
 	button(class='btn-flat' disabled) btn-flat
+	button(class='btn-icon danger' disabled)
+		<i class="fa fa-times" aria-hidden="true"></i>
 	
