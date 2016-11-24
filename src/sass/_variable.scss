@@ -17,7 +17,7 @@ $mobile-size: 768px !default;
 $tablet-size: 992px !default;
 
 // colors
-// --------------------
+// ==================================================
 $white: #fff !default;
 $black: #333 !default;
 $gray: #999999 !default;
@@ -30,6 +30,8 @@ $green: #5da039 !default;
 $red: #e1553e !default;
 $yellow: #ffcb05 !default;
 
+// Theme
+// ==================================================
 // theme-colors
 $primary-color: $lightblue !default;
 $primary-color-light: lighten($primary-color, 20%);
@@ -39,6 +41,9 @@ $secondary-color: $gray !default;
 $text-color: $black !default;
 $text-contrast-color: $white !default;
 $body-bg-color: initial !default;
+
+// Scaffolding
+// ==================================================
 // link colors
 $link-color: $lightblue !default;
 $link-hover-color: darken($link-color, 8%) !default;
