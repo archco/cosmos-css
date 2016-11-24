@@ -1,7 +1,7 @@
 /*!
  * cosmos-css
  *
- * @version: v0.2.2
+ * @version: v0.2.3
  * @updated: 2016-11-24
  * @link: https://github.com/archco/cosmos-css
  */
