@@ -1054,7 +1054,6 @@ ul.card-list {
   z-index: 2;
   margin: 0.5rem 0;
   padding: 0;
-  color: #333;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
@@ -1069,7 +1068,7 @@ ul.card-list {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    flex: 2;
+    flex: 3;
     border-radius: 2px 2px 0 0; }
     .card .card-image img {
       max-width: none;
@@ -1085,7 +1084,7 @@ ul.card-list {
       text-shadow: 0 0 4px black; }
   .card .card-content {
     flex: 1;
-    padding: 1rem; }
+    padding: 0.5rem; }
   .card.horizontal {
     flex-direction: row; }
     .card.horizontal {
@@ -1127,15 +1126,6 @@ ul.card-list {
     @media only screen and (min-width: 768px) {
       .card.inline {
         margin: 0.5rem; } }
-  .card a:not(.btn):not(input[type="submit"]):not(
-  input[type="button"]):not(
-  input[type="reset"]) {
-    color: #4f81c5;
-    transition: color 0.3s; }
-    .card a:not(.btn):not(input[type="submit"]):not(
-    input[type="button"]):not(
-    input[type="reset"]):hover {
-      color: #9cb8de; }
   .card.hoverable {
     transition: box-shadow 0.3s; }
     .card.hoverable:focus, .card.hoverable:hover {

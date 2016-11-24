@@ -21,7 +21,6 @@ ul.card-list {
 	z-index: 2;
 	margin: 0.5rem 0;
 	padding: 0;
-	color: $card-color;
 	background-color: $card-bg-color;
 	border-radius: $card-radius;
 	box-shadow: $card-shadow;
@@ -41,7 +40,7 @@ ul.card-list {
 		align-items: center;
 		justify-content: center;
 		overflow: hidden;
-		flex: 2;
+		flex: 3;
 		border-radius: $card-radius $card-radius 0 0;
 
 		img {
@@ -60,7 +59,7 @@ ul.card-list {
 	}
 	.card-content {
 		flex: 1;
-		padding: 1rem;
+		padding: 0.5rem;
 	}
 
 	// horizontal
@@ -112,12 +111,6 @@ ul.card-list {
 		@include media-tablet-up {
 			margin: 0.5rem;
 		}
-	}
-
-	a:not(.btn) {
-		color: $card-link-color;
-		transition: color $transition-time;
-		&:hover { color: lighten($card-link-color, 20%); }
 	}
 
 	&.hoverable {
