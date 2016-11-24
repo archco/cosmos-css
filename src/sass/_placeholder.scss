@@ -70,6 +70,7 @@
 //======================================================================
 
 %nav-link {
+	@extend %link-no-deco;
 	display: inline-block;
 	padding: 12px 18px;
 	color: $nav-link-color;

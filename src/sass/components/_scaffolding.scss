@@ -21,6 +21,7 @@ footer {
 	background-color: $footer-bg-color;
 
 	a {
+		@extend %link-no-deco;
 		color: $footer-link-color;
 		transition: color $transition-time;
 		&:hover { color: $footer-link-hover-color; }
@@ -29,7 +30,7 @@ footer {
 		padding: 0.5rem 0;
 		text-align: center;
 		color: rgba($footer-color, 0.8);
-		background-color: rgba(#000, 0.15);
+		background-color: rgba(#000, 0.1);
 	}
 }
 
@@ -72,6 +73,11 @@ a {
 		color: $link-hover-color;
 		text-decoration: $link-hover-decoration;
 	}
+}
+
+%link-no-deco {
+	&:hover,
+	&:focus { text-decoration: none; }
 }
 
 // table

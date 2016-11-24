@@ -21,6 +21,7 @@ ul.pagination {
 		}
 
 		a {
+			@extend %link-no-deco;
 			transition: color $transition-time, background-color $transition-time;
 
 			&:hover {
