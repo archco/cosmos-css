@@ -1,6 +1,6 @@
 {
   "name": "cosmos-css",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "personal practice",
   "main": "dist/js/script.js",
   "directories": {
