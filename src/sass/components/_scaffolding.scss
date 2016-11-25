@@ -75,9 +75,12 @@ a {
 	}
 }
 
+a.no-deco {
+	@include no-decoration;
+}
+
 %link-no-deco {
-	&:hover,
-	&:focus { text-decoration: none; }
+	@include no-decoration;
 }
 
 // table

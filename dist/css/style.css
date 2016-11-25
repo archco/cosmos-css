@@ -624,7 +624,10 @@ a {
     color: #3a6db1;
     text-decoration: underline; }
 
-nav a:hover:not(.nav-brand), nav .nav-header .nav-brand.text:hover, nav .dropdown > button.dropdown-toggle:hover, footer a:hover, ul.pagination li a:hover, nav a:focus:not(.nav-brand), nav .nav-header .nav-brand.text:focus, nav .dropdown > button.dropdown-toggle:focus, footer a:focus, ul.pagination li a:focus {
+a.no-deco:focus, a.no-deco:hover {
+  text-decoration: none; }
+
+nav a:focus:not(.nav-brand), nav .nav-header .nav-brand.text:focus, nav .dropdown > button.dropdown-toggle:focus, footer a:focus, ul.pagination li a:focus, nav a:hover:not(.nav-brand), nav .nav-header .nav-brand.text:hover, nav .dropdown > button.dropdown-toggle:hover, footer a:hover, ul.pagination li a:hover {
   text-decoration: none; }
 
 table {
@@ -1137,6 +1140,8 @@ ul.card-list {
         margin: 0.5rem; } }
   .card.hoverable {
     transition: box-shadow 0.3s; }
+    .card.hoverable:focus, .card.hoverable:hover {
+      text-decoration: none; }
     .card.hoverable:focus, .card.hoverable:hover {
       box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.3); }
 

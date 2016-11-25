@@ -114,6 +114,7 @@ ul.card-list {
 	}
 
 	&.hoverable {
+		@include no-decoration;
 		transition: box-shadow $transition-time;
 
 		&:focus,
