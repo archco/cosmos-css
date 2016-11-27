@@ -1229,8 +1229,9 @@ select,
 textarea {
   width: 100%;
   min-height: 2.5rem;
-  padding: 0.25rem 0.5rem;
-  margin: 0.5em 0;
+  line-height: 1.4;
+  padding: 0.2em 0.5em;
+  margin: 0.5rem 0;
   border: 1px solid #999999;
   border-radius: 2px;
   background-color: transparent; }
