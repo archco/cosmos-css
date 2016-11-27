@@ -3,8 +3,8 @@
 /*!
  * cosmos-css
  *
- * @version: v0.2.4
- * @updated: 2016-11-25
+ * @version: v0.2.5
+ * @updated: 2016-11-27
  * @link: https://github.com/archco/cosmos-css
  */
 
