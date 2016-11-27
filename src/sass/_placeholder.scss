@@ -51,18 +51,7 @@
 	}
 }
 %btn-color-set {
-	&.info {
-		@include btnColor($button-color, $info-color);
-	}
-	&.success {
-		@include btnColor($button-color, $success-color);
-	}
-	&.warning {
-		@include btnColor($button-color, $warning-color);
-	}
-	&.danger {
-		@include btnColor($button-color, $danger-color);
-	}
+	@include btnColorSet();
 }
 
 //======================================================================

@@ -4,7 +4,6 @@
 
 .btn {
 	@extend %btn, %btn-disabled, %btn-color-set;
-	@include btnColor($button-color, $button-bg-color);
 }
 
 .btn-danger {
@@ -17,24 +16,10 @@
 	border-radius: 50%;
 	width: 2em;
 	height: 2em;
-	@include btnColor($button-color, $button-bg-color);
 }
 
 .btn-flat {
 	@extend %btn, %btn-disabled;
 	margin: 0;
-	@include btnFlatColor($link-color);
-
-	&.info {
-		@include btnFlatColor($info-color);
-	}
-	&.success {
-		@include btnFlatColor($success-color);
-	}
-	&.warning {
-		@include btnFlatColor($warning-color);
-	}
-	&.danger {
-		@include btnFlatColor($danger-color);
-	}
+	@include btnFlatColorSet();
 }
