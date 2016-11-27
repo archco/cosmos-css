@@ -442,6 +442,11 @@ input[type="reset"], .btn-danger, .btn-flat {
   margin: 0.2em;
   outline-color: #c9a8ce;
   border-radius: 2px; }
+  .full-width.btn, input.full-width[type="submit"],
+  input.full-width[type="button"],
+  input.full-width[type="reset"], .full-width.btn-danger, .full-width.btn-flat {
+    margin-left: 0;
+    margin-right: 0; }
 
 [disabled].btn, input[disabled][type="submit"],
 input[disabled][type="button"],
