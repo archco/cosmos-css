@@ -1210,6 +1210,7 @@ label {
 input,
 select,
 textarea {
+  vertical-align: middle;
   outline-color: #c9a8ce; }
 
 input:not([type]),
@@ -1226,7 +1227,6 @@ input[type="number"],
 input[type="search"],
 select,
 textarea {
-  display: block;
   width: 100%;
   min-height: 2.5rem;
   padding: 0.25rem 0.5rem;
@@ -1277,17 +1277,13 @@ input[type="radio"] {
   height: 1.2em;
   vertical-align: middle; }
 
-input[type="file"] {
-  display: block; }
-
 input[type="range"] {
-  display: block;
   width: 100%; }
 
 .form-inline {
   margin: 0;
   padding: 0;
-  display: inline; }
+  display: inline-block; }
   .form-inline textarea {
     height: auto; }
 
@@ -1296,8 +1292,6 @@ input[type="range"] {
 .form-inline textarea, input.inline,
 select.inline,
 textarea.inline {
-  display: inline-block;
-  vertical-align: middle;
   width: auto; }
 
 /** pagination */

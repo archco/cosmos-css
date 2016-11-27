@@ -23,6 +23,7 @@ label {
 input,
 select,
 textarea {
+	vertical-align: middle;
 	// default outline color
 	outline-color: $input-outline-color;
 }
@@ -42,7 +43,6 @@ input[type="number"],
 input[type="search"],
 select,
 textarea {
-	display: block;
 	width: 100%;
 	min-height: 2.5rem;
 	padding: $input-padding;
@@ -86,19 +86,14 @@ input[type="radio"] {
 	vertical-align: middle;
 }
 
-input[type="file"] {
-	display: block;
-}
-
 input[type="range"] {
-	display: block;
 	width: 100%;
 }
 
 .form-inline {
 	margin: 0;
 	padding: 0;
-	display: inline;
+	display: inline-block;
 
 	input,
 	select,
@@ -119,8 +114,6 @@ textarea {
 }
 
 %form-inline {
-	display: inline-block;
-	vertical-align: middle;
 	width: auto;
 }
 
