@@ -1,8 +1,6 @@
 /************************************************************
   util
-*************************************************************
-* 
-*/
+*************************************************************/
 
 /**
  * submitConfirm - confirm 을 취소하면 event.preventDefault()
@@ -13,7 +11,7 @@
 function submitConfirm(form, message) {
   var message = typeof message !== 'undefined' ? message : 'Are you confirm?';
   form.addEventListener('submit', function(event) {
-    if (!confirm(message)) {
+    if (! confirm(message)) {
       event.preventDefault();
     }
   });

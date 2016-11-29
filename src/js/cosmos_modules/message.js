@@ -1,11 +1,9 @@
 /************************************************************
   message
-*************************************************************
-* 
-*/
+*************************************************************/
 
 /**
- * showMessage - message-box를 추가.
+ * add '.message-box' into '#message-container'
  * 
  * @param  {String} message
  * @param  {String} status  ['info','success','warning','error']
@@ -33,6 +31,7 @@ function showMessage(message, status) {
   b.appendChild(btn);
   c.appendChild(b);
 }
+
 /**
  * messageCloseBtnEventHandler
  */
@@ -43,6 +42,7 @@ function messageCloseBtnEventHandler(element) {
     messageBox.style.display = 'none';
   }, 600); // 0.6s
 }
+
 /**
  * IIFE - flash message 용 close button add event listner 
  */
