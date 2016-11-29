@@ -3,29 +3,29 @@
 //======================================================================
 
 fieldset {
-	margin: 0.5rem 0;
-	padding: 0 1rem;
-	border: $filedset-border;
-	border-radius: $radius-normal;
+  margin: 0.5rem 0;
+  padding: 0 1rem;
+  border: $filedset-border;
+  border-radius: $radius-normal;
 }
 legend {
-	padding: 0.5em 1em;
-	font-size: 1.2em;
-	font-weight: bold;
-	color: $legend-color;
+  padding: 0.5em 1em;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: $legend-color;
 }
 label {
-	font-weight: bold;
-	color: $label-color;
+  font-weight: bold;
+  color: $label-color;
 }
 
 // input common
 input,
 select,
 textarea {
-	vertical-align: middle;
-	// default outline color
-	outline-color: $input-outline-color;
+  vertical-align: middle;
+  // default outline color
+  outline-color: $input-outline-color;
 }
 
 // input generalize
@@ -43,81 +43,81 @@ input[type="number"],
 input[type="search"],
 select,
 textarea {
-	width: 100%;
-	min-height: 2.5rem;
-	line-height: 1.4;
-	padding: $input-padding;
-	margin: $input-margin;
-	border: $input-border;
-	border-radius: $input-radius;
-	background-color: transparent;
+  width: 100%;
+  min-height: 2.5rem;
+  line-height: 1.4;
+  padding: $input-padding;
+  margin: $input-margin;
+  border: $input-border;
+  border-radius: $input-radius;
+  background-color: transparent;
 
-	&[disabled],
-	&[readonly] {
-		background-color: $input-bg-disabled;
-	}
+  &[disabled],
+  &[readonly] {
+    background-color: $input-bg-disabled;
+  }
 }
 
 input[type="text"] {
-	&.password,
-	&.pw {
-		-webkit-text-security: disc;
-	}
+  &.password,
+  &.pw {
+    -webkit-text-security: disc;
+  }
 }
 
 textarea {
-	// default height.
-	height: 12em;
+  // default height.
+  height: 12em;
 
-	&.inline {
-		height: auto;
-	}
+  &.inline {
+    height: auto;
+  }
 }
 
 input[type="submit"],
 input[type="button"],
 input[type="reset"] {
-	@extend .btn;
+  @extend .btn;
 }
 
 input[type="checkbox"],
 input[type="radio"] {
-	width: 1.2em;
-	height: 1.2em;
-	vertical-align: middle;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
 }
 
 input[type="range"] {
-	width: 100%;
+  width: 100%;
 }
 
 .form-inline {
-	margin: 0;
-	padding: 0;
-	display: inline-block;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
 
-	input,
-	select,
-	textarea {
-		@extend %form-inline;
-	}
-	textarea {
-		height: auto;
-	}
+  input,
+  select,
+  textarea {
+    @extend %form-inline;
+  }
+  textarea {
+    height: auto;
+  }
 }
 
 input,
 select,
 textarea {
-	&.inline {
-		@extend %form-inline;
-	}
+  &.inline {
+    @extend %form-inline;
+  }
 }
 
 %form-inline {
-	width: auto;
+  width: auto;
 }
 
 .form-group {
-	@extend .group;
+  @extend .group;
 }

@@ -4,7 +4,7 @@
 
 // used for %link-no-deco
 @mixin no-decoration() {
-	&:focus, &:hover { text-decoration: none; }
+  &:focus, &:hover { text-decoration: none; }
 }
 
 //======================================================================
@@ -12,84 +12,84 @@
 //======================================================================
 
 @mixin btnColor($color, $back) {
-	color: $color;
-	background-color: $back;
-	outline-color: $back;
-	transition: background-color $transition-time, box-shadow $transition-time;
-	
-	&:focus:not([disabled]),
-	&:hover:not([disabled]) {
-		color: $color;
-		background-color: lighten($back, 4%);
-		box-shadow: $shadow-normal;
-	}
-	&:active:not([disabled]) {
-		color: $color;
-		background-color: darken($back, 4%);
-		box-shadow: $shadow-near;
-	}
+  color: $color;
+  background-color: $back;
+  outline-color: $back;
+  transition: background-color $transition-time, box-shadow $transition-time;
+  
+  &:focus:not([disabled]),
+  &:hover:not([disabled]) {
+    color: $color;
+    background-color: lighten($back, 4%);
+    box-shadow: $shadow-normal;
+  }
+  &:active:not([disabled]) {
+    color: $color;
+    background-color: darken($back, 4%);
+    box-shadow: $shadow-near;
+  }
 }
 @mixin btnFlatColor($color) {
-	color: $color;
-	background-color: transparent;
-	outline-color: rgba($color, 0.2);
-	transition: color $transition-time, background-color $transition-time;
-	
-	&:focus:not([disabled]),
-	&:hover:not([disabled]) {
-		color: $color;
-		background-color: rgba($color, 0.1);
-	}
-	&:active:not([disabled]) {
-		color: $color;
-		background-color: rgba($color, 0.2);
-	}
+  color: $color;
+  background-color: transparent;
+  outline-color: rgba($color, 0.2);
+  transition: color $transition-time, background-color $transition-time;
+  
+  &:focus:not([disabled]),
+  &:hover:not([disabled]) {
+    color: $color;
+    background-color: rgba($color, 0.1);
+  }
+  &:active:not([disabled]) {
+    color: $color;
+    background-color: rgba($color, 0.2);
+  }
 }
 
 @mixin btnColorSet() {
-	&,
-	&.primary {
-		@include btnColor($button-color, $primary-color);
-	}
-	&.secondary {
-		@include btnColor($button-color, $secondary-color);
-	}
-	&.info {
-		@include btnColor($button-color, $info-color);
-	}
-	&.success {
-		@include btnColor($button-color, $success-color);
-	}
-	&.warning {
-		@include btnColor($button-color, $warning-color);
-	}
-	&.danger {
-		@include btnColor($button-color, $danger-color);
-	}
+  &,
+  &.primary {
+    @include btnColor($button-color, $primary-color);
+  }
+  &.secondary {
+    @include btnColor($button-color, $secondary-color);
+  }
+  &.info {
+    @include btnColor($button-color, $info-color);
+  }
+  &.success {
+    @include btnColor($button-color, $success-color);
+  }
+  &.warning {
+    @include btnColor($button-color, $warning-color);
+  }
+  &.danger {
+    @include btnColor($button-color, $danger-color);
+  }
 }
 
 @mixin btnFlatColorSet() {
-	& {
-		@include btnFlatColor($link-color);
-	}
-	&.primary {
-		@include btnFlatColor($primary-color);
-	}
-	&.secondary {
-		@include btnFlatColor($secondary-color);
-	}
-	&.info {
-		@include btnFlatColor($info-color);
-	}
-	&.success {
-		@include btnFlatColor($success-color);
-	}
-	&.warning {
-		@include btnFlatColor($warning-color);
-	}
-	&.danger {
-		@include btnFlatColor($danger-color);
-	}
+  & {
+    @include btnFlatColor($link-color);
+  }
+  &.primary {
+    @include btnFlatColor($primary-color);
+  }
+  &.secondary {
+    @include btnFlatColor($secondary-color);
+  }
+  &.info {
+    @include btnFlatColor($info-color);
+  }
+  &.success {
+    @include btnFlatColor($success-color);
+  }
+  &.warning {
+    @include btnFlatColor($warning-color);
+  }
+  &.danger {
+    @include btnFlatColor($danger-color);
+  }
 }
 
 
@@ -99,11 +99,11 @@
 
 // clear-both
 @mixin clear-both() {
-	&:after {
-		content: "";
-		display: block;
-		clear: both;
-	}
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
 }
 
 
@@ -112,17 +112,17 @@
 //======================================================================
 
 @mixin messageBox($bg-color) {
-	$color: contrast-color($bg-color, $message-dark-color, $message-light-color);
+  $color: contrast-color($bg-color, $message-dark-color, $message-light-color);
 
-	color: $color;
-	background-color: $bg-color;
+  color: $color;
+  background-color: $bg-color;
 
-	.btn-close-message {
-		color: $color;
-		background-color: transparent;
-		transition: color $transition-time;
-		&:hover { color: rgba(#000, 0.3); }
-	}
+  .btn-close-message {
+    color: $color;
+    background-color: transparent;
+    transition: color $transition-time;
+    &:hover { color: rgba(#000, 0.3); }
+  }
 }
 
 
@@ -132,21 +132,21 @@
 
 // calculate card size
 @mixin calCardSize($size, $direction:"vertical") {
-	@if ($direction == "vertical") {
-		width: $size * 1.25;
-	} @else if ($direction == "horizontal") {
-		width: $size * 1.25;
-	}
+  @if ($direction == "vertical") {
+    width: $size * 1.25;
+  } @else if ($direction == "horizontal") {
+    width: $size * 1.25;
+  }
 }
 
 @mixin cardImageSize($direction:"vertical") {
-	@if ($direction == "vertical") {
-		width: 105%;
-		height: auto;
-	} @else if ($direction == "horizontal") {
-		height: 105%;
-		width: auto;
-	}
+  @if ($direction == "vertical") {
+    width: 105%;
+    height: auto;
+  } @else if ($direction == "horizontal") {
+    height: 105%;
+    width: auto;
+  }
 }
 
 
@@ -156,46 +156,46 @@
 
 // base mixins
 @mixin media-up($width) {
-	@media only screen and (min-width: $width) {
-		@content;
-	}
+  @media only screen and (min-width: $width) {
+    @content;
+  }
 }
 @mixin media-down($width) {
-	$width: $width - 1;
-	@media only screen and (max-width: $width) {
-		@content;
-	}
+  $width: $width - 1;
+  @media only screen and (max-width: $width) {
+    @content;
+  }
 }
 @mixin media-between($min, $max) {
-	$max: $max - 1;
-	@media only screen and (min-width: $min) and (max-width: $max) {
-		@content;
-	}
+  $max: $max - 1;
+  @media only screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
 }
 
 // functions
 @mixin media-only-mobile() {
-	@include media-down($mobile-size) {
-		@content;
-	}
+  @include media-down($mobile-size) {
+    @content;
+  }
 }
 @mixin media-tablet-up() {
-	@include media-up($mobile-size) {
-		@content;
-	}
+  @include media-up($mobile-size) {
+    @content;
+  }
 }
 @mixin media-tablet-down() {
-	@include media-down($tablet-size) {
-		@content;
-	}
+  @include media-down($tablet-size) {
+    @content;
+  }
 }
 @mixin media-only-tablet() {
-	@include media-between($mobile-size, $tablet-size) {
-		@content;
-	}
+  @include media-between($mobile-size, $tablet-size) {
+    @content;
+  }
 }
 @mixin media-only-desktop() {
-	@include media-up($tablet-size) {
-		@content;
-	}
+  @include media-up($tablet-size) {
+    @content;
+  }
 }

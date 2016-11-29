@@ -1448,8 +1448,8 @@ nav .dropdown > button.dropdown-toggle {
 /*
 // example
 .parallax-index-1 {
-	background-image: url('../img/index-bg/index-1.jpg');
-	height: 500px;
+  background-image: url('../img/index-bg/index-1.jpg');
+  height: 500px;
 }
  */
 @keyframes spin {

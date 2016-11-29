@@ -7,48 +7,48 @@
 .success { color: $success-color; }
 .info { color: $info-color; }
 .comment {
-	color: $gray;
-	font-size: 0.8rem;
+  color: $gray;
+  font-size: 0.8rem;
 }
 
 /** message-box */
 .message-box {
-	// common attributes.
-	z-index: 2;
-	position: relative;
-	padding: 1rem 1.5rem;
-	margin: 8px;
-	border-radius: $radius-normal;
-	vertical-align: middle;
-	transition: opacity ($transition-time * 2);
+  // common attributes.
+  z-index: 2;
+  position: relative;
+  padding: 1rem 1.5rem;
+  margin: 8px;
+  border-radius: $radius-normal;
+  vertical-align: middle;
+  transition: opacity ($transition-time * 2);
 
-	.btn-close-message {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		right: 1rem;
-		padding: 0;
-		font-size: 1.5rem;
-		border: none;
-		outline: none;
-		cursor: pointer;
-	}
-	
-	// color attributes.
-	@include messageBox($secondary-color);
+  .btn-close-message {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1rem;
+    padding: 0;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  // color attributes.
+  @include messageBox($secondary-color);
 
-	&.error,
-	&.message-error {
-		@include messageBox($error-color);
-	}
+  &.error,
+  &.message-error {
+    @include messageBox($error-color);
+  }
 
-	&.success,
-	&.message-success {
-		@include messageBox($success-color);
-	}
+  &.success,
+  &.message-success {
+    @include messageBox($success-color);
+  }
 
-	&.info,
-	&.message-info {
-		@include messageBox($info-color);
-	}
+  &.info,
+  &.message-info {
+    @include messageBox($info-color);
+  }
 }

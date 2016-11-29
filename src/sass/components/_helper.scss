@@ -8,7 +8,7 @@
 .invisible { visibility: hidden; }
 // responsive hiding
 .hide-only-mobile {
-	@extend %responsive-mobile-hide;
+  @extend %responsive-mobile-hide;
 }
 
 // font
@@ -21,33 +21,33 @@
 .right { text-align: right; }
 .left { text-align: left; }
 .vertical-center-container {
-	display: flex;
-	align-items: center; // vertical alignment.
+  display: flex;
+  align-items: center; // vertical alignment.
 
-	.flex-item {
-		display: block;
-	}
+  .flex-item {
+    display: block;
+  }
 }
 .flex-center-container {
-	@extend .vertical-center-container; // horizontal alignment.
-	justify-content: center;
+  @extend .vertical-center-container; // horizontal alignment.
+  justify-content: center;
 }
 .center-position-container {
-	@extend %position-center-container;
+  @extend %position-center-container;
 
-	.center-position {
-		@extend %position-center;
-	}
+  .center-position {
+    @extend %position-center;
+  }
 }
 .center-block {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // float
 .float-clear {
-	@include clear-both;
+  @include clear-both;
 }
 .float-left { float: left !important; }
 .float-right { float: right !important; }

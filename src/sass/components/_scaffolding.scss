@@ -6,39 +6,39 @@ html { box-sizing: border-box; }
 *, *:before, *:after { box-sizing: inherit; }
 
 body {
-	font-family: $font-base;
-	color: $text-color;
-	background-color: $body-bg-color;
+  font-family: $font-base;
+  color: $text-color;
+  background-color: $body-bg-color;
 }
 
 header,
 footer {
-	z-index: 10;
+  z-index: 10;
 }
 
 footer {
-	color: $footer-color;
-	background-color: $footer-bg-color;
+  color: $footer-color;
+  background-color: $footer-bg-color;
 
-	a {
-		@extend %link-no-deco;
-		color: $footer-link-color;
-		transition: color $transition-time;
-		&:hover { color: $footer-link-hover-color; }
-	}
-	.footer-copyright {
-		padding: 0.5rem 0;
-		text-align: center;
-		color: rgba($footer-color, 0.8);
-		background-color: rgba(#000, 0.1);
-	}
+  a {
+    @extend %link-no-deco;
+    color: $footer-link-color;
+    transition: color $transition-time;
+    &:hover { color: $footer-link-hover-color; }
+  }
+  .footer-copyright {
+    padding: 0.5rem 0;
+    text-align: center;
+    color: rgba($footer-color, 0.8);
+    background-color: rgba(#000, 0.1);
+  }
 }
 
 address { font-style: normal; }
 
 hr {
-	border: 0;
-	border-bottom: 1px solid $gray;
+  border: 0;
+  border-bottom: 1px solid $gray;
 }
 
 article { padding: 1em 0.5em; }
@@ -47,65 +47,65 @@ article { padding: 1em 0.5em; }
 // 
 // responsive 를 따로 설정할 필요가 있을지도 모르겠다.
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 // section
 @include media-tablet-up() {
-	section { padding: 2rem 5%; }
+  section { padding: 2rem 5%; }
 }
 @include media-only-mobile {
-	section { padding: 2rem 0.5rem; }
+  section { padding: 2rem 0.5rem; }
 }
 section h1 {
-	font-family: $font-accent;
-	padding-left: 1rem;
+  font-family: $font-accent;
+  padding-left: 1rem;
 }
 
 // link
 a {
-	color: $link-color;
-	text-decoration: none;
+  color: $link-color;
+  text-decoration: none;
 
-	&:hover,
-	&:focus {
-		color: $link-hover-color;
-		text-decoration: $link-hover-decoration;
-	}
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
 }
 
 a.no-deco {
-	@include no-decoration;
+  @include no-decoration;
 }
 
 %link-no-deco {
-	@include no-decoration;
+  @include no-decoration;
 }
 
 // table
 table {
-	width: 100%;
-	max-width: 800px;
-	margin: 0 auto;
-	font-size: 0.9em;
-	color: $table-text-color;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 0.9em;
+  color: $table-text-color;
 
-	th, td { padding: 0.5em 1em; }
-	th {
-		text-align: left;
-		background-color: $table-head-color;
-		color: $table-head-text-color;
-	}
-	tr:nth-child(even) { background-color: $table-row-even-bg; }
-	a {
-		color: $table-link-color;
-		transition: text-decoration $transition-time;
-	
-		&:hover,
-		&:focus {
-			color: $table-link-hover-color;
-			text-decoration: $table-link-hover-decoration;
-		}
-	}
+  th, td { padding: 0.5em 1em; }
+  th {
+    text-align: left;
+    background-color: $table-head-color;
+    color: $table-head-text-color;
+  }
+  tr:nth-child(even) { background-color: $table-row-even-bg; }
+  a {
+    color: $table-link-color;
+    transition: text-decoration $transition-time;
+  
+    &:hover,
+    &:focus {
+      color: $table-link-hover-color;
+      text-decoration: $table-link-hover-decoration;
+    }
+  }
 }

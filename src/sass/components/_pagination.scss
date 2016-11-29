@@ -1,46 +1,46 @@
 /** pagination */
 ul.pagination {
-	padding: 0; 
-	margin: 1rem 0;
-	display: flex;
-	justify-content: center;
-	list-style-type: none;
+  padding: 0; 
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
 
-	li {
-		margin: 0 0.2rem;
-		display: inline-block;
-		border-radius: $radius-small;
-		color: $pagination-color;
-		background-color: $pagination-bg;
-		
-		span, a {
-			color: inherit;
-			background-color: inherit;
-			padding: 0.25rem 0.5rem;
-			display: block;
-		}
+  li {
+    margin: 0 0.2rem;
+    display: inline-block;
+    border-radius: $radius-small;
+    color: $pagination-color;
+    background-color: $pagination-bg;
+    
+    span, a {
+      color: inherit;
+      background-color: inherit;
+      padding: 0.25rem 0.5rem;
+      display: block;
+    }
 
-		a {
-			@extend %link-no-deco;
-			transition: color $transition-time, background-color $transition-time;
+    a {
+      @extend %link-no-deco;
+      transition: color $transition-time, background-color $transition-time;
 
-			&:hover {
-				color: $pagination-hover-color;
-				background-color: $pagination-hover-bg;
-			}
-		}
+      &:hover {
+        color: $pagination-hover-color;
+        background-color: $pagination-hover-bg;
+      }
+    }
 
-		&.active {
-			color: $pagination-active-color;
-			background-color: $pagination-active-bg;
+    &.active {
+      color: $pagination-active-color;
+      background-color: $pagination-active-bg;
 
-			> a:hover {
-				color: $pagination-active-hover-color;
-				background-color: $pagination-active-hover-bg;
-			}
-		}
-		&.disabled {
-			color: $pagination-disabled-color;
-		}
-	}
+      > a:hover {
+        color: $pagination-active-hover-color;
+        background-color: $pagination-active-hover-bg;
+      }
+    }
+    &.disabled {
+      color: $pagination-disabled-color;
+    }
+  }
 }

@@ -4,122 +4,122 @@
 
 // card list
 ul.card-list {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	
-	li:not(.card) {
-		display: inline-block;
-		vertical-align: top;
-	}
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  
+  li:not(.card) {
+    display: inline-block;
+    vertical-align: top;
+  }
 }
 
 // default - vertical
 .card {
-	display: flex;
-	flex-direction: column;
-	z-index: 2;
-	margin: 0.5rem 0;
-	padding: 0;
-	background-color: $card-bg-color;
-	border-radius: $card-radius;
-	box-shadow: $card-shadow;
-	height: $card-size;
-	
-	// card size
-	&.small {
-		height: $card-size-small;
-	}
-	&.large {
-		height: $card-size-large;
-	}
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  margin: 0.5rem 0;
+  padding: 0;
+  background-color: $card-bg-color;
+  border-radius: $card-radius;
+  box-shadow: $card-shadow;
+  height: $card-size;
+  
+  // card size
+  &.small {
+    height: $card-size-small;
+  }
+  &.large {
+    height: $card-size-large;
+  }
 
-	.card-image {
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		overflow: hidden;
-		flex: 3;
-		border-radius: $card-radius $card-radius 0 0;
+  .card-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex: 3;
+    border-radius: $card-radius $card-radius 0 0;
 
-		img {
-			max-width: none;
-			@include cardImageSize("vertical");
-		}
-		.card-title {
-			position: absolute;
-			z-index: 3;
-			bottom: 0.2em;
-			left: 0.5em;
-			margin: 0.3em 0;
-			color: $card-title-color;
-			text-shadow: 0 0 4px black;
-		}
-	}
-	.card-content {
-		flex: 1;
-		padding: 0.5rem;
-	}
+    img {
+      max-width: none;
+      @include cardImageSize("vertical");
+    }
+    .card-title {
+      position: absolute;
+      z-index: 3;
+      bottom: 0.2em;
+      left: 0.5em;
+      margin: 0.3em 0;
+      color: $card-title-color;
+      text-shadow: 0 0 4px black;
+    }
+  }
+  .card-content {
+    flex: 1;
+    padding: 0.5rem;
+  }
 
-	// horizontal
-	&.horizontal {
-		flex-direction: row;
+  // horizontal
+  &.horizontal {
+    flex-direction: row;
 
-		// card size
-		& { height: $card-size * 0.6; }
-		&.small { height: $card-size-small * 0.6; }
-		&.large { height: $card-size-large * 0.6; }
+    // card size
+    & { height: $card-size * 0.6; }
+    &.small { height: $card-size-small * 0.6; }
+    &.large { height: $card-size-large * 0.6; }
 
-		%card-horizontal-child {
-			display: inline-block;
-			max-height: none;
-			width: auto;
-			height: 100%;
-		}
-		.card-image {
-			@extend %card-horizontal-child;
-			flex: 2;
-			border-radius: $card-radius 0 0 $card-radius;
+    %card-horizontal-child {
+      display: inline-block;
+      max-height: none;
+      width: auto;
+      height: 100%;
+    }
+    .card-image {
+      @extend %card-horizontal-child;
+      flex: 2;
+      border-radius: $card-radius 0 0 $card-radius;
 
-			img {
-				@include cardImageSize("horizontal");
-			}
-		}
-		.card-content {
-			@extend %card-horizontal-child;
-			flex: 3;
-		}
-	}
+      img {
+        @include cardImageSize("horizontal");
+      }
+    }
+    .card-content {
+      @extend %card-horizontal-child;
+      flex: 3;
+    }
+  }
 
-	&.inline {
-		display: inline-flex;
-		vertical-align: text-top;
-		max-width: 100%;
-		margin: 0.5rem 0;
-		
-		// width size
-		& { @include calCardSize($card-size); }
-		&.small { @include calCardSize($card-size-small); }
-		&.large { @include calCardSize($card-size-large); }
-		&.horizontal {
-			& { @include calCardSize($card-size, "horizontal"); }
-			&.small { @include calCardSize($card-size-small, "horizontal"); }
-			&.large { @include calCardSize($card-size-large, "horizontal"); }
-		}
+  &.inline {
+    display: inline-flex;
+    vertical-align: text-top;
+    max-width: 100%;
+    margin: 0.5rem 0;
+    
+    // width size
+    & { @include calCardSize($card-size); }
+    &.small { @include calCardSize($card-size-small); }
+    &.large { @include calCardSize($card-size-large); }
+    &.horizontal {
+      & { @include calCardSize($card-size, "horizontal"); }
+      &.small { @include calCardSize($card-size-small, "horizontal"); }
+      &.large { @include calCardSize($card-size-large, "horizontal"); }
+    }
 
-		@include media-tablet-up {
-			margin: 0.5rem;
-		}
-	}
+    @include media-tablet-up {
+      margin: 0.5rem;
+    }
+  }
 
-	&.hoverable {
-		@include no-decoration;
-		transition: box-shadow $transition-time;
+  &.hoverable {
+    @include no-decoration;
+    transition: box-shadow $transition-time;
 
-		&:focus,
-		&:hover {
-			box-shadow: $card-hover-shadow;
-		}
-	}
+    &:focus,
+    &:hover {
+      box-shadow: $card-hover-shadow;
+    }
+  }
 }

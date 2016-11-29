@@ -1,7 +1,7 @@
 /************************************************************
-	util
+  util
 *************************************************************
-*	
+* 
 */
 
 /**
@@ -11,12 +11,12 @@
  * @param  {sting} message
  */
 function submitConfirm(form, message) {
-	var message = typeof message !== 'undefined' ? message : 'Are you confirm?';
-	form.addEventListener('submit', function(event) {
-		if (!confirm(message)) {
-			event.preventDefault();
-		}
-	});
+  var message = typeof message !== 'undefined' ? message : 'Are you confirm?';
+  form.addEventListener('submit', function(event) {
+    if (!confirm(message)) {
+      event.preventDefault();
+    }
+  });
 }
 
 /**
@@ -25,9 +25,9 @@ function submitConfirm(form, message) {
  * @return {bool}
  */
 function checkMobileSize() {
-	if (window.innerWidth < 800) {
-		return true;
-	} else {
-		return false;
-	}
+  if (window.innerWidth < 800) {
+    return true;
+  } else {
+    return false;
+  }
 }

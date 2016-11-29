@@ -3,19 +3,19 @@
 //======================================================================
 
 %flex-center {
-	display: flex;
-	align-items: center; /* vertically */
-	justify-content: center; /* horizontally*/
-	flex-direction: column;
-	clear: both;
+  display: flex;
+  align-items: center; /* vertically */
+  justify-content: center; /* horizontally*/
+  flex-direction: column;
+  clear: both;
 }
 %position-center-container {
-	position: relative;
+  position: relative;
 }
 %position-center {
-	position: absolute;
-	top: 50%;
-	transform: translate(0, -50%);
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 
 //======================================================================
@@ -23,40 +23,40 @@
 //======================================================================
 
 %btn-common {
-	display: inline-block;
-	vertical-align: middle;
-	text-align: center;
-	white-space: nowrap;
-	border: none;
-	cursor: pointer;
-	user-select: none;
-	
-	&:focus,
-	&:hover {
-		text-decoration: none;
-	}
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
 }
 %btn {
-	@extend %btn-common;
-	padding: 0.5em 1em;
-	margin: 0.2em;
-	outline-color: $button-outline-color;
-	border-radius: $button-radius;
+  @extend %btn-common;
+  padding: 0.5em 1em;
+  margin: 0.2em;
+  outline-color: $button-outline-color;
+  border-radius: $button-radius;
 
-	&.full-width {
-		margin-left: 0;
-		margin-right: 0;
-	}
+  &.full-width {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 %btn-disabled {
-	&[disabled] {
-		cursor: default;
-		box-shadow: none;
-		opacity: 0.7;
-	}
+  &[disabled] {
+    cursor: default;
+    box-shadow: none;
+    opacity: 0.7;
+  }
 }
 %btn-color-set {
-	@include btnColorSet();
+  @include btnColorSet();
 }
 
 //======================================================================
@@ -64,22 +64,22 @@
 //======================================================================
 
 %nav-link {
-	@extend %link-no-deco;
-	display: inline-block;
-	padding: 12px 18px;
-	color: $nav-link-color;
-	font-family: inherit;
-	font-size: inherit;
-	border-radius: 4px 4px 0 0;
-	transition: color $transition-time;
+  @extend %link-no-deco;
+  display: inline-block;
+  padding: 12px 18px;
+  color: $nav-link-color;
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: 4px 4px 0 0;
+  transition: color $transition-time;
 
-	&:hover { color: $nav-link-hover-color; }
+  &:hover { color: $nav-link-hover-color; }
 }
 %nav-button {
-	@extend %btn-common;
-	outline: none;
-	background-color: transparent;
-	display: inline-block;
+  @extend %btn-common;
+  outline: none;
+  background-color: transparent;
+  display: inline-block;
 }
 
 //======================================================================
@@ -87,12 +87,12 @@
 //======================================================================
 
 %resopnsive-tablet-hide {
-	@include media-tablet-up() {
-		& { display: none; }
-	}
+  @include media-tablet-up() {
+    & { display: none; }
+  }
 }
 %responsive-mobile-hide {
-	@include media-only-mobile() {
-		& { display: none; }
-	}
+  @include media-only-mobile() {
+    & { display: none; }
+  }
 }

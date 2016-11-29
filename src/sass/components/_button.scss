@@ -3,23 +3,23 @@
 //======================================================================
 
 .btn {
-	@extend %btn, %btn-disabled, %btn-color-set;
+  @extend %btn, %btn-disabled, %btn-color-set;
 }
 
 .btn-danger {
-	@extend %btn;
-	@include btnColor($button-color, $danger-color);
+  @extend %btn;
+  @include btnColor($button-color, $danger-color);
 }
 
 .btn-icon {
-	@extend %btn-common, %btn-disabled, %btn-color-set;
-	border-radius: 50%;
-	width: 2em;
-	height: 2em;
+  @extend %btn-common, %btn-disabled, %btn-color-set;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
 }
 
 .btn-flat {
-	@extend %btn, %btn-disabled;
-	margin: 0;
-	@include btnFlatColorSet();
+  @extend %btn, %btn-disabled;
+  margin: 0;
+  @include btnFlatColorSet();
 }
