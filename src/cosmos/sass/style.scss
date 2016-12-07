@@ -16,7 +16,7 @@
 @import 'lib/functions';
 
 // base.
-@import 'custom-variable';
+@import '../../app/sass/app-variable';
 @import 'variable';
 @import 'mixin';
 
@@ -36,4 +36,4 @@
 @import 'components/scroll-to';
 
 // customize.
-@import 'custom';
+@import '../../app/sass/app';

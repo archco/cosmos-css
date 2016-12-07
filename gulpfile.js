@@ -15,24 +15,30 @@ var uglify = require('gulp-uglify');
 
 var config = {
   // sass
-  sassSrc: './src/sass/style.scss',
-  sassDest: './dist/css/',
+  sassSrc: 'src/cosmos/sass/style.scss',
+  sassDest: 'dist/css/',
   cssFile: 'style.css',
   cssMinFile: 'style.min.css',
   // js
-  jsSrcDir: './src/js/',
-  jsBase: require('./src/js/cosmos.json'),
-  jsCustom: require('./src/js/custom.json'),
-  jsDest: './dist/js/',
+  jsSrcDir: 'src/cosmos/js/',
+  jsList: require('./src/cosmos/js/cosmos.json'),
+  jsDest: 'dist/js/',
   jsFile: 'script.js',
   jsMinFile: 'script.min.js',
+  // app (custom)
+  appJsSrcDir: 'src/app/js/',
+  appJsList: require('./src/app/js/app.json'),
 };
 var jsSources = (function () {
-  var list = config.jsBase.concat(config.jsCustom);
-  list.forEach(function (v, i, a) {
+  var base = config.jsList;
+  base.forEach(function (v, i, a) {
     a[i] = config.jsSrcDir + v;
   });
-  return list;
+  var app = config.appJsList;
+  base.forEach(function (v, i, a) {
+    a[i] = config.appJsSrcDir + v;
+  });
+  return base.concat(app);
 })();
 
 
