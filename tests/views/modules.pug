@@ -5,9 +5,35 @@ block title
   title= 'js modules'
 
 block append content
-  include includes/ajax-loading.pug
-  include includes/dropdown.pug
-  include includes/message.pug
-  include includes/nav.pug
-  include includes/parallax.pug
+  div(class='row')
+    aside(class='col-2')
+      ul(class='fixed')
+        li
+          a(href='#ajaxloading') Ajax Loading
+        li
+          a(href='#dropdown') Dropdown
+        li
+          a(href='#message') Message
+        li
+          a(href='#nav') Nav
+        li
+          a(href='#parallax') Parallax
+    section(class='col-10')
+      div(id='ajax-loading')
+      br
+      h1(id='ajaxloading') Ajax Loading
+      hr
+      include includes/ajax-loading.pug
+      h1(id='dropdown') Dropdown
+      hr
+      include includes/dropdown.pug
+      h1(id='message') Message
+      hr
+      include includes/message.pug
+      h1(id='nav') Nav
+      hr
+      include includes/nav.pug
+      h1(id='parallax') Parallax
+      hr
+      include includes/parallax.pug
   

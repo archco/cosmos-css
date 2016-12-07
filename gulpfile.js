@@ -68,7 +68,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('sass:watch', function () {
-  gulp.watch('src/sass/**/*.scss', ['sass']);
+  gulp.watch('src/**/*.scss', ['sass']);
 });
 
 gulp.task('sass:min', function () {
@@ -109,7 +109,7 @@ gulp.task('babel', function () {
 });
 
 gulp.task('babel:watch', function () {
-  gulp.watch('src/js/**/*.js', ['babel']);
+  gulp.watch('src/**/*.js', ['babel']);
 });
 
 gulp.task('babel:min', function () {

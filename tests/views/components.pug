@@ -5,17 +5,46 @@ block title
   title= 'sass components page'
 
 block append content
-  section
-    h1 Scaffolding
-    hr
-    h2 Link
-    a(href='#') Link Tag
-    br
-    a(href='#' class='no-deco') .no-deco
+  div(class='row')
+    aside(class='col-2')
+      ul(class='fixed')
+        li
+          a(href='#scaffolding') Scaffolding
+        li
+          a(href='#button') Button
+        li
+          a(href='#card') Card
+        li
+          a(href='#form') Form
+        li
+          a(href='#grid') Grid
+        li
+          a(href='#helper') Helper
+        li
+          a(href='#pagination') Pagination
+    section(class='col-10')
+      h1(id='scaffolding') Scaffolding
+      hr
+      h2 Link
+      a(href='#') Link Tag
+      br
+      a(href='#' class='no-deco') .no-deco
+      h1(id='button') Button
+      hr
+      include includes/button.pug
+      h1(id='card') Card
+      hr
+      include includes/card.pug
+      h1(id='form') Form
+      hr
+      include includes/form.pug
+      h1(id='grid') Grid
+      hr
+      include includes/grid.pug
+      h1(id='helper') Helper
+      hr
+      include includes/helper.pug
+      h1(id='pagination') Pagination
+      hr
+      include includes/pagination.pug
   
-  include includes/button.pug
-  include includes/card.pug
-  include includes/form.pug
-  include includes/grid.pug
-  include includes/helper.pug
-  include includes/pagination.pug

@@ -22,18 +22,19 @@
 
 // components.
 @import 'components/scaffolding';
-@import 'components/helper';
+@import 'components/form';
+@import 'components/nav';
+@import 'components/aside.scss';
 @import 'components/grid';
 @import 'components/button';
+@import 'components/dropdown';
 @import 'components/message';
 @import 'components/card';
-@import 'components/form';
 @import 'components/pagination';
-@import 'components/nav';
-@import 'components/dropdown';
 @import 'components/parallax';
 @import 'components/ajax-loading';
 @import 'components/scroll-to';
+@import 'components/helper';
 
 // customize.
 @import '../../app/sass/app';

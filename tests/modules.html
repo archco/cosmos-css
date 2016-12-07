@@ -40,158 +40,161 @@
         </div>
       </nav>
     </header>
-    <div id="ajax-loading"></div>
-    <section>
-      <h1>Ajax-loading</h1>
-      <hr>
-      <button class="btn info" onclick="toggle()">toggle</button>
-    </section><script>
-    function toggle() {
-      var a = document.querySelector('#ajax-loading');
-      a.classList.toggle('show');
-    }</script>
-    <section>
-      <h1>Dropdown</h1>
-      <hr>
-      <div class="dropdown">
-        <button class="dropdown-toggle btn">dropdown</button>
-        <ul class="dropdown-content">
-          <li><a href="#">hello</a></li>
-          <li><a href="#">drop</a></li>
-          <li><a href="#">down</a></li>
+    <div class="row">
+      <aside class="col-2">
+        <ul class="fixed">
+          <li><a href="#ajaxloading">Ajax Loading</a></li>
+          <li><a href="#dropdown">Dropdown</a></li>
+          <li><a href="#message">Message</a></li>
+          <li><a href="#nav">Nav</a></li>
+          <li><a href="#parallax">Parallax</a></li>
         </ul>
-      </div>
-      <div class="dropdown">
-        <button class="dropdown-toggle btn info">dropdown</button>
-        <ul class="dropdown-content">
-          <li><a href="#">hello</a></li>
-          <li><a href="#">drop</a></li>
-          <li><a href="#">down</a></li>
+      </aside>
+      <section class="col-10">
+        <div id="ajax-loading"></div><br>
+        <h1 id="ajaxloading">Ajax Loading</h1>
+        <hr>
+        <button class="btn info" onclick="toggle()">toggle</button><script>
+        function toggle() {
+          var a = document.querySelector('#ajax-loading');
+          a.classList.toggle('show');
+        }</script>
+        <h1 id="dropdown">Dropdown</h1>
+        <hr>
+        <div class="dropdown">
+          <button class="dropdown-toggle btn">dropdown</button>
+          <ul class="dropdown-content">
+            <li><a href="#">hello</a></li>
+            <li><a href="#">drop</a></li>
+            <li><a href="#">down</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-toggle btn info">dropdown</button>
+          <ul class="dropdown-content">
+            <li><a href="#">hello</a></li>
+            <li><a href="#">drop</a></li>
+            <li><a href="#">down</a></li>
+          </ul>
+        </div>
+        <h1 id="message">Message</h1>
+        <hr>
+        <h2>Message text color</h2>
+        <ul>
+          <li>
+            <p class="info">Infomation message.</p>
+          </li>
+          <li>
+            <p class="success">Success message.</p>
+          </li>
+          <li>
+            <p class="error">Error message.</p>
+          </li>
+          <li>
+            <p class="comment">Comment message.</p>
+          </li>
         </ul>
-      </div>
-    </section>
-    <section>
-      <h1>Message</h1>
-      <hr>
-      <h2>Message text color</h2>
-      <ul>
-        <li>
-          <p class="info">Infomation message.</p>
-        </li>
-        <li>
-          <p class="success">Success message.</p>
-        </li>
-        <li>
-          <p class="error">Error message.</p>
-        </li>
-        <li>
-          <p class="comment">Comment message.</p>
-        </li>
-      </ul>
-      <h2>Message box</h2>
-      <div class="message-box"><span>This is message box.</span>
-        <button class="btn-close-message"><i class="fa fa-times" aria-hidden="true"></i></button>
-      </div>
-      <div class="message-box error"><span>This is error message box.</span>
-        <button class="btn-close-message"><i class="fa fa-times" aria-hidden="true"></i></button>
-      </div>
-      <div class="message-box success"><span>This is success message box.</span>
-        <button class="btn-close-message"><i class="fa fa-times" aria-hidden="true"></i></button>
-      </div>
-      <div class="message-box info"><span>This is information message box.</span>
-        <button class="btn-close-message"><i class="fa fa-times" aria-hidden="true"></i></button>
-      </div>
-      <h2>showMessage()</h2>
-      <div id="message-container"></div>
-      <div>
-        <input class="inline" type="text" id="input-msg">
-        <button class="btn" type="button" id="btn-msg">show message</button>
-      </div><script>
-      var b = document.querySelector('#btn-msg');
-      b.onclick = function () {
-        var i = document.querySelector('#input-msg');
-        showMessage(i.value);
-      };</script>
-    </section>
-    <section>
-      <h1>Nav</h1>
-      <hr>
-      <h2>Left and Right Menu (float)</h2>
-      <div class="container">
-        <nav>
-          <div class="nav-header"><a class="nav-brand text" href="test.html">Brand Logo</a>
-            <button class="menu-toggle" type="button"><span class="hide">Toggle Navigation</span>
-              <div class="icon-bar1"></div>
-              <div class="icon-bar2"></div>
-              <div class="icon-bar3"></div>
-            </button>
-          </div>
-          <div class="menu-wrapper">
-            <ul class="menu-left">
-              <li class="hide-only-mobile"><a href="test.html">Home</a></li>
-              <li class="active"><a href="#">active</a></li>
-              <li><a href="#">link</a></li>
-              <li class="dropdown">
-                <button class="dropdown-toggle">dropdown <i class="fa fa-caret-down" aria-hidden="true"></i></button>
-                <ul class="dropdown-content">
-                  <li><a href="#">link1</a></li>
-                  <li><a href="#">link2</a></li>
-                  <li><a href="#">link3</a></li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="menu-right">
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Register</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-      <h2>Center Menu (inline)</h2>
-      <div class="container">
-        <nav>
-          <div class="nav-header"><a class="nav-brand text" href="test.html">Brand Logo</a>
-            <button class="menu-toggle" type="button"><span class="hide">Toggle Navigation</span>
-              <div class="icon-bar1"></div>
-              <div class="icon-bar2"></div>
-              <div class="icon-bar3"></div>
-            </button>
-          </div>
-          <div class="menu-wrapper">
-            <ul class="menu-center">
-              <li class="hide-only-mobile"><a href="test.html">Home</a></li>
-              <li class="active"><a href="#">active</a></li>
-              <li><a href="#">link</a></li>
-              <li class="dropdown">
-                <button class="dropdown-toggle">dropdown <i class="fa fa-caret-down" aria-hidden="true"></i></button>
-                <ul class="dropdown-content">
-                  <li><a href="#">link1</a></li>
-                  <li><a href="#">link2</a></li>
-                  <li><a href="#">link3</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Register</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </section>
-    <section>
-      <h1>Parallax</h1>
-      <hr>
-      <div class="parallax"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Chase_of_the_Constitution%2C_July_1812.jpg/1024px-Chase_of_the_Constitution%2C_July_1812.jpg"></div><div class="flex-center-container" style="background-color:gray;height:250px;">
-      <div>
-        <h2>Content</h2>
-        <p>content here...</p>
-      </div></div>
-      <div class="parallax" data-height="300"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Constitution1803.jpg/800px-Constitution1803.jpg"></div><div class="flex-center-container" style="height:300px;">
-      <div>
-        <h2>Content</h2>
-        <p>content here...</p>
-      </div></div>
-      <div class="parallax" data-height="400"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Burning_of_the_uss_philadelphia.jpg/800px-Burning_of_the_uss_philadelphia.jpg"></div>
-    </section>
+        <h2>Message box</h2>
+        <div class="message-box"><span>This is message box.</span>
+          <button class="btn-close-message"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div class="message-box error"><span>This is error message box.</span>
+          <button class="btn-close-message"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div class="message-box success"><span>This is success message box.</span>
+          <button class="btn-close-message"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div class="message-box info"><span>This is information message box.</span>
+          <button class="btn-close-message"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <h2>showMessage()</h2>
+        <div id="message-container"></div>
+        <div>
+          <input class="inline" type="text" id="input-msg">
+          <button class="btn" type="button" id="btn-msg">show message</button>
+        </div><script>
+        var b = document.querySelector('#btn-msg');
+        b.onclick = function () {
+          var i = document.querySelector('#input-msg');
+          showMessage(i.value);
+        };</script>
+        <h1 id="nav">Nav</h1>
+        <hr>
+        <h2>Left and Right Menu (float)</h2>
+        <div class="container">
+          <nav>
+            <div class="nav-header"><a class="nav-brand text" href="test.html">Brand Logo</a>
+              <button class="menu-toggle" type="button"><span class="hide">Toggle Navigation</span>
+                <div class="icon-bar1"></div>
+                <div class="icon-bar2"></div>
+                <div class="icon-bar3"></div>
+              </button>
+            </div>
+            <div class="menu-wrapper">
+              <ul class="menu-left">
+                <li class="hide-only-mobile"><a href="test.html">Home</a></li>
+                <li class="active"><a href="#">active</a></li>
+                <li><a href="#">link</a></li>
+                <li class="dropdown">
+                  <button class="dropdown-toggle">dropdown <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                  <ul class="dropdown-content">
+                    <li><a href="#">link1</a></li>
+                    <li><a href="#">link2</a></li>
+                    <li><a href="#">link3</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="menu-right">
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Register</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <h2>Center Menu (inline)</h2>
+        <div class="container">
+          <nav>
+            <div class="nav-header"><a class="nav-brand text" href="test.html">Brand Logo</a>
+              <button class="menu-toggle" type="button"><span class="hide">Toggle Navigation</span>
+                <div class="icon-bar1"></div>
+                <div class="icon-bar2"></div>
+                <div class="icon-bar3"></div>
+              </button>
+            </div>
+            <div class="menu-wrapper">
+              <ul class="menu-center">
+                <li class="hide-only-mobile"><a href="test.html">Home</a></li>
+                <li class="active"><a href="#">active</a></li>
+                <li><a href="#">link</a></li>
+                <li class="dropdown">
+                  <button class="dropdown-toggle">dropdown <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                  <ul class="dropdown-content">
+                    <li><a href="#">link1</a></li>
+                    <li><a href="#">link2</a></li>
+                    <li><a href="#">link3</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Register</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <h1 id="parallax">Parallax</h1>
+        <hr>
+        <div class="parallax"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Chase_of_the_Constitution%2C_July_1812.jpg/1024px-Chase_of_the_Constitution%2C_July_1812.jpg"></div><div class="flex-center-container" style="background-color:gray;height:250px;">
+        <div>
+          <h2>Content</h2>
+          <p>content here...</p>
+        </div></div>
+        <div class="parallax" data-height="300"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Constitution1803.jpg/800px-Constitution1803.jpg"></div><div class="flex-center-container" style="height:300px;">
+        <div>
+          <h2>Content</h2>
+          <p>content here...</p>
+        </div></div>
+        <div class="parallax" data-height="400"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Burning_of_the_uss_philadelphia.jpg/800px-Burning_of_the_uss_philadelphia.jpg"></div>
+      </section>
+    </div>
     <footer>
       <div class="container">
         <div class="row">
