@@ -1276,11 +1276,11 @@ ul.card-list {
   .card.horizontal {
     flex-direction: row; }
     .card.horizontal {
-      height: 180px; }
+      height: 225px; }
     .card.horizontal.small {
-      height: 120px; }
+      height: 150px; }
     .card.horizontal.large {
-      height: 240px; }
+      height: 300px; }
     .card.horizontal .card-image, .card.horizontal .card-content {
       display: inline-block;
       max-height: none;

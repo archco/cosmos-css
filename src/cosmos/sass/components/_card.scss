@@ -67,9 +67,9 @@ ul.card-list {
     flex-direction: row;
 
     // card size
-    & { height: $card-size * 0.6; }
-    &.small { height: $card-size-small * 0.6; }
-    &.large { height: $card-size-large * 0.6; }
+    & { height: $card-size * 0.75; }
+    &.small { height: $card-size-small * 0.75; }
+    &.large { height: $card-size-large * 0.75; }
 
     %card-horizontal-child {
       display: inline-block;
