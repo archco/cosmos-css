@@ -26,9 +26,7 @@ if (typeof jQuery === 'undefined') {
 
 /************************************************************
   util
-*************************************************************
-* 
-*/
+*************************************************************/
 
 /**
  * submitConfirm - confirm 을 취소하면 event.preventDefault()
@@ -61,11 +59,8 @@ function checkMobileSize() {
 
 /************************************************************
   nav
-*************************************************************
-* 
-*/
+*************************************************************/
 
-/** add event listeners */
 (function () {
   // Responsive Nav
   $(".menu-toggle").click(function () {
@@ -262,12 +257,10 @@ function scrollTop() {
 
 /************************************************************
   message
-*************************************************************
-* 
-*/
+*************************************************************/
 
 /**
- * showMessage - message-box를 추가.
+ * add '.message-box' into '#message-container'
  * 
  * @param  {String} message
  * @param  {String} status  ['info','success','warning','error']
@@ -295,6 +288,7 @@ function showMessage(message, status) {
   b.appendChild(btn);
   c.appendChild(b);
 }
+
 /**
  * messageCloseBtnEventHandler
  */
@@ -305,6 +299,7 @@ function messageCloseBtnEventHandler(element) {
     messageBox.style.display = 'none';
   }, 600); // 0.6s
 }
+
 /**
  * IIFE - flash message 용 close button add event listner 
  */
@@ -322,9 +317,7 @@ function messageCloseBtnEventHandler(element) {
 
 /************************************************************
   Parallax
-*************************************************************
-* 
-*/
+*************************************************************/
 
 (function () {
   // const TAG = "parallax";
@@ -384,9 +377,8 @@ function parallaxProcess(p) {
 
 /************************************************************
   AJAX-loading
-*************************************************************
-* 
-*/
+*************************************************************/
+
 (function () {
   var a = document.querySelector('#ajax-loading');
   if (!a) {

@@ -46,52 +46,6 @@
   }
 }
 
-@mixin btnColorSet() {
-  &,
-  &.primary {
-    @include btnColor($button-color, $primary-color);
-  }
-  &.secondary {
-    @include btnColor($button-color, $secondary-color);
-  }
-  &.info {
-    @include btnColor($button-color, $info-color);
-  }
-  &.success {
-    @include btnColor($button-color, $success-color);
-  }
-  &.warning {
-    @include btnColor($button-color, $warning-color);
-  }
-  &.danger {
-    @include btnColor($button-color, $danger-color);
-  }
-}
-
-@mixin btnFlatColorSet() {
-  & {
-    @include btnFlatColor($link-color);
-  }
-  &.primary {
-    @include btnFlatColor($primary-color);
-  }
-  &.secondary {
-    @include btnFlatColor($secondary-color);
-  }
-  &.info {
-    @include btnFlatColor($info-color);
-  }
-  &.success {
-    @include btnFlatColor($success-color);
-  }
-  &.warning {
-    @include btnFlatColor($warning-color);
-  }
-  &.danger {
-    @include btnFlatColor($danger-color);
-  }
-}
-
 
 //======================================================================
 // Utilities
@@ -198,4 +152,25 @@
   @include media-up($tablet-size) {
     @content;
   }
+}
+
+//======================================================================
+// Helper
+//======================================================================
+
+// Centering
+@mixin positionCenterContainer() {
+  position: relative;
+}
+@mixin positionCenter() {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+@mixin flexContainer($horizontal:"flex-start", $vertical:"stretch") {
+  display: flex;
+  justify-content: #{$horizontal}; // horizontally
+  align-items: #{$vertical}; // vertically
+  flex-direction: column;
+  clear: both;
 }

@@ -1,4 +1,28 @@
-/** nav */
+//======================================================================
+// Nav
+//======================================================================
+
+// placeholder
+%nav-link {
+  @extend %link-no-deco;
+  display: inline-block;
+  padding: 12px 18px;
+  color: $nav-link-color;
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: 4px 4px 0 0;
+  transition: color $transition-time;
+
+  &:hover { color: $nav-link-hover-color; }
+}
+%nav-button {
+  @extend %btn-common;
+  outline: none;
+  background-color: transparent;
+  display: inline-block;
+}
+
+// nav
 nav {
   z-index: 10;
   display: block;

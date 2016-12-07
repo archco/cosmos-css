@@ -6,7 +6,18 @@
 .hide { display: none !important; }
 .show { display: block !important; }
 .invisible { visibility: hidden; }
+
 // responsive hiding
+%resopnsive-tablet-hide {
+  @include media-tablet-up() {
+    & { display: none; }
+  }
+}
+%responsive-mobile-hide {
+  @include media-only-mobile() {
+    & { display: none; }
+  }
+}
 .hide-only-mobile {
   @extend %responsive-mobile-hide;
 }
@@ -20,23 +31,33 @@
 .center { text-align: center; }
 .right { text-align: right; }
 .left { text-align: left; }
+
+// centering
+%flex-center {
+  @include flexContainer('center', 'center');
+}
+%position-center-container {
+  @include positionCenterContainer;
+}
+%position-center {
+  @include positionCenter;
+}
+
 .vertical-center-container {
-  display: flex;
-  align-items: center; // vertical alignment.
+  @include flexContainer('flex-start', 'center');
 
   .flex-item {
     display: block;
   }
 }
 .flex-center-container {
-  @extend .vertical-center-container; // horizontal alignment.
-  justify-content: center;
+  @include flexContainer('center', 'center');
 }
 .center-position-container {
-  @extend %position-center-container;
+  @include positionCenterContainer;
 
   .center-position {
-    @extend %position-center;
+    @include positionCenter;
   }
 }
 .center-block {
