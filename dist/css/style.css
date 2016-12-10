@@ -1457,18 +1457,14 @@ nav .nav-header .nav-brand, nav .nav-header button.menu-toggle {
 .vertical-center-container {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  clear: both; }
+  align-items: center; }
   .vertical-center-container .flex-item {
     display: block; }
 
 .flex-center-container, #ajax-loading {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  clear: both; }
+  align-items: center; }
 
 .center-position-container {
   position: relative; }

@@ -171,6 +171,4 @@
   display: flex;
   justify-content: #{$horizontal}; // horizontally
   align-items: #{$vertical}; // vertically
-  flex-direction: column;
-  clear: both;
 }
