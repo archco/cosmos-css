@@ -8,7 +8,6 @@ var concat = require('gulp-concat');
 var babel = require('gulp-babel');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
-var header = require('gulp-header');
 
 /************************************************************
   Config
@@ -42,15 +41,6 @@ var jsSources = (function () {
   });
   return base.concat(app);
 })();
-// header comments (banner)
-var pkg = require('./package.json');
-var banner = ['/*!',
-  ' * <%= pkg.name %> - <%= pkg.description %>',
-  ' * @version v<%= pkg.version %>',
-  ' * @link <%= pkg.homepage %>',
-  ' * @license <%= pkg.license %>',
-  ' */',
-  ''].join('\n');
 
 
 /************************************************************
@@ -71,7 +61,6 @@ gulp.task('min', ['sass:min', 'babel:min']);
  */
 gulp.task('sass', function () {
   return gulp.src(config.sassSrc)
-    .pipe(header(banner, { pkg : pkg }))
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(rename(config.cssFile))
@@ -85,7 +74,6 @@ gulp.task('sass:watch', function () {
 
 gulp.task('sass:min', function () {
   return gulp.src(config.sassSrc)
-    .pipe(header(banner, { pkg : pkg }))
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(rename(config.cssMinFile))
     .pipe(gulp.dest(config.sassDest));
@@ -118,7 +106,6 @@ gulp.task('babel', function () {
     }))
     .pipe(concat(config.jsFile))
     .pipe(sourcemaps.write('.'))
-    .pipe(header(banner, { pkg : pkg }))
     .pipe(gulp.dest(config.jsDest));
 });
 
@@ -133,6 +120,5 @@ gulp.task('babel:min', function () {
     }))
     .pipe(concat(config.jsMinFile))
     .pipe(uglify())
-    .pipe(header(banner, { pkg : pkg }))
     .pipe(gulp.dest(config.jsDest));
 });
