@@ -1,11 +1,10 @@
-'use strict';
-
 /*!
  * cosmos-css - personal practice css framework.
- * @version v0.3.0
+ * @version v0.3.1
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
+'use strict';
 
 // Check for jQuery.
 if (typeof jQuery === 'undefined') {
@@ -23,12 +22,6 @@ if (typeof jQuery === 'undefined') {
 }
 'use strict';
 
-/*!
- * cosmos-css - personal practice css framework.
- * @version v0.3.0
- * @link https://github.com/archco/cosmos-css#readme
- * @license MIT
- */
 /************************************************************
   util
 *************************************************************/
@@ -62,12 +55,6 @@ function checkMobileSize() {
 }
 'use strict';
 
-/*!
- * cosmos-css - personal practice css framework.
- * @version v0.3.0
- * @link https://github.com/archco/cosmos-css#readme
- * @license MIT
- */
 /************************************************************
   nav
 *************************************************************/
@@ -119,12 +106,6 @@ function checkMobileSize() {
 })();
 'use strict';
 
-/*!
- * cosmos-css - personal practice css framework.
- * @version v0.3.0
- * @link https://github.com/archco/cosmos-css#readme
- * @license MIT
- */
 /************************************************************
   dropdown
 *************************************************************/
@@ -226,12 +207,6 @@ function checkMobileSize() {
 })();
 'use strict';
 
-/*!
- * cosmos-css - personal practice css framework.
- * @version v0.3.0
- * @link https://github.com/archco/cosmos-css#readme
- * @license MIT
- */
 /************************************************************
   scroll-to
 *************************************************************/
@@ -278,12 +253,6 @@ function scrollTop() {
 }
 'use strict';
 
-/*!
- * cosmos-css - personal practice css framework.
- * @version v0.3.0
- * @link https://github.com/archco/cosmos-css#readme
- * @license MIT
- */
 /************************************************************
   message
 *************************************************************/
@@ -344,12 +313,6 @@ function messageCloseBtnEventHandler(element) {
 })();
 'use strict';
 
-/*!
- * cosmos-css - personal practice css framework.
- * @version v0.3.0
- * @link https://github.com/archco/cosmos-css#readme
- * @license MIT
- */
 /************************************************************
   Parallax
 *************************************************************/
@@ -410,12 +373,6 @@ function parallaxProcess(p) {
 }
 'use strict';
 
-/*!
- * cosmos-css - personal practice css framework.
- * @version v0.3.0
- * @link https://github.com/archco/cosmos-css#readme
- * @license MIT
- */
 /************************************************************
   AJAX-loading
 *************************************************************/
@@ -445,12 +402,6 @@ function parallaxProcess(p) {
     a.appendChild(loader);
   }
 })();
-/*!
- * cosmos-css - personal practice css framework.
- * @version v0.3.0
- * @link https://github.com/archco/cosmos-css#readme
- * @license MIT
- */
 // Just example
 // console.log("Hello, World!");
 "use strict";

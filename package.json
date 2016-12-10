@@ -1,6 +1,6 @@
 {
   "name": "cosmos-css",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "personal practice css framework.",
   "main": "dist/js/script.js",
   "directories": {

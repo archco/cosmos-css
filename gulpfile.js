@@ -112,13 +112,13 @@ gulp.task('pug:watch', function () {
  */
 gulp.task('babel', function () {
   return gulp.src(jsSources)
-    .pipe(header(banner, { pkg : pkg }))
     .pipe(sourcemaps.init())
     .pipe(babel({
       presets: ["es2015"]
     }))
     .pipe(concat(config.jsFile))
     .pipe(sourcemaps.write('.'))
+    .pipe(header(banner, { pkg : pkg }))
     .pipe(gulp.dest(config.jsDest));
 });
 
