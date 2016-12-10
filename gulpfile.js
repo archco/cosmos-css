@@ -8,6 +8,7 @@ var concat = require('gulp-concat');
 var babel = require('gulp-babel');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
+var header = require('gulp-header');
 
 /************************************************************
   Config
@@ -29,17 +30,27 @@ var config = {
   appJsSrcDir: 'src/app/js/',
   appJsList: require('./src/app/js/app.json'),
 };
+
 var jsSources = (function () {
   var base = config.jsList;
   base.forEach(function (v, i, a) {
     a[i] = config.jsSrcDir + v;
   });
   var app = config.appJsList;
-  base.forEach(function (v, i, a) {
+  app.forEach(function (v, i, a) {
     a[i] = config.appJsSrcDir + v;
   });
   return base.concat(app);
 })();
+// header comments (banner)
+var pkg = require('./package.json');
+var banner = ['/*!',
+  ' * <%= pkg.name %> - <%= pkg.description %>',
+  ' * @version v<%= pkg.version %>',
+  ' * @link <%= pkg.homepage %>',
+  ' * @license <%= pkg.license %>',
+  ' */',
+  ''].join('\n');
 
 
 /************************************************************
@@ -49,7 +60,7 @@ var jsSources = (function () {
 /**
  * Default
  */
-gulp.task('default', ['sass', 'pug', 'babel']);
+gulp.task('default', ['sass', 'pug', 'babel', 'min']);
 
 gulp.task('watch', ['sass:watch', 'pug:watch', 'babel:watch']);
 
@@ -60,6 +71,7 @@ gulp.task('min', ['sass:min', 'babel:min']);
  */
 gulp.task('sass', function () {
   return gulp.src(config.sassSrc)
+    .pipe(header(banner, { pkg : pkg }))
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(rename(config.cssFile))
@@ -73,6 +85,7 @@ gulp.task('sass:watch', function () {
 
 gulp.task('sass:min', function () {
   return gulp.src(config.sassSrc)
+    .pipe(header(banner, { pkg : pkg }))
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(rename(config.cssMinFile))
     .pipe(gulp.dest(config.sassDest));
@@ -99,6 +112,7 @@ gulp.task('pug:watch', function () {
  */
 gulp.task('babel', function () {
   return gulp.src(jsSources)
+    .pipe(header(banner, { pkg : pkg }))
     .pipe(sourcemaps.init())
     .pipe(babel({
       presets: ["es2015"]
@@ -119,5 +133,6 @@ gulp.task('babel:min', function () {
     }))
     .pipe(concat(config.jsMinFile))
     .pipe(uglify())
+    .pipe(header(banner, { pkg : pkg }))
     .pipe(gulp.dest(config.jsDest));
 });

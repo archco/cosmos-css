@@ -1,10 +1,3 @@
-/*!
- * cosmos-css
- *
- * @version: v0.3.0
- * @updated: 2016-12-07
- * @link: https://github.com/archco/cosmos-css
- */
 
 // Check for jQuery.
 if (typeof(jQuery) === 'undefined') {
