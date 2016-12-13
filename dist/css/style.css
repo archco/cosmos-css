@@ -521,6 +521,7 @@ textarea {
   outline-color: #c9a8ce; }
 
 input:not([type]),
+input:not([type="color"]),
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -543,6 +544,8 @@ textarea {
   border-radius: 2px;
   background-color: transparent; }
   input:not([type])[disabled], input:not([type])[readonly],
+  input:not([type="color"])[disabled],
+  input:not([type="color"])[readonly],
   input[type="text"][disabled],
   input[type="text"][readonly],
   input[type="email"][disabled],
@@ -588,6 +591,11 @@ input[type="radio"] {
 input[type="range"] {
   width: 100%; }
 
+input[type="color"] {
+  width: 3em;
+  height: 2em;
+  padding: 0; }
+
 .form-inline {
   margin: 0;
   padding: 0;
@@ -595,9 +603,9 @@ input[type="range"] {
   .form-inline textarea {
     height: auto; }
 
-.form-inline input,
+.form-inline input:not([type="color"]),
 .form-inline select,
-.form-inline textarea, input.inline,
+.form-inline textarea, input.inline:not([type="color"]),
 select.inline,
 textarea.inline {
   width: auto; }

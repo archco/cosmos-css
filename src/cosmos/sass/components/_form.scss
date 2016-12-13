@@ -30,6 +30,7 @@ textarea {
 
 // input generalize
 input:not([type]),
+input:not([type="color"]),
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -91,14 +92,18 @@ input[type="range"] {
   width: 100%;
 }
 
+input[type="color"] {
+  width: 3em;
+  height: 2em;
+  padding: 0;
+}
+
 .form-inline {
   margin: 0;
   padding: 0;
   display: inline;
 
-  input,
-  select,
-  textarea {
+  @include formInlineTarget {
     @extend %form-inline;
   }
   textarea {
@@ -106,9 +111,7 @@ input[type="range"] {
   }
 }
 
-input,
-select,
-textarea {
+@include formInlineTarget {
   &.inline {
     @extend %form-inline;
   }
