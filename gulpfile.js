@@ -1,13 +1,14 @@
 'use strict';
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var pug = require('gulp-pug');
-var sourcemaps = require('gulp-sourcemaps');
-var concat = require('gulp-concat');
-var babel = require('gulp-babel');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const pug = require('gulp-pug');
+const sourcemaps = require('gulp-sourcemaps');
+const concat = require('gulp-concat');
+const babel = require('gulp-babel');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglify');
+const eslint = require('gulp-eslint');
 
 /************************************************************
   Config
@@ -121,4 +122,14 @@ gulp.task('babel:min', function () {
     .pipe(concat(config.jsMinFile))
     .pipe(uglify())
     .pipe(gulp.dest(config.jsDest));
+});
+
+/**
+ * Lint
+ */
+gulp.task('lint', function () {
+  return gulp.src(['**/*.js','!node_modules/**'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });

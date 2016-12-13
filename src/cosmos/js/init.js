@@ -13,9 +13,9 @@ if (typeof(jQuery) === 'undefined') {
     jQuery = $ = require('jquery');
   // Else use the dollar sign alias.
   } else {
-  	if (typeof($) === 'undefined') {
-  		throw new Error("jQuery required");
-  	}
+    if (typeof($) === 'undefined') {
+      throw new Error("jQuery required");
+    }
     jQuery = $;
   }
 }
