@@ -1,53 +1,66 @@
 /************************************************************
   dropdown
 *************************************************************/
+const Dropdown = (() => {
+  const NAME = 'Cosmos.Dropdown';
+  const ClassName = {
+    DROPDOWN: 'dropdown',
+    TOGGLE: 'dropdown-toggle',
+    CONTENT: 'dropdown-content',
+    SHOW: 'show'
+  };
 
-(function () {
-  // add button's listener.
-  var btns = document.querySelectorAll('.dropdown-toggle');
-  if (btns) {
+  var load = () => {
+    var btns = document.querySelectorAll(`.${ClassName.TOGGLE}`);
+    if (!btns) { return; }
+    
     for (let btn of btns) {
-      btn.onclick = function () {
-        dropdownToggle(this);
-      };
+      btn.addEventListener('click', _toggleButtonHandler);
     }
-  }
-  // Close the dropdown menu if the user clicks outside of it
-  window.onclick = function(event) {
-    if (! event.target.classList.contains('dropdown-toggle')) {
-      closeElseDropdown();
+
+    window.onclick = _otherClickHandler;
+  };
+
+  var _toggleButtonHandler = (event) => {
+    // toggling dropdown content.
+    let c = event.target.parentNode.querySelector(`.${ClassName.CONTENT}`);
+    if (c) {
+      c.classList.toggle(ClassName.SHOW);
+    }
+  };
+
+  var _otherClickHandler = (event) => {
+    // Close the dropdown menu if the user clicks outside of it
+    if (!event.target.classList.contains(ClassName.TOGGLE)) {
+      _closeElseDropdown();
     } else {
       let t = event.target.parentNode; // .dropdown
-      closeElseDropdown(t);
+      _closeElseDropdown(t);
     }
-  }
-
-  /**
-   * toggling dropdown contents
-   * 
-   * @param  {element} x  .dropdown-toggle
-   * @return {void}
-   */
-  function dropdownToggle(x) {
-    var c = x.parentNode.querySelector('.dropdown-content');
-    c.classList.toggle('show');
-  }
+  };
 
   /**
    * close dropdown contents
    * 
-   * @param  {element|null} t  except target
+   * @param  {element} t  except target
    * @return {void}
    */
-  function closeElseDropdown(t = null) {
-    var ds = document.querySelectorAll('.dropdown');
+  var _closeElseDropdown = (t = null) => {
+    var ds = document.querySelectorAll(`.${ClassName.DROPDOWN}`);
 
     for (let d of ds) {
-      let c = d.querySelector('.dropdown-content');
+      let c = d.querySelector(`.${ClassName.CONTENT}`);
       if (t && t == d) { continue; } // except target
-      if (c.classList.contains('show')) {
-        c.classList.remove('show');
+      if (c.classList.contains(ClassName.SHOW)) {
+        c.classList.remove(ClassName.SHOW);
       }
     }
   }
+
+  return {
+    name: NAME,
+    load: load
+  };
 })();
+
+export default Dropdown;

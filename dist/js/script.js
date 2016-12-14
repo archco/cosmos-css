@@ -21,39 +21,56 @@ if (typeof jQuery === 'undefined') {
     jQuery = $;
   }
 }
-'use strict';
-
 /************************************************************
   util
 *************************************************************/
 
-/**
- * submitConfirm - confirm 을 취소하면 event.preventDefault()
- * 
- * @param  {element} form
- * @param  {sting} message
- */
-function submitConfirm(form, message) {
-  var message = typeof message !== 'undefined' ? message : 'Are you confirm?';
-  form.addEventListener('submit', function (event) {
-    if (!confirm(message)) {
-      event.preventDefault();
-    }
-  });
-}
+// utilities for modules. empty yet.
+"use strict";
+'use strict';
 
-/**
- * checkMobileSize
- * 
- * @return {bool}
- */
-function checkMobileSize() {
-  if (window.innerWidth < 800) {
-    return true;
-  } else {
-    return false;
-  }
-}
+var Helper = function () {
+  var NAME = 'Cosmos.Helper';
+
+  /**
+   * submitConfirm - confirm 을 취소하면 event.preventDefault()
+   * 
+   * @param  {element} form
+   * @param  {sting} message
+   * @return {void}
+   */
+  var submitConfirm = function submitConfirm(form) {
+    var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
+
+    if (!form) {
+      throw new Error('Form target is not exist.');
+    }
+    form.addEventListener('submit', function (event) {
+      if (!confirm(message)) {
+        event.preventDefault();
+      }
+    });
+  };
+
+  /**
+   * check mobile size
+   * 
+   * @return {boolean}
+   */
+  var checkMobileSize = function checkMobileSize() {
+    if (window.innerWidth < 800) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  return {
+    name: NAME,
+    submitConfirm: submitConfirm,
+    checkMobileSize: checkMobileSize
+  };
+}();
 'use strict';
 
 /************************************************************
@@ -110,11 +127,21 @@ function checkMobileSize() {
 /************************************************************
   dropdown
 *************************************************************/
+var Dropdown = function () {
+  var NAME = 'Cosmos.Dropdown';
+  var ClassName = {
+    DROPDOWN: 'dropdown',
+    TOGGLE: 'dropdown-toggle',
+    CONTENT: 'dropdown-content',
+    SHOW: 'show'
+  };
 
-(function () {
-  // add button's listener.
-  var btns = document.querySelectorAll('.dropdown-toggle');
-  if (btns) {
+  var load = function load() {
+    var btns = document.querySelectorAll('.' + ClassName.TOGGLE);
+    if (!btns) {
+      return;
+    }
+
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
     var _iteratorError = undefined;
@@ -123,9 +150,7 @@ function checkMobileSize() {
       for (var _iterator = btns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
         var btn = _step.value;
 
-        btn.onclick = function () {
-          dropdownToggle(this);
-        };
+        btn.addEventListener('click', _toggleButtonHandler);
       }
     } catch (err) {
       _didIteratorError = true;
@@ -141,38 +166,38 @@ function checkMobileSize() {
         }
       }
     }
-  }
-  // Close the dropdown menu if the user clicks outside of it
-  window.onclick = function (event) {
-    if (!event.target.classList.contains('dropdown-toggle')) {
-      closeElseDropdown();
+
+    window.onclick = _otherClickHandler;
+  };
+
+  var _toggleButtonHandler = function _toggleButtonHandler(event) {
+    // toggling dropdown content.
+    var c = event.target.parentNode.querySelector('.' + ClassName.CONTENT);
+    if (c) {
+      c.classList.toggle(ClassName.SHOW);
+    }
+  };
+
+  var _otherClickHandler = function _otherClickHandler(event) {
+    // Close the dropdown menu if the user clicks outside of it
+    if (!event.target.classList.contains(ClassName.TOGGLE)) {
+      _closeElseDropdown();
     } else {
       var t = event.target.parentNode; // .dropdown
-      closeElseDropdown(t);
+      _closeElseDropdown(t);
     }
   };
 
   /**
-   * toggling dropdown contents
-   * 
-   * @param  {element} x  .dropdown-toggle
-   * @return {void}
-   */
-  function dropdownToggle(x) {
-    var c = x.parentNode.querySelector('.dropdown-content');
-    c.classList.toggle('show');
-  }
-
-  /**
    * close dropdown contents
    * 
-   * @param  {element|null} t  except target
+   * @param  {element} t  except target
    * @return {void}
    */
-  function closeElseDropdown() {
+  var _closeElseDropdown = function _closeElseDropdown() {
     var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-    var ds = document.querySelectorAll('.dropdown');
+    var ds = document.querySelectorAll('.' + ClassName.DROPDOWN);
 
     var _iteratorNormalCompletion2 = true;
     var _didIteratorError2 = false;
@@ -182,12 +207,12 @@ function checkMobileSize() {
       for (var _iterator2 = ds[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
         var d = _step2.value;
 
-        var c = d.querySelector('.dropdown-content');
+        var c = d.querySelector('.' + ClassName.CONTENT);
         if (t && t == d) {
           continue;
         } // except target
-        if (c.classList.contains('show')) {
-          c.classList.remove('show');
+        if (c.classList.contains(ClassName.SHOW)) {
+          c.classList.remove(ClassName.SHOW);
         }
       }
     } catch (err) {
@@ -204,8 +229,13 @@ function checkMobileSize() {
         }
       }
     }
-  }
-})();
+  };
+
+  return {
+    name: NAME,
+    load: load
+  };
+}();
 'use strict';
 
 /************************************************************
@@ -377,32 +407,70 @@ function parallaxProcess(p) {
 /************************************************************
   AJAX-loading
 *************************************************************/
+var AjaxLoading = function () {
+  var NAME = 'Cosmos.Ajax-loading';
+  var Config = {
+    SELECTOR: '#ajax-loading',
+    SHOW: 'show',
+    LOADER_TAG: 'div',
+    LOADER_CLASS: 'loader'
+  };
+
+  // public
+
+  var load = function load() {
+    var a = document.querySelector(Config.SELECTOR);
+    if (!a) {
+      return;
+    }
+
+    _appendLoader(a); // append loader element.
+    // Register callback to jquery ajax.
+    $(document).ajaxStart(function () {
+      if (!a.classList.contains(Config.SHOW)) {
+        a.classList.add(Config.SHOW);
+      }
+    }).ajaxStop(function () {
+      if (a.classList.contains(Config.SHOW)) {
+        a.classList.remove(Config.SHOW);
+      }
+    });
+  };
+
+  /**
+   * append div.loader into element
+   * 
+   * @param  {element} a
+   * @return {void}
+   */
+  var _appendLoader = function _appendLoader(a) {
+    var loader = document.createElement(Config.LOADER_TAG);
+    loader.classList.add(Config.LOADER_CLASS);
+    a.appendChild(loader);
+  };
+
+  return {
+    name: NAME,
+    load: load
+  };
+}();
+"use strict";
 
 (function () {
-  var a = document.querySelector('#ajax-loading');
-  if (!a) {
-    return;
-  }
-
-  // append loader element.
-  appendLoader(a);
-  // Register callback to jquery ajax.
-  $(document).ajaxStart(function () {
-    if (!a.classList.contains('show')) {
-      a.classList.add('show');
-    }
-  }).ajaxStop(function () {
-    if (a.classList.contains('show')) {
-      a.classList.remove('show');
-    }
-  });
-
-  function appendLoader(a) {
-    var loader = document.createElement('div');
-    loader.classList.add('loader');
-    a.appendChild(loader);
-  }
+  console.log(AjaxLoading.name);
+  AjaxLoading.load();
+  console.log(Dropdown.name);
+  Dropdown.load();
 })();
+
+// helper functions
+function submitConfirm(form, message) {
+  Helper.submitConfirm(form, message);
+}
+
+function checkMobileSize() {
+  return Helper.checkMobileSize();
+}
 // Just example
 // console.log("Hello, World!");
 "use strict";

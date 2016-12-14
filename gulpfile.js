@@ -9,6 +9,7 @@ const babel = require('gulp-babel');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const eslint = require('gulp-eslint');
+const replace = require('gulp-replace');
 
 /************************************************************
   Config
@@ -102,6 +103,7 @@ gulp.task('pug:watch', function () {
 gulp.task('babel', function () {
   return gulp.src(jsSources)
     .pipe(sourcemaps.init())
+    .pipe(replace(/^(export|import).*/gm, ''))
     .pipe(babel({
       presets: ["es2015"]
     }))
@@ -116,6 +118,7 @@ gulp.task('babel:watch', function () {
 
 gulp.task('babel:min', function () {
   return gulp.src(jsSources)
+    .pipe(replace(/^(export|import).*/gm, ''))
     .pipe(babel({
       presets: ["es2015"]
     }))

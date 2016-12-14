@@ -1,10 +1,12 @@
 [
   "init.js",
   "modules/util.js",
+  "modules/helper.js",
   "modules/nav.js",
   "modules/dropdown.js",
   "modules/scroll-to.js",
   "modules/message.js",
   "modules/parallax.js",
-  "modules/ajax-loading.js"
+  "modules/ajax-loading.js",
+  "load.js"
 ]
