@@ -76,24 +76,42 @@ var Helper = function () {
 /************************************************************
   nav
 *************************************************************/
+var Nav = function () {
+  var NAME = 'Cosmos.Nav';
+  var ClassName = {
+    TOGGLE_BTN: 'menu-toggle',
+    CHANGE: 'change'
+  };
+  var MenuGroups = ['.menu-main', '.menu-left', '.menu-right', '.menu-center'];
 
-(function () {
-  // Responsive Nav
-  $(".menu-toggle").click(function () {
-    // parent nav
-    var nav = this.parentNode.parentNode;
-    // menu groups
-    var menuGroups = ['.menu-main', '.menu-left', '.menu-right', '.menu-center'];
+  var load = function load() {
+    var t = document.querySelector('.' + ClassName.TOGGLE_BTN);
+    if (t) {
+      // menu toggle button.
+      t.addEventListener('click', _toggleHandler);
+    }
+    // handle jQuery slide style.
+    $(window).resize(function () {
+      var w = $(window).width();
+      var menu = $("nav ul");
+      if (w > 768 && menu.is(':hidden')) {
+        menu.removeAttr('style');
+      }
+    });
+  };
 
-    // button toggle
-    this.classList.toggle('change');
-    // menu display toggle
+  var _toggleHandler = function _toggleHandler(event) {
+    var t = event.currentTarget;
+    var nav = t.parentNode.parentNode;
+    // toggle button class change.
+    t.classList.toggle(ClassName.CHANGE);
+    // menu slide (use jQuery)
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
     var _iteratorError = undefined;
 
     try {
-      for (var _iterator = menuGroups[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      for (var _iterator = MenuGroups[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
         var m = _step.value;
 
         $(nav).find(m).slideToggle();
@@ -112,16 +130,13 @@ var Helper = function () {
         }
       }
     }
-  });
+  };
 
-  $(window).resize(function () {
-    var w = $(window).width();
-    var menu = $("nav ul");
-    if (w > 768 && menu.is(':hidden')) {
-      menu.removeAttr('style');
-    }
-  });
-})();
+  return {
+    name: NAME,
+    load: load
+  };
+}();
 'use strict';
 
 /************************************************************
@@ -311,8 +326,9 @@ var Message = function () {
    * @param  {String} message
    * @param  {String} status  ['info','success','warning','error']
    */
-  var showMessage = function showMessage(message, status) {
-    var status = typeof status !== 'undefined' ? status.toLowerCase() : Status.INFO;
+  var showMessage = function showMessage(message) {
+    var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
+
     var c, b, span, btn;
 
     // create message box
@@ -493,6 +509,7 @@ var AjaxLoading = function () {
 }();
 "use strict";
 
+// loading modules.
 (function () {
   console.log(AjaxLoading.name);
   AjaxLoading.load();
@@ -500,9 +517,11 @@ var AjaxLoading = function () {
   Dropdown.load();
   console.log(Message.name);
   Message.load();
+  console.log(Nav.name);
+  Nav.load();
 })();
 
-// helper functions
+// define helper functions.
 function submitConfirm(form, message) {
   Helper.submitConfirm(form, message);
 }

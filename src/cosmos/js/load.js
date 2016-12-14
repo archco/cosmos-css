@@ -1,8 +1,10 @@
 import AjaxLoading from './modules/ajax-loading.js';
-import Helper from './modules/helper.js';
 import Dropdown from './modules/dropdown.js';
+import Helper from './modules/helper.js';
 import Message from './modules/message.js';
+import Nav from './modules/nav.js';
 
+// loading modules.
 (function () {
   console.log(AjaxLoading.name);
   AjaxLoading.load();
@@ -10,9 +12,11 @@ import Message from './modules/message.js';
   Dropdown.load();
   console.log(Message.name);
   Message.load();
+  console.log(Nav.name);
+  Nav.load();
 })();
 
-// helper functions
+// define helper functions.
 function submitConfirm(form, message) {
   Helper.submitConfirm(form, message);
 }

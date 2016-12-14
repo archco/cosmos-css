@@ -22,10 +22,7 @@ const Message = (() => {
    * @param  {String} message
    * @param  {String} status  ['info','success','warning','error']
    */
-  var showMessage = function showMessage(message, status) {
-    var status = typeof status !== 'undefined' 
-      ? status.toLowerCase() 
-      : Status.INFO;
+  var showMessage = function showMessage(message, status = Status.INFO) {
     var c, b, span, btn;
 
     // create message box
