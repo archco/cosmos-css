@@ -3,6 +3,7 @@ import Dropdown from './modules/dropdown.js';
 import Helper from './modules/helper.js';
 import Message from './modules/message.js';
 import Nav from './modules/nav.js';
+import Parallax from './modules/parallax.js';
 
 // loading modules.
 (function () {
@@ -14,6 +15,8 @@ import Nav from './modules/nav.js';
   Message.load();
   console.log(Nav.name);
   Nav.load();
+  console.log(Parallax.name);
+  Parallax.load();
 })();
 
 // define helper functions.

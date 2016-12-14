@@ -45,7 +45,7 @@ const Message = (() => {
   var load = () => {
     // add event listener - close buttons
     var btns = document.querySelectorAll(`.${Config.CLOSE_CLASS}`);
-    if (!btns) { return; }
+    if (btns.length == 0) { return; }
 
     for(let btn of btns) {
       btn.addEventListener('click', _closeButtonHandler);

@@ -153,7 +153,7 @@ var Dropdown = function () {
 
   var load = function load() {
     var btns = document.querySelectorAll('.' + ClassName.TOGGLE);
-    if (!btns) {
+    if (btns.length == 0) {
       return;
     }
 
@@ -351,7 +351,7 @@ var Message = function () {
   var load = function load() {
     // add event listener - close buttons
     var btns = document.querySelectorAll('.' + Config.CLOSE_CLASS);
-    if (!btns) {
+    if (btns.length == 0) {
       return;
     }
 
@@ -400,61 +400,64 @@ var Message = function () {
 /************************************************************
   Parallax
 *************************************************************/
+var Parallax = function () {
+  var NAME = 'Cosmos.Parallax';
+  var ClassName = {
+    PARALLAX: 'parallax',
+    HIDE: 'hide'
+  };
 
-(function () {
-  // const TAG = "parallax";
-  var ps = document.querySelectorAll('.parallax');
-  if (ps.length == 0) {
-    return;
-  }
-  // console.log(TAG, ps);
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
-
-  try {
-    for (var _iterator = ps[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var p = _step.value;
-
-      parallaxProcess(p);
+  var load = function load() {
+    var ps = document.querySelectorAll('.' + ClassName.PARALLAX);
+    if (ps.length == 0) {
+      return;
     }
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
     try {
-      if (!_iteratorNormalCompletion && _iterator.return) {
-        _iterator.return();
+      for (var _iterator = ps[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var p = _step.value;
+
+        _process(p);
       }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
     } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
       }
     }
-  }
-})();
+  };
 
-/**
- * parallaxProcess
- * 
- * @param  {element} p
- * @return {void}
- */
-function parallaxProcess(p) {
-  // const TAG = parallaxProcess.name;
-  var i = p.querySelector('img');
-  if (!i) {
-    return;
-  }
-  var h = p.dataset.height || i.clientHeight;
-  // console.log(TAG, h);
-  // hide img tag.
-  i.classList.add('hide');
-  // set parallax background image.
-  p.style.backgroundImage = 'url(\'' + i.src + '\')';
-  // set parallax height.
-  p.style.height = h + 'px';
-}
+  var _process = function _process(p) {
+    var i = p.querySelector('img');
+    if (!i) {
+      return;
+    }
+    var h = p.dataset.height || i.clientHeight;
+    // hide <img>
+    i.classList.add('hide');
+    // set parallax background image.
+    p.style.backgroundImage = 'url(\'' + i.src + '\')';
+    // set parallax height.
+    p.style.height = h + 'px';
+  };
+
+  return {
+    name: NAME,
+    load: load
+  };
+}();
 'use strict';
 
 /************************************************************
@@ -519,6 +522,8 @@ var AjaxLoading = function () {
   Message.load();
   console.log(Nav.name);
   Nav.load();
+  console.log(Parallax.name);
+  Parallax.load();
 })();
 
 // define helper functions.

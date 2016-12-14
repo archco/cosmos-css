@@ -12,7 +12,7 @@ const Dropdown = (() => {
 
   var load = () => {
     var btns = document.querySelectorAll(`.${ClassName.TOGGLE}`);
-    if (!btns) { return; }
+    if (btns.length == 0) { return; }
     
     for (let btn of btns) {
       btn.addEventListener('click', _toggleButtonHandler);
