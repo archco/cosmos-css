@@ -172,19 +172,22 @@ var Dropdown = function () {
 
   var _toggleButtonHandler = function _toggleButtonHandler(event) {
     // toggling dropdown content.
-    var c = event.target.parentNode.querySelector('.' + ClassName.CONTENT);
+    var c = event.currentTarget.parentNode.querySelector('.' + ClassName.CONTENT);
     if (c) {
       c.classList.toggle(ClassName.SHOW);
     }
   };
 
   var _otherClickHandler = function _otherClickHandler(event) {
+    var t = event.target;
     // Close the dropdown menu if the user clicks outside of it
-    if (!event.target.classList.contains(ClassName.TOGGLE)) {
-      _closeElseDropdown();
+    if (t.classList.contains(ClassName.TOGGLE)) {
+      // dropdown
+      var dropdown = t.parentNode; // .dropdown
+      _closeElseDropdown(dropdown);
     } else {
-      var t = event.target.parentNode; // .dropdown
-      _closeElseDropdown(t);
+      // not dropdown
+      _closeElseDropdown();
     }
   };
 
@@ -287,61 +290,95 @@ function scrollTop() {
 /************************************************************
   message
 *************************************************************/
+var Message = function () {
+  var NAME = 'Cosmos.Message';
+  var Status = {
+    INFO: 'info',
+    SUCCESS: 'success',
+    WARNING: 'warning',
+    ERROR: 'error'
+  };
+  var Config = {
+    CONTAINER: '#message-container',
+    CLOSE_TEXT: '<i class="fa fa-times" aria-hidden="true"></i>',
+    CLOSE_CLASS: 'btn-close-message',
+    BOX_CLASS: 'message-box'
+  };
 
-/**
- * add '.message-box' into '#message-container'
- * 
- * @param  {String} message
- * @param  {String} status  ['info','success','warning','error']
- */
-function showMessage(message, status) {
-  // default parameter
-  var status = typeof status !== 'undefined' ? status.toLowerCase() : 'info';
-  var c, b, span, btn;
-  c = document.querySelector('#message-container');
-  // create message box
-  b = document.createElement('DIV');
-  span = document.createElement('SPAN');
-  btn = document.createElement('BUTTON');
-  span.textContent = message;
-  btn.innerHTML = "<i class=\"fa fa-times\" aria-hidden=\"true\"></i>";
-  btn.classList.add('btn-close-message');
-  btn.addEventListener('click', function () {
-    var b = this;
-    messageCloseBtnEventHandler(b);
-  });
-  b.classList.add('message-box');
-  b.classList.add('message-' + status);
-  // append child
-  b.appendChild(span);
-  b.appendChild(btn);
-  c.appendChild(b);
-}
+  /**
+   * add '.message-box' into '#message-container'
+   * 
+   * @param  {String} message
+   * @param  {String} status  ['info','success','warning','error']
+   */
+  var showMessage = function showMessage(message, status) {
+    var status = typeof status !== 'undefined' ? status.toLowerCase() : Status.INFO;
+    var c, b, span, btn;
 
-/**
- * messageCloseBtnEventHandler
- */
-function messageCloseBtnEventHandler(element) {
-  var messageBox = element.parentNode;
-  messageBox.style.opacity = '0';
-  setTimeout(function () {
-    messageBox.style.display = 'none';
-  }, 600); // 0.6s
-}
+    // create message box
+    c = document.querySelector(Config.CONTAINER); // container
+    b = document.createElement('DIV'); // message box
+    span = document.createElement('SPAN'); // message text
+    btn = document.createElement('BUTTON'); // close button
+    span.textContent = message;
+    btn.innerHTML = Config.CLOSE_TEXT;
+    btn.classList.add(Config.CLOSE_CLASS);
+    btn.addEventListener('click', _closeButtonHandler);
+    b.classList.add(Config.BOX_CLASS);
+    b.classList.add(status);
+    // append child
+    b.appendChild(span);
+    b.appendChild(btn);
+    c.appendChild(b);
+  };
 
-/**
- * IIFE - flash message 용 close button add event listner 
- */
-(function () {
-  // add event listener - close buttons
-  var btns = document.querySelectorAll('.btn-close-message');
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener('click', function () {
-      var b = this;
-      messageCloseBtnEventHandler(b);
-    }, false);
-  }
-})();
+  var load = function load() {
+    // add event listener - close buttons
+    var btns = document.querySelectorAll('.' + Config.CLOSE_CLASS);
+    if (!btns) {
+      return;
+    }
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = btns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var btn = _step.value;
+
+        btn.addEventListener('click', _closeButtonHandler);
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+  };
+
+  var _closeButtonHandler = function _closeButtonHandler(event) {
+    var messageBox = event.currentTarget.parentNode;
+    messageBox.style.opacity = '0';
+    setTimeout(function () {
+      messageBox.style.display = 'none';
+    }, 600); // 0.6s
+  };
+
+  return {
+    name: NAME,
+    load: load,
+    showMessage: showMessage
+  };
+}();
 'use strict';
 
 /************************************************************
@@ -461,6 +498,8 @@ var AjaxLoading = function () {
   AjaxLoading.load();
   console.log(Dropdown.name);
   Dropdown.load();
+  console.log(Message.name);
+  Message.load();
 })();
 
 // helper functions
@@ -470,6 +509,10 @@ function submitConfirm(form, message) {
 
 function checkMobileSize() {
   return Helper.checkMobileSize();
+}
+
+function showMessage(message, status) {
+  Message.showMessage(message, status);
 }
 // Just example
 // console.log("Hello, World!");

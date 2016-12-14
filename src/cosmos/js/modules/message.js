@@ -1,58 +1,73 @@
 /************************************************************
   message
 *************************************************************/
+const Message = (() => {
+  const NAME = 'Cosmos.Message';
+  const Status = {
+    INFO: 'info',
+    SUCCESS: 'success',
+    WARNING: 'warning',
+    ERROR: 'error'
+  };
+  const Config = {
+    CONTAINER: '#message-container',
+    CLOSE_TEXT: `<i class="fa fa-times" aria-hidden="true"></i>`,
+    CLOSE_CLASS: 'btn-close-message',
+    BOX_CLASS: 'message-box'
+  };
+  
+  /**
+   * add '.message-box' into '#message-container'
+   * 
+   * @param  {String} message
+   * @param  {String} status  ['info','success','warning','error']
+   */
+  var showMessage = function showMessage(message, status) {
+    var status = typeof status !== 'undefined' 
+      ? status.toLowerCase() 
+      : Status.INFO;
+    var c, b, span, btn;
 
-/**
- * add '.message-box' into '#message-container'
- * 
- * @param  {String} message
- * @param  {String} status  ['info','success','warning','error']
- */
-function showMessage(message, status) {
-  // default parameter
-  var status = typeof status !== 'undefined' ? status.toLowerCase() : 'info';
-  var c, b, span, btn;
-  c = document.querySelector('#message-container');
-  // create message box
-  b = document.createElement('DIV');
-  span = document.createElement('SPAN');
-  btn = document.createElement('BUTTON');
-  span.textContent = message;
-  btn.innerHTML = "<i class=\"fa fa-times\" aria-hidden=\"true\"></i>";
-  btn.classList.add('btn-close-message');
-  btn.addEventListener('click', function () {
-    var b = this;
-    messageCloseBtnEventHandler(b);
-  });
-  b.classList.add('message-box');
-  b.classList.add('message-' + status);
-  // append child
-  b.appendChild(span);
-  b.appendChild(btn);
-  c.appendChild(b);
-}
+    // create message box
+    c = document.querySelector(Config.CONTAINER); // container
+    b = document.createElement('DIV'); // message box
+    span = document.createElement('SPAN'); // message text
+    btn = document.createElement('BUTTON'); // close button
+    span.textContent = message;
+    btn.innerHTML = Config.CLOSE_TEXT;
+    btn.classList.add(Config.CLOSE_CLASS);
+    btn.addEventListener('click', _closeButtonHandler);
+    b.classList.add(Config.BOX_CLASS);
+    b.classList.add(status);
+    // append child
+    b.appendChild(span);
+    b.appendChild(btn);
+    c.appendChild(b);
+  };
 
-/**
- * messageCloseBtnEventHandler
- */
-function messageCloseBtnEventHandler(element) {
-  var messageBox = element.parentNode;
-  messageBox.style.opacity = '0';
-  setTimeout(function () {
-    messageBox.style.display = 'none';
-  }, 600); // 0.6s
-}
+  var load = () => {
+    // add event listener - close buttons
+    var btns = document.querySelectorAll(`.${Config.CLOSE_CLASS}`);
+    if (!btns) { return; }
 
-/**
- * IIFE - flash message 용 close button add event listner 
- */
-(function () {
-  // add event listener - close buttons
-  var btns = document.querySelectorAll('.btn-close-message');
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener('click', function () {
-      var b = this;
-      messageCloseBtnEventHandler(b);
-    }, false);
-  }
+    for(let btn of btns) {
+      btn.addEventListener('click', _closeButtonHandler);
+    }
+  };
+
+  var _closeButtonHandler = (event) => {
+    let messageBox = event.currentTarget.parentNode;
+    messageBox.style.opacity = '0';
+    setTimeout(function () {
+      messageBox.style.display = 'none';
+    }, 600); // 0.6s
+  };
+
+  return {
+    name: NAME,
+    load: load,
+    showMessage: showMessage
+  };
 })();
+
+export default Message;

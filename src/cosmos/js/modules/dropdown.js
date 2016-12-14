@@ -23,19 +23,22 @@ const Dropdown = (() => {
 
   var _toggleButtonHandler = (event) => {
     // toggling dropdown content.
-    let c = event.target.parentNode.querySelector(`.${ClassName.CONTENT}`);
+    let c = event.currentTarget.parentNode.querySelector(`.${ClassName.CONTENT}`);
     if (c) {
       c.classList.toggle(ClassName.SHOW);
     }
   };
 
   var _otherClickHandler = (event) => {
+    let t = event.target;
     // Close the dropdown menu if the user clicks outside of it
-    if (!event.target.classList.contains(ClassName.TOGGLE)) {
-      _closeElseDropdown();
+    if (t.classList.contains(ClassName.TOGGLE)) {
+      // dropdown
+      let dropdown = t.parentNode; // .dropdown
+      _closeElseDropdown(dropdown);
     } else {
-      let t = event.target.parentNode; // .dropdown
-      _closeElseDropdown(t);
+      // not dropdown
+      _closeElseDropdown();
     }
   };
 
