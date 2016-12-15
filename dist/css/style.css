@@ -474,7 +474,9 @@ a {
 a.no-deco:focus, a.no-deco:hover {
   text-decoration: none; }
 
-footer a:focus, nav a:focus:not(.nav-brand), nav .nav-header .nav-brand.text:focus, nav .dropdown > button.dropdown-toggle:focus, ul.pagination li a:focus, footer a:hover, nav a:hover:not(.nav-brand), nav .nav-header .nav-brand.text:hover, nav .dropdown > button.dropdown-toggle:hover, ul.pagination li a:hover {
+footer a:focus, nav a:focus:not(.nav-brand), nav .nav-header .nav-brand.text:focus, nav .dropdown > button.dropdown-toggle:focus,
+nav .dropdown > button.dropdown-btn:focus, ul.pagination li a:focus, footer a:hover, nav a:hover:not(.nav-brand), nav .nav-header .nav-brand.text:hover, nav .dropdown > button.dropdown-toggle:hover,
+nav .dropdown > button.dropdown-btn:hover, ul.pagination li a:hover {
   text-decoration: none; }
 
 table {
@@ -607,7 +609,8 @@ select.inline,
 textarea.inline {
   width: auto; }
 
-nav a:not(.nav-brand), nav .nav-header .nav-brand.text, nav .dropdown > button.dropdown-toggle {
+nav a:not(.nav-brand), nav .nav-header .nav-brand.text, nav .dropdown > button.dropdown-toggle,
+nav .dropdown > button.dropdown-btn {
   display: inline-block;
   padding: 12px 18px;
   color: #fff;
@@ -615,10 +618,12 @@ nav a:not(.nav-brand), nav .nav-header .nav-brand.text, nav .dropdown > button.d
   font-size: inherit;
   border-radius: 4px 4px 0 0;
   transition: color 0.3s; }
-  nav a:hover:not(.nav-brand), nav .nav-header .nav-brand.text:hover, nav .dropdown > button.dropdown-toggle:hover {
+  nav a:hover:not(.nav-brand), nav .nav-header .nav-brand.text:hover, nav .dropdown > button.dropdown-toggle:hover,
+  nav .dropdown > button.dropdown-btn:hover {
     color: #7b93a3; }
 
-nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle {
+nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle,
+nav .dropdown > button.dropdown-btn {
   outline: none;
   background-color: transparent;
   display: inline-block; }
@@ -844,9 +849,10 @@ aside {
   .col-lg-12 {
     width: 100%; } }
 
-nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle, .btn, input[type="submit"],
+nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle,
+nav .dropdown > button.dropdown-btn, .btn, input[type="submit"],
 input[type="button"],
-input[type="reset"], .btn-danger, .btn-flat, .btn-icon, .dropdown button.dropdown-toggle, #scroll-to-top {
+input[type="reset"], .btn-danger, .btn-flat, .btn-icon, .dropdown button.dropdown-toggle, .dropdown button.dropdown-btn, #scroll-to-top {
   display: inline-block;
   vertical-align: middle;
   text-align: center;
@@ -856,9 +862,9 @@ input[type="reset"], .btn-danger, .btn-flat, .btn-icon, .dropdown button.dropdow
   user-select: none; }
   nav .nav-header button.menu-toggle:focus, .btn:focus, input[type="submit"]:focus,
   input[type="button"]:focus,
-  input[type="reset"]:focus, .btn-danger:focus, .btn-flat:focus, .btn-icon:focus, .dropdown button.dropdown-toggle:focus, #scroll-to-top:focus, nav .nav-header button.menu-toggle:hover, .btn:hover, input[type="submit"]:hover,
+  input[type="reset"]:focus, .btn-danger:focus, .btn-flat:focus, .btn-icon:focus, .dropdown button.dropdown-toggle:focus, .dropdown button.dropdown-btn:focus, #scroll-to-top:focus, nav .nav-header button.menu-toggle:hover, .btn:hover, input[type="submit"]:hover,
   input[type="button"]:hover,
-  input[type="reset"]:hover, .btn-danger:hover, .btn-flat:hover, .btn-icon:hover, .dropdown button.dropdown-toggle:hover, #scroll-to-top:hover {
+  input[type="reset"]:hover, .btn-danger:hover, .btn-flat:hover, .btn-icon:hover, .dropdown button.dropdown-toggle:hover, .dropdown button.dropdown-btn:hover, #scroll-to-top:hover {
     text-decoration: none; }
 
 .btn, input[type="submit"],
@@ -1130,8 +1136,6 @@ input.danger[type="reset"], .danger.btn-icon {
 .dropdown {
   position: relative;
   display: inline-block; }
-  .dropdown button.dropdown-toggle {
-    outline: none; }
   .dropdown ul.dropdown-content {
     position: absolute;
     z-index: 12;
@@ -1153,10 +1157,14 @@ input.danger[type="reset"], .danger.btn-icon {
         text-decoration: none;
         color: #666666;
         background-color: #e6e6e6; }
+  .dropdown:hover button.dropdown-btn + ul.dropdown-content {
+    display: block; }
 
-nav .dropdown > button.dropdown-toggle {
+nav .dropdown > button.dropdown-toggle,
+nav .dropdown > button.dropdown-btn {
   min-width: 150px; }
-  nav .dropdown > button.dropdown-toggle:before {
+  nav .dropdown > button.dropdown-toggle:before,
+  nav .dropdown > button.dropdown-btn:before {
     all: initial; }
 
 @media only screen and (max-width: 767px) {

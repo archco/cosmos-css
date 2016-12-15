@@ -5,11 +5,16 @@
 .dropdown {
   position: relative;
   display: inline-block;
-
+  
+  // toggle button
   button.dropdown-toggle {
     @extend %btn-common;
-    outline: none;
   }
+  // hover button
+  button.dropdown-btn {
+    @extend %btn-common;
+  }
+
   ul.dropdown-content {
     position: absolute;
     z-index: 12;
@@ -37,10 +42,17 @@
       }
     }
   }
+
+  &:hover {
+    button.dropdown-btn + ul.dropdown-content {
+      display: block;  
+    }
+  }
 }
 
 // nav dropdown
-nav .dropdown > button.dropdown-toggle {
+nav .dropdown > button.dropdown-toggle,
+nav .dropdown > button.dropdown-btn {
   @extend %nav-button, %nav-link;
   min-width: $dropdown-min-width;
   
