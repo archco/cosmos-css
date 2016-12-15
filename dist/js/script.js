@@ -29,6 +29,9 @@ if (typeof jQuery === 'undefined') {
 "use strict";
 'use strict';
 
+/************************************************************
+  Helper
+*************************************************************/
 var Helper = function () {
   var NAME = 'Cosmos.Helper';
 
@@ -259,47 +262,54 @@ var Dropdown = function () {
 /************************************************************
   scroll-to
 *************************************************************/
+var ScrollTo = function () {
+  var NAME = 'Cosmos.ScrollTo';
+  var Config = {
+    TOTOP: '#scroll-to-top',
+    SHOW: 'show'
+  };
 
-(function () {
-  var scrollToTop = document.querySelector('#scroll-to-top');
-  if (!scrollToTop) {
-    return;
-  }
+  var btnToTop = document.querySelector(Config.TOTOP);
 
-  // scroll-to-top click listener.
-  scrollToTop.addEventListener('click', function () {
-    $('html,body').animate({ scrollTop: 0 }, 'slow', 'swing');
-  });
+  var load = function load() {
+    if (!btnToTop) {
+      return;
+    }
 
-  // scroll Listener.
-  window.addEventListener('scroll', function () {
-    var top = scrollTop();
-    var isShow = scrollToTop.classList.contains('show');
+    // scroll-to-top button listener
+    btnToTop.addEventListener('click', function () {
+      var top = 0;
+      $('body').animate({ scrollTop: top }, 'slow', 'swing');
+    });
+
+    // scroll listener
+    window.addEventListener('scroll', _scrollHandler);
+  };
+
+  var _scrollHandler = function _scrollHandler() {
+    var top = _getScrollTop();
+    var isShow = btnToTop.classList.contains(Config.SHOW);
 
     if (top > 500 && !isShow) {
-      scrollToTop.classList.add('show');
+      btnToTop.classList.add(Config.SHOW);
     } else if (top <= 500 && isShow) {
-      scrollToTop.classList.remove('show');
+      btnToTop.classList.remove(Config.SHOW);
     }
-  });
-})();
+  };
 
-/**
- * scrollTop
- * 
- * @return Number
- */
-function scrollTop() {
-  var top = 0;
-  if (typeof window.pageYOffset == "number") {
-    top = window.pageYOffset;
-  } else if (document.body && document.body.scrollTop) {
-    top = document.body.scrollTop;
-  } else if (document.documentElement && document.documentElement.scrollTop) {
-    top = document.documentElement.scrollTop;
-  }
-  return top;
-}
+  var _getScrollTop = function _getScrollTop() {
+    return $('body').scrollTop();
+  };
+
+  var _getScrollBottom = function _getScrollBottom() {
+    return $(document).height();
+  };
+
+  return {
+    name: NAME,
+    load: load
+  };
+}();
 'use strict';
 
 /************************************************************
@@ -512,18 +522,14 @@ var AjaxLoading = function () {
 }();
 "use strict";
 
-// loading modules.
+// initialize - loading modules.
 (function () {
-  console.log(AjaxLoading.name);
   AjaxLoading.load();
-  console.log(Dropdown.name);
   Dropdown.load();
-  console.log(Message.name);
   Message.load();
-  console.log(Nav.name);
   Nav.load();
-  console.log(Parallax.name);
   Parallax.load();
+  ScrollTo.load();
 })();
 
 // define helper functions.

@@ -1,42 +1,51 @@
 /************************************************************
   scroll-to
 *************************************************************/
+const ScrollTo = (() => {
+  const NAME = 'Cosmos.ScrollTo';
+  const Config = {
+    TOTOP: '#scroll-to-top',
+    SHOW: 'show'
+  };
 
-(function () {
-  var scrollToTop = document.querySelector('#scroll-to-top');
-  if (! scrollToTop) { return; }
+  var btnToTop = document.querySelector(Config.TOTOP);
 
-  // scroll-to-top click listener.
-  scrollToTop.addEventListener('click', function () {
-    $('html,body').animate({scrollTop:0}, 'slow', 'swing');
-  });
+  var load = () => {
+    if (!btnToTop) { return; }
 
-  // scroll Listener.
-  window.addEventListener('scroll', function () {
-    let top = scrollTop();
-    let isShow = scrollToTop.classList.contains('show');
+    // scroll-to-top button listener
+    btnToTop.addEventListener('click', () => {
+      let top = 0;
+      $('body').animate({scrollTop: top}, 'slow', 'swing');
+    });
+    
+    // scroll listener
+    window.addEventListener('scroll', _scrollHandler);
+  };
+
+  var _scrollHandler = () => {
+    let top = _getScrollTop();
+    let isShow = btnToTop.classList.contains(Config.SHOW);
 
     if (top > 500 && !isShow) {
-      scrollToTop.classList.add('show');
+      btnToTop.classList.add(Config.SHOW);
     } else if (top <= 500 && isShow) {
-      scrollToTop.classList.remove('show');
+      btnToTop.classList.remove(Config.SHOW);
     }
-  });
+  };
+
+  var _getScrollTop = () => {
+    return $('body').scrollTop();
+  };
+
+  var _getScrollBottom = () => {
+    return $(document).height();
+  };
+
+  return {
+    name: NAME,
+    load: load
+  };
 })();
 
-/**
- * scrollTop
- * 
- * @return Number
- */
-function scrollTop() {
-  var top = 0;
-  if (typeof(window.pageYOffset) == "number") {
-    top = window.pageYOffset;
-  } else if (document.body && document.body.scrollTop) {
-    top = document.body.scrollTop;
-  } else if (document.documentElement && document.documentElement.scrollTop) {
-    top = document.documentElement.scrollTop;
-  }
-  return top;
-}
+export default ScrollTo;
