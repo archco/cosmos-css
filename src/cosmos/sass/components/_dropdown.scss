@@ -4,7 +4,9 @@
 
 .dropdown {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
   
   // toggle button
   button.dropdown-toggle {
@@ -25,6 +27,7 @@
     list-style: none;
     background-color: $dropdown-bg-color;
     box-shadow: $shadow-normal;
+    top: 100%;
 
     > li > a {
       display: block;
@@ -40,6 +43,15 @@
         color: $dropdown-link-hover-color;
         background-color: $dropdown-bg-hover-color;
       }
+    }
+    // dropdown-content position
+    &[data-align="left"] {
+      left: 0;
+      right: initial;
+    }
+    &[data-align="right"] {
+      left: initial;
+      right: 0;
     }
   }
 
