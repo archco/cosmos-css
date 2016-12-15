@@ -521,7 +521,6 @@ textarea {
   outline-color: #c9a8ce; }
 
 input:not([type]),
-input:not([type="color"]),
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -544,8 +543,6 @@ textarea {
   border-radius: 2px;
   background-color: transparent; }
   input:not([type])[disabled], input:not([type])[readonly],
-  input:not([type="color"])[disabled],
-  input:not([type="color"])[readonly],
   input[type="text"][disabled],
   input[type="text"][readonly],
   input[type="email"][disabled],
