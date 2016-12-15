@@ -408,6 +408,109 @@ var Message = function () {
 'use strict';
 
 /************************************************************
+  Modal
+*************************************************************/
+var Modal = function () {
+  var NAME = 'Cosmos.Modal';
+
+  var load = function load() {
+    // modal open button.
+    var openBtns = document.querySelectorAll('button[data-toggle="modal"]');
+    if (openBtns.length > 0) {
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = openBtns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var btn = _step.value;
+
+          btn.addEventListener('click', _modalOpenHandler);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    }
+    // modal close button.
+    var closeBtns = document.querySelectorAll('.modal .modal-close');
+    if (closeBtns.length > 0) {
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = closeBtns[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var _btn = _step2.value;
+
+          _btn.addEventListener('click', function (e) {
+            var m = e.currentTarget.parentNode.parentNode;
+            _modalHide(m);
+          });
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+    }
+    // window onclick.
+    window.onclick = function (event) {
+      if (event.target.classList.contains('modal')) {
+        _modalHide(event.target);
+      }
+    };
+  };
+
+  var _modalOpenHandler = function _modalOpenHandler(event) {
+    var targetID = event.currentTarget.dataset.target;
+    var t = document.querySelector(targetID);
+    if (!t) {
+      return;
+    }
+
+    _modalShow(t);
+  };
+
+  var _modalShow = function _modalShow(modal) {
+    if (!modal.classList.contains('show')) {
+      modal.classList.add('show');
+    }
+  };
+
+  var _modalHide = function _modalHide(modal) {
+    if (modal.classList.contains('show')) {
+      modal.classList.remove('show');
+    }
+  };
+
+  return {
+    name: NAME,
+    load: load
+  };
+}();
+'use strict';
+
+/************************************************************
   Parallax
 *************************************************************/
 var Parallax = function () {
@@ -527,6 +630,7 @@ var AjaxLoading = function () {
   AjaxLoading.load();
   Dropdown.load();
   Message.load();
+  Modal.load();
   Nav.load();
   Parallax.load();
   ScrollTo.load();

@@ -6,6 +6,7 @@
   "modules/dropdown.js",
   "modules/scroll-to.js",
   "modules/message.js",
+  "modules/modal.js",
   "modules/parallax.js",
   "modules/ajax-loading.js",
   "load.js"

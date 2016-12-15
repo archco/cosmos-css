@@ -1249,6 +1249,31 @@ nav .dropdown > button.dropdown-btn {
       .message-box.info .btn-close-message:hover, .message-box.message-info .btn-close-message:hover {
         color: rgba(0, 0, 0, 0.3); }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 16;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); }
+  .modal .modal-content {
+    position: relative;
+    background-color: #FAFAFA;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 75%; }
+    .modal .modal-content button.modal-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: #aaa;
+      font-size: 1.5em;
+      font-weight: bold; }
+
 ul.card-list {
   margin: 0;
   padding: 0;
