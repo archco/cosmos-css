@@ -412,12 +412,25 @@ var Message = function () {
 *************************************************************/
 var Modal = function () {
   var NAME = 'Cosmos.Modal';
+  var Selector = {
+    OPEN: 'button[data-toggle="modal"]',
+    CLOSE: '.modal .modal-close'
+  };
+  var ClassName = {
+    MODAL: 'modal',
+    CONTENT: 'modal-content',
+    CLOSE: 'modal-close',
+    SHOW: 'show'
+  };
+  var Config = {
+    CLOSE_TEXT: '<i class="fa fa-times" aria-hidden="true"></i>'
+  };
 
   // public
 
   var load = function load() {
     // modal open button.
-    var openBtns = document.querySelectorAll('button[data-toggle="modal"]');
+    var openBtns = document.querySelectorAll(Selector.OPEN);
     if (openBtns.length > 0) {
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -445,7 +458,7 @@ var Modal = function () {
       }
     }
     // modal close button.
-    var closeBtns = document.querySelectorAll('.modal .modal-close');
+    var closeBtns = document.querySelectorAll(Selector.CLOSE);
     if (closeBtns.length > 0) {
       var _iteratorNormalCompletion2 = true;
       var _didIteratorError2 = false;
@@ -474,12 +487,12 @@ var Modal = function () {
     }
     // window onclick.
     window.onclick = function (event) {
-      if (event.target.classList.contains('modal')) {
+      if (event.target.classList.contains(ClassName.MODAL)) {
         _modalHide(event.target);
       }
     };
     // If modal doesn't have close button, add it.
-    var modals = document.querySelectorAll('.modal');
+    var modals = document.querySelectorAll('.' + ClassName.MODAL);
     if (modals.length > 0) {
       var _iteratorNormalCompletion3 = true;
       var _didIteratorError3 = false;
@@ -512,10 +525,10 @@ var Modal = function () {
     var m = document.createElement('div'); // modal
     var c = document.createElement('div'); // modal-content
     // modal-content
-    c.classList.add('modal-content');
+    c.classList.add(ClassName.CONTENT);
     c.textContent = text;
     // modal
-    m.classList.add('modal');
+    m.classList.add(ClassName.MODAL);
     m.appendChild(c);
     _addCloseBtn(m);
     document.body.appendChild(m);
@@ -541,26 +554,26 @@ var Modal = function () {
   };
 
   var _modalShow = function _modalShow(modal) {
-    if (!modal.classList.contains('show')) {
-      modal.classList.add('show');
+    if (!modal.classList.contains(ClassName.SHOW)) {
+      modal.classList.add(ClassName.SHOW);
     }
   };
 
   var _modalHide = function _modalHide(modal) {
-    if (modal.classList.contains('show')) {
-      modal.classList.remove('show');
+    if (modal.classList.contains(ClassName.SHOW)) {
+      modal.classList.remove(ClassName.SHOW);
     }
   };
 
   var _addCloseBtn = function _addCloseBtn(modal) {
-    if (modal.querySelector('.modal-close')) {
+    if (modal.querySelector('.' + ClassName.CLOSE)) {
       return;
     }
     var b = document.createElement('button');
-    b.classList.add('modal-close');
-    b.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>';
+    b.classList.add(ClassName.CLOSE);
+    b.innerHTML = Config.CLOSE_TEXT;
     b.addEventListener('click', _modalCloseHandler);
-    modal.querySelector('.modal-content').appendChild(b);
+    modal.querySelector('.' + ClassName.CONTENT).appendChild(b);
   };
 
   return {
