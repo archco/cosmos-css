@@ -16,7 +16,7 @@ const ScrollTo = (() => {
     // scroll-to-top button listener
     btnToTop.addEventListener('click', () => {
       let top = 0;
-      $('body').animate({scrollTop: top}, 'slow', 'swing');
+      $('html,body').animate({scrollTop: top}, 'slow', 'swing');
     });
     
     // scroll listener
@@ -35,7 +35,7 @@ const ScrollTo = (() => {
   };
 
   var _getScrollTop = () => {
-    return $('body').scrollTop();
+    return $(window).scrollTop();
   };
 
   var _getScrollBottom = () => {

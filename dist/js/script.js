@@ -279,7 +279,7 @@ var ScrollTo = function () {
     // scroll-to-top button listener
     btnToTop.addEventListener('click', function () {
       var top = 0;
-      $('body').animate({ scrollTop: top }, 'slow', 'swing');
+      $('html,body').animate({ scrollTop: top }, 'slow', 'swing');
     });
 
     // scroll listener
@@ -298,7 +298,7 @@ var ScrollTo = function () {
   };
 
   var _getScrollTop = function _getScrollTop() {
-    return $('body').scrollTop();
+    return $(window).scrollTop();
   };
 
   var _getScrollBottom = function _getScrollBottom() {
