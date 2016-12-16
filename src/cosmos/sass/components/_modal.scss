@@ -20,14 +20,39 @@
     padding: 20px;
     border: 1px solid #888;
     width: 75%;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
 
     button.modal-close {
+      @extend %modal-btn;
       position: absolute;
       top: 0;
       right: 0;
-      color: #aaa;
       font-size: 1.5em;
       font-weight: bold;
+      padding: 0.4em 0.6em;
     }
+
+    %modal-btn {
+      @extend %btn-common;
+      color: rgba(#333, 0.5);
+      background-color: transparent;
+      transition: color $transition-time;
+      
+      &:hover {
+        color: rgba(#333, 1);
+      }
+    }
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
   }
 }

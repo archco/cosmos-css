@@ -852,7 +852,7 @@ aside {
 nav .nav-header button.menu-toggle, nav .dropdown > button.dropdown-toggle,
 nav .dropdown > button.dropdown-btn, .btn, input[type="submit"],
 input[type="button"],
-input[type="reset"], .btn-danger, .btn-flat, .btn-icon, .dropdown button.dropdown-toggle, .dropdown button.dropdown-btn, #scroll-to-top {
+input[type="reset"], .btn-danger, .btn-flat, .btn-icon, .dropdown button.dropdown-toggle, .dropdown button.dropdown-btn, .modal .modal-content button.modal-close, #scroll-to-top {
   display: inline-block;
   vertical-align: middle;
   text-align: center;
@@ -862,9 +862,9 @@ input[type="reset"], .btn-danger, .btn-flat, .btn-icon, .dropdown button.dropdow
   user-select: none; }
   nav .nav-header button.menu-toggle:focus, .btn:focus, input[type="submit"]:focus,
   input[type="button"]:focus,
-  input[type="reset"]:focus, .btn-danger:focus, .btn-flat:focus, .btn-icon:focus, .dropdown button.dropdown-toggle:focus, .dropdown button.dropdown-btn:focus, #scroll-to-top:focus, nav .nav-header button.menu-toggle:hover, .btn:hover, input[type="submit"]:hover,
+  input[type="reset"]:focus, .btn-danger:focus, .btn-flat:focus, .btn-icon:focus, .dropdown button.dropdown-toggle:focus, .dropdown button.dropdown-btn:focus, .modal .modal-content button.modal-close:focus, #scroll-to-top:focus, nav .nav-header button.menu-toggle:hover, .btn:hover, input[type="submit"]:hover,
   input[type="button"]:hover,
-  input[type="reset"]:hover, .btn-danger:hover, .btn-flat:hover, .btn-icon:hover, .dropdown button.dropdown-toggle:hover, .dropdown button.dropdown-btn:hover, #scroll-to-top:hover {
+  input[type="reset"]:hover, .btn-danger:hover, .btn-flat:hover, .btn-icon:hover, .dropdown button.dropdown-toggle:hover, .dropdown button.dropdown-btn:hover, .modal .modal-content button.modal-close:hover, #scroll-to-top:hover {
     text-decoration: none; }
 
 .btn, input[type="submit"],
@@ -1265,14 +1265,30 @@ nav .dropdown > button.dropdown-btn {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 75%; }
+    width: 75%;
+    animation-name: animatetop;
+    animation-duration: 0.4s; }
     .modal .modal-content button.modal-close {
       position: absolute;
       top: 0;
       right: 0;
-      color: #aaa;
       font-size: 1.5em;
-      font-weight: bold; }
+      font-weight: bold;
+      padding: 0.4em 0.6em; }
+    .modal .modal-content button.modal-close {
+      color: rgba(51, 51, 51, 0.5);
+      background-color: transparent;
+      transition: color 0.3s; }
+      .modal .modal-content button.modal-close:hover {
+        color: #333333; }
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
 
 ul.card-list {
   margin: 0;

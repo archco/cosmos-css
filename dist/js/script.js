@@ -453,10 +453,7 @@ var Modal = function () {
         for (var _iterator2 = closeBtns[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
           var _btn = _step2.value;
 
-          _btn.addEventListener('click', function (e) {
-            var m = e.currentTarget.parentNode.parentNode;
-            _modalHide(m);
-          });
+          _btn.addEventListener('click', _modalCloseHandler);
         }
       } catch (err) {
         _didIteratorError2 = true;
@@ -479,6 +476,39 @@ var Modal = function () {
         _modalHide(event.target);
       }
     };
+    // If modal doesn't have close button, add it.
+    var modals = document.querySelectorAll('.modal');
+    if (modals.length > 0) {
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
+
+      try {
+        for (var _iterator3 = modals[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var m = _step3.value;
+
+          _addCloseBtn(m);
+        }
+      } catch (err) {
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion3 && _iterator3.return) {
+            _iterator3.return();
+          }
+        } finally {
+          if (_didIteratorError3) {
+            throw _iteratorError3;
+          }
+        }
+      }
+    }
+  };
+
+  var _modalCloseHandler = function _modalCloseHandler(event) {
+    var m = event.currentTarget.parentNode.parentNode;
+    _modalHide(m);
   };
 
   var _modalOpenHandler = function _modalOpenHandler(event) {
@@ -501,6 +531,17 @@ var Modal = function () {
     if (modal.classList.contains('show')) {
       modal.classList.remove('show');
     }
+  };
+
+  var _addCloseBtn = function _addCloseBtn(modal) {
+    if (modal.querySelector('.modal-close')) {
+      return;
+    }
+    var b = document.createElement('button');
+    b.classList.add('modal-close');
+    b.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>';
+    b.addEventListener('click', _modalCloseHandler);
+    modal.querySelector('.modal-content').appendChild(b);
   };
 
   return {
