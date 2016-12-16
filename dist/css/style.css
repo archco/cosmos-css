@@ -1148,7 +1148,8 @@ input.danger[type="reset"], .danger.btn-icon {
     list-style: none;
     background-color: #fff;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    top: 100%; }
+    top: 100%;
+    left: 0; }
     .dropdown ul.dropdown-content > li > a {
       display: block;
       padding: 0.5em 1em;

@@ -28,6 +28,9 @@
     background-color: $dropdown-bg-color;
     box-shadow: $shadow-normal;
     top: 100%;
+    // browser compatibility problem. 
+    // @link  https://github.com/archco/cosmos-css/issues/63
+    left: 0; 
 
     > li > a {
       display: block;
