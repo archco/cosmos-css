@@ -168,8 +168,11 @@ var Dropdown = function () {
       for (var _iterator = btns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
         var btn = _step.value;
 
+        // toggling dropdown content.
         btn.addEventListener('click', _toggleButtonHandler);
       }
+
+      // Close the dropdown menu if the user clicks outside of it
     } catch (err) {
       _didIteratorError = true;
       _iteratorError = err;
@@ -185,11 +188,10 @@ var Dropdown = function () {
       }
     }
 
-    window.onclick = _otherClickHandler;
+    window.addEventListener('click', _otherClickHandler);
   };
 
   var _toggleButtonHandler = function _toggleButtonHandler(event) {
-    // toggling dropdown content.
     var c = event.currentTarget.parentNode.querySelector('.' + ClassName.CONTENT);
     if (c) {
       c.classList.toggle(ClassName.SHOW);
@@ -198,10 +200,10 @@ var Dropdown = function () {
 
   var _otherClickHandler = function _otherClickHandler(event) {
     var t = event.target;
-    // Close the dropdown menu if the user clicks outside of it
+
     if (t.classList.contains(ClassName.TOGGLE)) {
       // dropdown
-      var dropdown = t.parentNode; // .dropdown
+      var dropdown = t.parentNode;
       _closeElseDropdown(dropdown);
     } else {
       // not dropdown
@@ -457,6 +459,7 @@ var Modal = function () {
         }
       }
     }
+
     // modal close button.
     var closeBtns = document.querySelectorAll(Selector.CLOSE);
     if (closeBtns.length > 0) {
@@ -485,12 +488,14 @@ var Modal = function () {
         }
       }
     }
+
     // window onclick.
-    window.onclick = function (event) {
+    window.addEventListener('click', function (event) {
       if (event.target.classList.contains(ClassName.MODAL)) {
         _modalHide(event.target);
       }
-    };
+    });
+
     // If modal doesn't have close button, add it.
     var modals = document.querySelectorAll('.' + ClassName.MODAL);
     if (modals.length > 0) {

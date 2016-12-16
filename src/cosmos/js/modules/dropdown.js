@@ -15,14 +15,15 @@ const Dropdown = (() => {
     if (btns.length == 0) { return; }
     
     for (let btn of btns) {
+      // toggling dropdown content.
       btn.addEventListener('click', _toggleButtonHandler);
     }
 
-    window.onclick = _otherClickHandler;
+    // Close the dropdown menu if the user clicks outside of it
+    window.addEventListener('click', _otherClickHandler);
   };
 
   var _toggleButtonHandler = (event) => {
-    // toggling dropdown content.
     let c = event.currentTarget.parentNode.querySelector(`.${ClassName.CONTENT}`);
     if (c) {
       c.classList.toggle(ClassName.SHOW);
@@ -31,10 +32,10 @@ const Dropdown = (() => {
 
   var _otherClickHandler = (event) => {
     let t = event.target;
-    // Close the dropdown menu if the user clicks outside of it
+    
     if (t.classList.contains(ClassName.TOGGLE)) {
       // dropdown
-      let dropdown = t.parentNode; // .dropdown
+      let dropdown = t.parentNode;
       _closeElseDropdown(dropdown);
     } else {
       // not dropdown

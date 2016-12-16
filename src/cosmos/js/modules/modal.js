@@ -27,6 +27,7 @@ const Modal = (() => {
         btn.addEventListener('click', _modalOpenHandler);
       }
     }
+
     // modal close button.
     let closeBtns = document.querySelectorAll(Selector.CLOSE);
     if (closeBtns.length > 0) {
@@ -34,12 +35,14 @@ const Modal = (() => {
         btn.addEventListener('click', _modalCloseHandler);
       }
     }
+    
     // window onclick.
-    window.onclick = (event) => {
+    window.addEventListener('click', (event) => {
       if (event.target.classList.contains(ClassName.MODAL)) {
         _modalHide(event.target);
       }
-    };
+    });
+    
     // If modal doesn't have close button, add it.
     let modals = document.querySelectorAll(`.${ClassName.MODAL}`);
     if (modals.length > 0) {
