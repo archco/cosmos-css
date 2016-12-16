@@ -50,10 +50,10 @@
     // dropdown-content position
     &[data-align="left"] {
       left: 0;
-      right: initial;
+      right: auto;
     }
     &[data-align="right"] {
-      left: initial;
+      left: auto;
       right: 0;
     }
   }

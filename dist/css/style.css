@@ -1163,9 +1163,9 @@ input.danger[type="reset"], .danger.btn-icon {
         background-color: #e6e6e6; }
     .dropdown ul.dropdown-content[data-align="left"] {
       left: 0;
-      right: initial; }
+      right: auto; }
     .dropdown ul.dropdown-content[data-align="right"] {
-      left: initial;
+      left: auto;
       right: 0; }
   .dropdown:hover button.dropdown-btn + ul.dropdown-content {
     display: block; }
