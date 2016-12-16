@@ -413,6 +413,8 @@ var Message = function () {
 var Modal = function () {
   var NAME = 'Cosmos.Modal';
 
+  // public
+
   var load = function load() {
     // modal open button.
     var openBtns = document.querySelectorAll('button[data-toggle="modal"]');
@@ -506,6 +508,23 @@ var Modal = function () {
     }
   };
 
+  var dialog = function dialog(text) {
+    var m = document.createElement('div'); // modal
+    var c = document.createElement('div'); // modal-content
+    // modal-content
+    c.classList.add('modal-content');
+    c.textContent = text;
+    // modal
+    m.classList.add('modal');
+    m.appendChild(c);
+    _addCloseBtn(m);
+    document.body.appendChild(m);
+    // show
+    _modalShow(m);
+  };
+
+  // private
+
   var _modalCloseHandler = function _modalCloseHandler(event) {
     var m = event.currentTarget.parentNode.parentNode;
     _modalHide(m);
@@ -546,7 +565,8 @@ var Modal = function () {
 
   return {
     name: NAME,
-    load: load
+    load: load,
+    dialog: dialog
   };
 }();
 'use strict';

@@ -4,6 +4,8 @@
 const Modal = (() => {
   const NAME = 'Cosmos.Modal';
 
+  // public
+
   var load = () => {
     // modal open button.
     let openBtns = document.querySelectorAll('button[data-toggle="modal"]');
@@ -33,6 +35,23 @@ const Modal = (() => {
       }
     }
   };
+
+  var dialog = (text) => {
+    let m = document.createElement('div'); // modal
+    let c = document.createElement('div'); // modal-content
+    // modal-content
+    c.classList.add('modal-content');
+    c.textContent = text;
+    // modal
+    m.classList.add('modal');
+    m.appendChild(c);
+    _addCloseBtn(m);
+    document.body.appendChild(m);
+    // show
+    _modalShow(m);
+  };
+
+  // private
 
   var _modalCloseHandler = (event) => {
     let m = event.currentTarget.parentNode.parentNode;
@@ -70,7 +89,8 @@ const Modal = (() => {
 
   return {
     name: NAME,
-    load: load
+    load: load,
+    dialog: dialog
   };
 })();
 
