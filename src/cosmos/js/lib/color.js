@@ -42,12 +42,12 @@ const Color = (() => {
   };
 
   /**
-   * get rgb color's brightness value.
+   * get rgb color's lightness value.
    * 
    * @param  string|array  color
    * @return number  (0 ~ 255)
    */
-  var brightness = function brightness(color) {
+  var lightness = function lightness(color) {
     let r,g,b;
     if (typeof color == 'string') {
       let rgb = hexToRgb(color);
@@ -61,7 +61,7 @@ const Color = (() => {
     } else {
       throw new Error('parameter only "hex color" or "rgb array"');
     }
-    // Color brightness formula.
+    // Color lightness formula.
     // @link https://www.w3.org/TR/AERT#color-contrast
     return ((r * 299) + (g * 587) + (b * 114)) / 1000;
   };
@@ -70,7 +70,7 @@ const Color = (() => {
     name: NAME,
     hexToRgb: hexToRgb,
     rgbToHex: rgbToHex,
-    brightness: brightness
+    lightness: lightness
   };
 })();
 
