@@ -2,7 +2,7 @@
 
 /*!
  * cosmos-css - personal practice css framework.
- * @version v0.4.0
+ * @version v0.4.1
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
