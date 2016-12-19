@@ -1,6 +1,7 @@
 [
   "init.js",
   "lib/util.js",
+  "lib/color.js",
   "modules/helper.js",
   "modules/nav.js",
   "modules/dropdown.js",
