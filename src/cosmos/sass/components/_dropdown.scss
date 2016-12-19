@@ -19,7 +19,7 @@
 
   ul.dropdown-content {
     position: absolute;
-    z-index: 12;
+    z-index: $z-index-dropdown-content;
     display: none;
     min-width: $dropdown-min-width;
     padding: 0;

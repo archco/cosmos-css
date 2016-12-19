@@ -24,7 +24,7 @@
 
 // nav
 nav {
-  z-index: 10;
+  z-index: $z-index-nav;
   display: block;
   margin: 0 auto;
   font-family: $nav-font;

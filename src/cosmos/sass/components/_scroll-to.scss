@@ -9,7 +9,7 @@
   position: fixed;
   right: 4%;
   bottom: 4%;
-  z-index: 15;
+  z-index: $z-index-scroll-to-button;
   // box model
   display: none;
   box-sizing: content-box;

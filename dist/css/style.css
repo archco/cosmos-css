@@ -420,7 +420,9 @@ body {
   color: #333;
   background-color: initial; }
 
-header,
+header {
+  z-index: 10; }
+
 footer {
   z-index: 10; }
 
@@ -1455,7 +1457,7 @@ ul.pagination {
   position: fixed;
   right: 4%;
   bottom: 4%;
-  z-index: 15;
+  z-index: 14;
   display: none;
   box-sizing: content-box;
   outline: none;

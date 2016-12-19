@@ -18,7 +18,7 @@ ul.card-list {
 .card {
   display: flex;
   flex-direction: column;
-  z-index: 2;
+  z-index: $z-index-card;
   margin: 0.5rem 0;
   padding: 0;
   background-color: $card-bg-color;
@@ -49,7 +49,7 @@ ul.card-list {
     }
     .card-title {
       position: absolute;
-      z-index: 3;
+      z-index: $z-index-card-content;
       bottom: 0.2em;
       left: 0.5em;
       margin: 0.3em 0;

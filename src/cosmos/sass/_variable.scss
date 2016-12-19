@@ -1,5 +1,5 @@
 //======================================================================
-// Variables
+// Core Variables
 //======================================================================
 
 // fonts
@@ -77,6 +77,20 @@ $transition-time: 0.3s !default;
 $icon-size: 35px !default; // nav toggle button's width
 $default-focus-outline: 2px solid $primary-color !default;
 $outline-color: $primary-color !default;
+
+//======================================================================
+// Lists
+//======================================================================
+
+// z-index list
+$z-index-message-box: 2 !default;
+$z-index-card: 2 !default;
+$z-index-card-content: 3 !default;
+$z-index-header: 10 !default;
+$z-index-footer: 10 !default;
+$z-index-nav: 10 !default;
+$z-index-dropdown-content: 12 !default;
+$z-index-scroll-to-button: 14 !default;
 
 
 //======================================================================
