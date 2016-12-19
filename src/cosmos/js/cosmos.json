@@ -1,6 +1,6 @@
 [
   "init.js",
-  "modules/util.js",
+  "lib/util.js",
   "modules/helper.js",
   "modules/nav.js",
   "modules/dropdown.js",

@@ -1,3 +1,5 @@
+import Util from '../lib/util.js';
+
 /************************************************************
   Modal
 *************************************************************/
@@ -21,21 +23,11 @@ const Modal = (() => {
 
   var load = () => {
     // modal open button.
-    let openBtns = document.querySelectorAll(Selector.OPEN);
-    if (openBtns.length > 0) {
-      for (let btn of openBtns) {
-        btn.addEventListener('click', _modalOpenHandler);
-      }
-    }
+    Util.eventOnSelector(Selector.OPEN, 'click', _modalOpenHandler);
 
     // modal close button.
-    let closeBtns = document.querySelectorAll(Selector.CLOSE);
-    if (closeBtns.length > 0) {
-      for (let btn of closeBtns) {
-        btn.addEventListener('click', _modalCloseHandler);
-      }
-    }
-    
+    Util.eventOnSelector(Selector.CLOSE, 'click', _modalCloseHandler);
+
     // window onclick.
     window.addEventListener('click', (event) => {
       if (event.target.classList.contains(ClassName.MODAL)) {
