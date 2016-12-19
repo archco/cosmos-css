@@ -1,3 +1,5 @@
+import Util from '../lib/util.js';
+
 /************************************************************
   message
 *************************************************************/
@@ -44,12 +46,7 @@ const Message = (() => {
 
   var load = () => {
     // add event listener - close buttons
-    var btns = document.querySelectorAll(`.${Config.CLOSE_CLASS}`);
-    if (btns.length == 0) { return; }
-
-    for(let btn of btns) {
-      btn.addEventListener('click', _closeButtonHandler);
-    }
+    Util.eventOnSelector(`.${Config.CLOSE_CLASS}`, 'click', _closeButtonHandler);
   };
 
   var _closeButtonHandler = (event) => {

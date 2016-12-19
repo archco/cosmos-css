@@ -143,11 +143,8 @@ var Nav = function () {
   var MenuGroups = ['.menu-main', '.menu-left', '.menu-right', '.menu-center'];
 
   var load = function load() {
-    var t = document.querySelector('.' + ClassName.TOGGLE_BTN);
-    if (t) {
-      // menu toggle button.
-      t.addEventListener('click', _toggleHandler);
-    }
+    Util.eventOnSelector('.' + ClassName.TOGGLE_BTN, 'click', _toggleHandler);
+
     // handle jQuery slide style.
     $(window).resize(function () {
       var w = $(window).width();
@@ -210,39 +207,10 @@ var Dropdown = function () {
   };
 
   var load = function load() {
-    var btns = document.querySelectorAll('.' + ClassName.TOGGLE);
-    if (btns.length == 0) {
-      return;
-    }
+    // toggling dropdown content.
+    Util.eventOnSelector('.' + ClassName.TOGGLE, 'click', _toggleButtonHandler);
 
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-      for (var _iterator = btns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var btn = _step.value;
-
-        // toggling dropdown content.
-        btn.addEventListener('click', _toggleButtonHandler);
-      }
-
-      // Close the dropdown menu if the user clicks outside of it
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
-
+    // Close the dropdown menu if the user clicks outside of it
     window.addEventListener('click', _otherClickHandler);
   };
 
@@ -277,13 +245,13 @@ var Dropdown = function () {
 
     var ds = document.querySelectorAll('.' + ClassName.DROPDOWN);
 
-    var _iteratorNormalCompletion2 = true;
-    var _didIteratorError2 = false;
-    var _iteratorError2 = undefined;
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
 
     try {
-      for (var _iterator2 = ds[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-        var d = _step2.value;
+      for (var _iterator = ds[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var d = _step.value;
 
         var c = d.querySelector('.' + ClassName.CONTENT);
         if (t && t == d) {
@@ -294,16 +262,16 @@ var Dropdown = function () {
         }
       }
     } catch (err) {
-      _didIteratorError2 = true;
-      _iteratorError2 = err;
+      _didIteratorError = true;
+      _iteratorError = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion2 && _iterator2.return) {
-          _iterator2.return();
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
         }
       } finally {
-        if (_didIteratorError2) {
-          throw _iteratorError2;
+        if (_didIteratorError) {
+          throw _iteratorError;
         }
       }
     }
@@ -417,35 +385,7 @@ var Message = function () {
 
   var load = function load() {
     // add event listener - close buttons
-    var btns = document.querySelectorAll('.' + Config.CLOSE_CLASS);
-    if (btns.length == 0) {
-      return;
-    }
-
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-      for (var _iterator = btns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var btn = _step.value;
-
-        btn.addEventListener('click', _closeButtonHandler);
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
+    Util.eventOnSelector('.' + Config.CLOSE_CLASS, 'click', _closeButtonHandler);
   };
 
   var _closeButtonHandler = function _closeButtonHandler(event) {

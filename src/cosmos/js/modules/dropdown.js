@@ -1,3 +1,5 @@
+import Util from '../lib/util.js';
+
 /************************************************************
   dropdown
 *************************************************************/
@@ -11,14 +13,9 @@ const Dropdown = (() => {
   };
 
   var load = () => {
-    var btns = document.querySelectorAll(`.${ClassName.TOGGLE}`);
-    if (btns.length == 0) { return; }
+    // toggling dropdown content.
+    Util.eventOnSelector(`.${ClassName.TOGGLE}`, 'click', _toggleButtonHandler);
     
-    for (let btn of btns) {
-      // toggling dropdown content.
-      btn.addEventListener('click', _toggleButtonHandler);
-    }
-
     // Close the dropdown menu if the user clicks outside of it
     window.addEventListener('click', _otherClickHandler);
   };

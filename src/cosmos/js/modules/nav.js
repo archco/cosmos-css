@@ -1,3 +1,5 @@
+import Util from '../lib/util.js';
+
 /************************************************************
   nav
 *************************************************************/
@@ -15,11 +17,8 @@ const Nav = (() => {
   ];
 
   var load = () => {
-    let t = document.querySelector(`.${ClassName.TOGGLE_BTN}`);
-    if (t) {
-      // menu toggle button.
-      t.addEventListener('click', _toggleHandler);
-    }
+    Util.eventOnSelector(`.${ClassName.TOGGLE_BTN}`, 'click', _toggleHandler);
+    
     // handle jQuery slide style.
     $(window).resize(function () {
       var w = $(window).width();
