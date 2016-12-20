@@ -1,3 +1,4 @@
+import Color from './lib/color.js';
 import AjaxLoading from './modules/ajax-loading.js';
 import Dropdown from './modules/dropdown.js';
 import Helper from './modules/helper.js';

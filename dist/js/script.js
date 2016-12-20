@@ -44,11 +44,9 @@ var Util = function () {
     var useCapture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
     var elements = document.querySelectorAll(selector);
-
     if (elements.length == 0) {
       return null;
     }
-
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
     var _iteratorError = undefined;
@@ -77,9 +75,22 @@ var Util = function () {
     return elements.length;
   };
 
+  /**
+   * find ancestor by selector
+   * @param element  element  current element
+   * @param string   selector
+   */
+  var findAncestor = function findAncestor(element, selector) {
+    do {
+      element = element.parentElement;
+    } while (!element.matches(selector));
+    return element;
+  };
+
   return {
     name: NAME,
-    eventOnSelector: eventOnSelector
+    eventOnSelector: eventOnSelector,
+    findAncestor: findAncestor
   };
 }();
 'use strict';
