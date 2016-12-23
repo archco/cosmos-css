@@ -9,3 +9,6 @@ footer {
   a { padding: 0.5em 1em; }
   .footer-box { padding: 1rem; }
 }
+h1 {
+  @extend h1.accent;
+}

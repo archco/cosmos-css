@@ -447,24 +447,9 @@ hr {
   border: 0;
   border-bottom: 1px solid #999999; }
 
-article {
-  padding: 1em 0.5em; }
-
 img {
   max-width: 100%;
   height: auto; }
-
-@media only screen and (min-width: 768px) {
-  section {
-    padding: 2rem 5%; } }
-
-@media only screen and (max-width: 767px) {
-  section {
-    padding: 2rem 0.5rem; } }
-
-section h1 {
-  font-family: "Baloo Bhaina", cursive;
-  padding-left: 1rem; }
 
 a {
   color: #4f81c5;
@@ -501,6 +486,20 @@ table {
     table a:hover, table a:focus {
       color: #3a6db1;
       text-decoration: underline; }
+
+article.pad {
+  padding: 1em 0.5em; }
+
+@media only screen and (min-width: 768px) {
+  section.pad {
+    padding: 2rem 5%; } }
+
+@media only screen and (max-width: 767px) {
+  section.pad {
+    padding: 2rem 0.5rem; } }
+
+h1.accent, h1, h2.accent, h3.accent, h4.accent, h5.accent, h6.accent {
+  font-family: "Baloo Bhaina", cursive; }
 
 fieldset {
   margin: 0.5rem 0;

@@ -1,5 +1,5 @@
 //======================================================================
-// Scaffolding - tag default
+// Scaffolding - Tag Default
 //======================================================================
 
 html { box-sizing: border-box; }
@@ -43,26 +43,10 @@ hr {
   border-bottom: 1px solid $gray;
 }
 
-article { padding: 1em 0.5em; }
-
-// images
-// 
-// responsive 를 따로 설정할 필요가 있을지도 모르겠다.
+// issue #1
 img {
   max-width: 100%;
   height: auto;
-}
-
-// section
-@include media-tablet-up() {
-  section { padding: 2rem 5%; }
-}
-@include media-only-mobile {
-  section { padding: 2rem 0.5rem; }
-}
-section h1 {
-  font-family: $font-accent;
-  padding-left: 1rem;
 }
 
 // link
@@ -109,5 +93,30 @@ table {
       color: $table-link-hover-color;
       text-decoration: $table-link-hover-decoration;
     }
+  }
+}
+
+//======================================================================
+// Scaffolding Optional Classes
+//======================================================================
+
+article.pad {
+  padding: 1em 0.5em;
+}
+
+// section
+@include media-tablet-up() {
+  section.pad {
+    padding: 2rem 5%;
+  }
+}
+@include media-only-mobile {
+  section.pad {
+    padding: 2rem 0.5rem;
+  }
+}
+h1, h2, h3, h4, h5, h6 {
+  &.accent {
+    font-family: $font-accent;  
   }
 }
