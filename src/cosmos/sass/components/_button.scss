@@ -37,47 +37,23 @@
   }
 }
 %btn-color-set {
-  &,
-  &.primary {
-    @include btnColor($button-color, $primary-color);
-  }
-  &.secondary {
-    @include btnColor($button-color, $secondary-color);
-  }
-  &.info {
-    @include btnColor($button-color, $info-color);
-  }
-  &.success {
-    @include btnColor($button-color, $success-color);
-  }
-  &.warning {
-    @include btnColor($button-color, $warning-color);
-  }
-  &.danger {
-    @include btnColor($button-color, $danger-color);
+  // default color
+  @include btnColor($button-color, $primary-color);
+  // each color-set
+  @each $name, $color in $color-set {
+    &.#{$name} {
+      @include btnColor($button-color, $color);
+    }
   }
 }
 %btn-flat-color-set {
-  & {
-    @include btnFlatColor($link-color);
-  }
-  &.primary {
-    @include btnFlatColor($primary-color);
-  }
-  &.secondary {
-    @include btnFlatColor($secondary-color);
-  }
-  &.info {
-    @include btnFlatColor($info-color);
-  }
-  &.success {
-    @include btnFlatColor($success-color);
-  }
-  &.warning {
-    @include btnFlatColor($warning-color);
-  }
-  &.danger {
-    @include btnFlatColor($danger-color);
+  // default color
+  @include btnFlatColor($link-color);
+  // each color-set
+  @each $name, $color in $color-set {
+    &.#{$name} {
+      @include btnFlatColor($color);
+    }
   }
 }
 

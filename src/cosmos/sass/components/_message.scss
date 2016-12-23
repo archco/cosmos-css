@@ -2,14 +2,10 @@
 // Message
 //======================================================================
 
-/** message  */
+/** message - will be deprecated. */
 .error, .danger { color: $error-color; }
 .success { color: $success-color; }
 .info { color: $info-color; }
-.comment {
-  color: $gray;
-  font-size: 0.8rem;
-}
 
 /** message-box */
 .message-box {
@@ -34,21 +30,13 @@
     cursor: pointer;
   }
   
-  // color attributes.
+  // default color
   @include messageBox($secondary-color);
 
-  &.error,
-  &.message-error {
-    @include messageBox($error-color);
-  }
-
-  &.success,
-  &.message-success {
-    @include messageBox($success-color);
-  }
-
-  &.info,
-  &.message-info {
-    @include messageBox($info-color);
+  // each color-set
+  @each $name, $color in $color-set {
+    &.#{$name} {
+      @include messageBox($color);
+    }
   }
 }

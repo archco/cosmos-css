@@ -20,10 +20,11 @@
 @import 'mixin';
 
 // components.
+@import 'components/color-set';
 @import 'components/scaffolding';
 @import 'components/form';
 @import 'components/nav';
-@import 'components/aside.scss';
+@import 'components/aside';
 @import 'components/grid';
 @import 'components/button';
 @import 'components/dropdown';

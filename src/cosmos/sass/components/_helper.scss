@@ -73,11 +73,22 @@
 .float-left { float: left !important; }
 .float-right { float: right !important; }
 
-// color
-.color-primary { color: $primary-color; }
-.color-secondary { color: $secondary-color; }
-.bg-color-primary { background-color: $primary-color; }
-.bg-color-secondary { background-color: $secondary-color; }
+// text
+.comment {
+  color: $gray;
+  font-size: 0.8rem;
+}
+
+// color-set helper
+@each $name, $color in $color-set {
+  .color-#{$name} {
+    color: $color;
+  }
+  .bg-color-#{$name} {
+    color: contrast-color($color);
+    background-color: $color;
+  }
+}
 
 // misc
 .box-line { border: 1px solid $secondary-color; }

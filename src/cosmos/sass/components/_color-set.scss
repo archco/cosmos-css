@@ -1,0 +1,17 @@
+//======================================================================
+// Color-set
+//======================================================================
+// uses: button, message, helper
+
+$color-set: (
+  "primary": $primary-color,
+  "secondary": $secondary-color,
+  "info": $info-color,
+  "success": $success-color,
+  "warning": $warning-color,
+  "danger": $danger-color,
+);
+
+@function getColor($key) {
+  @return map-get($color-set, $key);
+}
