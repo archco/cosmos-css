@@ -5,7 +5,8 @@
 // @param {color} $dark Dark default color
 // @return {color}
 @function contrast-color($color, $dark: #000, $light: #fff) {
-  @if (lightness($color) > 66) {
+  // lightness point = 55%
+  @if (lightness($color) > 55) {
     @return $dark; // Lighter backgorund, return dark color
   } @else {
     @return $light; // Darker background, return light color
