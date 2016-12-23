@@ -105,7 +105,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var Color = function () {
   var NAME = 'Cosmos.Color';
   var Config = {
-    lightnessPoint: 140,
+    lightnessPoint: 166, // 65%
     darkDefault: '#000000',
     lightDefault: '#FFFFFF'
   };
