@@ -418,7 +418,7 @@ html {
 body {
   font-family: "Roboto", sans-serif;
   color: #333;
-  background-color: initial; }
+  background-color: #fff; }
 
 header {
   z-index: 10; }
@@ -1583,7 +1583,7 @@ nav .nav-header .nav-brand, nav .nav-header button.menu-toggle {
   color: #c9a8ce; }
 
 .bg-color-primary {
-  color: #000;
+  color: #333;
   background-color: #c9a8ce; }
 
 .color-secondary {
@@ -1611,7 +1611,7 @@ nav .nav-header .nav-brand, nav .nav-header button.menu-toggle {
   color: #ffcb05; }
 
 .bg-color-warning {
-  color: #000;
+  color: #333;
   background-color: #ffcb05; }
 
 .color-danger {

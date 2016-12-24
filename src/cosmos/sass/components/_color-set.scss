@@ -33,7 +33,7 @@ $color-set: (
 // @param  color  $dark
 // @param  color  $light
 // @return color  $dark or $light
-@function getContrast($color, $dark: #000, $light: #fff) {
+@function getContrast($color, $dark: $black, $light: $white) {
   // lightness point = 166 (65%, #a6a6a6)
   @if (colorLightness($color) > 166) {
     @return $dark; // Lighter backgorund, return dark color
