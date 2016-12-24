@@ -12,6 +12,32 @@ $color-set: (
   "danger": $danger-color,
 );
 
+// get color value from color-set map
+// @param  string  $key
+// @return string  color value
 @function getColor($key) {
   @return map-get($color-set, $key);
+}
+
+// custom lightness()
+// @link   https://www.w3.org/TR/AERT#color-contrast
+// 
+// @param  color $color
+// @return int   0~255
+@function colorLightness($color) {
+  @return ((red($color) * 299) + (green($color) * 587) + (blue($color) * 114)) / 1000;
+}
+
+// get contrast color
+// @param  color  $color
+// @param  color  $dark
+// @param  color  $light
+// @return color  $dark or $light
+@function getContrast($color, $dark: #000, $light: #fff) {
+  // lightness point = 65%
+  @if (colorLightness($color) > 166) {
+    @return $dark; // Lighter backgorund, return dark color
+  } @else {
+    @return $light; // Darker background, return light color
+  }
 }

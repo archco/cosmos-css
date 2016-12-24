@@ -1258,10 +1258,10 @@ nav .dropdown > button.dropdown-btn {
       .message-box.success .btn-close-message:hover {
         color: rgba(0, 0, 0, 0.3); }
   .message-box.warning {
-    color: #fff;
+    color: #333;
     background-color: #ffcb05; }
     .message-box.warning .btn-close-message {
-      color: #fff;
+      color: #333;
       background-color: transparent;
       transition: color 0.3s; }
       .message-box.warning .btn-close-message:hover {
@@ -1611,7 +1611,7 @@ nav .nav-header .nav-brand, nav .nav-header button.menu-toggle {
   color: #ffcb05; }
 
 .bg-color-warning {
-  color: #fff;
+  color: #000;
   background-color: #ffcb05; }
 
 .color-danger {

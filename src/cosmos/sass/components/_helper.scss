@@ -85,7 +85,7 @@
     color: $color;
   }
   .bg-color-#{$name} {
-    color: contrast-color($color);
+    color: getContrast($color);
     background-color: $color;
   }
 }
