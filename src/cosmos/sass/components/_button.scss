@@ -38,11 +38,11 @@
 }
 %btn-color-set {
   // default color
-  @include btnColor($button-color, $primary-color);
+  @include btnColor($primary-color);
   // each color-set
   @each $name, $color in $color-set {
     &.#{$name} {
-      @include btnColor($button-color, $color);
+      @include btnColor($color);
     }
   }
 }

@@ -22,24 +22,29 @@
 // Button
 //======================================================================
 
-@mixin btnColor($color, $back) {
+@mixin btnColor($bg-color, $color: $button-color) {
+  @if not $button-color-is-enable {
+    $color: getContrast($bg-color);
+  }
+
   color: $color;
-  background-color: $back;
-  outline-color: $back;
+  background-color: $bg-color;
+  outline-color: $bg-color;
   transition: background-color $transition-time, box-shadow $transition-time;
   
   &:focus:not([disabled]),
   &:hover:not([disabled]) {
     color: $color;
-    background-color: lighten($back, 4%);
+    background-color: lighten($bg-color, 4%);
     box-shadow: $shadow-normal;
   }
   &:active:not([disabled]) {
     color: $color;
-    background-color: darken($back, 4%);
+    background-color: darken($bg-color, 4%);
     box-shadow: $shadow-near;
   }
 }
+
 @mixin btnFlatColor($color) {
   color: $color;
   background-color: transparent;

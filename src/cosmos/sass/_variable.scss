@@ -100,6 +100,7 @@ $z-index-scroll-to-button: 14 !default;
 // button
 $button-radius: $radius-small !default;
 $button-color: $white !default;
+$button-color-is-enable: false; // If this set false, button color will be background color based contrast color.
 $button-bg-color: $primary-color !default;
 $button-outline-color: $outline-color !default;
 

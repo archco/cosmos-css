@@ -891,7 +891,7 @@ input[disabled][type="reset"], [disabled].btn-icon, [disabled].btn-flat {
 .btn, input[type="submit"],
 input[type="button"],
 input[type="reset"], .btn-icon {
-  color: #fff;
+  color: #333;
   background-color: #c9a8ce;
   outline-color: #c9a8ce;
   transition: background-color 0.3s, box-shadow 0.3s; }
@@ -900,19 +900,19 @@ input[type="reset"], .btn-icon {
   input[type="reset"]:focus:not([disabled]), .btn-icon:focus:not([disabled]), .btn:hover:not([disabled]), input[type="submit"]:hover:not([disabled]),
   input[type="button"]:hover:not([disabled]),
   input[type="reset"]:hover:not([disabled]), .btn-icon:hover:not([disabled]) {
-    color: #fff;
+    color: #333;
     background-color: #d1b5d5;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
   .btn:active:not([disabled]), input[type="submit"]:active:not([disabled]),
   input[type="button"]:active:not([disabled]),
   input[type="reset"]:active:not([disabled]), .btn-icon:active:not([disabled]) {
-    color: #fff;
+    color: #333;
     background-color: #c19bc7;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
   .primary.btn, input.primary[type="submit"],
   input.primary[type="button"],
   input.primary[type="reset"], .primary.btn-icon {
-    color: #fff;
+    color: #333;
     background-color: #c9a8ce;
     outline-color: #c9a8ce;
     transition: background-color 0.3s, box-shadow 0.3s; }
@@ -921,13 +921,13 @@ input[type="reset"], .btn-icon {
     input.primary[type="reset"]:focus:not([disabled]), .primary.btn-icon:focus:not([disabled]), .primary.btn:hover:not([disabled]), input.primary[type="submit"]:hover:not([disabled]),
     input.primary[type="button"]:hover:not([disabled]),
     input.primary[type="reset"]:hover:not([disabled]), .primary.btn-icon:hover:not([disabled]) {
-      color: #fff;
+      color: #333;
       background-color: #d1b5d5;
       box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
     .primary.btn:active:not([disabled]), input.primary[type="submit"]:active:not([disabled]),
     input.primary[type="button"]:active:not([disabled]),
     input.primary[type="reset"]:active:not([disabled]), .primary.btn-icon:active:not([disabled]) {
-      color: #fff;
+      color: #333;
       background-color: #c19bc7;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
   .secondary.btn, input.secondary[type="submit"],
@@ -996,7 +996,7 @@ input[type="reset"], .btn-icon {
   .warning.btn, input.warning[type="submit"],
   input.warning[type="button"],
   input.warning[type="reset"], .warning.btn-icon {
-    color: #fff;
+    color: #333;
     background-color: #ffcb05;
     outline-color: #ffcb05;
     transition: background-color 0.3s, box-shadow 0.3s; }
@@ -1005,13 +1005,13 @@ input[type="reset"], .btn-icon {
     input.warning[type="reset"]:focus:not([disabled]), .warning.btn-icon:focus:not([disabled]), .warning.btn:hover:not([disabled]), input.warning[type="submit"]:hover:not([disabled]),
     input.warning[type="button"]:hover:not([disabled]),
     input.warning[type="reset"]:hover:not([disabled]), .warning.btn-icon:hover:not([disabled]) {
-      color: #fff;
+      color: #333;
       background-color: #ffcf19;
       box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
     .warning.btn:active:not([disabled]), input.warning[type="submit"]:active:not([disabled]),
     input.warning[type="button"]:active:not([disabled]),
     input.warning[type="reset"]:active:not([disabled]), .warning.btn-icon:active:not([disabled]) {
-      color: #fff;
+      color: #333;
       background-color: #f0be00;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
   .danger.btn, input.danger[type="submit"],
@@ -1115,17 +1115,17 @@ input[type="reset"], .btn-icon {
       background-color: rgba(225, 85, 62, 0.2); }
 
 .btn-danger {
-  color: #fff;
-  background-color: #e1553e;
-  outline-color: #e1553e;
+  color: #333;
+  background-color: #fff;
+  outline-color: #fff;
   transition: background-color 0.3s, box-shadow 0.3s; }
   .btn-danger:focus:not([disabled]), .btn-danger:hover:not([disabled]) {
-    color: #fff;
-    background-color: #e46550;
+    color: #333;
+    background-color: white;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
   .btn-danger:active:not([disabled]) {
-    color: #fff;
-    background-color: #de452c;
+    color: #333;
+    background-color: whitesmoke;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
 
 .btn-icon {
