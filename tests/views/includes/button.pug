@@ -1,14 +1,9 @@
-h2 Button (default)
+h2 Default Buttons with Color-set
 button(class='btn') btn
-button(class='btn info') info
-button(class='btn success') success
-button(class='btn warning') warning
-button(class='btn danger') danger
-button(class='btn primary') primary
-button(class='btn secondary') secondary
-br
+each color in colorSet
+  button(class='btn '+color)= color
+h2 Other tag as button
 input(type='submit')
-button(class='btn btn-danger') btn-danger
 a(href='#' class='btn info') link button
 
 h2 Flat button
@@ -25,6 +20,10 @@ a(href='#' class='btn-flat') link button
 h2 Icon Button
 button(class='btn-icon')
   <i class="fa fa-calendar" aria-hidden="true"></i>
+button(class='btn-icon primary')
+  <i class="fa fa-home" aria-hidden="true"></i>
+button(class='btn-icon secondary')
+  <i class="fa fa-user" aria-hidden="true"></i>
 button(class='btn-icon info')
   <i class="fa fa-comment" aria-hidden="true"></i>
 button(class='btn-icon success')
@@ -33,10 +32,7 @@ button(class='btn-icon warning')
   <i class="fa fa-exclamation" aria-hidden="true"></i>
 button(class='btn-icon danger')
   <i class="fa fa-times" aria-hidden="true"></i>
-button(class='btn-icon primary')
-  <i class="fa fa-home" aria-hidden="true"></i>
-button(class='btn-icon secondary')
-  <i class="fa fa-user" aria-hidden="true"></i>
+
 
 h2 Disabled
 button(class='btn' disabled) btn

@@ -20,7 +20,6 @@ div(class='float-clear')
   div(class='float-right box-line') this is right.
   div(class='float-left box-line') this is left.
 h2 Color
-div(class='bg-color-secondary')
-  span(class='color-primary') Primary color.
-div(class='bg-color-primary')
-  span(class='color-secondary') Secondary color.
+each color in colorSet
+  p(class='color-'+color)= 'color-' + color
+  article(class='pad bg-color-'+color)= 'bg-color-' + color

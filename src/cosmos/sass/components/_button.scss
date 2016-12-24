@@ -62,6 +62,7 @@
   @extend %btn, %btn-disabled, %btn-color-set;
 }
 
+// will be deprecated.
 .btn-danger {
   @extend %btn;
   @include btnColor($button-color, $danger-color);

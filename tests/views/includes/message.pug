@@ -13,18 +13,11 @@ div(class='message-box')
   span This is message box.
   button(class='btn-close-message')
     i(class="fa fa-times" aria-hidden="true")
-div(class='message-box error')
-  span This is error message box.
-  button(class='btn-close-message')
-    i(class="fa fa-times" aria-hidden="true")
-div(class='message-box success')
-  span This is success message box.
-  button(class='btn-close-message')
-    i(class="fa fa-times" aria-hidden="true")
-div(class='message-box info')
-  span This is information message box.
-  button(class='btn-close-message')
-    i(class="fa fa-times" aria-hidden="true")
+each color in colorSet
+  div(class='message-box '+color)
+    span= 'This is ' + color + 'message box.'
+    button(class='btn-close-message')
+      i(class="fa fa-times" aria-hidden="true")
 h2 showMessage()
 div(id='message-container')
 div
