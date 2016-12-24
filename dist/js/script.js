@@ -496,7 +496,10 @@ var Message = function () {
     INFO: 'info',
     SUCCESS: 'success',
     WARNING: 'warning',
-    ERROR: 'error'
+    ERROR: 'error',
+    DANGER: 'danger',
+    PRIMARY: 'primary',
+    SECONDARY: 'secondary'
   };
   var Config = {
     CONTAINER: '#message-container',
@@ -526,6 +529,10 @@ var Message = function () {
     btn.classList.add(Config.CLOSE_CLASS);
     btn.addEventListener('click', _closeButtonHandler);
     b.classList.add(Config.BOX_CLASS);
+    // replace status 'error' to 'danger' (issue #71)
+    if (status == Status.ERROR) {
+      status = Status.DANGER;
+    }
     b.classList.add(status);
     // append child
     b.appendChild(span);
@@ -548,6 +555,7 @@ var Message = function () {
 
   return {
     name: NAME,
+    status: Status,
     load: load,
     showMessage: showMessage
   };
