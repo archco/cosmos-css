@@ -1190,11 +1190,10 @@ nav .dropdown > button.dropdown-btn {
   padding: 0;
   overflow: hidden;
   font-family: "Baloo Bhaina", cursive;
-  font-size: 1.1em;
-  margin-bottom: -1px; }
+  font-size: 1.1em; }
   .tab li {
     display: inline-block; }
-  .tab a {
+  .tab .tab-link {
     display: inline-block;
     text-align: center;
     padding: 0.8em 1.6em;
@@ -1203,19 +1202,23 @@ nav .dropdown > button.dropdown-btn {
     text-decoration: none;
     border: 1px solid transparent;
     transition: background-color 0.3s; }
-    .tab a:hover {
-      color: #8c8c8c;
-      background-color: #f2f2f2; }
-    .tab a:focus, .tab a.active {
+    .tab .tab-link:hover {
+      color: gray;
+      background-color: transparent; }
+    .tab .tab-link:focus, .tab .tab-link.active {
       color: #c9a8ce;
       background-color: #fff;
       border: 1px solid #999999;
       border-bottom: 1px solid #fff; }
+  .tab:after {
+    content: "";
+    display: block;
+    margin-top: -1px;
+    border-top: 1px solid #999999; }
 
 .tab-content {
   display: none;
-  padding: 0.5em 1em;
-  border: 1px solid #999999; }
+  padding: 0.5em 1em; }
 
 /** message - will be deprecated. */
 .error, .danger {

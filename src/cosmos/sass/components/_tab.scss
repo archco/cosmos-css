@@ -9,19 +9,18 @@
   overflow: hidden;
   font-family: $tab-font;
   font-size: $tab-font-size;
-  margin-bottom: -1px;
 
   li {
     display: inline-block;
   }
-  a {
+  .tab-link {
     display: inline-block;
     text-align: center;
     padding: 0.8em 1.6em;
     color: $tab-color;
     background-color: $tab-bg-color;
     text-decoration: none;
-    border: 1px solid transparent;
+    border: $tab-border-width solid transparent;
     transition: background-color $transition-time;
 
     &:hover {
@@ -32,14 +31,19 @@
     &.active {
       color: $tab-active-color;
       background-color: $tab-active-bg-color;
-      border: 1px solid $tab-border-color;
-      border-bottom: 1px solid $tab-active-bg-color;
+      border: $tab-border-width solid $tab-border-color;
+      border-bottom: $tab-border-width solid $tab-active-bg-color;
     }
+  }
+  &:after {
+    content: "";
+    display: block;
+    margin-top: -$tab-border-width;
+    border-top: $tab-border-width solid $tab-border-color;
   }
 }
 
 .tab-content {
   display: none;
   padding: 0.5em 1em;
-  border: 1px solid $tab-border-color;
 }
