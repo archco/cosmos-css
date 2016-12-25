@@ -28,8 +28,7 @@ const Tab = (() => {
     
     load() {
       // add event handler on links.
-      console.log(NAME, 'load()');
-      Util.eventOnSelector(`${Selector.TAB} ${Selector.LINK}`, 'click', this._tabHandle);
+      Util.eventOnSelector(`${Selector.TAB} ${Selector.LINK}`, 'click', this._tabHandle.bind(this));
     }
 
     // private
@@ -38,7 +37,7 @@ const Tab = (() => {
       let contents = document.querySelectorAll(Selector.CONTENT);
       let links = document.querySelectorAll(Selector.LINK);
       let a = event.currentTarget;
-      let content = document.querySelector(Tab.extractID(a.href));
+      let content = document.querySelector(this._extractID(a.href));
 
       // contents hide.
       for (let c of contents) {
@@ -54,7 +53,7 @@ const Tab = (() => {
       event.preventDefault();
     }
 
-    static extractID(str) {
+    _extractID(str) {
       let result = /([#])\S+/.exec(str);
 
       return (result == null) ? null : result[0];

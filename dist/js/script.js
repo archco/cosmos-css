@@ -472,8 +472,7 @@ var Tab = function () {
       key: 'load',
       value: function load() {
         // add event handler on links.
-        console.log(NAME, 'load()');
-        Util.eventOnSelector(Selector.TAB + ' ' + Selector.LINK, 'click', this._tabHandle);
+        Util.eventOnSelector(Selector.TAB + ' ' + Selector.LINK, 'click', this._tabHandle.bind(this));
       }
 
       // private
@@ -484,7 +483,7 @@ var Tab = function () {
         var contents = document.querySelectorAll(Selector.CONTENT);
         var links = document.querySelectorAll(Selector.LINK);
         var a = event.currentTarget;
-        var content = document.querySelector(Tab.extractID(a.href));
+        var content = document.querySelector(this._extractID(a.href));
 
         // contents hide.
         var _iteratorNormalCompletion = true;
@@ -543,9 +542,9 @@ var Tab = function () {
         content.classList.add(ClassName.SHOW);
         event.preventDefault();
       }
-    }], [{
-      key: 'extractID',
-      value: function extractID(str) {
+    }, {
+      key: '_extractID',
+      value: function _extractID(str) {
         var result = /([#])\S+/.exec(str);
 
         return result == null ? null : result[0];

@@ -1204,7 +1204,7 @@ nav .dropdown > button.dropdown-btn {
     transition: background-color 0.3s; }
     .tab .tab-link:hover {
       color: gray;
-      background-color: transparent; }
+      background-color: #f2f2f2; }
     .tab .tab-link:focus, .tab .tab-link.active {
       color: #c9a8ce;
       background-color: #fff;
