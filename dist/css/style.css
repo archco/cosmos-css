@@ -1184,6 +1184,36 @@ nav .dropdown > button.dropdown-btn {
   .dropdown-content {
     width: 100%; } }
 
+.tab {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: "Baloo Bhaina", cursive;
+  font-size: 1.1em;
+  margin-bottom: -1px; }
+  .tab li {
+    display: inline-block; }
+  .tab a {
+    display: inline-block;
+    text-align: center;
+    padding: 0.8em 1.6em;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: 1px solid transparent; }
+    .tab a:hover {
+      background-color: #eee; }
+    .tab a:focus, .tab a.active {
+      color: #333;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-bottom: 1px solid #fff; }
+
+.tab-content {
+  display: none;
+  padding: 0.5em 1em;
+  border: 1px solid #ccc; }
+
 /** message - will be deprecated. */
 .error, .danger {
   color: #e1553e; }

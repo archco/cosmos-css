@@ -7,6 +7,7 @@ import Modal from './modules/modal.js';
 import Nav from './modules/nav.js';
 import Parallax from './modules/parallax.js';
 import ScrollTo from './modules/scroll-to.js';
+import Tab from './modules/tab.js';
 
 // initialize - loading modules.
 (function () {
@@ -17,6 +18,8 @@ import ScrollTo from './modules/scroll-to.js';
   Nav.load();
   Parallax.load();
   ScrollTo.load();
+  let tab = new Tab();
+  tab.load();
 })();
 
 // define helper functions.

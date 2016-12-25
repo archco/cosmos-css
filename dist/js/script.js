@@ -434,6 +434,131 @@ var Dropdown = function () {
 }();
 'use strict';
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/************************************************************
+  Tab
+*************************************************************/
+var Tab = function () {
+  var NAME = 'Cosmos.Tab';
+  var ClassName = {
+    TAB: 'tab',
+    LINK: 'tab-link',
+    CONTENT: 'tab-content',
+    SHOW: 'show',
+    HIDE: 'hide',
+    ACTIVE: 'active'
+  };
+  var Selector = {
+    TAB: '.' + ClassName.TAB,
+    LINK: '.' + ClassName.LINK,
+    CONTENT: '.' + ClassName.CONTENT
+  };
+
+  var Tab = function () {
+    function Tab() {
+      var selector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Selector.TAB;
+
+      _classCallCheck(this, Tab);
+
+      Selector.TAB = selector;
+    }
+
+    // public
+
+    _createClass(Tab, [{
+      key: 'load',
+      value: function load() {
+        // add event handler on links.
+        console.log(NAME, 'load()');
+        Util.eventOnSelector(Selector.TAB + ' ' + Selector.LINK, 'click', this._tabHandle);
+      }
+
+      // private
+
+    }, {
+      key: '_tabHandle',
+      value: function _tabHandle(event) {
+        var contents = document.querySelectorAll(Selector.CONTENT);
+        var links = document.querySelectorAll(Selector.LINK);
+        var a = event.currentTarget;
+        var content = document.querySelector(Tab.extractID(a.href));
+
+        // contents hide.
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = contents[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var c = _step.value;
+
+            c.classList.remove(ClassName.SHOW);
+          }
+          // remove active.
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+          for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var l = _step2.value;
+
+            l.classList.remove(ClassName.ACTIVE);
+          }
+          // active and show content.
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+              _iterator2.return();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
+          }
+        }
+
+        a.classList.add(ClassName.ACTIVE);
+        content.classList.add(ClassName.SHOW);
+        event.preventDefault();
+      }
+    }], [{
+      key: 'extractID',
+      value: function extractID(str) {
+        var result = /([#])\S+/.exec(str);
+
+        return result == null ? null : result[0];
+      }
+    }]);
+
+    return Tab;
+  }();
+
+  return Tab;
+}();
+'use strict';
+
 /************************************************************
   scroll-to
 *************************************************************/
@@ -814,6 +939,8 @@ var AjaxLoading = function () {
   Nav.load();
   Parallax.load();
   ScrollTo.load();
+  var tab = new Tab();
+  tab.load();
 })();
 
 // define helper functions.
