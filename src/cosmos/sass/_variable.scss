@@ -180,3 +180,14 @@ $modal-button-color: rgba($black, 0.5) !default;
 $modal-button-hover-color: rgba($black, 1) !default;
 $modal-close-button-color: rgba($red, 0.5) !default;
 $modal-close-button-hover-color: rgba($red, 1) !default;
+
+// tab
+$tab-font: $font-accent !default;
+$tab-font-size: 1.1em !default;
+$tab-color: $gray !default;
+$tab-bg-color: transparent !default;
+$tab-hover-color: darken($tab-color, 5%) !default;
+$tab-hover-bg-color: $lightgray !default;
+$tab-active-color: $primary-color !default;
+$tab-active-bg-color: $white !default;
+$tab-border-color: $gray !default;

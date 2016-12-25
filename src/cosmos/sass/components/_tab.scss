@@ -1,10 +1,14 @@
+//======================================================================
+// Tab
+//======================================================================
+
 .tab {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: $font-accent;
-  font-size: 1.1em;
+  font-family: $tab-font;
+  font-size: $tab-font-size;
   margin-bottom: -1px;
 
   li {
@@ -14,19 +18,22 @@
     display: inline-block;
     text-align: center;
     padding: 0.8em 1.6em;
+    color: $tab-color;
+    background-color: $tab-bg-color;
     text-decoration: none;
-    transition: background-color $transition-time;
     border: 1px solid transparent;
+    transition: background-color $transition-time;
 
     &:hover {
-      background-color: #eee;
+      color: $tab-hover-color;
+      background-color: $tab-hover-bg-color;
     }
     &:focus,
     &.active {
-      color: $text-color;
-      background-color: $white;
-      border: 1px solid #ccc;
-      border-bottom: 1px solid #fff;
+      color: $tab-active-color;
+      background-color: $tab-active-bg-color;
+      border: 1px solid $tab-border-color;
+      border-bottom: 1px solid $tab-active-bg-color;
     }
   }
 }
@@ -34,5 +41,5 @@
 .tab-content {
   display: none;
   padding: 0.5em 1em;
-  border: 1px solid #ccc;
+  border: 1px solid $tab-border-color;
 }

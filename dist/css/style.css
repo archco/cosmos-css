@@ -1198,21 +1198,24 @@ nav .dropdown > button.dropdown-btn {
     display: inline-block;
     text-align: center;
     padding: 0.8em 1.6em;
+    color: #999999;
+    background-color: transparent;
     text-decoration: none;
-    transition: background-color 0.3s;
-    border: 1px solid transparent; }
+    border: 1px solid transparent;
+    transition: background-color 0.3s; }
     .tab a:hover {
-      background-color: #eee; }
+      color: #8c8c8c;
+      background-color: #f2f2f2; }
     .tab a:focus, .tab a.active {
-      color: #333;
+      color: #c9a8ce;
       background-color: #fff;
-      border: 1px solid #ccc;
+      border: 1px solid #999999;
       border-bottom: 1px solid #fff; }
 
 .tab-content {
   display: none;
   padding: 0.5em 1em;
-  border: 1px solid #ccc; }
+  border: 1px solid #999999; }
 
 /** message - will be deprecated. */
 .error, .danger {
