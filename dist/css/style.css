@@ -1196,24 +1196,25 @@ nav .dropdown > button.dropdown-btn {
   .tab .tab-link {
     display: inline-block;
     text-align: center;
-    padding: 0.8em 1.6em;
+    padding: 0.5em 1em;
     color: #999999;
     background-color: transparent;
     text-decoration: none;
-    border: 1px solid transparent;
-    transition: background-color 0.3s; }
+    border-style: solid;
+    border-width: 3px 1px 1px 1px;
+    border-color: transparent; }
     .tab .tab-link:hover {
-      color: gray;
-      background-color: #f2f2f2; }
+      color: #737373; }
     .tab .tab-link:focus, .tab .tab-link.active {
-      color: #c9a8ce;
+      cursor: default;
+      color: #333;
       background-color: #fff;
-      border: 1px solid #999999;
-      border-bottom: 1px solid #fff; }
+      border-color: #c9a8ce #999999 #fff;
+      border-radius: 4px 4px 0 0; }
   .tab:after {
     content: "";
     display: block;
-    margin-top: -1px;
+    margin-top: -2px;
     border-top: 1px solid #999999; }
 
 .tab-content {
