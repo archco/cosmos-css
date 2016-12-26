@@ -29,13 +29,34 @@ const Tab = (() => {
     // public
     
     load() {
-      // load tabs.
-      let tabs = document.querySelectorAll(Selector.TAB);
-      for (let t of tabs) {
-        this._loadTab(t);
-      }
       // add event handler on links.
-      Util.eventOnSelector(`${Selector.TAB} ${Selector.LINK}`, 'click', this._tabHandle.bind(this));
+      Util.eventOnSelector(Selector.LINK, 'click', this._tabHandle.bind(this));
+
+      // load tabs.
+      let tabs = this._getTabs();
+      if (tabs.length > 0) {
+        for (let t of tabs) {
+          this._loadTab(t);
+        }  
+      }
+    }
+
+    setDefault(linkIndex, tabIndex = null) {
+      if (tabIndex == null) {
+        // all tabs.
+        let tabs = this._getTabs();
+        tabs.forEach((e, i, a) => {
+          this._default(linkIndex, i);
+        });
+      } else {
+        this._default(linkIndex, tabIndex);  
+      }
+    }
+
+    // static
+    
+    static get name() {
+      return NAME;
     }
 
     // private
@@ -69,14 +90,28 @@ const Tab = (() => {
       return document.querySelector(this._extractID(link.href));
     }
 
+    _getTabs() {
+      return document.querySelectorAll(Selector.TAB);
+    }
+
     _loadTab(tab) {
-      // tab fade effect.
-      if (tab.classList.contains(ClassName.FADE)) {
-        let links = tab.querySelectorAll(Selector.LINK);
-        for (let l of links) {
+      let links = tab.querySelectorAll(Selector.LINK);
+      for (let l of links) {
+        // set default.
+        if (l.classList.contains(ClassName.ACTIVE)) {
+          l.click();
+        }
+        // tab fade effect.
+        if (tab.classList.contains(ClassName.FADE)) {
           this._getContent(l).classList.add(ClassName.EFFECT_FADE);
         }
       }
+    }
+
+    _default(linkIndex, tabIndex) {
+      let tab = this._getTabs()[tabIndex];
+      let link = tab.querySelectorAll(Selector.LINK)[linkIndex];
+      link.click();
     }
   }
 

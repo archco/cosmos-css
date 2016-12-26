@@ -473,41 +473,64 @@ var Tab = function () {
     _createClass(Tab, [{
       key: 'load',
       value: function load() {
+        // add event handler on links.
+        Util.eventOnSelector(Selector.LINK, 'click', this._tabHandle.bind(this));
+
         // load tabs.
-        var tabs = document.querySelectorAll(Selector.TAB);
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+        var tabs = this._getTabs();
+        if (tabs.length > 0) {
+          var _iteratorNormalCompletion = true;
+          var _didIteratorError = false;
+          var _iteratorError = undefined;
 
-        try {
-          for (var _iterator = tabs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var t = _step.value;
-
-            this._loadTab(t);
-          }
-          // add event handler on links.
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
           try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-              _iterator.return();
+            for (var _iterator = tabs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+              var t = _step.value;
+
+              this._loadTab(t);
             }
+          } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
           } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
+            try {
+              if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+              }
+            } finally {
+              if (_didIteratorError) {
+                throw _iteratorError;
+              }
             }
           }
         }
+      }
+    }, {
+      key: 'setDefault',
+      value: function setDefault(linkIndex) {
+        var _this = this;
 
-        Util.eventOnSelector(Selector.TAB + ' ' + Selector.LINK, 'click', this._tabHandle.bind(this));
+        var tabIndex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+        if (tabIndex == null) {
+          // all tabs.
+          var tabs = this._getTabs();
+          tabs.forEach(function (e, i, a) {
+            _this._default(linkIndex, i);
+          });
+        } else {
+          this._default(linkIndex, tabIndex);
+        }
       }
 
-      // private
+      // static
 
     }, {
       key: '_tabHandle',
+
+
+      // private
+
       value: function _tabHandle(event) {
         var a = event.currentTarget;
         var tab = Util.findAncestor(a, Selector.TAB);
@@ -561,36 +584,57 @@ var Tab = function () {
         return document.querySelector(this._extractID(link.href));
       }
     }, {
+      key: '_getTabs',
+      value: function _getTabs() {
+        return document.querySelectorAll(Selector.TAB);
+      }
+    }, {
       key: '_loadTab',
       value: function _loadTab(tab) {
-        // tab fade effect.
-        if (tab.classList.contains(ClassName.FADE)) {
-          var links = tab.querySelectorAll(Selector.LINK);
-          var _iteratorNormalCompletion3 = true;
-          var _didIteratorError3 = false;
-          var _iteratorError3 = undefined;
+        var links = tab.querySelectorAll(Selector.LINK);
+        var _iteratorNormalCompletion3 = true;
+        var _didIteratorError3 = false;
+        var _iteratorError3 = undefined;
 
-          try {
-            for (var _iterator3 = links[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-              var l = _step3.value;
+        try {
+          for (var _iterator3 = links[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+            var l = _step3.value;
 
+            // set default.
+            if (l.classList.contains(ClassName.ACTIVE)) {
+              l.click();
+            }
+            // tab fade effect.
+            if (tab.classList.contains(ClassName.FADE)) {
               this._getContent(l).classList.add(ClassName.EFFECT_FADE);
             }
-          } catch (err) {
-            _didIteratorError3 = true;
-            _iteratorError3 = err;
+          }
+        } catch (err) {
+          _didIteratorError3 = true;
+          _iteratorError3 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion3 && _iterator3.return) {
+              _iterator3.return();
+            }
           } finally {
-            try {
-              if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                _iterator3.return();
-              }
-            } finally {
-              if (_didIteratorError3) {
-                throw _iteratorError3;
-              }
+            if (_didIteratorError3) {
+              throw _iteratorError3;
             }
           }
         }
+      }
+    }, {
+      key: '_default',
+      value: function _default(linkIndex, tabIndex) {
+        var tab = this._getTabs()[tabIndex];
+        var link = tab.querySelectorAll(Selector.LINK)[linkIndex];
+        link.click();
+      }
+    }], [{
+      key: 'name',
+      get: function get() {
+        return NAME;
       }
     }]);
 
