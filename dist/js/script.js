@@ -480,23 +480,26 @@ var Tab = function () {
     }, {
       key: '_tabHandle',
       value: function _tabHandle(event) {
-        var contents = document.querySelectorAll(Selector.CONTENT);
-        var links = document.querySelectorAll(Selector.LINK);
         var a = event.currentTarget;
-        var content = document.querySelector(this._extractID(a.href));
+        var tab = Util.findAncestor(a, Selector.TAB);
+        var links = tab.querySelectorAll(Selector.LINK);
+        var content = this._getContent(a);
 
-        // contents hide.
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
         var _iteratorError = undefined;
 
         try {
-          for (var _iterator = contents[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var c = _step.value;
+          for (var _iterator = links[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var l = _step.value;
 
+            // content hide
+            var c = this._getContent(l);
             c.classList.remove(ClassName.SHOW);
+            // remove link.active
+            l.classList.remove(ClassName.ACTIVE);
           }
-          // remove active.
+          // active and show content.
         } catch (err) {
           _didIteratorError = true;
           _iteratorError = err;
@@ -512,32 +515,6 @@ var Tab = function () {
           }
         }
 
-        var _iteratorNormalCompletion2 = true;
-        var _didIteratorError2 = false;
-        var _iteratorError2 = undefined;
-
-        try {
-          for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-            var l = _step2.value;
-
-            l.classList.remove(ClassName.ACTIVE);
-          }
-          // active and show content.
-        } catch (err) {
-          _didIteratorError2 = true;
-          _iteratorError2 = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-              _iterator2.return();
-            }
-          } finally {
-            if (_didIteratorError2) {
-              throw _iteratorError2;
-            }
-          }
-        }
-
         a.classList.add(ClassName.ACTIVE);
         content.classList.add(ClassName.SHOW);
         event.preventDefault();
@@ -548,6 +525,11 @@ var Tab = function () {
         var result = /([#])\S+/.exec(str);
 
         return result == null ? null : result[0];
+      }
+    }, {
+      key: '_getContent',
+      value: function _getContent(link) {
+        return document.querySelector(this._extractID(link.href));
       }
     }]);
 

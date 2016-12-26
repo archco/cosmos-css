@@ -34,17 +34,16 @@ const Tab = (() => {
     // private
     
     _tabHandle(event) {
-      let contents = document.querySelectorAll(Selector.CONTENT);
-      let links = document.querySelectorAll(Selector.LINK);
       let a = event.currentTarget;
-      let content = document.querySelector(this._extractID(a.href));
+      let tab = Util.findAncestor(a, Selector.TAB);
+      let links = tab.querySelectorAll(Selector.LINK);
+      let content = this._getContent(a);
 
-      // contents hide.
-      for (let c of contents) {
-        c.classList.remove(ClassName.SHOW);
-      }
-      // remove active.
       for (let l of links) {
+        // content hide
+        let c = this._getContent(l);
+        c.classList.remove(ClassName.SHOW);
+        // remove link.active
         l.classList.remove(ClassName.ACTIVE);
       }
       // active and show content.
@@ -57,6 +56,10 @@ const Tab = (() => {
       let result = /([#])\S+/.exec(str);
 
       return (result == null) ? null : result[0];
+    }
+
+    _getContent(link) {
+      return document.querySelector(this._extractID(link.href));
     }
   }
 
