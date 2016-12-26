@@ -1221,6 +1221,15 @@ nav .dropdown > button.dropdown-btn {
   display: none;
   padding: 0.5em 1em; }
 
+.tab-fade-effect {
+  animation: tabFadeEffect 1s; }
+
+@keyframes tabFadeEffect {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 /** message - will be deprecated. */
 .error, .danger {
   color: #e1553e; }

@@ -449,7 +449,9 @@ var Tab = function () {
     CONTENT: 'tab-content',
     SHOW: 'show',
     HIDE: 'hide',
-    ACTIVE: 'active'
+    ACTIVE: 'active',
+    FADE: 'fade',
+    EFFECT_FADE: 'tab-fade-effect'
   };
   var Selector = {
     TAB: '.' + ClassName.TAB,
@@ -471,7 +473,34 @@ var Tab = function () {
     _createClass(Tab, [{
       key: 'load',
       value: function load() {
-        // add event handler on links.
+        // load tabs.
+        var tabs = document.querySelectorAll(Selector.TAB);
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = tabs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var t = _step.value;
+
+            this._loadTab(t);
+          }
+          // add event handler on links.
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
         Util.eventOnSelector(Selector.TAB + ' ' + Selector.LINK, 'click', this._tabHandle.bind(this));
       }
 
@@ -485,13 +514,13 @@ var Tab = function () {
         var links = tab.querySelectorAll(Selector.LINK);
         var content = this._getContent(a);
 
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
 
         try {
-          for (var _iterator = links[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var l = _step.value;
+          for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var l = _step2.value;
 
             // content hide
             var c = this._getContent(l);
@@ -501,16 +530,16 @@ var Tab = function () {
           }
           // active and show content.
         } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-              _iterator.return();
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+              _iterator2.return();
             }
           } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
+            if (_didIteratorError2) {
+              throw _iteratorError2;
             }
           }
         }
@@ -530,6 +559,38 @@ var Tab = function () {
       key: '_getContent',
       value: function _getContent(link) {
         return document.querySelector(this._extractID(link.href));
+      }
+    }, {
+      key: '_loadTab',
+      value: function _loadTab(tab) {
+        // tab fade effect.
+        if (tab.classList.contains(ClassName.FADE)) {
+          var links = tab.querySelectorAll(Selector.LINK);
+          var _iteratorNormalCompletion3 = true;
+          var _didIteratorError3 = false;
+          var _iteratorError3 = undefined;
+
+          try {
+            for (var _iterator3 = links[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+              var l = _step3.value;
+
+              this._getContent(l).classList.add(ClassName.EFFECT_FADE);
+            }
+          } catch (err) {
+            _didIteratorError3 = true;
+            _iteratorError3 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                _iterator3.return();
+              }
+            } finally {
+              if (_didIteratorError3) {
+                throw _iteratorError3;
+              }
+            }
+          }
+        }
       }
     }]);
 
