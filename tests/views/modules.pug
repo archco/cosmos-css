@@ -15,17 +15,17 @@ block append content
         li
           a(href='#message') Message
         li
+          a(href='#modal') Modal
+        li
           a(href='#nav') Nav
         li
           a(href='#parallax') Parallax
         li
-          a(href='#modal') Modal
+          a(href='#tab') Tab
+        
     section(class='col-10')
       div(id='ajax-loading')
       br
-      h1(id='tab') Tab
-      hr
-      include includes/tab.pug
       h1(id='ajaxloading') Ajax Loading
       hr
       include includes/ajax-loading.pug
@@ -35,13 +35,16 @@ block append content
       h1(id='message') Message
       hr
       include includes/message.pug
+      h1(id='modal') Modal
+      hr
+      include includes/modal.pug
       h1(id='nav') Nav
       hr
       include includes/nav.pug
       h1(id='parallax') Parallax
       hr
       include includes/parallax.pug
-      h1(id='modal') Modal
+      h1(id='tab') Tab
       hr
-      include includes/modal.pug
+      include includes/tab.pug
   
