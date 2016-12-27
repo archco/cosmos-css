@@ -487,7 +487,10 @@ table {
       color: #3a6db1;
       text-decoration: underline; }
 
-article.pad {
+article.pad,
+aside.pad,
+div.pad,
+p.pad {
   padding: 1em 0.5em; }
 
 @media only screen and (min-width: 768px) {

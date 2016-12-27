@@ -100,10 +100,16 @@ table {
 // Scaffolding Optional Classes
 //======================================================================
 
-article.pad {
-  padding: 1em 0.5em;
+// .pad
+//=============================
+article,
+aside,
+div,
+p {
+  &.pad {
+    padding: 1em 0.5em;
+  }
 }
-
 // section
 @include media-tablet-up() {
   section.pad {
@@ -115,6 +121,9 @@ article.pad {
     padding: 2rem 0.5rem;
   }
 }
+
+// .accent
+//============================
 h1, h2, h3, h4, h5, h6 {
   &.accent {
     font-family: $font-accent;  

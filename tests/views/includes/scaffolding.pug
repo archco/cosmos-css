@@ -1,34 +1,39 @@
-//- scaffolding test page
-extends ./layout/layout.pug
-
-block title
-  title= 'Scaffolding Test Page'
-
-block content
-  section
-    h1 Hello, World!
-    hr
-    h2 Article
-    article
-      p this is article
-    h2 Link
-    a(href='#') link
-    h2 Table
-    table
-      tr
-        th name
-        th age
-        th gender
-        th link
-      tr
-        td Karl
-        td 18
-        td male
-        td
-          a(href='#') karl
-      tr
-        td Mia
-        td 22
-        td female
-        td
-          a(href='#') mia
+h2 Link
+a(href='#') link 
+a(href='#' class='no-deco') no-decoration link
+h2 Table
+table
+  thead
+    tr
+      th name
+      th age
+      th gender
+      th link
+  tbody
+    tr
+      td Karl
+      td 18
+      td male
+      td
+        a(href='#') karl
+    tr
+      td Mia
+      td 22
+      td female
+      td
+        a(href='#') mia
+h2 Optional Classes
+h3 .pad
+article(class='pad color-primary') article with .pad
+div(class='pad bg-color-warning') div with .pad
+p(class='pad color-success') p with .pad
+section(class='pad bg-color-secondary')
+  p If case of section with pad, it's responsive.
+h3 .accent
+div(class='pad')
+  h1(class='accent color-danger') Heading with .accent
+  h2(class='accent color-danger') Heading with .accent
+  h3(class='accent color-danger') Heading with .accent
+  h4(class='accent color-danger') Heading with .accent
+  h5(class='accent color-danger') Heading with .accent
+  h6(class='accent color-danger') Heading with .accent
