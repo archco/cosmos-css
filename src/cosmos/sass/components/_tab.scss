@@ -24,10 +24,10 @@
     border-width: $tab-border-width * 3 $tab-border-width $tab-border-width $tab-border-width;
     border-color: transparent;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: $tab-hover-color;
     }
-    &:focus,
     &.active {
       cursor: default;
       color: $tab-active-color;
@@ -46,7 +46,6 @@
 
 .tab-content {
   display: none;
-  padding: 0.5em 1em;
 }
 
 .tab-fade-effect {

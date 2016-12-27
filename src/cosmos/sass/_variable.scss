@@ -182,8 +182,8 @@ $modal-close-button-color: rgba($red, 0.5) !default;
 $modal-close-button-hover-color: rgba($red, 1) !default;
 
 // tab
-$tab-font: $font-accent !default;
-$tab-font-size: 1.1em !default;
+$tab-font: $font-base !default;
+$tab-font-size: 1em !default;
 $tab-color: $gray !default;
 $tab-bg-color: transparent !default;
 $tab-hover-color: darken($tab-color, 15%) !default;

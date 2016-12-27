@@ -1189,8 +1189,8 @@ nav .dropdown > button.dropdown-btn {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: "Baloo Bhaina", cursive;
-  font-size: 1.1em; }
+  font-family: "Roboto", sans-serif;
+  font-size: 1em; }
   .tab li {
     display: inline-block; }
   .tab .tab-link {
@@ -1203,9 +1203,9 @@ nav .dropdown > button.dropdown-btn {
     border-style: solid;
     border-width: 3px 1px 1px 1px;
     border-color: transparent; }
-    .tab .tab-link:hover {
+    .tab .tab-link:hover, .tab .tab-link:focus {
       color: #737373; }
-    .tab .tab-link:focus, .tab .tab-link.active {
+    .tab .tab-link.active {
       cursor: default;
       color: #333;
       background-color: #fff;
@@ -1218,8 +1218,7 @@ nav .dropdown > button.dropdown-btn {
     border-top: 1px solid #999999; }
 
 .tab-content {
-  display: none;
-  padding: 0.5em 1em; }
+  display: none; }
 
 .tab-fade-effect {
   animation: tabFadeEffect 1s; }
