@@ -1209,8 +1209,23 @@ nav .dropdown > button.dropdown-btn {
       cursor: default;
       color: #333;
       background-color: #fff;
-      border-color: #c9a8ce #999999 #fff;
+      border-top-color: #c9a8ce;
+      border-left-color: #999999;
+      border-right-color: #999999;
+      border-bottom-color: #fff;
       border-radius: 4px 4px 0 0; }
+      .tab .tab-link.active.primary {
+        border-top-color: #c9a8ce; }
+      .tab .tab-link.active.secondary {
+        border-top-color: #7b93a3; }
+      .tab .tab-link.active.info {
+        border-top-color: #098587; }
+      .tab .tab-link.active.success {
+        border-top-color: #5da039; }
+      .tab .tab-link.active.warning {
+        border-top-color: #ffcb05; }
+      .tab .tab-link.active.danger {
+        border-top-color: #e1553e; }
   .tab:after {
     content: "";
     display: block;

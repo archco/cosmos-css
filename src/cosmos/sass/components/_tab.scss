@@ -32,8 +32,17 @@
       cursor: default;
       color: $tab-active-color;
       background-color: $tab-active-bg-color;
-      border-color: $tab-active-border-accent-color $tab-border-color $tab-active-bg-color;
+      border-top-color: $tab-active-border-accent-color;
+      border-left-color: $tab-border-color;
+      border-right-color: $tab-border-color;
+      border-bottom-color: $tab-active-bg-color;
       border-radius: $tab-active-border-radius $tab-active-border-radius 0 0;
+
+      @each $name, $color in $color-set {
+        &.#{$name} {
+          border-top-color: $color;
+        }
+      }
     }
   }
   &:after {
