@@ -34,8 +34,8 @@ $yellow: #ffcb05 !default;
 // ==================================================
 // theme-colors
 $primary-color: $lightblue !default;
-$primary-color-light: lighten($primary-color, 20%);
-$primary-color-dark: darken($primary-color, 20%);
+$primary-color-light: lighten($primary-color, 20%) !default;
+$primary-color-dark: darken($primary-color, 20%) !default;
 $secondary-color: $gray !default;
 // base colors
 $text-color: $black !default;
@@ -67,9 +67,9 @@ $table-link-hover-decoration: underline !default;
 
 // else
 $radius-normal: 4px !default;
-$radius-small: round($radius-normal / 2);
-$radius-large: round($radius-normal * 2);
-$radius-button: $radius-small;
+$radius-small: round($radius-normal / 2) !default;
+$radius-large: round($radius-normal * 2) !default;
+$radius-button: $radius-small !default;
 $shadow-near: 1px 1px 4px rgba(#000, 0.3) !default;
 $shadow-normal: 2px 2px 8px rgba(#000, 0.3) !default;
 $shadow-far: 4px 4px 16px rgba(#000, 0.3) !default;
@@ -100,7 +100,7 @@ $z-index-scroll-to-button: 14 !default;
 // button
 $button-radius: $radius-small !default;
 $button-color: $white !default;
-$button-color-is-enable: false; // If this set false, button color will be background color based contrast color.
+$button-color-is-enable: false !default; // If this set false, button color will be background color based contrast color.
 $button-bg-color: $primary-color !default;
 $button-outline-color: $outline-color !default;
 
