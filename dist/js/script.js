@@ -740,10 +740,6 @@ var Message = function () {
     btn.classList.add(Config.CLOSE_CLASS);
     btn.addEventListener('click', _closeButtonHandler);
     b.classList.add(Config.BOX_CLASS);
-    // replace status 'error' to 'danger' (issue #71)
-    if (status == Status.ERROR) {
-      status = Status.DANGER;
-    }
     b.classList.add(status);
     // append child
     b.appendChild(span);

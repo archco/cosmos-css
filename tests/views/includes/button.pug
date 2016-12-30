@@ -2,20 +2,17 @@ h2 Default Buttons with Color-set
 button(class='btn') btn
 each color in colorSet
   button(class='btn '+color)= color
-h2 Other tag as button
-input(type='submit')
-a(href='#' class='btn info') link button
 
 h2 Flat button
 button(class='btn-flat') btn-flat
-button(class='btn-flat info') info
-button(class='btn-flat success') success
-button(class='btn-flat warning') warning
-button(class='btn-flat danger') danger
-button(class='btn-flat primary') primary
-button(class='btn-flat secondary') secondary
+each color in colorSet
+  button(class='btn-flat '+color)= color
+
+h2 Other tag as button
+input(type='submit')
+a(href='#' class='btn info') link button
 br
-a(href='#' class='btn-flat') link button
+a(href='#' class='btn-flat') link flat button
 
 h2 Icon Button
 button(class='btn-icon')
