@@ -38,10 +38,61 @@ const Util = (() => {
     return element;
   };
 
+  /**
+   * wrap elements by div.wrapper
+   * @param  string  target  querySelector
+   * @param  string  wrapper wrapper's class name
+   * @return void
+   */
+  var wrap = (target, wrapper) => {
+    var elements = document.querySelectorAll(target);
+    var div = document.createElement('div');
+    div.classList.add(wrapper);
+    
+    for (let el of elements) {
+      let parent = el.parentNode;
+      let sibling = el.nextSibling;
+
+      div.appendChild(el);
+
+      if (sibling) {
+        parent.insertBefore(div, sibling);
+      } else {
+        parent.appendChild(div);
+      }
+    }
+  };
+
+  /**
+   * wrap all elements inside to div.wrapper
+   * @param  string  target  querySelector
+   * @param  string  wrapper wrapper's class name
+   * @return void
+   */
+  var wrapAll = (target, wrapper) => {
+    var elements = document.querySelectorAll(target);
+    var div = document.createElement('div');
+    div.classList.add(wrapper);
+    var parent = elements[0].parentNode;
+    var sibling = elements[0].nextSibling;
+
+    elements.forEach((elm) => {
+      div.appendChild(elm);
+    });
+
+    if (sibling) {
+      parent.insertBefore(div, sibling);
+    } else {
+      parent.appendChild(div);
+    }
+  };
+
   return {
     name: NAME,
     eventOnSelector: eventOnSelector,
-    findAncestor: findAncestor
+    findAncestor: findAncestor,
+    wrap: wrap,
+    wrapAll: wrapAll
   };
 })();
 

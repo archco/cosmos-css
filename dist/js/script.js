@@ -87,10 +87,82 @@ var Util = function () {
     return element;
   };
 
+  /**
+   * wrap elements by div.wrapper
+   * @param  string  target  querySelector
+   * @param  string  wrapper wrapper's class name
+   * @return void
+   */
+  var wrap = function wrap(target, wrapper) {
+    var elements = document.querySelectorAll(target);
+    var div = document.createElement('div');
+    div.classList.add(wrapper);
+
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+      for (var _iterator2 = elements[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var el = _step2.value;
+
+        var parent = el.parentNode;
+        var sibling = el.nextSibling;
+
+        div.appendChild(el);
+
+        if (sibling) {
+          parent.insertBefore(div, sibling);
+        } else {
+          parent.appendChild(div);
+        }
+      }
+    } catch (err) {
+      _didIteratorError2 = true;
+      _iteratorError2 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+          _iterator2.return();
+        }
+      } finally {
+        if (_didIteratorError2) {
+          throw _iteratorError2;
+        }
+      }
+    }
+  };
+
+  /**
+   * wrap all elements inside to div.wrapper
+   * @param  string  target  querySelector
+   * @param  string  wrapper wrapper's class name
+   * @return void
+   */
+  var wrapAll = function wrapAll(target, wrapper) {
+    var elements = document.querySelectorAll(target);
+    var div = document.createElement('div');
+    div.classList.add(wrapper);
+    var parent = elements[0].parentNode;
+    var sibling = elements[0].nextSibling;
+
+    elements.forEach(function (elm) {
+      div.appendChild(elm);
+    });
+
+    if (sibling) {
+      parent.insertBefore(div, sibling);
+    } else {
+      parent.appendChild(div);
+    }
+  };
+
   return {
     name: NAME,
     eventOnSelector: eventOnSelector,
-    findAncestor: findAncestor
+    findAncestor: findAncestor,
+    wrap: wrap,
+    wrapAll: wrapAll
   };
 }();
 'use strict';
