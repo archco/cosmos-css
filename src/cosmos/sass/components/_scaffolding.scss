@@ -69,21 +69,24 @@ a.no-deco {
   @include no-decoration;
 }
 
-// table
+//======================================================================
+// Table
+//======================================================================
+
+// default
 table {
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
   font-size: 0.9em;
   color: $table-text-color;
+  border-collapse: collapse;
 
-  th, td { padding: 0.5em 1em; }
+  th, td { padding: $table-cell-padding; }
   th {
     text-align: left;
     background-color: $table-head-color;
     color: $table-head-text-color;
   }
-  tr:nth-child(even) { background-color: $table-row-even-bg; }
   a {
     color: $table-link-color;
     transition: text-decoration $transition-time;
@@ -93,6 +96,41 @@ table {
       color: $table-link-hover-color;
       text-decoration: $table-link-hover-decoration;
     }
+  }
+
+  &.center {
+    margin: 0 auto;
+    text-align: initial; // want to fix align center in helper class. #86
+  }
+
+  &.bordered {
+    border: $table-border-width solid $table-border-color;
+
+    th, td {
+      border: $table-border-width solid $table-border-color;
+    }
+  }
+
+  &.striped {
+    tr:nth-child(even) { background-color: $table-row-even-bg; }
+  }
+
+  &.hover {
+    tr {
+      &:hover {
+        background-color: $lightgray;
+      }
+    }
+  }
+}
+
+.table-responsive-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+
+  table {
+    width: auto;
+    max-width: none;
   }
 }
 

@@ -2,7 +2,7 @@ h2 Link
 a(href='#') link 
 a(href='#' class='no-deco') no-decoration link
 h2 Table
-table
+table(class='center bordered hover')
   thead
     tr
       th name
@@ -22,6 +22,33 @@ table
       td female
       td
         a(href='#') mia
+div(class='table-responsive-wrapper')
+  table
+    thead
+      tr
+        th name
+        th age
+        th gender
+        th link
+        - for (var i=0; i<10; i++)
+          th= 'head #' + (i+1)
+    tbody
+      tr
+        td Karl
+        td 18
+        td male
+        td
+          a(href='#') karl
+        - for (var i=0; i<10; i++)
+          td= 'body #' + (i+1)
+      tr
+        td Mia
+        td 22
+        td female
+        td
+          a(href='#') mia
+        - for (var i=0; i<10; i++)
+          td= 'body #' + (i+1)
 h2 Optional Classes
 h3 .pad
 article(class='pad color-primary') article with .pad

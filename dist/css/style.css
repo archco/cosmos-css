@@ -469,23 +469,39 @@ nav .dropdown > button.dropdown-btn:hover, ul.pagination li a:hover {
 table {
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
   font-size: 0.9em;
-  color: inherit; }
+  color: inherit;
+  border-collapse: collapse; }
   table th, table td {
-    padding: 0.5em 1em; }
+    padding: 0.75em; }
   table th {
     text-align: left;
     background-color: #c9a8ce;
-    color: #fff; }
-  table tr:nth-child(even) {
-    background-color: #f2f2f2; }
+    color: getContrast(#c9a8ce); }
   table a {
     color: #4f81c5;
     transition: text-decoration 0.3s; }
     table a:hover, table a:focus {
       color: #3a6db1;
       text-decoration: underline; }
+  table.center {
+    margin: 0 auto;
+    text-align: initial; }
+  table.bordered {
+    border: 1px solid #999999; }
+    table.bordered th, table.bordered td {
+      border: 1px solid #999999; }
+  table.striped tr:nth-child(even) {
+    background-color: #f2f2f2; }
+  table.hover tr:hover {
+    background-color: #f2f2f2; }
+
+.table-responsive-wrapper {
+  max-width: 100%;
+  overflow-x: auto; }
+  .table-responsive-wrapper table {
+    width: auto;
+    max-width: none; }
 
 article.pad,
 aside.pad,
