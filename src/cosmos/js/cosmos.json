@@ -3,6 +3,7 @@
   "lib/util.js",
   "lib/color.js",
   "modules/helper.js",
+  "modules/scaffolding.js",
   "modules/nav.js",
   "modules/dropdown.js",
   "modules/tab.js",

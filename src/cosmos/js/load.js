@@ -1,4 +1,6 @@
+import Util from './lib/util.js';
 import Color from './lib/color.js';
+import Scaffolding from './modules/scaffolding.js';
 import AjaxLoading from './modules/ajax-loading.js';
 import Dropdown from './modules/dropdown.js';
 import Helper from './modules/helper.js';
@@ -11,6 +13,7 @@ import Tab from './modules/tab.js';
 
 // initialize - loading modules.
 (function () {
+  Scaffolding.load();
   AjaxLoading.load();
   Dropdown.load();
   Message.load();

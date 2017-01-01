@@ -354,6 +354,24 @@ var Helper = function () {
 'use strict';
 
 /************************************************************
+  Scaffolding
+*************************************************************/
+var Scaffolding = function () {
+  var NAME = 'Cosmos.Scaffolding';
+
+  var load = function load() {
+    // wrap table.responsive
+    Util.wrap('table.responsive', 'table-responsive-wrapper');
+  };
+
+  return {
+    name: NAME,
+    load: load
+  };
+}();
+'use strict';
+
+/************************************************************
   nav
 *************************************************************/
 var Nav = function () {
@@ -1086,6 +1104,7 @@ var AjaxLoading = function () {
 
 // initialize - loading modules.
 (function () {
+  Scaffolding.load();
   AjaxLoading.load();
   Dropdown.load();
   Message.load();
