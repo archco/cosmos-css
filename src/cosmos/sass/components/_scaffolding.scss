@@ -118,7 +118,7 @@ table {
   &.hover {
     tr {
       &:hover {
-        background-color: $lightgray;
+        background-color: $table-row-hover-bg;
       }
     }
   }

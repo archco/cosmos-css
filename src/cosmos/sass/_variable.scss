@@ -65,6 +65,7 @@ $table-head-color: $primary-color !default;
 $table-head-text-color: getContrast($table-head-color) !default;
 $table-text-color: inherit !default;
 $table-row-even-bg: $lightgray !default;
+$table-row-hover-bg: darken($lightgray, 4%) !default;
 $table-link-color: $link-color !default;
 $table-link-hover-color: $link-hover-color !default;
 $table-link-hover-decoration: underline !default;
