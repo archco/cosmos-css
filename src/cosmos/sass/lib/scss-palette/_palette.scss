@@ -1,0 +1,41 @@
+//======================================================================
+// scss-palette
+//======================================================================
+
+@import 'functions';
+@import 'colors/white';
+@import 'colors/gray';
+@import 'colors/black';
+@import 'colors/red';
+@import 'colors/green';
+@import 'colors/blue';
+@import 'colors/orange';
+@import 'colors/yellow';
+@import 'colors/purple';
+@import 'colors/brown';
+@import 'colors/cyan';
+@import 'colors/pink';
+
+$palette-colors : (
+  "white": $shades-of-white,
+  "black": $shades-of-black,
+  "gray": $shades-of-gray,
+  "red": $shades-of-red,
+  "green": $shades-of-green,
+  "blue": $shades-of-blue,
+  "orange": $shades-of-orange,
+  "yellow": $shades-of-yellow,
+  "purple": $shades-of-purple,
+  "brown": $shades-of-brown,
+  "cyan": $shades-of-cyan,
+  "pink": $shades-of-pink,
+);
+
+$palette: generatePalette();
+
+/*! scss-palette v0.1.0 | https://github.com/archco/scss-palette | #{length($palette)} colors */
+$info: "";
+@each $key, $value in $palette-colors {
+  $info: $info + $key + ": " + length($value) + " | ";
+}
+/* #{$info} */

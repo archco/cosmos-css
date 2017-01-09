@@ -1,0 +1,46 @@
+//======================================================================
+// Shades of blue
+// @links https://en.wikipedia.org/wiki/Shades_of_blue
+//======================================================================
+
+$shades-of-blue: (
+  "blue": #0000FF,
+
+  // Additional definitions
+  "pigmentblue": #333399, // CMYK
+  "naturalblue": #0087BD, // NCS
+  "munsellblue": #0093AF, // Munsell
+  "pantoneblue": #0018A8, // Pantone
+  "crayolablue": #1F75FE, // Crayola
+
+  // Variations
+  "mediumblue": #0000CD,
+  "spanishblue": #0070BB,
+  "liberty": #545AA7,
+  "egyptianblue": #1034A6,
+  "ultramarine": #3F00FF,
+  "darkblue": #00008B,
+  "resolutionblue": #002387,
+  "navy": #000080,
+  "midnightblue": #191970,
+  "independence": #4C516D,
+  "spacecadet": #1D2951,
+
+  // tints of blue
+  "babyblue": #89CFF0,
+  "lightblue": #ADD8E6,
+  "periwinkle": #CCCCFF,
+  "powderblue": #B0E0E6,
+  "morningblue": #8DA399,
+
+  // Web colors
+  "cadetblue": #5F9EA0,
+  "steelblue": #4682B4,
+  "lightsteelblue": #B0C4DE,
+  "lightskyblue": #87CEFA,
+  "skyblue": #87CEEB,
+  "cornflowerblue": #6495ED,
+  "deepskyblue": #00BFFF,
+  "dodgerblue": #1E90FF,
+  "royalblue": #4169E1,
+);

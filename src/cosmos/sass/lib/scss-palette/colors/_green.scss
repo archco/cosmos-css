@@ -1,0 +1,99 @@
+//======================================================================
+// Shades of green
+// @links https://en.wikipedia.org/wiki/Shades_of_green
+//======================================================================
+
+$shades-of-green: (
+  "lime": #00FF00,
+  "green": #008000,
+  "darkgreen": #006400,
+
+  // Additional definitions
+  "pigmentgreen": #00A550, // CMYK
+  "naturalgreen": #009F6B, // NCS
+  "munsellgreen": #00A877, // Munsell
+  "pantonegreen": #00AD83, // Pantone
+  "crayolagreen": #1CAC78, // Crayola
+
+  // Variations
+  "armygreen": #4B5320,
+  "bottlegreen": #006A4E,
+  "brightgreen": #66FF00,
+  "brightmint": #4FFFB0,
+  "brunswickgreen": #1B4D3E,
+  "calpolypomonagreen": #1E4D2B, // Cal Poly Pomona green
+  "castleton green": #00563B,
+  "celadon": #ACE1AF,
+  "celadongreen": #2F847C,
+  "darkpastelgreen": #03C03C,
+  "dartmouthgreen": #00693E,
+  "emerald": #50C878,
+  "gogreen": #00AB66,
+  "greenyellow": #ADFF2F,
+  "harlequin": #3FFF00,
+  "huntergreen": #355E3B,
+  "indiagreen": #138808,
+  "islamicgreen": #009000,
+  "jade": #00A86B,
+  "kellygreen": #4CBB17,
+  "malachite": #0BDA51,
+  "midnightgreen": #004953,
+  "msugreen": #18453B, // Michigan State University
+  "neongreen": #39FF14,
+  "officegreen": #008000, // same as green
+  "pakistangreen": #006600,
+  "parisgreen": #50C878,
+  "persiangreen": #00A693,
+  "riflegreen": #444C38,
+  "russiangreen": #679267,
+  "sacramentostategreen": #043927, // California State University, Sacramento
+  "screamingreen": #76FF7A,
+  "seagreen": #2E8B57,
+  "spanishgreen": #009150,
+  "upforestgreen": #014421, // University of the Philippines
+
+  // Green in nature
+  "artichoke": #8F9779,
+  "artichokegreen": #4B6F44,
+  "asparagus": #87A96B,
+  "avocado": #568203,
+  "deepdarkgreen": #013220,
+  "fern": #71BC78,
+  "ferngreen": #4F7942,
+  "forestgreen": #228B22,
+  "hookersgreen": #49796B,
+  "junglegreen": #29AB87,
+  "laurelgreen": #A9BA9D,
+  "lightgreen": #90EE90,
+  "mantis": #74C365,
+  "mossgreen": #8A9A5B,
+  "darkmossgreen": #4A5D23,
+  "myrtlegreen": #317873,
+  "mintgreen": #98FB98,
+  "pinegreen": #01796F,
+  "shamrockgreen": #009E60,
+  "teagreen": #D0F0C0,
+  "teal": #008080,
+
+  // olive colors
+  // @links https://en.wikipedia.org/wiki/Olive_(color)
+  "olive": #808000,
+  "olivine": #9AB973,
+  "olivedrab": #6B8E23,
+  "olivedrabcamouflage": #544F3D,
+  "darkolivegreen": #556B2F,
+  "blackolive": #3B3C36,
+
+  // Web colors
+  "chartreuse": #7FFF00,
+  "lawngreen": #7CFC00,
+  "limegreen": #32CD32,
+  "palegreen": #98FB98,
+  "mediumspringgreen": #00FA9A,
+  "springgreen": #00FF7F,
+  "mediumseagreen": #3CB371,
+  "yellowgreen": #9ACD32,
+  "mediumaquamarine": #66CDAA,
+  "darkseagreen": #8FBC8F,
+  "lightseagreen": #20B2AA,
+);

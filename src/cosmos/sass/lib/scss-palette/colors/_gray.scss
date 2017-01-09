@@ -1,0 +1,24 @@
+//======================================================================
+// Shades of gray
+// @links https://en.wikipedia.org/wiki/Shades_of_gray
+//======================================================================
+
+$shades-of-gray: (
+  // achromatic grays - rgb values are exactly equal.
+  "gainsboro": #DCDCDC,
+  "lightgray": #D3D3D3,
+  "silver": #C0C0C0,
+  "mediumgray": #BEBEBE, // half of between light gray and dark gray.
+  "darkgray": #A9A9A9,
+  "gray": #808080, // half of rgb values.
+  "dimgray": #696969,
+  "davysgray": #555555,
+  "jet": #343434,
+  // off-grays - rgb values are not exactly equal.
+  "platinum": #E5E4E2,
+  "ashgray": #B2BEB5,
+  "battleshipgray": #848482,
+  "gunmetal": #2A3439,
+  "nickel": #727472,
+  "charcoal": #36454F,
+);

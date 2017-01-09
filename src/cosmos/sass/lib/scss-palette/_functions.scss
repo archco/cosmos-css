@@ -1,0 +1,38 @@
+//======================================================================
+// scss-palette functions
+//======================================================================
+
+// get color from palette
+// @param  string $name
+// @param  color  $default default color
+// @return color
+@function palette($name, $default: null) {
+  $name: to-lower-case($name);
+  $color: map-get($palette, $name);
+  @if $color == null {
+    @if $default != null { @return $default; }
+    @else {
+      @warn "#{$name} color is not exist in color-maps.";
+      @return $default;
+    }
+  } @else {
+    @return $color;
+  }
+}
+
+// generate palette maps
+// @return maps
+@function generatePalette() {
+  $p: ();
+  @each $k, $m in $palette-colors {
+    $p: map-merge($p, $m);
+  }
+  @return $p;
+}
+
+// get color map
+// @param  string $name
+// @return maps
+@function paletteGetColor($name) {
+  @return map-get($palette-colors, $name);
+}

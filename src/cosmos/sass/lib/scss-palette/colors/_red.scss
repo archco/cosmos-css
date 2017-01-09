@@ -1,0 +1,44 @@
+//======================================================================
+// Shades of red
+// @links https://en.wikipedia.org/wiki/Shades_of_red
+//======================================================================
+
+$shades-of-red: (
+  "red": #FF0000,
+
+  // Additional definitions
+  "pigmentred": #ED1C24, // CMYK red
+  "naturalred": #C40233, // NCS red
+  "munsellred": #F2003C, // Munsell Color Wheel
+  "pantonered": #ED2939, // Pantone
+  "crayolared": #EE204D, // Crayola
+
+  // variations
+  "scarlet": #FF2400,
+  "imperialred": #ED2939,
+  "indianred": #CD5C5C,
+  "spanishred": #E60026,
+  "desire": #EA3C53,
+  "lust": #E62020,
+  "carmine": #960018,
+  "ruby": #E0115F,
+  "crimson": #DC143C,
+  "rustyred": #DA2C43,
+  "fireenginered": #CE2029,
+  "cardinalred": #C41E3A,
+  "chilired": #E23D28,
+  "cornellred": #B31B1B,
+  "firebrick": #B22222,
+  "redwood": #A45A52,
+  "oucrimson": #990000,
+  "darkred": #8B0000,
+  "maroon": #800000,
+  "barnred": #7C0A02,
+  "turkeyred": #A91101,
+
+  // Web colors
+  "lightsalmon": #FFA07A,
+  "salmon": #FA8072,
+  "darksalmon": #E9967A,
+  "lightcoral": #F08080,
+);
