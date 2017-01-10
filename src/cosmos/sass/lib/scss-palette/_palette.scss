@@ -4,8 +4,8 @@
 
 @import 'functions';
 @import 'colors/white';
-@import 'colors/gray';
 @import 'colors/black';
+@import 'colors/gray';
 @import 'colors/red';
 @import 'colors/green';
 @import 'colors/blue';
@@ -34,8 +34,3 @@ $palette-colors : (
 $palette: generatePalette();
 
 /*! scss-palette v0.1.0 | https://github.com/archco/scss-palette | #{length($palette)} colors */
-$info: "";
-@each $key, $value in $palette-colors {
-  $info: $info + $key + ": " + length($value) + " | ";
-}
-/* #{$info} */
