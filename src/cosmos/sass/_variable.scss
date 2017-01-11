@@ -16,19 +16,19 @@ $font-accent: $font-serif !default;
 $mobile-size: 768px !default;
 $tablet-size: 992px !default;
 
-// colors
-// ==================================================
-$white: #fff !default;
-$black: #333 !default;
-$gray: #999999 !default;
-$lightgray: #f2f2f2 !default;
-$darkgray: #555 !default;
-$teal: #9dc8c8 !default;
-$turquoise: #098587 !default;
-$lightblue: #4f81c5 !default;
-$green: #5da039 !default;
-$red: #e1553e !default;
-$yellow: #ffcb05 !default;
+// colors (scss-palette)
+// @links  https://archco.github.io/scss-palette/
+//===================================================
+$white: palette('white') !default;
+$black: palette('jet') !default;
+$gray: palette('mediumgray') !default;
+$lightgray: palette('gainsboro') !default;
+$darkgray: palette('dimgray') !default;
+$teal: palette('teal') !default;
+$lightblue: palette('naturalblue') !default;
+$green: palette('pigmentgreen') !default;
+$red: palette('chilired') !default;
+$yellow: palette('naturalyellow') !default;
 
 // Theme
 // ==================================================
@@ -49,7 +49,7 @@ $link-color: $lightblue !default;
 $link-hover-color: darken($link-color, 8%) !default;
 $link-hover-decoration: underline !default;
 // message dialog colors
-$info-color: $turquoise !default;
+$info-color: $teal !default;
 $success-color: $green !default;
 $danger-color: $red !default;
 $error-color: $red !default;
@@ -64,8 +64,8 @@ $table-border-color: $gray !default;
 $table-head-color: $primary-color !default;
 $table-head-text-color: getContrast($table-head-color) !default;
 $table-text-color: inherit !default;
-$table-row-even-bg: $lightgray !default;
-$table-row-hover-bg: darken($lightgray, 4%) !default;
+$table-row-even-bg: lighten($lightgray, 8%) !default;
+$table-row-hover-bg: $lightgray !default;
 $table-link-color: $link-color !default;
 $table-link-hover-color: $link-hover-color !default;
 $table-link-hover-decoration: underline !default;

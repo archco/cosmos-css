@@ -18,11 +18,11 @@ $font-base: $font-sans-serif;
 $font-accent: $font-cursive;
 
 // colors
-$light-violet: #c9a8ce;
-$smoke-gray: #7b93a3;
+$purple: palette('byzantium');
+$smoke-gray: palette('cadetgray');
 
 // theme-colors
-$primary-color: $light-violet;
+$primary-color: $purple;
 $secondary-color: $smoke-gray;
 
 //======================================================================
