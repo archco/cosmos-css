@@ -23,6 +23,7 @@ $smoke-gray: palette('cadetgray');
 
 // theme-colors
 $primary-color: $purple;
+$primary-color-accent: lighten($primary-color, 15%);
 $secondary-color: $smoke-gray;
 
 //======================================================================

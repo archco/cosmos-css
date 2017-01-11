@@ -14,12 +14,12 @@
     display: inline-block;
   }
   .tab-link {
+    @include no-decoration;
     display: inline-block;
     text-align: center;
     padding: 0.5em 1em;
     color: $tab-color;
     background-color: $tab-bg-color;
-    text-decoration: none;
     border-style: solid;
     border-width: $tab-border-width * 3 $tab-border-width $tab-border-width $tab-border-width;
     border-color: transparent;

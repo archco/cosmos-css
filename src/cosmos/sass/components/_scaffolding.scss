@@ -8,7 +8,7 @@ html { box-sizing: border-box; }
 body {
   font-family: $font-base;
   color: $text-color;
-  background-color: $body-bg-color;
+  background-color: $background-color;
 }
 
 header {
@@ -26,6 +26,7 @@ footer {
     @extend %link-no-deco;
     color: $footer-link-color;
     transition: color $transition-time;
+    &:visited { color: inherit; }
     &:hover { color: $footer-link-hover-color; }
   }
   .footer-copyright {
@@ -40,7 +41,7 @@ address { font-style: normal; }
 
 hr {
   border: 0;
-  border-bottom: 1px solid $gray;
+  border-bottom: 1px solid $border-color;
 }
 
 // issue #1
@@ -52,11 +53,15 @@ img {
 // link
 a {
   color: $link-color;
-  text-decoration: none;
+  text-decoration: $link-decoration;
+
+  &:visited {
+    color: $link-color-visited;
+  }
 
   &:hover,
   &:focus {
-    color: $link-hover-color;
+    color: $link-color-hover;
     text-decoration: $link-hover-decoration;
   }
 }

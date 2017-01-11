@@ -4,7 +4,12 @@
 
 // used for %link-no-deco
 @mixin no-decoration() {
-  &:focus, &:hover { text-decoration: none; }
+  text-decoration: none;
+  
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 //======================================================================

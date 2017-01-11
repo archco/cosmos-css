@@ -33,6 +33,7 @@
     left: 0; 
 
     > li > a {
+      @include no-decoration;
       display: block;
       padding: 0.5em 1em;
       font-family: inherit;
@@ -42,7 +43,6 @@
 
       &:hover,
       &:focus {
-        text-decoration: none;
         color: $dropdown-link-hover-color;
         background-color: $dropdown-bg-hover-color;
       }

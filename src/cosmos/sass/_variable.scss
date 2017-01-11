@@ -29,24 +29,33 @@ $lightblue: palette('naturalblue') !default;
 $green: palette('pigmentgreen') !default;
 $red: palette('chilired') !default;
 $yellow: palette('naturalyellow') !default;
+$purple: palette('royalpurple') !default;
 
 // Theme
 // ==================================================
 // theme-colors
 $primary-color: $lightblue !default;
-$primary-color-light: lighten($primary-color, 20%) !default;
-$primary-color-dark: darken($primary-color, 20%) !default;
+$primary-color-accent: darken($primary-color, 16%) !default;
 $secondary-color: $gray !default;
 // base colors
 $text-color: $black !default;
-$text-contrast-color: $white !default;
-$body-bg-color: $white !default;
+$text-color-invert: $white !default;
+$text-color-weak: darken($gray, 15%) !default;
+$text-color-strong: $primary-color-accent !default;
+$background-color: $white !default;
+$background-color-shade: lighten($lightgray, 8%) !default;
+$background-color-invert: darken($secondary-color, 20%) !default;
+$shadow-color: rgba(#000, 0.3) !default;
+$border-color: $gray !default;
+$disabled-color: lighten($gray, 15%) !default;
 
 // Scaffolding
 // ==================================================
 // link colors
 $link-color: $lightblue !default;
-$link-hover-color: darken($link-color, 8%) !default;
+$link-color-hover: darken($link-color, 8%) !default;
+$link-color-visited: $link-color !default;
+$link-decoration: none !default;
 $link-hover-decoration: underline !default;
 // message dialog colors
 $info-color: $teal !default;
@@ -54,20 +63,20 @@ $success-color: $green !default;
 $danger-color: $red !default;
 $error-color: $red !default;
 $warning-color: $yellow !default;
-$message-light-color: $text-contrast-color !default;
+$message-light-color: $text-color-invert !default;
 $message-dark-color: $text-color !default;
 // table
 //------------
 $table-cell-padding: 0.75em !default;
 $table-border-width: 1px !default;
-$table-border-color: $gray !default;
+$table-border-color: $border-color !default;
 $table-head-color: $primary-color !default;
 $table-head-text-color: getContrast($table-head-color) !default;
 $table-text-color: inherit !default;
 $table-row-even-bg: lighten($lightgray, 8%) !default;
 $table-row-hover-bg: $lightgray !default;
 $table-link-color: $link-color !default;
-$table-link-hover-color: $link-hover-color !default;
+$table-link-hover-color: $link-color-hover !default;
 $table-link-hover-decoration: underline !default;
 
 // else
@@ -75,9 +84,9 @@ $radius-normal: 4px !default;
 $radius-small: round($radius-normal / 2) !default;
 $radius-large: round($radius-normal * 2) !default;
 $radius-button: $radius-small !default;
-$shadow-near: 1px 1px 4px rgba(#000, 0.3) !default;
-$shadow-normal: 2px 2px 8px rgba(#000, 0.3) !default;
-$shadow-far: 4px 4px 16px rgba(#000, 0.3) !default;
+$shadow-near: 1px 1px 4px $shadow-color !default;
+$shadow-normal: 2px 2px 8px $shadow-color !default;
+$shadow-far: 4px 4px 16px $shadow-color !default;
 $transition-time: 0.3s !default;
 $icon-size: 35px !default; // nav toggle button's width
 $default-focus-outline: 2px solid $primary-color !default;
@@ -110,10 +119,10 @@ $button-bg-color: $primary-color !default;
 $button-outline-color: $outline-color !default;
 
 // dropdown
-$dropdown-bg-color: $white !default;
-$dropdown-bg-hover-color: darken($dropdown-bg-color, 10%) !default;
-$dropdown-link-color: $gray !default;
-$dropdown-link-hover-color: darken($dropdown-link-color, 20%) !default;
+$dropdown-bg-color: $background-color !default;
+$dropdown-bg-hover-color: $background-color-shade !default;
+$dropdown-link-color: $text-color-weak !default;
+$dropdown-link-hover-color: $text-color !default;
 $dropdown-min-width: 120px !default;
 
 // grid
@@ -127,56 +136,57 @@ $card-size-large: 400px !default;
 $card-radius: $radius-small !default;
 $card-shadow: $shadow-normal !default;
 $card-hover-shadow: $shadow-far !default;
-$card-bg-color: $white !default;
-$card-title-color: $white !default;
+$card-bg-color: $background-color !default;
+$card-title-color: $text-color-invert !default;
 
 // nav
 $nav-bg-color: $primary-color !default;
-$nav-link-color: $white !default;
+$nav-link-color: $text-color-invert !default;
 $nav-link-hover-color: $secondary-color !default;
 $nav-font: $font-accent !default;
 $nav-font-size: 1.25em !default;
 
 // footer
-$footer-color: $white !default;
+$footer-color: $text-color-invert !default;
 $footer-bg-color: $primary-color !default;
-$footer-link-color: $white !default;
+$footer-link-color: $text-color-invert !default;
 $footer-link-hover-color: $secondary-color !default;
 
 // form
 $filedset-border: 2px solid $primary-color !default;
 $legend-color: $primary-color !default;
-$label-color: $black !default;
+$label-color: $text-color !default;
 $label-color-focused: $primary-color !default;
-$label-color-disabled: $gray !default;
+$label-color-disabled: $disabled-color !default;
 
 $input-padding: 0.2em 0.5em !default;
 $input-margin: 0.5rem 0 !default;
-$input-border: 1px solid $gray !default;
+$input-border: 1px solid $border-color !default;
 $input-radius: $radius-small !default;
 $input-outline-color: $outline-color !default;
-$input-bg-disabled: $lightgray !default;
+$input-bg-disabled: $disabled-color !default;
 
 // pagination
 $pagination-color: $text-color !default;
 $pagination-bg: transparent !default;
 $pagination-hover-color: $text-color !default;
-$pagination-hover-bg: $lightgray !default;
+$pagination-hover-bg: $background-color-shade !default;
 
-$pagination-active-color: $white !default;
+$pagination-active-color: $text-color-invert !default;
 $pagination-active-bg: $primary-color !default;
-$pagination-active-hover-color: $white !default;
-$pagination-active-hover-bg: $primary-color-dark !default;
+$pagination-active-hover-color: $pagination-active-color !default;
+$pagination-active-hover-bg: $primary-color-accent !default;
 
-$pagination-disabled-color: $gray !default;
+$pagination-disabled-color: $disabled-color !default;
 
 // ajax-loading
 $ajax-loading-color: $primary-color !default;
+$ajax-loading-border-color: $border-color !default;
 $ajax-loading-size: 2rem !default;
 
 // scroll-to
 $scroll-to-color: $white !default;
-$scroll-to-bg-color: $primary-color-dark !default;
+$scroll-to-bg-color: $primary-color-accent !default;
 
 // modal
 $modal-bg-color: rgba(0,0,0, 0.4) !default;

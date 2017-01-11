@@ -10,7 +10,7 @@
 
   .loader {
     display: none;
-    border: $ajax-loading-size / 6 solid $lightgray;
+    border: $ajax-loading-size / 6 solid $ajax-loading-border-color;
     border-top: $ajax-loading-size / 6 solid $ajax-loading-color;
     border-radius: 50%;
     width: $ajax-loading-size;

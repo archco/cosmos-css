@@ -4,6 +4,7 @@
 
 // placeholder
 %btn-common {
+  @include no-decoration;
   display: inline-block;
   vertical-align: middle;
   text-align: center;
@@ -11,11 +12,6 @@
   border: none;
   cursor: pointer;
   user-select: none;
-  
-  &:focus,
-  &:hover {
-    text-decoration: none;
-  }
 }
 %btn {
   @extend %btn-common;
