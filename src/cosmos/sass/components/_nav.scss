@@ -42,7 +42,7 @@ nav {
     display: inline;
     &.active a { 
       color: $nav-bg-color;
-      background-color: $nav-link-color;
+      background-color: $nav-active-bg-color;
     }
   }
 

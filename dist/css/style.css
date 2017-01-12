@@ -502,9 +502,9 @@ table {
     table.bordered th, table.bordered td {
       border: 1px solid #BEBEBE; }
   table.striped tr:nth-child(even) {
-    background-color: #f0f0f0; }
+    background-color: rgba(190, 190, 190, 0.3); }
   table.hover tr:hover {
-    background-color: #DCDCDC; }
+    background-color: rgba(152, 152, 152, 0.3); }
 
 .table-responsive-wrapper {
   max-width: 100%;
@@ -602,7 +602,7 @@ textarea {
   select[readonly],
   textarea[disabled],
   textarea[readonly] {
-    background-color: #e4e4e4; }
+    background-color: rgba(190, 190, 190, 0.5); }
 
 input[type="text"].password, input[type="text"].pw {
   -webkit-text-security: disc; }
@@ -675,7 +675,7 @@ nav {
     display: inline; }
     nav li.active a {
       color: #FF8200;
-      background-color: #343434; }
+      background-color: #36454F; }
   nav .menu-wrapper {
     margin: 0 auto;
     text-align: left; }
@@ -1228,7 +1228,7 @@ input[type="reset"], .btn-icon {
         text-decoration: none; }
       .dropdown ul.dropdown-content > li > a:hover, .dropdown ul.dropdown-content > li > a:focus {
         color: #FFFFFF;
-        background-color: #f0f0f0; }
+        background-color: rgba(190, 190, 190, 0.3); }
     .dropdown ul.dropdown-content[data-align="left"] {
       left: 0;
       right: auto; }
@@ -1263,7 +1263,7 @@ nav .dropdown > button.dropdown-btn {
     display: inline-block;
     text-align: center;
     padding: 0.5em 1em;
-    color: #BEBEBE;
+    color: #989898;
     background-color: transparent;
     border-style: solid;
     border-width: 3px 1px 1px 1px;
@@ -1271,15 +1271,15 @@ nav .dropdown > button.dropdown-btn {
     .tab .tab-link:focus, .tab .tab-link:hover {
       text-decoration: none; }
     .tab .tab-link:hover, .tab .tab-link:focus {
-      color: #989898; }
+      color: #727272; }
     .tab .tab-link.active {
       cursor: default;
-      color: #343434;
-      background-color: #FFFFFF;
+      color: #FFFFFF;
+      background-color: #36454F;
       border-top-color: #FF8200;
       border-left-color: #BEBEBE;
       border-right-color: #BEBEBE;
-      border-bottom-color: #FFFFFF;
+      border-bottom-color: #36454F;
       border-radius: 4px 4px 0 0; }
       .tab .tab-link.active.primary {
         border-top-color: #FF8200; }
@@ -1332,7 +1332,7 @@ nav .dropdown > button.dropdown-btn {
   border-radius: 4px;
   vertical-align: middle;
   transition: opacity 0.6s;
-  color: #343434;
+  color: #FFFFFF;
   background-color: #98817B; }
   .message-box .btn-close-message {
     position: absolute;
@@ -1345,81 +1345,81 @@ nav .dropdown > button.dropdown-btn {
     outline: none;
     cursor: pointer; }
   .message-box .btn-close-message {
-    color: #343434;
+    color: #FFFFFF;
     background-color: transparent;
     transition: color 0.3s; }
     .message-box .btn-close-message:hover {
       color: rgba(0, 0, 0, 0.3); }
   .message-box.primary {
-    color: #343434;
+    color: #FFFFFF;
     background-color: #FF8200; }
     .message-box.primary .btn-close-message {
-      color: #343434;
+      color: #FFFFFF;
       background-color: transparent;
       transition: color 0.3s; }
       .message-box.primary .btn-close-message:hover {
         color: rgba(0, 0, 0, 0.3); }
   .message-box.secondary {
-    color: #343434;
+    color: #FFFFFF;
     background-color: #98817B; }
     .message-box.secondary .btn-close-message {
-      color: #343434;
+      color: #FFFFFF;
       background-color: transparent;
       transition: color 0.3s; }
       .message-box.secondary .btn-close-message:hover {
         color: rgba(0, 0, 0, 0.3); }
   .message-box.info {
-    color: #343434;
+    color: #FFFFFF;
     background-color: #008080; }
     .message-box.info .btn-close-message {
-      color: #343434;
+      color: #FFFFFF;
       background-color: transparent;
       transition: color 0.3s; }
       .message-box.info .btn-close-message:hover {
         color: rgba(0, 0, 0, 0.3); }
   .message-box.success {
-    color: #343434;
+    color: #FFFFFF;
     background-color: #00A550; }
     .message-box.success .btn-close-message {
-      color: #343434;
+      color: #FFFFFF;
       background-color: transparent;
       transition: color 0.3s; }
       .message-box.success .btn-close-message:hover {
         color: rgba(0, 0, 0, 0.3); }
   .message-box.warning {
-    color: #FFFFFF;
+    color: #343434;
     background-color: #FFD300; }
     .message-box.warning .btn-close-message {
-      color: #FFFFFF;
+      color: #343434;
       background-color: transparent;
       transition: color 0.3s; }
       .message-box.warning .btn-close-message:hover {
         color: rgba(0, 0, 0, 0.3); }
   .message-box.danger {
-    color: #343434;
+    color: #FFFFFF;
     background-color: #E23D28; }
     .message-box.danger .btn-close-message {
-      color: #343434;
+      color: #FFFFFF;
       background-color: transparent;
       transition: color 0.3s; }
       .message-box.danger .btn-close-message:hover {
         color: rgba(0, 0, 0, 0.3); }
   .message-box.error {
-    color: #343434;
+    color: #FFFFFF;
     background-color: #E23D28; }
     .message-box.error .btn-close-message {
-      color: #343434;
+      color: #FFFFFF;
       background-color: transparent;
       transition: color 0.3s; }
       .message-box.error .btn-close-message:hover {
         color: rgba(0, 0, 0, 0.3); }
 
 .modal .modal-content .modal-close {
-  color: rgba(52, 52, 52, 0.5);
+  color: rgba(255, 255, 255, 0.5);
   background-color: transparent;
   transition: color 0.3s; }
   .modal .modal-content .modal-close:hover {
-    color: #343434; }
+    color: white; }
 
 .modal {
   display: none;
@@ -1433,7 +1433,7 @@ nav .dropdown > button.dropdown-btn {
   background-color: rgba(0, 0, 0, 0.4); }
   .modal .modal-content {
     position: relative;
-    background-color: #FAFAFA;
+    background-color: #36454F;
     margin: 15% auto;
     padding: 20px;
     width: 70%;
@@ -1576,7 +1576,7 @@ ul.pagination {
       transition: color 0.3s, background-color 0.3s; }
       ul.pagination li a:hover {
         color: #FFFFFF;
-        background-color: #f0f0f0; }
+        background-color: rgba(190, 190, 190, 0.3); }
     ul.pagination li.active {
       color: #343434;
       background-color: #FF8200; }
@@ -1584,7 +1584,7 @@ ul.pagination {
         color: #343434;
         background-color: #ffa84d; }
     ul.pagination li.disabled {
-      color: #e4e4e4; }
+      color: rgba(190, 190, 190, 0.5); }
 
 [class*='parallax'] {
   /* Create the parallax scrolling effect */
@@ -1604,7 +1604,7 @@ ul.pagination {
   transition: height 0.5s; }
   #ajax-loading .loader {
     display: none;
-    border: 0.33333rem solid #BEBEBE;
+    border: 0.33333rem solid rgba(190, 190, 190, 0.3);
     border-top: 0.33333rem solid #FF8200;
     border-radius: 50%;
     width: 2rem;

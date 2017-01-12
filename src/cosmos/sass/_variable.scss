@@ -43,11 +43,11 @@ $text-color-invert: $white !default;
 $text-color-weak: darken($gray, 15%) !default;
 $text-color-strong: $primary-color-accent !default;
 $background-color: $white !default;
-$background-color-shade: lighten($lightgray, 8%) !default;
+$background-color-shade: rgba($gray, 0.3) !default;
 $background-color-invert: darken($secondary-color, 20%) !default;
 $shadow-color: rgba(#000, 0.3) !default;
 $border-color: $gray !default;
-$disabled-color: lighten($gray, 15%) !default;
+$disabled-color: rgba($gray, 0.5) !default;
 
 // Scaffolding
 // ==================================================
@@ -63,8 +63,8 @@ $success-color: $green !default;
 $danger-color: $red !default;
 $error-color: $red !default;
 $warning-color: $yellow !default;
-$message-light-color: $text-color-invert !default;
-$message-dark-color: $text-color !default;
+$message-light-color: if(lightness($text-color) > 50, $text-color, $text-color-invert) !default;
+$message-dark-color: if(lightness($text-color) > 50, $text-color-invert, $text-color) !default;
 // table
 //------------
 $table-cell-padding: 0.75em !default;
@@ -73,8 +73,8 @@ $table-border-color: $border-color !default;
 $table-head-color: $primary-color !default;
 $table-head-text-color: getContrast($table-head-color) !default;
 $table-text-color: inherit !default;
-$table-row-even-bg: lighten($lightgray, 8%) !default;
-$table-row-hover-bg: $lightgray !default;
+$table-row-even-bg: $background-color-shade !default;
+$table-row-hover-bg: darken($table-row-even-bg, 15%) !default;
 $table-link-color: $link-color !default;
 $table-link-hover-color: $link-color-hover !default;
 $table-link-hover-decoration: underline !default;
@@ -141,6 +141,7 @@ $card-title-color: $text-color-invert !default;
 
 // nav
 $nav-bg-color: $primary-color !default;
+$nav-active-bg-color: $background-color !default;
 $nav-link-color: $text-color-invert !default;
 $nav-link-hover-color: $secondary-color !default;
 $nav-font: $font-accent !default;
@@ -181,7 +182,7 @@ $pagination-disabled-color: $disabled-color !default;
 
 // ajax-loading
 $ajax-loading-color: $primary-color !default;
-$ajax-loading-border-color: $border-color !default;
+$ajax-loading-border-color: $background-color-shade !default;
 $ajax-loading-size: 2rem !default;
 
 // scroll-to
@@ -190,21 +191,21 @@ $scroll-to-bg-color: $primary-color-accent !default;
 
 // modal
 $modal-bg-color: rgba(0,0,0, 0.4) !default;
-$modal-content-bg-color: #FAFAFA !default;
-$modal-button-color: rgba($black, 0.5) !default;
-$modal-button-hover-color: rgba($black, 1) !default;
-$modal-close-button-color: rgba($red, 0.5) !default;
-$modal-close-button-hover-color: rgba($red, 1) !default;
+$modal-content-bg-color: $background-color !default;
+$modal-button-color: rgba($text-color, 0.5) !default;
+$modal-button-hover-color: rgba($text-color, 1) !default;
+$modal-close-button-color: rgba($danger-color, 0.5) !default;
+$modal-close-button-hover-color: rgba($danger-color, 1) !default;
 
 // tab
 $tab-font: $font-base !default;
 $tab-font-size: 1em !default;
-$tab-color: $gray !default;
+$tab-color: $text-color-weak !default;
 $tab-bg-color: transparent !default;
 $tab-hover-color: darken($tab-color, 15%) !default;
-$tab-active-color: $black !default;
-$tab-active-bg-color: $white !default;
+$tab-active-color: $text-color !default;
+$tab-active-bg-color: $background-color !default;
 $tab-active-border-accent-color: $primary-color !default;
 $tab-active-border-radius: $radius-normal !default;
-$tab-border-color: $gray !default;
+$tab-border-color: $border-color !default;
 $tab-border-width: 1px !default;
