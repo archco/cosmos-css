@@ -18,13 +18,20 @@ $font-base: $font-sans-serif;
 $font-accent: $font-cursive;
 
 // colors
-$purple: palette('pompandpower');
-$smoke-gray: palette('cadetgray');
+$orange: palette('utorange');
+$smoke-brown: palette('cinereous');
+$dark-blue: palette('charcoal');
+$white: palette('white');
+$black: palette('jet');
 
 // theme-colors
-$primary-color: $purple;
+$primary-color: $orange;
 $primary-color-accent: lighten($primary-color, 15%);
-$secondary-color: $smoke-gray;
+$secondary-color: $smoke-brown;
+$text-color: $white;
+$text-color-invert: $black;
+$background-color: $dark-blue;
+$background-color-invert: lighten($secondary-color, 15%);
 
 //======================================================================
 // Custom Variables.
