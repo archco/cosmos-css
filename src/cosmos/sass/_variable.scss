@@ -21,8 +21,9 @@ $tablet-size: 992px !default;
 //===================================================
 $white: palette('white') !default;
 $black: palette('jet') !default;
-$gray: palette('mediumgray') !default;
+$gray: palette('gray') !default;
 $lightgray: palette('gainsboro') !default;
+$mediumgray: palette('mediumgray') !default;
 $darkgray: palette('dimgray') !default;
 $teal: palette('teal') !default;
 $lightblue: palette('naturalblue') !default;
@@ -37,11 +38,11 @@ $purple: palette('royalpurple') !default;
 // theme-colors
 $primary-color: $lightblue !default;
 $primary-color-accent: darken($primary-color, 16%) !default;
-$secondary-color: $gray !default;
+$secondary-color: $mediumgray !default;
 // base colors
 $text-color: $black !default;
 $text-color-invert: $white !default;
-$text-color-weak: darken($gray, 15%) !default;
+$text-color-weak: rgba($text-color, 0.67) !default;
 $text-color-strong: $primary-color-accent !default;
 $background-color: $white !default;
 $background-color-invert: invert($background-color) !default;
@@ -79,6 +80,9 @@ $error-color: $red !default;
 $warning-color: $yellow !default;
 $message-light-color: if(lightness($text-color) > 50, $text-color, $text-color-invert) !default;
 $message-dark-color: if(lightness($text-color) > 50, $text-color-invert, $text-color) !default;
+// blockquote
+$blockquote-color: $text-color-weak !default;
+$blockquote-border-color: $background-color-shade !default;
 // table
 //------------
 $table-cell-padding: 0.75em !default;

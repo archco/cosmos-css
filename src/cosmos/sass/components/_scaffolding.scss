@@ -74,6 +74,16 @@ a.no-deco {
   @include no-decoration;
 }
 
+// blockquote
+blockquote {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding: 0 1em;
+  color: $blockquote-color;
+  border-left: 0.25em solid $blockquote-border-color;
+}
+
 //======================================================================
 // Table
 //======================================================================
