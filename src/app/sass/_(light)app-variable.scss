@@ -1,0 +1,33 @@
+// font import
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina|Lora|Roboto');
+// font-family: 'Roboto', sans-serif;
+// font-family: 'Lora', serif;
+// font-family: 'Baloo Bhaina', cursive;
+
+//======================================================================
+// Setting Variables.
+//======================================================================
+
+// fonts
+$font-serif: 'Lora', serif;
+$font-sans-serif: 'Roboto', sans-serif;
+$font-cursive: 'Baloo Bhaina', cursive;
+
+// font set
+$font-base: $font-sans-serif;
+$font-accent: $font-cursive;
+
+// colors
+$purple: palette('pompandpower');
+$smoke-gray: palette('cadetgray');
+
+// theme-colors
+$primary-color: $purple;
+$primary-color-accent: lighten($primary-color, 15%);
+$secondary-color: $smoke-gray;
+
+//======================================================================
+// Custom Variables.
+//======================================================================
+
+$app-max-width: 1280px !default;
