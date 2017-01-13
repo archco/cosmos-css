@@ -502,9 +502,9 @@ table {
     table.bordered th, table.bordered td {
       border: 1px solid #BEBEBE; }
   table.striped tr:nth-child(even) {
-    background-color: rgba(190, 190, 190, 0.3); }
+    background-color: rgba(0, 0, 0, 0.05); }
   table.hover tr:hover {
-    background-color: rgba(152, 152, 152, 0.3); }
+    background-color: rgba(0, 0, 0, 0.1); }
 
 .table-responsive-wrapper {
   max-width: 100%;
@@ -512,6 +512,35 @@ table {
   .table-responsive-wrapper table {
     width: auto;
     max-width: none; }
+
+code,
+kbd,
+samp,
+pre {
+  font-family: Consolas, "Lucida Console", Courier, monospace; }
+
+code {
+  padding: 0.2em;
+  font-size: 0.9em;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px; }
+  a code {
+    padding: 0;
+    color: inherit;
+    background-color: inherit; }
+
+pre {
+  padding: 1em;
+  font-size: 0.9em;
+  line-height: 1.45;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px; }
+  pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 0; }
 
 article.pad,
 aside.pad,
@@ -1228,7 +1257,7 @@ input[type="reset"], .btn-icon {
         text-decoration: none; }
       .dropdown ul.dropdown-content > li > a:hover, .dropdown ul.dropdown-content > li > a:focus {
         color: #343434;
-        background-color: rgba(190, 190, 190, 0.3); }
+        background-color: rgba(0, 0, 0, 0.1); }
     .dropdown ul.dropdown-content[data-align="left"] {
       left: 0;
       right: auto; }
@@ -1576,7 +1605,7 @@ ul.pagination {
       transition: color 0.3s, background-color 0.3s; }
       ul.pagination li a:hover {
         color: #343434;
-        background-color: rgba(190, 190, 190, 0.3); }
+        background-color: rgba(0, 0, 0, 0.1); }
     ul.pagination li.active {
       color: #FFFFFF;
       background-color: #86608E; }
@@ -1604,7 +1633,7 @@ ul.pagination {
   transition: height 0.5s; }
   #ajax-loading .loader {
     display: none;
-    border: 0.33333rem solid rgba(190, 190, 190, 0.3);
+    border: 0.33333rem solid rgba(0, 0, 0, 0.1);
     border-top: 0.33333rem solid #86608E;
     border-radius: 50%;
     width: 2rem;

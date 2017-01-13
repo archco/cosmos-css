@@ -5,7 +5,7 @@
 // fonts
 $font-serif: Georgia, serif !default;
 $font-sans-serif: Geneva, sans-serif !default;
-$font-monospace: "Lucida Console", Monaco, monospace !default;
+$font-monospace: Consolas, "Lucida Console", Courier, monospace !default;
 $font-cursive: cursive !default;
 
 // font set
@@ -31,6 +31,7 @@ $red: palette('chilired') !default;
 $yellow: palette('naturalyellow') !default;
 $purple: palette('royalpurple') !default;
 
+
 // Theme
 // ==================================================
 // theme-colors
@@ -48,6 +49,19 @@ $background-color-shade: rgba($background-color-invert, 0.1) !default;
 $shadow-color: rgba(#000, 0.3) !default;
 $border-color: $gray !default;
 $disabled-color: rgba($gray, 0.5) !default;
+// else
+$radius-normal: 4px !default;
+$radius-small: round($radius-normal / 2) !default;
+$radius-large: round($radius-normal * 2) !default;
+$radius-button: $radius-small !default;
+$shadow-near: 1px 1px 4px $shadow-color !default;
+$shadow-normal: 2px 2px 8px $shadow-color !default;
+$shadow-far: 4px 4px 16px $shadow-color !default;
+$transition-time: 0.3s !default;
+$icon-size: 35px !default; // nav toggle button's width
+$default-focus-outline: 2px solid $primary-color !default;
+$outline-color: $primary-color !default;
+
 
 // Scaffolding
 // ==================================================
@@ -78,19 +92,15 @@ $table-row-hover-bg: rgba($background-color-invert, 0.1) !default;
 $table-link-color: $link-color !default;
 $table-link-hover-color: $link-color-hover !default;
 $table-link-hover-decoration: underline !default;
+// codes
+//-----------
+$code-padding: 0.2em !default;
+$code-font-size: 0.9em !default;
+$code-bg-color: rgba($background-color-invert, 0.05) !default;
+$code-border-radius: $radius-normal !default;
+$code-block-padding: 1em !default;
+$code-block-line-height: 1.45 !default;
 
-// else
-$radius-normal: 4px !default;
-$radius-small: round($radius-normal / 2) !default;
-$radius-large: round($radius-normal * 2) !default;
-$radius-button: $radius-small !default;
-$shadow-near: 1px 1px 4px $shadow-color !default;
-$shadow-normal: 2px 2px 8px $shadow-color !default;
-$shadow-far: 4px 4px 16px $shadow-color !default;
-$transition-time: 0.3s !default;
-$icon-size: 35px !default; // nav toggle button's width
-$default-focus-outline: 2px solid $primary-color !default;
-$outline-color: $primary-color !default;
 
 //======================================================================
 // Lists
