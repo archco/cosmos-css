@@ -58,12 +58,12 @@ const Nav = (() => {
    */
   var _activator = function _activator(selector) {
     let links = document.querySelectorAll(selector + ' a');
-    if (!links) { return; }
+    if (links.length == 0) { return; }
     let l = document.location.pathname;
     
     for (let a of links) {
       if (lastTerm(l) == lastTerm(a.href)) {
-        console.log(lastTerm(l), lastTerm(a.href));
+        //console.log(lastTerm(l), lastTerm(a.href));
         a.parentNode.classList.add('active');
       }
     }

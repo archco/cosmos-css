@@ -442,7 +442,7 @@ var Nav = function () {
    */
   var _activator = function _activator(selector) {
     var links = document.querySelectorAll(selector + ' a');
-    if (!links) {
+    if (links.length == 0) {
       return;
     }
     var l = document.location.pathname;
@@ -456,7 +456,7 @@ var Nav = function () {
         var a = _step2.value;
 
         if (lastTerm(l) == lastTerm(a.href)) {
-          console.log(lastTerm(l), lastTerm(a.href));
+          //console.log(lastTerm(l), lastTerm(a.href));
           a.parentNode.classList.add('active');
         }
       }
