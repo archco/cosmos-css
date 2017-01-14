@@ -10,10 +10,13 @@ const Nav = (() => {
     CHANGE: 'change'
   };
   const MenuGroups = [
-    '.menu-main',
+    '.menu-float-left',
+    '.menu-float-right',
     '.menu-left',
     '.menu-right',
     '.menu-center',
+    '.menu-between',
+    '.menu-around',
   ];
 
   var load = () => {

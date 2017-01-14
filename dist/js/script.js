@@ -380,7 +380,7 @@ var Nav = function () {
     TOGGLE_BTN: 'menu-toggle',
     CHANGE: 'change'
   };
-  var MenuGroups = ['.menu-main', '.menu-left', '.menu-right', '.menu-center'];
+  var MenuGroups = ['.menu-float-left', '.menu-float-right', '.menu-left', '.menu-right', '.menu-center', '.menu-between', '.menu-around'];
 
   var load = function load() {
     Util.eventOnSelector('.' + ClassName.TOGGLE_BTN, 'click', _toggleHandler);

@@ -45,9 +45,12 @@ nav.navbar {
     &.active a { 
       color: $nav-bg-color;
       background-color: $nav-active-bg-color;
-      border-color: $nav-bg-color;
-      border-bottom-color: $nav-active-bg-color;
-      border-radius: $radius-normal $radius-normal 0 0;
+
+      @include media-tablet-up() {
+        border-color: $nav-bg-color;
+        border-bottom-color: $nav-active-bg-color;
+        border-radius: $radius-normal $radius-normal 0 0;  
+      }
     }
   }
 
