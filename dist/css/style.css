@@ -680,10 +680,11 @@ textarea.inline {
 nav a:not(.nav-brand), nav .nav-header .nav-brand.text, nav .dropdown > button.dropdown-toggle,
 nav .dropdown > button.dropdown-btn {
   display: inline-block;
-  padding: 12px 18px;
+  padding: 0.5em 1em;
   color: #FFFFFF;
   font-family: inherit;
   font-size: inherit;
+  border: 2px solid transparent;
   transition: color 0.3s; }
   nav a:hover:not(.nav-brand), nav .nav-header .nav-brand.text:hover, nav .dropdown > button.dropdown-toggle:hover,
   nav .dropdown > button.dropdown-btn:hover {
@@ -713,7 +714,10 @@ nav {
     text-align: center; }
     nav li.active a {
       color: #86608E;
-      background-color: #FFFFFF; }
+      background-color: #FFFFFF;
+      border-color: #86608E;
+      border-bottom-color: #FFFFFF;
+      border-radius: 4px 4px 0 0; }
   nav .menu-float-wrapper {
     margin: 0 auto;
     text-align: left; }

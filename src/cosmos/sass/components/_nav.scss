@@ -6,10 +6,11 @@
 %nav-link {
   @extend %link-no-deco;
   display: inline-block;
-  padding: 12px 18px;
+  padding: $nav-link-padding;
   color: $nav-link-color;
   font-family: inherit;
   font-size: inherit;
+  border: 2px solid transparent;
   transition: color $transition-time;
 
   &:hover { color: $nav-link-hover-color; }
@@ -44,6 +45,9 @@ nav {
     &.active a { 
       color: $nav-bg-color;
       background-color: $nav-active-bg-color;
+      border-color: $nav-bg-color;
+      border-bottom-color: $nav-active-bg-color;
+      border-radius: $radius-normal $radius-normal 0 0;
     }
   }
 
