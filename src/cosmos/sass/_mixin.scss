@@ -81,6 +81,15 @@
   }
 }
 
+// debug outline
+@mixin debug() {
+  &.outline {
+    * {
+      outline: 1px solid rgba(#F00, 0.5);
+    }
+  }
+}
+
 
 //======================================================================
 // Message

@@ -8,8 +8,8 @@ div(class='container')
         div(class='icon-bar1')
         div(class='icon-bar2')
         div(class='icon-bar3')
-    div(class='menu-wrapper')
-      ul(class='menu-left')
+    div(class='menu-float-wrapper')
+      ul(class='menu-float-left')
         li(class='hide-only-mobile')
           a(href='test.html') Home
         li(class='active')
@@ -26,7 +26,7 @@ div(class='container')
               a(href='#') link2
             li
               a(href='#') link3
-      ul(class='menu-right')
+      ul(class='menu-float-right')
         li
           a(href='#') Login
         li
@@ -41,25 +41,24 @@ div(class='container')
         div(class='icon-bar1')
         div(class='icon-bar2')
         div(class='icon-bar3')
-    div(class='menu-wrapper')
-      ul(class='menu-center')
-        li(class='hide-only-mobile')
-          a(href='test.html') Home
-        li(class='active')
-          a(href='#') active
-        li
-          a(href='#') link
-        li(class='dropdown')
-          button(class='dropdown-toggle') dropdown 
-            i(class='fa fa-caret-down' aria-hidden='true')
-          ul(class='dropdown-content')
-            li
-              a(href='#') link1
-            li
-              a(href='#') link2
-            li
-              a(href='#') link3
-        li
-          a(href='#') Login
-        li
-          a(href='#') Register
+    ul(class='menu-center')
+      li(class='hide-only-mobile')
+        a(href='test.html') Home
+      li(class='active')
+        a(href='#') active
+      li
+        a(href='#') link
+      li(class='dropdown')
+        button(class='dropdown-toggle') dropdown 
+          i(class='fa fa-caret-down' aria-hidden='true')
+        ul(class='dropdown-content')
+          li
+            a(href='#') link1
+          li
+            a(href='#') link2
+          li
+            a(href='#') link3
+      li
+        a(href='#') Login
+      li
+        a(href='#') Register

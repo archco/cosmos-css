@@ -10,7 +10,6 @@
   color: $nav-link-color;
   font-family: inherit;
   font-size: inherit;
-  border-radius: 4px 4px 0 0;
   transition: color $transition-time;
 
   &:hover { color: $nav-link-hover-color; }
@@ -24,8 +23,8 @@
 
 // nav
 nav {
+  @include debug;
   z-index: $z-index-nav;
-  display: block;
   margin: 0 auto;
   font-family: $nav-font;
   background-color: $nav-bg-color;
@@ -35,11 +34,13 @@ nav {
     margin: 0;
     padding: 0;
     list-style: none;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   li {
-    display: inline;
+    text-align: center;
+
     &.active a { 
       color: $nav-bg-color;
       background-color: $nav-active-bg-color;
@@ -50,20 +51,16 @@ nav {
     @extend %nav-link;
   }
 
-  .menu-wrapper {
+  // float menu
+  //---------------------
+  .menu-float-wrapper {
+    @include clear-both;
     margin: 0 auto;
     text-align: left;
-
-    &:after {
-      clear: both;
-      display: block;
-      content: "";
-    }
   }
 
-  .menu-left {
+  .menu-float-left {
     @extend %responsive-mobile-hide;
-
     float: initial;
 
     @include media-tablet-up() {
@@ -71,19 +68,36 @@ nav {
     }
   }
 
-  .menu-right {
+  .menu-float-right {
     @extend %responsive-mobile-hide;
-
     float: initial;
 
     @include media-tablet-up() {
       float: right;
     }
   }
-  
+
+  // flex menu
+  //--------------------
+  .menu-left {
+    @extend %responsive-mobile-hide;
+    justify-content: flex-start; // default
+  }
+  .menu-right {
+    @extend %responsive-mobile-hide;
+    justify-content: flex-end;
+  }
   .menu-center {
     @extend %responsive-mobile-hide;
-    text-align: center;
+    justify-content: center;
+  }
+  .menu-between {
+    @extend %responsive-mobile-hide;
+    justify-content: space-between;
+  }
+  .menu-around {
+    @extend %responsive-mobile-hide;
+    justify-content: space-around;
   }
 
   .nav-header {
