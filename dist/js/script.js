@@ -377,13 +377,21 @@ var Scaffolding = function () {
 var Nav = function () {
   var NAME = 'Cosmos.Nav';
   var ClassName = {
+    NAVBAR: 'navbar',
     TOGGLE_BTN: 'menu-toggle',
-    CHANGE: 'change'
+    CHANGE: 'change',
+    USE_ACTIVATOR: 'use-activator'
+  };
+  var Selector = {
+    TOGGLE_BTN: 'nav.' + ClassName.NAVBAR + ' .' + ClassName.TOGGLE_BTN,
+    USE_ACTIVATOR: 'nav.' + ClassName.NAVBAR + ' ul.' + ClassName.USE_ACTIVATOR
   };
   var MenuGroups = ['.menu-float-left', '.menu-float-right', '.menu-left', '.menu-right', '.menu-center', '.menu-between', '.menu-around'];
 
   var load = function load() {
-    Util.eventOnSelector('.' + ClassName.TOGGLE_BTN, 'click', _toggleHandler);
+    Util.eventOnSelector(Selector.TOGGLE_BTN, 'click', _toggleHandler);
+
+    _activator(Selector.USE_ACTIVATOR);
 
     // handle jQuery slide style.
     $(window).resize(function () {
@@ -424,6 +432,51 @@ var Nav = function () {
           throw _iteratorError;
         }
       }
+    }
+  };
+
+  /**
+   * _activator (beta version)
+   * @param  string  selector
+   * @return void
+   */
+  var _activator = function _activator(selector) {
+    var links = document.querySelectorAll(selector + ' a');
+    if (!links) {
+      return;
+    }
+    var l = document.location.pathname;
+
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+      for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var a = _step2.value;
+
+        if (lastTerm(l) == lastTerm(a.href)) {
+          console.log(lastTerm(l), lastTerm(a.href));
+          a.parentNode.classList.add('active');
+        }
+      }
+    } catch (err) {
+      _didIteratorError2 = true;
+      _iteratorError2 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+          _iterator2.return();
+        }
+      } finally {
+        if (_didIteratorError2) {
+          throw _iteratorError2;
+        }
+      }
+    }
+
+    function lastTerm(string) {
+      return string.substr(string.lastIndexOf("/"));
     }
   };
 
