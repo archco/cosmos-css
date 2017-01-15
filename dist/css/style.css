@@ -1691,6 +1691,99 @@ ul.pagination {
   #scroll-to-top:hover {
     background-color: #aa8ab0; }
 
+@keyframes tooltip-fade {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.tooltip {
+  position: relative; }
+  .tooltip::after {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-break: auto;
+    line-height: 1.15;
+    text-align: left;
+    text-align: start;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    white-space: normal;
+    word-break: normal;
+    word-spacing: normal;
+    position: absolute;
+    z-index: 12;
+    display: none;
+    padding: 5px 8px;
+    word-wrap: break-word;
+    white-space: pre;
+    content: attr(aria-label);
+    color: #FFFFFF;
+    background-color: #343434;
+    border-radius: 2px;
+    opacity: 0; }
+  .tooltip::before {
+    position: absolute;
+    z-index: 13;
+    display: none;
+    width: 0;
+    height: 0;
+    color: #343434;
+    content: "";
+    border: 5px solid transparent;
+    opacity: 0; }
+  .tooltip:hover::before, .tooltip:hover::after, .tooltip:active::before, .tooltip:active::after, .tooltip:focus::before, .tooltip:focus::after {
+    display: inline-block;
+    text-decoration: none;
+    animation-name: tooltip-fade;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.3s; }
+  .tooltip:not(.tooltip-bottom):not(.tooltip-left):not(.tooltip-right)::after, .tooltip.tooltip-top::after {
+    right: 50%;
+    bottom: 100%;
+    margin-bottom: 5px;
+    transform: translateX(50%); }
+  .tooltip:not(.tooltip-bottom):not(.tooltip-left):not(.tooltip-right)::before, .tooltip.tooltip-top::before {
+    top: -5px;
+    right: 50%;
+    bottom: auto;
+    margin-right: -5px;
+    border-top-color: #343434; }
+  .tooltip.tooltip-bottom::after {
+    right: 50%;
+    top: 100%;
+    margin-top: 5px;
+    transform: translateX(50%); }
+  .tooltip.tooltip-bottom::before {
+    top: auto;
+    right: 50%;
+    bottom: -5px;
+    border-bottom-color: #343434; }
+  .tooltip.tooltip-left::after {
+    right: 100%;
+    bottom: 50%;
+    margin-right: 5px;
+    transform: translateY(50%); }
+  .tooltip.tooltip-left::before {
+    top: 50%;
+    left: -5px;
+    margin-top: -5px;
+    border-left-color: #343434; }
+  .tooltip.tooltip-right::after {
+    left: 100%;
+    bottom: 50%;
+    margin-left: 5px;
+    transform: translateY(50%); }
+  .tooltip.tooltip-right::before {
+    top: 50%;
+    right: -5px;
+    margin-top: -5px;
+    border-right-color: #343434; }
+
 .hide {
   display: none !important; }
 

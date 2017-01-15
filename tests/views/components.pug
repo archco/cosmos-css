@@ -23,6 +23,12 @@ block append content
         li
           a(href='#pagination') Pagination
     section(class='col-10')
+      p tooltip test: <span class="tooltip" aria-label="default tooltip">tooltip</span> is here!
+      p 
+        |<span class="tooltip tooltip-top" aria-label="default tooltip">tooltip</span>
+        |<span class="tooltip tooltip-bottom" aria-label="default tooltip">tooltip</span>
+        |<span class="tooltip tooltip-left" aria-label="default tooltip">tooltip</span>
+        |<span class="tooltip tooltip-right" aria-label="default tooltip">tooltip</span>
       h1(id='scaffolding') Scaffolding
       hr
       include includes/scaffolding.pug
