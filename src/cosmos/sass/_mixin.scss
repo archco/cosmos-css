@@ -26,6 +26,13 @@
 //======================================================================
 // Button
 //======================================================================
+@mixin btn-base() {
+  @include no-decoration;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
 
 @mixin btnColor($bg-color, $color: $button-color) {
   @if not $button-color-is-enable {

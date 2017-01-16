@@ -1,0 +1,26 @@
+//======================================================================
+// Collapse
+//======================================================================
+
+.collapse-toggle {
+  @include btn-base;
+
+  &::after {
+    content: '\002B';
+    color: inherit;
+    font-weight: bold;
+    float: right;
+    margin-right: 5px;
+  }
+  &.active::after {
+    content: "\2212";
+  }
+}
+
+.collapse-pannel {
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}

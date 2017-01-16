@@ -12,5 +12,6 @@
   "modules/modal.js",
   "modules/parallax.js",
   "modules/ajax-loading.js",
+  "modules/collapse.js",
   "load.js"
 ]

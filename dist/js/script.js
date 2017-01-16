@@ -1153,6 +1153,80 @@ var AjaxLoading = function () {
     load: load
   };
 }();
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/************************************************************
+    Collapse
+*************************************************************/
+var Collapse = function () {
+  var NAME = 'Cosmos.Collapse';
+  var ClassName = {
+    TOGGLE: 'collapse-toggle',
+    PANNEL: 'collapse-pannel',
+    ACTIVE: 'active',
+    SHOW: 'show'
+  };
+  var Selector = {
+    TOGGLE: '.' + ClassName.TOGGLE,
+    PANNEL: '.' + ClassName.PANNEL
+  };
+
+  var Collapse = function () {
+    function Collapse() {
+      _classCallCheck(this, Collapse);
+    }
+
+    _createClass(Collapse, [{
+      key: 'init',
+
+
+      // public
+      // 
+
+      value: function init() {
+        // toggle event listen
+        Util.eventOnSelector(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
+      }
+
+      // static
+      // 
+
+    }, {
+      key: '_toggleHandler',
+
+
+      // private
+      // 
+
+      value: function _toggleHandler(event) {
+        var t = event.currentTarget;
+        var p = document.querySelector(t.dataset.target);
+
+        t.classList.toggle(ClassName.ACTIVE);
+        p.classList.toggle(ClassName.SHOW);
+      }
+    }], [{
+      key: 'load',
+      value: function load() {
+        var c = new Collapse();
+        c.init();
+      }
+    }, {
+      key: 'name',
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return Collapse;
+  }();
+
+  return Collapse;
+}();
 "use strict";
 
 // initialize - loading modules.
@@ -1167,6 +1241,7 @@ var AjaxLoading = function () {
   ScrollTo.load();
   var tab = new Tab();
   tab.load();
+  Collapse.load();
 })();
 
 // define helper functions.

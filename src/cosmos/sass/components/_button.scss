@@ -4,14 +4,10 @@
 
 // placeholder
 %btn-common {
-  @include no-decoration;
+  @include btn-base;
   display: inline-block;
   vertical-align: middle;
   text-align: center;
-  white-space: nowrap;
-  border: none;
-  cursor: pointer;
-  user-select: none;
 }
 %btn {
   @extend %btn-common;

@@ -10,6 +10,9 @@ block content
     h1 Hello, World!
     p test page.
     button(class='btn' onclick='toggle()') toggle
+    h1 Collapse Test
+    div(class='collapse-toggle pad bg-color-primary' data-target='#panel1') Panel One
+    div(class='collapse-pannel pad' id="panel1")= lorem
   <script>
   | function toggle() {
   |   var a = document.querySelector('#ajax-loading');

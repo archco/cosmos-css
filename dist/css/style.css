@@ -937,13 +937,13 @@ nav.navbar .dropdown > button.dropdown-btn, .btn, input[type="submit"],
 input[type="button"],
 input[type="reset"], .btn-danger, .btn-flat, .btn-icon, .dropdown button.dropdown-toggle, .dropdown button.dropdown-btn, .modal .modal-content .modal-close, #scroll-to-top {
   text-decoration: none;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
   white-space: nowrap;
   border: none;
   cursor: pointer;
-  user-select: none; }
+  user-select: none;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center; }
   nav.navbar .nav-header button.menu-toggle:focus, nav.navbar .dropdown > button.dropdown-toggle:focus,
   nav.navbar .dropdown > button.dropdown-btn:focus, .btn:focus, input[type="submit"]:focus,
   input[type="button"]:focus,
@@ -1785,6 +1785,28 @@ ul.pagination {
     right: -5px;
     margin-top: -5px;
     border-right-color: rgba(0, 0, 0, 0.8); }
+
+.collapse-toggle {
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+  user-select: none; }
+  .collapse-toggle:focus, .collapse-toggle:hover {
+    text-decoration: none; }
+  .collapse-toggle::after {
+    content: '\002B';
+    color: inherit;
+    font-weight: bold;
+    float: right;
+    margin-right: 5px; }
+  .collapse-toggle.active::after {
+    content: "\2212"; }
+
+.collapse-pannel {
+  display: none; }
+  .collapse-pannel.show {
+    display: block; }
 
 .hide {
   display: none !important; }

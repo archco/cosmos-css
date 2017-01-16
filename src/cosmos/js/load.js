@@ -10,6 +10,7 @@ import Nav from './modules/nav.js';
 import Parallax from './modules/parallax.js';
 import ScrollTo from './modules/scroll-to.js';
 import Tab from './modules/tab.js';
+import Collapse from './modules/collapse.js';
 
 // initialize - loading modules.
 (function () {
@@ -23,6 +24,7 @@ import Tab from './modules/tab.js';
   ScrollTo.load();
   let tab = new Tab();
   tab.load();
+  Collapse.load();
 })();
 
 // define helper functions.
