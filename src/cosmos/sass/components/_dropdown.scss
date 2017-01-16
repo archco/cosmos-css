@@ -18,13 +18,11 @@
   }
 
   ul.dropdown-content {
+    @include reset-list;
     position: absolute;
     z-index: $z-index-dropdown-content;
     display: none;
     min-width: $dropdown-min-width;
-    padding: 0;
-    margin: 0;
-    list-style: none;
     background-color: $dropdown-bg-color;
     box-shadow: $shadow-normal;
     top: 100%;

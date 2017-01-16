@@ -4,9 +4,7 @@
 
 // card list
 ul.card-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  @include reset-list;
   
   li:not(.card) {
     display: inline-block;

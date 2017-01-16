@@ -3,9 +3,7 @@
 //======================================================================
 
 .tab {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  @include reset-list;
   overflow: hidden;
   font-family: $tab-font;
   font-size: $tab-font-size;

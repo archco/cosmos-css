@@ -1,10 +1,9 @@
 /** pagination */
 ul.pagination {
-  padding: 0; 
+  @include reset-list;
   margin: 1rem 0;
   display: flex;
   justify-content: center;
-  list-style-type: none;
 
   li {
     margin: 0 0.2rem;
