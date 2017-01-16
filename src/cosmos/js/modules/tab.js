@@ -27,12 +27,13 @@ const Tab = (() => {
     }
 
     // public
+    // 
     
-    load() {
+    init() {
       // add event handler on links.
       Util.eventOnSelector(Selector.LINK, 'click', this._tabHandle.bind(this));
 
-      // load tabs.
+      // initialize tabs.
       let tabs = this._getTabs();
       if (tabs.length > 0) {
         for (let t of tabs) {
@@ -54,12 +55,19 @@ const Tab = (() => {
     }
 
     // static
+    // 
     
     static get name() {
       return NAME;
     }
 
+    static load() {
+      let t = new Tab();
+      t.init();
+    }
+
     // private
+    // 
     
     _tabHandle(event) {
       let a = event.currentTarget;

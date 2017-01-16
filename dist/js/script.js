@@ -612,14 +612,15 @@ var Tab = function () {
     }
 
     // public
+    // 
 
     _createClass(Tab, [{
-      key: 'load',
-      value: function load() {
+      key: 'init',
+      value: function init() {
         // add event handler on links.
         Util.eventOnSelector(Selector.LINK, 'click', this._tabHandle.bind(this));
 
-        // load tabs.
+        // initialize tabs.
         var tabs = this._getTabs();
         if (tabs.length > 0) {
           var _iteratorNormalCompletion = true;
@@ -667,12 +668,14 @@ var Tab = function () {
       }
 
       // static
+      // 
 
     }, {
       key: '_tabHandle',
 
 
       // private
+      // 
 
       value: function _tabHandle(event) {
         var a = event.currentTarget;
@@ -775,6 +778,12 @@ var Tab = function () {
         link.click();
       }
     }], [{
+      key: 'load',
+      value: function load() {
+        var t = new Tab();
+        t.init();
+      }
+    }, {
       key: 'name',
       get: function get() {
         return NAME;
@@ -1239,8 +1248,7 @@ var Collapse = function () {
   Nav.load();
   Parallax.load();
   ScrollTo.load();
-  var tab = new Tab();
-  tab.load();
+  Tab.load();
   Collapse.load();
 })();
 

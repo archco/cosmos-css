@@ -22,8 +22,7 @@ import Collapse from './modules/collapse.js';
   Nav.load();
   Parallax.load();
   ScrollTo.load();
-  let tab = new Tab();
-  tab.load();
+  Tab.load();
   Collapse.load();
 })();
 
