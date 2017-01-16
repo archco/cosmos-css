@@ -1175,7 +1175,7 @@ var Collapse = function () {
   var NAME = 'Cosmos.Collapse';
   var ClassName = {
     TOGGLE: 'collapse-toggle',
-    PANNEL: 'collapse-pannel',
+    PANNEL: 'collapse-panel',
     ACTIVE: 'active',
     SHOW: 'show'
   };
@@ -1216,7 +1216,24 @@ var Collapse = function () {
         var p = document.querySelector(t.dataset.target);
 
         t.classList.toggle(ClassName.ACTIVE);
-        p.classList.toggle(ClassName.SHOW);
+        // panel max-height setting for transition.
+        this._toggleMaxHeight(p);
+      }
+
+      /**
+       * _toggleMaxHeight
+       * @param  {Element} elm
+       * @return {void}
+       */
+
+    }, {
+      key: '_toggleMaxHeight',
+      value: function _toggleMaxHeight(elm) {
+        if (elm.style.maxHeight) {
+          elm.style.maxHeight = null;
+        } else {
+          elm.style.maxHeight = elm.scrollHeight + 'px';
+        }
       }
     }], [{
       key: 'load',

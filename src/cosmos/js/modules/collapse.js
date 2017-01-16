@@ -7,7 +7,7 @@ const Collapse = (() => {
   const NAME = 'Cosmos.Collapse';
   const ClassName = {
     TOGGLE: 'collapse-toggle',
-    PANNEL: 'collapse-pannel',
+    PANNEL: 'collapse-panel',
     ACTIVE: 'active',
     SHOW: 'show',
   };
@@ -46,7 +46,21 @@ const Collapse = (() => {
       let p = document.querySelector(t.dataset.target);
 
       t.classList.toggle(ClassName.ACTIVE);
-      p.classList.toggle(ClassName.SHOW);
+      // panel max-height setting for transition.
+      this._toggleMaxHeight(p);
+    }
+
+    /**
+     * _toggleMaxHeight
+     * @param  {Element} elm
+     * @return {void}
+     */
+    _toggleMaxHeight(elm) {
+      if (elm.style.maxHeight) {
+        elm.style.maxHeight = null;
+      } else {
+        elm.style.maxHeight = elm.scrollHeight + 'px';
+      }
     }
   }
 

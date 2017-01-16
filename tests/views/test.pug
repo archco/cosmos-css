@@ -12,7 +12,14 @@ block content
     button(class='btn' onclick='toggle()') toggle
     h1 Collapse Test
     div(class='collapse-toggle pad bg-color-primary' data-target='#panel1') Panel One
-    div(class='collapse-pannel pad' id="panel1")= lorem
+    div(class='collapse-panel' id="panel1")
+      p(class='pad')= lorem
+    div(class='collapse-toggle pad bg-color-secondary' data-target='#panel2') Panel Two
+    div(class='collapse-panel' id="panel2")
+      p(class='pad')= lorem
+    div(class='collapse-toggle pad bg-color-warning' data-target='#panel3') Panel Three
+    div(class='collapse-panel' id="panel3")
+      p(class='pad')= lorem
   <script>
   | function toggle() {
   |   var a = document.querySelector('#ajax-loading');

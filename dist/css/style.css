@@ -1803,10 +1803,10 @@ ul.pagination {
   .collapse-toggle.active::after {
     content: "\2212"; }
 
-.collapse-pannel {
-  display: none; }
-  .collapse-pannel.show {
-    display: block; }
+.collapse-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out; }
 
 .hide {
   display: none !important; }
