@@ -22,3 +22,16 @@
   overflow: hidden;
   transition: max-height 0.3s ease-out;
 }
+
+.accordion {
+  @include reset-list;
+
+  .accordion-head {
+    @extend .collapse-toggle;
+    padding: 0.5em 1em;
+    border: 1px solid gray;
+  }
+  .accordion-body {
+    @extend .collapse-panel;
+  }
+}

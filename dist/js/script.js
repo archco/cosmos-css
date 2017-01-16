@@ -1177,11 +1177,15 @@ var Collapse = function () {
     TOGGLE: 'collapse-toggle',
     PANNEL: 'collapse-panel',
     ACTIVE: 'active',
-    SHOW: 'show'
+    SHOW: 'show',
+    ACCORDION: 'accordion',
+    A_HEAD: 'accordion-head',
+    A_BODY: 'accordion-body'
   };
   var Selector = {
     TOGGLE: '.' + ClassName.TOGGLE,
-    PANNEL: '.' + ClassName.PANNEL
+    ACCORDION: '.' + ClassName.ACCORDION,
+    A_HEAD: '.' + ClassName.ACCORDION + ' .' + ClassName.A_HEAD
   };
 
   var Collapse = function () {
@@ -1199,6 +1203,8 @@ var Collapse = function () {
       value: function init() {
         // toggle event listen
         Util.eventOnSelector(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
+        // accordion head listener
+        Util.eventOnSelector(Selector.A_HEAD, 'click', this._headClickHandler.bind(this));
       }
 
       // static
@@ -1215,9 +1221,65 @@ var Collapse = function () {
         var t = event.currentTarget;
         var p = document.querySelector(t.dataset.target);
 
-        t.classList.toggle(ClassName.ACTIVE);
-        // panel max-height setting for transition.
-        this._toggleMaxHeight(p);
+        this._collapseToggle(t, p);
+      }
+    }, {
+      key: '_headClickHandler',
+      value: function _headClickHandler(event) {
+        var h = event.currentTarget;
+        var b = h.nextElementSibling;
+        var a = Util.findAncestor(h, Selector.ACCORDION);
+
+        if (h.classList.contains(ClassName.ACTIVE)) {
+          this._collapseToggle(h, b);
+        } else {
+          this._allClose(a);
+          this._collapseToggle(h, b);
+        }
+      }
+    }, {
+      key: '_collapseToggle',
+      value: function _collapseToggle(head, body) {
+        head.classList.toggle(ClassName.ACTIVE);
+        this._toggleMaxHeight(body);
+      }
+    }, {
+      key: '_collapseClose',
+      value: function _collapseClose(head, body) {
+        head.classList.remove(ClassName.ACTIVE);
+        body.style.maxHeight = null;
+      }
+    }, {
+      key: '_allClose',
+      value: function _allClose(accordion) {
+        var heads = accordion.querySelectorAll(Selector.A_HEAD);
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = heads[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var h = _step.value;
+
+            if (h.classList.contains(ClassName.ACTIVE)) {
+              var b = h.nextElementSibling;
+              this._collapseClose(h, b);
+            }
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
       }
 
       /**

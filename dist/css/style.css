@@ -705,9 +705,9 @@ nav.navbar {
   nav.navbar.outline * {
     outline: 1px solid rgba(255, 0, 0, 0.5); }
   nav.navbar ul {
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
     display: flex;
     flex-wrap: wrap; }
   nav.navbar li {
@@ -1259,13 +1259,13 @@ input[type="reset"], .btn-icon {
   flex-direction: column;
   align-items: center; }
   .dropdown ul.dropdown-content {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     position: absolute;
     z-index: 12;
     display: none;
     min-width: 120px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
     background-color: #FFFFFF;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
     top: 100%;
@@ -1304,7 +1304,7 @@ nav.navbar .dropdown > button.dropdown-btn {
     width: 100%; } }
 
 .tab {
-  list-style-type: none;
+  list-style: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1514,9 +1514,9 @@ nav.navbar .dropdown > button.dropdown-btn {
     opacity: 1; } }
 
 ul.card-list {
+  list-style: none;
   margin: 0;
-  padding: 0;
-  list-style: none; }
+  padding: 0; }
   ul.card-list li:not(.card) {
     display: inline-block;
     vertical-align: top;
@@ -1610,11 +1610,12 @@ ul.card-list {
 
 /** pagination */
 ul.pagination {
+  list-style: none;
+  margin: 0;
   padding: 0;
   margin: 1rem 0;
   display: flex;
-  justify-content: center;
-  list-style-type: none; }
+  justify-content: center; }
   ul.pagination li {
     margin: 0 0.2rem;
     display: inline-block;
@@ -1786,27 +1787,35 @@ ul.pagination {
     margin-top: -5px;
     border-right-color: rgba(0, 0, 0, 0.8); }
 
-.collapse-toggle {
+.collapse-toggle, .accordion .accordion-head {
   text-decoration: none;
   white-space: nowrap;
   border: none;
   cursor: pointer;
   user-select: none; }
-  .collapse-toggle:focus, .collapse-toggle:hover {
+  .collapse-toggle:focus, .accordion .accordion-head:focus, .collapse-toggle:hover, .accordion .accordion-head:hover {
     text-decoration: none; }
-  .collapse-toggle::after {
+  .collapse-toggle::after, .accordion .accordion-head::after {
     content: '\002B';
     color: inherit;
     font-weight: bold;
     float: right;
     margin-right: 5px; }
-  .collapse-toggle.active::after {
+  .collapse-toggle.active::after, .accordion .active.accordion-head::after {
     content: "\2212"; }
 
-.collapse-panel {
+.collapse-panel, .accordion .accordion-body {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-out; }
+
+.accordion {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .accordion .accordion-head {
+    padding: 0.5em 1em;
+    border: 1px solid gray; }
 
 .hide {
   display: none !important; }
