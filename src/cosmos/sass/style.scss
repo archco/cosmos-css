@@ -1,6 +1,6 @@
 /*!
  * cosmos-css - personal practice css framework.
- * @version v0.5.1
+ * @version v0.6.0
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
