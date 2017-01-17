@@ -234,3 +234,11 @@ $tooltip-font-size: 0.9rem !default;
 $tooltip-border-radius: $radius-small !default;
 $tooltip-animation-duration: 0.3s !default;
 $tooltip-animation-delay: 0.3s !default;
+
+// collapse - accordion
+$accordion-border-width: 1px !default;
+$accordion-border-color: $border-color !default;
+$accordion-head-padding: 0.5em 1em !default;
+$accordion-head-active-bg-color: $primary-color !default;
+$accordion-head-active-color: getContrast($accordion-head-active-bg-color) !default;
+$accordion-border-radius: $radius-normal !default;

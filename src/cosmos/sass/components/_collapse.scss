@@ -28,10 +28,30 @@
 
   .accordion-head {
     @extend .collapse-toggle;
-    padding: 0.5em 1em;
-    border: 1px solid gray;
+    padding: $accordion-head-padding;
+    border: $accordion-border-width solid $accordion-border-color;
+    margin-bottom: -$accordion-border-width;
+
+    &.active {
+      background-color: $accordion-head-active-bg-color;
+      color: $accordion-head-active-color;
+    }
   }
+
   .accordion-body {
     @extend .collapse-panel;
+  }
+
+  li:first-child > .accordion-head {
+    @include border-top-radius($accordion-border-radius);
+  }
+
+  li:last-child > .accordion-head {
+    @include border-bottom-radius($accordion-border-radius);
+    margin-bottom: 0;
+
+    &.active {
+      border-radius: 0;
+    }
   }
 }
