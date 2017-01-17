@@ -1185,7 +1185,9 @@ var Collapse = function () {
   var Selector = {
     TOGGLE: '.' + ClassName.TOGGLE,
     ACCORDION: '.' + ClassName.ACCORDION,
-    A_HEAD: '.' + ClassName.ACCORDION + ' .' + ClassName.A_HEAD
+    A_HEAD: '.' + ClassName.ACCORDION + ' .' + ClassName.A_HEAD,
+    C_ACTIVE: '.' + ClassName.TOGGLE + '.' + ClassName.ACTIVE,
+    A_ACTIVE: '.' + ClassName.ACCORDION + ' .' + ClassName.A_HEAD + '.' + ClassName.ACTIVE
   };
 
   var Collapse = function () {
@@ -1201,10 +1203,13 @@ var Collapse = function () {
       // 
 
       value: function init() {
-        // toggle event listen
+        // collapse toggle listener
         Util.eventOnSelector(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
         // accordion head listener
         Util.eventOnSelector(Selector.A_HEAD, 'click', this._headClickHandler.bind(this));
+        // Handle on activated collapse and accordion.
+        this._activatedCollapse();
+        this._activatedAccordion();
       }
 
       // static
@@ -1277,6 +1282,77 @@ var Collapse = function () {
           } finally {
             if (_didIteratorError) {
               throw _iteratorError;
+            }
+          }
+        }
+      }
+    }, {
+      key: '_activatedCollapse',
+      value: function _activatedCollapse() {
+        // Collapse can multiple active.
+        var ts = document.querySelectorAll(Selector.C_ACTIVE);
+        if (ts.length == 0) {
+          return;
+        }
+
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+          for (var _iterator2 = ts[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var t = _step2.value;
+
+            var b = t.nextElementSibling;
+            this._toggleMaxHeight(b);
+          }
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+              _iterator2.return();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
+          }
+        }
+      }
+    }, {
+      key: '_activatedAccordion',
+      value: function _activatedAccordion() {
+        // Only one accordion can be active at a time. After all, only the last one will be activated.
+        var hs = document.querySelectorAll(Selector.A_ACTIVE);
+        if (hs.length == 0) {
+          return;
+        }
+
+        var _iteratorNormalCompletion3 = true;
+        var _didIteratorError3 = false;
+        var _iteratorError3 = undefined;
+
+        try {
+          for (var _iterator3 = hs[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+            var h = _step3.value;
+
+            var a = Util.findAncestor(h, Selector.ACCORDION);
+            this._allClose(a);
+            h.click();
+          }
+        } catch (err) {
+          _didIteratorError3 = true;
+          _iteratorError3 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion3 && _iterator3.return) {
+              _iterator3.return();
+            }
+          } finally {
+            if (_didIteratorError3) {
+              throw _iteratorError3;
             }
           }
         }

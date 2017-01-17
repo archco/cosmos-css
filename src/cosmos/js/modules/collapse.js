@@ -18,6 +18,8 @@ const Collapse = (() => {
     TOGGLE: `.${ClassName.TOGGLE}`,
     ACCORDION: `.${ClassName.ACCORDION}`,
     A_HEAD: `.${ClassName.ACCORDION} .${ClassName.A_HEAD}`,
+    C_ACTIVE: `.${ClassName.TOGGLE}.${ClassName.ACTIVE}`,
+    A_ACTIVE: `.${ClassName.ACCORDION} .${ClassName.A_HEAD}.${ClassName.ACTIVE}`,
   };
 
   class Collapse {
@@ -26,10 +28,13 @@ const Collapse = (() => {
     // 
     
     init() {
-      // toggle event listen
+      // collapse toggle listener
       Util.eventOnSelector(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
       // accordion head listener
       Util.eventOnSelector(Selector.A_HEAD, 'click', this._headClickHandler.bind(this));
+      // Handle on activated collapse and accordion.
+      this._activatedCollapse();
+      this._activatedAccordion();
     }
     
     // static
@@ -84,6 +89,29 @@ const Collapse = (() => {
           let b = h.nextElementSibling;
           this._collapseClose(h, b);  
         }
+      }
+    }
+
+    _activatedCollapse() {
+      // Collapse can multiple active.
+      let ts = document.querySelectorAll(Selector.C_ACTIVE);
+      if (ts.length == 0) { return; }
+
+      for (let t of ts) {
+        let b = t.nextElementSibling;
+        this._toggleMaxHeight(b);
+      }
+    }
+
+    _activatedAccordion() {
+      // Only one accordion can be active at a time. After all, only the last one will be activated.
+      let hs = document.querySelectorAll(Selector.A_ACTIVE);
+      if (hs.length == 0) { return; }
+
+      for (let h of hs) {
+        let a = Util.findAncestor(h, Selector.ACCORDION);
+        this._allClose(a);
+        h.click();
       }
     }
 
