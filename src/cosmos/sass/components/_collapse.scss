@@ -40,6 +40,8 @@
 
   .accordion-body {
     @extend .collapse-panel;
+    border-left: $accordion-border-width solid $accordion-border-color;
+    border-right: $accordion-border-width solid $accordion-border-color;
   }
 
   li:first-child > .accordion-head {
@@ -52,6 +54,11 @@
 
     &.active {
       border-radius: 0;
+
+      & + .accordion-body {
+        @include border-bottom-radius($accordion-border-radius);
+        border-bottom: $accordion-border-width solid $accordion-border-color;
+      }
     }
   }
 }
