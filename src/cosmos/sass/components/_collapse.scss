@@ -4,13 +4,14 @@
 
 .collapse-toggle {
   @include btn-base;
+  position: relative;
 
   &::after {
+    position: absolute;
     content: '\002B';
     color: inherit;
     font-weight: bold;
-    float: right;
-    margin-right: 5px;
+    right: 1em;
   }
   &.active::after {
     content: "\2212";

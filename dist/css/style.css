@@ -1792,15 +1792,16 @@ ul.pagination {
   white-space: nowrap;
   border: none;
   cursor: pointer;
-  user-select: none; }
+  user-select: none;
+  position: relative; }
   .collapse-toggle:focus, .accordion .accordion-head:focus, .collapse-toggle:hover, .accordion .accordion-head:hover {
     text-decoration: none; }
   .collapse-toggle::after, .accordion .accordion-head::after {
+    position: absolute;
     content: '\002B';
     color: inherit;
     font-weight: bold;
-    float: right;
-    margin-right: 5px; }
+    right: 1em; }
   .collapse-toggle.active::after, .accordion .active.accordion-head::after {
     content: "\2212"; }
 
