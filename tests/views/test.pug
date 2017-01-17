@@ -10,32 +10,7 @@ block content
     h1 Hello, World!
     p test page.
     button(class='btn' onclick='toggle()') toggle
-
-    h1 Collapse Test
-    div(class='collapse-toggle pad bg-color-primary active' data-target='#panel1') Panel One
-    div(class='collapse-panel' id="panel1")
-      p(class='pad')= lorem
-    div(class='collapse-toggle pad bg-color-secondary' data-target='#panel2') Panel Two
-    div(class='collapse-panel' id="panel2")
-      p(class='pad')= lorem
-    div(class='collapse-toggle pad bg-color-warning active' data-target='#panel3') Panel Three
-    div(class='collapse-panel' id="panel3")
-      p(class='pad')= lorem
-
-    h1 Accordion Test
-    ul(class='accordion')
-      li
-        div(class='accordion-head active') List item 1
-        div(class='accordion-body')
-          p(class='pad')= lorem
-      li
-        div(class='accordion-head') List item 2
-        div(class='accordion-body')
-          p(class='pad')= lorem
-      li
-        div(class='accordion-head') List item 3
-        div(class='accordion-body')
-          p(class='pad')= lorem
+    
   <script>
   | function toggle() {
   |   var a = document.querySelector('#ajax-loading');
