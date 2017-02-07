@@ -2,25 +2,8 @@
 // Helper Functions
 //======================================================================
 
-// custom lightness()
-// @link   https://www.w3.org/TR/AERT#color-contrast
-// 
-// @param  color $color
-// @return int   0~255
-@function colorLightness($color) {
-  @return ((red($color) * 299) + (green($color) * 587) + (blue($color) * 114)) / 1000;
-}
-
-// get contrast color
-// @param  color  $color
-// @param  color  $dark
-// @param  color  $light
-// @return color  $dark or $light
-@function getContrast($color, $dark: $black, $light: $white) {
-  // lightness point = 166 (65%, #a6a6a6)
-  @if (colorLightness($color) > 166) {
-    @return $dark; // Lighter backgorund, return dark color
-  } @else {
-    @return $light; // Darker background, return light color
-  }
+// use getContrast() at scss-palette
+// @link https://github.com/archco/scss-palette/wiki/functions#getcontrastcolor-dark-000-light-fff 
+@function get-contrast($color, $dark: $black, $light: $white) {
+  @return getContrast($color, $dark, $light);
 }

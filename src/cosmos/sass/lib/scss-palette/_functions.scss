@@ -36,3 +36,39 @@
 @function paletteGetColor($name) {
   @return map-get($palette-colors, $name);
 }
+
+// mix two colors
+// @param string $name1
+// @param string $name2
+// @param number $weight  $name1 <- 0 ~ 100 -> $name2
+// @return color
+@function paletteMix($name1, $name2, $weight: 50%) {
+  @return mix(palette($name1), palette($name2), $weight);
+}
+
+//======================================================================
+// Color Functions
+//======================================================================
+
+// custom lightness()
+// @link   https://www.w3.org/TR/AERT#color-contrast
+// 
+// @param  color $color
+// @return int   0~255
+@function colorLightness($color) {
+  @return ((red($color) * 299) + (green($color) * 587) + (blue($color) * 114)) / 1000;
+}
+
+// get contrast color
+// @param  color  $color
+// @param  color  $dark
+// @param  color  $light
+// @return color  $dark or $light
+@function getContrast($color, $dark: #000, $light: #FFF) {
+  // lightness point = 166 (65%, #a6a6a6)
+  @if (colorLightness($color) > 166) {
+    @return $dark; // Lighter backgorund, return dark color
+  } @else {
+    @return $light; // Darker background, return light color
+  }
+}

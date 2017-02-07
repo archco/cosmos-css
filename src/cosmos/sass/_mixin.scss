@@ -36,7 +36,7 @@
 
 @mixin btnColor($bg-color, $color: $button-color) {
   @if not $button-color-is-enable {
-    $color: getContrast($bg-color);
+    $color: get-contrast($bg-color);
   }
 
   color: $color;
@@ -148,7 +148,7 @@
 //======================================================================
 
 @mixin messageBox($bg-color) {
-  $color: getContrast($bg-color, $message-dark-color, $message-light-color);
+  $color: get-contrast($bg-color, $message-dark-color, $message-light-color);
 
   color: $color;
   background-color: $bg-color;
