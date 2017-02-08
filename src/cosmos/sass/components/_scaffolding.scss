@@ -18,7 +18,8 @@ footer {
   z-index: $z-index-footer;
 }
 
-footer {
+footer, // will be deprecated. #86
+footer.footer {
   color: $footer-color;
   background-color: $footer-bg-color;
 
@@ -37,7 +38,9 @@ footer {
   }
 }
 
-address { font-style: normal; }
+address {
+  font-style: normal;
+}
 
 hr {
   border: 0;
@@ -89,7 +92,8 @@ blockquote {
 //======================================================================
 
 // default
-table {
+table, // will be deprecated. #86
+table.table {
   width: 100%;
   max-width: 800px;
   font-size: 0.9em;

@@ -3,9 +3,18 @@
 //======================================================================
 
 // toggling content
-.hide { display: none !important; }
-.show { display: block !important; }
-.invisible { visibility: hidden; }
+.hide, // will be deprecated. #86
+.display-hide {
+  display: none !important;
+}
+.show, // will be deprecated. #86
+.display-show {
+  display: block !important;
+}
+.invisible, // will be deprecated. #86
+.display-invisible {
+  visibility: hidden;
+}
 
 // responsive hiding
 %resopnsive-tablet-hide {
@@ -28,9 +37,18 @@
 .font-sans-serif { font-family: $font-sans-serif; }
 
 // align
-.center { text-align: center; }
-.right { text-align: right; }
-.left { text-align: left; }
+.center, // will be deprecated. #86
+.align-center {
+  text-align: center;
+}
+.right, // will be deprecated. #86
+.align-right {
+  text-align: right;
+}
+.left, // will be deprecated. #86
+.align-left {
+  text-align: left;
+}
 
 // centering
 %flex-center {
