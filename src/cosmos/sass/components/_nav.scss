@@ -41,7 +41,7 @@ nav.navbar {
     text-align: center;
 
     &.active a { 
-      color: $nav-bg-color;
+      color: $nav-active-color;
       background-color: $nav-active-bg-color;
 
       @include media-tablet-up() {
