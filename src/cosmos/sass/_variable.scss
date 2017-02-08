@@ -48,8 +48,8 @@ $background-color: $white !default;
 $background-color-invert: invert($background-color) !default;
 $background-color-shade: rgba($background-color-invert, 0.1) !default;
 $shadow-color: rgba(#000, 0.3) !default;
-$border-color: $gray !default;
-$disabled-color: rgba($gray, 0.5) !default;
+$border-color: $mediumgray !default;
+$disabled-color: rgba($gray, 0.2) !default;
 // else
 $radius-normal: 4px !default;
 $radius-small: round($radius-normal / 2) !default;
