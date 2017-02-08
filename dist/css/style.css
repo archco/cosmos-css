@@ -999,6 +999,12 @@ input[type="reset"], .btn-icon {
   background-color: #86608E;
   outline-color: #86608E;
   transition: background-color 0.3s, box-shadow 0.3s; }
+  .btn:link, input[type="submit"]:link,
+  input[type="button"]:link,
+  input[type="reset"]:link, .btn-icon:link, .btn:visited, input[type="submit"]:visited,
+  input[type="button"]:visited,
+  input[type="reset"]:visited, .btn-icon:visited {
+    color: #FFFFFF; }
   .btn:focus:not([disabled]), input[type="submit"]:focus:not([disabled]),
   input[type="button"]:focus:not([disabled]),
   input[type="reset"]:focus:not([disabled]), .btn-icon:focus:not([disabled]), .btn:hover:not([disabled]), input[type="submit"]:hover:not([disabled]),
@@ -1020,6 +1026,12 @@ input[type="reset"], .btn-icon {
     background-color: #86608E;
     outline-color: #86608E;
     transition: background-color 0.3s, box-shadow 0.3s; }
+    .primary.btn:link, input.primary[type="submit"]:link,
+    input.primary[type="button"]:link,
+    input.primary[type="reset"]:link, .primary.btn-icon:link, .primary.btn:visited, input.primary[type="submit"]:visited,
+    input.primary[type="button"]:visited,
+    input.primary[type="reset"]:visited, .primary.btn-icon:visited {
+      color: #FFFFFF; }
     .primary.btn:focus:not([disabled]), input.primary[type="submit"]:focus:not([disabled]),
     input.primary[type="button"]:focus:not([disabled]),
     input.primary[type="reset"]:focus:not([disabled]), .primary.btn-icon:focus:not([disabled]), .primary.btn:hover:not([disabled]), input.primary[type="submit"]:hover:not([disabled]),
@@ -1041,6 +1053,12 @@ input[type="reset"], .btn-icon {
     background-color: #91A3B0;
     outline-color: #91A3B0;
     transition: background-color 0.3s, box-shadow 0.3s; }
+    .secondary.btn:link, input.secondary[type="submit"]:link,
+    input.secondary[type="button"]:link,
+    input.secondary[type="reset"]:link, .secondary.btn-icon:link, .secondary.btn:visited, input.secondary[type="submit"]:visited,
+    input.secondary[type="button"]:visited,
+    input.secondary[type="reset"]:visited, .secondary.btn-icon:visited {
+      color: #FFFFFF; }
     .secondary.btn:focus:not([disabled]), input.secondary[type="submit"]:focus:not([disabled]),
     input.secondary[type="button"]:focus:not([disabled]),
     input.secondary[type="reset"]:focus:not([disabled]), .secondary.btn-icon:focus:not([disabled]), .secondary.btn:hover:not([disabled]), input.secondary[type="submit"]:hover:not([disabled]),
@@ -1062,6 +1080,12 @@ input[type="reset"], .btn-icon {
     background-color: #008080;
     outline-color: #008080;
     transition: background-color 0.3s, box-shadow 0.3s; }
+    .info.btn:link, input.info[type="submit"]:link,
+    input.info[type="button"]:link,
+    input.info[type="reset"]:link, .info.btn-icon:link, .info.btn:visited, input.info[type="submit"]:visited,
+    input.info[type="button"]:visited,
+    input.info[type="reset"]:visited, .info.btn-icon:visited {
+      color: #FFFFFF; }
     .info.btn:focus:not([disabled]), input.info[type="submit"]:focus:not([disabled]),
     input.info[type="button"]:focus:not([disabled]),
     input.info[type="reset"]:focus:not([disabled]), .info.btn-icon:focus:not([disabled]), .info.btn:hover:not([disabled]), input.info[type="submit"]:hover:not([disabled]),
@@ -1083,6 +1107,12 @@ input[type="reset"], .btn-icon {
     background-color: #00A550;
     outline-color: #00A550;
     transition: background-color 0.3s, box-shadow 0.3s; }
+    .success.btn:link, input.success[type="submit"]:link,
+    input.success[type="button"]:link,
+    input.success[type="reset"]:link, .success.btn-icon:link, .success.btn:visited, input.success[type="submit"]:visited,
+    input.success[type="button"]:visited,
+    input.success[type="reset"]:visited, .success.btn-icon:visited {
+      color: #FFFFFF; }
     .success.btn:focus:not([disabled]), input.success[type="submit"]:focus:not([disabled]),
     input.success[type="button"]:focus:not([disabled]),
     input.success[type="reset"]:focus:not([disabled]), .success.btn-icon:focus:not([disabled]), .success.btn:hover:not([disabled]), input.success[type="submit"]:hover:not([disabled]),
@@ -1104,6 +1134,12 @@ input[type="reset"], .btn-icon {
     background-color: #FFD300;
     outline-color: #FFD300;
     transition: background-color 0.3s, box-shadow 0.3s; }
+    .warning.btn:link, input.warning[type="submit"]:link,
+    input.warning[type="button"]:link,
+    input.warning[type="reset"]:link, .warning.btn-icon:link, .warning.btn:visited, input.warning[type="submit"]:visited,
+    input.warning[type="button"]:visited,
+    input.warning[type="reset"]:visited, .warning.btn-icon:visited {
+      color: #343434; }
     .warning.btn:focus:not([disabled]), input.warning[type="submit"]:focus:not([disabled]),
     input.warning[type="button"]:focus:not([disabled]),
     input.warning[type="reset"]:focus:not([disabled]), .warning.btn-icon:focus:not([disabled]), .warning.btn:hover:not([disabled]), input.warning[type="submit"]:hover:not([disabled]),
@@ -1125,6 +1161,12 @@ input[type="reset"], .btn-icon {
     background-color: #E23D28;
     outline-color: #E23D28;
     transition: background-color 0.3s, box-shadow 0.3s; }
+    .danger.btn:link, input.danger[type="submit"]:link,
+    input.danger[type="button"]:link,
+    input.danger[type="reset"]:link, .danger.btn-icon:link, .danger.btn:visited, input.danger[type="submit"]:visited,
+    input.danger[type="button"]:visited,
+    input.danger[type="reset"]:visited, .danger.btn-icon:visited {
+      color: #FFFFFF; }
     .danger.btn:focus:not([disabled]), input.danger[type="submit"]:focus:not([disabled]),
     input.danger[type="button"]:focus:not([disabled]),
     input.danger[type="reset"]:focus:not([disabled]), .danger.btn-icon:focus:not([disabled]), .danger.btn:hover:not([disabled]), input.danger[type="submit"]:hover:not([disabled]),
@@ -1146,6 +1188,12 @@ input[type="reset"], .btn-icon {
     background-color: #E23D28;
     outline-color: #E23D28;
     transition: background-color 0.3s, box-shadow 0.3s; }
+    .error.btn:link, input.error[type="submit"]:link,
+    input.error[type="button"]:link,
+    input.error[type="reset"]:link, .error.btn-icon:link, .error.btn:visited, input.error[type="submit"]:visited,
+    input.error[type="button"]:visited,
+    input.error[type="reset"]:visited, .error.btn-icon:visited {
+      color: #FFFFFF; }
     .error.btn:focus:not([disabled]), input.error[type="submit"]:focus:not([disabled]),
     input.error[type="button"]:focus:not([disabled]),
     input.error[type="reset"]:focus:not([disabled]), .error.btn-icon:focus:not([disabled]), .error.btn:hover:not([disabled]), input.error[type="submit"]:hover:not([disabled]),

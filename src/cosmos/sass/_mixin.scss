@@ -44,6 +44,10 @@
   outline-color: $bg-color;
   transition: background-color $transition-time, box-shadow $transition-time;
   
+  &:link,
+  &:visited {
+    color: $color;
+  }
   &:focus:not([disabled]),
   &:hover:not([disabled]) {
     color: $color;
