@@ -138,6 +138,8 @@ $dropdown-bg-color: $background-color !default;
 $dropdown-bg-hover-color: $background-color-shade !default;
 $dropdown-link-color: $text-color-weak !default;
 $dropdown-link-hover-color: $text-color !default;
+$dropdown-active-bg-color: $primary-color-accent !default;
+$dropdown-active-color: get-contrast($dropdown-active-bg-color) !default;
 $dropdown-min-width: 120px !default;
 
 // grid

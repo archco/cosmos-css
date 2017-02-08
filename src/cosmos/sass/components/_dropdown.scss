@@ -30,19 +30,26 @@
     // @link  https://github.com/archco/cosmos-css/issues/63
     left: 0; 
 
-    > li > a {
-      @include no-decoration;
-      display: block;
-      padding: 0.5em 1em;
-      font-family: inherit;
-      font-size: inherit;
-      color: $dropdown-link-color;
-      transition: color $transition-time, background-color $transition-time;
+    li {
+      &.active > a {
+        color: $dropdown-active-color;
+        background-color: $dropdown-active-bg-color;
+      }
 
-      &:hover,
-      &:focus {
-        color: $dropdown-link-hover-color;
-        background-color: $dropdown-bg-hover-color;
+      a {
+        @include no-decoration;
+        display: block;
+        padding: 0.5em 1em;
+        font-family: inherit;
+        font-size: inherit;
+        color: $dropdown-link-color;
+        transition: color $transition-time, background-color $transition-time;
+
+        &:hover,
+        &:focus {
+          color: $dropdown-link-hover-color;
+          background-color: $dropdown-bg-hover-color;
+        }
       }
     }
     // dropdown-content position
@@ -64,13 +71,16 @@
 }
 
 // nav dropdown
-nav.navbar .dropdown > button.dropdown-toggle,
-nav.navbar .dropdown > button.dropdown-btn {
-  @extend %nav-button, %nav-link;
-  min-width: $dropdown-min-width;
-  
-  &:before {
-    all: initial;
+nav.navbar .dropdown {
+  > button.dropdown-toggle,
+  > button.dropdown-btn {
+    @extend %nav-button, %nav-link;
+    min-width: $dropdown-min-width;
+  }
+
+  ul.dropdown-content > li.active > a {
+    border-color: transparent;
+    border-radius: 0;
   }
 }
 

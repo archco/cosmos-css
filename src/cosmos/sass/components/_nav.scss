@@ -35,19 +35,19 @@ nav.navbar {
     @include reset-list;
     display: flex;
     flex-wrap: wrap;
-  }
 
-  li {
-    text-align: center;
+    li {
+      text-align: center;
 
-    &.active a { 
-      color: $nav-active-color;
-      background-color: $nav-active-bg-color;
+      &.active a { 
+        color: $nav-active-color;
+        background-color: $nav-active-bg-color;
 
-      @include media-tablet-up() {
-        border-color: $nav-bg-color;
-        border-bottom-color: $nav-active-bg-color;
-        border-radius: $radius-normal $radius-normal 0 0;  
+        @include media-tablet-up() {
+          border-color: $nav-bg-color;
+          border-bottom-color: $nav-active-bg-color;
+          border-radius: $radius-normal $radius-normal 0 0;  
+        }
       }
     }
   }
@@ -158,7 +158,9 @@ nav.navbar {
 // Responsive
 @include media-only-mobile() {
   /* nav */
-  nav ul, 
-  nav li,
-  nav a { width: 100%; }
+  nav.navbar {
+    ul, li, a {
+      width: 100%;  
+    }
+  }
 }
