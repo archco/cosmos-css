@@ -1391,6 +1391,111 @@ var Collapse = function () {
 
   return Collapse;
 }();
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/************************************************************
+  SipleCRUD
+*************************************************************/
+var SimpleCRUD = function () {
+  var NAME = 'Cosmos.SimpleCRUD';
+  var ClassName = {
+    ITEM: 'simple-crud-item',
+    VIEW_READ: 'simple-crud-view-read',
+    VIEW_UPDATE: 'simple-crud-view-update',
+    VIEW_DELETE: 'simple-crud-view-delete',
+    BTN_UPDATE: 'simple-crud-update',
+    BTN_DELETE: 'simple-crud-delete',
+    BTN_CANCEL: 'simple-crud-cancel',
+    SHOW: 'show'
+  };
+  var Selector = {
+    ITEM: '.' + ClassName.ITEM,
+    VIEW: '[class*="simple-crud-view-"]',
+    VIEW_READ: '.' + ClassName.VIEW_READ,
+    VIEW_UPDATE: '.' + ClassName.VIEW_UPDATE,
+    VIEW_DELETE: '.' + ClassName.VIEW_DELETE,
+    BTN_UPDATE: 'button.' + ClassName.BTN_UPDATE,
+    BTN_DELETE: 'button.' + ClassName.BTN_DELETE,
+    BTN_CANCEL: 'button.' + ClassName.BTN_CANCEL
+  };
+
+  var SimpleCRUD = function () {
+    function SimpleCRUD() {
+      _classCallCheck(this, SimpleCRUD);
+    }
+
+    _createClass(SimpleCRUD, [{
+      key: 'init',
+
+
+      // public
+      //
+
+      value: function init() {
+        var _this = this;
+
+        Util.eventOnSelector(Selector.BTN_UPDATE, 'click', function (e) {
+          _this._switchView(e.currentTarget, 'update');
+        });
+        Util.eventOnSelector(Selector.BTN_DELETE, 'click', function (e) {
+          _this._switchView(e.currentTarget, 'delete');
+        });
+        Util.eventOnSelector(Selector.BTN_CANCEL, 'click', function (e) {
+          _this._switchView(e.currentTarget, 'read');
+        });
+      }
+
+      // static
+      // 
+
+    }, {
+      key: '_getNodes',
+
+
+      // private
+      // 
+      value: function _getNodes(element) {
+        var item = Util.findAncestor(element, Selector.ITEM);
+        var current = Util.findAncestor(element, Selector.VIEW);
+
+        return {
+          item: item,
+          current: current,
+          read: item.querySelector(Selector.VIEW_READ),
+          update: item.querySelector(Selector.VIEW_UPDATE),
+          delete: item.querySelector(Selector.VIEW_DELETE)
+        };
+      }
+    }, {
+      key: '_switchView',
+      value: function _switchView(element, name) {
+        var nodes = this._getNodes(element);
+        console.log(NAME, 'switchView: ' + name);
+        nodes.current.classList.remove(ClassName.SHOW);
+        nodes[name].classList.add(ClassName.SHOW);
+      }
+    }], [{
+      key: 'load',
+      value: function load() {
+        var s = new SimpleCRUD();
+        s.init();
+      }
+    }, {
+      key: 'name',
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return SimpleCRUD;
+  }();
+
+  return SimpleCRUD;
+}();
 "use strict";
 
 // initialize - loading modules.
@@ -1405,6 +1510,7 @@ var Collapse = function () {
   ScrollTo.load();
   Tab.load();
   Collapse.load();
+  SimpleCRUD.load();
 })();
 
 // define helper functions.

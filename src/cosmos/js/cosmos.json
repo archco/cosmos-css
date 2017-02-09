@@ -13,5 +13,6 @@
   "modules/parallax.js",
   "modules/ajax-loading.js",
   "modules/collapse.js",
+  "modules/simple-crud.js",
   "load.js"
 ]

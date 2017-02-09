@@ -11,6 +11,7 @@ import Parallax from './modules/parallax.js';
 import ScrollTo from './modules/scroll-to.js';
 import Tab from './modules/tab.js';
 import Collapse from './modules/collapse.js';
+import SimpleCRUD from './modules/simple-crud.js';
 
 // initialize - loading modules.
 (function () {
@@ -24,6 +25,7 @@ import Collapse from './modules/collapse.js';
   ScrollTo.load();
   Tab.load();
   Collapse.load();
+  SimpleCRUD.load();
 })();
 
 // define helper functions.
