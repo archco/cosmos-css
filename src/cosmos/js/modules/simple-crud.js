@@ -57,6 +57,7 @@ const SimpleCRUD = (() => {
 
     // private
     // 
+    
     _getNodes(element) {
       let item = Util.findAncestor(element, Selector.ITEM);
       let current = Util.findAncestor(element, Selector.VIEW);
@@ -72,7 +73,7 @@ const SimpleCRUD = (() => {
 
     _switchView(element, name) {
       let nodes = this._getNodes(element);
-      console.log(NAME, 'switchView: ' + name);
+      // console.log(NAME, 'switchView: ' + name);
       nodes.current.classList.remove(ClassName.SHOW);
       nodes[name].classList.add(ClassName.SHOW);
     }

@@ -1458,6 +1458,7 @@ var SimpleCRUD = function () {
 
       // private
       // 
+
       value: function _getNodes(element) {
         var item = Util.findAncestor(element, Selector.ITEM);
         var current = Util.findAncestor(element, Selector.VIEW);
@@ -1474,7 +1475,7 @@ var SimpleCRUD = function () {
       key: '_switchView',
       value: function _switchView(element, name) {
         var nodes = this._getNodes(element);
-        console.log(NAME, 'switchView: ' + name);
+        // console.log(NAME, 'switchView: ' + name);
         nodes.current.classList.remove(ClassName.SHOW);
         nodes[name].classList.add(ClassName.SHOW);
       }

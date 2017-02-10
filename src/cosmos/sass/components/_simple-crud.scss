@@ -13,19 +13,14 @@
 .simple-crud-list {
   @extend %simple-list;
   
-  * {
-    outline: 1px dotted red; //debug  
-  }
-
   .simple-crud-item {
     .simple-crud-view-read,
     .simple-crud-view-update,
     .simple-crud-view-delete {
       @include clear-both;
+      
       display: none;
-
       &.show { display: block; }
-      &.hide { display: none; }
     }
   }
 

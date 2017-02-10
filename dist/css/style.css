@@ -2044,9 +2044,6 @@ nav.navbar .nav-header .nav-brand, nav.navbar .nav-header button.menu-toggle {
     padding: 0.2em 0.4em;
     margin: 0.1em 0; }
 
-.simple-crud-list * {
-  outline: 1px dotted red; }
-
 .simple-crud-list .simple-crud-item .simple-crud-view-read,
 .simple-crud-list .simple-crud-item .simple-crud-view-update,
 .simple-crud-list .simple-crud-item .simple-crud-view-delete {
@@ -2061,10 +2058,6 @@ nav.navbar .nav-header .nav-brand, nav.navbar .nav-header button.menu-toggle {
   .simple-crud-list .simple-crud-item .simple-crud-view-update.show,
   .simple-crud-list .simple-crud-item .simple-crud-view-delete.show {
     display: block; }
-  .simple-crud-list .simple-crud-item .simple-crud-view-read.hide,
-  .simple-crud-list .simple-crud-item .simple-crud-view-update.hide,
-  .simple-crud-list .simple-crud-item .simple-crud-view-delete.hide {
-    display: none; }
 
 .simple-crud-list .simple-crud-actions {
   display: inline-block;
