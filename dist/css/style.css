@@ -587,8 +587,8 @@ h1.accent, h1, h2.accent, h3.accent, h4.accent, h5.accent, h6.accent {
   font-family: "Patua One", cursive; }
 
 fieldset {
-  margin: 0.5rem 0;
-  padding: 0 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
   border: 2px solid #86608E;
   border-radius: 4px; }
 
@@ -599,6 +599,8 @@ legend {
   color: #86608E; }
 
 label {
+  display: inline-block;
+  margin-bottom: 0.25rem;
   font-weight: bold;
   color: #343434; }
 
@@ -627,7 +629,6 @@ textarea {
   min-height: 2.0rem;
   line-height: 1.4;
   padding: 0.2em 0.5em;
-  margin: 0.5rem 0;
   border: 1px solid #BEBEBE;
   border-radius: 2px;
   background-color: transparent; }
@@ -695,6 +696,9 @@ input[type="color"] {
 select.inline,
 textarea.inline {
   width: auto; }
+
+.form-group {
+  margin-bottom: 1rem; }
 
 .btn, input[type="submit"],
 input[type="button"],
@@ -2033,7 +2037,7 @@ nav.navbar .nav-header .nav-brand, nav.navbar .nav-header button.menu-toggle {
 .full-height {
   height: 100%; }
 
-.group, .form-group {
+.group {
   margin: 1rem 0; }
 
 .simple-crud-list {

@@ -3,8 +3,8 @@
 //======================================================================
 
 fieldset {
-  margin: 0.5rem 0;
-  padding: 0 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
   border: $filedset-border;
   border-radius: $radius-normal;
 }
@@ -15,6 +15,8 @@ legend {
   color: $legend-color;
 }
 label {
+  display: inline-block;
+  margin-bottom: 0.25rem;
   font-weight: bold;
   color: $label-color;
 }
@@ -48,7 +50,7 @@ textarea {
   min-height: 2.0rem;
   line-height: 1.4;
   padding: $input-padding;
-  margin: $input-margin;
+  // margin: $input-margin;
   border: $input-border;
   border-radius: $input-radius;
   background-color: transparent;
@@ -122,5 +124,5 @@ input[type="color"] {
 }
 
 .form-group {
-  @extend .group;
+  margin-bottom: 1rem;
 }
