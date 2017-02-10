@@ -1,0 +1,28 @@
+//======================================================================
+// Badge
+//======================================================================
+
+.badge {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  font-size: 75%;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: initial;
+  border-radius: $radius-small;
+  
+  @include badgeColor($gray); // default color
+  // color-set
+  @each $name, $color in $color-set {
+    &.#{$name} {
+      @include badgeColor($color);
+    }
+  }
+
+  &:empty { display: none; }
+}
+
+a.badge {
+  @include no-decoration;
+}

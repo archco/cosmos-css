@@ -258,3 +258,21 @@
   justify-content: #{$horizontal}; // horizontally
   align-items: #{$vertical}; // vertically
 }
+
+//======================================================================
+// Badge
+//======================================================================
+@mixin badgeColor($color) {
+  background-color: $color;
+  color: get-contrast($color);
+
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: lighten($color, 4%);
+    }
+    &:active {
+      background-color: darken($color, 4%);
+    }
+  }
+}
