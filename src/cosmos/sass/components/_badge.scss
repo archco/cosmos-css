@@ -4,12 +4,14 @@
 
 .badge {
   display: inline-block;
-  padding: 0.2em 0.4em;
+  padding: 0.125em 0.3em;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
   font-size: 75%;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
-  vertical-align: initial;
+  vertical-align: 10%;
   border-radius: $radius-small;
   
   @include badgeColor($gray); // default color
