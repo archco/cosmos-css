@@ -1179,6 +1179,8 @@ nav.navbar .dropdown ul.dropdown-content > li.active > a {
     padding-left: 0.5em;
     padding-right: 0.5em;
     border-radius: 1.5em; }
+  .badge.icon {
+    padding: 0.15em; }
   .badge:empty {
     display: none; }
 

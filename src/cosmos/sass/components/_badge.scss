@@ -3,6 +3,8 @@
 //======================================================================
 
 .badge {
+  // local variables.
+  //=================
   $badge-padding-base: $badge-font-size / 6;
   $badge-margin-base: decimal-floor($badge-padding-base, 1);
   $badge-padding-y: $badge-padding-base;
@@ -34,6 +36,10 @@
     padding-left: $badge-rounded-padding-x;
     padding-right: $badge-rounded-padding-x;
     border-radius: $badge-rounded-border-radius;
+  }
+
+  &.icon {
+    padding: $badge-padding-base * 1.2;
   }
 
   &:empty { display: none; }
