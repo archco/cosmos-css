@@ -3,18 +3,26 @@
 //======================================================================
 
 .badge {
+  $badge-padding-base: $badge-font-size / 6;
+  $badge-margin-base: decimal-floor($badge-padding-base, 1);
+  $badge-padding-y: $badge-padding-base;
+  $badge-padding-x: $badge-padding-base * 2;
+  $badge-verical-align: percentage(strip-unit($badge-margin-base)); // percentage value
+  $badge-rounded-padding-x: $badge-padding-base * 4;
+  $badge-rounded-border-radius: $badge-font-size * 2;
+
   display: inline-block;
-  padding: 0.125em 0.3em;
-  margin-left: 0.1em;
-  margin-right: 0.1em;
-  font-size: 75%;
+  padding: $badge-padding-y $badge-padding-x;
+  margin-left: $badge-margin-base;
+  margin-right: $badge-margin-base;
+  font-size: $badge-font-size;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
-  vertical-align: 10%;
-  border-radius: $radius-small;
+  vertical-align: $badge-verical-align;
+  border-radius: $badge-border-radius;
   
-  @include badgeColor($gray); // default color
+  @include badgeColor($badge-default-color); // default color
   // color-set
   @each $name, $color in $color-set {
     &.#{$name} {
@@ -23,9 +31,9 @@
   }
 
   &.rounded {
-    padding-left: 0.6em;
-    padding-right: 0.6em;
-    border-radius: 10em;
+    padding-left: $badge-rounded-padding-x;
+    padding-right: $badge-rounded-padding-x;
+    border-radius: $badge-rounded-border-radius;
   }
 
   &:empty { display: none; }

@@ -1111,10 +1111,10 @@ nav.navbar .dropdown ul.dropdown-content > li.active > a {
 
 .badge {
   display: inline-block;
-  padding: 0.125em 0.3em;
+  padding: 0.125em 0.25em;
   margin-left: 0.1em;
   margin-right: 0.1em;
-  font-size: 75%;
+  font-size: 0.75em;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
@@ -1176,9 +1176,9 @@ nav.navbar .dropdown ul.dropdown-content > li.active > a {
     .badge.error[href]:active {
       background-color: #d8321d; }
   .badge.rounded {
-    padding-left: 0.6em;
-    padding-right: 0.6em;
-    border-radius: 10em; }
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 1.5em; }
   .badge:empty {
     display: none; }
 

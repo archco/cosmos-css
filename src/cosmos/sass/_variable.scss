@@ -126,6 +126,11 @@ $z-index-scroll-to-button: 14 !default;
 // Component's Variables
 //======================================================================
 
+// badge
+$badge-font-size: 0.75em !default;
+$badge-border-radius: $radius-small !default;
+$badge-default-color: $gray !default;
+
 // button
 $button-radius: $radius-small !default;
 $button-color: $white !default;
