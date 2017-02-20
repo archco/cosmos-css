@@ -23,13 +23,16 @@
     "gulp-uglify": "^2.0.0",
     "jquery": "^3.1.1",
     "node-sass": "^4.5.0",
-    "pug": "^2.0.0-beta6"
+    "pug": "^2.0.0-beta6",
+    "pug-cli": "^1.0.0-alpha6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "node node_modules/node-sass/bin/node-sass --source-map true src/cosmos/sass/style.scss dist/css/style.css",
     "sass:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/cosmos/sass/style.scss dist/css/style.min.css",
-    "sass:watch": "npm run sass && npm run sass -- --watch"
+    "sass:watch": "npm run sass && npm run sass -- --watch",
+    "pug": "node node_modules/pug-cli --pretty tests/views/test.pug tests/views/components.pug tests/views/modules.pug --out ./tests/",
+    "pug:watch": "npm run pug -- --watch"
   },
   "repository": {
     "type": "git",
