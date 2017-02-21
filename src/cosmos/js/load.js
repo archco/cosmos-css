@@ -14,29 +14,31 @@ import Collapse from './modules/collapse.js';
 import SimpleCRUD from './modules/simple-crud.js';
 
 // initialize - loading modules.
-(function () {
-  Scaffolding.load();
-  AjaxLoading.load();
-  Dropdown.load();
-  Message.load();
-  Modal.load();
-  Nav.load();
-  Parallax.load();
-  ScrollTo.load();
-  Tab.load();
-  Collapse.load();
-  SimpleCRUD.load();
-})();
+
+Scaffolding.load();
+AjaxLoading.load();
+Dropdown.load();
+Message.load();
+Modal.load();
+Nav.load();
+Parallax.load();
+ScrollTo.load();
+Tab.load();
+Collapse.load();
+SimpleCRUD.load();
+
+// export as library.
+export { Util, Color };
 
 // define helper functions.
-function submitConfirm(form, message) {
+export function submitConfirm(form, message) {
   Helper.submitConfirm(form, message);
 }
 
-function checkMobileSize() {
+export function checkMobileSize() {
   return Helper.checkMobileSize();
 }
 
-function showMessage(message, status) {
+export function showMessage(message, status) {
   Message.showMessage(message, status);
 }
