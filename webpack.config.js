@@ -4,8 +4,8 @@ const webpack = require('webpack');
 module.exports = {
   entry: './src/cosmos/js/load.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'script.js',
+    path: path.resolve(__dirname, 'dist/js/'),
     library: 'Cosmos'
   },
   module: {

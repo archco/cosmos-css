@@ -45,7 +45,7 @@
     "pug:watch": "npm run pug -- --watch",
     "webpack": "node node_modules/webpack/bin/webpack",
     "webpack:watch": "npm run webpack && npm run webpack -- --watch",
-    "webpack:min": "npm run webpack -- --optimize-minimize --output-filename bundle.min.js --devtool false"
+    "webpack:min": "npm run webpack -- --optimize-minimize --output-filename script.min.js --devtool false"
   },
   "repository": {
     "type": "git",
