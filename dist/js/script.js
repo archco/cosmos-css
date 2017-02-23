@@ -992,11 +992,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _util = __webpack_require__(0);
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /************************************************************
   message
@@ -1019,53 +1023,82 @@ var Message = function () {
     BOX_CLASS: 'message-box'
   };
 
-  /**
-   * add '.message-box' into '#message-container'
-   * 
-   * @param  {String} message
-   * @param  {String} status  ['info','success','warning','error']
-   */
-  var showMessage = function showMessage(message) {
-    var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
+  var Message = function () {
+    function Message() {
+      _classCallCheck(this, Message);
+    }
 
-    var c, b, span, btn;
+    _createClass(Message, [{
+      key: 'init',
 
-    // create message box
-    c = document.querySelector(Config.CONTAINER); // container
-    b = document.createElement('DIV'); // message box
-    span = document.createElement('SPAN'); // message text
-    btn = document.createElement('BUTTON'); // close button
-    span.textContent = message;
-    btn.innerHTML = Config.CLOSE_TEXT;
-    btn.classList.add(Config.CLOSE_CLASS);
-    btn.addEventListener('click', _closeButtonHandler);
-    b.classList.add(Config.BOX_CLASS);
-    b.classList.add(status);
-    // append child
-    b.appendChild(span);
-    b.appendChild(btn);
-    c.appendChild(b);
-  };
 
-  var load = function load() {
-    // add event listener - close buttons
-    _util2.default.eventOnSelector('.' + Config.CLOSE_CLASS, 'click', _closeButtonHandler);
-  };
+      // public
 
-  var _closeButtonHandler = function _closeButtonHandler(event) {
-    var messageBox = event.currentTarget.parentNode;
-    messageBox.style.opacity = '0';
-    setTimeout(function () {
-      messageBox.style.display = 'none';
-    }, 600); // 0.6s
-  };
+      value: function init() {
+        // add event listener - close buttons
+        _util2.default.eventOnSelector('.' + Config.CLOSE_CLASS, 'click', Message._closeButtonHandler);
+      }
+    }], [{
+      key: 'load',
+      value: function load() {
+        var m = new Message();
+        m.init();
+      }
 
-  return {
-    name: NAME,
-    status: Status,
-    load: load,
-    showMessage: showMessage
-  };
+      /**
+       * add '.message-box' into '#message-container'
+       * 
+       * @param  {String} message
+       * @param  {String} status  ['info','success','warning','error']
+       */
+
+    }, {
+      key: 'showMessage',
+      value: function showMessage(message) {
+        var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
+
+        var c, b, span, btn;
+
+        // create message box
+        c = document.querySelector(Config.CONTAINER); // container
+        b = document.createElement('DIV'); // message box
+        span = document.createElement('SPAN'); // message text
+        btn = document.createElement('BUTTON'); // close button
+        span.textContent = message;
+        btn.innerHTML = Config.CLOSE_TEXT;
+        btn.classList.add(Config.CLOSE_CLASS);
+        btn.addEventListener('click', Message._closeButtonHandler);
+        b.classList.add(Config.BOX_CLASS);
+        b.classList.add(status);
+        // append child
+        b.appendChild(span);
+        b.appendChild(btn);
+        c.appendChild(b);
+      }
+    }, {
+      key: '_closeButtonHandler',
+      value: function _closeButtonHandler(event) {
+        var messageBox = event.currentTarget.parentNode;
+        messageBox.style.opacity = '0';
+        setTimeout(function () {
+          messageBox.style.display = 'none';
+        }, 600); // 0.6s
+      }
+    }, {
+      key: 'name',
+
+
+      // static
+
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return Message;
+  }();
+
+  return Message;
 }();
 
 exports.default = Message;
