@@ -4,42 +4,47 @@
 const Helper = (() => {
   const NAME = 'Cosmos.Helper';
 
-  /**
-   * submitConfirm - confirm 을 취소하면 event.preventDefault()
-   * 
-   * @param  {element} form
-   * @param  {sting} message
-   * @return {void}
-   */
-  var submitConfirm = (form, message = 'Are you confirm?') => {
-    if (!form) {
-      throw new Error('Form target is not exist.');
+  class Helper {
+
+    // static
+    
+    static get name() {
+      return NAME;
     }
-    form.addEventListener('submit', function(event) {
-      if (!confirm(message)) {
-        event.preventDefault();
+    
+    /**
+     * submitConfirm - confirm 을 취소하면 event.preventDefault()
+     * 
+     * @param  {element} form
+     * @param  {sting} message
+     * @return {void}
+     */
+    static submitConfirm(form, message = 'Are you confirm?') {
+      if (!form) {
+        throw new Error('Form target is not exist.');
       }
-    });
-  };
-
-  /**
-   * check mobile size
-   * 
-   * @return {boolean}
-   */
-  var checkMobileSize = () => {
-    if (window.innerWidth < 800) {
-      return true;
-    } else {
-      return false;
+      form.addEventListener('submit', function(event) {
+        if (!confirm(message)) {
+          event.preventDefault();
+        }
+      });
     }
-  };
 
-  return {
-    name: NAME,
-    submitConfirm: submitConfirm,
-    checkMobileSize: checkMobileSize
-  };
+    /**
+     * check mobile size
+     * 
+     * @return {boolean}
+     */
+    static checkMobileSize() {
+      if (window.innerWidth < 800) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  return Helper;
 })();
 
 export default Helper;

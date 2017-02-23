@@ -30,15 +30,7 @@ SimpleCRUD.load();
 // export as library.
 export { Util, Color };
 
-// define helper functions.
-export function submitConfirm(form, message) {
-  Helper.submitConfirm(form, message);
-}
-
-export function checkMobileSize() {
-  return Helper.checkMobileSize();
-}
-
-export function showMessage(message, status) {
-  Message.showMessage(message, status);
-}
+// define global helper functions.
+window.submitConfirm = Helper.submitConfirm;
+window.checkMobileSize = Helper.checkMobileSize;
+window.showMessage = Message.showMessage;

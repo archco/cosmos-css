@@ -907,50 +907,76 @@ exports.default = Dropdown;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /************************************************************
   Helper
 *************************************************************/
 var Helper = function () {
   var NAME = 'Cosmos.Helper';
 
-  /**
-   * submitConfirm - confirm 을 취소하면 event.preventDefault()
-   * 
-   * @param  {element} form
-   * @param  {sting} message
-   * @return {void}
-   */
-  var submitConfirm = function submitConfirm(form) {
-    var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
-
-    if (!form) {
-      throw new Error('Form target is not exist.');
+  var Helper = function () {
+    function Helper() {
+      _classCallCheck(this, Helper);
     }
-    form.addEventListener('submit', function (event) {
-      if (!confirm(message)) {
-        event.preventDefault();
+
+    _createClass(Helper, null, [{
+      key: 'submitConfirm',
+
+
+      /**
+       * submitConfirm - confirm 을 취소하면 event.preventDefault()
+       * 
+       * @param  {element} form
+       * @param  {sting} message
+       * @return {void}
+       */
+      value: function submitConfirm(form) {
+        var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
+
+        if (!form) {
+          throw new Error('Form target is not exist.');
+        }
+        form.addEventListener('submit', function (event) {
+          if (!confirm(message)) {
+            event.preventDefault();
+          }
+        });
       }
-    });
-  };
 
-  /**
-   * check mobile size
-   * 
-   * @return {boolean}
-   */
-  var checkMobileSize = function checkMobileSize() {
-    if (window.innerWidth < 800) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+      /**
+       * check mobile size
+       * 
+       * @return {boolean}
+       */
 
-  return {
-    name: NAME,
-    submitConfirm: submitConfirm,
-    checkMobileSize: checkMobileSize
-  };
+    }, {
+      key: 'checkMobileSize',
+      value: function checkMobileSize() {
+        if (window.innerWidth < 800) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }, {
+      key: 'name',
+
+
+      // static
+
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return Helper;
+  }();
+
+  return Helper;
 }();
 
 exports.default = Helper;
@@ -1871,9 +1897,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Color = exports.Util = undefined;
-exports.submitConfirm = submitConfirm;
-exports.checkMobileSize = checkMobileSize;
-exports.showMessage = showMessage;
 
 var _util = __webpack_require__(0);
 
@@ -1951,19 +1974,11 @@ _simpleCrud2.default.load();
 exports.Util = _util2.default;
 exports.Color = _color2.default;
 
-// define helper functions.
+// define global helper functions.
 
-function submitConfirm(form, message) {
-  _helper2.default.submitConfirm(form, message);
-}
-
-function checkMobileSize() {
-  return _helper2.default.checkMobileSize();
-}
-
-function showMessage(message, status) {
-  _message2.default.showMessage(message, status);
-}
+window.submitConfirm = _helper2.default.submitConfirm;
+window.checkMobileSize = _helper2.default.checkMobileSize;
+window.showMessage = _message2.default.showMessage;
 
 /***/ })
 /******/ ]);
