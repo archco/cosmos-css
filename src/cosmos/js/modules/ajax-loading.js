@@ -55,7 +55,7 @@ const AjaxLoading = (() => {
       let loader = document.createElement(Config.LOADER_TAG);
       loader.classList.add(Config.LOADER_CLASS);
       a.appendChild(loader);
-    };
+    }
   }
 
   return AjaxLoading;

@@ -756,11 +756,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _util = __webpack_require__(0);
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /************************************************************
   dropdown
@@ -773,82 +777,122 @@ var Dropdown = function () {
     CONTENT: 'dropdown-content',
     SHOW: 'show'
   };
-
-  var load = function load() {
-    // toggling dropdown content.
-    _util2.default.eventOnSelector('.' + ClassName.TOGGLE, 'click', _toggleButtonHandler);
-
-    // Close the dropdown menu if the user clicks outside of it
-    window.addEventListener('click', _otherClickHandler);
+  var Selector = {
+    DROPDOWN: '.' + ClassName.DROPDOWN,
+    TOGGLE: '.' + ClassName.TOGGLE,
+    CONTENT: '.' + ClassName.CONTENT
   };
 
-  var _toggleButtonHandler = function _toggleButtonHandler(event) {
-    var c = event.currentTarget.parentNode.querySelector('.' + ClassName.CONTENT);
-    if (c) {
-      c.classList.toggle(ClassName.SHOW);
+  var Dropdown = function () {
+    function Dropdown() {
+      _classCallCheck(this, Dropdown);
     }
-  };
 
-  var _otherClickHandler = function _otherClickHandler(event) {
-    var t = event.target;
+    _createClass(Dropdown, [{
+      key: 'init',
 
-    if (t.classList.contains(ClassName.TOGGLE)) {
-      // dropdown
-      var dropdown = t.parentNode;
-      _closeElseDropdown(dropdown);
-    } else {
-      // not dropdown
-      _closeElseDropdown();
-    }
-  };
 
-  /**
-   * close dropdown contents
-   * 
-   * @param  {element} t  except target
-   * @return {void}
-   */
-  var _closeElseDropdown = function _closeElseDropdown() {
-    var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      // public
 
-    var ds = document.querySelectorAll('.' + ClassName.DROPDOWN);
+      value: function init() {
+        // toggling dropdown content.
+        _util2.default.eventOnSelector(Selector.TOGGLE, 'click', this._toggleButtonHandler.bind(this));
 
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+        // Close the dropdown menu if the user clicks outside of it
+        window.addEventListener('click', this._otherClickHandler.bind(this));
+      }
 
-    try {
-      for (var _iterator = ds[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var d = _step.value;
+      // private
 
-        var c = d.querySelector('.' + ClassName.CONTENT);
-        if (t && t == d) {
-          continue;
-        } // except target
-        if (c.classList.contains(ClassName.SHOW)) {
-          c.classList.remove(ClassName.SHOW);
+    }, {
+      key: '_toggleButtonHandler',
+      value: function _toggleButtonHandler(event) {
+        var c = event.currentTarget.parentNode.querySelector(Selector.CONTENT);
+        if (c) {
+          c.classList.toggle(ClassName.SHOW);
         }
       }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
+    }, {
+      key: '_otherClickHandler',
+      value: function _otherClickHandler(event) {
+        var t = event.target;
+
+        if (t.classList.contains(ClassName.TOGGLE)) {
+          // dropdown
+          var dropdown = t.parentNode;
+          this._closeElseDropdown(dropdown);
+        } else {
+          // not dropdown
+          this._closeElseDropdown();
         }
       }
-    }
-  };
 
-  return {
-    name: NAME,
-    load: load
-  };
+      /**
+       * close dropdown contents
+       * 
+       * @param  {element} t  except target
+       * @return {void}
+       */
+
+    }, {
+      key: '_closeElseDropdown',
+      value: function _closeElseDropdown() {
+        var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+        var ds = document.querySelectorAll(Selector.DROPDOWN);
+
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = ds[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var d = _step.value;
+
+            var c = d.querySelector(Selector.CONTENT);
+            if (t && t == d) {
+              continue;
+            } // except target
+            if (c.classList.contains(ClassName.SHOW)) {
+              c.classList.remove(ClassName.SHOW);
+            }
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+      }
+    }], [{
+      key: 'load',
+      value: function load() {
+        var d = new Dropdown();
+        d.init();
+      }
+    }, {
+      key: 'name',
+
+
+      // static
+
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return Dropdown;
+  }();
+
+  return Dropdown;
 }();
 
 exports.default = Dropdown;
