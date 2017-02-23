@@ -13,7 +13,7 @@
 @import 'lib/normalize'; // normalize.css v5.0.0
 @import 'lib/decimal';
 @import 'lib/functions';
-@import 'lib/scss-palette/palette'; // scss-palette v0.1.0
+@import 'node_modules/scss-palette/src/palette';
 
 // base.
 @import '../../app/sass/app-variable';
