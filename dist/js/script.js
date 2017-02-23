@@ -1114,137 +1114,182 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _util = __webpack_require__(0);
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /************************************************************
   Modal
 *************************************************************/
 var Modal = function () {
   var NAME = 'Cosmos.Modal';
-  var Selector = {
-    OPEN: 'button[data-toggle="modal"]',
-    CLOSE: '.modal .modal-close'
-  };
   var ClassName = {
     MODAL: 'modal',
     CONTENT: 'modal-content',
     CLOSE: 'modal-close',
     SHOW: 'show'
   };
+  var Selector = {
+    MODAL: '.' + ClassName.MODAL,
+    OPEN: 'button[data-toggle="modal"]',
+    CLOSE: '.' + ClassName.MODAL + ' .' + ClassName.CLOSE,
+    CONTENT: '.' + ClassName.CONTENT
+  };
   var Config = {
     CLOSE_TEXT: '<i class="fa fa-times" aria-hidden="true"></i>'
   };
 
-  // public
+  var Modal = function () {
+    function Modal() {
+      _classCallCheck(this, Modal);
+    }
 
-  var load = function load() {
-    // modal open button.
-    _util2.default.eventOnSelector(Selector.OPEN, 'click', _modalOpenHandler);
+    _createClass(Modal, [{
+      key: 'init',
 
-    // modal close button.
-    _util2.default.eventOnSelector(Selector.CLOSE, 'click', _modalCloseHandler);
 
-    // window onclick.
-    window.addEventListener('click', function (event) {
-      if (event.target.classList.contains(ClassName.MODAL)) {
-        _modalHide(event.target);
-      }
-    });
+      // public
 
-    // If modal doesn't have close button, add it.
-    var modals = document.querySelectorAll('.' + ClassName.MODAL);
-    if (modals.length > 0) {
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
+      value: function init() {
+        var _this = this;
 
-      try {
-        for (var _iterator = modals[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var m = _step.value;
+        // modal open button.
+        _util2.default.eventOnSelector(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
 
-          _addCloseBtn(m);
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
+        // modal close button.
+        _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this));
+
+        // window onclick.
+        window.addEventListener('click', function (event) {
+          if (event.target.classList.contains(ClassName.MODAL)) {
+            _this._modalHide(event.target);
           }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
+        });
+
+        // If modal doesn't have close button, add it.
+        var modals = document.querySelectorAll(Selector.MODAL);
+        if (modals.length > 0) {
+          var _iteratorNormalCompletion = true;
+          var _didIteratorError = false;
+          var _iteratorError = undefined;
+
+          try {
+            for (var _iterator = modals[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+              var m = _step.value;
+
+              this._addCloseBtn(m);
+            }
+          } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+              }
+            } finally {
+              if (_didIteratorError) {
+                throw _iteratorError;
+              }
+            }
           }
         }
       }
-    }
-  };
+    }, {
+      key: 'makeDialog',
+      value: function makeDialog(text) {
+        var m = document.createElement('div'); // modal
+        var c = document.createElement('div'); // modal-content
+        // modal-content
+        c.classList.add(ClassName.CONTENT);
+        c.textContent = text;
+        // modal
+        m.classList.add(ClassName.MODAL);
+        m.appendChild(c);
+        this._addCloseBtn(m);
+        document.body.appendChild(m);
+        // show
+        this._modalShow(m);
+      }
 
-  var dialog = function dialog(text) {
-    var m = document.createElement('div'); // modal
-    var c = document.createElement('div'); // modal-content
-    // modal-content
-    c.classList.add(ClassName.CONTENT);
-    c.textContent = text;
-    // modal
-    m.classList.add(ClassName.MODAL);
-    m.appendChild(c);
-    _addCloseBtn(m);
-    document.body.appendChild(m);
-    // show
-    _modalShow(m);
-  };
+      // private
 
-  // private
+    }, {
+      key: '_modalCloseHandler',
+      value: function _modalCloseHandler(event) {
+        var m = event.currentTarget.parentNode.parentNode;
+        this._modalHide(m);
+      }
+    }, {
+      key: '_modalOpenHandler',
+      value: function _modalOpenHandler(event) {
+        var targetID = event.currentTarget.dataset.target;
+        var t = document.querySelector(targetID);
+        if (!t) {
+          return;
+        }
 
-  var _modalCloseHandler = function _modalCloseHandler(event) {
-    var m = event.currentTarget.parentNode.parentNode;
-    _modalHide(m);
-  };
+        this._modalShow(t);
+      }
+    }, {
+      key: '_modalShow',
+      value: function _modalShow(modal) {
+        if (!modal.classList.contains(ClassName.SHOW)) {
+          modal.classList.add(ClassName.SHOW);
+        }
+      }
+    }, {
+      key: '_modalHide',
+      value: function _modalHide(modal) {
+        if (modal.classList.contains(ClassName.SHOW)) {
+          modal.classList.remove(ClassName.SHOW);
+        }
+      }
+    }, {
+      key: '_addCloseBtn',
+      value: function _addCloseBtn(modal) {
+        if (modal.querySelector(Selector.CLOSE)) {
+          return;
+        }
+        var b = document.createElement('button');
+        b.classList.add(ClassName.CLOSE);
+        b.innerHTML = Config.CLOSE_TEXT;
+        b.addEventListener('click', this._modalCloseHandler.bind(this));
+        modal.querySelector(Selector.CONTENT).appendChild(b);
+      }
+    }], [{
+      key: 'load',
+      value: function load() {
+        var m = new Modal();
+        m.init();
+      }
+    }, {
+      key: 'dialog',
+      value: function dialog(text) {
+        var m = new Modal();
+        m.makeDialog(text);
+      }
+    }, {
+      key: 'name',
 
-  var _modalOpenHandler = function _modalOpenHandler(event) {
-    var targetID = event.currentTarget.dataset.target;
-    var t = document.querySelector(targetID);
-    if (!t) {
-      return;
-    }
 
-    _modalShow(t);
-  };
+      // static
 
-  var _modalShow = function _modalShow(modal) {
-    if (!modal.classList.contains(ClassName.SHOW)) {
-      modal.classList.add(ClassName.SHOW);
-    }
-  };
+      get: function get() {
+        return NAME;
+      }
+    }]);
 
-  var _modalHide = function _modalHide(modal) {
-    if (modal.classList.contains(ClassName.SHOW)) {
-      modal.classList.remove(ClassName.SHOW);
-    }
-  };
+    return Modal;
+  }();
 
-  var _addCloseBtn = function _addCloseBtn(modal) {
-    if (modal.querySelector('.' + ClassName.CLOSE)) {
-      return;
-    }
-    var b = document.createElement('button');
-    b.classList.add(ClassName.CLOSE);
-    b.innerHTML = Config.CLOSE_TEXT;
-    b.addEventListener('click', _modalCloseHandler);
-    modal.querySelector('.' + ClassName.CONTENT).appendChild(b);
-  };
-
-  return {
-    name: NAME,
-    load: load,
-    dialog: dialog
-  };
+  return Modal;
 }();
 
 exports.default = Modal;
@@ -2012,6 +2057,7 @@ exports.Color = _color2.default;
 window.submitConfirm = _helper2.default.submitConfirm;
 window.checkMobileSize = _helper2.default.checkMobileSize;
 window.showMessage = _message2.default.showMessage;
+window.modalDialog = _modal2.default.dialog;
 
 /***/ })
 /******/ ]);

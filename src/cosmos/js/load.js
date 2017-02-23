@@ -34,3 +34,4 @@ export { Util, Color };
 window.submitConfirm = Helper.submitConfirm;
 window.checkMobileSize = Helper.checkMobileSize;
 window.showMessage = Message.showMessage;
+window.modalDialog = Modal.dialog;
