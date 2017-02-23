@@ -10,43 +10,55 @@ const AjaxLoading = (() => {
     LOADER_CLASS: 'loader'
   };
 
-  // public
-  
-  var load = () => {
-    var a = document.querySelector(Config.SELECTOR);
-    if (!a) { return; }
+  class AjaxLoading {
+
+    // static
     
-    _appendLoader(a); // append loader element.
-    // Register callback to jquery ajax.
-    $(document)
-      .ajaxStart(function () {
-        if (! a.classList.contains(Config.SHOW)) {
-          a.classList.add(Config.SHOW);
-        }
-      })
-      .ajaxStop(function () {
-        if (a.classList.contains(Config.SHOW)) {
-          a.classList.remove(Config.SHOW);
-        }
-      });
-  };
+    static get name() {
+      return NAME;
+    }
 
-  /**
-   * append div.loader into element
-   * 
-   * @param  {element} a
-   * @return {void}
-   */
-  var _appendLoader = (a) => {
-    let loader = document.createElement(Config.LOADER_TAG);
-    loader.classList.add(Config.LOADER_CLASS);
-    a.appendChild(loader);
-  };
+    static load() {
+      let a = new AjaxLoading;
+      a.init();
+    }
 
-  return {
-    name: NAME,
-    load: load
-  };
+    // public
+    
+    init() {
+      var a = document.querySelector(Config.SELECTOR);
+      if (!a) { return; }
+      
+      this._appendLoader(a); // append loader element.
+      // Register callback to jquery ajax.
+      $(document)
+        .ajaxStart(function () {
+          if (! a.classList.contains(Config.SHOW)) {
+            a.classList.add(Config.SHOW);
+          }
+        })
+        .ajaxStop(function () {
+          if (a.classList.contains(Config.SHOW)) {
+            a.classList.remove(Config.SHOW);
+          }
+        });
+    }
+
+    // private
+    
+    /**
+     * append div.loader into element
+     * @param  {element} a
+     * @return {void}
+     */
+    _appendLoader(a) {
+      let loader = document.createElement(Config.LOADER_TAG);
+      loader.classList.add(Config.LOADER_CLASS);
+      a.appendChild(loader);
+    };
+  }
+
+  return AjaxLoading;
 })();
 
 export default AjaxLoading;
