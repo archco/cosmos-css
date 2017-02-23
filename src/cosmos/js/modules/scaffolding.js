@@ -6,15 +6,27 @@ import Util from '../lib/util.js';
 const Scaffolding = (() => {
   const NAME = 'Cosmos.Scaffolding';
 
-  var load = function () {
-    // wrap table.responsive
-    Util.wrap('table.responsive', 'table-responsive-wrapper');
-  };
+  class Scaffolding {
 
-  return {
-    name: NAME,
-    load: load
-  };
+    // static
+    static get name() {
+      return NAME;
+    }
+
+    static load() {
+      let s = new Scaffolding;
+      s.init();
+    }
+
+    // public
+    
+    init() {
+      // wrap table.responsive
+      Util.wrap('table.responsive', 'table-responsive-wrapper');
+    }
+  }
+
+  return Scaffolding;
 })();
 
 export default Scaffolding;
