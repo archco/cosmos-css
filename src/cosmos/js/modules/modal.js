@@ -84,7 +84,7 @@ const Modal = (() => {
     _modalCloseHandler(event) {
       let m = event.currentTarget.parentNode.parentNode;
       this._modalHide(m);
-    };
+    }
 
     _modalOpenHandler(event) {
       let targetID = event.currentTarget.dataset.target;
@@ -92,19 +92,19 @@ const Modal = (() => {
       if (!t) { return; }
 
       this._modalShow(t);
-    };
+    }
 
     _modalShow(modal) {
       if (!modal.classList.contains(ClassName.SHOW)) {
         modal.classList.add(ClassName.SHOW);
       }
-    };
+    }
 
     _modalHide(modal) {
       if (modal.classList.contains(ClassName.SHOW)) {
         modal.classList.remove(ClassName.SHOW);
       }
-    };
+    }
 
     _addCloseBtn(modal) {
       if (modal.querySelector(Selector.CLOSE)) { return; }
@@ -113,7 +113,7 @@ const Modal = (() => {
       b.innerHTML = Config.CLOSE_TEXT;
       b.addEventListener('click', this._modalCloseHandler.bind(this));
       modal.querySelector(Selector.CONTENT).appendChild(b);
-    };
+    }
   }
 
   return Modal;

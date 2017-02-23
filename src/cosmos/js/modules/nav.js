@@ -66,7 +66,7 @@ const Nav = (() => {
       for (let m of MenuGroups) {
         $(nav).find(m).slideToggle();
       }
-    };
+    }
 
     /**
      * _activator (beta version)

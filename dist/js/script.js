@@ -1393,15 +1393,15 @@ var Nav = function () {
           }
         }
       }
-    }, {
-      key: '_activator',
-
 
       /**
        * _activator (beta version)
        * @param  string  selector
        * @return void
        */
+
+    }, {
+      key: '_activator',
       value: function _activator(selector) {
         var links = document.querySelectorAll(selector + ' a');
         if (links.length == 0) {
@@ -1476,6 +1476,11 @@ exports.default = Nav;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /************************************************************
   Parallax
 *************************************************************/
@@ -1486,56 +1491,87 @@ var Parallax = function () {
     HIDE: 'hide'
   };
 
-  var load = function load() {
-    var ps = document.querySelectorAll('.' + ClassName.PARALLAX);
-    if (ps.length == 0) {
-      return;
+  var Parallax = function () {
+    function Parallax() {
+      _classCallCheck(this, Parallax);
     }
 
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+    _createClass(Parallax, [{
+      key: 'init',
 
-    try {
-      for (var _iterator = ps[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var p = _step.value;
 
-        _process(p);
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
+      // public
+
+      value: function init() {
+        var ps = document.querySelectorAll('.' + ClassName.PARALLAX);
+        if (ps.length == 0) {
+          return;
         }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
+
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = ps[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var p = _step.value;
+
+            this._process(p);
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
         }
       }
-    }
-  };
 
-  var _process = function _process(p) {
-    var i = p.querySelector('img');
-    if (!i) {
-      return;
-    }
-    var h = p.dataset.height || i.clientHeight;
-    // hide <img>
-    i.classList.add('hide');
-    // set parallax background image.
-    p.style.backgroundImage = 'url(\'' + i.src + '\')';
-    // set parallax height.
-    p.style.height = h + 'px';
-  };
+      // private
 
-  return {
-    name: NAME,
-    load: load
-  };
+    }, {
+      key: '_process',
+      value: function _process(p) {
+        var i = p.querySelector('img');
+        if (!i) {
+          return;
+        }
+        var h = p.dataset.height || i.clientHeight;
+        // hide <img>
+        i.classList.add('hide');
+        // set parallax background image.
+        p.style.backgroundImage = 'url(\'' + i.src + '\')';
+        // set parallax height.
+        p.style.height = h + 'px';
+      }
+    }], [{
+      key: 'load',
+      value: function load() {
+        var p = new Parallax();
+        p.init();
+      }
+    }, {
+      key: 'name',
+
+
+      // static
+
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return Parallax;
+  }();
+
+  return Parallax;
 }();
 
 exports.default = Parallax;

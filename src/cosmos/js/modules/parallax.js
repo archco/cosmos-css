@@ -8,31 +8,46 @@ const Parallax = (() => {
     HIDE: 'hide'
   };
 
-  var load = () => {
-    let ps = document.querySelectorAll(`.${ClassName.PARALLAX}`);
-    if (ps.length == 0) { return; }
+  class Parallax {
 
-    for (let p of ps) {
-      _process(p);
+    // static
+    
+    static get name() {
+      return NAME;
     }
-  };
 
-  var _process = (p) => {
-    let i = p.querySelector('img');
-    if (!i) { return; }
-    let h = p.dataset.height || i.clientHeight;
-    // hide <img>
-    i.classList.add('hide');
-    // set parallax background image.
-    p.style.backgroundImage = `url('${i.src}')`;
-    // set parallax height.
-    p.style.height = `${h}px`;
-  };
+    static load() {
+      let p = new Parallax;
+      p.init();
+    }
 
-  return {
-    name: NAME,
-    load: load
-  };
+    // public
+    
+    init() {
+      let ps = document.querySelectorAll(`.${ClassName.PARALLAX}`);
+      if (ps.length == 0) { return; }
+
+      for (let p of ps) {
+        this._process(p);
+      }
+    }
+
+    // private
+    
+    _process(p) {
+      let i = p.querySelector('img');
+      if (!i) { return; }
+      let h = p.dataset.height || i.clientHeight;
+      // hide <img>
+      i.classList.add('hide');
+      // set parallax background image.
+      p.style.backgroundImage = `url('${i.src}')`;
+      // set parallax height.
+      p.style.height = `${h}px`;
+    }
+  }
+
+  return Parallax;
 })();
 
 export default Parallax;
