@@ -1305,11 +1305,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _util = __webpack_require__(0);
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /************************************************************
   nav
@@ -1328,102 +1332,136 @@ var Nav = function () {
   };
   var MenuGroups = ['.menu-float-left', '.menu-float-right', '.menu-left', '.menu-right', '.menu-center', '.menu-between', '.menu-around'];
 
-  var load = function load() {
-    _util2.default.eventOnSelector(Selector.TOGGLE_BTN, 'click', _toggleHandler);
-
-    _activator(Selector.USE_ACTIVATOR);
-
-    // handle jQuery slide style.
-    $(window).resize(function () {
-      var w = $(window).width();
-      var menu = $("nav ul");
-      if (w > 768 && menu.is(':hidden')) {
-        menu.removeAttr('style');
-      }
-    });
-  };
-
-  var _toggleHandler = function _toggleHandler(event) {
-    var t = event.currentTarget;
-    var nav = t.parentNode.parentNode;
-    // toggle button class change.
-    t.classList.toggle(ClassName.CHANGE);
-    // menu slide (use jQuery)
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-      for (var _iterator = MenuGroups[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var m = _step.value;
-
-        $(nav).find(m).slideToggle();
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
-  };
-
-  /**
-   * _activator (beta version)
-   * @param  string  selector
-   * @return void
-   */
-  var _activator = function _activator(selector) {
-    var links = document.querySelectorAll(selector + ' a');
-    if (links.length == 0) {
-      return;
-    }
-    var l = document.location.pathname;
-
-    var _iteratorNormalCompletion2 = true;
-    var _didIteratorError2 = false;
-    var _iteratorError2 = undefined;
-
-    try {
-      for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-        var a = _step2.value;
-
-        if (lastTerm(l) == lastTerm(a.href)) {
-          //console.log(lastTerm(l), lastTerm(a.href));
-          a.parentNode.classList.add('active');
-        }
-      }
-    } catch (err) {
-      _didIteratorError2 = true;
-      _iteratorError2 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion2 && _iterator2.return) {
-          _iterator2.return();
-        }
-      } finally {
-        if (_didIteratorError2) {
-          throw _iteratorError2;
-        }
-      }
+  var Nav = function () {
+    function Nav() {
+      _classCallCheck(this, Nav);
     }
 
-    function lastTerm(string) {
-      return string.substr(string.lastIndexOf("/"));
-    }
-  };
+    _createClass(Nav, [{
+      key: 'init',
 
-  return {
-    name: NAME,
-    load: load
-  };
+
+      // public
+
+      value: function init() {
+        _util2.default.eventOnSelector(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
+
+        this._activator(Selector.USE_ACTIVATOR);
+
+        // handle jQuery slide style.
+        $(window).resize(function () {
+          var w = $(window).width();
+          var menu = $("nav ul");
+          if (w > 768 && menu.is(':hidden')) {
+            menu.removeAttr('style');
+          }
+        });
+      }
+
+      // private
+
+    }, {
+      key: '_toggleHandler',
+      value: function _toggleHandler(event) {
+        var t = event.currentTarget;
+        var nav = t.parentNode.parentNode;
+        // toggle button class change.
+        t.classList.toggle(ClassName.CHANGE);
+        // menu slide (use jQuery)
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = MenuGroups[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var m = _step.value;
+
+            $(nav).find(m).slideToggle();
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+      }
+    }, {
+      key: '_activator',
+
+
+      /**
+       * _activator (beta version)
+       * @param  string  selector
+       * @return void
+       */
+      value: function _activator(selector) {
+        var links = document.querySelectorAll(selector + ' a');
+        if (links.length == 0) {
+          return;
+        }
+        var l = document.location.pathname;
+
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+          for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var a = _step2.value;
+
+            if (lastTerm(l) == lastTerm(a.href)) {
+              //console.log(lastTerm(l), lastTerm(a.href));
+              a.parentNode.classList.add('active');
+            }
+          }
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+              _iterator2.return();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
+          }
+        }
+
+        function lastTerm(string) {
+          return string.substr(string.lastIndexOf("/"));
+        }
+      }
+    }], [{
+      key: 'load',
+      value: function load() {
+        var n = new Nav();
+        n.init();
+      }
+    }, {
+      key: 'name',
+
+
+      // static
+
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return Nav;
+  }();
+
+  return Nav;
 }();
 
 exports.default = Nav;
