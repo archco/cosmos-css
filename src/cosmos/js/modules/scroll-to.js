@@ -8,44 +8,60 @@ const ScrollTo = (() => {
     SHOW: 'show'
   };
 
-  var btnToTop = document.querySelector(Config.TOTOP);
-
-  var load = () => {
-    if (!btnToTop) { return; }
-
-    // scroll-to-top button listener
-    btnToTop.addEventListener('click', () => {
-      let top = 0;
-      $('html,body').animate({scrollTop: top}, 'slow', 'swing');
-    });
-    
-    // scroll listener
-    window.addEventListener('scroll', _scrollHandler);
-  };
-
-  var _scrollHandler = () => {
-    let top = _getScrollTop();
-    let isShow = btnToTop.classList.contains(Config.SHOW);
-
-    if (top > 500 && !isShow) {
-      btnToTop.classList.add(Config.SHOW);
-    } else if (top <= 500 && isShow) {
-      btnToTop.classList.remove(Config.SHOW);
+  class ScrollTo {
+    constructor() {
+      this.btnToTop = document.querySelector(Config.TOTOP);
     }
-  };
 
-  var _getScrollTop = () => {
-    return $(window).scrollTop();
-  };
+    // static
+    
+    static get name() {
+      return NAME;
+    }
 
-  var _getScrollBottom = () => {
-    return $(document).height();
-  };
+    static load() {
+      let s = new ScrollTo;
+      s.init();
+    }
 
-  return {
-    name: NAME,
-    load: load
-  };
+    // public
+    
+    init() {
+      if (!this.btnToTop) { return; }
+
+      // scroll-to-top button listener
+      this.btnToTop.addEventListener('click', () => {
+        let top = 0;
+        $('html,body').animate({scrollTop: top}, 'slow', 'swing');
+      });
+      
+      // scroll listener
+      window.addEventListener('scroll', this._scrollHandler.bind(this));
+    }
+
+    // private
+    
+    _scrollHandler() {
+      let top = this._getScrollTop();
+      let isShow = this.btnToTop.classList.contains(Config.SHOW);
+
+      if (top > 500 && !isShow) {
+        this.btnToTop.classList.add(Config.SHOW);
+      } else if (top <= 500 && isShow) {
+        this.btnToTop.classList.remove(Config.SHOW);
+      }
+    }
+
+    _getScrollTop() {
+      return $(window).scrollTop();
+    }
+
+    _getScrollBottom() {
+      return $(document).height();
+    }
+  }
+
+  return ScrollTo;
 })();
 
 export default ScrollTo;

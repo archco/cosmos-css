@@ -1652,6 +1652,11 @@ exports.default = Scaffolding;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /************************************************************
   scroll-to
 *************************************************************/
@@ -1662,46 +1667,77 @@ var ScrollTo = function () {
     SHOW: 'show'
   };
 
-  var btnToTop = document.querySelector(Config.TOTOP);
+  var ScrollTo = function () {
+    function ScrollTo() {
+      _classCallCheck(this, ScrollTo);
 
-  var load = function load() {
-    if (!btnToTop) {
-      return;
+      this.btnToTop = document.querySelector(Config.TOTOP);
     }
 
-    // scroll-to-top button listener
-    btnToTop.addEventListener('click', function () {
-      var top = 0;
-      $('html,body').animate({ scrollTop: top }, 'slow', 'swing');
-    });
+    // static
 
-    // scroll listener
-    window.addEventListener('scroll', _scrollHandler);
-  };
+    _createClass(ScrollTo, [{
+      key: 'init',
 
-  var _scrollHandler = function _scrollHandler() {
-    var top = _getScrollTop();
-    var isShow = btnToTop.classList.contains(Config.SHOW);
 
-    if (top > 500 && !isShow) {
-      btnToTop.classList.add(Config.SHOW);
-    } else if (top <= 500 && isShow) {
-      btnToTop.classList.remove(Config.SHOW);
-    }
-  };
+      // public
 
-  var _getScrollTop = function _getScrollTop() {
-    return $(window).scrollTop();
-  };
+      value: function init() {
+        if (!this.btnToTop) {
+          return;
+        }
 
-  var _getScrollBottom = function _getScrollBottom() {
-    return $(document).height();
-  };
+        // scroll-to-top button listener
+        this.btnToTop.addEventListener('click', function () {
+          var top = 0;
+          $('html,body').animate({ scrollTop: top }, 'slow', 'swing');
+        });
 
-  return {
-    name: NAME,
-    load: load
-  };
+        // scroll listener
+        window.addEventListener('scroll', this._scrollHandler.bind(this));
+      }
+
+      // private
+
+    }, {
+      key: '_scrollHandler',
+      value: function _scrollHandler() {
+        var top = this._getScrollTop();
+        var isShow = this.btnToTop.classList.contains(Config.SHOW);
+
+        if (top > 500 && !isShow) {
+          this.btnToTop.classList.add(Config.SHOW);
+        } else if (top <= 500 && isShow) {
+          this.btnToTop.classList.remove(Config.SHOW);
+        }
+      }
+    }, {
+      key: '_getScrollTop',
+      value: function _getScrollTop() {
+        return $(window).scrollTop();
+      }
+    }, {
+      key: '_getScrollBottom',
+      value: function _getScrollBottom() {
+        return $(document).height();
+      }
+    }], [{
+      key: 'load',
+      value: function load() {
+        var s = new ScrollTo();
+        s.init();
+      }
+    }, {
+      key: 'name',
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return ScrollTo;
+  }();
+
+  return ScrollTo;
 }();
 
 exports.default = ScrollTo;
