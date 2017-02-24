@@ -1,8 +1,10 @@
 {
   "name": "cosmos-css",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "personal practice css framework.",
   "main": "dist/js/script.js",
+  "sass": "src/scss/style.scss",
+  "style": "dist/css/style.css",
   "directories": {
     "test": "tests"
   },
@@ -22,7 +24,8 @@
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "build": "npm run sass && npm run pug && npm run webpack",
+    "build": "npm run dev && npm run production",
+    "dev": "npm run sass && npm run pug && npm run webpack",
     "watch": "node node_modules/concurrently/src/main \"npm run sass:watch\" \"npm run pug:watch\" \"npm run webpack:watch\"",
     "production": "npm run sass:min && npm run webpack:min",
     "test": "echo \"Error: no test specified\" && exit 1",

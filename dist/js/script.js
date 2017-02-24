@@ -1,3 +1,10 @@
+/*!
+ * cosmos-css - personal practice css framework.
+ * @version v0.8.0
+ * @link https://github.com/archco/cosmos-css#readme
+ * @license MIT
+ */
+
 var Cosmos =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache

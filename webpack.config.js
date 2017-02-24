@@ -1,5 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
+const pkg = require('./package.json');
+const banner = `/*!\n` +
+` * ${pkg.name} - ${pkg.description}\n` +
+` * @version v${pkg.version}\n` +
+` * @link ${pkg.homepage}\n` +
+` * @license ${pkg.license}\n` +
+` */\n`;
 
 module.exports = {
   entry: './src/js/load.js',
@@ -20,5 +27,11 @@ module.exports = {
       }
     ]
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  plugins: [
+    new webpack.BannerPlugin({
+      banner: banner,
+      raw: true
+    })
+  ]
 };
