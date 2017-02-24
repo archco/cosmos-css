@@ -18,7 +18,6 @@ footer {
   z-index: $z-index-footer;
 }
 
-footer, // will be deprecated. #86
 footer.footer {
   color: $footer-color;
   background-color: $footer-bg-color;
@@ -92,15 +91,30 @@ blockquote {
 //======================================================================
 
 // default
-table, // will be deprecated. #86
+table {
+  border-collapse: collapse;
+  border: $table-border-width solid $table-border-color;
+
+  th,
+  td {
+    padding: $table-cell-padding / 2;
+    border: $table-border-width solid $table-border-color;
+  }
+}
+
 table.table {
   width: 100%;
   max-width: 800px;
   font-size: 0.9em;
   color: $table-text-color;
   border-collapse: collapse;
+  border: none;
 
-  th, td { padding: $table-cell-padding; }
+  th,
+  td {
+    padding: $table-cell-padding;
+    border: none;
+  }
   th {
     text-align: left;
     background-color: $table-head-color;

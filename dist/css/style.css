@@ -426,21 +426,16 @@ header {
 footer {
   z-index: 10; }
 
-footer,
 footer.footer {
   color: #FFFFFF;
   background-color: #0087BD; }
-  footer a,
   footer.footer a {
     color: #FFFFFF;
     transition: color 0.3s; }
-    footer a:visited,
     footer.footer a:visited {
       color: inherit; }
-    footer a:hover,
     footer.footer a:hover {
       color: #91A3B0; }
-  footer .footer-copyright,
   footer.footer .footer-copyright {
     padding: 0.5rem 0;
     text-align: center;
@@ -472,12 +467,11 @@ a.no-deco {
   a.no-deco:focus, a.no-deco:hover {
     text-decoration: none; }
 
-footer a,
 footer.footer a, nav.navbar .dropdown > button.dropdown-toggle,
 nav.navbar .dropdown > button.dropdown-btn, nav.navbar a:not(.nav-brand), nav.navbar .nav-header .nav-brand.text, ul.pagination li a {
   text-decoration: none; }
-  footer a:focus, nav.navbar .dropdown > button.dropdown-toggle:focus,
-  nav.navbar .dropdown > button.dropdown-btn:focus, nav.navbar a:focus:not(.nav-brand), nav.navbar .nav-header .nav-brand.text:focus, ul.pagination li a:focus, footer a:hover, nav.navbar .dropdown > button.dropdown-toggle:hover,
+  footer.footer a:focus, nav.navbar .dropdown > button.dropdown-toggle:focus,
+  nav.navbar .dropdown > button.dropdown-btn:focus, nav.navbar a:focus:not(.nav-brand), nav.navbar .nav-header .nav-brand.text:focus, ul.pagination li a:focus, footer.footer a:hover, nav.navbar .dropdown > button.dropdown-toggle:hover,
   nav.navbar .dropdown > button.dropdown-btn:hover, nav.navbar a:hover:not(.nav-brand), nav.navbar .nav-header .nav-brand.text:hover, ul.pagination li a:hover {
     text-decoration: none; }
 
@@ -489,37 +483,38 @@ blockquote {
   color: rgba(52, 52, 52, 0.67);
   border-left: 0.25em solid rgba(0, 0, 0, 0.1); }
 
-table,
+table {
+  border-collapse: collapse;
+  border: 1px solid #BEBEBE; }
+  table th,
+  table td {
+    padding: 0.375em;
+    border: 1px solid #BEBEBE; }
+
 table.table {
   width: 100%;
   max-width: 800px;
   font-size: 0.9em;
   color: inherit;
-  border-collapse: collapse; }
-  table th, table td,
+  border-collapse: collapse;
+  border: none; }
   table.table th,
   table.table td {
-    padding: 0.75em; }
-  table th,
+    padding: 0.75em;
+    border: none; }
   table.table th {
     text-align: left;
     background-color: #0087BD;
     color: #FFFFFF; }
-  table.center,
   table.table.center {
     margin: 0 auto;
     text-align: initial; }
-  table.bordered,
   table.table.bordered {
     border: 1px solid #BEBEBE; }
-    table.bordered th, table.bordered td,
-    table.table.bordered th,
-    table.table.bordered td {
+    table.table.bordered th, table.table.bordered td {
       border: 1px solid #BEBEBE; }
-  table.striped tr:nth-child(even),
   table.table.striped tr:nth-child(even) {
     background-color: rgba(0, 0, 0, 0.05); }
-  table.hover tr:hover,
   table.table.hover tr:hover {
     background-color: rgba(0, 0, 0, 0.1); }
 

@@ -94,9 +94,6 @@ $table-head-text-color: get-contrast($table-head-color) !default;
 $table-text-color: inherit !default;
 $table-row-even-bg: rgba($background-color-invert, 0.05) !default;
 $table-row-hover-bg: rgba($background-color-invert, 0.1) !default;
-$table-link-color: $link-color !default;
-$table-link-hover-color: $link-color-hover !default;
-$table-link-hover-decoration: underline !default;
 // codes
 //-----------
 $code-padding: 0.2em !default;
