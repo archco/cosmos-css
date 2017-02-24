@@ -5,7 +5,7 @@ const Parallax = (() => {
   const NAME = 'Cosmos.Parallax';
   const ClassName = {
     PARALLAX: 'parallax',
-    HIDE: 'hide'
+    HIDE: 'display-hide'
   };
 
   class Parallax {
@@ -39,7 +39,7 @@ const Parallax = (() => {
       if (!i) { return; }
       let h = p.dataset.height || i.clientHeight;
       // hide <img>
-      i.classList.add('hide');
+      i.classList.add(ClassName.HIDE);
       // set parallax background image.
       p.style.backgroundImage = `url('${i.src}')`;
       // set parallax height.

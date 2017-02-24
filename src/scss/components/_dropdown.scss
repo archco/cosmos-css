@@ -28,7 +28,9 @@
     top: 100%;
     // browser compatibility problem. 
     // @link  https://github.com/archco/cosmos-css/issues/63
-    left: 0; 
+    left: 0;
+
+    &.show { display: block; }
 
     li {
       &.active > a {

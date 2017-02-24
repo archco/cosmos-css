@@ -3,15 +3,12 @@
 //======================================================================
 
 // toggling content
-.hide, // will be deprecated. #86
 .display-hide {
   display: none !important;
 }
-.show, // will be deprecated. #86
 .display-show {
   display: block !important;
 }
-.invisible, // will be deprecated. #86
 .display-invisible {
   visibility: hidden;
 }

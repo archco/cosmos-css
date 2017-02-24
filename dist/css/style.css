@@ -1057,6 +1057,8 @@ input[type="reset"], .btn-icon {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
     top: 100%;
     left: 0; }
+    .dropdown ul.dropdown-content.show {
+      display: block; }
     .dropdown ul.dropdown-content li.active > a {
       color: #FFFFFF;
       background-color: #004d6b; }
@@ -1481,6 +1483,8 @@ aside {
 
 .tab-content {
   display: none; }
+  .tab-content.show {
+    display: block; }
 
 .tab-fade-effect {
   animation: tabFadeEffect 1s; }
@@ -1599,6 +1603,8 @@ aside {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4); }
+  .modal.show {
+    display: block; }
   .modal .modal-content {
     position: relative;
     background-color: #FFFFFF;
@@ -1952,15 +1958,12 @@ ul.pagination {
         border-bottom-right-radius: 4px;
         border-bottom: 1px solid #BEBEBE; }
 
-.hide,
 .display-hide {
   display: none !important; }
 
-.show,
 .display-show {
   display: block !important; }
 
-.invisible,
 .display-invisible {
   visibility: hidden; }
 

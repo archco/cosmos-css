@@ -26,6 +26,8 @@
   overflow: auto;
   background-color: $modal-bg-color;
 
+  &.show { display: block; }
+
   .modal-content {
     position: relative;
     background-color: $modal-content-bg-color;

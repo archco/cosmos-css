@@ -1488,7 +1488,7 @@ var Parallax = function () {
   var NAME = 'Cosmos.Parallax';
   var ClassName = {
     PARALLAX: 'parallax',
-    HIDE: 'hide'
+    HIDE: 'display-hide'
   };
 
   var Parallax = function () {
@@ -1545,7 +1545,7 @@ var Parallax = function () {
         }
         var h = p.dataset.height || i.clientHeight;
         // hide <img>
-        i.classList.add('hide');
+        i.classList.add(ClassName.HIDE);
         // set parallax background image.
         p.style.backgroundImage = 'url(\'' + i.src + '\')';
         // set parallax height.
