@@ -13,7 +13,6 @@
  */
 /* Document
    ========================================================================== */
-@import url("https://fonts.googleapis.com/css?family=Lora|Patua+One|Roboto");
 html {
   font-family: sans-serif;
   /* 1 */
@@ -417,7 +416,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: Geneva, sans-serif;
   color: #343434;
   background-color: #FFFFFF; }
 
@@ -430,7 +429,7 @@ footer {
 footer,
 footer.footer {
   color: #FFFFFF;
-  background-color: #86608E; }
+  background-color: #0087BD; }
   footer a,
   footer.footer a {
     color: #FFFFFF;
@@ -504,7 +503,7 @@ table.table {
   table th,
   table.table th {
     text-align: left;
-    background-color: #86608E;
+    background-color: #0087BD;
     color: #FFFFFF; }
   table a,
   table.table a {
@@ -544,7 +543,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: Consolas, "Lucida Console", Courier, monospace; }
+  font-family: Consolas, Courier, monospace; }
 
 code {
   padding: 0.2em;
@@ -583,20 +582,20 @@ p.pad {
   section.pad {
     padding: 2rem 0.5rem; } }
 
-h1.accent, h1, h2.accent, h3.accent, h4.accent, h5.accent, h6.accent {
-  font-family: "Patua One", cursive; }
+h1.accent, h2.accent, h3.accent, h4.accent, h5.accent, h6.accent {
+  font-family: Georgia, serif; }
 
 fieldset {
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
-  border: 2px solid #86608E;
+  border: 2px solid #0087BD;
   border-radius: 4px; }
 
 legend {
   padding: 0.5em 1em;
   font-size: 1.2em;
   font-weight: bold;
-  color: #86608E; }
+  color: #0087BD; }
 
 label {
   display: inline-block;
@@ -608,7 +607,7 @@ input,
 select,
 textarea {
   vertical-align: middle;
-  outline-color: #86608E;
+  outline-color: #0087BD;
   color: inherit; }
 
 input:not([type]),
@@ -726,7 +725,7 @@ input[type="button"],
 input[type="reset"], .btn-flat {
   padding: 0.5em 1em;
   margin: 0.2em;
-  outline-color: #86608E;
+  outline-color: #0087BD;
   border-radius: 2px; }
   .full-width.btn, input.full-width[type="submit"],
   input.full-width[type="button"],
@@ -745,8 +744,8 @@ input[disabled][type="reset"], [disabled].btn-icon, [disabled].btn-flat {
 input[type="button"],
 input[type="reset"], .btn-icon {
   color: #FFFFFF;
-  background-color: #86608E;
-  outline-color: #86608E;
+  background-color: #0087BD;
+  outline-color: #0087BD;
   transition: background-color 0.3s, box-shadow 0.3s; }
   .btn:link, input[type="submit"]:link,
   input[type="button"]:link,
@@ -760,20 +759,20 @@ input[type="reset"], .btn-icon {
   input[type="button"]:hover:not([disabled]),
   input[type="reset"]:hover:not([disabled]), .btn-icon:hover:not([disabled]) {
     color: #FFFFFF;
-    background-color: #91699a;
+    background-color: #0096d1;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
   .btn:active:not([disabled]), input[type="submit"]:active:not([disabled]),
   input[type="button"]:active:not([disabled]),
   input[type="reset"]:active:not([disabled]), .btn-icon:active:not([disabled]) {
     color: #FFFFFF;
-    background-color: #7b5882;
+    background-color: #0078a9;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
   .primary.btn, input.primary[type="submit"],
   input.primary[type="button"],
   input.primary[type="reset"], .primary.btn-icon {
     color: #FFFFFF;
-    background-color: #86608E;
-    outline-color: #86608E;
+    background-color: #0087BD;
+    outline-color: #0087BD;
     transition: background-color 0.3s, box-shadow 0.3s; }
     .primary.btn:link, input.primary[type="submit"]:link,
     input.primary[type="button"]:link,
@@ -787,13 +786,13 @@ input[type="reset"], .btn-icon {
     input.primary[type="button"]:hover:not([disabled]),
     input.primary[type="reset"]:hover:not([disabled]), .primary.btn-icon:hover:not([disabled]) {
       color: #FFFFFF;
-      background-color: #91699a;
+      background-color: #0096d1;
       box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
     .primary.btn:active:not([disabled]), input.primary[type="submit"]:active:not([disabled]),
     input.primary[type="button"]:active:not([disabled]),
     input.primary[type="reset"]:active:not([disabled]), .primary.btn-icon:active:not([disabled]) {
       color: #FFFFFF;
-      background-color: #7b5882;
+      background-color: #0078a9;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
   .secondary.btn, input.secondary[type="submit"],
   input.secondary[type="button"],
@@ -970,16 +969,16 @@ input[type="reset"], .btn-icon {
     color: #0087BD;
     background-color: rgba(0, 135, 189, 0.2); }
   .primary.btn-flat {
-    color: #86608E;
+    color: #0087BD;
     background-color: transparent;
-    outline-color: rgba(134, 96, 142, 0.2);
+    outline-color: rgba(0, 135, 189, 0.2);
     transition: color 0.3s, background-color 0.3s; }
     .primary.btn-flat:focus:not([disabled]), .primary.btn-flat:hover:not([disabled]) {
-      color: #86608E;
-      background-color: rgba(134, 96, 142, 0.1); }
+      color: #0087BD;
+      background-color: rgba(0, 135, 189, 0.1); }
     .primary.btn-flat:active:not([disabled]) {
-      color: #86608E;
-      background-color: rgba(134, 96, 142, 0.2); }
+      color: #0087BD;
+      background-color: rgba(0, 135, 189, 0.2); }
   .secondary.btn-flat {
     color: #91A3B0;
     background-color: transparent;
@@ -1074,7 +1073,7 @@ input[type="reset"], .btn-icon {
     left: 0; }
     .dropdown ul.dropdown-content li.active > a {
       color: #FFFFFF;
-      background-color: #aa8ab0; }
+      background-color: #004d6b; }
     .dropdown ul.dropdown-content li a {
       text-decoration: none;
       display: block;
@@ -1127,12 +1126,12 @@ nav.navbar .dropdown ul.dropdown-content > li.active > a {
   .badge[href]:active {
     background-color: #767676; }
   .badge.primary {
-    background-color: #86608E;
+    background-color: #0087BD;
     color: #FFFFFF; }
     .badge.primary[href]:hover, .badge.primary[href]:focus {
-      background-color: #91699a; }
+      background-color: #0096d1; }
     .badge.primary[href]:active {
-      background-color: #7b5882; }
+      background-color: #0078a9; }
   .badge.secondary {
     background-color: #91A3B0;
     color: #FFFFFF; }
@@ -1211,8 +1210,8 @@ nav.navbar .dropdown > button.dropdown-btn, nav.navbar .nav-header button.menu-t
 nav.navbar {
   z-index: 10;
   margin: 0 auto;
-  font-family: "Patua One", cursive;
-  background-color: #86608E;
+  font-family: Georgia, serif;
+  background-color: #0087BD;
   font-size: 1.25em; }
   nav.navbar.outline * {
     outline: 1px solid rgba(255, 0, 0, 0.5); }
@@ -1225,11 +1224,11 @@ nav.navbar {
     nav.navbar ul li {
       text-align: center; }
       nav.navbar ul li.active a {
-        color: #86608E;
+        color: #0087BD;
         background-color: #FFFFFF; }
         @media only screen and (min-width: 768px) {
           nav.navbar ul li.active a {
-            border-color: #86608E;
+            border-color: #0087BD;
             border-bottom-color: #FFFFFF;
             border-radius: 4px 4px 0 0; } }
   nav.navbar .menu-float-wrapper {
@@ -1447,7 +1446,7 @@ aside {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: "Roboto", sans-serif;
+  font-family: Geneva, sans-serif;
   font-size: 1em; }
   .tab li {
     display: inline-block; }
@@ -1469,13 +1468,13 @@ aside {
       cursor: default;
       color: #343434;
       background-color: #FFFFFF;
-      border-top-color: #86608E;
+      border-top-color: #0087BD;
       border-left-color: #BEBEBE;
       border-right-color: #BEBEBE;
       border-bottom-color: #FFFFFF;
       border-radius: 4px 4px 0 0; }
       .tab .tab-link.active.primary {
-        border-top-color: #86608E; }
+        border-top-color: #0087BD; }
       .tab .tab-link.active.secondary {
         border-top-color: #91A3B0; }
       .tab .tab-link.active.info {
@@ -1535,7 +1534,7 @@ aside {
       color: rgba(0, 0, 0, 0.3); }
   .message-box.primary {
     color: #FFFFFF;
-    background-color: #86608E; }
+    background-color: #0087BD; }
     .message-box.primary .btn-close-message {
       color: #FFFFFF;
       background-color: transparent;
@@ -1763,10 +1762,10 @@ ul.pagination {
         background-color: rgba(0, 0, 0, 0.1); }
     ul.pagination li.active {
       color: #FFFFFF;
-      background-color: #86608E; }
+      background-color: #0087BD; }
       ul.pagination li.active > a:hover {
         color: #FFFFFF;
-        background-color: #aa8ab0; }
+        background-color: #004d6b; }
     ul.pagination li.disabled {
       color: rgba(128, 128, 128, 0.2); }
 
@@ -1789,7 +1788,7 @@ ul.pagination {
   #ajax-loading .loader {
     display: none;
     border: 0.33333rem solid rgba(0, 0, 0, 0.1);
-    border-top: 0.33333rem solid #86608E;
+    border-top: 0.33333rem solid #0087BD;
     border-radius: 50%;
     width: 2rem;
     height: 2rem; }
@@ -1814,12 +1813,12 @@ ul.pagination {
   padding: 1rem;
   color: #FFFFFF;
   border-radius: 50%;
-  background-color: rgba(170, 138, 176, 0.5);
+  background-color: rgba(0, 77, 107, 0.5);
   transition: background-color 0.3s; }
   #scroll-to-top.show {
     display: block; }
   #scroll-to-top:hover {
-    background-color: #aa8ab0; }
+    background-color: #004d6b; }
 
 @keyframes tooltip-fade {
   from {
@@ -1830,7 +1829,7 @@ ul.pagination {
 .tooltip {
   position: relative; }
   .tooltip::after {
-    font-family: "Roboto", sans-serif;
+    font-family: Geneva, sans-serif;
     font-style: normal;
     font-weight: normal;
     letter-spacing: normal;
@@ -1948,7 +1947,7 @@ ul.pagination {
     border: 1px solid #BEBEBE;
     margin-bottom: -1px; }
     .accordion .accordion-head.active {
-      background-color: #86608E;
+      background-color: #0087BD;
       color: #FFFFFF; }
   .accordion .accordion-body {
     border-left: 1px solid #BEBEBE;
@@ -1988,13 +1987,13 @@ ul.pagination {
     display: none; } }
 
 .font-cursive {
-  font-family: "Patua One", cursive; }
+  font-family: cursive; }
 
 .font-accent {
-  font-family: "Patua One", cursive; }
+  font-family: Georgia, serif; }
 
 .font-sans-serif {
-  font-family: "Roboto", sans-serif; }
+  font-family: Geneva, sans-serif; }
 
 .center,
 .align-center {
@@ -2056,11 +2055,11 @@ nav.navbar .nav-header .nav-brand, nav.navbar .nav-header button.menu-toggle {
   font-size: 0.8rem; }
 
 .color-primary {
-  color: #86608E; }
+  color: #0087BD; }
 
 .bg-color-primary {
   color: #FFFFFF;
-  background-color: #86608E; }
+  background-color: #0087BD; }
 
 .color-secondary {
   color: #91A3B0; }
@@ -2147,15 +2146,5 @@ nav.navbar .nav-header .nav-brand, nav.navbar .nav-header button.menu-toggle {
   display: inline-block;
   vertical-align: middle;
   float: right; }
-
-body {
-  margin: 0 auto;
-  max-width: 1280px; }
-
-footer a {
-  padding: 0.5em 1em; }
-
-footer .footer-box {
-  padding: 1rem; }
 
 /*# sourceMappingURL=style.css.map */

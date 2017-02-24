@@ -5,7 +5,7 @@
 // fonts
 $font-serif: Georgia, serif !default;
 $font-sans-serif: Geneva, sans-serif !default;
-$font-monospace: Consolas, "Lucida Console", Courier, monospace !default;
+$font-monospace: Consolas, Courier, monospace !default;
 $font-cursive: cursive !default;
 
 // font set
@@ -25,6 +25,7 @@ $gray: palette('gray') !default;
 $lightgray: palette('gainsboro') !default;
 $mediumgray: palette('mediumgray') !default;
 $darkgray: palette('dimgray') !default;
+$cadetgray: palette('cadetgray') !default;
 $teal: palette('teal') !default;
 $lightblue: palette('naturalblue') !default;
 $green: palette('pigmentgreen') !default;
@@ -38,7 +39,7 @@ $purple: palette('royalpurple') !default;
 // theme-colors
 $primary-color: $lightblue !default;
 $primary-color-accent: darken($primary-color, 16%) !default;
-$secondary-color: $mediumgray !default;
+$secondary-color: $cadetgray !default;
 // base colors
 $text-color: $black !default;
 $text-color-invert: $white !default;

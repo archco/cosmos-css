@@ -16,7 +16,6 @@
 @import 'node_modules/scss-palette/src/palette';
 
 // base.
-@import '../../app/sass/app-variable';
 @import 'variable';
 @import 'mixin';
 
@@ -42,6 +41,3 @@
 @import 'components/collapse';
 @import 'components/helper';
 @import 'components/simple-crud';
-
-// customize.
-@import '../../app/sass/app';
