@@ -505,15 +505,6 @@ table.table {
     text-align: left;
     background-color: #0087BD;
     color: #FFFFFF; }
-  table a,
-  table.table a {
-    color: #0087BD;
-    transition: text-decoration 0.3s; }
-    table a:hover, table a:focus,
-    table.table a:hover,
-    table.table a:focus {
-      color: #006a94;
-      text-decoration: underline; }
   table.center,
   table.table.center {
     margin: 0 auto;

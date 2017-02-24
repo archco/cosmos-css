@@ -106,16 +106,6 @@ table.table {
     background-color: $table-head-color;
     color: $table-head-text-color;
   }
-  a {
-    color: $table-link-color;
-    transition: text-decoration $transition-time;
-  
-    &:hover,
-    &:focus {
-      color: $table-link-hover-color;
-      text-decoration: $table-link-hover-decoration;
-    }
-  }
 
   &.center {
     margin: 0 auto;
