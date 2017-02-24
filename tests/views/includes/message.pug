@@ -1,13 +1,8 @@
 h2 Message text color
 ul
-  li
-    p(class='info') Infomation message.
-  li
-    p(class='success') Success message.
-  li
-    p(class='error') Error message.
-  li
-    p(class='comment') Comment message.
+  each color in colorSet
+    li
+      p(class='color-' + color)= color + " color"
 h2 Message box
 div(class='message-box')
   span This is message box.
