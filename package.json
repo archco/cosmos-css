@@ -1,7 +1,7 @@
 {
   "name": "cosmos-css",
   "version": "0.8.0",
-  "description": "personal practice css framework.",
+  "description": "The css framework for personal practice.",
   "main": "dist/js/script.js",
   "sass": "src/scss/style.scss",
   "style": "dist/css/style.css",
