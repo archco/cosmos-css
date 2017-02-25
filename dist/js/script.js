@@ -1,6 +1,6 @@
 /*!
  * cosmos-css - The css framework for personal practice.
- * @version v0.8.1
+ * @version v0.8.2
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
@@ -2190,8 +2190,11 @@ _simpleCrud2.default.load();
 
 // export as library.
 // export { Util, Color };
-window.Cosmos.Util = _util2.default;
-window.Cosmos.Color = _color2.default;
+window.Cosmos = {
+  name: 'cosmos-css',
+  Util: _util2.default,
+  Color: _color2.default
+};
 
 // define global helper functions.
 window.submitConfirm = _helper2.default.submitConfirm;

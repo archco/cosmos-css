@@ -28,8 +28,11 @@ SimpleCRUD.load();
 
 // export as library.
 // export { Util, Color };
-window.Cosmos.Util = Util;
-window.Cosmos.Color = Color;
+window.Cosmos = {
+  name: 'cosmos-css',
+  Util: Util,
+  Color: Color,
+};
 
 // define global helper functions.
 window.submitConfirm = Helper.submitConfirm;
