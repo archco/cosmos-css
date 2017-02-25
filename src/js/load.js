@@ -14,7 +14,6 @@ import Collapse from './modules/collapse.js';
 import SimpleCRUD from './modules/simple-crud.js';
 
 // initialize - loading modules.
-
 Scaffolding.load();
 AjaxLoading.load();
 Dropdown.load();
@@ -28,7 +27,9 @@ Collapse.load();
 SimpleCRUD.load();
 
 // export as library.
-export { Util, Color };
+// export { Util, Color };
+window.Cosmos.Util = Util;
+window.Cosmos.Color = Color;
 
 // define global helper functions.
 window.submitConfirm = Helper.submitConfirm;
