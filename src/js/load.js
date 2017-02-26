@@ -26,16 +26,19 @@ Tab.load();
 Collapse.load();
 SimpleCRUD.load();
 
-// export as library.
-// export { Util, Color };
-window.Cosmos = {
-  name: 'cosmos-css',
-  Util: Util,
-  Color: Color,
-};
-
 // define global helper functions.
 window.submitConfirm = Helper.submitConfirm;
 window.checkMobileSize = Helper.checkMobileSize;
 window.showMessage = Message.showMessage;
 window.modalDialog = Modal.dialog;
+
+// export
+let version = require('../../package.json').version;
+const Cosmos = {
+  name: 'cosmos-css',
+  version: `v${version}`,
+  Util: Util,
+  Color: Color
+};
+
+export default Cosmos;

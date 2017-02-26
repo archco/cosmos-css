@@ -12,7 +12,8 @@ module.exports = {
   entry: './src/js/load.js',
   output: {
     filename: 'script.js',
-    path: path.resolve(__dirname, 'dist/js/')
+    path: path.resolve(__dirname, 'dist/js/'),
+    libraryTarget: 'commonjs-module'
   },
   module: {
     loaders: [

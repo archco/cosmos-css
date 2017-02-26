@@ -3,6 +3,7 @@
   "version": "0.8.2",
   "description": "The css framework for personal practice.",
   "main": "dist/js/script.js",
+  "module": "src/js/load.js",
   "sass": "src/scss/style.scss",
   "style": "dist/css/style.css",
   "directories": {

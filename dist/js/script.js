@@ -5,6 +5,7 @@
  * @license MIT
  */
 
+module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,7 +71,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2112,10 +2113,71 @@ exports.default = Tab;
 
 /***/ }),
 /* 14 */
+/***/ (function(module, exports) {
+
+module.exports = {
+	"name": "cosmos-css",
+	"version": "0.8.2",
+	"description": "The css framework for personal practice.",
+	"main": "dist/js/script.js",
+	"module": "src/js/load.js",
+	"sass": "src/scss/style.scss",
+	"style": "dist/css/style.css",
+	"directories": {
+		"test": "tests"
+	},
+	"dependencies": {
+		"scss-palette": "^0.2.0"
+	},
+	"devDependencies": {
+		"babel-core": "^6.23.1",
+		"babel-loader": "^6.3.2",
+		"babel-preset-es2015": "^6.22.0",
+		"concurrently": "^3.3.0",
+		"eslint": "^3.12.1",
+		"jquery": "^3.1.1",
+		"node-sass": "^4.5.0",
+		"pug": "^2.0.0-beta6",
+		"pug-cli": "^1.0.0-alpha6",
+		"webpack": "^2.2.1"
+	},
+	"scripts": {
+		"build": "npm run dev && npm run production",
+		"dev": "npm run sass && npm run pug && npm run webpack",
+		"watch": "node node_modules/concurrently/src/main \"npm run sass:watch\" \"npm run pug:watch\" \"npm run webpack:watch\"",
+		"production": "npm run sass:min && npm run webpack:min",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"sass": "node node_modules/node-sass/bin/node-sass --source-map true src/scss/style.scss dist/css/style.css",
+		"sass:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/style.scss dist/css/style.min.css",
+		"sass:watch": "npm run sass && npm run sass -- --watch",
+		"pug": "node node_modules/pug-cli --pretty tests/views/test.pug tests/views/components.pug tests/views/modules.pug --out ./tests/html/",
+		"pug:watch": "npm run pug -- --watch",
+		"webpack": "node node_modules/webpack/bin/webpack",
+		"webpack:watch": "npm run webpack && npm run webpack -- --watch",
+		"webpack:min": "npm run webpack -- --optimize-minimize --output-filename script.min.js --devtool false"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/archco/cosmos-css.git"
+	},
+	"author": "archco",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/archco/cosmos-css/issues"
+	},
+	"homepage": "https://github.com/archco/cosmos-css#readme"
+};
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _util = __webpack_require__(0);
 
@@ -2188,19 +2250,22 @@ _tab2.default.load();
 _collapse2.default.load();
 _simpleCrud2.default.load();
 
-// export as library.
-// export { Util, Color };
-window.Cosmos = {
-  name: 'cosmos-css',
-  Util: _util2.default,
-  Color: _color2.default
-};
-
 // define global helper functions.
 window.submitConfirm = _helper2.default.submitConfirm;
 window.checkMobileSize = _helper2.default.checkMobileSize;
 window.showMessage = _message2.default.showMessage;
 window.modalDialog = _modal2.default.dialog;
+
+// export
+var version = __webpack_require__(14).version;
+var Cosmos = {
+  name: 'cosmos-css',
+  version: 'v' + version,
+  Util: _util2.default,
+  Color: _color2.default
+};
+
+exports.default = Cosmos;
 
 /***/ })
 /******/ ]);
