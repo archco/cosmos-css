@@ -18,7 +18,9 @@ In your app.scss
 ### JS
 In your app.js (webpack entry file)
 ```js
-// window.$ = window.jQuery = require('jquery');
+import Cosmos from 'cosmos-css';
+window.Cosmos = Cosmos;
+//--- or ---
 window.Cosmos = require('cosmos-css').default;
 ...
 ```
