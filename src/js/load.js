@@ -42,3 +42,4 @@ const Cosmos = {
 };
 
 export default Cosmos;
+export { Util, Color };

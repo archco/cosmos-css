@@ -13,7 +13,8 @@ module.exports = {
   output: {
     filename: 'script.js',
     path: path.resolve(__dirname, 'dist/js/'),
-    libraryTarget: 'commonjs-module'
+    library: 'Cosmos',
+    libraryTarget: 'window'
   },
   module: {
     loaders: [

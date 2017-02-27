@@ -1,11 +1,9 @@
 {
   "name": "cosmos-css",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "The css framework for personal practice.",
-  "main": "dist/js/script.js",
-  "module": "src/js/load.js",
+  "main": "dist/js/main.js",
   "sass": "src/scss/style.scss",
-  "style": "dist/css/style.css",
   "directories": {
     "test": "tests"
   },
@@ -25,19 +23,20 @@
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "build": "npm run dev && npm run production",
-    "dev": "npm run sass && npm run pug && npm run webpack",
-    "watch": "node node_modules/concurrently/src/main \"npm run sass:watch\" \"npm run pug:watch\" \"npm run webpack:watch\"",
-    "production": "npm run sass:min && npm run webpack:min",
+    "build": "npm run dev && npm run production && npm run js-module",
+    "dev": "npm run sass && npm run pug && npm run js",
+    "watch": "node node_modules/concurrently/src/main \"npm run sass:watch\" \"npm run pug:watch\" \"npm run js:watch\"",
+    "production": "npm run sass:min && npm run js:min",
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "node node_modules/node-sass/bin/node-sass --source-map true src/scss/style.scss dist/css/style.css",
     "sass:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/style.scss dist/css/style.min.css",
-    "sass:watch": "npm run sass && npm run sass -- --watch",
+    "sass:watch": "npm run sass -- --watch",
     "pug": "node node_modules/pug-cli --pretty tests/views/test.pug tests/views/components.pug tests/views/modules.pug --out ./tests/html/",
     "pug:watch": "npm run pug -- --watch",
-    "webpack": "node node_modules/webpack/bin/webpack",
-    "webpack:watch": "npm run webpack && npm run webpack -- --watch",
-    "webpack:min": "npm run webpack -- --optimize-minimize --output-filename script.min.js --devtool false"
+    "js": "node node_modules/webpack/bin/webpack",
+    "js:min": "npm run js -- --optimize-minimize --output-filename script.min.js --devtool false",
+    "js:watch": "npm run js -- --watch",
+    "js-module": "node node_modules/webpack/bin/webpack --output-filename main.js --output-library-target commonjs-module"
   },
   "repository": {
     "type": "git",

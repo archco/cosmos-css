@@ -5,7 +5,7 @@
  * @license MIT
  */
 
-window["Cosmos"] =
+module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -2271,4 +2271,4 @@ exports.Color = _color2.default;
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=script.js.map
+//# sourceMappingURL=main.js.map
