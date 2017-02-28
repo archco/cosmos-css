@@ -41,5 +41,8 @@ In your index.html file
 ### CSS Components and JS Modules
 See [wiki](https://github.com/archco/cosmos-css/wiki) page.
 
+## Change Log
+[CHANGELOG.md](https://github.com/archco/cosmos-css/blob/master/CHANGELOG.md)
+
 ## License
 The [MIT](https://github.com/archco/cosmos-css/blob/master/LICENSE) License.
