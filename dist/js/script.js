@@ -2040,7 +2040,11 @@ var Tab = function () {
     }, {
       key: '_getContent',
       value: function _getContent(link) {
-        return document.querySelector(this._extractID(link.href));
+        var c = document.querySelector(this._extractID(link.href));
+        if (c && !c.classList.contains(ClassName.CONTENT)) {
+          c.classList.add(ClassName.CONTENT);
+        }
+        return c;
       }
     }, {
       key: '_getTabs',

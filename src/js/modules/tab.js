@@ -95,7 +95,11 @@ const Tab = (() => {
     }
 
     _getContent(link) {
-      return document.querySelector(this._extractID(link.href));
+      let c = document.querySelector(this._extractID(link.href));
+      if (c && !c.classList.contains(ClassName.CONTENT)) {
+        c.classList.add(ClassName.CONTENT);
+      }
+      return c;
     }
 
     _getTabs() {
