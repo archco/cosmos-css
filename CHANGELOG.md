@@ -7,6 +7,9 @@ This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/
 ### Added
 - CHANGELOG.md file
 
+### Changed
+- Tab: Adding ".tab-content" at tab content automatically. #109
+
 ## [0.8.4] - 2017-02-28
 ### Added
 - Now available import [Util](https://github.com/archco/cosmos-css/wiki/util) and [Color](https://github.com/archco/cosmos-css/wiki/color) as library.
