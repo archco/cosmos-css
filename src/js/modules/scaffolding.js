@@ -1,4 +1,5 @@
 import Util from '../lib/util.js';
+import CosmosModule from '../lib/cosmos-module.js';
 
 /************************************************************
   Scaffolding
@@ -6,16 +7,12 @@ import Util from '../lib/util.js';
 const Scaffolding = (() => {
   const NAME = 'Cosmos.Scaffolding';
 
-  class Scaffolding {
-
+  class Scaffolding extends CosmosModule {
+    
     // static
+    
     static get name() {
       return NAME;
-    }
-
-    static load() {
-      let s = new Scaffolding;
-      s.init();
     }
 
     // public

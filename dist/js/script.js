@@ -71,7 +71,7 @@ window["Cosmos"] =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 15);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1600,9 +1600,17 @@ var _util = __webpack_require__(0);
 
 var _util2 = _interopRequireDefault(_util);
 
+var _cosmosModule = __webpack_require__(15);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
   Scaffolding
@@ -1610,9 +1618,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var Scaffolding = function () {
   var NAME = 'Cosmos.Scaffolding';
 
-  var Scaffolding = function () {
+  var Scaffolding = function (_CosmosModule) {
+    _inherits(Scaffolding, _CosmosModule);
+
     function Scaffolding() {
       _classCallCheck(this, Scaffolding);
+
+      return _possibleConstructorReturn(this, (Scaffolding.__proto__ || Object.getPrototypeOf(Scaffolding)).apply(this, arguments));
     }
 
     _createClass(Scaffolding, [{
@@ -1626,23 +1638,18 @@ var Scaffolding = function () {
         _util2.default.wrap('table.responsive', 'table-responsive-wrapper');
       }
     }], [{
-      key: 'load',
-      value: function load() {
-        var s = new Scaffolding();
-        s.init();
-      }
-    }, {
       key: 'name',
 
 
       // static
+
       get: function get() {
         return NAME;
       }
     }]);
 
     return Scaffolding;
-  }();
+  }(_cosmosModule2.default);
 
   return Scaffolding;
 }();
@@ -2173,6 +2180,112 @@ module.exports = {
 
 /***/ }),
 /* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/************************************************************
+  CosmosModule
+*************************************************************/
+var CosmosModule = function () {
+  function CosmosModule() {
+    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    _classCallCheck(this, CosmosModule);
+
+    this.setOption(option);
+  }
+
+  /**
+   * module load
+   * 
+   * @return {void}
+   */
+
+
+  _createClass(CosmosModule, [{
+    key: "init",
+
+
+    /**
+     * init - abstract method.
+     * 
+     * @return {void}
+     */
+    value: function init() {}
+
+    /**
+     * setOption
+     * 
+     * @param {Object} option
+     */
+
+  }, {
+    key: "setOption",
+    value: function setOption(option) {
+      this.option = Object.assign({}, this.getDefaultOption(), option);
+    }
+
+    /**
+     * getOption
+     * 
+     * @return {Object}
+     */
+
+  }, {
+    key: "getOption",
+    value: function getOption() {
+      return this.option;
+    }
+
+    /**
+     * getDefaultOption - abstract method.
+     * 
+     * @return {Object}
+     */
+
+  }, {
+    key: "getDefaultOption",
+    value: function getDefaultOption() {
+      return {};
+    }
+  }], [{
+    key: "load",
+    value: function load() {
+      var m = new this();
+      m.init();
+    }
+
+    /**
+     * get defaultOption
+     * 
+     * @return {Object}
+     */
+
+  }, {
+    key: "defaultOption",
+    get: function get() {
+      var m = new this();
+      return m.getDefaultOption();
+    }
+  }]);
+
+  return CosmosModule;
+}();
+
+exports.default = CosmosModule;
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
