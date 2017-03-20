@@ -1,3 +1,4 @@
+import CosmosModule from '../lib/cosmos-module.js';
 import Util from '../lib/util.js';
 
 /************************************************************
@@ -17,17 +18,12 @@ const Dropdown = (() => {
     CONTENT: `.${ClassName.CONTENT}`
   };
 
-  class Dropdown {
+  class Dropdown extends CosmosModule {
 
     // static
     
     static get name() {
       return NAME;
-    }
-
-    static load() {
-      let d = new Dropdown;
-      d.init();
     }
 
     // public

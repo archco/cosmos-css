@@ -1,3 +1,5 @@
+import CosmosModule from '../lib/cosmos-module.js';
+
 /************************************************************
   Parallax
 *************************************************************/
@@ -8,17 +10,12 @@ const Parallax = (() => {
     HIDE: 'display-hide'
   };
 
-  class Parallax {
+  class Parallax extends CosmosModule {
 
     // static
     
     static get name() {
       return NAME;
-    }
-
-    static load() {
-      let p = new Parallax;
-      p.init();
     }
 
     // public

@@ -90,10 +90,116 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /************************************************************
+  CosmosModule
+*************************************************************/
+var CosmosModule = function () {
+  function CosmosModule() {
+    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    _classCallCheck(this, CosmosModule);
+
+    this.setOption(option);
+  }
+
+  /**
+   * module load
+   * 
+   * @return {void}
+   */
+
+
+  _createClass(CosmosModule, [{
+    key: "init",
+
+
+    /**
+     * init - abstract method.
+     * 
+     * @return {void}
+     */
+    value: function init() {}
+
+    /**
+     * setOption
+     * 
+     * @param {Object} option
+     */
+
+  }, {
+    key: "setOption",
+    value: function setOption(option) {
+      this.option = Object.assign({}, this.getDefaultOption(), option);
+    }
+
+    /**
+     * getOption
+     * 
+     * @return {Object}
+     */
+
+  }, {
+    key: "getOption",
+    value: function getOption() {
+      return this.option;
+    }
+
+    /**
+     * getDefaultOption - abstract method.
+     * 
+     * @return {Object}
+     */
+
+  }, {
+    key: "getDefaultOption",
+    value: function getDefaultOption() {
+      return {};
+    }
+  }], [{
+    key: "load",
+    value: function load() {
+      var m = new this();
+      m.init();
+    }
+
+    /**
+     * get defaultOption
+     * 
+     * @return {Object}
+     */
+
+  }, {
+    key: "defaultOption",
+    get: function get() {
+      var m = new this();
+      return m.getDefaultOption();
+    }
+  }]);
+
+  return CosmosModule;
+}();
+
+exports.default = CosmosModule;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/************************************************************
   util
 *************************************************************/
 var Util = function () {
-  var NAME = 'Cosmos.Util';
+  var NAME = 'Cosmos.lib.Util';
 
   var Util = function () {
     function Util() {
@@ -258,7 +364,7 @@ var Util = function () {
 exports.default = Util;
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -276,7 +382,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   Color
 *************************************************************/
 var Color = function () {
-  var NAME = 'Cosmos.Color';
+  var NAME = 'Cosmos.lib.Color';
   var Config = {
     lightnessPoint: 166, // 65%
     darkDefault: '#000000',
@@ -409,7 +515,7 @@ var Color = function () {
 exports.default = Color;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -424,6 +530,100 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /************************************************************
+  Helper
+*************************************************************/
+var Helper = function () {
+  var NAME = 'Cosmos.lib.Helper';
+
+  var Helper = function () {
+    function Helper() {
+      _classCallCheck(this, Helper);
+    }
+
+    _createClass(Helper, null, [{
+      key: 'submitConfirm',
+
+
+      /**
+       * submitConfirm - confirm 을 취소하면 event.preventDefault()
+       * 
+       * @param  {element} form
+       * @param  {sting} message
+       * @return {void}
+       */
+      value: function submitConfirm(form) {
+        var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
+
+        if (!form) {
+          throw new Error('Form target is not exist.');
+        }
+        form.addEventListener('submit', function (event) {
+          if (!confirm(message)) {
+            event.preventDefault();
+          }
+        });
+      }
+
+      /**
+       * check mobile size
+       * 
+       * @return {boolean}
+       */
+
+    }, {
+      key: 'checkMobileSize',
+      value: function checkMobileSize() {
+        if (window.innerWidth < 800) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }, {
+      key: 'name',
+
+
+      // static
+
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return Helper;
+  }();
+
+  return Helper;
+}();
+
+exports.default = Helper;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/************************************************************
   AJAX-loading
 *************************************************************/
 var AjaxLoading = function () {
@@ -435,9 +635,13 @@ var AjaxLoading = function () {
     LOADER_CLASS: 'loader'
   };
 
-  var AjaxLoading = function () {
+  var AjaxLoading = function (_CosmosModule) {
+    _inherits(AjaxLoading, _CosmosModule);
+
     function AjaxLoading() {
       _classCallCheck(this, AjaxLoading);
+
+      return _possibleConstructorReturn(this, (AjaxLoading.__proto__ || Object.getPrototypeOf(AjaxLoading)).apply(this, arguments));
     }
 
     _createClass(AjaxLoading, [{
@@ -481,12 +685,6 @@ var AjaxLoading = function () {
         a.appendChild(loader);
       }
     }], [{
-      key: 'load',
-      value: function load() {
-        var a = new AjaxLoading();
-        a.init();
-      }
-    }, {
       key: 'name',
 
 
@@ -498,7 +696,7 @@ var AjaxLoading = function () {
     }]);
 
     return AjaxLoading;
-  }();
+  }(_cosmosModule2.default);
 
   return AjaxLoading;
 }();
@@ -506,7 +704,7 @@ var AjaxLoading = function () {
 exports.default = AjaxLoading;
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -518,13 +716,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _util = __webpack_require__(0);
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
     Collapse
@@ -548,9 +754,13 @@ var Collapse = function () {
     A_ACTIVE: '.' + ClassName.ACCORDION + ' .' + ClassName.A_HEAD + '.' + ClassName.ACTIVE
   };
 
-  var Collapse = function () {
+  var Collapse = function (_CosmosModule) {
+    _inherits(Collapse, _CosmosModule);
+
     function Collapse() {
       _classCallCheck(this, Collapse);
+
+      return _possibleConstructorReturn(this, (Collapse.__proto__ || Object.getPrototypeOf(Collapse)).apply(this, arguments));
     }
 
     _createClass(Collapse, [{
@@ -558,7 +768,6 @@ var Collapse = function () {
 
 
       // public
-      // 
 
       value: function init() {
         // collapse toggle listener
@@ -570,16 +779,10 @@ var Collapse = function () {
         this._activatedAccordion();
       }
 
-      // static
-      // 
+      // private
 
     }, {
       key: '_toggleHandler',
-
-
-      // private
-      // 
-
       value: function _toggleHandler(event) {
         var t = event.currentTarget;
         var p = document.querySelector(t.dataset.target);
@@ -732,20 +935,18 @@ var Collapse = function () {
         }
       }
     }], [{
-      key: 'load',
-      value: function load() {
-        var c = new Collapse();
-        c.init();
-      }
-    }, {
       key: 'name',
+
+
+      // static
+
       get: function get() {
         return NAME;
       }
     }]);
 
     return Collapse;
-  }();
+  }(_cosmosModule2.default);
 
   return Collapse;
 }();
@@ -753,7 +954,7 @@ var Collapse = function () {
 exports.default = Collapse;
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -765,13 +966,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _util = __webpack_require__(0);
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
   dropdown
@@ -790,9 +999,13 @@ var Dropdown = function () {
     CONTENT: '.' + ClassName.CONTENT
   };
 
-  var Dropdown = function () {
+  var Dropdown = function (_CosmosModule) {
+    _inherits(Dropdown, _CosmosModule);
+
     function Dropdown() {
       _classCallCheck(this, Dropdown);
+
+      return _possibleConstructorReturn(this, (Dropdown.__proto__ || Object.getPrototypeOf(Dropdown)).apply(this, arguments));
     }
 
     _createClass(Dropdown, [{
@@ -880,12 +1093,6 @@ var Dropdown = function () {
         }
       }
     }], [{
-      key: 'load',
-      value: function load() {
-        var d = new Dropdown();
-        d.init();
-      }
-    }, {
       key: 'name',
 
 
@@ -897,7 +1104,7 @@ var Dropdown = function () {
     }]);
 
     return Dropdown;
-  }();
+  }(_cosmosModule2.default);
 
   return Dropdown;
 }();
@@ -905,7 +1112,7 @@ var Dropdown = function () {
 exports.default = Dropdown;
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -917,97 +1124,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _cosmosModule = __webpack_require__(0);
 
-/************************************************************
-  Helper
-*************************************************************/
-var Helper = function () {
-  var NAME = 'Cosmos.Helper';
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-  var Helper = function () {
-    function Helper() {
-      _classCallCheck(this, Helper);
-    }
-
-    _createClass(Helper, null, [{
-      key: 'submitConfirm',
-
-
-      /**
-       * submitConfirm - confirm 을 취소하면 event.preventDefault()
-       * 
-       * @param  {element} form
-       * @param  {sting} message
-       * @return {void}
-       */
-      value: function submitConfirm(form) {
-        var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
-
-        if (!form) {
-          throw new Error('Form target is not exist.');
-        }
-        form.addEventListener('submit', function (event) {
-          if (!confirm(message)) {
-            event.preventDefault();
-          }
-        });
-      }
-
-      /**
-       * check mobile size
-       * 
-       * @return {boolean}
-       */
-
-    }, {
-      key: 'checkMobileSize',
-      value: function checkMobileSize() {
-        if (window.innerWidth < 800) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    }, {
-      key: 'name',
-
-
-      // static
-
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return Helper;
-  }();
-
-  return Helper;
-}();
-
-exports.default = Helper;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
   message
@@ -1030,9 +1161,13 @@ var Message = function () {
     BOX_CLASS: 'message-box'
   };
 
-  var Message = function () {
+  var Message = function (_CosmosModule) {
+    _inherits(Message, _CosmosModule);
+
     function Message() {
       _classCallCheck(this, Message);
+
+      return _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).apply(this, arguments));
     }
 
     _createClass(Message, [{
@@ -1046,11 +1181,8 @@ var Message = function () {
         _util2.default.eventOnSelector('.' + Config.CLOSE_CLASS, 'click', Message._closeButtonHandler);
       }
     }], [{
-      key: 'load',
-      value: function load() {
-        var m = new Message();
-        m.init();
-      }
+      key: 'showMessage',
+
 
       /**
        * add '.message-box' into '#message-container'
@@ -1058,9 +1190,6 @@ var Message = function () {
        * @param  {String} message
        * @param  {String} status  ['info','success','warning','error']
        */
-
-    }, {
-      key: 'showMessage',
       value: function showMessage(message) {
         var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
 
@@ -1103,7 +1232,7 @@ var Message = function () {
     }]);
 
     return Message;
-  }();
+  }(_cosmosModule2.default);
 
   return Message;
 }();
@@ -1111,7 +1240,7 @@ var Message = function () {
 exports.default = Message;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1123,13 +1252,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _util = __webpack_require__(0);
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
   Modal
@@ -1152,9 +1289,13 @@ var Modal = function () {
     CLOSE_TEXT: '<i class="fa fa-times" aria-hidden="true"></i>'
   };
 
-  var Modal = function () {
+  var Modal = function (_CosmosModule) {
+    _inherits(Modal, _CosmosModule);
+
     function Modal() {
       _classCallCheck(this, Modal);
+
+      return _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).apply(this, arguments));
     }
 
     _createClass(Modal, [{
@@ -1164,7 +1305,7 @@ var Modal = function () {
       // public
 
       value: function init() {
-        var _this = this;
+        var _this2 = this;
 
         // modal open button.
         _util2.default.eventOnSelector(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
@@ -1175,7 +1316,7 @@ var Modal = function () {
         // window onclick.
         window.addEventListener('click', function (event) {
           if (event.target.classList.contains(ClassName.MODAL)) {
-            _this._modalHide(event.target);
+            _this2._modalHide(event.target);
           }
         });
 
@@ -1271,12 +1412,6 @@ var Modal = function () {
         modal.querySelector(Selector.CONTENT).appendChild(b);
       }
     }], [{
-      key: 'load',
-      value: function load() {
-        var m = new Modal();
-        m.init();
-      }
-    }, {
       key: 'dialog',
       value: function dialog(text) {
         var m = new Modal();
@@ -1294,7 +1429,7 @@ var Modal = function () {
     }]);
 
     return Modal;
-  }();
+  }(_cosmosModule2.default);
 
   return Modal;
 }();
@@ -1302,7 +1437,7 @@ var Modal = function () {
 exports.default = Modal;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1314,13 +1449,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _util = __webpack_require__(0);
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
   nav
@@ -1339,9 +1482,13 @@ var Nav = function () {
   };
   var MenuGroups = ['.menu-float-left', '.menu-float-right', '.menu-left', '.menu-right', '.menu-center', '.menu-between', '.menu-around'];
 
-  var Nav = function () {
+  var Nav = function (_CosmosModule) {
+    _inherits(Nav, _CosmosModule);
+
     function Nav() {
       _classCallCheck(this, Nav);
+
+      return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
     }
 
     _createClass(Nav, [{
@@ -1449,12 +1596,6 @@ var Nav = function () {
         }
       }
     }], [{
-      key: 'load',
-      value: function load() {
-        var n = new Nav();
-        n.init();
-      }
-    }, {
       key: 'name',
 
 
@@ -1466,7 +1607,7 @@ var Nav = function () {
     }]);
 
     return Nav;
-  }();
+  }(_cosmosModule2.default);
 
   return Nav;
 }();
@@ -1474,7 +1615,7 @@ var Nav = function () {
 exports.default = Nav;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1486,7 +1627,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
   Parallax
@@ -1498,9 +1649,13 @@ var Parallax = function () {
     HIDE: 'display-hide'
   };
 
-  var Parallax = function () {
+  var Parallax = function (_CosmosModule) {
+    _inherits(Parallax, _CosmosModule);
+
     function Parallax() {
       _classCallCheck(this, Parallax);
+
+      return _possibleConstructorReturn(this, (Parallax.__proto__ || Object.getPrototypeOf(Parallax)).apply(this, arguments));
     }
 
     _createClass(Parallax, [{
@@ -1559,12 +1714,6 @@ var Parallax = function () {
         p.style.height = h + 'px';
       }
     }], [{
-      key: 'load',
-      value: function load() {
-        var p = new Parallax();
-        p.init();
-      }
-    }, {
       key: 'name',
 
 
@@ -1576,7 +1725,7 @@ var Parallax = function () {
     }]);
 
     return Parallax;
-  }();
+  }(_cosmosModule2.default);
 
   return Parallax;
 }();
@@ -1584,7 +1733,7 @@ var Parallax = function () {
 exports.default = Parallax;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1596,13 +1745,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _util = __webpack_require__(0);
-
-var _util2 = _interopRequireDefault(_util);
-
-var _cosmosModule = __webpack_require__(15);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _util = __webpack_require__(1);
+
+var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1657,7 +1806,7 @@ var Scaffolding = function () {
 exports.default = Scaffolding;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1669,7 +1818,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
   scroll-to
@@ -1681,11 +1840,16 @@ var ScrollTo = function () {
     SHOW: 'show'
   };
 
-  var ScrollTo = function () {
-    function ScrollTo() {
+  var ScrollTo = function (_CosmosModule) {
+    _inherits(ScrollTo, _CosmosModule);
+
+    function ScrollTo(option) {
       _classCallCheck(this, ScrollTo);
 
-      this.btnToTop = document.querySelector(Config.TOTOP);
+      var _this = _possibleConstructorReturn(this, (ScrollTo.__proto__ || Object.getPrototypeOf(ScrollTo)).call(this, option));
+
+      _this.btnToTop = document.querySelector(Config.TOTOP);
+      return _this;
     }
 
     // static
@@ -1736,12 +1900,6 @@ var ScrollTo = function () {
         return $(document).height();
       }
     }], [{
-      key: 'load',
-      value: function load() {
-        var s = new ScrollTo();
-        s.init();
-      }
-    }, {
       key: 'name',
       get: function get() {
         return NAME;
@@ -1749,7 +1907,7 @@ var ScrollTo = function () {
     }]);
 
     return ScrollTo;
-  }();
+  }(_cosmosModule2.default);
 
   return ScrollTo;
 }();
@@ -1757,7 +1915,7 @@ var ScrollTo = function () {
 exports.default = ScrollTo;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1769,13 +1927,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _util = __webpack_require__(0);
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
   SipleCRUD
@@ -1803,9 +1969,13 @@ var SimpleCRUD = function () {
     BTN_CANCEL: 'button.' + ClassName.BTN_CANCEL
   };
 
-  var SimpleCRUD = function () {
+  var SimpleCRUD = function (_CosmosModule) {
+    _inherits(SimpleCRUD, _CosmosModule);
+
     function SimpleCRUD() {
       _classCallCheck(this, SimpleCRUD);
+
+      return _possibleConstructorReturn(this, (SimpleCRUD.__proto__ || Object.getPrototypeOf(SimpleCRUD)).apply(this, arguments));
     }
 
     _createClass(SimpleCRUD, [{
@@ -1813,32 +1983,25 @@ var SimpleCRUD = function () {
 
 
       // public
-      //
 
       value: function init() {
-        var _this = this;
+        var _this2 = this;
 
         _util2.default.eventOnSelector(Selector.BTN_UPDATE, 'click', function (e) {
-          _this._switchView(e.currentTarget, 'update');
+          _this2._switchView(e.currentTarget, 'update');
         });
         _util2.default.eventOnSelector(Selector.BTN_DELETE, 'click', function (e) {
-          _this._switchView(e.currentTarget, 'delete');
+          _this2._switchView(e.currentTarget, 'delete');
         });
         _util2.default.eventOnSelector(Selector.BTN_CANCEL, 'click', function (e) {
-          _this._switchView(e.currentTarget, 'read');
+          _this2._switchView(e.currentTarget, 'read');
         });
       }
 
-      // static
-      // 
+      // private
 
     }, {
       key: '_getNodes',
-
-
-      // private
-      // 
-
       value: function _getNodes(element) {
         var item = _util2.default.findAncestor(element, Selector.ITEM);
         var current = _util2.default.findAncestor(element, Selector.VIEW);
@@ -1860,20 +2023,18 @@ var SimpleCRUD = function () {
         nodes[name].classList.add(ClassName.SHOW);
       }
     }], [{
-      key: 'load',
-      value: function load() {
-        var s = new SimpleCRUD();
-        s.init();
-      }
-    }, {
       key: 'name',
+
+
+      // static
+
       get: function get() {
         return NAME;
       }
     }]);
 
     return SimpleCRUD;
-  }();
+  }(_cosmosModule2.default);
 
   return SimpleCRUD;
 }();
@@ -1881,7 +2042,7 @@ var SimpleCRUD = function () {
 exports.default = SimpleCRUD;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1893,13 +2054,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _util = __webpack_require__(0);
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
   Tab
@@ -1922,20 +2091,23 @@ var Tab = function () {
     CONTENT: '.' + ClassName.CONTENT
   };
 
-  var Tab = function () {
-    function Tab() {
-      var selector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Selector.TAB;
+  var Tab = function (_CosmosModule) {
+    _inherits(Tab, _CosmosModule);
 
+    function Tab(option) {
       _classCallCheck(this, Tab);
 
-      Selector.TAB = selector;
+      return _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).call(this, option));
     }
 
-    // public
-    // 
+    // static
 
     _createClass(Tab, [{
       key: 'init',
+
+
+      // public
+
       value: function init() {
         // add event handler on links.
         _util2.default.eventOnSelector(Selector.LINK, 'click', this._tabHandle.bind(this));
@@ -1972,7 +2144,7 @@ var Tab = function () {
     }, {
       key: 'setDefault',
       value: function setDefault(linkIndex) {
-        var _this = this;
+        var _this2 = this;
 
         var tabIndex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
@@ -1980,23 +2152,17 @@ var Tab = function () {
           // all tabs.
           var tabs = this._getTabs();
           tabs.forEach(function (e, i, a) {
-            _this._default(linkIndex, i);
+            _this2._default(linkIndex, i);
           });
         } else {
           this._default(linkIndex, tabIndex);
         }
       }
 
-      // static
-      // 
+      // private
 
     }, {
       key: '_tabHandle',
-
-
-      // private
-      // 
-
       value: function _tabHandle(event) {
         var a = event.currentTarget;
         var tab = _util2.default.findAncestor(a, Selector.TAB);
@@ -2102,12 +2268,6 @@ var Tab = function () {
         link.click();
       }
     }], [{
-      key: 'load',
-      value: function load() {
-        var t = new Tab();
-        t.init();
-      }
-    }, {
       key: 'name',
       get: function get() {
         return NAME;
@@ -2115,7 +2275,7 @@ var Tab = function () {
     }]);
 
     return Tab;
-  }();
+  }(_cosmosModule2.default);
 
   return Tab;
 }();
@@ -2123,7 +2283,7 @@ var Tab = function () {
 exports.default = Tab;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -2179,112 +2339,6 @@ module.exports = {
 };
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/************************************************************
-  CosmosModule
-*************************************************************/
-var CosmosModule = function () {
-  function CosmosModule() {
-    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    _classCallCheck(this, CosmosModule);
-
-    this.setOption(option);
-  }
-
-  /**
-   * module load
-   * 
-   * @return {void}
-   */
-
-
-  _createClass(CosmosModule, [{
-    key: "init",
-
-
-    /**
-     * init - abstract method.
-     * 
-     * @return {void}
-     */
-    value: function init() {}
-
-    /**
-     * setOption
-     * 
-     * @param {Object} option
-     */
-
-  }, {
-    key: "setOption",
-    value: function setOption(option) {
-      this.option = Object.assign({}, this.getDefaultOption(), option);
-    }
-
-    /**
-     * getOption
-     * 
-     * @return {Object}
-     */
-
-  }, {
-    key: "getOption",
-    value: function getOption() {
-      return this.option;
-    }
-
-    /**
-     * getDefaultOption - abstract method.
-     * 
-     * @return {Object}
-     */
-
-  }, {
-    key: "getDefaultOption",
-    value: function getDefaultOption() {
-      return {};
-    }
-  }], [{
-    key: "load",
-    value: function load() {
-      var m = new this();
-      m.init();
-    }
-
-    /**
-     * get defaultOption
-     * 
-     * @return {Object}
-     */
-
-  }, {
-    key: "defaultOption",
-    get: function get() {
-      var m = new this();
-      return m.getDefaultOption();
-    }
-  }]);
-
-  return CosmosModule;
-}();
-
-exports.default = CosmosModule;
-
-/***/ }),
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2294,68 +2348,71 @@ exports.default = CosmosModule;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Color = exports.Util = undefined;
+exports.Helper = exports.Color = exports.Util = undefined;
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
-var _color = __webpack_require__(1);
+var _color = __webpack_require__(2);
 
 var _color2 = _interopRequireDefault(_color);
 
-var _scaffolding = __webpack_require__(10);
-
-var _scaffolding2 = _interopRequireDefault(_scaffolding);
-
-var _ajaxLoading = __webpack_require__(2);
-
-var _ajaxLoading2 = _interopRequireDefault(_ajaxLoading);
-
-var _dropdown = __webpack_require__(4);
-
-var _dropdown2 = _interopRequireDefault(_dropdown);
-
-var _helper = __webpack_require__(5);
+var _helper = __webpack_require__(3);
 
 var _helper2 = _interopRequireDefault(_helper);
 
-var _message = __webpack_require__(6);
+var _scaffolding = __webpack_require__(11);
+
+var _scaffolding2 = _interopRequireDefault(_scaffolding);
+
+var _ajaxLoading = __webpack_require__(4);
+
+var _ajaxLoading2 = _interopRequireDefault(_ajaxLoading);
+
+var _dropdown = __webpack_require__(6);
+
+var _dropdown2 = _interopRequireDefault(_dropdown);
+
+var _message = __webpack_require__(7);
 
 var _message2 = _interopRequireDefault(_message);
 
-var _modal = __webpack_require__(7);
+var _modal = __webpack_require__(8);
 
 var _modal2 = _interopRequireDefault(_modal);
 
-var _nav = __webpack_require__(8);
+var _nav = __webpack_require__(9);
 
 var _nav2 = _interopRequireDefault(_nav);
 
-var _parallax = __webpack_require__(9);
+var _parallax = __webpack_require__(10);
 
 var _parallax2 = _interopRequireDefault(_parallax);
 
-var _scrollTo = __webpack_require__(11);
+var _scrollTo = __webpack_require__(12);
 
 var _scrollTo2 = _interopRequireDefault(_scrollTo);
 
-var _tab = __webpack_require__(13);
+var _tab = __webpack_require__(14);
 
 var _tab2 = _interopRequireDefault(_tab);
 
-var _collapse = __webpack_require__(3);
+var _collapse = __webpack_require__(5);
 
 var _collapse2 = _interopRequireDefault(_collapse);
 
-var _simpleCrud = __webpack_require__(12);
+var _simpleCrud = __webpack_require__(13);
 
 var _simpleCrud2 = _interopRequireDefault(_simpleCrud);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // initialize - loading modules.
+// Libraries.
 _scaffolding2.default.load();
+// Modules.
+
 _ajaxLoading2.default.load();
 _dropdown2.default.load();
 _message2.default.load();
@@ -2374,17 +2431,19 @@ window.showMessage = _message2.default.showMessage;
 window.modalDialog = _modal2.default.dialog;
 
 // export
-var version = __webpack_require__(14).version;
+var version = __webpack_require__(15).version;
 var Cosmos = {
   name: 'cosmos-css',
   version: 'v' + version,
   Util: _util2.default,
-  Color: _color2.default
+  Color: _color2.default,
+  Helper: _helper2.default
 };
 
 exports.default = Cosmos;
 exports.Util = _util2.default;
 exports.Color = _color2.default;
+exports.Helper = _helper2.default;
 
 /***/ })
 /******/ ]);

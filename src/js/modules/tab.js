@@ -1,3 +1,4 @@
+import CosmosModule from '../lib/cosmos-module.js';
 import Util from '../lib/util.js';
 
 /************************************************************
@@ -21,13 +22,18 @@ const Tab = (() => {
     CONTENT: `.${ClassName.CONTENT}`
   }
 
-  class Tab {
-    constructor(selector = Selector.TAB) {
-      Selector.TAB = selector;
+  class Tab extends CosmosModule {
+    constructor(option) {
+      super(option);
+    }
+
+    // static
+    
+    static get name() {
+      return NAME;
     }
 
     // public
-    // 
     
     init() {
       // add event handler on links.
@@ -54,20 +60,7 @@ const Tab = (() => {
       }
     }
 
-    // static
-    // 
-    
-    static get name() {
-      return NAME;
-    }
-
-    static load() {
-      let t = new Tab();
-      t.init();
-    }
-
     // private
-    // 
     
     _tabHandle(event) {
       let a = event.currentTarget;

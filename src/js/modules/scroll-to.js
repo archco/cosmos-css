@@ -1,3 +1,5 @@
+import CosmosModule from '../lib/cosmos-module.js';
+
 /************************************************************
   scroll-to
 *************************************************************/
@@ -8,8 +10,9 @@ const ScrollTo = (() => {
     SHOW: 'show'
   };
 
-  class ScrollTo {
-    constructor() {
+  class ScrollTo extends CosmosModule {
+    constructor(option) {
+      super(option);
       this.btnToTop = document.querySelector(Config.TOTOP);
     }
 
@@ -17,11 +20,6 @@ const ScrollTo = (() => {
     
     static get name() {
       return NAME;
-    }
-
-    static load() {
-      let s = new ScrollTo;
-      s.init();
     }
 
     // public

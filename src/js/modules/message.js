@@ -1,3 +1,4 @@
+import CosmosModule from '../lib/cosmos-module.js';
 import Util from '../lib/util.js';
 
 /************************************************************
@@ -21,17 +22,12 @@ const Message = (() => {
     BOX_CLASS: 'message-box'
   };
 
-  class Message {
+  class Message extends CosmosModule {
 
     // static
     
     static get name() {
       return NAME;
-    }
-
-    static load() {
-      let m = new Message;
-      m.init();
     }
 
     /**

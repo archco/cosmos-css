@@ -1,3 +1,4 @@
+import CosmosModule from '../lib/cosmos-module.js';
 import Util from '../lib/util.js';
 
 /************************************************************
@@ -21,17 +22,12 @@ const Modal = (() => {
     CLOSE_TEXT: `<i class="fa fa-times" aria-hidden="true"></i>`
   }
 
-  class Modal {
+  class Modal extends CosmosModule {
 
     // static
     
     static get name() {
       return NAME;
-    }
-
-    static load() {
-      let m = new Modal;
-      m.init();
     }
 
     static dialog(text) {

@@ -1,3 +1,4 @@
+import CosmosModule from '../lib/cosmos-module.js';
 import Util from '../lib/util.js';
 
 /************************************************************
@@ -25,17 +26,12 @@ const Nav = (() => {
     '.menu-around',
   ];
 
-  class Nav {
+  class Nav extends CosmosModule {
 
     // static
     
     static get name() {
       return NAME;
-    }
-
-    static load() {
-      let n = new Nav;
-      n.init();
     }
 
     // public

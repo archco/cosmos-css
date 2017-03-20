@@ -1,5 +1,5 @@
-import Util from '../lib/util.js';
 import CosmosModule from '../lib/cosmos-module.js';
+import Util from '../lib/util.js';
 
 /************************************************************
   Scaffolding

@@ -1,3 +1,5 @@
+import CosmosModule from '../lib/cosmos-module.js';
+
 /************************************************************
   AJAX-loading
 *************************************************************/
@@ -10,17 +12,12 @@ const AjaxLoading = (() => {
     LOADER_CLASS: 'loader'
   };
 
-  class AjaxLoading {
+  class AjaxLoading extends CosmosModule{
 
     // static
     
     static get name() {
       return NAME;
-    }
-
-    static load() {
-      let a = new AjaxLoading;
-      a.init();
     }
 
     // public

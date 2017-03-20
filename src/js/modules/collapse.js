@@ -1,3 +1,4 @@
+import CosmosModule from '../lib/cosmos-module.js';
 import Util from '../lib/util.js';
 
 /************************************************************
@@ -22,10 +23,15 @@ const Collapse = (() => {
     A_ACTIVE: `.${ClassName.ACCORDION} .${ClassName.A_HEAD}.${ClassName.ACTIVE}`,
   };
 
-  class Collapse {
+  class Collapse extends CosmosModule {
 
+    // static
+    
+    static get name() {
+      return NAME;
+    }
+    
     // public
-    // 
     
     init() {
       // collapse toggle listener
@@ -36,21 +42,8 @@ const Collapse = (() => {
       this._activatedCollapse();
       this._activatedAccordion();
     }
-    
-    // static
-    // 
-    
-    static get name() {
-      return NAME;
-    }
-
-    static load() {
-      let c = new Collapse();
-      c.init();
-    }
 
     // private
-    // 
     
     _toggleHandler(event) {
       let t = event.currentTarget;

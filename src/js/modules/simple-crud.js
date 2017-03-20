@@ -1,3 +1,4 @@
+import CosmosModule from '../lib/cosmos-module.js';
 import Util from '../lib/util.js';
 
 /************************************************************
@@ -26,10 +27,15 @@ const SimpleCRUD = (() => {
     BTN_CANCEL: `button.${ClassName.BTN_CANCEL}`,
   };
 
-  class SimpleCRUD {
+  class SimpleCRUD extends CosmosModule {
+
+    // static
+    
+    static get name() {
+      return NAME;
+    }
 
     // public
-    //
      
     init() {
       Util.eventOnSelector(Selector.BTN_UPDATE, 'click', (e) => {
@@ -43,21 +49,8 @@ const SimpleCRUD = (() => {
       });
     }
 
-    // static
-    // 
-    
-    static get name() {
-      return NAME;
-    }
-
-    static load() {
-      let s = new SimpleCRUD();
-      s.init();
-    }
-
     // private
-    // 
-    
+
     _getNodes(element) {
       let item = Util.findAncestor(element, Selector.ITEM);
       let current = Util.findAncestor(element, Selector.VIEW);
