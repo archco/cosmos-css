@@ -2,7 +2,7 @@
   Color
 *************************************************************/
 const Color = (() => {
-  const NAME = 'Cosmos.Color';
+  const NAME = 'Cosmos.lib.Color';
   const Config = {
     lightnessPoint: 166, // 65%
     darkDefault: '#000000',

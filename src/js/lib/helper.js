@@ -2,7 +2,7 @@
   Helper
 *************************************************************/
 const Helper = (() => {
-  const NAME = 'Cosmos.Helper';
+  const NAME = 'Cosmos.lib.Helper';
 
   class Helper {
 

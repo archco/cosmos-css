@@ -1,9 +1,11 @@
+// Libraries.
 import Util from './lib/util.js';
 import Color from './lib/color.js';
+import Helper from './lib/helper.js';
+// Modules.
 import Scaffolding from './modules/scaffolding.js';
 import AjaxLoading from './modules/ajax-loading.js';
 import Dropdown from './modules/dropdown.js';
-import Helper from './modules/helper.js';
 import Message from './modules/message.js';
 import Modal from './modules/modal.js';
 import Nav from './modules/nav.js';
@@ -38,8 +40,9 @@ const Cosmos = {
   name: 'cosmos-css',
   version: `v${version}`,
   Util: Util,
-  Color: Color
+  Color: Color,
+  Helper: Helper
 };
 
 export default Cosmos;
-export { Util, Color };
+export { Util, Color, Helper };

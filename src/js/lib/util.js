@@ -2,7 +2,7 @@
   util
 *************************************************************/
 const Util = (() => {
-  const NAME = 'Cosmos.Util';
+  const NAME = 'Cosmos.lib.Util';
 
   class Util {
 
