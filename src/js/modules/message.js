@@ -15,11 +15,18 @@ const Message = (() => {
     PRIMARY: 'primary',
     SECONDARY: 'secondary'
   };
-  const Config = {
+  // default option.
+  const Default = {
+    close_text: `<i class="fa fa-times" aria-hidden="true"></i>`,
+  };
+  const ClassName = {
+    CLOSE: 'btn-close-message',
+    BOX: 'message-box'
+  };
+  const Selector = {
     CONTAINER: '#message-container',
-    CLOSE_TEXT: `<i class="fa fa-times" aria-hidden="true"></i>`,
-    CLOSE_CLASS: 'btn-close-message',
-    BOX_CLASS: 'message-box'
+    CLOSE: `.${ClassName.CLOSE}`,
+    BOX: `.${ClassName.BOX}`
   };
 
   class Message extends CosmosModule {
@@ -37,38 +44,51 @@ const Message = (() => {
      * @param  {String} status  ['info','success','warning','error']
      */
     static showMessage(message, status = Status.INFO) {
-      var c, b, span, btn;
-
-      // create message box
-      c = document.querySelector(Config.CONTAINER); // container
-      b = document.createElement('DIV'); // message box
-      span = document.createElement('SPAN'); // message text
-      btn = document.createElement('BUTTON'); // close button
-      span.textContent = message;
-      btn.innerHTML = Config.CLOSE_TEXT;
-      btn.classList.add(Config.CLOSE_CLASS);
-      btn.addEventListener('click', Message._closeButtonHandler);
-      b.classList.add(Config.BOX_CLASS);
-      b.classList.add(status);
-      // append child
-      b.appendChild(span);
-      b.appendChild(btn);
-      c.appendChild(b);
-    }
-
-    static _closeButtonHandler(event) {
-      let messageBox = event.currentTarget.parentNode;
-      messageBox.style.opacity = '0';
-      setTimeout(function () {
-        messageBox.style.display = 'none';
-      }, 600); // 0.6s
+      let m = new Message;
+      m.show(message, status);
     }
 
     // public
     
     init() {
       // add event listener - close buttons
-      Util.eventOnSelector(`.${Config.CLOSE_CLASS}`, 'click', Message._closeButtonHandler);
+      Util.eventOnSelector(Selector.CLOSE, 'click', this._closeButtonHandler);
+    }
+
+    show(message, status = Status.INFO) {
+      var c, b, span, btn;
+
+      // create message box
+      c = document.querySelector(Selector.CONTAINER); // container
+      b = document.createElement('DIV'); // message box
+      span = document.createElement('SPAN'); // message text
+      btn = document.createElement('BUTTON'); // close button
+
+      span.textContent = message;
+      btn.innerHTML = this.option.close_text;
+      btn.classList.add(ClassName.CLOSE);
+      btn.addEventListener('click', this._closeButtonHandler);
+      b.classList.add(ClassName.BOX);
+      b.classList.add(status);
+
+      // append child
+      b.appendChild(span);
+      b.appendChild(btn);
+      c.appendChild(b);
+    }
+
+    getDefaultOption() {
+      return Default;
+    }
+
+    // private
+    
+    _closeButtonHandler(event) {
+      let messageBox = Util.findAncestor(event.currentTarget, Selector.BOX);
+      messageBox.style.opacity = '0';
+      setTimeout(function () {
+        messageBox.style.display = 'none';
+      }, 600); // 0.6s
     }
   }
 

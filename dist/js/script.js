@@ -1154,11 +1154,18 @@ var Message = function () {
     PRIMARY: 'primary',
     SECONDARY: 'secondary'
   };
-  var Config = {
+  // default option.
+  var Default = {
+    close_text: '<i class="fa fa-times" aria-hidden="true"></i>'
+  };
+  var ClassName = {
+    CLOSE: 'btn-close-message',
+    BOX: 'message-box'
+  };
+  var Selector = {
     CONTAINER: '#message-container',
-    CLOSE_TEXT: '<i class="fa fa-times" aria-hidden="true"></i>',
-    CLOSE_CLASS: 'btn-close-message',
-    BOX_CLASS: 'message-box'
+    CLOSE: '.' + ClassName.CLOSE,
+    BOX: '.' + ClassName.BOX
   };
 
   var Message = function (_CosmosModule) {
@@ -1178,7 +1185,49 @@ var Message = function () {
 
       value: function init() {
         // add event listener - close buttons
-        _util2.default.eventOnSelector('.' + Config.CLOSE_CLASS, 'click', Message._closeButtonHandler);
+        _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._closeButtonHandler);
+      }
+    }, {
+      key: 'show',
+      value: function show(message) {
+        var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
+
+        var c, b, span, btn;
+
+        // create message box
+        c = document.querySelector(Selector.CONTAINER); // container
+        b = document.createElement('DIV'); // message box
+        span = document.createElement('SPAN'); // message text
+        btn = document.createElement('BUTTON'); // close button
+
+        span.textContent = message;
+        btn.innerHTML = this.option.close_text;
+        btn.classList.add(ClassName.CLOSE);
+        btn.addEventListener('click', this._closeButtonHandler);
+        b.classList.add(ClassName.BOX);
+        b.classList.add(status);
+
+        // append child
+        b.appendChild(span);
+        b.appendChild(btn);
+        c.appendChild(b);
+      }
+    }, {
+      key: 'getDefaultOption',
+      value: function getDefaultOption() {
+        return Default;
+      }
+
+      // private
+
+    }, {
+      key: '_closeButtonHandler',
+      value: function _closeButtonHandler(event) {
+        var messageBox = _util2.default.findAncestor(event.currentTarget, Selector.BOX);
+        messageBox.style.opacity = '0';
+        setTimeout(function () {
+          messageBox.style.display = 'none';
+        }, 600); // 0.6s
       }
     }], [{
       key: 'showMessage',
@@ -1193,32 +1242,8 @@ var Message = function () {
       value: function showMessage(message) {
         var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
 
-        var c, b, span, btn;
-
-        // create message box
-        c = document.querySelector(Config.CONTAINER); // container
-        b = document.createElement('DIV'); // message box
-        span = document.createElement('SPAN'); // message text
-        btn = document.createElement('BUTTON'); // close button
-        span.textContent = message;
-        btn.innerHTML = Config.CLOSE_TEXT;
-        btn.classList.add(Config.CLOSE_CLASS);
-        btn.addEventListener('click', Message._closeButtonHandler);
-        b.classList.add(Config.BOX_CLASS);
-        b.classList.add(status);
-        // append child
-        b.appendChild(span);
-        b.appendChild(btn);
-        c.appendChild(b);
-      }
-    }, {
-      key: '_closeButtonHandler',
-      value: function _closeButtonHandler(event) {
-        var messageBox = event.currentTarget.parentNode;
-        messageBox.style.opacity = '0';
-        setTimeout(function () {
-          messageBox.style.display = 'none';
-        }, 600); // 0.6s
+        var m = new Message();
+        m.show(message, status);
       }
     }, {
       key: 'name',
