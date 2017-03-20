@@ -1,19 +1,27 @@
 import CosmosModule from '../lib/cosmos-module.js';
+import Util from '../lib/util.js';
 
 /************************************************************
   scroll-to
 *************************************************************/
 const ScrollTo = (() => {
   const NAME = 'Cosmos.ScrollTo';
-  const Config = {
-    TOTOP: '#scroll-to-top',
+  const Selector = {
+    TOP: '#scroll-to-top'
+  };
+  const ClassName = {
     SHOW: 'show'
+  };
+  // default option.
+  const Default = {
+    btn_top: Selector.TOP,
+    animate_duration: 'default' // fast(200), default(400), slow(600)
   };
 
   class ScrollTo extends CosmosModule {
     constructor(option) {
       super(option);
-      this.btnToTop = document.querySelector(Config.TOTOP);
+      this.btnTop = document.querySelector(this.option.btn_top);
     }
 
     // static
@@ -25,28 +33,31 @@ const ScrollTo = (() => {
     // public
     
     init() {
-      if (!this.btnToTop) { return; }
+      if (!this.btnTop) { return; }
 
       // scroll-to-top button listener
-      this.btnToTop.addEventListener('click', () => {
-        let top = 0;
-        $('html,body').animate({scrollTop: top}, 'slow', 'swing');
+      this.btnTop.addEventListener('click', () => {
+        $('html,body').animate({scrollTop: 0}, this.option.animate_duration, 'swing');
       });
       
       // scroll listener
       window.addEventListener('scroll', this._scrollHandler.bind(this));
     }
 
+    getDefaultOption() {
+      return Default;
+    }
+
     // private
     
     _scrollHandler() {
       let top = this._getScrollTop();
-      let isShow = this.btnToTop.classList.contains(Config.SHOW);
+      let isShow = this.btnTop.classList.contains(ClassName.SHOW);
 
       if (top > 500 && !isShow) {
-        this.btnToTop.classList.add(Config.SHOW);
+        this.btnTop.classList.add(ClassName.SHOW);
       } else if (top <= 500 && isShow) {
-        this.btnToTop.classList.remove(Config.SHOW);
+        this.btnTop.classList.remove(ClassName.SHOW);
       }
     }
 

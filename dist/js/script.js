@@ -1847,6 +1847,10 @@ var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
+var _util = __webpack_require__(1);
+
+var _util2 = _interopRequireDefault(_util);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1860,9 +1864,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 *************************************************************/
 var ScrollTo = function () {
   var NAME = 'Cosmos.ScrollTo';
-  var Config = {
-    TOTOP: '#scroll-to-top',
+  var Selector = {
+    TOP: '#scroll-to-top'
+  };
+  var ClassName = {
     SHOW: 'show'
+  };
+  // default option.
+  var Default = {
+    btn_top: Selector.TOP,
+    animate_duration: 'default' // fast(200)
   };
 
   var ScrollTo = function (_CosmosModule) {
@@ -1873,7 +1884,7 @@ var ScrollTo = function () {
 
       var _this = _possibleConstructorReturn(this, (ScrollTo.__proto__ || Object.getPrototypeOf(ScrollTo)).call(this, option));
 
-      _this.btnToTop = document.querySelector(Config.TOTOP);
+      _this.btnTop = document.querySelector(_this.option.btn_top);
       return _this;
     }
 
@@ -1886,18 +1897,24 @@ var ScrollTo = function () {
       // public
 
       value: function init() {
-        if (!this.btnToTop) {
+        var _this2 = this;
+
+        if (!this.btnTop) {
           return;
         }
 
         // scroll-to-top button listener
-        this.btnToTop.addEventListener('click', function () {
-          var top = 0;
-          $('html,body').animate({ scrollTop: top }, 'slow', 'swing');
+        this.btnTop.addEventListener('click', function () {
+          $('html,body').animate({ scrollTop: 0 }, _this2.option.animate_duration, 'swing');
         });
 
         // scroll listener
         window.addEventListener('scroll', this._scrollHandler.bind(this));
+      }
+    }, {
+      key: 'getDefaultOption',
+      value: function getDefaultOption() {
+        return Default;
       }
 
       // private
@@ -1906,12 +1923,12 @@ var ScrollTo = function () {
       key: '_scrollHandler',
       value: function _scrollHandler() {
         var top = this._getScrollTop();
-        var isShow = this.btnToTop.classList.contains(Config.SHOW);
+        var isShow = this.btnTop.classList.contains(ClassName.SHOW);
 
         if (top > 500 && !isShow) {
-          this.btnToTop.classList.add(Config.SHOW);
+          this.btnTop.classList.add(ClassName.SHOW);
         } else if (top <= 500 && isShow) {
-          this.btnToTop.classList.remove(Config.SHOW);
+          this.btnTop.classList.remove(ClassName.SHOW);
         }
       }
     }, {
