@@ -11,7 +11,6 @@ const Tab = (() => {
     LINK: 'tab-link',
     CONTENT: 'tab-content',
     SHOW: 'show',
-    HIDE: 'hide',
     ACTIVE: 'active',
     FADE: 'fade',
     EFFECT_FADE: 'tab-fade-effect'
@@ -23,9 +22,6 @@ const Tab = (() => {
   }
 
   class Tab extends CosmosModule {
-    constructor(option) {
-      super(option);
-    }
 
     // static
     
