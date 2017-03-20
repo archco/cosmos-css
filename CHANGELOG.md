@@ -10,6 +10,7 @@ This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/
 ### Changed
 - Tab: Adding ".tab-content" at tab content automatically. #109
 - Refactoring js modules. These classes extends "CosmosModule" #112
+- helper.js move to "js/lib/" directory. now can import this as `{ helper }` member.
 
 ## [0.8.4] - 2017-02-28
 ### Added
