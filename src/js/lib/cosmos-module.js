@@ -11,8 +11,8 @@ class CosmosModule {
    * 
    * @return {void}
    */
-  static load() {
-    let m = new this;
+  static load(option = {}) {
+    let m = new this(option);
     m.init();
   }
 

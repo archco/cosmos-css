@@ -157,7 +157,9 @@ var CosmosModule = function () {
   }], [{
     key: "load",
     value: function load() {
-      var m = new this();
+      var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var m = new this(option);
       m.init();
     }
 
@@ -1873,7 +1875,7 @@ var ScrollTo = function () {
   // default option.
   var Default = {
     btn_top: Selector.TOP,
-    animate_duration: 'default' // fast(200)
+    animate_duration: 'default' // fast(200), default(400), slow(600)
   };
 
   var ScrollTo = function (_CosmosModule) {
@@ -2122,7 +2124,6 @@ var Tab = function () {
     LINK: 'tab-link',
     CONTENT: 'tab-content',
     SHOW: 'show',
-    HIDE: 'hide',
     ACTIVE: 'active',
     FADE: 'fade',
     EFFECT_FADE: 'tab-fade-effect'
@@ -2136,13 +2137,11 @@ var Tab = function () {
   var Tab = function (_CosmosModule) {
     _inherits(Tab, _CosmosModule);
 
-    function Tab(option) {
+    function Tab() {
       _classCallCheck(this, Tab);
 
-      return _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).call(this, option));
+      return _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).apply(this, arguments));
     }
-
-    // static
 
     _createClass(Tab, [{
       key: 'init',
@@ -2311,6 +2310,10 @@ var Tab = function () {
       }
     }], [{
       key: 'name',
+
+
+      // static
+
       get: function get() {
         return NAME;
       }
