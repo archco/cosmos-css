@@ -152,7 +152,7 @@
 //======================================================================
 
 @mixin messageBox($bg-color) {
-  $color: get-contrast($bg-color, $message-dark-color, $message-light-color);
+  $color: get-contrast($bg-color);
 
   color: $color;
   background-color: $bg-color;

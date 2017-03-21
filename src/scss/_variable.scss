@@ -36,22 +36,38 @@ $purple: palette('royalpurple') !default;
 
 // Theme
 // ==================================================
+
 // theme-colors
 $primary-color: $lightblue !default;
 $primary-color-accent: darken($primary-color, 16%) !default;
 $secondary-color: $cadetgray !default;
-// base colors
+
+// text colors.
 $text-color: $black !default;
 $text-color-invert: $white !default;
 $text-color-weak: rgba($text-color, 0.67) !default;
 $text-color-strong: $primary-color-accent !default;
+$text-color-light: if(lightness($text-color) > 50, $text-color, $text-color-invert) !default;
+$text-color-dark: if(lightness($text-color) > 50, $text-color-invert, $text-color) !default;
+
+// background colors.
 $background-color: $white !default;
 $background-color-invert: invert($background-color) !default;
 $background-color-shade: rgba($background-color-invert, 0.1) !default;
+
+// color-set.
+$info-color: $teal !default;
+$success-color: $green !default;
+$danger-color: $red !default;
+$error-color: $red !default;
+$warning-color: $yellow !default;
+
+// etc colors.
 $shadow-color: rgba(#000, 0.3) !default;
 $border-color: $mediumgray !default;
 $disabled-color: rgba($gray, 0.2) !default;
-// else
+
+// theme settings.
 $radius-normal: 4px !default;
 $radius-small: round($radius-normal / 2) !default;
 $radius-large: round($radius-normal * 2) !default;
@@ -67,25 +83,19 @@ $outline-color: $primary-color !default;
 
 // Scaffolding
 // ==================================================
+
 // link colors
 $link-color: $lightblue !default;
 $link-color-hover: darken($link-color, 8%) !default;
 $link-color-visited: $link-color !default;
 $link-decoration: none !default;
 $link-hover-decoration: underline !default;
-// message dialog colors
-$info-color: $teal !default;
-$success-color: $green !default;
-$danger-color: $red !default;
-$error-color: $red !default;
-$warning-color: $yellow !default;
-$message-light-color: if(lightness($text-color) > 50, $text-color, $text-color-invert) !default;
-$message-dark-color: if(lightness($text-color) > 50, $text-color-invert, $text-color) !default;
+
 // blockquote
 $blockquote-color: $text-color-weak !default;
 $blockquote-border-color: $background-color-shade !default;
+
 // table
-//------------
 $table-cell-padding: 0.75em !default;
 $table-border-width: 1px !default;
 $table-border-color: $border-color !default;
@@ -94,8 +104,8 @@ $table-head-text-color: get-contrast($table-head-color) !default;
 $table-text-color: inherit !default;
 $table-row-even-bg: rgba($background-color-invert, 0.05) !default;
 $table-row-hover-bg: rgba($background-color-invert, 0.1) !default;
+
 // codes
-//-----------
 $code-padding: 0.2em !default;
 $code-font-size: 0.9em !default;
 $code-bg-color: rgba($background-color-invert, 0.05) !default;
