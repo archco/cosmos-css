@@ -202,7 +202,6 @@ pre {
 //======================================================================
 
 // .pad
-//=============================
 article,
 aside,
 div,
@@ -224,9 +223,67 @@ p {
 }
 
 // .accent
-//============================
 h1, h2, h3, h4, h5, h6 {
   &.accent {
     font-family: $font-accent;  
+  }
+}
+
+// .list, .list-group and .list-horizontal
+ol,
+ul {
+  &.list,
+  &.list-group,
+  &.list-horizontal {
+    @include reset-list;
+  }
+
+  // .list
+  &.list {
+    li {
+      padding: $list-padding;
+    }
+  }
+
+  // .list-group
+  &.list-group {
+    li {
+      padding: $list-group-padding;
+      border: $list-border-width solid $list-border-color;
+      margin-bottom: -$list-border-width;
+      transition: background-color $transition-time;
+    }
+
+    li:first-child {
+      @include border-top-radius($list-group-border-radius);
+    }
+
+    li:last-child {
+      @include border-bottom-radius($list-group-border-radius);
+    }
+
+    li.active {
+      color: $list-group-active-color;
+      background-color: $list-group-active-bg-color;
+    }
+
+    &.hover {
+      li:hover:not(.active) {
+        background-color: $list-group-hover-bg;
+      }
+    }
+  }
+
+  // .list-horizontal
+  &.list-horizontal {
+    li {
+      display: inline-block;
+      padding: $list-padding;
+      border-right: $list-border-width solid $list-border-color;
+    }
+
+    li:last-child {
+      border-right: none;
+    }
   }
 }

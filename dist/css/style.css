@@ -571,6 +571,54 @@ p.pad {
 h1.accent, h2.accent, h3.accent, h4.accent, h5.accent, h6.accent {
   font-family: Georgia, serif; }
 
+ol.list, ol.list-group, ol.list-horizontal,
+ul.list,
+ul.list-group,
+ul.list-horizontal {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+ol.list li,
+ul.list li {
+  padding: 0.3em 0.6em; }
+
+ol.list-group li,
+ul.list-group li {
+  padding: 0.4em 0.8em;
+  border: 1px solid #BEBEBE;
+  margin-bottom: -1px;
+  transition: background-color 0.3s; }
+
+ol.list-group li:first-child,
+ul.list-group li:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px; }
+
+ol.list-group li:last-child,
+ul.list-group li:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px; }
+
+ol.list-group li.active,
+ul.list-group li.active {
+  color: #FFFFFF;
+  background-color: #0087BD; }
+
+ol.list-group.hover li:hover:not(.active),
+ul.list-group.hover li:hover:not(.active) {
+  background-color: rgba(0, 0, 0, 0.1); }
+
+ol.list-horizontal li,
+ul.list-horizontal li {
+  display: inline-block;
+  padding: 0.3em 0.6em;
+  border-right: 1px solid #BEBEBE; }
+
+ol.list-horizontal li:last-child,
+ul.list-horizontal li:last-child {
+  border-right: none; }
+
 fieldset {
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
