@@ -1283,6 +1283,10 @@ var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
+var _button = __webpack_require__(17);
+
+var _button2 = _interopRequireDefault(_button);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1299,7 +1303,7 @@ var Modal = function () {
   var ClassName = {
     MODAL: 'modal',
     CONTENT: 'modal-content',
-    CLOSE: 'modal-close',
+    CLOSE: 'btn-close',
     SHOW: 'show'
   };
   var Selector = {
@@ -1307,9 +1311,6 @@ var Modal = function () {
     OPEN: 'button[data-toggle="modal"]',
     CLOSE: '.' + ClassName.MODAL + ' .' + ClassName.CLOSE,
     CONTENT: '.' + ClassName.CONTENT
-  };
-  var Config = {
-    CLOSE_TEXT: '<i class="fa fa-times" aria-hidden="true"></i>'
   };
 
   var Modal = function (_CosmosModule) {
@@ -1334,7 +1335,7 @@ var Modal = function () {
         _util2.default.eventOnSelector(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
 
         // modal close button.
-        _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this));
+        _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this), true);
 
         // window onclick.
         window.addEventListener('click', function (event) {
@@ -1394,8 +1395,9 @@ var Modal = function () {
     }, {
       key: '_modalCloseHandler',
       value: function _modalCloseHandler(event) {
-        var m = event.currentTarget.parentNode.parentNode;
+        var m = _util2.default.findAncestor(event.currentTarget, Selector.MODAL);
         this._modalHide(m);
+        event.stopPropagation();
       }
     }, {
       key: '_modalOpenHandler',
@@ -1428,11 +1430,11 @@ var Modal = function () {
         if (modal.querySelector(Selector.CLOSE)) {
           return;
         }
-        var b = document.createElement('button');
-        b.classList.add(ClassName.CLOSE);
-        b.innerHTML = Config.CLOSE_TEXT;
-        b.addEventListener('click', this._modalCloseHandler.bind(this));
-        modal.querySelector(Selector.CONTENT).appendChild(b);
+
+        _button2.default.addBtnClose(modal.querySelector(Selector.CONTENT), {
+          close_position: 'corner',
+          close_style: 'icon'
+        }, this._modalCloseHandler.bind(this));
       }
     }], [{
       key: 'dialog',

@@ -1,5 +1,6 @@
 import CosmosModule from '../lib/cosmos-module.js';
 import Util from '../lib/util.js';
+import Button from './button.js';
 
 /************************************************************
   Modal
@@ -9,7 +10,7 @@ const Modal = (() => {
   const ClassName = {
     MODAL: 'modal',
     CONTENT: 'modal-content',
-    CLOSE: 'modal-close',
+    CLOSE: 'btn-close',
     SHOW: 'show'
   };
   const Selector = {
@@ -18,9 +19,6 @@ const Modal = (() => {
     CLOSE: `.${ClassName.MODAL} .${ClassName.CLOSE}`,
     CONTENT: `.${ClassName.CONTENT}`
   };
-  const Config = {
-    CLOSE_TEXT: `<i class="fa fa-times" aria-hidden="true"></i>`
-  }
 
   class Modal extends CosmosModule {
 
@@ -42,7 +40,7 @@ const Modal = (() => {
       Util.eventOnSelector(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
 
       // modal close button.
-      Util.eventOnSelector(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this));
+      Util.eventOnSelector(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this), true);
 
       // window onclick.
       window.addEventListener('click', (event) => {
@@ -78,8 +76,9 @@ const Modal = (() => {
     // private
     
     _modalCloseHandler(event) {
-      let m = event.currentTarget.parentNode.parentNode;
+      let m = Util.findAncestor(event.currentTarget, Selector.MODAL);
       this._modalHide(m);
+      event.stopPropagation();
     }
 
     _modalOpenHandler(event) {
@@ -104,11 +103,11 @@ const Modal = (() => {
 
     _addCloseBtn(modal) {
       if (modal.querySelector(Selector.CLOSE)) { return; }
-      let b = document.createElement('button');
-      b.classList.add(ClassName.CLOSE);
-      b.innerHTML = Config.CLOSE_TEXT;
-      b.addEventListener('click', this._modalCloseHandler.bind(this));
-      modal.querySelector(Selector.CONTENT).appendChild(b);
+      
+      Button.addBtnClose(modal.querySelector(Selector.CONTENT), {
+        close_position: 'corner',
+        close_style: 'icon'
+      }, this._modalCloseHandler.bind(this));
     }
   }
 

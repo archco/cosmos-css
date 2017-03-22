@@ -736,7 +736,7 @@ textarea.inline {
 .btn, input[type="submit"],
 input[type="button"],
 input[type="reset"], .btn-flat, .btn-icon, .btn-close, .dropdown button.dropdown-toggle, .dropdown button.dropdown-btn, nav.navbar .dropdown > button.dropdown-toggle,
-nav.navbar .dropdown > button.dropdown-btn, nav.navbar .nav-header button.menu-toggle, .modal .modal-content .modal-close, #scroll-to-top {
+nav.navbar .dropdown > button.dropdown-btn, nav.navbar .nav-header button.menu-toggle, #scroll-to-top {
   text-decoration: none;
   white-space: nowrap;
   border: none;
@@ -748,10 +748,10 @@ nav.navbar .dropdown > button.dropdown-btn, nav.navbar .nav-header button.menu-t
   .btn:focus, input[type="submit"]:focus,
   input[type="button"]:focus,
   input[type="reset"]:focus, .btn-flat:focus, .btn-icon:focus, .btn-close:focus, .dropdown button.dropdown-toggle:focus, .dropdown button.dropdown-btn:focus, nav.navbar .dropdown > button.dropdown-toggle:focus,
-  nav.navbar .dropdown > button.dropdown-btn:focus, nav.navbar .nav-header button.menu-toggle:focus, .modal .modal-content .modal-close:focus, #scroll-to-top:focus, .btn:hover, input[type="submit"]:hover,
+  nav.navbar .dropdown > button.dropdown-btn:focus, nav.navbar .nav-header button.menu-toggle:focus, #scroll-to-top:focus, .btn:hover, input[type="submit"]:hover,
   input[type="button"]:hover,
   input[type="reset"]:hover, .btn-flat:hover, .btn-icon:hover, .btn-close:hover, .dropdown button.dropdown-toggle:hover, .dropdown button.dropdown-btn:hover, nav.navbar .dropdown > button.dropdown-toggle:hover,
-  nav.navbar .dropdown > button.dropdown-btn:hover, nav.navbar .nav-header button.menu-toggle:hover, .modal .modal-content .modal-close:hover, #scroll-to-top:hover {
+  nav.navbar .dropdown > button.dropdown-btn:hover, nav.navbar .nav-header button.menu-toggle:hover, #scroll-to-top:hover {
     text-decoration: none; }
 
 .btn, input[type="submit"],
@@ -1646,13 +1646,6 @@ aside {
       .message-box.error .btn-close-message:hover {
         color: rgba(0, 0, 0, 0.3); }
 
-.modal .modal-content .modal-close {
-  color: rgba(52, 52, 52, 0.5);
-  background-color: transparent;
-  transition: color 0.3s; }
-  .modal .modal-content .modal-close:hover {
-    color: #343434; }
-
 .modal {
   display: none;
   position: fixed;
@@ -1674,15 +1667,10 @@ aside {
     border: 1px solid #888;
     animation-name: animatetop;
     animation-duration: 0.4s; }
-    .modal .modal-content .modal-close {
-      position: absolute;
-      top: 0;
-      right: 0;
+    .modal .modal-content .btn-close {
       font-size: 1.5em;
-      font-weight: bold;
-      padding: 0.4em 0.6em;
       color: rgba(226, 61, 40, 0.5); }
-      .modal .modal-content .modal-close:hover {
+      .modal .modal-content .btn-close:hover {
         color: #e23d28; }
 
 @keyframes animatetop {

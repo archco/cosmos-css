@@ -38,14 +38,8 @@
     animation-name: animatetop;
     animation-duration: 0.4s;
 
-    .modal-close {
-      @extend %modal-btn;
-      position: absolute;
-      top: 0;
-      right: 0;
+    .btn-close {
       font-size: 1.5em;
-      font-weight: bold;
-      padding: 0.4em 0.6em;
       color: $modal-close-button-color;
       
       &:hover {
