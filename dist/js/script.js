@@ -2411,6 +2411,10 @@ var _scaffolding = __webpack_require__(11);
 
 var _scaffolding2 = _interopRequireDefault(_scaffolding);
 
+var _button = __webpack_require__(17);
+
+var _button2 = _interopRequireDefault(_button);
+
 var _ajaxLoading = __webpack_require__(4);
 
 var _ajaxLoading2 = _interopRequireDefault(_ajaxLoading);
@@ -2454,10 +2458,11 @@ var _simpleCrud2 = _interopRequireDefault(_simpleCrud);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // initialize - loading modules.
-// Libraries.
-_scaffolding2.default.load();
-// Modules.
 
+// Modules.
+_scaffolding2.default.load(); // Libraries.
+
+_button2.default.load();
 _ajaxLoading2.default.load();
 _dropdown2.default.load();
 _message2.default.load();
@@ -2482,13 +2487,165 @@ var Cosmos = {
   version: 'v' + version,
   Util: _util2.default,
   Color: _color2.default,
-  Helper: _helper2.default
+  Helper: _helper2.default,
+  Button: _button2.default
 };
 
 exports.default = Cosmos;
 exports.Util = _util2.default;
 exports.Color = _color2.default;
 exports.Helper = _helper2.default;
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _util = __webpack_require__(1);
+
+var _util2 = _interopRequireDefault(_util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/************************************************************
+  Button
+*************************************************************/
+var Button = function () {
+  var NAME = 'Cosmos.Button';
+  var ClassName = {
+    CLOSE: 'btn-close',
+    POSITION_CORNER: 'at-corner',
+    HIDE: 'display-hide'
+  };
+  var Selector = {
+    CLOSE: '.' + ClassName.CLOSE
+  };
+  // default option.
+  var Default = {
+    close_action: 'remove', // remove | hide
+    close_position: 'default', // default | corner
+    close_style: 'default', // default | icon | circle_default | circle_icon
+    close_content: {
+      default: '✖'
+    }
+  };
+
+  var Button = function (_CosmosModule) {
+    _inherits(Button, _CosmosModule);
+
+    function Button() {
+      _classCallCheck(this, Button);
+
+      return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
+    }
+
+    _createClass(Button, [{
+      key: 'appendBtnClose',
+
+
+      // public
+
+      value: function appendBtnClose(element) {
+        if (this._hasBtnClose(element)) {
+          console.log('already has .btn-close');
+          return;
+        }
+        var btnClose = this._createBtnClose();
+        btnClose.addEventListener('click', this._btnCloseClickHandler.bind(this));
+        element.appendChild(btnClose);
+      }
+    }, {
+      key: 'init',
+      value: function init() {
+        // btn-close addEventListener.
+        _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._btnCloseClickHandler.bind(this));
+      }
+    }, {
+      key: 'getDefaultOption',
+      value: function getDefaultOption() {
+        return Default;
+      }
+
+      // private
+
+    }, {
+      key: '_btnCloseClickHandler',
+      value: function _btnCloseClickHandler(event) {
+        var elm = event.currentTarget.parentNode;
+        var parent = elm.parentNode;
+
+        if (this.option.close_action == 'hide') {
+          elm.classList.add(ClassName.HIDE);
+        } else if (this.option.close_action == 'remove') {
+          parent.removeChild(elm);
+        }
+      }
+    }, {
+      key: '_createBtnClose',
+      value: function _createBtnClose() {
+        var btnClose = document.createElement('button');
+
+        btnClose.classList.add(ClassName.CLOSE);
+        if (this.option.close_position == 'corner') {
+          btnClose.classList.add(ClassName.POSITION_CORNER);
+        }
+        btnClose.innerHTML = this.option.close_content[this.option.close_style];
+
+        return btnClose;
+      }
+    }, {
+      key: '_hasBtnClose',
+      value: function _hasBtnClose(element) {
+        if (element.querySelector(Selector.CLOSE)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }], [{
+      key: 'addBtnClose',
+      value: function addBtnClose(element) {
+        var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+        var b = new Button(option);
+        b.appendBtnClose(element);
+      }
+    }, {
+      key: 'name',
+
+
+      // static
+
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return Button;
+  }(_cosmosModule2.default);
+
+  return Button;
+}();
+
+exports.default = Button;
 
 /***/ })
 /******/ ]);

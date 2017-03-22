@@ -4,6 +4,7 @@ import Color from './lib/color.js';
 import Helper from './lib/helper.js';
 // Modules.
 import Scaffolding from './modules/scaffolding.js';
+import Button from './modules/button.js';
 import AjaxLoading from './modules/ajax-loading.js';
 import Dropdown from './modules/dropdown.js';
 import Message from './modules/message.js';
@@ -17,6 +18,7 @@ import SimpleCRUD from './modules/simple-crud.js';
 
 // initialize - loading modules.
 Scaffolding.load();
+Button.load();
 AjaxLoading.load();
 Dropdown.load();
 Message.load();
@@ -41,7 +43,8 @@ const Cosmos = {
   version: `v${version}`,
   Util: Util,
   Color: Color,
-  Helper: Helper
+  Helper: Helper,
+  Button: Button
 };
 
 export default Cosmos;

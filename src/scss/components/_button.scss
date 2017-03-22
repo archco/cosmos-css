@@ -65,3 +65,24 @@
   @extend %btn, %btn-disabled, %btn-flat-color-set;
   margin: 0;
 }
+
+.btn-close {
+  @extend %btn-common;
+  box-sizing: content-box;
+  background-color: transparent;
+  vertical-align: baseline;
+  padding: 0;
+  margin-left: 0.25em;
+  color: rgba(#000, 0.3);
+  transition: color $transition-time;
+  
+  &:hover {
+    color: inherit;
+  }
+
+  &.at-corner {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+  }
+}

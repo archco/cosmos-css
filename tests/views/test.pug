@@ -10,12 +10,20 @@ block content
     h1 Hello, World!
     p test page.
     button(class='btn' onclick='toggle()') toggle
-    h1 Simple CRUD Test
-    include includes/simple-crud.pug
-    
+    h1 btn-close test
+    include includes/button.pug
+
+    h1 test
+    span(id='target') hello
+    div(class='pad color-primary' id='target2' style='position:relative;')
+      p=lorem
+
+block script
   <script>
   | function toggle() {
   |   var a = document.querySelector('#ajax-loading');
   |   a.classList.toggle('show');
   | }
+  | Cosmos.default.Button.addBtnClose(document.querySelector('#target'));
+  | Cosmos.default.Button.addBtnClose(document.querySelector('#target2'), {close_position: 'corner'});
   </script>
