@@ -48,4 +48,4 @@ const Cosmos = {
 };
 
 export default Cosmos;
-export { Util, Color, Helper };
+export { Util, Color, Helper, Button };

@@ -2391,7 +2391,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Helper = exports.Color = exports.Util = undefined;
+exports.Button = exports.Helper = exports.Color = exports.Util = undefined;
 
 var _util = __webpack_require__(1);
 
@@ -2493,6 +2493,7 @@ exports.default = Cosmos;
 exports.Util = _util2.default;
 exports.Color = _color2.default;
 exports.Helper = _helper2.default;
+exports.Button = _button2.default;
 
 /***/ }),
 /* 17 */
