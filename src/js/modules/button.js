@@ -22,7 +22,8 @@ const Button = (() => {
     close_position: 'default', // default | corner | right_middle
     close_style: 'default', // default | icon | circle_default | circle_icon
     close_content: {
-      default: '✖'
+      default: '✖',
+      icon: `<i class="fa fa-times" aria-hidden="true"></i>`
     }
   };
 

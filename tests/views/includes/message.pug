@@ -6,12 +6,12 @@ ul
 h2 Message box
 div(class='message-box')
   span This is message box.
-  button(class='btn-close-message')
+  button(class='btn-close at-right-middle')
     i(class="fa fa-times" aria-hidden="true")
 each color in colorSet
   div(class='message-box '+color)
     span= 'This is ' + color + ' message box.'
-    button(class='btn-close-message')
+    button(class='btn-close at-right-middle')
       i(class="fa fa-times" aria-hidden="true")
 h2 showMessage()
 div(id='message-container')

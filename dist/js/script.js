@@ -1134,6 +1134,10 @@ var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
+var _button = __webpack_require__(17);
+
+var _button2 = _interopRequireDefault(_button);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1156,18 +1160,14 @@ var Message = function () {
     PRIMARY: 'primary',
     SECONDARY: 'secondary'
   };
-  // default option.
-  var Default = {
-    close_text: '<i class="fa fa-times" aria-hidden="true"></i>'
-  };
   var ClassName = {
-    CLOSE: 'btn-close-message',
+    CLOSE: 'btn-close',
     BOX: 'message-box'
   };
   var Selector = {
     CONTAINER: '#message-container',
-    CLOSE: '.' + ClassName.CLOSE,
-    BOX: '.' + ClassName.BOX
+    BOX: '.' + ClassName.BOX,
+    CLOSE: '.' + ClassName.BOX + ' .' + ClassName.CLOSE
   };
 
   var Message = function (_CosmosModule) {
@@ -1187,37 +1187,31 @@ var Message = function () {
 
       value: function init() {
         // add event listener - close buttons
-        _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._closeButtonHandler);
+        _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._closeButtonHandler, true);
       }
     }, {
       key: 'show',
       value: function show(message) {
         var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
 
-        var c, b, span, btn;
+        var c, b, span;
 
         // create message box
         c = document.querySelector(Selector.CONTAINER); // container
         b = document.createElement('DIV'); // message box
         span = document.createElement('SPAN'); // message text
-        btn = document.createElement('BUTTON'); // close button
 
         span.textContent = message;
-        btn.innerHTML = this.option.close_text;
-        btn.classList.add(ClassName.CLOSE);
-        btn.addEventListener('click', this._closeButtonHandler);
         b.classList.add(ClassName.BOX);
         b.classList.add(status);
 
         // append child
         b.appendChild(span);
-        b.appendChild(btn);
+        _button2.default.addBtnClose(b, {
+          close_position: 'right_middle',
+          close_style: 'icon'
+        }, this._closeButtonHandler);
         c.appendChild(b);
-      }
-    }, {
-      key: 'getDefaultOption',
-      value: function getDefaultOption() {
-        return Default;
       }
 
       // private
@@ -1226,10 +1220,12 @@ var Message = function () {
       key: '_closeButtonHandler',
       value: function _closeButtonHandler(event) {
         var messageBox = _util2.default.findAncestor(event.currentTarget, Selector.BOX);
+
         messageBox.style.opacity = '0';
         setTimeout(function () {
           messageBox.style.display = 'none';
         }, 600); // 0.6s
+        event.stopPropagation();
       }
     }], [{
       key: 'showMessage',
@@ -2546,7 +2542,8 @@ var Button = function () {
     close_position: 'default', // default | corner | right_middle
     close_style: 'default', // default | icon | circle_default | circle_icon
     close_content: {
-      default: '✖'
+      default: '✖',
+      icon: '<i class="fa fa-times" aria-hidden="true"></i>'
     }
   };
 
