@@ -2533,6 +2533,7 @@ var Button = function () {
   var ClassName = {
     CLOSE: 'btn-close',
     POSITION_CORNER: 'at-corner',
+    POSITION_RIGHT_MIDDLE: 'at-right-middle',
     HIDE: 'display-hide'
   };
   var Selector = {
@@ -2540,8 +2541,9 @@ var Button = function () {
   };
   // default option.
   var Default = {
+    close_enable: true,
     close_action: 'remove', // remove | hide
-    close_position: 'default', // default | corner
+    close_position: 'default', // default | corner | right_middle
     close_style: 'default', // default | icon | circle_default | circle_icon
     close_content: {
       default: '✖'
@@ -2564,19 +2566,25 @@ var Button = function () {
       // public
 
       value: function appendBtnClose(element) {
+        var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
         if (this._hasBtnClose(element)) {
           console.log('already has .btn-close');
           return;
         }
         var btnClose = this._createBtnClose();
-        btnClose.addEventListener('click', this._btnCloseClickHandler.bind(this));
+        var handler = callback || this._btnCloseClickHandler;
+
+        btnClose.addEventListener('click', handler.bind(this));
         element.appendChild(btnClose);
       }
     }, {
       key: 'init',
       value: function init() {
         // btn-close addEventListener.
-        _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._btnCloseClickHandler.bind(this));
+        if (this.option.close_enable) {
+          _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._btnCloseClickHandler.bind(this));
+        }
       }
     }, {
       key: 'getDefaultOption',
@@ -2606,6 +2614,8 @@ var Button = function () {
         btnClose.classList.add(ClassName.CLOSE);
         if (this.option.close_position == 'corner') {
           btnClose.classList.add(ClassName.POSITION_CORNER);
+        } else if (this.option.close_position == 'right_middle') {
+          btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
         }
         btnClose.innerHTML = this.option.close_content[this.option.close_style];
 
@@ -2624,9 +2634,10 @@ var Button = function () {
       key: 'addBtnClose',
       value: function addBtnClose(element) {
         var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+        var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
         var b = new Button(option);
-        b.appendBtnClose(element);
+        b.appendBtnClose(element, callback);
       }
     }, {
       key: 'name',

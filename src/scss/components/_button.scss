@@ -75,7 +75,7 @@
   margin-left: 0.25em;
   color: rgba(#000, 0.3);
   transition: color $transition-time;
-  
+
   &:hover {
     color: inherit;
   }
@@ -84,5 +84,12 @@
     position: absolute;
     top: 0.5em;
     right: 0.5em;
+  }
+
+  &.at-right-middle {
+    position: absolute;
+    top: 50%;
+    right: 0.5em;
+    transform: translateY(-50%);
   }
 }

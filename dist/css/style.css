@@ -1102,6 +1102,11 @@ input[type="reset"], .btn-icon {
     position: absolute;
     top: 0.5em;
     right: 0.5em; }
+  .btn-close.at-right-middle {
+    position: absolute;
+    top: 50%;
+    right: 0.5em;
+    transform: translateY(-50%); }
 
 .dropdown {
   position: relative;

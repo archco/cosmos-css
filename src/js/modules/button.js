@@ -9,6 +9,7 @@ const Button = (() => {
   const ClassName = {
     CLOSE: 'btn-close',
     POSITION_CORNER: 'at-corner',
+    POSITION_RIGHT_MIDDLE: 'at-right-middle',
     HIDE: 'display-hide'
   };
   const Selector = {
@@ -16,8 +17,9 @@ const Button = (() => {
   };
   // default option.
   const Default = {
+    close_enable: true,
     close_action: 'remove', // remove | hide
-    close_position: 'default', // default | corner
+    close_position: 'default', // default | corner | right_middle
     close_style: 'default', // default | icon | circle_default | circle_icon
     close_content: {
       default: '✖'
@@ -32,26 +34,30 @@ const Button = (() => {
       return NAME;
     }
 
-    static addBtnClose(element, option = {}) {
+    static addBtnClose(element, option = {}, callback = null) {
       let b = new Button(option);
-      b.appendBtnClose(element);
+      b.appendBtnClose(element, callback);
     }
 
     // public
     
-    appendBtnClose(element) {
+    appendBtnClose(element, callback = null) {
       if (this._hasBtnClose(element)) {
         console.log('already has .btn-close');
         return;
       }
       let btnClose = this._createBtnClose();
-      btnClose.addEventListener('click', this._btnCloseClickHandler.bind(this));
+      let handler = callback || this._btnCloseClickHandler;
+
+      btnClose.addEventListener('click', handler.bind(this));
       element.appendChild(btnClose);
     }
 
     init() {
       // btn-close addEventListener.
-      Util.eventOnSelector(Selector.CLOSE, 'click', this._btnCloseClickHandler.bind(this));
+      if (this.option.close_enable) {
+        Util.eventOnSelector(Selector.CLOSE, 'click', this._btnCloseClickHandler.bind(this));
+      }
     }
 
     getDefaultOption() {
@@ -77,6 +83,8 @@ const Button = (() => {
       btnClose.classList.add(ClassName.CLOSE);
       if (this.option.close_position == 'corner') {
         btnClose.classList.add(ClassName.POSITION_CORNER);
+      } else if (this.option.close_position == 'right_middle') {
+        btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
       }
       btnClose.innerHTML = this.option.close_content[this.option.close_style];
 

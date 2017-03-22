@@ -25,5 +25,5 @@ block script
   |   a.classList.toggle('show');
   | }
   | Cosmos.default.Button.addBtnClose(document.querySelector('#target'));
-  | Cosmos.default.Button.addBtnClose(document.querySelector('#target2'), {close_position: 'corner'});
+  | Cosmos.default.Button.addBtnClose(document.querySelector('#target2'), {close_position: 'right_middle'}, function (e) {console.log(this.option)});
   </script>
