@@ -14,6 +14,7 @@ This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/
 - Refactoring js modules. These classes extends "CosmosModule" #112
 - helper.js move to "js/lib/" directory. now can import this as `{ Helper }` member.
 - Applied new close button to message and modal modules. #113
+- Modifying variables of badge. #114
 
 ### Fixed
 - Fix inline code style overlap problem. #115

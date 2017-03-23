@@ -5,11 +5,10 @@
 .badge {
   // local variables.
   //=================
-  $badge-padding-base: $badge-font-size / 6;
+  $badge-padding-base: $badge-font-size / 5;
   $badge-margin-base: decimal-floor($badge-padding-base, 1);
   $badge-padding-y: $badge-padding-base;
   $badge-padding-x: $badge-padding-base * 2;
-  $badge-verical-align: percentage(strip-unit($badge-margin-base)); // percentage value
   $badge-rounded-padding-x: $badge-padding-base * 4;
   $badge-rounded-border-radius: $badge-font-size * 2;
 
@@ -21,7 +20,7 @@
   line-height: 1;
   text-align: center;
   white-space: nowrap;
-  vertical-align: $badge-verical-align;
+  vertical-align: baseline;
   border-radius: $badge-border-radius;
   
   @include badgeColor($badge-default-color); // default color

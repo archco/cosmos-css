@@ -49,6 +49,7 @@ $text-color-weak: rgba($text-color, 0.67) !default;
 $text-color-strong: $primary-color-accent !default;
 $text-color-light: if(lightness($text-color) > 50, $text-color, $text-color-invert) !default;
 $text-color-dark: if(lightness($text-color) > 50, $text-color-invert, $text-color) !default;
+$text-color-middle: mix($text-color-light, $text-color-dark) !default;
 
 // background colors.
 $background-color: $white !default;
@@ -145,9 +146,9 @@ $z-index-scroll-to-button: 14 !default;
 //======================================================================
 
 // badge
-$badge-font-size: 0.75em !default;
+$badge-font-size: 0.85em !default;
 $badge-border-radius: $radius-small !default;
-$badge-default-color: $gray !default;
+$badge-default-color: $text-color-middle !default;
 
 // button
 $button-radius: $radius-small !default;

@@ -1169,21 +1169,21 @@ nav.navbar .dropdown ul.dropdown-content > li.active > a {
 
 .badge {
   display: inline-block;
-  padding: 0.125em 0.25em;
+  padding: 0.17em 0.34em;
   margin-left: 0.1em;
   margin-right: 0.1em;
-  font-size: 0.75em;
+  font-size: 0.85em;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
-  vertical-align: 10%;
+  vertical-align: baseline;
   border-radius: 2px;
-  background-color: #808080;
+  background-color: #9a9a9a;
   color: #FFFFFF; }
   .badge[href]:hover, .badge[href]:focus {
-    background-color: #8a8a8a; }
+    background-color: #a4a4a4; }
   .badge[href]:active {
-    background-color: #767676; }
+    background-color: #909090; }
   .badge.primary {
     background-color: #0087BD;
     color: #FFFFFF; }
@@ -1234,11 +1234,11 @@ nav.navbar .dropdown ul.dropdown-content > li.active > a {
     .badge.error[href]:active {
       background-color: #d8321d; }
   .badge.rounded {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    border-radius: 1.5em; }
+    padding-left: 0.68em;
+    padding-right: 0.68em;
+    border-radius: 1.7em; }
   .badge.icon {
-    padding: 0.15em; }
+    padding: 0.204em; }
   .badge:empty {
     display: none; }
 
