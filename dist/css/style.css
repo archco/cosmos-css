@@ -417,6 +417,7 @@ html {
 
 body {
   font-family: Geneva, sans-serif;
+  line-height: 1.5;
   color: #343434;
   background-color: #FFFFFF; }
 
@@ -532,8 +533,8 @@ pre {
   font-family: Consolas, Courier, monospace; }
 
 code {
-  padding: 0.2em;
-  font-size: 0.9em;
+  padding: 0.15em 0.25em;
+  font-size: 0.85em;
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 4px; }
   a code {
@@ -543,7 +544,7 @@ code {
 
 pre {
   padding: 1em;
-  font-size: 0.9em;
+  font-size: 0.85em;
   line-height: 1.45;
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 4px; }

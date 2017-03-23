@@ -79,6 +79,7 @@ $transition-time: 0.3s !default;
 $icon-size: 35px !default; // nav toggle button's width
 $default-focus-outline: 2px solid $primary-color !default;
 $outline-color: $primary-color !default;
+$body-line-height: 1.5 !default;
 
 
 // Scaffolding
@@ -106,8 +107,8 @@ $table-row-even-bg: rgba($background-color-invert, 0.05) !default;
 $table-row-hover-bg: rgba($background-color-invert, 0.1) !default;
 
 // codes
-$code-padding: 0.2em !default;
-$code-font-size: 0.9em !default;
+$code-padding: 0.15em 0.25em !default;
+$code-font-size: 0.85em !default;
 $code-bg-color: rgba($background-color-invert, 0.05) !default;
 $code-border-radius: $radius-normal !default;
 $code-block-padding: 1em !default;
