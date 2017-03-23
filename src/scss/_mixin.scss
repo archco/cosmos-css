@@ -28,6 +28,7 @@
 //======================================================================
 @mixin btn-base() {
   @include no-decoration;
+  line-height: 1.15;
   white-space: nowrap;
   border: none;
   cursor: pointer;

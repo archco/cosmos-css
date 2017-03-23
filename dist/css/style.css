@@ -739,6 +739,7 @@ input[type="button"],
 input[type="reset"], .btn-flat, .btn-icon, .btn-close, .dropdown button.dropdown-toggle, .dropdown button.dropdown-btn, nav.navbar .dropdown > button.dropdown-toggle,
 nav.navbar .dropdown > button.dropdown-btn, nav.navbar .nav-header button.menu-toggle, #scroll-to-top {
   text-decoration: none;
+  line-height: 1.15;
   white-space: nowrap;
   border: none;
   cursor: pointer;
@@ -1959,6 +1960,7 @@ ul.pagination {
 
 .collapse-toggle, .accordion .accordion-head {
   text-decoration: none;
+  line-height: 1.15;
   white-space: nowrap;
   border: none;
   cursor: pointer;
