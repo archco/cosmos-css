@@ -24,10 +24,13 @@ span text and
 br
 a(href='#' class='badge rounded warning') rounded badge
 
-h2 Icon Badge
-span text and 
-  span(class='badge icon info') <i class="fa fa-bell-o" aria-hidden="true"></i>
-br
-button(class='btn warning') Warning
-  span(class='badge rounded icon danger') <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-button(class='btn warning') Normal
+h2 Badge with Stacked Font Awesome Icon
+span(class='fa-stack fa-lg')
+  i(class='fa fa-square fa-stack-2x')
+  i(class='fa fa-bell fa-stack-1x fa-inverse')
+  span(class='badge in-icon danger') 8,888
+
+span(class='fa-stack fa-2x color-primary')
+  i(class='fa fa-circle fa-stack-2x')
+  i(class='fa fa-envelope fa-stack-1x fa-inverse')
+  span(class='badge in-icon rounded warning') 8,888

@@ -37,8 +37,11 @@
     border-radius: $badge-rounded-border-radius;
   }
 
-  &.icon {
-    padding: $badge-padding-base * 1.2;
+  &.in-icon {
+    position: absolute;
+    right: 0%;
+    top: 2%;
+    font-size: 0.3em;
   }
 
   &:empty { display: none; }

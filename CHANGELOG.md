@@ -15,6 +15,7 @@ This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/
 - helper.js move to "js/lib/" directory. now can import this as `{ Helper }` member.
 - Applied new close button to message and modal modules. #113
 - Modifying variables of badge. #114
+- Improve Badge - Badge with Stacked Font Awesome Icon #100
 
 ### Fixed
 - Fix inline code style overlap problem. #115

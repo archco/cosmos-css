@@ -1237,8 +1237,11 @@ nav.navbar .dropdown ul.dropdown-content > li.active > a {
     padding-left: 0.68em;
     padding-right: 0.68em;
     border-radius: 1.7em; }
-  .badge.icon {
-    padding: 0.204em; }
+  .badge.in-icon {
+    position: absolute;
+    right: 0%;
+    top: 2%;
+    font-size: 0.3em; }
   .badge:empty {
     display: none; }
 
