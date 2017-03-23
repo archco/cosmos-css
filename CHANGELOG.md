@@ -15,6 +15,9 @@ This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/
 - helper.js move to "js/lib/" directory. now can import this as `{ Helper }` member.
 - Applied new close button to message and modal modules. #113
 
+### Fixed
+- Fix inline code style overlap problem. #115
+
 ## [0.8.4] - 2017-02-28
 ### Added
 - Now available import [Util](https://github.com/archco/cosmos-css/wiki/util) and [Color](https://github.com/archco/cosmos-css/wiki/color) as library.
