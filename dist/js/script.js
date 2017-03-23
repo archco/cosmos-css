@@ -71,7 +71,7 @@ window["Cosmos"] =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -378,6 +378,169 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _util = __webpack_require__(1);
+
+var _util2 = _interopRequireDefault(_util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/************************************************************
+  Button
+*************************************************************/
+var Button = function () {
+  var NAME = 'Cosmos.Button';
+  var ClassName = {
+    CLOSE: 'btn-close',
+    POSITION_CORNER: 'at-corner',
+    POSITION_RIGHT_MIDDLE: 'at-right-middle',
+    HIDE: 'display-hide'
+  };
+  var Selector = {
+    CLOSE: '.' + ClassName.CLOSE
+  };
+  // default option.
+  var Default = {
+    close_enable: true,
+    close_action: 'remove', // remove | hide
+    close_position: 'default', // default | corner | right_middle
+    close_style: 'default', // default | icon | circle_default | circle_icon
+    close_content: {
+      default: '✖',
+      icon: '<i class="fa fa-times" aria-hidden="true"></i>'
+    }
+  };
+
+  var Button = function (_CosmosModule) {
+    _inherits(Button, _CosmosModule);
+
+    function Button() {
+      _classCallCheck(this, Button);
+
+      return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
+    }
+
+    _createClass(Button, [{
+      key: 'appendBtnClose',
+
+
+      // public
+
+      value: function appendBtnClose(element) {
+        var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+        if (this._hasBtnClose(element)) {
+          console.log('already has .btn-close');
+          return;
+        }
+        var btnClose = this._createBtnClose();
+        var handler = callback || this._btnCloseClickHandler;
+
+        btnClose.addEventListener('click', handler.bind(this));
+        element.appendChild(btnClose);
+      }
+    }, {
+      key: 'init',
+      value: function init() {
+        // btn-close addEventListener.
+        if (this.option.close_enable) {
+          _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._btnCloseClickHandler.bind(this));
+        }
+      }
+    }, {
+      key: 'getDefaultOption',
+      value: function getDefaultOption() {
+        return Default;
+      }
+
+      // private
+
+    }, {
+      key: '_btnCloseClickHandler',
+      value: function _btnCloseClickHandler(event) {
+        var elm = event.currentTarget.parentNode;
+        var parent = elm.parentNode;
+
+        if (this.option.close_action == 'hide') {
+          elm.classList.add(ClassName.HIDE);
+        } else if (this.option.close_action == 'remove') {
+          parent.removeChild(elm);
+        }
+      }
+    }, {
+      key: '_createBtnClose',
+      value: function _createBtnClose() {
+        var btnClose = document.createElement('button');
+
+        btnClose.classList.add(ClassName.CLOSE);
+        if (this.option.close_position == 'corner') {
+          btnClose.classList.add(ClassName.POSITION_CORNER);
+        } else if (this.option.close_position == 'right_middle') {
+          btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
+        }
+        btnClose.innerHTML = this.option.close_content[this.option.close_style];
+
+        return btnClose;
+      }
+    }, {
+      key: '_hasBtnClose',
+      value: function _hasBtnClose(element) {
+        if (element.querySelector(Selector.CLOSE)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }], [{
+      key: 'addBtnClose',
+      value: function addBtnClose(element) {
+        var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+        var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+        var b = new Button(option);
+        b.appendBtnClose(element, callback);
+      }
+    }, {
+      key: 'name',
+
+
+      // static
+
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return Button;
+  }(_cosmosModule2.default);
+
+  return Button;
+}();
+
+exports.default = Button;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /************************************************************
@@ -517,7 +680,7 @@ var Color = function () {
 exports.default = Color;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -601,7 +764,7 @@ var Helper = function () {
 exports.default = Helper;
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -706,7 +869,7 @@ var AjaxLoading = function () {
 exports.default = AjaxLoading;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -956,7 +1119,7 @@ var Collapse = function () {
 exports.default = Collapse;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1114,7 +1277,7 @@ var Dropdown = function () {
 exports.default = Dropdown;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1134,7 +1297,7 @@ var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
-var _button = __webpack_require__(17);
+var _button = __webpack_require__(2);
 
 var _button2 = _interopRequireDefault(_button);
 
@@ -1169,15 +1332,26 @@ var Message = function () {
     BOX: '.' + ClassName.BOX,
     CLOSE: '.' + ClassName.BOX + ' .' + ClassName.CLOSE
   };
+  var ButtonOption = {
+    close_position: 'right_middle',
+    close_style: 'icon'
+  };
 
   var Message = function (_CosmosModule) {
     _inherits(Message, _CosmosModule);
 
     function Message() {
+      var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
       _classCallCheck(this, Message);
 
-      return _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).apply(this, arguments));
+      var _this = _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).call(this, option));
+
+      _this.button = new _button2.default(ButtonOption);
+      return _this;
     }
+
+    // static
 
     _createClass(Message, [{
       key: 'init',
@@ -1207,10 +1381,7 @@ var Message = function () {
 
         // append child
         b.appendChild(span);
-        _button2.default.addBtnClose(b, {
-          close_position: 'right_middle',
-          close_style: 'icon'
-        }, this._closeButtonHandler);
+        this.button.appendBtnClose(b, this._closeButtonHandler);
         c.appendChild(b);
       }
 
@@ -1245,10 +1416,6 @@ var Message = function () {
       }
     }, {
       key: 'name',
-
-
-      // static
-
       get: function get() {
         return NAME;
       }
@@ -1263,7 +1430,7 @@ var Message = function () {
 exports.default = Message;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1283,7 +1450,7 @@ var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
-var _button = __webpack_require__(17);
+var _button = __webpack_require__(2);
 
 var _button2 = _interopRequireDefault(_button);
 
@@ -1312,15 +1479,26 @@ var Modal = function () {
     CLOSE: '.' + ClassName.MODAL + ' .' + ClassName.CLOSE,
     CONTENT: '.' + ClassName.CONTENT
   };
+  var ButtonOption = {
+    close_position: 'corner',
+    close_style: 'icon'
+  };
 
   var Modal = function (_CosmosModule) {
     _inherits(Modal, _CosmosModule);
 
     function Modal() {
+      var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
       _classCallCheck(this, Modal);
 
-      return _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).apply(this, arguments));
+      var _this = _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, option));
+
+      _this.button = new _button2.default(ButtonOption);
+      return _this;
     }
+
+    // static
 
     _createClass(Modal, [{
       key: 'init',
@@ -1431,10 +1609,8 @@ var Modal = function () {
           return;
         }
 
-        _button2.default.addBtnClose(modal.querySelector(Selector.CONTENT), {
-          close_position: 'corner',
-          close_style: 'icon'
-        }, this._modalCloseHandler.bind(this));
+        var content = modal.querySelector(Selector.CONTENT);
+        this.button.appendBtnClose(content, this._modalCloseHandler.bind(this));
       }
     }], [{
       key: 'dialog',
@@ -1444,10 +1620,6 @@ var Modal = function () {
       }
     }, {
       key: 'name',
-
-
-      // static
-
       get: function get() {
         return NAME;
       }
@@ -1462,7 +1634,7 @@ var Modal = function () {
 exports.default = Modal;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1640,7 +1812,7 @@ var Nav = function () {
 exports.default = Nav;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1758,7 +1930,7 @@ var Parallax = function () {
 exports.default = Parallax;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1831,7 +2003,7 @@ var Scaffolding = function () {
 exports.default = Scaffolding;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1957,7 +2129,7 @@ var ScrollTo = function () {
 exports.default = ScrollTo;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2084,7 +2256,7 @@ var SimpleCRUD = function () {
 exports.default = SimpleCRUD;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2326,7 +2498,7 @@ var Tab = function () {
 exports.default = Tab;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -2382,7 +2554,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2397,59 +2569,59 @@ var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
-var _color = __webpack_require__(2);
+var _color = __webpack_require__(3);
 
 var _color2 = _interopRequireDefault(_color);
 
-var _helper = __webpack_require__(3);
+var _helper = __webpack_require__(4);
 
 var _helper2 = _interopRequireDefault(_helper);
 
-var _scaffolding = __webpack_require__(11);
+var _scaffolding = __webpack_require__(12);
 
 var _scaffolding2 = _interopRequireDefault(_scaffolding);
 
-var _button = __webpack_require__(17);
+var _button = __webpack_require__(2);
 
 var _button2 = _interopRequireDefault(_button);
 
-var _ajaxLoading = __webpack_require__(4);
+var _ajaxLoading = __webpack_require__(5);
 
 var _ajaxLoading2 = _interopRequireDefault(_ajaxLoading);
 
-var _dropdown = __webpack_require__(6);
+var _dropdown = __webpack_require__(7);
 
 var _dropdown2 = _interopRequireDefault(_dropdown);
 
-var _message = __webpack_require__(7);
+var _message = __webpack_require__(8);
 
 var _message2 = _interopRequireDefault(_message);
 
-var _modal = __webpack_require__(8);
+var _modal = __webpack_require__(9);
 
 var _modal2 = _interopRequireDefault(_modal);
 
-var _nav = __webpack_require__(9);
+var _nav = __webpack_require__(10);
 
 var _nav2 = _interopRequireDefault(_nav);
 
-var _parallax = __webpack_require__(10);
+var _parallax = __webpack_require__(11);
 
 var _parallax2 = _interopRequireDefault(_parallax);
 
-var _scrollTo = __webpack_require__(12);
+var _scrollTo = __webpack_require__(13);
 
 var _scrollTo2 = _interopRequireDefault(_scrollTo);
 
-var _tab = __webpack_require__(14);
+var _tab = __webpack_require__(15);
 
 var _tab2 = _interopRequireDefault(_tab);
 
-var _collapse = __webpack_require__(5);
+var _collapse = __webpack_require__(6);
 
 var _collapse2 = _interopRequireDefault(_collapse);
 
-var _simpleCrud = __webpack_require__(13);
+var _simpleCrud = __webpack_require__(14);
 
 var _simpleCrud2 = _interopRequireDefault(_simpleCrud);
 
@@ -2479,7 +2651,7 @@ window.showMessage = _message2.default.showMessage;
 window.modalDialog = _modal2.default.dialog;
 
 // export
-var version = __webpack_require__(15).version;
+var version = __webpack_require__(16).version;
 var Cosmos = {
   name: 'cosmos-css',
   version: 'v' + version,
@@ -2494,169 +2666,6 @@ exports.Util = _util2.default;
 exports.Color = _color2.default;
 exports.Helper = _helper2.default;
 exports.Button = _button2.default;
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _cosmosModule = __webpack_require__(0);
-
-var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
-
-var _util = __webpack_require__(1);
-
-var _util2 = _interopRequireDefault(_util);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/************************************************************
-  Button
-*************************************************************/
-var Button = function () {
-  var NAME = 'Cosmos.Button';
-  var ClassName = {
-    CLOSE: 'btn-close',
-    POSITION_CORNER: 'at-corner',
-    POSITION_RIGHT_MIDDLE: 'at-right-middle',
-    HIDE: 'display-hide'
-  };
-  var Selector = {
-    CLOSE: '.' + ClassName.CLOSE
-  };
-  // default option.
-  var Default = {
-    close_enable: true,
-    close_action: 'remove', // remove | hide
-    close_position: 'default', // default | corner | right_middle
-    close_style: 'default', // default | icon | circle_default | circle_icon
-    close_content: {
-      default: '✖',
-      icon: '<i class="fa fa-times" aria-hidden="true"></i>'
-    }
-  };
-
-  var Button = function (_CosmosModule) {
-    _inherits(Button, _CosmosModule);
-
-    function Button() {
-      _classCallCheck(this, Button);
-
-      return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
-    }
-
-    _createClass(Button, [{
-      key: 'appendBtnClose',
-
-
-      // public
-
-      value: function appendBtnClose(element) {
-        var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-        if (this._hasBtnClose(element)) {
-          console.log('already has .btn-close');
-          return;
-        }
-        var btnClose = this._createBtnClose();
-        var handler = callback || this._btnCloseClickHandler;
-
-        btnClose.addEventListener('click', handler.bind(this));
-        element.appendChild(btnClose);
-      }
-    }, {
-      key: 'init',
-      value: function init() {
-        // btn-close addEventListener.
-        if (this.option.close_enable) {
-          _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._btnCloseClickHandler.bind(this));
-        }
-      }
-    }, {
-      key: 'getDefaultOption',
-      value: function getDefaultOption() {
-        return Default;
-      }
-
-      // private
-
-    }, {
-      key: '_btnCloseClickHandler',
-      value: function _btnCloseClickHandler(event) {
-        var elm = event.currentTarget.parentNode;
-        var parent = elm.parentNode;
-
-        if (this.option.close_action == 'hide') {
-          elm.classList.add(ClassName.HIDE);
-        } else if (this.option.close_action == 'remove') {
-          parent.removeChild(elm);
-        }
-      }
-    }, {
-      key: '_createBtnClose',
-      value: function _createBtnClose() {
-        var btnClose = document.createElement('button');
-
-        btnClose.classList.add(ClassName.CLOSE);
-        if (this.option.close_position == 'corner') {
-          btnClose.classList.add(ClassName.POSITION_CORNER);
-        } else if (this.option.close_position == 'right_middle') {
-          btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
-        }
-        btnClose.innerHTML = this.option.close_content[this.option.close_style];
-
-        return btnClose;
-      }
-    }, {
-      key: '_hasBtnClose',
-      value: function _hasBtnClose(element) {
-        if (element.querySelector(Selector.CLOSE)) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    }], [{
-      key: 'addBtnClose',
-      value: function addBtnClose(element) {
-        var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-
-        var b = new Button(option);
-        b.appendBtnClose(element, callback);
-      }
-    }, {
-      key: 'name',
-
-
-      // static
-
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return Button;
-  }(_cosmosModule2.default);
-
-  return Button;
-}();
-
-exports.default = Button;
 
 /***/ })
 /******/ ]);

@@ -19,8 +19,16 @@ const Modal = (() => {
     CLOSE: `.${ClassName.MODAL} .${ClassName.CLOSE}`,
     CONTENT: `.${ClassName.CONTENT}`
   };
+  const ButtonOption = {
+    close_position: 'corner',
+    close_style: 'icon'
+  };
 
   class Modal extends CosmosModule {
+    constructor(option = {}) {
+      super(option);
+      this.button = new Button(ButtonOption);
+    }
 
     // static
     
@@ -103,11 +111,9 @@ const Modal = (() => {
 
     _addCloseBtn(modal) {
       if (modal.querySelector(Selector.CLOSE)) { return; }
-      
-      Button.addBtnClose(modal.querySelector(Selector.CONTENT), {
-        close_position: 'corner',
-        close_style: 'icon'
-      }, this._modalCloseHandler.bind(this));
+
+      let content = modal.querySelector(Selector.CONTENT);
+      this.button.appendBtnClose(content, this._modalCloseHandler.bind(this));
     }
   }
 

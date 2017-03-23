@@ -25,8 +25,16 @@ const Message = (() => {
     BOX: `.${ClassName.BOX}`,
     CLOSE: `.${ClassName.BOX} .${ClassName.CLOSE}`
   };
+  const ButtonOption = {
+    close_position: 'right_middle',
+    close_style: 'icon'
+  };
 
   class Message extends CosmosModule {
+    constructor(option = {}) {
+      super(option);
+      this.button = new Button(ButtonOption);
+    }
 
     // static
     
@@ -66,10 +74,7 @@ const Message = (() => {
 
       // append child
       b.appendChild(span);
-      Button.addBtnClose(b, {
-        close_position: 'right_middle',
-        close_style: 'icon'
-      }, this._closeButtonHandler);
+      this.button.appendBtnClose(b, this._closeButtonHandler);
       c.appendChild(b);
     }
 
