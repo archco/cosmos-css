@@ -269,3 +269,8 @@ $accordion-head-padding: 0.5em 1em !default;
 $accordion-head-active-bg-color: $primary-color !default;
 $accordion-head-active-color: get-contrast($accordion-head-active-bg-color) !default;
 $accordion-border-radius: $radius-normal !default;
+
+// chip
+$chip-font-size: 0.85em !default;
+$chip-height: 2em !default; // unit:em, This value is base of local variables of chip.
+$chip-bg-color: $background-color-shade !default;

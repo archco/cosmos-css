@@ -2,22 +2,25 @@
 // Chip
 //======================================================================
 .chip {
+  // local variables.
+  $chip-size: $chip-height;
+  
   display: inline-block;
   font-size: 0.85em;
-  padding: 0 1em;
-  height: 2em;
-  line-height: 2;
-  border-radius: 2em;
-  background-color: $lightgray;
-  margin-right: 0.25em;
-  margin-bottom: 0.25em;
+  height: $chip-height;
+  padding: 0 $chip-size / 2;
+  line-height: strip-unit($chip-size);
+  border-radius: $chip-size;
+  margin-right: $chip-size / 4;
+  margin-bottom: $chip-size / 4;
+  background-color: $chip-bg-color;
 
   img {
     float: left;
-    margin-right: 0.5em;
-    margin-left: -1em;
-    width: 2em;
-    height: 2em;
+    margin-right: $chip-size / 4;
+    margin-left: -$chip-size / 2;
+    width: $chip-size;
+    height: $chip-size;
     border-radius: 50%;
   }
 }
