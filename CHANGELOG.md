@@ -20,6 +20,7 @@ This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/
 
 ### Fixed
 - Fix inline code style overlap problem. #115
+- Fix overflow-x problem in scaffolding codes. #117
 
 ## [0.8.4] - 2017-02-28
 ### Added
