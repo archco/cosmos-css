@@ -403,14 +403,17 @@ var Button = function () {
     CLOSE: 'btn-close',
     POSITION_CORNER: 'at-corner',
     POSITION_RIGHT_MIDDLE: 'at-right-middle',
-    HIDE: 'display-hide'
+    HIDE: 'display-hide',
+    REMOVEABLE: 'removeable',
+    HIDEABLE: 'hideable'
   };
   var Selector = {
-    CLOSE: '.' + ClassName.CLOSE
+    CLOSE: '.' + ClassName.CLOSE,
+    HAS_ACTION: '.' + ClassName.CLOSE + '.' + ClassName.REMOVEABLE + ', .' + ClassName.CLOSE + '.' + ClassName.HIDEABLE
   };
   // default option.
   var Default = {
-    close_enable: true,
+    close_init_enable: true,
     close_action: 'remove', // remove | hide
     close_position: 'default', // default | corner | right_middle
     close_style: 'default', // default | icon | circle_default | circle_icon
@@ -452,8 +455,8 @@ var Button = function () {
       key: 'init',
       value: function init() {
         // btn-close addEventListener.
-        if (this.option.close_enable) {
-          _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._btnCloseClickHandler.bind(this));
+        if (this.option.close_init_enable) {
+          _util2.default.eventOnSelector(Selector.HAS_ACTION, 'click', this._btnCloseClickHandler.bind(this));
         }
       }
     }, {
@@ -467,14 +470,17 @@ var Button = function () {
     }, {
       key: '_btnCloseClickHandler',
       value: function _btnCloseClickHandler(event) {
-        var elm = event.currentTarget.parentNode;
-        var parent = elm.parentNode;
+        var btnClose = event.currentTarget;
+        var element = btnClose.parentNode;
+        var parent = element.parentNode;
+        var action = this._getActionType(btnClose);
 
-        if (this.option.close_action == 'hide') {
-          elm.classList.add(ClassName.HIDE);
-        } else if (this.option.close_action == 'remove') {
-          parent.removeChild(elm);
+        if (action == 'hide') {
+          element.classList.add(ClassName.HIDE);
+        } else if (action == 'remove') {
+          parent.removeChild(element);
         }
+        event.preventDefault();
       }
     }, {
       key: '_createBtnClose',
@@ -498,6 +504,17 @@ var Button = function () {
           return true;
         } else {
           return false;
+        }
+      }
+    }, {
+      key: '_getActionType',
+      value: function _getActionType(btnClose) {
+        if (btnClose.classList.contains(ClassName.REMOVEABLE)) {
+          return 'remove';
+        } else if (btnClose.classList.contains(ClassName.HIDEABLE)) {
+          return 'hide';
+        } else {
+          return this.option.close_action;
         }
       }
     }], [{
@@ -2563,7 +2580,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Button = exports.Helper = exports.Color = exports.Util = undefined;
+exports.Chip = exports.Button = exports.Helper = exports.Color = exports.Util = undefined;
 
 var _util = __webpack_require__(1);
 
@@ -2625,12 +2642,18 @@ var _simpleCrud = __webpack_require__(14);
 
 var _simpleCrud2 = _interopRequireDefault(_simpleCrud);
 
+var _chip = __webpack_require__(18);
+
+var _chip2 = _interopRequireDefault(_chip);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // initialize - loading modules.
+// Libraries.
+_scaffolding2.default.load();
+// no load modules.
 
 // Modules.
-_scaffolding2.default.load(); // Libraries.
 
 _button2.default.load();
 _ajaxLoading2.default.load();
@@ -2658,7 +2681,8 @@ var Cosmos = {
   Util: _util2.default,
   Color: _color2.default,
   Helper: _helper2.default,
-  Button: _button2.default
+  Button: _button2.default,
+  Chip: _chip2.default
 };
 
 exports.default = Cosmos;
@@ -2666,6 +2690,206 @@ exports.Util = _util2.default;
 exports.Color = _color2.default;
 exports.Helper = _helper2.default;
 exports.Button = _button2.default;
+exports.Chip = _chip2.default;
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _util = __webpack_require__(1);
+
+var _util2 = _interopRequireDefault(_util);
+
+var _button = __webpack_require__(2);
+
+var _button2 = _interopRequireDefault(_button);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/************************************************************
+  Chip
+*************************************************************/
+var Chip = function () {
+  var NAME = 'Cosmos.Chip';
+  var ClassName = {
+    CHIP: 'chip'
+  };
+  var Selector = {
+    CHIP: '.' + ClassName.CHIP
+  };
+  var Default = {
+    tag: 'span', // chip's tagName. span, div, a ...
+    close_button: true, // enable close button.
+    close_action: 'remove' // close action. remove | hide
+  };
+
+  var Chip = function (_CosmosModule) {
+    _inherits(Chip, _CosmosModule);
+
+    function Chip(container) {
+      var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      _classCallCheck(this, Chip);
+
+      var _this = _possibleConstructorReturn(this, (Chip.__proto__ || Object.getPrototypeOf(Chip)).call(this, option));
+
+      _this.container = document.querySelector(container);
+      _this.button = new _button2.default({
+        close_action: _this.option.close_action
+      });
+      return _this;
+    }
+
+    // static
+
+    _createClass(Chip, [{
+      key: 'add',
+
+
+      // public
+
+      /**
+       * add
+       * 
+       * @param {String} text
+       * @param {String} imgSrc
+       * @param {Object} data  dataset values.
+       * @return {void}
+       */
+      value: function add(text) {
+        var imgSrc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+        var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+        var chip = this._createChip(text, imgSrc, data);
+
+        this.container.appendChild(chip);
+      }
+
+      /**
+       * removeAll
+       * 
+       * @return {Number}
+       */
+
+    }, {
+      key: 'removeAll',
+      value: function removeAll() {
+        var chips = this.container.querySelectorAll(Selector.CHIP);
+        var count = chips.length;
+
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = chips[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var chip = _step.value;
+
+            this.container.removeChild(chip);
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
+        return count;
+      }
+
+      /**
+       * getContainer
+       * 
+       * @return {Element}
+       */
+
+    }, {
+      key: 'getContainer',
+      value: function getContainer() {
+        return this.container;
+      }
+    }, {
+      key: 'getDefaultOption',
+      value: function getDefaultOption() {
+        return Default;
+      }
+
+      // private
+
+    }, {
+      key: '_createChip',
+      value: function _createChip(text, imgSrc, data) {
+        var chip = document.createElement(this.option.tag);
+        // base.
+        chip.classList.add(ClassName.CHIP);
+        chip.textContent = text;
+        // img.
+        if (imgSrc) {
+          chip.appendChild(this._createImg(imgSrc));
+        }
+        // dataset.
+        for (var key in data) {
+          if (key == 'href' && chip.tagName == 'A') {
+            chip.href = data[key];
+            continue;
+          }
+          chip.dataset[key] = data[key];
+        }
+        // close button.
+        if (this.option.close_button) {
+          this.button.appendBtnClose(chip);
+        }
+
+        return chip;
+      }
+    }, {
+      key: '_createImg',
+      value: function _createImg(src) {
+        var img = document.createElement('img');
+        img.src = src;
+        return img;
+      }
+    }], [{
+      key: 'name',
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return Chip;
+  }(_cosmosModule2.default);
+
+  return Chip;
+}();
+
+exports.default = Chip;
 
 /***/ })
 /******/ ]);

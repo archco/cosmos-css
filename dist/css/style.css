@@ -1250,6 +1250,33 @@ a.badge {
   a.badge:focus, a.badge:hover {
     text-decoration: none; }
 
+.chip {
+  display: inline-block;
+  font-size: 0.85em;
+  padding: 0 1em;
+  height: 2em;
+  line-height: 2;
+  border-radius: 2em;
+  background-color: #DCDCDC;
+  margin-right: 0.25em;
+  margin-bottom: 0.25em; }
+  .chip img {
+    float: left;
+    margin-right: 0.5em;
+    margin-left: -1em;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%; }
+
+a.chip {
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.3s; }
+  a.chip:focus, a.chip:hover {
+    text-decoration: none; }
+  a.chip:hover, a.chip:focus {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
+
 nav.navbar .dropdown > button.dropdown-toggle,
 nav.navbar .dropdown > button.dropdown-btn, nav.navbar a:not(.nav-brand), nav.navbar .nav-header .nav-brand.text {
   display: inline-block;

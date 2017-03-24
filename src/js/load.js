@@ -15,6 +15,8 @@ import ScrollTo from './modules/scroll-to.js';
 import Tab from './modules/tab.js';
 import Collapse from './modules/collapse.js';
 import SimpleCRUD from './modules/simple-crud.js';
+// no load modules.
+import Chip from './modules/chip.js';
 
 // initialize - loading modules.
 Scaffolding.load();
@@ -44,8 +46,9 @@ const Cosmos = {
   Util: Util,
   Color: Color,
   Helper: Helper,
-  Button: Button
+  Button: Button,
+  Chip: Chip
 };
 
 export default Cosmos;
-export { Util, Color, Helper, Button };
+export { Util, Color, Helper, Button, Chip };
