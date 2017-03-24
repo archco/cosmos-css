@@ -188,6 +188,8 @@ pre {
   line-height: $code-block-line-height;
   background-color: $code-bg-color;
   border-radius: $code-border-radius;
+  max-width: 100%;
+  overflow-x: auto;
 
   code {
     padding: 0;
