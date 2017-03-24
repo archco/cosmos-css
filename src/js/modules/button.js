@@ -10,14 +10,17 @@ const Button = (() => {
     CLOSE: 'btn-close',
     POSITION_CORNER: 'at-corner',
     POSITION_RIGHT_MIDDLE: 'at-right-middle',
-    HIDE: 'display-hide'
+    HIDE: 'display-hide',
+    REMOVEABLE: 'removeable',
+    HIDEABLE: 'hideable'
   };
   const Selector = {
-    CLOSE: `.${ClassName.CLOSE}`
+    CLOSE: `.${ClassName.CLOSE}`,
+    HAS_ACTION: `.${ClassName.CLOSE}.${ClassName.REMOVEABLE}, .${ClassName.CLOSE}.${ClassName.HIDEABLE}`
   };
   // default option.
   const Default = {
-    close_enable: true,
+    close_init_enable: true,
     close_action: 'remove', // remove | hide
     close_position: 'default', // default | corner | right_middle
     close_style: 'default', // default | icon | circle_default | circle_icon
@@ -56,8 +59,8 @@ const Button = (() => {
 
     init() {
       // btn-close addEventListener.
-      if (this.option.close_enable) {
-        Util.eventOnSelector(Selector.CLOSE, 'click', this._btnCloseClickHandler.bind(this));
+      if (this.option.close_init_enable) {
+        Util.eventOnSelector(Selector.HAS_ACTION, 'click', this._btnCloseClickHandler.bind(this));
       }
     }
 
@@ -68,14 +71,17 @@ const Button = (() => {
     // private
 
     _btnCloseClickHandler(event) {
-      let elm = event.currentTarget.parentNode;
-      let parent = elm.parentNode;
+      let btnClose = event.currentTarget;
+      let element = btnClose.parentNode;
+      let parent = element.parentNode;
+      let action = this._getActionType(btnClose);
 
-      if (this.option.close_action == 'hide') {
-        elm.classList.add(ClassName.HIDE);
-      } else if (this.option.close_action == 'remove') {
-        parent.removeChild(elm);
+      if (action == 'hide') {
+        element.classList.add(ClassName.HIDE);
+      } else if (action == 'remove') {
+        parent.removeChild(element);
       }
+      event.preventDefault();
     }
 
     _createBtnClose() {
@@ -97,6 +103,16 @@ const Button = (() => {
         return true;
       } else {
         return false;
+      }
+    }
+
+    _getActionType(btnClose) {
+      if (btnClose.classList.contains(ClassName.REMOVEABLE)) {
+        return 'remove';
+      } else if (btnClose.classList.contains(ClassName.HIDEABLE)) {
+        return 'hide';
+      } else {
+        return this.option.close_action;
       }
     }
   }
