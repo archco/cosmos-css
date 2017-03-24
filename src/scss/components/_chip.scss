@@ -6,7 +6,7 @@
   $chip-size: $chip-height;
   
   display: inline-block;
-  font-size: 0.85em;
+  font-size: $chip-font-size;
   height: $chip-height;
   padding: 0 $chip-size / 2;
   line-height: strip-unit($chip-size);
