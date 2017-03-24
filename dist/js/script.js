@@ -71,7 +71,7 @@ window["Cosmos"] =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -906,6 +906,205 @@ var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
+var _button = __webpack_require__(2);
+
+var _button2 = _interopRequireDefault(_button);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/************************************************************
+  Chip
+*************************************************************/
+var Chip = function () {
+  var NAME = 'Cosmos.Chip';
+  var ClassName = {
+    CHIP: 'chip'
+  };
+  var Selector = {
+    CHIP: '.' + ClassName.CHIP
+  };
+  var Default = {
+    tag: 'span', // chip's tagName. span, div, a ...
+    close_button: true, // enable close button.
+    close_action: 'remove' // close action. remove | hide
+  };
+
+  var Chip = function (_CosmosModule) {
+    _inherits(Chip, _CosmosModule);
+
+    function Chip(container) {
+      var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      _classCallCheck(this, Chip);
+
+      var _this = _possibleConstructorReturn(this, (Chip.__proto__ || Object.getPrototypeOf(Chip)).call(this, option));
+
+      _this.container = document.querySelector(container);
+      _this.button = new _button2.default({
+        close_action: _this.option.close_action
+      });
+      return _this;
+    }
+
+    // static
+
+    _createClass(Chip, [{
+      key: 'add',
+
+
+      // public
+
+      /**
+       * add
+       * 
+       * @param {String} text
+       * @param {String} imgSrc
+       * @param {Object} data  dataset values.
+       * @return {void}
+       */
+      value: function add(text) {
+        var imgSrc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+        var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+        var chip = this._createChip(text, imgSrc, data);
+
+        this.container.appendChild(chip);
+      }
+
+      /**
+       * removeAll
+       * 
+       * @return {Number}
+       */
+
+    }, {
+      key: 'removeAll',
+      value: function removeAll() {
+        var chips = this.container.querySelectorAll(Selector.CHIP);
+        var count = chips.length;
+
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = chips[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var chip = _step.value;
+
+            this.container.removeChild(chip);
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
+        return count;
+      }
+
+      /**
+       * getContainer
+       * 
+       * @return {Element}
+       */
+
+    }, {
+      key: 'getContainer',
+      value: function getContainer() {
+        return this.container;
+      }
+    }, {
+      key: 'getDefaultOption',
+      value: function getDefaultOption() {
+        return Default;
+      }
+
+      // private
+
+    }, {
+      key: '_createChip',
+      value: function _createChip(text, imgSrc, data) {
+        var chip = document.createElement(this.option.tag);
+        // base.
+        chip.classList.add(ClassName.CHIP);
+        chip.textContent = text;
+        // img.
+        if (imgSrc) {
+          chip.appendChild(this._createImg(imgSrc));
+        }
+        // dataset.
+        for (var key in data) {
+          if (key == 'href' && chip.tagName == 'A') {
+            chip.href = data[key];
+            continue;
+          }
+          chip.dataset[key] = data[key];
+        }
+        // close button.
+        if (this.option.close_button) {
+          this.button.appendBtnClose(chip);
+        }
+
+        return chip;
+      }
+    }, {
+      key: '_createImg',
+      value: function _createImg(src) {
+        var img = document.createElement('img');
+        img.src = src;
+        return img;
+      }
+    }], [{
+      key: 'name',
+      get: function get() {
+        return NAME;
+      }
+    }]);
+
+    return Chip;
+  }(_cosmosModule2.default);
+
+  return Chip;
+}();
+
+exports.default = Chip;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _util = __webpack_require__(1);
+
+var _util2 = _interopRequireDefault(_util);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1136,7 +1335,7 @@ var Collapse = function () {
 exports.default = Collapse;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1294,7 +1493,7 @@ var Dropdown = function () {
 exports.default = Dropdown;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1447,7 +1646,7 @@ var Message = function () {
 exports.default = Message;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1651,7 +1850,7 @@ var Modal = function () {
 exports.default = Modal;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1829,7 +2028,7 @@ var Nav = function () {
 exports.default = Nav;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1947,7 +2146,7 @@ var Parallax = function () {
 exports.default = Parallax;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2020,7 +2219,7 @@ var Scaffolding = function () {
 exports.default = Scaffolding;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2146,7 +2345,7 @@ var ScrollTo = function () {
 exports.default = ScrollTo;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2273,7 +2472,7 @@ var SimpleCRUD = function () {
 exports.default = SimpleCRUD;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2515,7 +2714,7 @@ var Tab = function () {
 exports.default = Tab;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -2571,7 +2770,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2594,7 +2793,7 @@ var _helper = __webpack_require__(4);
 
 var _helper2 = _interopRequireDefault(_helper);
 
-var _scaffolding = __webpack_require__(12);
+var _scaffolding = __webpack_require__(13);
 
 var _scaffolding2 = _interopRequireDefault(_scaffolding);
 
@@ -2606,43 +2805,43 @@ var _ajaxLoading = __webpack_require__(5);
 
 var _ajaxLoading2 = _interopRequireDefault(_ajaxLoading);
 
-var _dropdown = __webpack_require__(7);
+var _dropdown = __webpack_require__(8);
 
 var _dropdown2 = _interopRequireDefault(_dropdown);
 
-var _message = __webpack_require__(8);
+var _message = __webpack_require__(9);
 
 var _message2 = _interopRequireDefault(_message);
 
-var _modal = __webpack_require__(9);
+var _modal = __webpack_require__(10);
 
 var _modal2 = _interopRequireDefault(_modal);
 
-var _nav = __webpack_require__(10);
+var _nav = __webpack_require__(11);
 
 var _nav2 = _interopRequireDefault(_nav);
 
-var _parallax = __webpack_require__(11);
+var _parallax = __webpack_require__(12);
 
 var _parallax2 = _interopRequireDefault(_parallax);
 
-var _scrollTo = __webpack_require__(13);
+var _scrollTo = __webpack_require__(14);
 
 var _scrollTo2 = _interopRequireDefault(_scrollTo);
 
-var _tab = __webpack_require__(15);
+var _tab = __webpack_require__(16);
 
 var _tab2 = _interopRequireDefault(_tab);
 
-var _collapse = __webpack_require__(6);
+var _collapse = __webpack_require__(7);
 
 var _collapse2 = _interopRequireDefault(_collapse);
 
-var _simpleCrud = __webpack_require__(14);
+var _simpleCrud = __webpack_require__(15);
 
 var _simpleCrud2 = _interopRequireDefault(_simpleCrud);
 
-var _chip = __webpack_require__(18);
+var _chip = __webpack_require__(6);
 
 var _chip2 = _interopRequireDefault(_chip);
 
@@ -2651,9 +2850,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // initialize - loading modules.
 // Libraries.
 _scaffolding2.default.load();
-// no load modules.
+// Functional modules. - nonloadable
 
-// Modules.
+// Loadable Modules.
 
 _button2.default.load();
 _ajaxLoading2.default.load();
@@ -2674,7 +2873,7 @@ window.showMessage = _message2.default.showMessage;
 window.modalDialog = _modal2.default.dialog;
 
 // export
-var version = __webpack_require__(16).version;
+var version = __webpack_require__(17).version;
 var Cosmos = {
   name: 'cosmos-css',
   version: 'v' + version,
@@ -2691,205 +2890,6 @@ exports.Color = _color2.default;
 exports.Helper = _helper2.default;
 exports.Button = _button2.default;
 exports.Chip = _chip2.default;
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _cosmosModule = __webpack_require__(0);
-
-var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
-
-var _util = __webpack_require__(1);
-
-var _util2 = _interopRequireDefault(_util);
-
-var _button = __webpack_require__(2);
-
-var _button2 = _interopRequireDefault(_button);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/************************************************************
-  Chip
-*************************************************************/
-var Chip = function () {
-  var NAME = 'Cosmos.Chip';
-  var ClassName = {
-    CHIP: 'chip'
-  };
-  var Selector = {
-    CHIP: '.' + ClassName.CHIP
-  };
-  var Default = {
-    tag: 'span', // chip's tagName. span, div, a ...
-    close_button: true, // enable close button.
-    close_action: 'remove' // close action. remove | hide
-  };
-
-  var Chip = function (_CosmosModule) {
-    _inherits(Chip, _CosmosModule);
-
-    function Chip(container) {
-      var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-      _classCallCheck(this, Chip);
-
-      var _this = _possibleConstructorReturn(this, (Chip.__proto__ || Object.getPrototypeOf(Chip)).call(this, option));
-
-      _this.container = document.querySelector(container);
-      _this.button = new _button2.default({
-        close_action: _this.option.close_action
-      });
-      return _this;
-    }
-
-    // static
-
-    _createClass(Chip, [{
-      key: 'add',
-
-
-      // public
-
-      /**
-       * add
-       * 
-       * @param {String} text
-       * @param {String} imgSrc
-       * @param {Object} data  dataset values.
-       * @return {void}
-       */
-      value: function add(text) {
-        var imgSrc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-        var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-        var chip = this._createChip(text, imgSrc, data);
-
-        this.container.appendChild(chip);
-      }
-
-      /**
-       * removeAll
-       * 
-       * @return {Number}
-       */
-
-    }, {
-      key: 'removeAll',
-      value: function removeAll() {
-        var chips = this.container.querySelectorAll(Selector.CHIP);
-        var count = chips.length;
-
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-          for (var _iterator = chips[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var chip = _step.value;
-
-            this.container.removeChild(chip);
-          }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
-        }
-
-        return count;
-      }
-
-      /**
-       * getContainer
-       * 
-       * @return {Element}
-       */
-
-    }, {
-      key: 'getContainer',
-      value: function getContainer() {
-        return this.container;
-      }
-    }, {
-      key: 'getDefaultOption',
-      value: function getDefaultOption() {
-        return Default;
-      }
-
-      // private
-
-    }, {
-      key: '_createChip',
-      value: function _createChip(text, imgSrc, data) {
-        var chip = document.createElement(this.option.tag);
-        // base.
-        chip.classList.add(ClassName.CHIP);
-        chip.textContent = text;
-        // img.
-        if (imgSrc) {
-          chip.appendChild(this._createImg(imgSrc));
-        }
-        // dataset.
-        for (var key in data) {
-          if (key == 'href' && chip.tagName == 'A') {
-            chip.href = data[key];
-            continue;
-          }
-          chip.dataset[key] = data[key];
-        }
-        // close button.
-        if (this.option.close_button) {
-          this.button.appendBtnClose(chip);
-        }
-
-        return chip;
-      }
-    }, {
-      key: '_createImg',
-      value: function _createImg(src) {
-        var img = document.createElement('img');
-        img.src = src;
-        return img;
-      }
-    }], [{
-      key: 'name',
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return Chip;
-  }(_cosmosModule2.default);
-
-  return Chip;
-}();
-
-exports.default = Chip;
 
 /***/ })
 /******/ ]);

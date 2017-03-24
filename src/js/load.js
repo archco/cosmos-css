@@ -2,7 +2,7 @@
 import Util from './lib/util.js';
 import Color from './lib/color.js';
 import Helper from './lib/helper.js';
-// Modules.
+// Loadable Modules.
 import Scaffolding from './modules/scaffolding.js';
 import Button from './modules/button.js';
 import AjaxLoading from './modules/ajax-loading.js';
@@ -15,7 +15,7 @@ import ScrollTo from './modules/scroll-to.js';
 import Tab from './modules/tab.js';
 import Collapse from './modules/collapse.js';
 import SimpleCRUD from './modules/simple-crud.js';
-// no load modules.
+// Functional modules. - nonloadable
 import Chip from './modules/chip.js';
 
 // initialize - loading modules.

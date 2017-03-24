@@ -8,6 +8,7 @@ This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/
 - CHANGELOG.md file
 - Adding optional class ".list", ".list-group" and ".list-horizontal" in scaffolding.scss. #111
 - New Module - Button #113
+- New Module - Chip #98
 
 ### Changed
 - Tab: Adding class ".tab-content" into tab content automatically. #109
