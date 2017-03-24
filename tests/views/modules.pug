@@ -11,6 +11,8 @@ block append content
         li
           a(href='#ajaxloading') Ajax Loading
         li
+          a(href='#chip') Chip
+        li
           a(href='#collapse') Collapse
         li
           a(href='#dropdown') Dropdown
@@ -33,6 +35,8 @@ block append content
       h1(id='ajaxloading') Ajax Loading
       hr
       include includes/ajax-loading.pug
+      h1(id='chip') Chip
+      include includes/chip.pug
       h1(id='collapse') Collapse and Accordion
       hr
       include includes/collapse.pug
@@ -56,4 +60,9 @@ block append content
       h1(id='tab') Tab
       hr
       include includes/tab.pug
-  
+
+block append script
+  <script>
+  | var chip = new Cosmos.default.Chip('#chip-container', {tag: 'a'});
+  | chip.add('hello', 'https://pbs.twimg.com/profile_images/733999363911864322/Ti5bx_9B_400x400.jpg', {id:1, href:'#'});
+  </script>
