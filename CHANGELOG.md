@@ -4,6 +4,8 @@ If want to see more previous information to [Releases](https://github.com/archco
 This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/) format.
 
 ## [Unreleased]
+### Added
+- Add "locationSearchToObject()" method to Util.js #120
 
 ## [0.9.0] - 2017-03-24
 ### Added

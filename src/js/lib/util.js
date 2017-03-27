@@ -92,6 +92,19 @@ const Util = (() => {
         parent.appendChild(div);
       }
     }
+
+    static locationSearchToObject() {
+      let queries = window.location.search.substring(1).split('&');
+      let obj = {};
+
+      queries.forEach((value) => {
+        let q = value.split('=');
+        if (!q[1]) return;
+        obj[decodeURIComponent(q[0])] = decodeURIComponent(q[1]);
+      });
+
+      return obj;
+    }
   }
 
   return Util;

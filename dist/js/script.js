@@ -347,6 +347,20 @@ var Util = function () {
         }
       }
     }, {
+      key: 'locationSearchToObject',
+      value: function locationSearchToObject() {
+        var queries = window.location.search.substring(1).split('&');
+        var obj = {};
+
+        queries.forEach(function (value) {
+          var q = value.split('=');
+          if (!q[1]) return;
+          obj[decodeURIComponent(q[0])] = decodeURIComponent(q[1]);
+        });
+
+        return obj;
+      }
+    }, {
       key: 'name',
 
 
