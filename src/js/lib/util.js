@@ -15,11 +15,11 @@ const Util = (() => {
     /**
      * event on selector
      * 
-     * @param  string    selector   querySelector
-     * @param  string    type       event type
-     * @param  function  listener   event listener
-     * @param  Boolean   useCapture
-     * @return number|null
+     * @param  {String}   selector   querySelector
+     * @param  {String}   type       event type
+     * @param  {Function} listener   event listener
+     * @param  {Boolean}  useCapture
+     * @return {number|null}
      */
     static eventOnSelector(selector, type, listener, useCapture = false) {
       let elements = document.querySelectorAll(selector);
@@ -34,11 +34,14 @@ const Util = (() => {
 
     /**
      * find ancestor by selector
-     * @param element  element  current element
-     * @param string   selector
+     * 
+     * @param  {Element} element
+     * @param  {String}  selector
+     * @return {Element|null}
      */
     static findAncestor(element, selector) {
       do {
+        if(element == document.querySelector('html')) return null;
         element = element.parentElement;
       } while(!element.matches(selector));
       return element;
@@ -46,9 +49,9 @@ const Util = (() => {
 
     /**
      * wrap elements by div.wrapper
-     * @param  string  target  querySelector
-     * @param  string  wrapper wrapper's class name
-     * @return void
+     * @param  {String} target  querySelector
+     * @param  {String} wrapper wrapper's class name
+     * @return {void}
      */
     static wrap(target, wrapper) {
       var elements = document.querySelectorAll(target);
@@ -71,9 +74,9 @@ const Util = (() => {
 
     /**
      * wrap all elements inside to div.wrapper
-     * @param  string  target  querySelector
-     * @param  string  wrapper wrapper's class name
-     * @return void
+     * @param  {String}  target  querySelector
+     * @param  {String}  wrapper wrapper's class name
+     * @return {void}
      */
     static wrapAll(target, wrapper) {
       var elements = document.querySelectorAll(target);
@@ -93,6 +96,11 @@ const Util = (() => {
       }
     }
 
+    /**
+     * location.search to Object.
+     * 
+     * @return {Object}
+     */
     static locationSearchToObject() {
       let queries = window.location.search.substring(1).split('&');
       let obj = {};
