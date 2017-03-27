@@ -171,6 +171,7 @@ pre {
 code {
   padding: $code-padding;
   font-size: $code-font-size;
+  color: $code-color;
   background-color: $code-bg-color;
   border-radius: $code-border-radius;
 
@@ -182,22 +183,12 @@ code {
   }
 }
 // block code
-pre {
+pre code {
+  display: block;
   padding: $code-block-padding;
-  font-size: $code-font-size;
   line-height: $code-block-line-height;
-  background-color: $code-bg-color;
-  border-radius: $code-border-radius;
-  max-width: 100%;
+  color: $code-color;
   overflow-x: auto;
-
-  code {
-    padding: 0;
-    font-size: inherit;
-    color: inherit;
-    background-color: transparent;
-    border-radius: 0;
-  }
 }
 
 //======================================================================

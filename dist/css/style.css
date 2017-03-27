@@ -535,6 +535,7 @@ pre {
 code {
   padding: 0.15em 0.25em;
   font-size: 0.85em;
+  color: #343434;
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 4px; }
   a code {
@@ -542,20 +543,12 @@ code {
     color: inherit;
     background-color: inherit; }
 
-pre {
+pre code {
+  display: block;
   padding: 1em;
-  font-size: 0.85em;
   line-height: 1.45;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
-  max-width: 100%;
+  color: #343434;
   overflow-x: auto; }
-  pre code {
-    padding: 0;
-    font-size: inherit;
-    color: inherit;
-    background-color: transparent;
-    border-radius: 0; }
 
 article.pad,
 aside.pad,

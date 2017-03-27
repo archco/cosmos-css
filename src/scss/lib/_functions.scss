@@ -18,3 +18,13 @@
 
   @return $number;
 }
+
+// Convert RGBA color to RGB color
+// @link https://makandracards.com/makandra/42500-sass-how-to-convert-an-rgba-color-to-its-rgb-look-alike
+// 
+// @param {Color} $rgba  RGBA color
+// @param {Color} $base  background base color
+// @return {Color} RGB color
+@function rgba-to-rgb($rgba, $base: #fff) {
+  @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $base, alpha($rgba) * 100%);
+}

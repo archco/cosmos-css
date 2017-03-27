@@ -7,6 +7,9 @@ This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/
 ### Added
 - Add "locationSearchToObject()" method to Util.js #120
 
+### Changed
+- Modify "block code" style in scaffolding.scss #121 
+
 ## [0.9.0] - 2017-03-24
 ### Added
 - CHANGELOG.md file
