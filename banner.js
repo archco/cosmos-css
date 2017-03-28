@@ -1,11 +1,11 @@
 const fs = require('fs');
 const pkg = require('./package.json');
-const banner = `/*!\n` +
-` * ${pkg.name} - ${pkg.description}\n` +
-` * @version v${pkg.version}\n` +
-` * @link ${pkg.homepage}\n` +
-` * @license ${pkg.license}\n` +
-` */`;
+const banner = `/*!
+ * ${pkg.name} - ${pkg.description}
+ * @version v${pkg.version}
+ * @link ${pkg.homepage}
+ * @license ${pkg.license}
+ */`;
 const file = './src/scss/style.scss';
 
 fs.readFile(file, 'utf8', (err, data) => {

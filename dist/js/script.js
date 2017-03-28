@@ -4,7 +4,6 @@
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
-
 window["Cosmos"] =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache

@@ -1,12 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 const pkg = require('./package.json');
-const banner = `/*!\n` +
-` * ${pkg.name} - ${pkg.description}\n` +
-` * @version v${pkg.version}\n` +
-` * @link ${pkg.homepage}\n` +
-` * @license ${pkg.license}\n` +
-` */\n`;
+const banner = `/*!
+ * ${pkg.name} - ${pkg.description}
+ * @version v${pkg.version}
+ * @link ${pkg.homepage}
+ * @license ${pkg.license}
+ */`;
 
 module.exports = {
   entry: './src/js/load.js',
