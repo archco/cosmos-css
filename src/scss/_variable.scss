@@ -111,7 +111,7 @@ $table-row-hover-bg: rgba($background-color-invert, 0.1) !default;
 $code-padding: 0.15em 0.25em !default;
 $code-font-size: 0.85em !default;
 $code-bg-color: rgba($background-color-invert, 0.05) !default;
-$code-color: get-contrast(rgba-to-rgb($code-bg-color, $background-color)) !default;
+$code-color: get-contrast(rgbaToRgb($code-bg-color, $background-color)) !default;
 $code-border-radius: $radius-normal !default;
 $code-block-padding: 1em !default;
 $code-block-line-height: 1.45 !default;

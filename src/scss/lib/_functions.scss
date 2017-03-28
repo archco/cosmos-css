@@ -7,24 +7,3 @@
 @function get-contrast($color, $dark: $text-color-dark, $light: $text-color-light) {
   @return getContrast($color, $dark, $light);
 }
-
-// Remove the unit of a length
-// @param {Number} $number - Number to remove unit from
-// @return {Number} - Unitless number
-@function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
-    @return $number / ($number * 0 + 1);
-  }
-
-  @return $number;
-}
-
-// Convert RGBA color to RGB color
-// @link https://makandracards.com/makandra/42500-sass-how-to-convert-an-rgba-color-to-its-rgb-look-alike
-// 
-// @param {Color} $rgba  RGBA color
-// @param {Color} $base  background base color
-// @return {Color} RGB color
-@function rgba-to-rgb($rgba, $base: #fff) {
-  @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $base, alpha($rgba) * 100%);
-}

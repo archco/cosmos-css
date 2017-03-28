@@ -9,7 +9,7 @@
   font-size: $chip-font-size;
   height: $chip-height;
   padding: 0 $chip-size / 2;
-  line-height: strip-unit($chip-size);
+  line-height: stripUnit($chip-size);
   border-radius: $chip-size;
   margin-right: $chip-size / 4;
   margin-bottom: $chip-size / 4;

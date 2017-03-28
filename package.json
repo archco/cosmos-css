@@ -8,7 +8,7 @@
     "test": "tests"
   },
   "dependencies": {
-    "scss-palette": "^0.2.0"
+    "scss-palette": "^0.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
