@@ -2751,7 +2751,7 @@ module.exports = {
 		"test": "tests"
 	},
 	"dependencies": {
-		"scss-palette": "^0.2.0"
+		"scss-palette": "^0.2.1"
 	},
 	"devDependencies": {
 		"babel-core": "^6.23.1",
@@ -2767,6 +2767,7 @@ module.exports = {
 	},
 	"scripts": {
 		"build": "npm run dev && npm run production && npm run js-module",
+		"prebuild": "node banner.js",
 		"dev": "npm run sass && npm run pug && npm run js",
 		"watch": "node node_modules/concurrently/src/main \"npm run sass:watch\" \"npm run pug:watch\" \"npm run js:watch\"",
 		"production": "npm run sass:min && npm run js:min",

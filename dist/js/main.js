@@ -215,11 +215,11 @@ var Util = function () {
       /**
        * event on selector
        * 
-       * @param  string    selector   querySelector
-       * @param  string    type       event type
-       * @param  function  listener   event listener
-       * @param  Boolean   useCapture
-       * @return number|null
+       * @param  {String}   selector   querySelector
+       * @param  {String}   type       event type
+       * @param  {Function} listener   event listener
+       * @param  {Boolean}  useCapture
+       * @return {number|null}
        */
       value: function eventOnSelector(selector, type, listener) {
         var useCapture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
@@ -258,14 +258,17 @@ var Util = function () {
 
       /**
        * find ancestor by selector
-       * @param element  element  current element
-       * @param string   selector
+       * 
+       * @param  {Element} element
+       * @param  {String}  selector
+       * @return {Element|null}
        */
 
     }, {
       key: 'findAncestor',
       value: function findAncestor(element, selector) {
         do {
+          if (element == document.querySelector('html')) return null;
           element = element.parentElement;
         } while (!element.matches(selector));
         return element;
@@ -273,9 +276,9 @@ var Util = function () {
 
       /**
        * wrap elements by div.wrapper
-       * @param  string  target  querySelector
-       * @param  string  wrapper wrapper's class name
-       * @return void
+       * @param  {String} target  querySelector
+       * @param  {String} wrapper wrapper's class name
+       * @return {void}
        */
 
     }, {
@@ -322,9 +325,9 @@ var Util = function () {
 
       /**
        * wrap all elements inside to div.wrapper
-       * @param  string  target  querySelector
-       * @param  string  wrapper wrapper's class name
-       * @return void
+       * @param  {String}  target  querySelector
+       * @param  {String}  wrapper wrapper's class name
+       * @return {void}
        */
 
     }, {
@@ -345,6 +348,27 @@ var Util = function () {
         } else {
           parent.appendChild(div);
         }
+      }
+
+      /**
+       * location.search to Object.
+       * 
+       * @return {Object}
+       */
+
+    }, {
+      key: 'locationSearchToObject',
+      value: function locationSearchToObject() {
+        var queries = window.location.search.substring(1).split('&');
+        var obj = {};
+
+        queries.forEach(function (value) {
+          var q = value.split('=');
+          if (!q[1]) return;
+          obj[decodeURIComponent(q[0])] = decodeURIComponent(q[1]);
+        });
+
+        return obj;
       }
     }, {
       key: 'name',
@@ -2727,7 +2751,7 @@ module.exports = {
 		"test": "tests"
 	},
 	"dependencies": {
-		"scss-palette": "^0.2.0"
+		"scss-palette": "^0.2.1"
 	},
 	"devDependencies": {
 		"babel-core": "^6.23.1",
@@ -2743,6 +2767,7 @@ module.exports = {
 	},
 	"scripts": {
 		"build": "npm run dev && npm run production && npm run js-module",
+		"prebuild": "node banner.js",
 		"dev": "npm run sass && npm run pug && npm run js",
 		"watch": "node node_modules/concurrently/src/main \"npm run sass:watch\" \"npm run pug:watch\" \"npm run js:watch\"",
 		"production": "npm run sass:min && npm run js:min",
