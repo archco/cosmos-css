@@ -113,6 +113,32 @@ const Util = (() => {
 
       return obj;
     }
+
+    /**
+     * returns true if 'big' contains 'small'.
+     * 
+     * @param  {mixed}  big
+     * @param  {mixed}  small
+     * @return {Boolean}
+     */
+    static isContains(big, small) {
+      if (typeof big !== typeof small) return false;
+
+      if (Array.isArray(big) && Array.isArray(small)) {
+        let correct = 0;
+        big.forEach((v) => {
+          if (small.includes(v)) correct++;
+        });
+        return correct == small.length;
+      } else if (typeof small === 'object' && Object(small) === small) {
+        for (let p in small) {
+          if (!(p in big && this.isContains(big[p], small[p]))) return false;
+        }
+        return true;
+      } else {
+        return big === small;
+      }
+    }
   }
 
   return Util;
