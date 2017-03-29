@@ -192,6 +192,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -358,7 +360,20 @@ var Util = function () {
     }, {
       key: 'locationSearchToObject',
       value: function locationSearchToObject() {
-        var queries = window.location.search.substring(1).split('&');
+        return this.searchToObject(window.location.search);
+      }
+
+      /**
+       * searchToObject
+       * 
+       * @param  {String} search [HTMLAnchorElement.search]
+       * @return {Object}
+       */
+
+    }, {
+      key: 'searchToObject',
+      value: function searchToObject(search) {
+        var queries = search.substring(1).split('&');
         var obj = {};
 
         queries.forEach(function (value) {
@@ -368,6 +383,41 @@ var Util = function () {
         });
 
         return obj;
+      }
+
+      /**
+       * returns true if 'big' contains 'small'.
+       * 
+       * @param  {mixed}  big
+       * @param  {mixed}  small
+       * @return {Boolean}
+       */
+
+    }, {
+      key: 'isContains',
+      value: function isContains(big, small) {
+        if ((typeof big === 'undefined' ? 'undefined' : _typeof(big)) !== (typeof small === 'undefined' ? 'undefined' : _typeof(small))) return false;
+
+        if (Array.isArray(big) && Array.isArray(small)) {
+          var _ret = function () {
+            var correct = 0;
+            big.forEach(function (v) {
+              if (small.includes(v)) correct++;
+            });
+            return {
+              v: correct == small.length
+            };
+          }();
+
+          if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+        } else if ((typeof small === 'undefined' ? 'undefined' : _typeof(small)) === 'object' && Object(small) === small) {
+          for (var p in small) {
+            if (!(p in big && this.isContains(big[p], small[p]))) return false;
+          }
+          return true;
+        } else {
+          return big === small;
+        }
       }
     }, {
       key: 'name',
@@ -1936,7 +1986,7 @@ var Nav = function () {
       value: function init() {
         _util2.default.eventOnSelector(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
 
-        this._activator(Selector.USE_ACTIVATOR);
+        this.activator(Selector.USE_ACTIVATOR);
 
         // handle jQuery slide style.
         $(window).resize(function () {
@@ -1948,25 +1998,30 @@ var Nav = function () {
         });
       }
 
-      // private
+      /**
+       * activator
+       * 
+       * @param  string selector  menu selector string
+       * @return void
+       */
 
     }, {
-      key: '_toggleHandler',
-      value: function _toggleHandler(event) {
-        var t = event.currentTarget;
-        var nav = t.parentNode.parentNode;
-        // toggle button class change.
-        t.classList.toggle(ClassName.CHANGE);
-        // menu slide (use jQuery)
+      key: 'activator',
+      value: function activator(selector) {
+        var links = document.querySelectorAll(selector + ' a');
+        if (links.length == 0) return;
+
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
         var _iteratorError = undefined;
 
         try {
-          for (var _iterator = MenuGroups[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var m = _step.value;
+          for (var _iterator = links[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var a = _step.value;
 
-            $(nav).find(m).slideToggle();
+            if (compareWithLocation(a)) {
+              a.parentNode.classList.add('active');
+            }
           }
         } catch (err) {
           _didIteratorError = true;
@@ -1982,35 +2037,49 @@ var Nav = function () {
             }
           }
         }
+
+        function compareWithLocation(anchor) {
+          var l = {
+            path: lastTerm(document.location.pathname),
+            query: _util2.default.locationSearchToObject()
+          };
+          var a = {
+            path: lastTerm(anchor.pathname),
+            query: _util2.default.searchToObject(anchor.search),
+            hash: anchor.hash
+          };
+
+          if (l.path == a.path) {
+            if (!a.query || _util2.default.isContains(l.query, a.query)) return true;
+          }
+
+          return false;
+        }
+
+        function lastTerm(string) {
+          return string.substr(string.lastIndexOf("/"));
+        }
       }
 
-      /**
-       * _activator (beta version)
-       * @param  string  selector
-       * @return void
-       */
+      // private
 
     }, {
-      key: '_activator',
-      value: function _activator(selector) {
-        var links = document.querySelectorAll(selector + ' a');
-        if (links.length == 0) {
-          return;
-        }
-        var l = document.location.pathname;
-
+      key: '_toggleHandler',
+      value: function _toggleHandler(event) {
+        var t = event.currentTarget;
+        var nav = t.parentNode.parentNode;
+        // toggle button class change.
+        t.classList.toggle(ClassName.CHANGE);
+        // menu slide (use jQuery)
         var _iteratorNormalCompletion2 = true;
         var _didIteratorError2 = false;
         var _iteratorError2 = undefined;
 
         try {
-          for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-            var a = _step2.value;
+          for (var _iterator2 = MenuGroups[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var m = _step2.value;
 
-            if (lastTerm(l) == lastTerm(a.href)) {
-              //console.log(lastTerm(l), lastTerm(a.href));
-              a.parentNode.classList.add('active');
-            }
+            $(nav).find(m).slideToggle();
           }
         } catch (err) {
           _didIteratorError2 = true;
@@ -2025,10 +2094,6 @@ var Nav = function () {
               throw _iteratorError2;
             }
           }
-        }
-
-        function lastTerm(string) {
-          return string.substr(string.lastIndexOf("/"));
         }
       }
     }], [{

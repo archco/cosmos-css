@@ -39,7 +39,7 @@ const Nav = (() => {
     init() {
       Util.eventOnSelector(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
 
-      this._activator(Selector.USE_ACTIVATOR);
+      this.activator(Selector.USE_ACTIVATOR);
       
       // handle jQuery slide style.
       $(window).resize(function () {
@@ -49,6 +49,45 @@ const Nav = (() => {
           menu.removeAttr('style');
         }
       });
+    }
+
+    /**
+     * activator
+     * 
+     * @param  string selector  menu selector string
+     * @return void
+     */
+    activator(selector) {
+      let links = document.querySelectorAll(selector + ' a');
+      if (links.length == 0) return;
+      
+      for (let a of links) {
+        if (compareWithLocation(a)) {
+          a.parentNode.classList.add('active');
+        }
+      }
+
+      function compareWithLocation(anchor) {
+        let l = {
+          path: lastTerm(document.location.pathname),
+          query: Util.locationSearchToObject()
+        };
+        let a = {
+          path: lastTerm(anchor.pathname),
+          query: Util.searchToObject(anchor.search),
+          hash: anchor.hash
+        };
+        
+        if (l.path == a.path) {
+          if (!a.query || Util.isContains(l.query, a.query)) return true;
+        }
+        
+        return false;
+      }
+
+      function lastTerm(string) {
+        return string.substr(string.lastIndexOf("/"));
+      }
     }
 
     // private
@@ -61,28 +100,6 @@ const Nav = (() => {
       // menu slide (use jQuery)
       for (let m of MenuGroups) {
         $(nav).find(m).slideToggle();
-      }
-    }
-
-    /**
-     * _activator (beta version)
-     * @param  string  selector
-     * @return void
-     */
-    _activator(selector) {
-      let links = document.querySelectorAll(selector + ' a');
-      if (links.length == 0) { return; }
-      let l = document.location.pathname;
-      
-      for (let a of links) {
-        if (lastTerm(l) == lastTerm(a.href)) {
-          //console.log(lastTerm(l), lastTerm(a.href));
-          a.parentNode.classList.add('active');
-        }
-      }
-
-      function lastTerm(string) {
-        return string.substr(string.lastIndexOf("/"));
       }
     }
   }

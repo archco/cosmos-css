@@ -102,7 +102,17 @@ const Util = (() => {
      * @return {Object}
      */
     static locationSearchToObject() {
-      let queries = window.location.search.substring(1).split('&');
+      return this.searchToObject(window.location.search);
+    }
+
+    /**
+     * searchToObject
+     * 
+     * @param  {String} search [HTMLAnchorElement.search]
+     * @return {Object}
+     */
+    static searchToObject(search) {
+      let queries = search.substring(1).split('&');
       let obj = {};
 
       queries.forEach((value) => {
