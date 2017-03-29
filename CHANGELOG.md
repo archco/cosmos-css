@@ -4,11 +4,18 @@ If want to see more previous information to [Releases](https://github.com/archco
 This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/) format.
 
 ## [Unreleased]
+
+## [0.9.1] - 2017-03-29
 ### Added
-- Add "locationSearchToObject()" method to Util.js #120
+- Add "locationSearchToObject()" and "searchToObject()" method to Util.js #120
+- Add "isContains()" method to Util.js
 
 ### Changed
 - Modify "block code" style in scaffolding.scss #121 
+- Improve Nav - activator #119
+
+### Fixed
+- Fix Badge's link color problem #118
 
 ## [0.9.0] - 2017-03-24
 ### Added
@@ -48,7 +55,8 @@ import { Util, Color } from 'cosmos-css'; // import member.
 ### Fixed
 - Underline problem in link as btn in table. #101
 
-[Unreleased]: https://github.com/archco/cosmos-css/compare/v0.9.0...master
+[Unreleased]: https://github.com/archco/cosmos-css/compare/v0.9.1...master
+[0.9.1]: https://github.com/archco/cosmos-css/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/archco/cosmos-css/compare/v0.8.4...v0.9.0
 [0.8.4]: https://github.com/archco/cosmos-css/compare/v0.8.0...v0.8.4
 [0.8.0]: https://github.com/archco/cosmos-css/compare/v0.7.0...v0.8.0

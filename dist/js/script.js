@@ -1,6 +1,6 @@
 /*!
  * cosmos-css - The css framework for personal practice.
- * @version v0.9.0
+ * @version v0.9.1
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
@@ -2813,7 +2813,7 @@ exports.default = Tab;
 
 module.exports = {
 	"name": "cosmos-css",
-	"version": "0.9.0",
+	"version": "0.9.1",
 	"description": "The css framework for personal practice.",
 	"main": "dist/js/main.js",
 	"sass": "src/scss/style.scss",
