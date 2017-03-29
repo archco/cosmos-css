@@ -12,6 +12,24 @@
   }
 }
 
+// set link state color
+@mixin setLinkStateColor($link, $visited: null, $hover: null, $active: null) {
+  &,
+  &:link {
+    color: $link;
+  }
+  &:visited {
+    color: if($visited, $visited, $link);
+  }
+  &:hover,
+  &:focus {
+    color: if($hover, $hover, $link);
+  }
+  &:active {
+    color: if($active, $active, $link);
+  }
+}
+
 //======================================================================
 // Form
 //======================================================================
@@ -263,17 +281,20 @@
 //======================================================================
 // Badge
 //======================================================================
-@mixin badgeColor($color) {
-  background-color: $color;
-  color: get-contrast($color);
+@mixin badgeColor($bg-color) {
+  $color: get-contrast($bg-color);
+  color: $color;
+  background-color: $bg-color;
 
   &[href] {
+    @include setLinkStateColor($color);
+
     &:hover,
     &:focus {
-      background-color: lighten($color, 4%);
+      background-color: lighten($bg-color, 4%);
     }
     &:active {
-      background-color: darken($color, 4%);
+      background-color: darken($bg-color, 4%);
     }
   }
 }

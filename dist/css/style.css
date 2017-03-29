@@ -455,12 +455,16 @@ img {
   height: auto; }
 
 a {
-  color: #0087BD;
   text-decoration: none; }
+  a, a:link {
+    color: #0087BD; }
   a:visited {
     color: #0087BD; }
   a:hover, a:focus {
-    color: #006a94;
+    color: #006a94; }
+  a:active {
+    color: #0087BD; }
+  a:hover, a:focus {
     text-decoration: underline; }
 
 a.no-deco {
@@ -1173,57 +1177,121 @@ nav.navbar .dropdown ul.dropdown-content > li.active > a {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 2px;
-  background-color: #9a9a9a;
-  color: #FFFFFF; }
+  color: #FFFFFF;
+  background-color: #9a9a9a; }
+  .badge[href], .badge[href]:link {
+    color: #FFFFFF; }
+  .badge[href]:visited {
+    color: #FFFFFF; }
+  .badge[href]:hover, .badge[href]:focus {
+    color: #FFFFFF; }
+  .badge[href]:active {
+    color: #FFFFFF; }
   .badge[href]:hover, .badge[href]:focus {
     background-color: #a4a4a4; }
   .badge[href]:active {
     background-color: #909090; }
   .badge.primary {
-    background-color: #0087BD;
-    color: #FFFFFF; }
+    color: #FFFFFF;
+    background-color: #0087BD; }
+    .badge.primary[href], .badge.primary[href]:link {
+      color: #FFFFFF; }
+    .badge.primary[href]:visited {
+      color: #FFFFFF; }
+    .badge.primary[href]:hover, .badge.primary[href]:focus {
+      color: #FFFFFF; }
+    .badge.primary[href]:active {
+      color: #FFFFFF; }
     .badge.primary[href]:hover, .badge.primary[href]:focus {
       background-color: #0096d1; }
     .badge.primary[href]:active {
       background-color: #0078a9; }
   .badge.secondary {
-    background-color: #91A3B0;
-    color: #FFFFFF; }
+    color: #FFFFFF;
+    background-color: #91A3B0; }
+    .badge.secondary[href], .badge.secondary[href]:link {
+      color: #FFFFFF; }
+    .badge.secondary[href]:visited {
+      color: #FFFFFF; }
+    .badge.secondary[href]:hover, .badge.secondary[href]:focus {
+      color: #FFFFFF; }
+    .badge.secondary[href]:active {
+      color: #FFFFFF; }
     .badge.secondary[href]:hover, .badge.secondary[href]:focus {
       background-color: #9dadb9; }
     .badge.secondary[href]:active {
       background-color: #8599a7; }
   .badge.info {
-    background-color: #008080;
-    color: #FFFFFF; }
+    color: #FFFFFF;
+    background-color: #008080; }
+    .badge.info[href], .badge.info[href]:link {
+      color: #FFFFFF; }
+    .badge.info[href]:visited {
+      color: #FFFFFF; }
+    .badge.info[href]:hover, .badge.info[href]:focus {
+      color: #FFFFFF; }
+    .badge.info[href]:active {
+      color: #FFFFFF; }
     .badge.info[href]:hover, .badge.info[href]:focus {
       background-color: #009494; }
     .badge.info[href]:active {
       background-color: #006c6c; }
   .badge.success {
-    background-color: #00A550;
-    color: #FFFFFF; }
+    color: #FFFFFF;
+    background-color: #00A550; }
+    .badge.success[href], .badge.success[href]:link {
+      color: #FFFFFF; }
+    .badge.success[href]:visited {
+      color: #FFFFFF; }
+    .badge.success[href]:hover, .badge.success[href]:focus {
+      color: #FFFFFF; }
+    .badge.success[href]:active {
+      color: #FFFFFF; }
     .badge.success[href]:hover, .badge.success[href]:focus {
       background-color: #00b95a; }
     .badge.success[href]:active {
       background-color: #009146; }
   .badge.warning {
-    background-color: #FFD300;
-    color: #343434; }
+    color: #343434;
+    background-color: #FFD300; }
+    .badge.warning[href], .badge.warning[href]:link {
+      color: #343434; }
+    .badge.warning[href]:visited {
+      color: #343434; }
+    .badge.warning[href]:hover, .badge.warning[href]:focus {
+      color: #343434; }
+    .badge.warning[href]:active {
+      color: #343434; }
     .badge.warning[href]:hover, .badge.warning[href]:focus {
       background-color: #ffd714; }
     .badge.warning[href]:active {
       background-color: #ebc200; }
   .badge.danger {
-    background-color: #E23D28;
-    color: #FFFFFF; }
+    color: #FFFFFF;
+    background-color: #E23D28; }
+    .badge.danger[href], .badge.danger[href]:link {
+      color: #FFFFFF; }
+    .badge.danger[href]:visited {
+      color: #FFFFFF; }
+    .badge.danger[href]:hover, .badge.danger[href]:focus {
+      color: #FFFFFF; }
+    .badge.danger[href]:active {
+      color: #FFFFFF; }
     .badge.danger[href]:hover, .badge.danger[href]:focus {
       background-color: #e44d3a; }
     .badge.danger[href]:active {
       background-color: #d8321d; }
   .badge.error {
-    background-color: #E23D28;
-    color: #FFFFFF; }
+    color: #FFFFFF;
+    background-color: #E23D28; }
+    .badge.error[href], .badge.error[href]:link {
+      color: #FFFFFF; }
+    .badge.error[href]:visited {
+      color: #FFFFFF; }
+    .badge.error[href]:hover, .badge.error[href]:focus {
+      color: #FFFFFF; }
+    .badge.error[href]:active {
+      color: #FFFFFF; }
     .badge.error[href]:hover, .badge.error[href]:focus {
       background-color: #e44d3a; }
     .badge.error[href]:active {

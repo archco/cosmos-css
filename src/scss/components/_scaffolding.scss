@@ -55,16 +55,11 @@ img {
 
 // link
 a {
-  color: $link-color;
+  @include setLinkStateColor($link-color, $link-color-visited, $link-color-hover);
   text-decoration: $link-decoration;
-
-  &:visited {
-    color: $link-color-visited;
-  }
 
   &:hover,
   &:focus {
-    color: $link-color-hover;
     text-decoration: $link-hover-decoration;
   }
 }
