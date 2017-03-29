@@ -99,7 +99,7 @@ const Util = (() => {
     /**
      * location.search to Object.
      * 
-     * @return {Object}
+     * @return {Object|null}
      */
     static locationSearchToObject() {
       return this.searchToObject(window.location.search);
@@ -109,9 +109,11 @@ const Util = (() => {
      * searchToObject
      * 
      * @param  {String} search [HTMLAnchorElement.search]
-     * @return {Object}
+     * @return {Object|null}
      */
     static searchToObject(search) {
+      if (search == '') return null;
+
       let queries = search.substring(1).split('&');
       let obj = {};
 
@@ -140,7 +142,7 @@ const Util = (() => {
           if (small.includes(v)) correct++;
         });
         return correct == small.length;
-      } else if (typeof small === 'object' && Object(small) === small) {
+      } else if (Object(big) === big && Object(small) === small) {
         for (let p in small) {
           if (!(p in big && this.isContains(big[p], small[p]))) return false;
         }

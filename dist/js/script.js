@@ -354,7 +354,7 @@ var Util = function () {
       /**
        * location.search to Object.
        * 
-       * @return {Object}
+       * @return {Object|null}
        */
 
     }, {
@@ -367,12 +367,14 @@ var Util = function () {
        * searchToObject
        * 
        * @param  {String} search [HTMLAnchorElement.search]
-       * @return {Object}
+       * @return {Object|null}
        */
 
     }, {
       key: 'searchToObject',
       value: function searchToObject(search) {
+        if (search == '') return null;
+
         var queries = search.substring(1).split('&');
         var obj = {};
 
@@ -410,7 +412,7 @@ var Util = function () {
           }();
 
           if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
-        } else if ((typeof small === 'undefined' ? 'undefined' : _typeof(small)) === 'object' && Object(small) === small) {
+        } else if (Object(big) === big && Object(small) === small) {
           for (var p in small) {
             if (!(p in big && this.isContains(big[p], small[p]))) return false;
           }
@@ -2045,9 +2047,13 @@ var Nav = function () {
           };
           var a = {
             path: lastTerm(anchor.pathname),
-            query: _util2.default.searchToObject(anchor.search),
-            hash: anchor.hash
+            query: _util2.default.searchToObject(anchor.search)
           };
+
+          if (anchor.getAttribute('href') == '#') {
+            // sample link (e.g. <a href="#">)
+            return false;
+          }
 
           if (l.path == a.path) {
             if (!a.query || _util2.default.isContains(l.query, a.query)) return true;

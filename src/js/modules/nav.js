@@ -74,10 +74,14 @@ const Nav = (() => {
         };
         let a = {
           path: lastTerm(anchor.pathname),
-          query: Util.searchToObject(anchor.search),
-          hash: anchor.hash
+          query: Util.searchToObject(anchor.search)
         };
         
+        if (anchor.getAttribute('href') == '#') {
+          // sample link (e.g. <a href="#">)
+          return false;
+        }
+
         if (l.path == a.path) {
           if (!a.query || Util.isContains(l.query, a.query)) return true;
         }
