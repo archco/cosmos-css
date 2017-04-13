@@ -401,17 +401,11 @@ var Util = function () {
         if ((typeof big === 'undefined' ? 'undefined' : _typeof(big)) !== (typeof small === 'undefined' ? 'undefined' : _typeof(small))) return false;
 
         if (Array.isArray(big) && Array.isArray(small)) {
-          var _ret = function () {
-            var correct = 0;
-            big.forEach(function (v) {
-              if (small.includes(v)) correct++;
-            });
-            return {
-              v: correct == small.length
-            };
-          }();
-
-          if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+          var correct = 0;
+          big.forEach(function (v) {
+            if (small.includes(v)) correct++;
+          });
+          return correct == small.length;
         } else if (Object(big) === big && Object(small) === small) {
           for (var p in small) {
             if (!(p in big && this.isContains(big[p], small[p]))) return false;
@@ -2815,7 +2809,7 @@ module.exports = {
 	"name": "cosmos-css",
 	"version": "0.9.1",
 	"description": "The css framework for personal practice.",
-	"main": "dist/js/main.js",
+	"main": "dist/module/cosmos.js",
 	"sass": "src/scss/style.scss",
 	"directories": {
 		"test": "tests"
@@ -2824,8 +2818,10 @@ module.exports = {
 		"scss-palette": "^0.2.1"
 	},
 	"devDependencies": {
+		"babel-cli": "^6.24.1",
 		"babel-core": "^6.23.1",
 		"babel-loader": "^6.3.2",
+		"babel-preset-env": "^1.3.3",
 		"babel-preset-es2015": "^6.22.0",
 		"concurrently": "^3.3.0",
 		"eslint": "^3.12.1",
@@ -2850,7 +2846,7 @@ module.exports = {
 		"js": "node node_modules/webpack/bin/webpack",
 		"js:min": "npm run js -- --optimize-minimize --output-filename script.min.js --devtool false",
 		"js:watch": "npm run js -- --watch",
-		"js-module": "node node_modules/webpack/bin/webpack --output-filename main.js --output-library-target commonjs-module"
+		"js-module": "node node_modules/babel-cli/bin/babel src/js -d dist/module"
 	},
 	"repository": {
 		"type": "git",
@@ -2943,6 +2939,13 @@ var _chip2 = _interopRequireDefault(_chip);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // initialize - loading modules.
+/*!
+ * cosmos-css - The css framework for personal practice.
+ * @version v0.9.1
+ * @link https://github.com/archco/cosmos-css#readme
+ * @license MIT
+ */
+
 // Libraries.
 _scaffolding2.default.load();
 // Functional modules. - nonloadable
