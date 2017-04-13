@@ -2,7 +2,7 @@
   "name": "cosmos-css",
   "version": "0.9.1",
   "description": "The css framework for personal practice.",
-  "main": "src/js/cosmos.js",
+  "main": "dist/module/cosmos.js",
   "sass": "src/scss/style.scss",
   "directories": {
     "test": "tests"
@@ -11,8 +11,10 @@
     "scss-palette": "^0.2.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
+    "babel-preset-env": "^1.3.3",
     "babel-preset-es2015": "^6.22.0",
     "concurrently": "^3.3.0",
     "eslint": "^3.12.1",
@@ -37,7 +39,7 @@
     "js": "node node_modules/webpack/bin/webpack",
     "js:min": "npm run js -- --optimize-minimize --output-filename script.min.js --devtool false",
     "js:watch": "npm run js -- --watch",
-    "js-module": "node node_modules/webpack/bin/webpack --output-filename main.js --output-library-target commonjs-module"
+    "js-module": "node node_modules/babel-cli/bin/babel src/js -d dist/module"
   },
   "repository": {
     "type": "git",
