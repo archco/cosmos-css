@@ -4,6 +4,9 @@ If want to see more previous information to [Releases](https://github.com/archco
 This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/) format.
 
 ## [Unreleased]
+### Changed
+- Change export module target. #122
+- Change babel preset "es2015" to "env" #126
 
 ## [0.9.1] - 2017-03-29
 ### Added
