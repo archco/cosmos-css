@@ -4,73 +4,69 @@ import Util from '../lib/util.js';
 /************************************************************
   scroll-to
 *************************************************************/
-const ScrollTo = (() => {
-  const NAME = 'Cosmos.ScrollTo';
-  const Selector = {
-    TOP: '#scroll-to-top'
-  };
-  const ClassName = {
-    SHOW: 'show'
-  };
-  // default option.
-  const Default = {
-    btn_top: Selector.TOP,
-    animate_duration: 'default' // fast(200), default(400), slow(600)
-  };
+const NAME = 'Cosmos.ScrollTo';
+const Selector = {
+  TOP: '#scroll-to-top'
+};
+const ClassName = {
+  SHOW: 'show'
+};
+// default option.
+const Default = {
+  btn_top: Selector.TOP,
+  animate_duration: 'default' // fast(200), default(400), slow(600)
+};
 
-  class ScrollTo extends CosmosModule {
-    constructor(option) {
-      super(option);
-      this.btnTop = document.querySelector(this.option.btn_top);
-    }
+class ScrollTo extends CosmosModule {
+  constructor(option) {
+    super(option);
+    this.btnTop = document.querySelector(this.option.btn_top);
+  }
 
-    // static
+  // static
+  
+  static get name() {
+    return NAME;
+  }
+
+  // public
+  
+  init() {
+    if (!this.btnTop) { return; }
+
+    // scroll-to-top button listener
+    this.btnTop.addEventListener('click', () => {
+      $('html,body').animate({scrollTop: 0}, this.option.animate_duration, 'swing');
+    });
     
-    static get name() {
-      return NAME;
-    }
+    // scroll listener
+    window.addEventListener('scroll', this._scrollHandler.bind(this));
+  }
 
-    // public
-    
-    init() {
-      if (!this.btnTop) { return; }
+  getDefaultOption() {
+    return Default;
+  }
 
-      // scroll-to-top button listener
-      this.btnTop.addEventListener('click', () => {
-        $('html,body').animate({scrollTop: 0}, this.option.animate_duration, 'swing');
-      });
-      
-      // scroll listener
-      window.addEventListener('scroll', this._scrollHandler.bind(this));
-    }
+  // private
+  
+  _scrollHandler() {
+    let top = this._getScrollTop();
+    let isShow = this.btnTop.classList.contains(ClassName.SHOW);
 
-    getDefaultOption() {
-      return Default;
-    }
-
-    // private
-    
-    _scrollHandler() {
-      let top = this._getScrollTop();
-      let isShow = this.btnTop.classList.contains(ClassName.SHOW);
-
-      if (top > 500 && !isShow) {
-        this.btnTop.classList.add(ClassName.SHOW);
-      } else if (top <= 500 && isShow) {
-        this.btnTop.classList.remove(ClassName.SHOW);
-      }
-    }
-
-    _getScrollTop() {
-      return $(window).scrollTop();
-    }
-
-    _getScrollBottom() {
-      return $(document).height();
+    if (top > 500 && !isShow) {
+      this.btnTop.classList.add(ClassName.SHOW);
+    } else if (top <= 500 && isShow) {
+      this.btnTop.classList.remove(ClassName.SHOW);
     }
   }
 
-  return ScrollTo;
-})();
+  _getScrollTop() {
+    return $(window).scrollTop();
+  }
+
+  _getScrollBottom() {
+    return $(document).height();
+  }
+}
 
 export default ScrollTo;
