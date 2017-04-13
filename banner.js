@@ -6,14 +6,19 @@ const banner = `/*!
  * @link ${pkg.homepage}
  * @license ${pkg.license}
  */`;
-const file = './src/scss/style.scss';
+const files = [
+  './src/scss/style.scss',
+  './src/js/cosmos.js'
+];
 
-fs.readFile(file, 'utf8', (err, data) => {
-  if (err) throw err;
-
-  let result = data.replace(/\/\*!([\s\S]*?)\*\//, banner);
-  fs.writeFile(file, result, 'utf8', (err) => {
+files.forEach(file => {
+  fs.readFile(file, 'utf8', (err, data) => {
     if (err) throw err;
-    console.log(`Banner added to "${file}"`);
+
+    let result = data.replace(/\/\*!([\s\S]*?)\*\//, banner);
+    fs.writeFile(file, result, 'utf8', (err) => {
+      if (err) throw err;
+      console.log(`Banner added to "${file}"`);
+    });
   });
 });

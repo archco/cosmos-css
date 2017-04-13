@@ -1,3 +1,10 @@
+/*!
+ * cosmos-css - The css framework for personal practice.
+ * @version v0.9.1
+ * @link https://github.com/archco/cosmos-css#readme
+ * @license MIT
+ */
+
 // Libraries.
 import Util from './lib/util.js';
 import Color from './lib/color.js';
@@ -43,11 +50,11 @@ let version = require('../../package.json').version;
 const Cosmos = {
   name: 'cosmos-css',
   version: `v${version}`,
-  Util: Util,
-  Color: Color,
-  Helper: Helper,
-  Button: Button,
-  Chip: Chip
+  Util,
+  Color,
+  Helper,
+  Button,
+  Chip
 };
 
 export default Cosmos;

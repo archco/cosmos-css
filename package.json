@@ -2,7 +2,7 @@
   "name": "cosmos-css",
   "version": "0.9.1",
   "description": "The css framework for personal practice.",
-  "main": "dist/js/main.js",
+  "main": "src/js/cosmos.js",
   "sass": "src/scss/style.scss",
   "directories": {
     "test": "tests"

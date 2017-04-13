@@ -9,7 +9,7 @@ const banner = `/*!
  */`;
 
 module.exports = {
-  entry: './src/js/load.js',
+  entry: './src/js/cosmos.js',
   output: {
     filename: 'script.js',
     path: path.resolve(__dirname, 'dist/js/'),
