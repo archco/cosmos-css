@@ -2755,17 +2755,16 @@ module.exports = {
 	},
 	"devDependencies": {
 		"babel-cli": "^6.24.1",
-		"babel-core": "^6.23.1",
-		"babel-loader": "^6.3.2",
+		"babel-core": "^6.24.1",
+		"babel-loader": "^6.4.1",
 		"babel-preset-env": "^1.3.3",
-		"babel-preset-es2015": "^6.22.0",
-		"concurrently": "^3.3.0",
-		"eslint": "^3.12.1",
-		"jquery": "^3.1.1",
-		"node-sass": "^4.5.0",
-		"pug": "^2.0.0-beta6",
+		"concurrently": "^3.4.0",
+		"eslint": "^3.19.0",
+		"jquery": "^3.2.1",
+		"node-sass": "^4.5.2",
+		"pug": "^2.0.0-beta11",
 		"pug-cli": "^1.0.0-alpha6",
-		"webpack": "^2.2.1"
+		"webpack": "^2.3.3"
 	},
 	"scripts": {
 		"build": "npm run dev && npm run production && npm run js-module",
