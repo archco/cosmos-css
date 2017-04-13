@@ -25,212 +25,208 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Tab
 *************************************************************/
-var Tab = function () {
-  var NAME = 'Cosmos.Tab';
-  var ClassName = {
-    TAB: 'tab',
-    LINK: 'tab-link',
-    CONTENT: 'tab-content',
-    SHOW: 'show',
-    ACTIVE: 'active',
-    FADE: 'fade',
-    EFFECT_FADE: 'tab-fade-effect'
-  };
-  var Selector = {
-    TAB: '.' + ClassName.TAB,
-    LINK: '.' + ClassName.LINK,
-    CONTENT: '.' + ClassName.CONTENT
-  };
+var NAME = 'Cosmos.Tab';
+var ClassName = {
+  TAB: 'tab',
+  LINK: 'tab-link',
+  CONTENT: 'tab-content',
+  SHOW: 'show',
+  ACTIVE: 'active',
+  FADE: 'fade',
+  EFFECT_FADE: 'tab-fade-effect'
+};
+var Selector = {
+  TAB: '.' + ClassName.TAB,
+  LINK: '.' + ClassName.LINK,
+  CONTENT: '.' + ClassName.CONTENT
+};
 
-  var Tab = function (_CosmosModule) {
-    _inherits(Tab, _CosmosModule);
+var Tab = function (_CosmosModule) {
+  _inherits(Tab, _CosmosModule);
 
-    function Tab() {
-      _classCallCheck(this, Tab);
+  function Tab() {
+    _classCallCheck(this, Tab);
 
-      return _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).apply(this, arguments));
+  }
+
+  _createClass(Tab, [{
+    key: 'init',
+
+
+    // public
+
+    value: function init() {
+      // add event handler on links.
+      _util2.default.eventOnSelector(Selector.LINK, 'click', this._tabHandle.bind(this));
+
+      // initialize tabs.
+      var tabs = this._getTabs();
+      if (tabs.length > 0) {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = tabs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var t = _step.value;
+
+            this._loadTab(t);
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+      }
+    }
+  }, {
+    key: 'setDefault',
+    value: function setDefault(linkIndex) {
+      var _this2 = this;
+
+      var tabIndex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (tabIndex == null) {
+        // all tabs.
+        var tabs = this._getTabs();
+        tabs.forEach(function (e, i, a) {
+          _this2._default(linkIndex, i);
+        });
+      } else {
+        this._default(linkIndex, tabIndex);
+      }
     }
 
-    _createClass(Tab, [{
-      key: 'init',
+    // private
 
+  }, {
+    key: '_tabHandle',
+    value: function _tabHandle(event) {
+      var a = event.currentTarget;
+      var tab = _util2.default.findAncestor(a, Selector.TAB);
+      var links = tab.querySelectorAll(Selector.LINK);
+      var content = this._getContent(a);
 
-      // public
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
 
-      value: function init() {
-        // add event handler on links.
-        _util2.default.eventOnSelector(Selector.LINK, 'click', this._tabHandle.bind(this));
+      try {
+        for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var l = _step2.value;
 
-        // initialize tabs.
-        var tabs = this._getTabs();
-        if (tabs.length > 0) {
-          var _iteratorNormalCompletion = true;
-          var _didIteratorError = false;
-          var _iteratorError = undefined;
-
-          try {
-            for (var _iterator = tabs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-              var t = _step.value;
-
-              this._loadTab(t);
-            }
-          } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-          } finally {
-            try {
-              if (!_iteratorNormalCompletion && _iterator.return) {
-                _iterator.return();
-              }
-            } finally {
-              if (_didIteratorError) {
-                throw _iteratorError;
-              }
-            }
-          }
+          // content hide
+          var c = this._getContent(l);
+          c.classList.remove(ClassName.SHOW);
+          // remove link.active
+          l.classList.remove(ClassName.ACTIVE);
         }
-      }
-    }, {
-      key: 'setDefault',
-      value: function setDefault(linkIndex) {
-        var _this2 = this;
-
-        var tabIndex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-        if (tabIndex == null) {
-          // all tabs.
-          var tabs = this._getTabs();
-          tabs.forEach(function (e, i, a) {
-            _this2._default(linkIndex, i);
-          });
-        } else {
-          this._default(linkIndex, tabIndex);
-        }
-      }
-
-      // private
-
-    }, {
-      key: '_tabHandle',
-      value: function _tabHandle(event) {
-        var a = event.currentTarget;
-        var tab = _util2.default.findAncestor(a, Selector.TAB);
-        var links = tab.querySelectorAll(Selector.LINK);
-        var content = this._getContent(a);
-
-        var _iteratorNormalCompletion2 = true;
-        var _didIteratorError2 = false;
-        var _iteratorError2 = undefined;
-
+        // active and show content.
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
         try {
-          for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-            var l = _step2.value;
-
-            // content hide
-            var c = this._getContent(l);
-            c.classList.remove(ClassName.SHOW);
-            // remove link.active
-            l.classList.remove(ClassName.ACTIVE);
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
           }
-          // active and show content.
-        } catch (err) {
-          _didIteratorError2 = true;
-          _iteratorError2 = err;
         } finally {
-          try {
-            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-              _iterator2.return();
-            }
-          } finally {
-            if (_didIteratorError2) {
-              throw _iteratorError2;
-            }
+          if (_didIteratorError2) {
+            throw _iteratorError2;
           }
         }
-
-        a.classList.add(ClassName.ACTIVE);
-        content.classList.add(ClassName.SHOW);
-        event.preventDefault();
       }
-    }, {
-      key: '_extractID',
-      value: function _extractID(str) {
-        var result = /([#])\S+/.exec(str);
 
-        return result == null ? null : result[0];
+      a.classList.add(ClassName.ACTIVE);
+      content.classList.add(ClassName.SHOW);
+      event.preventDefault();
+    }
+  }, {
+    key: '_extractID',
+    value: function _extractID(str) {
+      var result = /([#])\S+/.exec(str);
+
+      return result == null ? null : result[0];
+    }
+  }, {
+    key: '_getContent',
+    value: function _getContent(link) {
+      var c = document.querySelector(this._extractID(link.href));
+      if (c && !c.classList.contains(ClassName.CONTENT)) {
+        c.classList.add(ClassName.CONTENT);
       }
-    }, {
-      key: '_getContent',
-      value: function _getContent(link) {
-        var c = document.querySelector(this._extractID(link.href));
-        if (c && !c.classList.contains(ClassName.CONTENT)) {
-          c.classList.add(ClassName.CONTENT);
+      return c;
+    }
+  }, {
+    key: '_getTabs',
+    value: function _getTabs() {
+      return document.querySelectorAll(Selector.TAB);
+    }
+  }, {
+    key: '_loadTab',
+    value: function _loadTab(tab) {
+      var links = tab.querySelectorAll(Selector.LINK);
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
+
+      try {
+        for (var _iterator3 = links[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var l = _step3.value;
+
+          // set default.
+          if (l.classList.contains(ClassName.ACTIVE)) {
+            l.click();
+          }
+          // tab fade effect.
+          if (tab.classList.contains(ClassName.FADE)) {
+            this._getContent(l).classList.add(ClassName.EFFECT_FADE);
+          }
         }
-        return c;
-      }
-    }, {
-      key: '_getTabs',
-      value: function _getTabs() {
-        return document.querySelectorAll(Selector.TAB);
-      }
-    }, {
-      key: '_loadTab',
-      value: function _loadTab(tab) {
-        var links = tab.querySelectorAll(Selector.LINK);
-        var _iteratorNormalCompletion3 = true;
-        var _didIteratorError3 = false;
-        var _iteratorError3 = undefined;
-
+      } catch (err) {
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
+      } finally {
         try {
-          for (var _iterator3 = links[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-            var l = _step3.value;
-
-            // set default.
-            if (l.classList.contains(ClassName.ACTIVE)) {
-              l.click();
-            }
-            // tab fade effect.
-            if (tab.classList.contains(ClassName.FADE)) {
-              this._getContent(l).classList.add(ClassName.EFFECT_FADE);
-            }
+          if (!_iteratorNormalCompletion3 && _iterator3.return) {
+            _iterator3.return();
           }
-        } catch (err) {
-          _didIteratorError3 = true;
-          _iteratorError3 = err;
         } finally {
-          try {
-            if (!_iteratorNormalCompletion3 && _iterator3.return) {
-              _iterator3.return();
-            }
-          } finally {
-            if (_didIteratorError3) {
-              throw _iteratorError3;
-            }
+          if (_didIteratorError3) {
+            throw _iteratorError3;
           }
         }
       }
-    }, {
-      key: '_default',
-      value: function _default(linkIndex, tabIndex) {
-        var tab = this._getTabs()[tabIndex];
-        var link = tab.querySelectorAll(Selector.LINK)[linkIndex];
-        link.click();
-      }
-    }], [{
-      key: 'name',
+    }
+  }, {
+    key: '_default',
+    value: function _default(linkIndex, tabIndex) {
+      var tab = this._getTabs()[tabIndex];
+      var link = tab.querySelectorAll(Selector.LINK)[linkIndex];
+      link.click();
+    }
+  }], [{
+    key: 'name',
 
 
-      // static
+    // static
 
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return Tab;
-  }(_cosmosModule2.default);
+    get: function get() {
+      return NAME;
+    }
+  }]);
 
   return Tab;
-}();
+}(_cosmosModule2.default);
 
 exports.default = Tab;

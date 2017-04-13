@@ -25,220 +25,216 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
     Collapse
 *************************************************************/
-var Collapse = function () {
-  var NAME = 'Cosmos.Collapse';
-  var ClassName = {
-    TOGGLE: 'collapse-toggle',
-    PANNEL: 'collapse-panel',
-    ACTIVE: 'active',
-    SHOW: 'show',
-    ACCORDION: 'accordion',
-    A_HEAD: 'accordion-head',
-    A_BODY: 'accordion-body'
-  };
-  var Selector = {
-    TOGGLE: '.' + ClassName.TOGGLE,
-    ACCORDION: '.' + ClassName.ACCORDION,
-    A_HEAD: '.' + ClassName.ACCORDION + ' .' + ClassName.A_HEAD,
-    C_ACTIVE: '.' + ClassName.TOGGLE + '.' + ClassName.ACTIVE,
-    A_ACTIVE: '.' + ClassName.ACCORDION + ' .' + ClassName.A_HEAD + '.' + ClassName.ACTIVE
-  };
+var NAME = 'Cosmos.Collapse';
+var ClassName = {
+  TOGGLE: 'collapse-toggle',
+  PANNEL: 'collapse-panel',
+  ACTIVE: 'active',
+  SHOW: 'show',
+  ACCORDION: 'accordion',
+  A_HEAD: 'accordion-head',
+  A_BODY: 'accordion-body'
+};
+var Selector = {
+  TOGGLE: '.' + ClassName.TOGGLE,
+  ACCORDION: '.' + ClassName.ACCORDION,
+  A_HEAD: '.' + ClassName.ACCORDION + ' .' + ClassName.A_HEAD,
+  C_ACTIVE: '.' + ClassName.TOGGLE + '.' + ClassName.ACTIVE,
+  A_ACTIVE: '.' + ClassName.ACCORDION + ' .' + ClassName.A_HEAD + '.' + ClassName.ACTIVE
+};
 
-  var Collapse = function (_CosmosModule) {
-    _inherits(Collapse, _CosmosModule);
+var Collapse = function (_CosmosModule) {
+  _inherits(Collapse, _CosmosModule);
 
-    function Collapse() {
-      _classCallCheck(this, Collapse);
+  function Collapse() {
+    _classCallCheck(this, Collapse);
 
-      return _possibleConstructorReturn(this, (Collapse.__proto__ || Object.getPrototypeOf(Collapse)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Collapse.__proto__ || Object.getPrototypeOf(Collapse)).apply(this, arguments));
+  }
+
+  _createClass(Collapse, [{
+    key: 'init',
+
+
+    // public
+
+    value: function init() {
+      // collapse toggle listener
+      _util2.default.eventOnSelector(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
+      // accordion head listener
+      _util2.default.eventOnSelector(Selector.A_HEAD, 'click', this._headClickHandler.bind(this));
+      // Handle on activated collapse and accordion.
+      this._activatedCollapse();
+      this._activatedAccordion();
     }
 
-    _createClass(Collapse, [{
-      key: 'init',
+    // private
 
+  }, {
+    key: '_toggleHandler',
+    value: function _toggleHandler(event) {
+      var t = event.currentTarget;
+      var p = document.querySelector(t.dataset.target);
 
-      // public
+      this._collapseToggle(t, p);
+    }
+  }, {
+    key: '_headClickHandler',
+    value: function _headClickHandler(event) {
+      var h = event.currentTarget;
+      var b = h.nextElementSibling;
+      var a = _util2.default.findAncestor(h, Selector.ACCORDION);
 
-      value: function init() {
-        // collapse toggle listener
-        _util2.default.eventOnSelector(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
-        // accordion head listener
-        _util2.default.eventOnSelector(Selector.A_HEAD, 'click', this._headClickHandler.bind(this));
-        // Handle on activated collapse and accordion.
-        this._activatedCollapse();
-        this._activatedAccordion();
+      if (h.classList.contains(ClassName.ACTIVE)) {
+        this._collapseToggle(h, b);
+      } else {
+        this._allClose(a);
+        this._collapseToggle(h, b);
+      }
+    }
+  }, {
+    key: '_collapseToggle',
+    value: function _collapseToggle(head, body) {
+      head.classList.toggle(ClassName.ACTIVE);
+      this._toggleMaxHeight(body);
+    }
+  }, {
+    key: '_collapseClose',
+    value: function _collapseClose(head, body) {
+      head.classList.remove(ClassName.ACTIVE);
+      body.style.maxHeight = null;
+    }
+  }, {
+    key: '_allClose',
+    value: function _allClose(accordion) {
+      var heads = accordion.querySelectorAll(Selector.A_HEAD);
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = heads[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var h = _step.value;
+
+          if (h.classList.contains(ClassName.ACTIVE)) {
+            var b = h.nextElementSibling;
+            this._collapseClose(h, b);
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    }
+  }, {
+    key: '_activatedCollapse',
+    value: function _activatedCollapse() {
+      // Collapse can multiple active.
+      var ts = document.querySelectorAll(Selector.C_ACTIVE);
+      if (ts.length == 0) {
+        return;
       }
 
-      // private
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
 
-    }, {
-      key: '_toggleHandler',
-      value: function _toggleHandler(event) {
-        var t = event.currentTarget;
-        var p = document.querySelector(t.dataset.target);
+      try {
+        for (var _iterator2 = ts[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var t = _step2.value;
 
-        this._collapseToggle(t, p);
+          var b = t.nextElementSibling;
+          this._toggleMaxHeight(b);
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
       }
-    }, {
-      key: '_headClickHandler',
-      value: function _headClickHandler(event) {
-        var h = event.currentTarget;
-        var b = h.nextElementSibling;
-        var a = _util2.default.findAncestor(h, Selector.ACCORDION);
+    }
+  }, {
+    key: '_activatedAccordion',
+    value: function _activatedAccordion() {
+      // Only one accordion can be active at a time. After all, only the last one will be activated.
+      var hs = document.querySelectorAll(Selector.A_ACTIVE);
+      if (hs.length == 0) {
+        return;
+      }
 
-        if (h.classList.contains(ClassName.ACTIVE)) {
-          this._collapseToggle(h, b);
-        } else {
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
+
+      try {
+        for (var _iterator3 = hs[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var h = _step3.value;
+
+          var a = _util2.default.findAncestor(h, Selector.ACCORDION);
           this._allClose(a);
-          this._collapseToggle(h, b);
+          h.click();
         }
-      }
-    }, {
-      key: '_collapseToggle',
-      value: function _collapseToggle(head, body) {
-        head.classList.toggle(ClassName.ACTIVE);
-        this._toggleMaxHeight(body);
-      }
-    }, {
-      key: '_collapseClose',
-      value: function _collapseClose(head, body) {
-        head.classList.remove(ClassName.ACTIVE);
-        body.style.maxHeight = null;
-      }
-    }, {
-      key: '_allClose',
-      value: function _allClose(accordion) {
-        var heads = accordion.querySelectorAll(Selector.A_HEAD);
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
+      } catch (err) {
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
+      } finally {
         try {
-          for (var _iterator = heads[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var h = _step.value;
-
-            if (h.classList.contains(ClassName.ACTIVE)) {
-              var b = h.nextElementSibling;
-              this._collapseClose(h, b);
-            }
+          if (!_iteratorNormalCompletion3 && _iterator3.return) {
+            _iterator3.return();
           }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
         } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
+          if (_didIteratorError3) {
+            throw _iteratorError3;
           }
         }
       }
-    }, {
-      key: '_activatedCollapse',
-      value: function _activatedCollapse() {
-        // Collapse can multiple active.
-        var ts = document.querySelectorAll(Selector.C_ACTIVE);
-        if (ts.length == 0) {
-          return;
-        }
+    }
 
-        var _iteratorNormalCompletion2 = true;
-        var _didIteratorError2 = false;
-        var _iteratorError2 = undefined;
+    /**
+     * _toggleMaxHeight
+     * @param  {Element} elm
+     * @return {void}
+     */
 
-        try {
-          for (var _iterator2 = ts[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-            var t = _step2.value;
-
-            var b = t.nextElementSibling;
-            this._toggleMaxHeight(b);
-          }
-        } catch (err) {
-          _didIteratorError2 = true;
-          _iteratorError2 = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-              _iterator2.return();
-            }
-          } finally {
-            if (_didIteratorError2) {
-              throw _iteratorError2;
-            }
-          }
-        }
+  }, {
+    key: '_toggleMaxHeight',
+    value: function _toggleMaxHeight(elm) {
+      if (elm.style.maxHeight) {
+        elm.style.maxHeight = null;
+      } else {
+        elm.style.maxHeight = elm.scrollHeight + 'px';
       }
-    }, {
-      key: '_activatedAccordion',
-      value: function _activatedAccordion() {
-        // Only one accordion can be active at a time. After all, only the last one will be activated.
-        var hs = document.querySelectorAll(Selector.A_ACTIVE);
-        if (hs.length == 0) {
-          return;
-        }
-
-        var _iteratorNormalCompletion3 = true;
-        var _didIteratorError3 = false;
-        var _iteratorError3 = undefined;
-
-        try {
-          for (var _iterator3 = hs[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-            var h = _step3.value;
-
-            var a = _util2.default.findAncestor(h, Selector.ACCORDION);
-            this._allClose(a);
-            h.click();
-          }
-        } catch (err) {
-          _didIteratorError3 = true;
-          _iteratorError3 = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion3 && _iterator3.return) {
-              _iterator3.return();
-            }
-          } finally {
-            if (_didIteratorError3) {
-              throw _iteratorError3;
-            }
-          }
-        }
-      }
-
-      /**
-       * _toggleMaxHeight
-       * @param  {Element} elm
-       * @return {void}
-       */
-
-    }, {
-      key: '_toggleMaxHeight',
-      value: function _toggleMaxHeight(elm) {
-        if (elm.style.maxHeight) {
-          elm.style.maxHeight = null;
-        } else {
-          elm.style.maxHeight = elm.scrollHeight + 'px';
-        }
-      }
-    }], [{
-      key: 'name',
+    }
+  }], [{
+    key: 'name',
 
 
-      // static
+    // static
 
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return Collapse;
-  }(_cosmosModule2.default);
+    get: function get() {
+      return NAME;
+    }
+  }]);
 
   return Collapse;
-}();
+}(_cosmosModule2.default);
 
 exports.default = Collapse;

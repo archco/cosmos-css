@@ -29,119 +29,115 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   message
 *************************************************************/
-var Message = function () {
-  var NAME = 'Cosmos.Message';
-  var Status = {
-    INFO: 'info',
-    SUCCESS: 'success',
-    WARNING: 'warning',
-    ERROR: 'error',
-    DANGER: 'danger',
-    PRIMARY: 'primary',
-    SECONDARY: 'secondary'
-  };
-  var ClassName = {
-    CLOSE: 'btn-close',
-    BOX: 'message-box'
-  };
-  var Selector = {
-    CONTAINER: '#message-container',
-    BOX: '.' + ClassName.BOX,
-    CLOSE: '.' + ClassName.BOX + ' .' + ClassName.CLOSE
-  };
-  var ButtonOption = {
-    close_position: 'right_middle',
-    close_style: 'icon'
-  };
+var NAME = 'Cosmos.Message';
+var Status = {
+  INFO: 'info',
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  ERROR: 'error',
+  DANGER: 'danger',
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary'
+};
+var ClassName = {
+  CLOSE: 'btn-close',
+  BOX: 'message-box'
+};
+var Selector = {
+  CONTAINER: '#message-container',
+  BOX: '.' + ClassName.BOX,
+  CLOSE: '.' + ClassName.BOX + ' .' + ClassName.CLOSE
+};
+var ButtonOption = {
+  close_position: 'right_middle',
+  close_style: 'icon'
+};
 
-  var Message = function (_CosmosModule) {
-    _inherits(Message, _CosmosModule);
+var Message = function (_CosmosModule) {
+  _inherits(Message, _CosmosModule);
 
-    function Message() {
-      var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  function Message() {
+    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-      _classCallCheck(this, Message);
+    _classCallCheck(this, Message);
 
-      var _this = _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).call(this, option));
+    var _this = _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).call(this, option));
 
-      _this.button = new _button2.default(ButtonOption);
-      return _this;
+    _this.button = new _button2.default(ButtonOption);
+    return _this;
+  }
+
+  // static
+
+  _createClass(Message, [{
+    key: 'init',
+
+
+    // public
+
+    value: function init() {
+      // add event listener - close buttons
+      _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._closeButtonHandler, true);
+    }
+  }, {
+    key: 'show',
+    value: function show(message) {
+      var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
+
+      var c, b, span;
+
+      // create message box
+      c = document.querySelector(Selector.CONTAINER); // container
+      b = document.createElement('DIV'); // message box
+      span = document.createElement('SPAN'); // message text
+
+      span.textContent = message;
+      b.classList.add(ClassName.BOX);
+      b.classList.add(status);
+
+      // append child
+      b.appendChild(span);
+      this.button.appendBtnClose(b, this._closeButtonHandler);
+      c.appendChild(b);
     }
 
-    // static
+    // private
 
-    _createClass(Message, [{
-      key: 'init',
+  }, {
+    key: '_closeButtonHandler',
+    value: function _closeButtonHandler(event) {
+      var messageBox = _util2.default.findAncestor(event.currentTarget, Selector.BOX);
 
-
-      // public
-
-      value: function init() {
-        // add event listener - close buttons
-        _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._closeButtonHandler, true);
-      }
-    }, {
-      key: 'show',
-      value: function show(message) {
-        var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
-
-        var c, b, span;
-
-        // create message box
-        c = document.querySelector(Selector.CONTAINER); // container
-        b = document.createElement('DIV'); // message box
-        span = document.createElement('SPAN'); // message text
-
-        span.textContent = message;
-        b.classList.add(ClassName.BOX);
-        b.classList.add(status);
-
-        // append child
-        b.appendChild(span);
-        this.button.appendBtnClose(b, this._closeButtonHandler);
-        c.appendChild(b);
-      }
-
-      // private
-
-    }, {
-      key: '_closeButtonHandler',
-      value: function _closeButtonHandler(event) {
-        var messageBox = _util2.default.findAncestor(event.currentTarget, Selector.BOX);
-
-        messageBox.style.opacity = '0';
-        setTimeout(function () {
-          messageBox.style.display = 'none';
-        }, 600); // 0.6s
-        event.stopPropagation();
-      }
-    }], [{
-      key: 'showMessage',
+      messageBox.style.opacity = '0';
+      setTimeout(function () {
+        messageBox.style.display = 'none';
+      }, 600); // 0.6s
+      event.stopPropagation();
+    }
+  }], [{
+    key: 'showMessage',
 
 
-      /**
-       * add '.message-box' into '#message-container'
-       * 
-       * @param  {String} message
-       * @param  {String} status  ['info','success','warning','error']
-       */
-      value: function showMessage(message) {
-        var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
+    /**
+     * add '.message-box' into '#message-container'
+     * 
+     * @param  {String} message
+     * @param  {String} status  ['info','success','warning','error']
+     */
+    value: function showMessage(message) {
+      var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
 
-        var m = new Message();
-        m.show(message, status);
-      }
-    }, {
-      key: 'name',
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return Message;
-  }(_cosmosModule2.default);
+      var m = new Message();
+      m.show(message, status);
+    }
+  }, {
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }]);
 
   return Message;
-}();
+}(_cosmosModule2.default);
 
 exports.default = Message;

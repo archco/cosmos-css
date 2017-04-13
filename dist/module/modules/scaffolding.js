@@ -25,43 +25,39 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Scaffolding
 *************************************************************/
-var Scaffolding = function () {
-  var NAME = 'Cosmos.Scaffolding';
+var NAME = 'Cosmos.Scaffolding';
 
-  var Scaffolding = function (_CosmosModule) {
-    _inherits(Scaffolding, _CosmosModule);
+var Scaffolding = function (_CosmosModule) {
+  _inherits(Scaffolding, _CosmosModule);
 
-    function Scaffolding() {
-      _classCallCheck(this, Scaffolding);
+  function Scaffolding() {
+    _classCallCheck(this, Scaffolding);
 
-      return _possibleConstructorReturn(this, (Scaffolding.__proto__ || Object.getPrototypeOf(Scaffolding)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Scaffolding.__proto__ || Object.getPrototypeOf(Scaffolding)).apply(this, arguments));
+  }
+
+  _createClass(Scaffolding, [{
+    key: 'init',
+
+
+    // public
+
+    value: function init() {
+      // wrap table.responsive
+      _util2.default.wrap('table.responsive', 'table-responsive-wrapper');
     }
-
-    _createClass(Scaffolding, [{
-      key: 'init',
-
-
-      // public
-
-      value: function init() {
-        // wrap table.responsive
-        _util2.default.wrap('table.responsive', 'table-responsive-wrapper');
-      }
-    }], [{
-      key: 'name',
+  }], [{
+    key: 'name',
 
 
-      // static
+    // static
 
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return Scaffolding;
-  }(_cosmosModule2.default);
+    get: function get() {
+      return NAME;
+    }
+  }]);
 
   return Scaffolding;
-}();
+}(_cosmosModule2.default);
 
 exports.default = Scaffolding;

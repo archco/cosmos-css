@@ -29,165 +29,161 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Chip
 *************************************************************/
-var Chip = function () {
-  var NAME = 'Cosmos.Chip';
-  var ClassName = {
-    CHIP: 'chip'
-  };
-  var Selector = {
-    CHIP: '.' + ClassName.CHIP
-  };
-  var Default = {
-    tag: 'span', // chip's tagName. span, div, a ...
-    close_button: true, // enable close button.
-    close_action: 'remove' // close action. remove | hide
-  };
+var NAME = 'Cosmos.Chip';
+var ClassName = {
+  CHIP: 'chip'
+};
+var Selector = {
+  CHIP: '.' + ClassName.CHIP
+};
+var Default = {
+  tag: 'span', // chip's tagName. span, div, a ...
+  close_button: true, // enable close button.
+  close_action: 'remove' // close action. remove | hide
+};
 
-  var Chip = function (_CosmosModule) {
-    _inherits(Chip, _CosmosModule);
+var Chip = function (_CosmosModule) {
+  _inherits(Chip, _CosmosModule);
 
-    function Chip(container) {
-      var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  function Chip(container) {
+    var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-      _classCallCheck(this, Chip);
+    _classCallCheck(this, Chip);
 
-      var _this = _possibleConstructorReturn(this, (Chip.__proto__ || Object.getPrototypeOf(Chip)).call(this, option));
+    var _this = _possibleConstructorReturn(this, (Chip.__proto__ || Object.getPrototypeOf(Chip)).call(this, option));
 
-      _this.container = document.querySelector(container);
-      _this.button = new _button2.default({
-        close_action: _this.option.close_action
-      });
-      return _this;
+    _this.container = document.querySelector(container);
+    _this.button = new _button2.default({
+      close_action: _this.option.close_action
+    });
+    return _this;
+  }
+
+  // static
+
+  _createClass(Chip, [{
+    key: 'add',
+
+
+    // public
+
+    /**
+     * add
+     * 
+     * @param {String} text
+     * @param {String} imgSrc
+     * @param {Object} data  dataset values.
+     * @return {void}
+     */
+    value: function add(text) {
+      var imgSrc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      var chip = this._createChip(text, imgSrc, data);
+
+      this.container.appendChild(chip);
     }
 
-    // static
+    /**
+     * removeAll
+     * 
+     * @return {Number}
+     */
 
-    _createClass(Chip, [{
-      key: 'add',
+  }, {
+    key: 'removeAll',
+    value: function removeAll() {
+      var chips = this.container.querySelectorAll(Selector.CHIP);
+      var count = chips.length;
 
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
 
-      // public
+      try {
+        for (var _iterator = chips[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var chip = _step.value;
 
-      /**
-       * add
-       * 
-       * @param {String} text
-       * @param {String} imgSrc
-       * @param {Object} data  dataset values.
-       * @return {void}
-       */
-      value: function add(text) {
-        var imgSrc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-        var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-        var chip = this._createChip(text, imgSrc, data);
-
-        this.container.appendChild(chip);
-      }
-
-      /**
-       * removeAll
-       * 
-       * @return {Number}
-       */
-
-    }, {
-      key: 'removeAll',
-      value: function removeAll() {
-        var chips = this.container.querySelectorAll(Selector.CHIP);
-        var count = chips.length;
-
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
+          this.container.removeChild(chip);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
         try {
-          for (var _iterator = chips[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var chip = _step.value;
-
-            this.container.removeChild(chip);
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
           }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
         } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
+          if (_didIteratorError) {
+            throw _iteratorError;
           }
         }
-
-        return count;
       }
 
-      /**
-       * getContainer
-       * 
-       * @return {Element}
-       */
+      return count;
+    }
 
-    }, {
-      key: 'getContainer',
-      value: function getContainer() {
-        return this.container;
+    /**
+     * getContainer
+     * 
+     * @return {Element}
+     */
+
+  }, {
+    key: 'getContainer',
+    value: function getContainer() {
+      return this.container;
+    }
+  }, {
+    key: 'getDefaultOption',
+    value: function getDefaultOption() {
+      return Default;
+    }
+
+    // private
+
+  }, {
+    key: '_createChip',
+    value: function _createChip(text, imgSrc, data) {
+      var chip = document.createElement(this.option.tag);
+      // base.
+      chip.classList.add(ClassName.CHIP);
+      chip.textContent = text;
+      // img.
+      if (imgSrc) {
+        chip.appendChild(this._createImg(imgSrc));
       }
-    }, {
-      key: 'getDefaultOption',
-      value: function getDefaultOption() {
-        return Default;
-      }
-
-      // private
-
-    }, {
-      key: '_createChip',
-      value: function _createChip(text, imgSrc, data) {
-        var chip = document.createElement(this.option.tag);
-        // base.
-        chip.classList.add(ClassName.CHIP);
-        chip.textContent = text;
-        // img.
-        if (imgSrc) {
-          chip.appendChild(this._createImg(imgSrc));
+      // dataset.
+      for (var key in data) {
+        if (key == 'href' && chip.tagName == 'A') {
+          chip.href = data[key];
+          continue;
         }
-        // dataset.
-        for (var key in data) {
-          if (key == 'href' && chip.tagName == 'A') {
-            chip.href = data[key];
-            continue;
-          }
-          chip.dataset[key] = data[key];
-        }
-        // close button.
-        if (this.option.close_button) {
-          this.button.appendBtnClose(chip);
-        }
+        chip.dataset[key] = data[key];
+      }
+      // close button.
+      if (this.option.close_button) {
+        this.button.appendBtnClose(chip);
+      }
 
-        return chip;
-      }
-    }, {
-      key: '_createImg',
-      value: function _createImg(src) {
-        var img = document.createElement('img');
-        img.src = src;
-        return img;
-      }
-    }], [{
-      key: 'name',
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return Chip;
-  }(_cosmosModule2.default);
+      return chip;
+    }
+  }, {
+    key: '_createImg',
+    value: function _createImg(src) {
+      var img = document.createElement('img');
+      img.src = src;
+      return img;
+    }
+  }], [{
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }]);
 
   return Chip;
-}();
+}(_cosmosModule2.default);
 
 exports.default = Chip;

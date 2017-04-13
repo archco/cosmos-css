@@ -25,167 +25,163 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   nav
 *************************************************************/
-var Nav = function () {
-  var NAME = 'Cosmos.Nav';
-  var ClassName = {
-    NAVBAR: 'navbar',
-    TOGGLE_BTN: 'menu-toggle',
-    CHANGE: 'change',
-    USE_ACTIVATOR: 'use-activator'
-  };
-  var Selector = {
-    TOGGLE_BTN: 'nav.' + ClassName.NAVBAR + ' .' + ClassName.TOGGLE_BTN,
-    USE_ACTIVATOR: 'nav.' + ClassName.NAVBAR + ' ul.' + ClassName.USE_ACTIVATOR
-  };
-  var MenuGroups = ['.menu-float-left', '.menu-float-right', '.menu-left', '.menu-right', '.menu-center', '.menu-between', '.menu-around'];
+var NAME = 'Cosmos.Nav';
+var ClassName = {
+  NAVBAR: 'navbar',
+  TOGGLE_BTN: 'menu-toggle',
+  CHANGE: 'change',
+  USE_ACTIVATOR: 'use-activator'
+};
+var Selector = {
+  TOGGLE_BTN: 'nav.' + ClassName.NAVBAR + ' .' + ClassName.TOGGLE_BTN,
+  USE_ACTIVATOR: 'nav.' + ClassName.NAVBAR + ' ul.' + ClassName.USE_ACTIVATOR
+};
+var MenuGroups = ['.menu-float-left', '.menu-float-right', '.menu-left', '.menu-right', '.menu-center', '.menu-between', '.menu-around'];
 
-  var Nav = function (_CosmosModule) {
-    _inherits(Nav, _CosmosModule);
+var Nav = function (_CosmosModule) {
+  _inherits(Nav, _CosmosModule);
 
-    function Nav() {
-      _classCallCheck(this, Nav);
+  function Nav() {
+    _classCallCheck(this, Nav);
 
-      return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
+  }
+
+  _createClass(Nav, [{
+    key: 'init',
+
+
+    // public
+
+    value: function init() {
+      _util2.default.eventOnSelector(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
+
+      this.activator(Selector.USE_ACTIVATOR);
+
+      // handle jQuery slide style.
+      $(window).resize(function () {
+        var w = $(window).width();
+        var menu = $("nav ul");
+        if (w > 768 && menu.is(':hidden')) {
+          menu.removeAttr('style');
+        }
+      });
     }
 
-    _createClass(Nav, [{
-      key: 'init',
+    /**
+     * activator
+     * 
+     * @param  string selector  menu selector string
+     * @return void
+     */
 
+  }, {
+    key: 'activator',
+    value: function activator(selector) {
+      var links = document.querySelectorAll(selector + ' a');
+      if (links.length == 0) return;
 
-      // public
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
 
-      value: function init() {
-        _util2.default.eventOnSelector(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
+      try {
+        for (var _iterator = links[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var a = _step.value;
 
-        this.activator(Selector.USE_ACTIVATOR);
-
-        // handle jQuery slide style.
-        $(window).resize(function () {
-          var w = $(window).width();
-          var menu = $("nav ul");
-          if (w > 768 && menu.is(':hidden')) {
-            menu.removeAttr('style');
-          }
-        });
-      }
-
-      /**
-       * activator
-       * 
-       * @param  string selector  menu selector string
-       * @return void
-       */
-
-    }, {
-      key: 'activator',
-      value: function activator(selector) {
-        var links = document.querySelectorAll(selector + ' a');
-        if (links.length == 0) return;
-
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-          for (var _iterator = links[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var a = _step.value;
-
-            if (compareWithLocation(a)) {
-              a.parentNode.classList.add('active');
-            }
-          }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
+          if (compareWithLocation(a)) {
+            a.parentNode.classList.add('active');
           }
         }
-
-        function compareWithLocation(anchor) {
-          var l = {
-            path: lastTerm(document.location.pathname),
-            query: _util2.default.locationSearchToObject()
-          };
-          var a = {
-            path: lastTerm(anchor.pathname),
-            query: _util2.default.searchToObject(anchor.search)
-          };
-
-          if (anchor.getAttribute('href') == '#') {
-            // sample link (e.g. <a href="#">)
-            return false;
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
           }
-
-          if (l.path == a.path) {
-            if (!a.query || _util2.default.isContains(l.query, a.query)) return true;
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
           }
+        }
+      }
 
+      function compareWithLocation(anchor) {
+        var l = {
+          path: lastTerm(document.location.pathname),
+          query: _util2.default.locationSearchToObject()
+        };
+        var a = {
+          path: lastTerm(anchor.pathname),
+          query: _util2.default.searchToObject(anchor.search)
+        };
+
+        if (anchor.getAttribute('href') == '#') {
+          // sample link (e.g. <a href="#">)
           return false;
         }
 
-        function lastTerm(string) {
-          return string.substr(string.lastIndexOf("/"));
+        if (l.path == a.path) {
+          if (!a.query || _util2.default.isContains(l.query, a.query)) return true;
         }
+
+        return false;
       }
 
-      // private
+      function lastTerm(string) {
+        return string.substr(string.lastIndexOf("/"));
+      }
+    }
 
-    }, {
-      key: '_toggleHandler',
-      value: function _toggleHandler(event) {
-        var t = event.currentTarget;
-        var nav = t.parentNode.parentNode;
-        // toggle button class change.
-        t.classList.toggle(ClassName.CHANGE);
-        // menu slide (use jQuery)
-        var _iteratorNormalCompletion2 = true;
-        var _didIteratorError2 = false;
-        var _iteratorError2 = undefined;
+    // private
 
+  }, {
+    key: '_toggleHandler',
+    value: function _toggleHandler(event) {
+      var t = event.currentTarget;
+      var nav = t.parentNode.parentNode;
+      // toggle button class change.
+      t.classList.toggle(ClassName.CHANGE);
+      // menu slide (use jQuery)
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = MenuGroups[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var m = _step2.value;
+
+          $(nav).find(m).slideToggle();
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
         try {
-          for (var _iterator2 = MenuGroups[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-            var m = _step2.value;
-
-            $(nav).find(m).slideToggle();
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
           }
-        } catch (err) {
-          _didIteratorError2 = true;
-          _iteratorError2 = err;
         } finally {
-          try {
-            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-              _iterator2.return();
-            }
-          } finally {
-            if (_didIteratorError2) {
-              throw _iteratorError2;
-            }
+          if (_didIteratorError2) {
+            throw _iteratorError2;
           }
         }
       }
-    }], [{
-      key: 'name',
+    }
+  }], [{
+    key: 'name',
 
 
-      // static
+    // static
 
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return Nav;
-  }(_cosmosModule2.default);
+    get: function get() {
+      return NAME;
+    }
+  }]);
 
   return Nav;
-}();
+}(_cosmosModule2.default);
 
 exports.default = Nav;

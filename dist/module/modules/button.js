@@ -25,150 +25,146 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Button
 *************************************************************/
-var Button = function () {
-  var NAME = 'Cosmos.Button';
-  var ClassName = {
-    CLOSE: 'btn-close',
-    POSITION_CORNER: 'at-corner',
-    POSITION_RIGHT_MIDDLE: 'at-right-middle',
-    HIDE: 'display-hide',
-    REMOVEABLE: 'removeable',
-    HIDEABLE: 'hideable'
-  };
-  var Selector = {
-    CLOSE: '.' + ClassName.CLOSE,
-    HAS_ACTION: '.' + ClassName.CLOSE + '.' + ClassName.REMOVEABLE + ', .' + ClassName.CLOSE + '.' + ClassName.HIDEABLE
-  };
-  // default option.
-  var Default = {
-    close_init_enable: true,
-    close_action: 'remove', // remove | hide
-    close_position: 'default', // default | corner | right_middle
-    close_style: 'default', // default | icon | circle_default | circle_icon
-    close_content: {
-      default: '✖',
-      icon: '<i class="fa fa-times" aria-hidden="true"></i>'
+var NAME = 'Cosmos.Button';
+var ClassName = {
+  CLOSE: 'btn-close',
+  POSITION_CORNER: 'at-corner',
+  POSITION_RIGHT_MIDDLE: 'at-right-middle',
+  HIDE: 'display-hide',
+  REMOVEABLE: 'removeable',
+  HIDEABLE: 'hideable'
+};
+var Selector = {
+  CLOSE: '.' + ClassName.CLOSE,
+  HAS_ACTION: '.' + ClassName.CLOSE + '.' + ClassName.REMOVEABLE + ', .' + ClassName.CLOSE + '.' + ClassName.HIDEABLE
+};
+// default option.
+var Default = {
+  close_init_enable: true,
+  close_action: 'remove', // remove | hide
+  close_position: 'default', // default | corner | right_middle
+  close_style: 'default', // default | icon | circle_default | circle_icon
+  close_content: {
+    default: '✖',
+    icon: '<i class="fa fa-times" aria-hidden="true"></i>'
+  }
+};
+
+var Button = function (_CosmosModule) {
+  _inherits(Button, _CosmosModule);
+
+  function Button() {
+    _classCallCheck(this, Button);
+
+    return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
+  }
+
+  _createClass(Button, [{
+    key: 'appendBtnClose',
+
+
+    // public
+
+    value: function appendBtnClose(element) {
+      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (this._hasBtnClose(element)) {
+        console.log('already has .btn-close');
+        return;
+      }
+      var btnClose = this._createBtnClose();
+      var handler = callback || this._btnCloseClickHandler;
+
+      btnClose.addEventListener('click', handler.bind(this));
+      element.appendChild(btnClose);
     }
-  };
-
-  var Button = function (_CosmosModule) {
-    _inherits(Button, _CosmosModule);
-
-    function Button() {
-      _classCallCheck(this, Button);
-
-      return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
+  }, {
+    key: 'init',
+    value: function init() {
+      // btn-close addEventListener.
+      if (this.option.close_init_enable) {
+        _util2.default.eventOnSelector(Selector.HAS_ACTION, 'click', this._btnCloseClickHandler.bind(this));
+      }
+    }
+  }, {
+    key: 'getDefaultOption',
+    value: function getDefaultOption() {
+      return Default;
     }
 
-    _createClass(Button, [{
-      key: 'appendBtnClose',
+    // private
 
+  }, {
+    key: '_btnCloseClickHandler',
+    value: function _btnCloseClickHandler(event) {
+      var btnClose = event.currentTarget;
+      var element = btnClose.parentNode;
+      var parent = element.parentNode;
+      var action = this._getActionType(btnClose);
 
-      // public
-
-      value: function appendBtnClose(element) {
-        var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-        if (this._hasBtnClose(element)) {
-          console.log('already has .btn-close');
-          return;
-        }
-        var btnClose = this._createBtnClose();
-        var handler = callback || this._btnCloseClickHandler;
-
-        btnClose.addEventListener('click', handler.bind(this));
-        element.appendChild(btnClose);
+      if (action == 'hide') {
+        element.classList.add(ClassName.HIDE);
+      } else if (action == 'remove') {
+        parent.removeChild(element);
       }
-    }, {
-      key: 'init',
-      value: function init() {
-        // btn-close addEventListener.
-        if (this.option.close_init_enable) {
-          _util2.default.eventOnSelector(Selector.HAS_ACTION, 'click', this._btnCloseClickHandler.bind(this));
-        }
+      event.preventDefault();
+    }
+  }, {
+    key: '_createBtnClose',
+    value: function _createBtnClose() {
+      var btnClose = document.createElement('button');
+
+      btnClose.classList.add(ClassName.CLOSE);
+      if (this.option.close_position == 'corner') {
+        btnClose.classList.add(ClassName.POSITION_CORNER);
+      } else if (this.option.close_position == 'right_middle') {
+        btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
       }
-    }, {
-      key: 'getDefaultOption',
-      value: function getDefaultOption() {
-        return Default;
+      btnClose.innerHTML = this.option.close_content[this.option.close_style];
+
+      return btnClose;
+    }
+  }, {
+    key: '_hasBtnClose',
+    value: function _hasBtnClose(element) {
+      if (element.querySelector(Selector.CLOSE)) {
+        return true;
+      } else {
+        return false;
       }
-
-      // private
-
-    }, {
-      key: '_btnCloseClickHandler',
-      value: function _btnCloseClickHandler(event) {
-        var btnClose = event.currentTarget;
-        var element = btnClose.parentNode;
-        var parent = element.parentNode;
-        var action = this._getActionType(btnClose);
-
-        if (action == 'hide') {
-          element.classList.add(ClassName.HIDE);
-        } else if (action == 'remove') {
-          parent.removeChild(element);
-        }
-        event.preventDefault();
+    }
+  }, {
+    key: '_getActionType',
+    value: function _getActionType(btnClose) {
+      if (btnClose.classList.contains(ClassName.REMOVEABLE)) {
+        return 'remove';
+      } else if (btnClose.classList.contains(ClassName.HIDEABLE)) {
+        return 'hide';
+      } else {
+        return this.option.close_action;
       }
-    }, {
-      key: '_createBtnClose',
-      value: function _createBtnClose() {
-        var btnClose = document.createElement('button');
+    }
+  }], [{
+    key: 'addBtnClose',
+    value: function addBtnClose(element) {
+      var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
-        btnClose.classList.add(ClassName.CLOSE);
-        if (this.option.close_position == 'corner') {
-          btnClose.classList.add(ClassName.POSITION_CORNER);
-        } else if (this.option.close_position == 'right_middle') {
-          btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
-        }
-        btnClose.innerHTML = this.option.close_content[this.option.close_style];
-
-        return btnClose;
-      }
-    }, {
-      key: '_hasBtnClose',
-      value: function _hasBtnClose(element) {
-        if (element.querySelector(Selector.CLOSE)) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    }, {
-      key: '_getActionType',
-      value: function _getActionType(btnClose) {
-        if (btnClose.classList.contains(ClassName.REMOVEABLE)) {
-          return 'remove';
-        } else if (btnClose.classList.contains(ClassName.HIDEABLE)) {
-          return 'hide';
-        } else {
-          return this.option.close_action;
-        }
-      }
-    }], [{
-      key: 'addBtnClose',
-      value: function addBtnClose(element) {
-        var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-
-        var b = new Button(option);
-        b.appendBtnClose(element, callback);
-      }
-    }, {
-      key: 'name',
+      var b = new Button(option);
+      b.appendBtnClose(element, callback);
+    }
+  }, {
+    key: 'name',
 
 
-      // static
+    // static
 
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return Button;
-  }(_cosmosModule2.default);
+    get: function get() {
+      return NAME;
+    }
+  }]);
 
   return Button;
-}();
+}(_cosmosModule2.default);
 
 exports.default = Button;

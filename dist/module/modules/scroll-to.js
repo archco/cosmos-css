@@ -25,96 +25,92 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   scroll-to
 *************************************************************/
-var ScrollTo = function () {
-  var NAME = 'Cosmos.ScrollTo';
-  var Selector = {
-    TOP: '#scroll-to-top'
-  };
-  var ClassName = {
-    SHOW: 'show'
-  };
-  // default option.
-  var Default = {
-    btn_top: Selector.TOP,
-    animate_duration: 'default' // fast(200), default(400), slow(600)
-  };
+var NAME = 'Cosmos.ScrollTo';
+var Selector = {
+  TOP: '#scroll-to-top'
+};
+var ClassName = {
+  SHOW: 'show'
+};
+// default option.
+var Default = {
+  btn_top: Selector.TOP,
+  animate_duration: 'default' // fast(200), default(400), slow(600)
+};
 
-  var ScrollTo = function (_CosmosModule) {
-    _inherits(ScrollTo, _CosmosModule);
+var ScrollTo = function (_CosmosModule) {
+  _inherits(ScrollTo, _CosmosModule);
 
-    function ScrollTo(option) {
-      _classCallCheck(this, ScrollTo);
+  function ScrollTo(option) {
+    _classCallCheck(this, ScrollTo);
 
-      var _this = _possibleConstructorReturn(this, (ScrollTo.__proto__ || Object.getPrototypeOf(ScrollTo)).call(this, option));
+    var _this = _possibleConstructorReturn(this, (ScrollTo.__proto__ || Object.getPrototypeOf(ScrollTo)).call(this, option));
 
-      _this.btnTop = document.querySelector(_this.option.btn_top);
-      return _this;
+    _this.btnTop = document.querySelector(_this.option.btn_top);
+    return _this;
+  }
+
+  // static
+
+  _createClass(ScrollTo, [{
+    key: 'init',
+
+
+    // public
+
+    value: function init() {
+      var _this2 = this;
+
+      if (!this.btnTop) {
+        return;
+      }
+
+      // scroll-to-top button listener
+      this.btnTop.addEventListener('click', function () {
+        $('html,body').animate({ scrollTop: 0 }, _this2.option.animate_duration, 'swing');
+      });
+
+      // scroll listener
+      window.addEventListener('scroll', this._scrollHandler.bind(this));
+    }
+  }, {
+    key: 'getDefaultOption',
+    value: function getDefaultOption() {
+      return Default;
     }
 
-    // static
+    // private
 
-    _createClass(ScrollTo, [{
-      key: 'init',
+  }, {
+    key: '_scrollHandler',
+    value: function _scrollHandler() {
+      var top = this._getScrollTop();
+      var isShow = this.btnTop.classList.contains(ClassName.SHOW);
 
-
-      // public
-
-      value: function init() {
-        var _this2 = this;
-
-        if (!this.btnTop) {
-          return;
-        }
-
-        // scroll-to-top button listener
-        this.btnTop.addEventListener('click', function () {
-          $('html,body').animate({ scrollTop: 0 }, _this2.option.animate_duration, 'swing');
-        });
-
-        // scroll listener
-        window.addEventListener('scroll', this._scrollHandler.bind(this));
+      if (top > 500 && !isShow) {
+        this.btnTop.classList.add(ClassName.SHOW);
+      } else if (top <= 500 && isShow) {
+        this.btnTop.classList.remove(ClassName.SHOW);
       }
-    }, {
-      key: 'getDefaultOption',
-      value: function getDefaultOption() {
-        return Default;
-      }
-
-      // private
-
-    }, {
-      key: '_scrollHandler',
-      value: function _scrollHandler() {
-        var top = this._getScrollTop();
-        var isShow = this.btnTop.classList.contains(ClassName.SHOW);
-
-        if (top > 500 && !isShow) {
-          this.btnTop.classList.add(ClassName.SHOW);
-        } else if (top <= 500 && isShow) {
-          this.btnTop.classList.remove(ClassName.SHOW);
-        }
-      }
-    }, {
-      key: '_getScrollTop',
-      value: function _getScrollTop() {
-        return $(window).scrollTop();
-      }
-    }, {
-      key: '_getScrollBottom',
-      value: function _getScrollBottom() {
-        return $(document).height();
-      }
-    }], [{
-      key: 'name',
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return ScrollTo;
-  }(_cosmosModule2.default);
+    }
+  }, {
+    key: '_getScrollTop',
+    value: function _getScrollTop() {
+      return $(window).scrollTop();
+    }
+  }, {
+    key: '_getScrollBottom',
+    value: function _getScrollBottom() {
+      return $(document).height();
+    }
+  }], [{
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }]);
 
   return ScrollTo;
-}();
+}(_cosmosModule2.default);
 
 exports.default = ScrollTo;

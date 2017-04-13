@@ -21,79 +21,75 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   AJAX-loading
 *************************************************************/
-var AjaxLoading = function () {
-  var NAME = 'Cosmos.Ajax-loading';
-  var Config = {
-    SELECTOR: '#ajax-loading',
-    SHOW: 'show',
-    LOADER_TAG: 'div',
-    LOADER_CLASS: 'loader'
-  };
+var NAME = 'Cosmos.Ajax-loading';
+var Config = {
+  SELECTOR: '#ajax-loading',
+  SHOW: 'show',
+  LOADER_TAG: 'div',
+  LOADER_CLASS: 'loader'
+};
 
-  var AjaxLoading = function (_CosmosModule) {
-    _inherits(AjaxLoading, _CosmosModule);
+var AjaxLoading = function (_CosmosModule) {
+  _inherits(AjaxLoading, _CosmosModule);
 
-    function AjaxLoading() {
-      _classCallCheck(this, AjaxLoading);
+  function AjaxLoading() {
+    _classCallCheck(this, AjaxLoading);
 
-      return _possibleConstructorReturn(this, (AjaxLoading.__proto__ || Object.getPrototypeOf(AjaxLoading)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (AjaxLoading.__proto__ || Object.getPrototypeOf(AjaxLoading)).apply(this, arguments));
+  }
+
+  _createClass(AjaxLoading, [{
+    key: 'init',
+
+
+    // public
+
+    value: function init() {
+      var a = document.querySelector(Config.SELECTOR);
+      if (!a) {
+        return;
+      }
+
+      this._appendLoader(a); // append loader element.
+      // Register callback to jquery ajax.
+      $(document).ajaxStart(function () {
+        if (!a.classList.contains(Config.SHOW)) {
+          a.classList.add(Config.SHOW);
+        }
+      }).ajaxStop(function () {
+        if (a.classList.contains(Config.SHOW)) {
+          a.classList.remove(Config.SHOW);
+        }
+      });
     }
 
-    _createClass(AjaxLoading, [{
-      key: 'init',
+    // private
+
+    /**
+     * append div.loader into element
+     * @param  {element} a
+     * @return {void}
+     */
+
+  }, {
+    key: '_appendLoader',
+    value: function _appendLoader(a) {
+      var loader = document.createElement(Config.LOADER_TAG);
+      loader.classList.add(Config.LOADER_CLASS);
+      a.appendChild(loader);
+    }
+  }], [{
+    key: 'name',
 
 
-      // public
+    // static
 
-      value: function init() {
-        var a = document.querySelector(Config.SELECTOR);
-        if (!a) {
-          return;
-        }
-
-        this._appendLoader(a); // append loader element.
-        // Register callback to jquery ajax.
-        $(document).ajaxStart(function () {
-          if (!a.classList.contains(Config.SHOW)) {
-            a.classList.add(Config.SHOW);
-          }
-        }).ajaxStop(function () {
-          if (a.classList.contains(Config.SHOW)) {
-            a.classList.remove(Config.SHOW);
-          }
-        });
-      }
-
-      // private
-
-      /**
-       * append div.loader into element
-       * @param  {element} a
-       * @return {void}
-       */
-
-    }, {
-      key: '_appendLoader',
-      value: function _appendLoader(a) {
-        var loader = document.createElement(Config.LOADER_TAG);
-        loader.classList.add(Config.LOADER_CLASS);
-        a.appendChild(loader);
-      }
-    }], [{
-      key: 'name',
-
-
-      // static
-
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return AjaxLoading;
-  }(_cosmosModule2.default);
+    get: function get() {
+      return NAME;
+    }
+  }]);
 
   return AjaxLoading;
-}();
+}(_cosmosModule2.default);
 
 exports.default = AjaxLoading;

@@ -11,66 +11,62 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************
   Helper
 *************************************************************/
-var Helper = function () {
-  var NAME = 'Cosmos.lib.Helper';
+var NAME = 'Cosmos.lib.Helper';
 
-  var Helper = function () {
-    function Helper() {
-      _classCallCheck(this, Helper);
+var Helper = function () {
+  function Helper() {
+    _classCallCheck(this, Helper);
+  }
+
+  _createClass(Helper, null, [{
+    key: 'submitConfirm',
+
+
+    /**
+     * submitConfirm - confirm 을 취소하면 event.preventDefault()
+     * 
+     * @param  {element} form
+     * @param  {sting} message
+     * @return {void}
+     */
+    value: function submitConfirm(form) {
+      var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
+
+      if (!form) {
+        throw new Error('Form target is not exist.');
+      }
+      form.addEventListener('submit', function (event) {
+        if (!confirm(message)) {
+          event.preventDefault();
+        }
+      });
     }
 
-    _createClass(Helper, null, [{
-      key: 'submitConfirm',
+    /**
+     * check mobile size
+     * 
+     * @return {boolean}
+     */
 
-
-      /**
-       * submitConfirm - confirm 을 취소하면 event.preventDefault()
-       * 
-       * @param  {element} form
-       * @param  {sting} message
-       * @return {void}
-       */
-      value: function submitConfirm(form) {
-        var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
-
-        if (!form) {
-          throw new Error('Form target is not exist.');
-        }
-        form.addEventListener('submit', function (event) {
-          if (!confirm(message)) {
-            event.preventDefault();
-          }
-        });
+  }, {
+    key: 'checkMobileSize',
+    value: function checkMobileSize() {
+      if (window.innerWidth < 800) {
+        return true;
+      } else {
+        return false;
       }
-
-      /**
-       * check mobile size
-       * 
-       * @return {boolean}
-       */
-
-    }, {
-      key: 'checkMobileSize',
-      value: function checkMobileSize() {
-        if (window.innerWidth < 800) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    }, {
-      key: 'name',
+    }
+  }, {
+    key: 'name',
 
 
-      // static
+    // static
 
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return Helper;
-  }();
+    get: function get() {
+      return NAME;
+    }
+  }]);
 
   return Helper;
 }();

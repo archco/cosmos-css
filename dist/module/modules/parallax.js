@@ -21,92 +21,88 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Parallax
 *************************************************************/
-var Parallax = function () {
-  var NAME = 'Cosmos.Parallax';
-  var ClassName = {
-    PARALLAX: 'parallax',
-    HIDE: 'display-hide'
-  };
+var NAME = 'Cosmos.Parallax';
+var ClassName = {
+  PARALLAX: 'parallax',
+  HIDE: 'display-hide'
+};
 
-  var Parallax = function (_CosmosModule) {
-    _inherits(Parallax, _CosmosModule);
+var Parallax = function (_CosmosModule) {
+  _inherits(Parallax, _CosmosModule);
 
-    function Parallax() {
-      _classCallCheck(this, Parallax);
+  function Parallax() {
+    _classCallCheck(this, Parallax);
 
-      return _possibleConstructorReturn(this, (Parallax.__proto__ || Object.getPrototypeOf(Parallax)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Parallax.__proto__ || Object.getPrototypeOf(Parallax)).apply(this, arguments));
+  }
+
+  _createClass(Parallax, [{
+    key: 'init',
+
+
+    // public
+
+    value: function init() {
+      var ps = document.querySelectorAll('.' + ClassName.PARALLAX);
+      if (ps.length == 0) {
+        return;
+      }
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = ps[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var p = _step.value;
+
+          this._process(p);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
     }
 
-    _createClass(Parallax, [{
-      key: 'init',
+    // private
 
-
-      // public
-
-      value: function init() {
-        var ps = document.querySelectorAll('.' + ClassName.PARALLAX);
-        if (ps.length == 0) {
-          return;
-        }
-
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-          for (var _iterator = ps[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var p = _step.value;
-
-            this._process(p);
-          }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
-        }
+  }, {
+    key: '_process',
+    value: function _process(p) {
+      var i = p.querySelector('img');
+      if (!i) {
+        return;
       }
-
-      // private
-
-    }, {
-      key: '_process',
-      value: function _process(p) {
-        var i = p.querySelector('img');
-        if (!i) {
-          return;
-        }
-        var h = p.dataset.height || i.clientHeight;
-        // hide <img>
-        i.classList.add(ClassName.HIDE);
-        // set parallax background image.
-        p.style.backgroundImage = 'url(\'' + i.src + '\')';
-        // set parallax height.
-        p.style.height = h + 'px';
-      }
-    }], [{
-      key: 'name',
+      var h = p.dataset.height || i.clientHeight;
+      // hide <img>
+      i.classList.add(ClassName.HIDE);
+      // set parallax background image.
+      p.style.backgroundImage = 'url(\'' + i.src + '\')';
+      // set parallax height.
+      p.style.height = h + 'px';
+    }
+  }], [{
+    key: 'name',
 
 
-      // static
+    // static
 
-      get: function get() {
-        return NAME;
-      }
-    }]);
-
-    return Parallax;
-  }(_cosmosModule2.default);
+    get: function get() {
+      return NAME;
+    }
+  }]);
 
   return Parallax;
-}();
+}(_cosmosModule2.default);
 
 exports.default = Parallax;
