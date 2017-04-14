@@ -1,5 +1,5 @@
 //- test page.
-extends ./layout/layout.pug
+extends ../layout/layout.pug
 
 block title
   title= 'Test Page'
@@ -11,7 +11,7 @@ block content
     p test page.
     button(class='btn' onclick='toggle()') toggle
     h1 chip test
-    include includes/chip.pug
+    include ../includes/chip.pug
 
 block script
   <script>
