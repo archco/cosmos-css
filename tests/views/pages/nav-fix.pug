@@ -13,11 +13,13 @@ html
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title "nav-fixed"
+    title nav-fixed
     link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
     link(rel="stylesheet" href="../../dist/css/style.css")
   body
-    nav(class='navbar')
+    header(class='bg-secondary flex-center-container')
+      h1 Header
+    nav(class='navbar sticky-top')
       div(class='nav-header')
         a(class='nav-brand text' href='test.html') Brand Logo
         button(class='menu-toggle' type='button')
@@ -46,7 +48,10 @@ html
           a(href='#') Login
 
     section(class='pad')
-      p=lorem
+      - var n = 0;
+      while n < 10
+        p(class='pad')=lorem
+        - n++
 
     footer(class='footer')
       div(class='container')

@@ -2776,7 +2776,7 @@ module.exports = {
 		"sass": "node node_modules/node-sass/bin/node-sass --source-map true src/scss/style.scss dist/css/style.css",
 		"sass:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/style.scss dist/css/style.min.css",
 		"sass:watch": "npm run sass -- --watch",
-		"pug": "node node_modules/pug-cli --pretty tests/views/test.pug tests/views/components.pug tests/views/modules.pug --out ./tests/html/",
+		"pug": "node node_modules/pug-cli --pretty tests/views/pages/ --out ./tests/html/",
 		"pug:watch": "npm run pug -- --watch",
 		"js": "node node_modules/webpack/bin/webpack",
 		"js:min": "npm run js -- --optimize-minimize --output-filename script.min.js --devtool false",

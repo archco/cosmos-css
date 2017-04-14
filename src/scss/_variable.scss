@@ -127,19 +127,20 @@ $list-group-active-bg-color: $primary-color !default;
 $list-group-active-color: get-contrast($list-group-active-bg-color) !default;
 
 //======================================================================
-// Lists
+// Z-index Lists
 //======================================================================
-
-// z-index list
-$z-index-message-box: 2 !default;
-$z-index-card: 2 !default;
-$z-index-card-content: 3 !default;
-$z-index-header: 10 !default;
-$z-index-footer: 10 !default;
-$z-index-nav: 10 !default;
-$z-index-dropdown-content: 12 !default;
-$z-index-tooltip: 12 !default;
-$z-index-scroll-to-button: 14 !default;
+$z-index-message-box:         2 !default;
+$z-index-card:                2 !default;
+$z-index-card-content:        3 !default;
+$z-index-header:              10 !default;
+$z-index-footer:              10 !default;
+$z-index-nav:                 10 !default;
+$z-index-fixed:               12 !default;
+$z-index-sticky:              12 !default;
+$z-index-dropdown-content:    14 !default;
+$z-index-tooltip:             14 !default;
+$z-index-scroll-to-button:    16 !default;
+$z-index-modal:               18 !default;
 
 
 //======================================================================

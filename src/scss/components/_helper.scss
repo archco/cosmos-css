@@ -91,6 +91,20 @@
   font-size: 0.8rem;
 }
 
+// position
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $z-index-fixed;
+}
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+}
+
 // color-set helper
 @each $name, $color in $color-set {
   .color-#{$name} {
