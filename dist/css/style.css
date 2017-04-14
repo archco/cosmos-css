@@ -1156,7 +1156,8 @@ input[type="reset"], .btn-icon {
 
 nav.navbar .dropdown > button.dropdown-toggle,
 nav.navbar .dropdown > button.dropdown-btn {
-  min-width: 120px; }
+  min-width: 120px;
+  line-height: 1.25; }
 
 nav.navbar .dropdown ul.dropdown-content > li.active > a {
   border-color: transparent;
@@ -1363,8 +1364,9 @@ nav.navbar {
   z-index: 10;
   margin: 0 auto;
   font-family: Georgia, serif;
-  background-color: #0087BD;
-  font-size: 1.25em; }
+  font-size: 1.25em;
+  line-height: 1.25;
+  background-color: #0087BD; }
   nav.navbar.outline * {
     outline: 1px solid rgba(255, 0, 0, 0.5); }
   nav.navbar ul {

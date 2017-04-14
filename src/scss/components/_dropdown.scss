@@ -79,6 +79,7 @@ nav.navbar .dropdown {
   > button.dropdown-btn {
     @extend %nav-button, %nav-link;
     min-width: $dropdown-min-width;
+    line-height: $nav-line-height;
   }
 
   ul.dropdown-content > li.active > a {

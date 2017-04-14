@@ -28,8 +28,9 @@ nav.navbar {
   z-index: $z-index-nav;
   margin: 0 auto;
   font-family: $nav-font;
-  background-color: $nav-bg-color;
   font-size: $nav-font-size;
+  line-height: $nav-line-height;
+  background-color: $nav-bg-color;
 
   ul {
     @include reset-list;

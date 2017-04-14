@@ -8,6 +8,9 @@ This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/
 - Change export module target. #122
 - Change babel preset "es2015" to "env" #126
 
+### Fixed
+- Fix nav-dropdown height problem. #125
+
 ## [0.9.1] - 2017-03-29
 ### Added
 - Add "locationSearchToObject()" and "searchToObject()" method to Util.js #120
