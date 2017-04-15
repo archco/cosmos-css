@@ -51,9 +51,7 @@
       @include btnColor($color);
 
       &.is-loading:not([disabled]):after {
-        border-color: get-contrast($color);
-        border-right-color: transparent;
-        border-top-color: transparent;
+        @include loaderOneColor(get-contrast($color));
       }
     }
   }

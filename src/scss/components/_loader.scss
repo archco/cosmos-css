@@ -4,4 +4,11 @@
 
 .loader-one {
   @include loaderOne();
+
+  &.light {
+    @include loaderOneColor($text-color-light);
+  }
+  &.dark {
+    @include loaderOneColor($text-color-dark);
+  }
 }

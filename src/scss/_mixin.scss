@@ -46,14 +46,19 @@
 // Loader
 //======================================================================
 
-@mixin loaderOne($color: $text-color) {
+@mixin loaderOne() {
   @include animation('0.5s linear 0s infinite spin');
+  display: inline-block;
   width: 1em;
   height: 1em;
-  border: 0.125em solid $color;
   border-radius: 50%;
+  border: 0.125em solid $text-color; // default color.
   border-right-color: transparent;
   border-top-color: transparent;
+}
+@mixin loaderOneColor($color: $text-color) {
+  border-left-color: $color;
+  border-bottom-color: $color;
 }
 
 //======================================================================

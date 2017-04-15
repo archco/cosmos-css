@@ -859,10 +859,11 @@ input[type="reset"], .btn-flat {
       -moz-animation: 0.5s linear 0s infinite spin;
       -o-animation: 0.5s linear 0s infinite spin;
       animation: 0.5s linear 0s infinite spin;
+      display: inline-block;
       width: 1em;
       height: 1em;
-      border: 0.125em solid #343434;
       border-radius: 50%;
+      border: 0.125em solid #343434;
       border-right-color: transparent;
       border-top-color: transparent;
       position: absolute;
@@ -936,9 +937,8 @@ input[type="reset"], .btn-icon {
     .primary.is-loading.btn:not([disabled]):after, input.primary.is-loading[type="submit"]:not([disabled]):after,
     input.primary.is-loading[type="button"]:not([disabled]):after,
     input.primary.is-loading[type="reset"]:not([disabled]):after, .primary.is-loading.btn-icon:not([disabled]):after {
-      border-color: #FFFFFF;
-      border-right-color: transparent;
-      border-top-color: transparent; }
+      border-left-color: #FFFFFF;
+      border-bottom-color: #FFFFFF; }
   .secondary.btn, input.secondary[type="submit"],
   input.secondary[type="button"],
   input.secondary[type="reset"], .secondary.btn-icon {
@@ -969,9 +969,8 @@ input[type="reset"], .btn-icon {
     .secondary.is-loading.btn:not([disabled]):after, input.secondary.is-loading[type="submit"]:not([disabled]):after,
     input.secondary.is-loading[type="button"]:not([disabled]):after,
     input.secondary.is-loading[type="reset"]:not([disabled]):after, .secondary.is-loading.btn-icon:not([disabled]):after {
-      border-color: #FFFFFF;
-      border-right-color: transparent;
-      border-top-color: transparent; }
+      border-left-color: #FFFFFF;
+      border-bottom-color: #FFFFFF; }
   .info.btn, input.info[type="submit"],
   input.info[type="button"],
   input.info[type="reset"], .info.btn-icon {
@@ -1002,9 +1001,8 @@ input[type="reset"], .btn-icon {
     .info.is-loading.btn:not([disabled]):after, input.info.is-loading[type="submit"]:not([disabled]):after,
     input.info.is-loading[type="button"]:not([disabled]):after,
     input.info.is-loading[type="reset"]:not([disabled]):after, .info.is-loading.btn-icon:not([disabled]):after {
-      border-color: #FFFFFF;
-      border-right-color: transparent;
-      border-top-color: transparent; }
+      border-left-color: #FFFFFF;
+      border-bottom-color: #FFFFFF; }
   .success.btn, input.success[type="submit"],
   input.success[type="button"],
   input.success[type="reset"], .success.btn-icon {
@@ -1035,9 +1033,8 @@ input[type="reset"], .btn-icon {
     .success.is-loading.btn:not([disabled]):after, input.success.is-loading[type="submit"]:not([disabled]):after,
     input.success.is-loading[type="button"]:not([disabled]):after,
     input.success.is-loading[type="reset"]:not([disabled]):after, .success.is-loading.btn-icon:not([disabled]):after {
-      border-color: #FFFFFF;
-      border-right-color: transparent;
-      border-top-color: transparent; }
+      border-left-color: #FFFFFF;
+      border-bottom-color: #FFFFFF; }
   .warning.btn, input.warning[type="submit"],
   input.warning[type="button"],
   input.warning[type="reset"], .warning.btn-icon {
@@ -1068,9 +1065,8 @@ input[type="reset"], .btn-icon {
     .warning.is-loading.btn:not([disabled]):after, input.warning.is-loading[type="submit"]:not([disabled]):after,
     input.warning.is-loading[type="button"]:not([disabled]):after,
     input.warning.is-loading[type="reset"]:not([disabled]):after, .warning.is-loading.btn-icon:not([disabled]):after {
-      border-color: #343434;
-      border-right-color: transparent;
-      border-top-color: transparent; }
+      border-left-color: #343434;
+      border-bottom-color: #343434; }
   .danger.btn, input.danger[type="submit"],
   input.danger[type="button"],
   input.danger[type="reset"], .danger.btn-icon {
@@ -1101,9 +1097,8 @@ input[type="reset"], .btn-icon {
     .danger.is-loading.btn:not([disabled]):after, input.danger.is-loading[type="submit"]:not([disabled]):after,
     input.danger.is-loading[type="button"]:not([disabled]):after,
     input.danger.is-loading[type="reset"]:not([disabled]):after, .danger.is-loading.btn-icon:not([disabled]):after {
-      border-color: #FFFFFF;
-      border-right-color: transparent;
-      border-top-color: transparent; }
+      border-left-color: #FFFFFF;
+      border-bottom-color: #FFFFFF; }
   .error.btn, input.error[type="submit"],
   input.error[type="button"],
   input.error[type="reset"], .error.btn-icon {
@@ -1134,9 +1129,8 @@ input[type="reset"], .btn-icon {
     .error.is-loading.btn:not([disabled]):after, input.error.is-loading[type="submit"]:not([disabled]):after,
     input.error.is-loading[type="button"]:not([disabled]):after,
     input.error.is-loading[type="reset"]:not([disabled]):after, .error.is-loading.btn-icon:not([disabled]):after {
-      border-color: #FFFFFF;
-      border-right-color: transparent;
-      border-top-color: transparent; }
+      border-left-color: #FFFFFF;
+      border-bottom-color: #FFFFFF; }
 
 .btn-flat {
   color: #0087BD;
@@ -2056,35 +2050,19 @@ ul.pagination {
   -moz-animation: 0.5s linear 0s infinite spin;
   -o-animation: 0.5s linear 0s infinite spin;
   animation: 0.5s linear 0s infinite spin;
+  display: inline-block;
   width: 1em;
   height: 1em;
-  border: 0.125em solid #343434;
   border-radius: 50%;
+  border: 0.125em solid #343434;
   border-right-color: transparent;
   border-top-color: transparent; }
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
-
-#ajax-loading {
-  height: 0;
-  transition: height 0.5s; }
-  #ajax-loading .loader {
-    display: none;
-    border: 0.33333rem solid rgba(0, 0, 0, 0.1);
-    border-top: 0.33333rem solid #0087BD;
-    border-radius: 50%;
-    width: 2rem;
-    height: 2rem; }
-  #ajax-loading.show {
-    display: flex !important;
-    height: 4rem; }
-    #ajax-loading.show .loader {
-      display: block;
-      animation: spin 1s linear infinite; }
+  .loader-one.light {
+    border-left-color: #FFFFFF;
+    border-bottom-color: #FFFFFF; }
+  .loader-one.dark {
+    border-left-color: #343434;
+    border-bottom-color: #343434; }
 
 /** scroll to top button */
 #scroll-to-top {
@@ -2325,7 +2303,7 @@ ul.pagination {
   .vertical-center-container .flex-item {
     display: block; }
 
-.flex-center-container, #ajax-loading {
+.flex-center-container {
   display: flex;
   justify-content: center;
   align-items: center; }
