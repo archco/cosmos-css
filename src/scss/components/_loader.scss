@@ -2,31 +2,6 @@
 // Loader
 //======================================================================
 
-@mixin loaderOne($color: $text-color-light) {
-  @include animation('0.5s linear 0s infinite spin');
-  width: 1em;
-  height: 1em;
-  border: 2px solid $color;
-  border-radius: 50%;
-  border-right-color: transparent;
-  border-top-color: transparent;
-}
-
 .loader-one {
   @include loaderOne();
-}
-
-.is-loading {
-  position: relative;
-  color: transparent !important;
-
-  &:after {
-    @include loaderOne();
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -0.5em;
-    margin-left: -0.5em;
-    content: '';
-  }
 }

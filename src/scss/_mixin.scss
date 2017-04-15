@@ -33,6 +33,7 @@
 //======================================================================
 // Form
 //======================================================================
+
 @mixin formInlineTarget() {
   input:not([type="color"]),
   select,
@@ -42,8 +43,23 @@
 }
 
 //======================================================================
+// Loader
+//======================================================================
+
+@mixin loaderOne($color: $text-color) {
+  @include animation('0.5s linear 0s infinite spin');
+  width: 1em;
+  height: 1em;
+  border: 0.125em solid $color;
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
+
+//======================================================================
 // Button
 //======================================================================
+
 @mixin btn-base() {
   @include no-decoration;
   line-height: 1.15;
