@@ -12,7 +12,6 @@ import Helper from './lib/helper.js';
 // Loadable Modules.
 import Scaffolding from './modules/scaffolding.js';
 import Button from './modules/button.js';
-import AjaxLoading from './modules/ajax-loading.js';
 import Dropdown from './modules/dropdown.js';
 import Message from './modules/message.js';
 import Modal from './modules/modal.js';
@@ -28,7 +27,6 @@ import Chip from './modules/chip.js';
 // initialize - loading modules.
 Scaffolding.load();
 Button.load();
-AjaxLoading.load();
 Dropdown.load();
 Message.load();
 Modal.load();
