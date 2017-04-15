@@ -29,14 +29,13 @@
   &.show { display: block; }
 
   .modal-content {
+    @include animation('0.4s from-top');
     position: relative;
     background-color: $modal-content-bg-color;
     margin: 15% auto;
     padding: 20px;
     width: 70%;
     border: 1px solid #888;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
 
     .btn-close {
       font-size: 1.5em;
@@ -46,16 +45,5 @@
         color: $modal-close-button-hover-color;
       }
     }
-  }
-}
-
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
   }
 }
