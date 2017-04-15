@@ -1,16 +1,24 @@
 # Change Log
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/)
+and this project adheres to [Semantic Versioning](http://semver.org/).
+
 This changelog started from v0.8.4.  
-If want to see more previous information to [Releases](https://github.com/archco/cosmos-css/releases) page.  
-This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/) format.
+If want to see more previous information to [Releases](https://github.com/archco/cosmos-css/releases) page.
 
 ## [Unreleased]
 ### Added
 - Add scss helper class "fixed-top" and "sticky-top" #124
 - Add scss library "keyframes" #129
+- Add a new component "Loader" #116
 
 ### Changed
 - Change export module target. #122
 - Change babel preset "es2015" to "env" #126
+
+### Removed
+- Remove ajax-loading. instead use loader. #116
 
 ### Fixed
 - Fix nav-dropdown height problem. #125
