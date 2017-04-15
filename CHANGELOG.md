@@ -5,7 +5,8 @@ This document guided from [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/
 
 ## [Unreleased]
 ### Added
-Add scss helper class "fixed-top" and "sticky-top" #124
+- Add scss helper class "fixed-top" and "sticky-top" #124
+- Add scss library "keyframes" #129
 
 ### Changed
 - Change export module target. #122
