@@ -409,6 +409,86 @@ template {
   display: none; }
 
 /*! scss-palette v0.2.1 | https://github.com/archco/scss-palette | 396 colors */
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+@-moz-keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+@-o-keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-moz-keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-o-keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes from-top {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
+
+@-moz-keyframes from-top {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
+
+@-o-keyframes from-top {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
+
+@keyframes from-top {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
+
 html {
   box-sizing: border-box; }
 
@@ -1653,13 +1733,10 @@ aside {
     display: block; }
 
 .tab-fade-effect {
-  animation: tabFadeEffect 1s; }
-
-@keyframes tabFadeEffect {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
+  -webkit-animation: 1s fade-in;
+  -moz-animation: 1s fade-in;
+  -o-animation: 1s fade-in;
+  animation: 1s fade-in; }
 
 /** message-box */
 .message-box {
@@ -1757,27 +1834,21 @@ aside {
   .modal.show {
     display: block; }
   .modal .modal-content {
+    -webkit-animation: 0.4s from-top;
+    -moz-animation: 0.4s from-top;
+    -o-animation: 0.4s from-top;
+    animation: 0.4s from-top;
     position: relative;
     background-color: #FFFFFF;
     margin: 15% auto;
     padding: 20px;
     width: 70%;
-    border: 1px solid #888;
-    animation-name: animatetop;
-    animation-duration: 0.4s; }
+    border: 1px solid #888; }
     .modal .modal-content .btn-close {
       font-size: 1.5em;
       color: rgba(226, 61, 40, 0.5); }
       .modal .modal-content .btn-close:hover {
         color: #e23d28; }
-
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0; }
-  to {
-    top: 0;
-    opacity: 1; } }
 
 ul.card-list {
   list-style: none;
@@ -1914,6 +1985,39 @@ ul.pagination {
   background-repeat: no-repeat;
   background-size: cover; }
 
+.loader-one {
+  -webkit-animation: 0.5s linear 0s infinite spin;
+  -moz-animation: 0.5s linear 0s infinite spin;
+  -o-animation: 0.5s linear 0s infinite spin;
+  animation: 0.5s linear 0s infinite spin;
+  width: 1em;
+  height: 1em;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-top-color: transparent; }
+
+.is-loading {
+  position: relative;
+  color: transparent !important; }
+  .is-loading:after {
+    -webkit-animation: 0.5s linear 0s infinite spin;
+    -moz-animation: 0.5s linear 0s infinite spin;
+    -o-animation: 0.5s linear 0s infinite spin;
+    animation: 0.5s linear 0s infinite spin;
+    width: 1em;
+    height: 1em;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -0.5em;
+    margin-left: -0.5em;
+    content: ''; }
+
 @keyframes spin {
   0% {
     transform: rotate(0deg); }
@@ -1958,12 +2062,6 @@ ul.pagination {
   #scroll-to-top:hover {
     background-color: #004d6b; }
 
-@keyframes tooltip-fade {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-
 .tooltip {
   position: relative; }
   .tooltip::after {
@@ -2004,13 +2102,12 @@ ul.pagination {
     border: 5px solid transparent;
     opacity: 0; }
   .tooltip:hover::before, .tooltip:hover::after, .tooltip:active::before, .tooltip:active::after, .tooltip:focus::before, .tooltip:focus::after {
+    -webkit-animation: 0.3s ease-in 0.3s forwards fade-in;
+    -moz-animation: 0.3s ease-in 0.3s forwards fade-in;
+    -o-animation: 0.3s ease-in 0.3s forwards fade-in;
+    animation: 0.3s ease-in 0.3s forwards fade-in;
     display: inline-block;
-    text-decoration: none;
-    animation-name: tooltip-fade;
-    animation-duration: 0.3s;
-    animation-timing-function: ease-in;
-    animation-fill-mode: forwards;
-    animation-delay: 0.3s; }
+    text-decoration: none; }
   .tooltip:not(.tooltip-bottom):not(.tooltip-left):not(.tooltip-right)::after, .tooltip.tooltip-top::after {
     right: 50%;
     bottom: 100%;

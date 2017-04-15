@@ -5,18 +5,15 @@ block title
   title= 'Test Page'
 
 block content
-  div(id='ajax-loading')
   section(class='pad')
     h1 Hello, World!
     p test page.
-    button(class='btn' onclick='toggle()') toggle
-    h1 chip test
-    include ../includes/chip.pug
+    h1 loader test
+    include ../includes/loader.pug
 
 block script
   <script>
-  | function toggle() {
-  |   var a = document.querySelector('#ajax-loading');
-  |   a.classList.toggle('show');
-  | }
+  | document.querySelector('#toggle').addEventListener('click', function (e) {
+  |   e.currentTarget.classList.toggle('is-loading');
+  | });
   </script>
