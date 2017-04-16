@@ -25,10 +25,6 @@ var _button = require('./modules/button.js');
 
 var _button2 = _interopRequireDefault(_button);
 
-var _ajaxLoading = require('./modules/ajax-loading.js');
-
-var _ajaxLoading2 = _interopRequireDefault(_ajaxLoading);
-
 var _dropdown = require('./modules/dropdown.js');
 
 var _dropdown2 = _interopRequireDefault(_dropdown);
@@ -72,6 +68,10 @@ var _chip2 = _interopRequireDefault(_chip);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // initialize - loading modules.
+
+// Loadable Modules.
+_scaffolding2.default.load();
+// Functional modules. - nonloadable
 /*!
  * cosmos-css - The css framework for personal practice.
  * @version v0.9.1
@@ -80,13 +80,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 // Libraries.
-_scaffolding2.default.load();
-// Functional modules. - nonloadable
-
-// Loadable Modules.
 
 _button2.default.load();
-_ajaxLoading2.default.load();
 _dropdown2.default.load();
 _message2.default.load();
 _modal2.default.load();
