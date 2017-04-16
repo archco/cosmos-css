@@ -1,54 +1,17 @@
-//======================================================================
-// Mixins
-//======================================================================
-@mixin animation($animate...) {
-  $max: length($animate);
-  $animations: '';
+/* keyframes */
 
-  @for $i from 1 through $max {
-    $animations: #{$animations + nth($animate, $i)};
-
-    @if $i < $max {
-      $animations: #{$animations + ", "};
-    }
-  }
-  -webkit-animation: $animations;
-  -moz-animation:    $animations;
-  -o-animation:      $animations;
-  animation:         $animations;
-}
-
-@mixin keyframes($animationName) {
-  @-webkit-keyframes #{$animationName} {
-    @content;
-  }
-  @-moz-keyframes #{$animationName} {
-    @content;
-  }
-  @-o-keyframes #{$animationName} {
-    @content;
-  }
-  @keyframes #{$animationName} {
-    @content;
-  }
-}
-
-//======================================================================
-// Keyframes
-//======================================================================
-
-@include keyframes('spin') {
+@keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-@include keyframes('fade-in') {
+@keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
 // used by 'modal'
-@include keyframes('from-top') {
+@keyframes from-top {
   from {
     top: -300px;
     opacity: 0;

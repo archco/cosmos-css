@@ -58,5 +58,5 @@
 }
 
 .tab-fade-effect {
-  @include animation('1s fade-in');
+  animation: 1s fade-in;
 }

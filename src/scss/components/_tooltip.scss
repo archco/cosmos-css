@@ -40,10 +40,9 @@
   &:focus {
     &::before,
     &::after{
-      $animate: $tooltip-animation-duration + ' ease-in ' + $tooltip-animation-delay + ' forwards fade-in';
-      @include animation($animate);
       display: inline-block;
       text-decoration: none;
+      animation: $tooltip-animation-duration ease-in $tooltip-animation-delay forwards fade-in;
     }
   }
 
