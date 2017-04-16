@@ -2660,6 +2660,7 @@ module.exports = {
 		"babel-preset-env": "^1.3.3",
 		"concurrently": "^3.4.0",
 		"eslint": "^3.19.0",
+		"fs-extra": "^2.1.2",
 		"jquery": "^3.2.1",
 		"node-sass": "^4.5.2",
 		"postcss": "^5.2.17",
@@ -2676,14 +2677,19 @@ module.exports = {
 		"production": "npm run sass:min && npm run js:min",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"sass": "node node_modules/node-sass/bin/node-sass --source-map true src/scss/style.scss dist/css/style.css",
+		"postsass": "npm run css",
 		"sass:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/style.scss dist/css/style.min.css",
+		"postsass:min": "npm run css:min",
 		"sass:watch": "npm run sass -- --watch",
 		"pug": "node node_modules/pug-cli --pretty tests/views/pages/ --out ./tests/html/",
 		"pug:watch": "npm run pug -- --watch",
 		"js": "node node_modules/webpack/bin/webpack --config ./task/webpack.config.js",
 		"js:min": "npm run js -- --optimize-minimize --output-filename script.min.js --devtool false",
 		"js:watch": "npm run js -- --watch",
-		"js-module": "node node_modules/babel-cli/bin/babel src/js -d dist/module"
+		"js-module": "node node_modules/babel-cli/bin/babel src/js -d dist/module",
+		"prejs-module": "node ./task/remove-dist-module",
+		"css": "node node_modules/postcss-cli dist/css/style.css --config ./task/postcss.config.js --output dist/css/style.css",
+		"css:min": "node node_modules/postcss-cli dist/css/style.min.css --config ./task/postcss.config.js --output dist/css/style.min.css"
 	},
 	"repository": {
 		"type": "git",
