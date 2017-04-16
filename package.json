@@ -30,7 +30,6 @@
   "scripts": {
     "build": "npm run dev && npm run production && npm run js-module",
     "prebuild": "node ./task/banner.js",
-    "postbuild": "npm run css && npm run css:min",
     "dev": "npm run sass && npm run pug && npm run js",
     "watch": "node node_modules/concurrently/src/main \"npm run sass:watch\" \"npm run pug:watch\" \"npm run js:watch\"",
     "production": "npm run sass:min && npm run js:min",
