@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const pkg = require('./package.json');
+const pkg = require('../package.json');
 const banner = `/*!
  * ${pkg.name} - ${pkg.description}
  * @version v${pkg.version}
@@ -9,10 +9,10 @@ const banner = `/*!
  */`;
 
 module.exports = {
-  entry: './src/js/cosmos.js',
+  entry: path.join(__dirname, '../src/js/cosmos.js'),
   output: {
     filename: 'script.js',
-    path: path.resolve(__dirname, 'dist/js/'),
+    path: path.resolve(__dirname, '../dist/js/'),
     library: 'Cosmos',
     libraryTarget: 'window'
   },

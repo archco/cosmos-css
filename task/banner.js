@@ -1,5 +1,7 @@
 const fs = require('fs');
-const pkg = require('./package.json');
+const path = require('path');
+const pkg = require('../package.json');
+
 const banner = `/*!
  * ${pkg.name} - ${pkg.description}
  * @version v${pkg.version}
@@ -7,8 +9,8 @@ const banner = `/*!
  * @license ${pkg.license}
  */`;
 const files = [
-  './src/scss/style.scss',
-  './src/js/cosmos.js'
+  path.join(__dirname, '../src/scss/style.scss'),
+  path.join(__dirname, '../src/js/cosmos.js')
 ];
 
 files.forEach(file => {
