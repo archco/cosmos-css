@@ -8,12 +8,7 @@ block content
   section(class='pad')
     h1 Hello, World!
     p test page.
-    h1 loader test
-    include ../includes/loader.pug
+    h1 Image test
+    include ../includes/image.pug
 
 block script
-  <script>
-  | document.querySelector('#toggle').addEventListener('click', function (e) {
-  |   e.currentTarget.classList.toggle('is-loading');
-  | });
-  </script>
