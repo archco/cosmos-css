@@ -9,9 +9,10 @@ If want to see more previous information to [Releases](https://github.com/archco
 
 ## [Unreleased]
 ### Added
+- Add a new component "Image" #84
+- Add a new component "Loader" #116
 - Add scss helper class "fixed-top" and "sticky-top" #124
 - Add scss library "keyframes" #129
-- Add a new component "Loader" #116
 
 ### Changed
 - Change export module target. #122
