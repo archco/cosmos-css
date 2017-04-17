@@ -53,7 +53,7 @@ $text-color-middle: mix($text-color-light, $text-color-dark) !default;
 
 // background colors.
 $background-color: $white !default;
-$background-color-invert: invert($background-color) !default;
+$background-color-invert: $black !default;
 $background-color-shade: rgba($background-color-invert, 0.1) !default;
 
 // color-set.
@@ -226,11 +226,6 @@ $pagination-active-hover-bg: $primary-color-accent !default;
 
 $pagination-disabled-color: $disabled-color !default;
 
-// ajax-loading
-$ajax-loading-color: $primary-color !default;
-$ajax-loading-border-color: $background-color-shade !default;
-$ajax-loading-size: 2rem !default;
-
 // scroll-to
 $scroll-to-color: $white !default;
 $scroll-to-bg-color: $primary-color-accent !default;
@@ -277,3 +272,8 @@ $accordion-border-radius: $radius-normal !default;
 $chip-font-size: 0.85em !default;
 $chip-height: 2em !default; // unit:em, This value is base of local variables of chip.
 $chip-bg-color: $background-color-shade !default;
+
+// image
+$image-overlay-base-opacity: 0.67 !default;
+$image-overlay-transition: $transition-time * 2 !default;
+$image-overlay-bg-color: $background-color-invert !default;

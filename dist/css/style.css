@@ -531,7 +531,7 @@ blockquote {
   margin-bottom: 1em;
   padding: 0 1em;
   color: rgba(52, 52, 52, 0.67);
-  border-left: 0.25em solid rgba(0, 0, 0, 0.1); }
+  border-left: 0.25em solid rgba(52, 52, 52, 0.1); }
 
 table {
   border-collapse: collapse;
@@ -564,9 +564,9 @@ table.table {
     table.table.bordered th, table.table.bordered td {
       border: 1px solid #BEBEBE; }
   table.table.striped tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.05); }
+    background-color: rgba(52, 52, 52, 0.05); }
   table.table.hover tr:hover {
-    background-color: rgba(0, 0, 0, 0.1); }
+    background-color: rgba(52, 52, 52, 0.1); }
 
 .table-responsive-wrapper {
   max-width: 100%;
@@ -585,7 +585,7 @@ code {
   padding: 0.15em 0.25em;
   font-size: 0.85em;
   color: #343434;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(52, 52, 52, 0.05);
   border-radius: 4px; }
   a code {
     padding: 0;
@@ -653,7 +653,7 @@ ul.list-group li.active {
 
 ol.list-group.hover li:hover:not(.active),
 ul.list-group.hover li:hover:not(.active) {
-  background-color: rgba(0, 0, 0, 0.1); }
+  background-color: rgba(52, 52, 52, 0.1); }
 
 ol.list-horizontal li,
 ul.list-horizontal li {
@@ -1275,7 +1275,7 @@ input[type="reset"], .btn-icon {
         text-decoration: none; }
       .dropdown ul.dropdown-content li a:hover, .dropdown ul.dropdown-content li a:focus {
         color: #343434;
-        background-color: rgba(0, 0, 0, 0.1); }
+        background-color: rgba(52, 52, 52, 0.1); }
     .dropdown ul.dropdown-content[data-align="left"] {
       left: 0;
       right: auto; }
@@ -1454,7 +1454,7 @@ a.badge {
   border-radius: 2em;
   margin-right: 0.5em;
   margin-bottom: 0.5em;
-  background-color: rgba(0, 0, 0, 0.1); }
+  background-color: rgba(52, 52, 52, 0.1); }
   .chip img {
     float: left;
     margin-right: 0.5em;
@@ -1476,7 +1476,7 @@ a.chip {
 .image-container {
   position: relative; }
   .image-container:hover .overlay {
-    opacity: 0.75; }
+    opacity: 0.67; }
     .image-container:hover .overlay.from-top {
       bottom: 0;
       height: 100%; }
@@ -1515,7 +1515,7 @@ a.chip {
       color: #FFFFFF;
       font-size: 1em; }
     .image-container .overlay[class*="from-"] {
-      opacity: 0.75;
+      opacity: 0.67;
       overflow: hidden; }
     .image-container .overlay.from-top {
       bottom: 100%;
@@ -2148,7 +2148,7 @@ ul.pagination {
       transition: color 0.3s, background-color 0.3s; }
       ul.pagination li a:hover {
         color: #343434;
-        background-color: rgba(0, 0, 0, 0.1); }
+        background-color: rgba(52, 52, 52, 0.1); }
     ul.pagination li.active {
       color: #FFFFFF;
       background-color: #0087BD; }
@@ -2230,7 +2230,7 @@ ul.pagination {
     font-size: 0.9rem;
     content: attr(aria-label);
     color: #FFFFFF;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(52, 52, 52, 0.8);
     border-radius: 2px;
     opacity: 0; }
   .tooltip::before {
@@ -2239,7 +2239,7 @@ ul.pagination {
     display: none;
     width: 0;
     height: 0;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(52, 52, 52, 0.8);
     content: "";
     border: 5px solid transparent;
     opacity: 0; }
@@ -2259,7 +2259,7 @@ ul.pagination {
     right: 50%;
     bottom: auto;
     margin-right: -5px;
-    border-top-color: rgba(0, 0, 0, 0.8); }
+    border-top-color: rgba(52, 52, 52, 0.8); }
   .tooltip.tooltip-bottom::after {
     right: 50%;
     top: 100%;
@@ -2270,7 +2270,7 @@ ul.pagination {
     top: auto;
     right: 50%;
     bottom: -5px;
-    border-bottom-color: rgba(0, 0, 0, 0.8); }
+    border-bottom-color: rgba(52, 52, 52, 0.8); }
   .tooltip.tooltip-left::after {
     right: 100%;
     bottom: 50%;
@@ -2281,7 +2281,7 @@ ul.pagination {
     top: 50%;
     left: -5px;
     margin-top: -5px;
-    border-left-color: rgba(0, 0, 0, 0.8); }
+    border-left-color: rgba(52, 52, 52, 0.8); }
   .tooltip.tooltip-right::after {
     left: 100%;
     bottom: 50%;
@@ -2292,7 +2292,7 @@ ul.pagination {
     top: 50%;
     right: -5px;
     margin-top: -5px;
-    border-right-color: rgba(0, 0, 0, 0.8); }
+    border-right-color: rgba(52, 52, 52, 0.8); }
 
 .collapse-toggle, .accordion .accordion-head {
   text-decoration: none;
