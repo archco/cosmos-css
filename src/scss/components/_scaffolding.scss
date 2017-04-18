@@ -3,7 +3,9 @@
 //======================================================================
 
 html { box-sizing: border-box; }
-*, *:before, *:after { box-sizing: inherit; }
+*,
+*::before,
+*::after { box-sizing: inherit; }
 
 body {
   font-family: $font-base;
@@ -15,11 +17,12 @@ body {
 header {
   z-index: $z-index-header;
 }
+
 footer {
   z-index: $z-index-footer;
 }
 
-footer.footer {
+.footer {
   color: $footer-color;
   background-color: $footer-bg-color;
 
@@ -30,11 +33,13 @@ footer.footer {
     &:visited { color: inherit; }
     &:hover { color: $footer-link-hover-color; }
   }
+
   .footer-copyright {
-    padding: 0.5rem 0;
+    $_bg-color: rgba(#000, .1);
+    padding: .5rem 0;
+    color: rgba($footer-color, .8);
     text-align: center;
-    color: rgba($footer-color, 0.8);
-    background-color: rgba(#000, 0.1);
+    background-color: $_bg-color;
   }
 }
 
@@ -49,8 +54,8 @@ hr {
 
 // issue #1
 img {
-  max-width: 100%;
   height: auto;
+  max-width: 100%;
 }
 
 // link
@@ -62,10 +67,10 @@ a {
   &:focus {
     text-decoration: $link-hover-decoration;
   }
-}
 
-a.no-deco {
-  @include no-decoration;
+  &.no-deco {
+    @include no-decoration;
+  }
 }
 
 %link-no-deco {
@@ -74,12 +79,12 @@ a.no-deco {
 
 // blockquote
 blockquote {
+  padding: 0 1em;
   margin: 0;
   margin-top: 0;
   margin-bottom: 1em;
-  padding: 0 1em;
   color: $blockquote-color;
-  border-left: 0.25em solid $blockquote-border-color;
+  border-left: .25em solid $blockquote-border-color;
 }
 
 //======================================================================
@@ -88,8 +93,8 @@ blockquote {
 
 // default
 table {
-  border-collapse: collapse;
   border: $table-border-width solid $table-border-color;
+  border-collapse: collapse;
 
   th,
   td {
@@ -98,23 +103,24 @@ table {
   }
 }
 
-table.table {
+.table {
   width: 100%;
   max-width: 800px;
-  font-size: 0.9em;
+  font-size: .9em;
   color: $table-text-color;
+  border: 0;
   border-collapse: collapse;
-  border: none;
 
   th,
   td {
     padding: $table-cell-padding;
-    border: none;
+    border: 0;
   }
+
   th {
+    color: $table-head-text-color;
     text-align: left;
     background-color: $table-head-color;
-    color: $table-head-text-color;
   }
 
   &.center {
@@ -125,7 +131,8 @@ table.table {
   &.bordered {
     border: $table-border-width solid $table-border-color;
 
-    th, td {
+    th,
+    td {
       border: $table-border-width solid $table-border-color;
     }
   }
@@ -181,9 +188,9 @@ code {
 pre code {
   display: block;
   padding: $code-block-padding;
+  overflow-x: auto;
   line-height: $code-block-line-height;
   color: $code-color;
-  overflow-x: auto;
 }
 
 //======================================================================
@@ -196,7 +203,7 @@ aside,
 div,
 p {
   &.pad {
-    padding: 1em 0.5em;
+    padding: 1em .5em;
   }
 }
 // section
@@ -205,16 +212,22 @@ p {
     padding: 2rem 5%;
   }
 }
+
 @include media-only-mobile {
   section.pad {
-    padding: 2rem 0.5rem;
+    padding: 2rem .5rem;
   }
 }
 
 // .accent
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   &.accent {
-    font-family: $font-accent;  
+    font-family: $font-accent;
   }
 }
 
@@ -238,9 +251,14 @@ ul {
   &.list-group {
     li {
       padding: $list-group-padding;
-      border: $list-border-width solid $list-border-color;
       margin-bottom: -$list-border-width;
+      border: $list-border-width solid $list-border-color;
       transition: background-color $transition-time;
+
+      &.active {
+        color: $list-group-active-color;
+        background-color: $list-group-active-bg-color;
+      }
     }
 
     li:first-child {
@@ -249,11 +267,6 @@ ul {
 
     li:last-child {
       @include border-bottom-radius($list-group-border-radius);
-    }
-
-    li.active {
-      color: $list-group-active-color;
-      background-color: $list-group-active-bg-color;
     }
 
     &.hover {
@@ -272,7 +285,7 @@ ul {
     }
 
     li:last-child {
-      border-right: none;
+      border-right: 0;
     }
   }
 }

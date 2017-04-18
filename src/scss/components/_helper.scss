@@ -6,9 +6,11 @@
 .display-hide {
   display: none !important;
 }
+
 .display-show {
   display: block !important;
 }
+
 .display-invisible {
   visibility: hidden;
 }
@@ -16,14 +18,16 @@
 // responsive hiding
 %resopnsive-tablet-hide {
   @include media-tablet-up() {
-    & { display: none; }
+    display: none;
   }
 }
+
 %responsive-mobile-hide {
   @include media-only-mobile() {
-    & { display: none; }
+    display: none;
   }
 }
+
 .hide-only-mobile {
   @extend %responsive-mobile-hide;
 }
@@ -37,9 +41,11 @@
 .align-center {
   text-align: center;
 }
+
 .align-right {
   text-align: right;
 }
+
 .align-left {
   text-align: left;
 }
@@ -48,9 +54,11 @@
 %flex-center {
   @include flexContainer('center', 'center');
 }
+
 %position-center-container {
   @include positionCenterContainer;
 }
+
 %position-center {
   @include positionCenter;
 }
@@ -62,9 +70,11 @@
     display: block;
   }
 }
+
 .flex-center-container {
   @include flexContainer('center', 'center');
 }
+
 .center-position-container {
   @include positionCenterContainer;
 
@@ -72,23 +82,25 @@
     @include positionCenter;
   }
 }
+
 .center-block {
   display: block;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 // float
 .float-clear {
   @include clear-both;
 }
+
 .float-left { float: left !important; }
 .float-right { float: right !important; }
 
 // text
 .comment {
+  font-size: .8rem;
   color: $text-color-weak;
-  font-size: 0.8rem;
 }
 
 // position
@@ -99,6 +111,7 @@
   left: 0;
   z-index: $z-index-fixed;
 }
+
 .sticky-top {
   position: sticky;
   top: 0;
@@ -110,6 +123,7 @@
   .color-#{$name} {
     color: $color;
   }
+
   .bg-color-#{$name} {
     color: get-contrast($color);
     background-color: $color;
@@ -118,7 +132,7 @@
 
 // misc
 .box-line { border: 1px solid $secondary-color; }
-.no-margin { margin: 0; padding: 0; }
+.no-margin { padding: 0; margin: 0;}
 .full-width { width: 100%; }
 .full-height { height: 100%; }
 .group { margin: 1rem 0; }

@@ -3,24 +3,24 @@
 //======================================================================
 .chip {
   // local variables.
-  $chip-size: $chip-height;
-  
+  $_chip-size: $chip-height;
+
   display: inline-block;
-  font-size: $chip-font-size;
   height: $chip-height;
-  padding: 0 $chip-size / 2;
-  line-height: stripUnit($chip-size);
-  border-radius: $chip-size;
-  margin-right: $chip-size / 4;
-  margin-bottom: $chip-size / 4;
+  padding: 0 $_chip-size / 2;
+  margin-right: $_chip-size / 4;
+  margin-bottom: $_chip-size / 4;
+  font-size: $chip-font-size;
+  line-height: stripUnit($_chip-size);
   background-color: $chip-bg-color;
+  border-radius: $_chip-size;
 
   img {
     float: left;
-    margin-right: $chip-size / 4;
-    margin-left: -$chip-size / 2;
-    width: $chip-size;
-    height: $chip-size;
+    width: $_chip-size;
+    height: $_chip-size;
+    margin-right: $_chip-size / 4;
+    margin-left: -$_chip-size / 2;
     border-radius: 50%;
   }
 }

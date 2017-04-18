@@ -7,19 +7,20 @@
   @extend %link-no-deco;
   display: inline-block;
   padding: $nav-link-padding;
-  color: $nav-link-color;
   font-family: inherit;
   font-size: inherit;
+  color: $nav-link-color;
   border: 2px solid transparent;
   transition: color $transition-time;
 
   &:hover { color: $nav-link-hover-color; }
 }
+
 %nav-button {
   @extend %btn-common;
-  outline: none;
-  background-color: transparent;
   display: inline-block;
+  background-color: transparent;
+  outline: none;
 }
 
 // nav
@@ -40,14 +41,14 @@
     li {
       text-align: center;
 
-      &.active a { 
+      &.active a {
         color: $nav-active-color;
         background-color: $nav-active-bg-color;
 
         @include media-tablet-up() {
           border-color: $nav-bg-color;
           border-bottom-color: $nav-active-bg-color;
-          border-radius: $radius-normal $radius-normal 0 0;  
+          border-radius: $radius-normal $radius-normal 0 0;
         }
       }
     }
@@ -89,81 +90,92 @@
     @extend %responsive-mobile-hide;
     justify-content: flex-start; // default
   }
+
   .menu-right {
     @extend %responsive-mobile-hide;
     justify-content: flex-end;
   }
+
   .menu-center {
     @extend %responsive-mobile-hide;
     justify-content: center;
   }
+
   .menu-between {
     @extend %responsive-mobile-hide;
     justify-content: space-between;
   }
+
   .menu-around {
     @extend %responsive-mobile-hide;
     justify-content: space-around;
   }
 
   .nav-header {
-    @extend %position-center-container, %resopnsive-tablet-hide;
+    @extend %position-center-container;
+    @extend %resopnsive-tablet-hide;
     height: 50px;
 
     .nav-brand {
       @extend %position-center;
+      left: .5rem;
       width: auto;
       height: 40px;
-      left: 0.5rem;
 
       img {
         width: auto;
         height: inherit;
       }
+
       &.text {
         @extend %nav-link;
+        padding: .5rem 0;
         margin: 0;
-        padding: 0.5rem 0;
       }
     }
+
     /* nav toggle button */
     button.menu-toggle {
-      @extend %nav-button, %position-center;
-      right: 0.5rem;
+      @extend %nav-button;
+      @extend %position-center;
+      right: .5rem;
 
-      .icon-bar1, 
-      .icon-bar2, 
+      .icon-bar1,
+      .icon-bar2,
       .icon-bar3 {
-        width: $icon-size; height: round($icon-size / 7);
+        width: $icon-size;
+        height: round($icon-size / 7);
         margin: round($icon-size * 6 / 35);
-        border-radius: $radius-normal - 2;
         background-color: $nav-link-color;
+        border-radius: $radius-normal - 2;
         transition: $transition-time;
       }
 
       &.change {
         .icon-bar1 {
-          transform: rotate(-45deg) translate(round($icon-size * -9 / 35), round($icon-size * 7 / 35)) ;
+          transform: rotate(-45deg) translate(round($icon-size * -9 / 35), round($icon-size * 7 / 35));
         }
+
         .icon-bar2 {
           opacity: 0;
         }
+
         .icon-bar3 {
-          transform: rotate(45deg) translate(round($icon-size * -8 / 35), round($icon-size * -7 / 35)) ;
+          transform: rotate(45deg) translate(round($icon-size * -8 / 35), round($icon-size * -7 / 35));
         }
       }
     }
   }
 }
 
-
-
 // Responsive
 @include media-only-mobile() {
   /* nav */
   nav.navbar {
-    ul, li, a {
-      width: 100%;  
+    ul,
+    li,
+    a {
+      width: 100%;
     }
   }
 }

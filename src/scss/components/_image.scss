@@ -3,7 +3,7 @@
 //======================================================================
 .image-container {
   position: relative;
-  
+
   &:hover .overlay {
     opacity: $image-overlay-base-opacity;
 
@@ -11,14 +11,17 @@
       bottom: 0;
       height: 100%;
     }
+
     &.from-bottom {
       top: 0;
       height: 100%;
     }
+
     &.from-right {
       left: 0;
       width: 100%;
     }
+
     &.from-left {
       right: 0;
       width: 100%;
@@ -35,36 +38,40 @@
     @include flexContainer('center', 'center');
     position: absolute;
     top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
     width: 100%;
     height: 100%;
+    background-color: $image-overlay-bg-color;
     opacity: 0;
     transition: $image-overlay-transition ease;
-    background-color: $image-overlay-bg-color;
 
     .text {
-      color: get-contrast($image-overlay-bg-color);
       font-size: 1em;
+      color: get-contrast($image-overlay-bg-color);
     }
-    
+
     &[class*="from-"] {
-      opacity: $image-overlay-base-opacity;
       overflow: hidden;
+      opacity: $image-overlay-base-opacity;
     }
+
     &.from-top {
       bottom: 100%;
       height: 0;
     }
+
     &.from-bottom {
       top: 100%;
       height: 0;
     }
+
     &.from-right {
       left: 100%;
       width: 0;
     }
+
     &.from-left {
       right: 100%;
       width: 0;
@@ -79,30 +86,39 @@ img.filter {
   &.blur {
     filter: blur(4px);
   }
+
   &.lighten {
     filter: brightness(1.25);
   }
+
   &.darken {
-    filter: brightness(0.75);
+    filter: brightness(.75);
   }
+
   &.contrast {
     filter: contrast(150%);
   }
+
   &.gray {
     filter: grayscale(100%);
   }
+
   &.hue-rotate {
     filter: hue-rotate(90deg);
   }
+
   &.invert {
     filter: invert(100%);
   }
+
   &.opacity {
     filter: opacity(50%);
   }
+
   &.saturate {
     filter: saturate(200%);
   }
+
   &.sepia {
     filter: sepia(100%);
   }

@@ -5,7 +5,7 @@
 // used for %link-no-deco
 @mixin no-decoration() {
   text-decoration: none;
-  
+
   &:focus,
   &:hover {
     text-decoration: none;
@@ -18,13 +18,16 @@
   &:link {
     color: $link;
   }
+
   &:visited {
     color: if($visited, $visited, $link);
   }
+
   &:hover,
   &:focus {
     color: if($hover, $hover, $link);
   }
+
   &:active {
     color: if($active, $active, $link);
   }
@@ -51,11 +54,12 @@
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  border: 0.125em solid $text-color; // default color.
+  border: .125em solid $text-color; // default color.
   border-right-color: transparent;
   border-top-color: transparent;
-  animation: 0.5s linear 0s infinite spin;
+  animation: .5s linear 0s infinite spin;
 }
+
 @mixin loaderOneColor($color: $text-color) {
   border-left-color: $color;
   border-bottom-color: $color;
@@ -69,7 +73,7 @@
   @include no-decoration;
   line-height: 1.15;
   white-space: nowrap;
-  border: none;
+  border: 0;
   cursor: pointer;
   user-select: none;
 }
@@ -83,17 +87,19 @@
   background-color: $bg-color;
   outline-color: $bg-color;
   transition: background-color $transition-time, box-shadow $transition-time;
-  
+
   &:link,
   &:visited {
     color: $color;
   }
+
   &:focus:not([disabled]),
   &:hover:not([disabled]) {
     color: $color;
     background-color: lighten($bg-color, 4%);
     box-shadow: $shadow-normal;
   }
+
   &:active:not([disabled]) {
     color: $color;
     background-color: darken($bg-color, 4%);
@@ -104,17 +110,18 @@
 @mixin btnFlatColor($color) {
   color: $color;
   background-color: transparent;
-  outline-color: rgba($color, 0.2);
+  outline-color: rgba($color, .2);
   transition: color $transition-time, background-color $transition-time;
-  
+
   &:focus:not([disabled]),
   &:hover:not([disabled]) {
     color: $color;
-    background-color: rgba($color, 0.1);
+    background-color: rgba($color, .1);
   }
+
   &:active:not([disabled]) {
     color: $color;
-    background-color: rgba($color, 0.2);
+    background-color: rgba($color, .2);
   }
 }
 
@@ -125,10 +132,10 @@
 
 // clear-both
 @mixin clear-both() {
-  &:after {
-    content: "";
+  &::after {
     display: block;
     clear: both;
+    content: '';
   }
 }
 
@@ -136,7 +143,8 @@
 @mixin debug() {
   &.outline {
     * {
-      outline: 1px solid rgba(#F00, 0.5);
+      $_outline-color: rgba(#f00, .5);
+      outline: 1px solid $_outline-color;
     }
   }
 }
@@ -150,7 +158,6 @@
   letter-spacing: normal;
   line-break: auto;
   line-height: 1.15;
-  text-align: left; // Fallback for where `start` is not supported
   text-align: start;
   text-decoration: none;
   text-shadow: none;
@@ -173,14 +180,17 @@
   border-top-left-radius: $radius;
   border-top-right-radius: $radius;
 }
+
 @mixin border-right-radius($radius) {
   border-top-right-radius: $radius;
   border-bottom-right-radius: $radius;
 }
+
 @mixin border-bottom-radius($radius) {
   border-bottom-left-radius: $radius;
   border-bottom-right-radius: $radius;
 }
+
 @mixin border-left-radius($radius) {
   border-top-left-radius: $radius;
   border-bottom-left-radius: $radius;
@@ -201,7 +211,11 @@
     color: $color;
     background-color: transparent;
     transition: color $transition-time;
-    &:hover { color: rgba(#000, 0.3); }
+
+    &:hover {
+      $_hover-color: rgba(#000, .3);
+      color: $_hover-color;
+    }
   }
 }
 
@@ -211,21 +225,21 @@
 //======================================================================
 
 // calculate card size
-@mixin calCardSize($size, $direction:"vertical") {
-  @if ($direction == "vertical") {
+@mixin calCardSize($size, $direction:'vertical') {
+  @if ($direction == 'vertical') {
     width: $size * 1.25;
-  } @else if ($direction == "horizontal") {
+  } @else if ($direction == 'horizontal') {
     width: $size * 1.25;
   }
 }
 
-@mixin cardImageSize($direction:"vertical") {
-  @if ($direction == "vertical") {
+@mixin cardImageSize($direction:'vertical') {
+  @if ($direction == 'vertical') {
     width: 105%;
     height: auto;
-  } @else if ($direction == "horizontal") {
-    height: 105%;
+  } @else if ($direction == 'horizontal') {
     width: auto;
+    height: 105%;
   }
 }
 
@@ -240,14 +254,18 @@
     @content;
   }
 }
+
 @mixin media-down($width) {
   $width: $width - 1;
+
   @media only screen and (max-width: $width) {
     @content;
   }
 }
+
 @mixin media-between($min, $max) {
   $max: $max - 1;
+
   @media only screen and (min-width: $min) and (max-width: $max) {
     @content;
   }
@@ -259,21 +277,25 @@
     @content;
   }
 }
+
 @mixin media-tablet-up() {
   @include media-up($mobile-size) {
     @content;
   }
 }
+
 @mixin media-tablet-down() {
   @include media-down($tablet-size) {
     @content;
   }
 }
+
 @mixin media-only-tablet() {
   @include media-between($mobile-size, $tablet-size) {
     @content;
   }
 }
+
 @mixin media-only-desktop() {
   @include media-up($tablet-size) {
     @content;
@@ -288,12 +310,14 @@
 @mixin positionCenterContainer() {
   position: relative;
 }
+
 @mixin positionCenter() {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
 }
-@mixin flexContainer($horizontal:"flex-start", $vertical:"stretch") {
+
+@mixin flexContainer($horizontal:'flex-start', $vertical:'stretch') {
   display: flex;
   justify-content: #{$horizontal}; // horizontally
   align-items: #{$vertical}; // vertically
@@ -304,8 +328,8 @@
 //======================================================================
 @mixin badgeColor($bg-color) {
   $color: get-contrast($bg-color);
-  color: $color;
   background-color: $bg-color;
+  color: $color;
 
   &[href] {
     @include setLinkStateColor($color);
@@ -314,6 +338,7 @@
     &:focus {
       background-color: lighten($bg-color, 4%);
     }
+
     &:active {
       background-color: darken($bg-color, 4%);
     }

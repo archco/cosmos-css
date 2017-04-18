@@ -12,13 +12,13 @@
     z-index: $z-index-tooltip;
     display: none;
     padding: $tooltip-padding;
+    font-size: $tooltip-font-size;
+    color: $tooltip-color;
     word-wrap: break-word;
     white-space: pre;
-    font-size: $tooltip-font-size;
-    content: attr(aria-label);
-    color: $tooltip-color;
     background-color: $tooltip-bg-color;
     border-radius: $tooltip-border-radius;
+    content: attr(aria-label);
     opacity: 0;
   }
 
@@ -30,8 +30,8 @@
     width: 0;
     height: 0;
     color: $tooltip-bg-color;
-    content: "";
     border: 5px solid transparent;
+    content: '';
     opacity: 0;
   }
 
@@ -39,7 +39,7 @@
   &:active,
   &:focus {
     &::before,
-    &::after{
+    &::after {
       display: inline-block;
       text-decoration: none;
       animation: $tooltip-animation-duration ease-in $tooltip-animation-delay forwards fade-in;
@@ -56,6 +56,7 @@
       margin-bottom: 5px;
       transform: translateX(50%);
     }
+
     &::before {
       top: -5px;
       right: 50%;
@@ -67,11 +68,12 @@
   // bottom
   &.tooltip-bottom {
     &::after {
-      right: 50%;
       top: 100%;
+      right: 50%;
       margin-top: 5px;
       transform: translateX(50%);
     }
+
     &::before {
       top: auto;
       right: 50%;
@@ -87,6 +89,7 @@
       margin-right: 5px;
       transform: translateY(50%);
     }
+
     &::before {
       top: 50%;
       left: -5px;
@@ -97,11 +100,12 @@
   // right
   &.tooltip-right {
     &::after {
-      left: 100%;
       bottom: 50%;
+      left: 100%;
       margin-left: 5px;
       transform: translateY(50%);
     }
+
     &::before {
       top: 50%;
       right: -5px;

@@ -3,20 +3,22 @@
 //======================================================================
 
 fieldset {
+  padding: .5rem 1rem;
   margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
   border: $filedset-border;
   border-radius: $radius-normal;
 }
+
 legend {
-  padding: 0.5em 1em;
+  padding: .5em 1em;
   font-size: 1.2em;
   font-weight: bold;
   color: $legend-color;
 }
+
 label {
   display: inline-block;
-  margin-bottom: 0.25rem;
+  margin-bottom: .25rem;
   font-weight: bold;
   color: $label-color;
 }
@@ -25,10 +27,10 @@ label {
 input,
 select,
 textarea {
+  color: inherit;
   vertical-align: middle;
   // default outline color
   outline-color: $input-outline-color;
-  color: inherit;
 }
 
 // input generalize
@@ -47,13 +49,12 @@ input[type="search"],
 select,
 textarea {
   width: 100%;
-  min-height: 2.0rem;
-  line-height: 1.4;
+  min-height: 2rem;
   padding: $input-padding;
-  // margin: $input-margin;
+  line-height: 1.4;
+  background-color: transparent;
   border: $input-border;
   border-radius: $input-radius;
-  background-color: transparent;
 
   &[disabled],
   &[readonly] {
@@ -80,7 +81,9 @@ textarea {
 input[type="submit"],
 input[type="button"],
 input[type="reset"] {
-  @extend .btn;
+  @extend %btn;
+  @extend %btn-disabled;
+  @extend %btn-color-set;
 }
 
 input[type="checkbox"],
@@ -101,13 +104,14 @@ input[type="color"] {
 }
 
 .form-inline {
-  margin: 0;
-  padding: 0;
   display: inline;
+  padding: 0;
+  margin: 0;
 
   @include formInlineTarget {
     @extend %form-inline;
   }
+
   textarea {
     height: auto;
   }

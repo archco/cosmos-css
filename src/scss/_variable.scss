@@ -45,7 +45,7 @@ $secondary-color: $cadetgray !default;
 // text colors.
 $text-color: $black !default;
 $text-color-invert: $white !default;
-$text-color-weak: rgba($text-color, 0.67) !default;
+$text-color-weak: rgba($text-color, .67) !default;
 $text-color-strong: $primary-color-accent !default;
 $text-color-light: if(lightness($text-color) > 50, $text-color, $text-color-invert) !default;
 $text-color-dark: if(lightness($text-color) > 50, $text-color-invert, $text-color) !default;
@@ -54,7 +54,7 @@ $text-color-middle: mix($text-color-light, $text-color-dark) !default;
 // background colors.
 $background-color: $white !default;
 $background-color-invert: $black !default;
-$background-color-shade: rgba($background-color-invert, 0.1) !default;
+$background-color-shade: rgba($background-color-invert, .1) !default;
 
 // color-set.
 $info-color: $teal !default;
@@ -64,9 +64,9 @@ $error-color: $red !default;
 $warning-color: $yellow !default;
 
 // etc colors.
-$shadow-color: rgba(#000, 0.3) !default;
+$shadow-color: rgba(#000, .3) !default;
 $border-color: $mediumgray !default;
-$disabled-color: rgba($gray, 0.2) !default;
+$disabled-color: rgba($gray, .2) !default;
 
 // theme settings.
 $radius-normal: 4px !default;
@@ -76,7 +76,7 @@ $radius-button: $radius-small !default;
 $shadow-near: 1px 1px 4px $shadow-color !default;
 $shadow-normal: 2px 2px 8px $shadow-color !default;
 $shadow-far: 4px 4px 16px $shadow-color !default;
-$transition-time: 0.3s !default;
+$transition-time: .3s !default;
 $icon-size: 35px !default; // nav toggle button's width
 $default-focus-outline: 2px solid $primary-color !default;
 $outline-color: $primary-color !default;
@@ -98,19 +98,19 @@ $blockquote-color: $text-color-weak !default;
 $blockquote-border-color: $background-color-shade !default;
 
 // table
-$table-cell-padding: 0.75em !default;
+$table-cell-padding: .75em !default;
 $table-border-width: 1px !default;
 $table-border-color: $border-color !default;
 $table-head-color: $primary-color !default;
 $table-head-text-color: get-contrast($table-head-color) !default;
 $table-text-color: inherit !default;
-$table-row-even-bg: rgba($background-color-invert, 0.05) !default;
-$table-row-hover-bg: rgba($background-color-invert, 0.1) !default;
+$table-row-even-bg: rgba($background-color-invert, .05) !default;
+$table-row-hover-bg: rgba($background-color-invert, .1) !default;
 
 // codes
-$code-padding: 0.15em 0.25em !default;
-$code-font-size: 0.85em !default;
-$code-bg-color: rgba($background-color-invert, 0.05) !default;
+$code-padding: .15em .25em !default;
+$code-font-size: .85em !default;
+$code-bg-color: rgba($background-color-invert, .05) !default;
 $code-color: get-contrast(rgbaToRgb($code-bg-color, $background-color)) !default;
 $code-border-radius: $radius-normal !default;
 $code-block-padding: 1em !default;
@@ -119,10 +119,10 @@ $code-block-line-height: 1.45 !default;
 // list
 $list-border-width: 1px !default;
 $list-border-color: $border-color !default;
-$list-padding: 0.3em 0.6em !default;
-$list-group-padding: 0.4em 0.8em !default;
+$list-padding: .3em .6em !default;
+$list-group-padding: .4em .8em !default;
 $list-group-border-radius: $radius-normal !default;
-$list-group-hover-bg: rgba($background-color-invert, 0.1) !default;
+$list-group-hover-bg: rgba($background-color-invert, .1) !default;
 $list-group-active-bg-color: $primary-color !default;
 $list-group-active-color: get-contrast($list-group-active-bg-color) !default;
 
@@ -148,7 +148,7 @@ $z-index-modal:               18 !default;
 //======================================================================
 
 // badge
-$badge-font-size: 0.85em !default;
+$badge-font-size: .85em !default;
 $badge-border-radius: $radius-small !default;
 $badge-default-color: $text-color-middle !default;
 
@@ -188,7 +188,7 @@ $nav-active-bg-color: $background-color !default;
 $nav-active-color: $nav-bg-color !default;
 $nav-link-color: $text-color-invert !default;
 $nav-link-hover-color: $secondary-color !default;
-$nav-link-padding: 0.5em 1em !default;
+$nav-link-padding: .5em 1em !default;
 $nav-font: $font-accent !default;
 $nav-font-size: 1.25em !default;
 $nav-line-height: 1.25 !default;
@@ -206,8 +206,8 @@ $label-color: $text-color !default;
 $label-color-focused: $primary-color !default;
 $label-color-disabled: $disabled-color !default;
 
-$input-padding: 0.2em 0.5em !default;
-$input-margin: 0.5rem 0 !default;
+$input-padding: .2em .5em !default;
+$input-margin: .5rem 0 !default;
 $input-border: 1px solid $border-color !default;
 $input-radius: $radius-small !default;
 $input-outline-color: $outline-color !default;
@@ -231,11 +231,11 @@ $scroll-to-color: $white !default;
 $scroll-to-bg-color: $primary-color-accent !default;
 
 // modal
-$modal-bg-color: rgba(0,0,0, 0.4) !default;
+$modal-bg-color: rgba(0, 0, 0, .4) !default;
 $modal-content-bg-color: $background-color !default;
-$modal-button-color: rgba($text-color, 0.5) !default;
+$modal-button-color: rgba($text-color, .5) !default;
 $modal-button-hover-color: rgba($text-color, 1) !default;
-$modal-close-button-color: rgba($danger-color, 0.5) !default;
+$modal-close-button-color: rgba($danger-color, .5) !default;
 $modal-close-button-hover-color: rgba($danger-color, 1) !default;
 
 // tab
@@ -253,27 +253,27 @@ $tab-border-width: 1px !default;
 
 // tooltip
 $tooltip-color: $text-color-invert !default;
-$tooltip-bg-color: rgba($background-color-invert, 0.8) !default;
-$tooltip-padding: 0.5em 1em !default;
-$tooltip-font-size: 0.9rem !default;
+$tooltip-bg-color: rgba($background-color-invert, .8) !default;
+$tooltip-padding: .5em 1em !default;
+$tooltip-font-size: .9rem !default;
 $tooltip-border-radius: $radius-small !default;
-$tooltip-animation-duration: 0.3s !default;
-$tooltip-animation-delay: 0.3s !default;
+$tooltip-animation-duration: .3s !default;
+$tooltip-animation-delay: .3s !default;
 
 // collapse - accordion
 $accordion-border-width: 1px !default;
 $accordion-border-color: $border-color !default;
-$accordion-head-padding: 0.5em 1em !default;
+$accordion-head-padding: .5em 1em !default;
 $accordion-head-active-bg-color: $primary-color !default;
 $accordion-head-active-color: get-contrast($accordion-head-active-bg-color) !default;
 $accordion-border-radius: $radius-normal !default;
 
 // chip
-$chip-font-size: 0.85em !default;
+$chip-font-size: .85em !default;
 $chip-height: 2em !default; // unit:em, This value is base of local variables of chip.
 $chip-bg-color: $background-color-shade !default;
 
 // image
-$image-overlay-base-opacity: 0.67 !default;
+$image-overlay-base-opacity: .67 !default;
 $image-overlay-transition: $transition-time * 2 !default;
 $image-overlay-bg-color: $background-color-invert !default;

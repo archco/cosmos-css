@@ -11,29 +11,32 @@
   li {
     display: inline-block;
   }
+
   .tab-link {
     @include no-decoration;
     display: inline-block;
-    text-align: center;
-    padding: 0.5em 1em;
+    padding: .5em 1em;
     color: $tab-color;
+    text-align: center;
     background-color: $tab-bg-color;
-    border-style: solid;
-    border-width: $tab-border-width * 3 $tab-border-width $tab-border-width $tab-border-width;
     border-color: transparent;
+    border-style: solid;
+    // border-width: top right&left bottom
+    border-width: $tab-border-width * 3  $tab-border-width $tab-border-width;
 
     &:hover,
     &:focus {
       color: $tab-hover-color;
     }
+
     &.active {
-      cursor: default;
       color: $tab-active-color;
+      cursor: default;
       background-color: $tab-active-bg-color;
       border-top-color: $tab-active-border-accent-color;
-      border-left-color: $tab-border-color;
       border-right-color: $tab-border-color;
       border-bottom-color: $tab-active-bg-color;
+      border-left-color: $tab-border-color;
       border-radius: $tab-active-border-radius $tab-active-border-radius 0 0;
 
       @each $name, $color in $color-set {
@@ -43,11 +46,12 @@
       }
     }
   }
-  &:after {
-    content: "";
+
+  &::after {
     display: block;
     margin-top: -$tab-border-width * 2;
     border-top: $tab-border-width solid $tab-border-color;
+    content: '';
   }
 }
 

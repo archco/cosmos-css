@@ -5,20 +5,20 @@
   @include reset-list;
 
   li {
-    padding: 0.2em 0.4em;
-    margin: 0.1em 0;
+    padding: .2em .4em;
+    margin: .1em 0;
   }
 }
 
 .simple-crud-list {
   @extend %simple-list;
-  
+
   .simple-crud-item {
     .simple-crud-view-read,
     .simple-crud-view-update,
     .simple-crud-view-delete {
       @include clear-both;
-      
+
       display: none;
       &.show { display: block; }
     }
@@ -26,7 +26,7 @@
 
   .simple-crud-actions {
     display: inline-block;
-    vertical-align: middle;
     float: right;
+    vertical-align: middle;
   }
 }

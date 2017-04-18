@@ -4,21 +4,20 @@
 
 /** message-box */
 .message-box {
+  // default color
+  @include messageBox($secondary-color);
   // common attributes.
-  z-index: $z-index-message-box;
   position: relative;
+  z-index: $z-index-message-box;
   padding: 1rem 1.5rem;
   margin: 8px;
-  border-radius: $radius-normal;
   vertical-align: middle;
+  border-radius: $radius-normal;
   transition: opacity ($transition-time * 2);
 
   .btn-close {
     font-size: 1.5rem;
   }
-  
-  // default color
-  @include messageBox($secondary-color);
 
   // each color-set
   @each $name, $color in $color-set {

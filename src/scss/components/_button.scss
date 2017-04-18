@@ -6,42 +6,46 @@
 %btn-common {
   @include btn-base;
   display: inline-block;
-  vertical-align: middle;
   text-align: center;
+  vertical-align: middle;
 }
+
 %btn {
   @extend %btn-common;
-  padding: 0.5em 1em;
-  margin: 0.2em;
-  outline-color: $button-outline-color;
+  padding: .5em 1em;
+  margin: .2em;
   border-radius: $button-radius;
+  outline-color: $button-outline-color;
 
   &.full-width {
-    margin-left: 0;
     margin-right: 0;
+    margin-left: 0;
   }
+
   &.is-loading:not([disabled]) {
     position: relative;
     color: transparent !important;
 
-    &:after {
+    &::after {
       @include loaderOne();
       position: absolute;
       top: 50%;
       left: 50%;
-      margin-top: -0.5em;
-      margin-left: -0.5em;
+      margin-top: -.5em;
+      margin-left: -.5em;
       content: '';
     }
   }
 }
+
 %btn-disabled {
   &[disabled] {
     cursor: default;
+    opacity: .7;
     box-shadow: none;
-    opacity: 0.7;
   }
 }
+
 %btn-color-set {
   // default color
   @include btnColor($primary-color);
@@ -50,12 +54,13 @@
     &.#{$name} {
       @include btnColor($color);
 
-      &.is-loading:not([disabled]):after {
+      &.is-loading:not([disabled])::after {
         @include loaderOneColor(get-contrast($color));
       }
     }
   }
 }
+
 %btn-flat-color-set {
   // default color
   @include btnFlatColor($link-color);
@@ -69,18 +74,24 @@
 
 // buttons
 .btn {
-  @extend %btn, %btn-disabled, %btn-color-set;
+  @extend %btn;
+  @extend %btn-disabled;
+  @extend %btn-color-set;
 }
 
 .btn-icon {
-  @extend %btn-common, %btn-disabled, %btn-color-set;
-  border-radius: 50%;
+  @extend %btn-common;
+  @extend %btn-disabled;
+  @extend %btn-color-set;
   width: 2em;
   height: 2em;
+  border-radius: 50%;
 }
 
 .btn-flat {
-  @extend %btn, %btn-disabled, %btn-flat-color-set;
+  @extend %btn;
+  @extend %btn-disabled;
+  @extend %btn-flat-color-set;
   margin: 0;
 }
 
@@ -89,13 +100,14 @@
 //======================================================================
 
 .btn-close {
+  $_color: rgba(#000, .3);
   @extend %btn-common;
-  box-sizing: content-box;
-  background-color: transparent;
-  vertical-align: baseline;
   padding: 0;
-  margin-left: 0.25em;
-  color: rgba(#000, 0.3);
+  margin-left: .25em;
+  color: $_color;
+  vertical-align: baseline;
+  background-color: transparent;
+  box-sizing: content-box;
   transition: color $transition-time;
 
   &:hover {
@@ -104,8 +116,8 @@
 
   &.at-corner {
     position: absolute;
-    top: 0.5em;
-    right: 0.5em;
+    top: .5em;
+    right: .5em;
   }
 
   &.at-right-middle {

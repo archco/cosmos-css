@@ -1,48 +1,56 @@
 //======================================================================
 // Collapse
 //======================================================================
-
-.collapse-toggle {
+%collapse-toggle {
   @include btn-base;
   position: relative;
 
   &::after {
     position: absolute;
-    content: '\002B';
-    color: inherit;
-    font-weight: bold;
     right: 1em;
+    font-weight: bold;
+    color: inherit;
+    content: '\002B';
   }
+
   &.active::after {
-    content: "\2212";
+    content: '\2212';
   }
 }
 
-.collapse-panel {
+%collapse-panel {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
+  transition: max-height .3s ease-out;
+}
+
+.collapse-toggle {
+  @extend %collapse-toggle;
+}
+
+.collapse-panel {
+  @extend %collapse-panel;
 }
 
 .accordion {
   @include reset-list;
 
   .accordion-head {
-    @extend .collapse-toggle;
+    @extend %collapse-toggle;
     padding: $accordion-head-padding;
-    border: $accordion-border-width solid $accordion-border-color;
     margin-bottom: -$accordion-border-width;
+    border: $accordion-border-width solid $accordion-border-color;
 
     &.active {
-      background-color: $accordion-head-active-bg-color;
       color: $accordion-head-active-color;
+      background-color: $accordion-head-active-bg-color;
     }
   }
 
   .accordion-body {
-    @extend .collapse-panel;
-    border-left: $accordion-border-width solid $accordion-border-color;
+    @extend %collapse-panel;
     border-right: $accordion-border-width solid $accordion-border-color;
+    border-left: $accordion-border-width solid $accordion-border-color;
   }
 
   li:first-child > .accordion-head {
@@ -56,7 +64,7 @@
     &.active {
       border-radius: 0;
 
-      & + .accordion-body {
+      + .accordion-body {
         @include border-bottom-radius($accordion-border-radius);
         border-bottom: $accordion-border-width solid $accordion-border-color;
       }

@@ -6,30 +6,31 @@
   position: relative;
   display: inline-flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  
+  align-items: center;
+
   // toggle button
-  button.dropdown-toggle {
-    @extend %btn-common;
-  }
-  // hover button
-  button.dropdown-btn {
+  .dropdown-toggle {
     @extend %btn-common;
   }
 
-  ul.dropdown-content {
+  // hover button
+  .dropdown-btn {
+    @extend %btn-common;
+  }
+
+  .dropdown-content {
     @include reset-list;
     position: absolute;
+    top: 100%;
+    // browser compatibility problem.
+    // @link  https://github.com/archco/cosmos-css/issues/63
+    left: 0;
     z-index: $z-index-dropdown-content;
     display: none;
     min-width: $dropdown-min-width;
     background-color: $dropdown-bg-color;
     box-shadow: $shadow-normal;
-    top: 100%;
-    // browser compatibility problem. 
-    // @link  https://github.com/archco/cosmos-css/issues/63
-    left: 0;
 
     &.show { display: block; }
 
@@ -42,7 +43,7 @@
       a {
         @include no-decoration;
         display: block;
-        padding: 0.5em 1em;
+        padding: .5em 1em;
         font-family: inherit;
         font-size: inherit;
         color: $dropdown-link-color;
@@ -55,34 +56,37 @@
         }
       }
     }
+
     // dropdown-content position
-    &[data-align="left"] {
-      left: 0;
+    &[data-align='left'] {
       right: auto;
+      left: 0;
     }
-    &[data-align="right"] {
-      left: auto;
+
+    &[data-align='right'] {
       right: 0;
+      left: auto;
     }
   }
 
   &:hover {
     button.dropdown-btn + ul.dropdown-content {
-      display: block;  
+      display: block;
     }
   }
 }
 
 // nav dropdown
-nav.navbar .dropdown {
-  > button.dropdown-toggle,
-  > button.dropdown-btn {
-    @extend %nav-button, %nav-link;
+.navbar .dropdown {
+  > .dropdown-toggle,
+  > .dropdown-btn {
+    @extend %nav-button;
+    @extend %nav-link;
     min-width: $dropdown-min-width;
     line-height: $nav-line-height;
   }
 
-  ul.dropdown-content > li.active > a {
+  .dropdown-content > .active > a {
     border-color: transparent;
     border-radius: 0;
   }

@@ -12,18 +12,19 @@
   $badge-rounded-padding-x: $badge-padding-base * 4;
   $badge-rounded-border-radius: $badge-font-size * 2;
 
+  @include badgeColor($badge-default-color); // default color
+
   display: inline-block;
   padding: $badge-padding-y $badge-padding-x;
-  margin-left: $badge-margin-base;
   margin-right: $badge-margin-base;
+  margin-left: $badge-margin-base;
   font-size: $badge-font-size;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: $badge-border-radius;
-  
-  @include badgeColor($badge-default-color); // default color
+
   // color-set
   @each $name, $color in $color-set {
     &.#{$name} {
@@ -32,16 +33,16 @@
   }
 
   &.rounded {
-    padding-left: $badge-rounded-padding-x;
     padding-right: $badge-rounded-padding-x;
+    padding-left: $badge-rounded-padding-x;
     border-radius: $badge-rounded-border-radius;
   }
 
   &.in-icon {
     position: absolute;
-    right: 0%;
     top: 2%;
-    font-size: 0.3em;
+    right: 0%;
+    font-size: .3em;
   }
 
   &:empty { display: none; }
