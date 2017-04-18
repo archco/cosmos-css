@@ -84,6 +84,114 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/************************************************************
+  CosmosModule
+*************************************************************/
+var CosmosModule = function () {
+  function CosmosModule() {
+    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    _classCallCheck(this, CosmosModule);
+
+    this.setOption(option);
+  }
+
+  /**
+   * module load
+   *
+   * @return {void}
+   */
+
+
+  _createClass(CosmosModule, [{
+    key: "init",
+
+
+    /**
+     * init - abstract method.
+     *
+     * @return {void}
+     */
+    value: function init() {}
+
+    /**
+     * setOption
+     *
+     * @param {Object} option
+     */
+
+  }, {
+    key: "setOption",
+    value: function setOption(option) {
+      this.option = Object.assign({}, this.getDefaultOption(), option);
+    }
+
+    /**
+     * getOption
+     *
+     * @return {Object}
+     */
+
+  }, {
+    key: "getOption",
+    value: function getOption() {
+      return this.option;
+    }
+
+    /**
+     * getDefaultOption - abstract method.
+     *
+     * @return {Object}
+     */
+
+  }, {
+    key: "getDefaultOption",
+    value: function getDefaultOption() {
+      return {};
+    }
+  }], [{
+    key: "load",
+    value: function load() {
+      var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var m = new this(option);
+      m.init();
+    }
+
+    /**
+     * get defaultOption
+     *
+     * @return {Object}
+     */
+
+  }, {
+    key: "defaultOption",
+    get: function get() {
+      var m = new this();
+      return m.getDefaultOption();
+    }
+  }]);
+
+  return CosmosModule;
+}();
+
+exports.default = CosmosModule;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -106,7 +214,7 @@ var Util = function () {
 
     /**
      * event on selector
-     * 
+     *
      * @param  {String}   selector   querySelector
      * @param  {String}   type       event type
      * @param  {Function} listener   event listener
@@ -117,7 +225,7 @@ var Util = function () {
       var useCapture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
       var elements = document.querySelectorAll(selector);
-      if (elements.length == 0) {
+      if (elements.length === 0) {
         return null;
       }
       var _iteratorNormalCompletion = true;
@@ -150,7 +258,7 @@ var Util = function () {
 
     /**
      * find ancestor by selector
-     * 
+     *
      * @param  {Element} element
      * @param  {String}  selector
      * @return {Element|null}
@@ -244,7 +352,7 @@ var Util = function () {
 
     /**
      * location.search to Object.
-     * 
+     *
      * @return {Object|null}
      */
 
@@ -264,7 +372,7 @@ var Util = function () {
   }, {
     key: 'searchToObject',
     value: function searchToObject(search) {
-      if (search == '') return null;
+      if (search === '') return null;
 
       var queries = search.substring(1).split('&');
       var obj = {};
@@ -280,7 +388,7 @@ var Util = function () {
 
     /**
      * returns true if 'big' contains 'small'.
-     * 
+     *
      * @param  {mixed}  big
      * @param  {mixed}  small
      * @return {Boolean}
@@ -323,114 +431,6 @@ var Util = function () {
 exports.default = Util;
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/************************************************************
-  CosmosModule
-*************************************************************/
-var CosmosModule = function () {
-  function CosmosModule() {
-    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    _classCallCheck(this, CosmosModule);
-
-    this.setOption(option);
-  }
-
-  /**
-   * module load
-   * 
-   * @return {void}
-   */
-
-
-  _createClass(CosmosModule, [{
-    key: "init",
-
-
-    /**
-     * init - abstract method.
-     * 
-     * @return {void}
-     */
-    value: function init() {}
-
-    /**
-     * setOption
-     * 
-     * @param {Object} option
-     */
-
-  }, {
-    key: "setOption",
-    value: function setOption(option) {
-      this.option = Object.assign({}, this.getDefaultOption(), option);
-    }
-
-    /**
-     * getOption
-     * 
-     * @return {Object}
-     */
-
-  }, {
-    key: "getOption",
-    value: function getOption() {
-      return this.option;
-    }
-
-    /**
-     * getDefaultOption - abstract method.
-     * 
-     * @return {Object}
-     */
-
-  }, {
-    key: "getDefaultOption",
-    value: function getDefaultOption() {
-      return {};
-    }
-  }], [{
-    key: "load",
-    value: function load() {
-      var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      var m = new this(option);
-      m.init();
-    }
-
-    /**
-     * get defaultOption
-     * 
-     * @return {Object}
-     */
-
-  }, {
-    key: "defaultOption",
-    get: function get() {
-      var m = new this();
-      return m.getDefaultOption();
-    }
-  }]);
-
-  return CosmosModule;
-}();
-
-exports.default = CosmosModule;
-
-/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -443,11 +443,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cosmosModule = __webpack_require__(1);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
@@ -688,7 +688,7 @@ var Color = function () {
 
     /**
      * rgb values to hex color string
-     * 
+     *
      * @param  number r
      * @param  number g
      * @param  number b
@@ -703,25 +703,22 @@ var Color = function () {
       b = b.toString(16);
       return "#" + r + g + b;
     }
-  }, {
-    key: 'lightness',
-
 
     /**
      * get rgb color's lightness value.
-     * 
+     *
      * @param  string|array  color
      * @return number  (0 ~ 255)
      */
+
+  }, {
+    key: 'lightness',
     value: function lightness(color) {
       var rgb = Color.colorToArray(color);
       // Color lightness formula.
       // @link https://www.w3.org/TR/AERT#color-contrast
       return (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
     }
-  }, {
-    key: 'contrast',
-
 
     /**
      * get contrast color
@@ -730,6 +727,9 @@ var Color = function () {
      * @param  string  light
      * @return string  dark or light
      */
+
+  }, {
+    key: 'contrast',
     value: function contrast(color) {
       var dark = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Config.darkDefault;
       var light = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Config.lightDefault;
@@ -846,13 +846,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cosmosModule = __webpack_require__(1);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
-
-var _util = __webpack_require__(0);
-
-var _util2 = _interopRequireDefault(_util);
 
 var _button = __webpack_require__(2);
 
@@ -909,7 +905,7 @@ var Chip = function (_CosmosModule) {
 
     /**
      * add
-     * 
+     *
      * @param {String} text
      * @param {String} imgSrc
      * @param {Object} data  dataset values.
@@ -926,7 +922,7 @@ var Chip = function (_CosmosModule) {
 
     /**
      * removeAll
-     * 
+     *
      * @return {Number}
      */
 
@@ -966,7 +962,7 @@ var Chip = function (_CosmosModule) {
 
     /**
      * getContainer
-     * 
+     *
      * @return {Element}
      */
 
@@ -1041,11 +1037,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cosmosModule = __webpack_require__(1);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
@@ -1176,7 +1172,7 @@ var Collapse = function (_CosmosModule) {
     value: function _activatedCollapse() {
       // Collapse can multiple active.
       var ts = document.querySelectorAll(Selector.C_ACTIVE);
-      if (ts.length == 0) {
+      if (ts.length === 0) {
         return;
       }
 
@@ -1211,7 +1207,7 @@ var Collapse = function (_CosmosModule) {
     value: function _activatedAccordion() {
       // Only one accordion can be active at a time. After all, only the last one will be activated.
       var hs = document.querySelectorAll(Selector.A_ACTIVE);
-      if (hs.length == 0) {
+      if (hs.length === 0) {
         return;
       }
 
@@ -1287,11 +1283,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cosmosModule = __webpack_require__(1);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
@@ -1441,11 +1437,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cosmosModule = __webpack_require__(1);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
@@ -1555,7 +1551,7 @@ var Message = function (_CosmosModule) {
 
     /**
      * add '.message-box' into '#message-container'
-     * 
+     *
      * @param  {String} message
      * @param  {String} status  ['info','success','warning','error']
      */
@@ -1590,11 +1586,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cosmosModule = __webpack_require__(1);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
@@ -1790,11 +1786,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cosmosModule = __webpack_require__(1);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
@@ -1854,7 +1850,7 @@ var Nav = function (_CosmosModule) {
 
     /**
      * activator
-     * 
+     *
      * @param  string selector  menu selector string
      * @return void
      */
@@ -1863,7 +1859,7 @@ var Nav = function (_CosmosModule) {
     key: 'activator',
     value: function activator(selector) {
       var links = document.querySelectorAll(selector + ' a');
-      if (links.length == 0) return;
+      if (links.length === 0) return;
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -1983,7 +1979,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cosmosModule = __webpack_require__(1);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
@@ -2021,7 +2017,7 @@ var Parallax = function (_CosmosModule) {
 
     value: function init() {
       var ps = document.querySelectorAll('.' + ClassName.PARALLAX);
-      if (ps.length == 0) {
+      if (ps.length === 0) {
         return;
       }
 
@@ -2097,11 +2093,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cosmosModule = __webpack_require__(1);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
@@ -2166,13 +2162,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cosmosModule = __webpack_require__(1);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
-
-var _util = __webpack_require__(0);
-
-var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2288,11 +2280,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cosmosModule = __webpack_require__(1);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
@@ -2411,11 +2403,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cosmosModule = __webpack_require__(1);
+var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 
@@ -2501,10 +2493,10 @@ var Tab = function (_CosmosModule) {
 
       var tabIndex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-      if (tabIndex == null) {
+      if (tabIndex === null) {
         // all tabs.
         var tabs = this._getTabs();
-        tabs.forEach(function (e, i, a) {
+        tabs.forEach(function (e, i) {
           _this2._default(linkIndex, i);
         });
       } else {
@@ -2561,7 +2553,7 @@ var Tab = function (_CosmosModule) {
     value: function _extractID(str) {
       var result = /([#])\S+/.exec(str);
 
-      return result == null ? null : result[0];
+      return result === null ? null : result[0];
     }
   }, {
     key: '_getContent',
@@ -2656,6 +2648,7 @@ module.exports = {
 		"autoprefixer": "^6.7.7",
 		"babel-cli": "^6.24.1",
 		"babel-core": "^6.24.1",
+		"babel-eslint": "^7.2.2",
 		"babel-loader": "^6.4.1",
 		"babel-preset-env": "^1.3.3",
 		"concurrently": "^3.4.0",
@@ -2715,7 +2708,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Chip = exports.Button = exports.Helper = exports.Color = exports.Util = undefined;
 
-var _util = __webpack_require__(0);
+var _util = __webpack_require__(1);
 
 var _util2 = _interopRequireDefault(_util);
 

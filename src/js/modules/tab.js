@@ -47,7 +47,7 @@ class Tab extends CosmosModule {
     if (tabIndex === null) {
       // all tabs.
       let tabs = this._getTabs();
-      tabs.forEach((e, i, a) => {
+      tabs.forEach((e, i) => {
         this._default(linkIndex, i);
       });
     } else {

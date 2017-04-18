@@ -1,5 +1,4 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import Util from '../lib/util.js';
 import Button from './button.js';
 
 /************************************************************
@@ -28,16 +27,16 @@ class Chip extends CosmosModule {
   }
 
   // static
-  
+
   static get name() {
     return NAME;
   }
 
   // public
-  
+
   /**
    * add
-   * 
+   *
    * @param {String} text
    * @param {String} imgSrc
    * @param {Object} data  dataset values.
@@ -51,7 +50,7 @@ class Chip extends CosmosModule {
 
   /**
    * removeAll
-   * 
+   *
    * @return {Number}
    */
   removeAll() {
@@ -66,7 +65,7 @@ class Chip extends CosmosModule {
 
   /**
    * getContainer
-   * 
+   *
    * @return {Element}
    */
   getContainer() {
@@ -78,7 +77,7 @@ class Chip extends CosmosModule {
   }
 
   // private
-  
+
   _createChip(text, imgSrc, data) {
     let chip = document.createElement(this.option.tag);
     // base.

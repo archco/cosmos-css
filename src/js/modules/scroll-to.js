@@ -1,5 +1,4 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import Util from '../lib/util.js';
 
 /************************************************************
   scroll-to
@@ -24,13 +23,13 @@ class ScrollTo extends CosmosModule {
   }
 
   // static
-  
+
   static get name() {
     return NAME;
   }
 
   // public
-  
+
   init() {
     if (!this.btnTop) { return; }
 
@@ -38,7 +37,7 @@ class ScrollTo extends CosmosModule {
     this.btnTop.addEventListener('click', () => {
       $('html,body').animate({scrollTop: 0}, this.option.animate_duration, 'swing');
     });
-    
+
     // scroll listener
     window.addEventListener('scroll', this._scrollHandler.bind(this));
   }
@@ -48,7 +47,7 @@ class ScrollTo extends CosmosModule {
   }
 
   // private
-  
+
   _scrollHandler() {
     let top = this._getScrollTop();
     let isShow = this.btnTop.classList.contains(ClassName.SHOW);
