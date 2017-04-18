@@ -8,7 +8,7 @@ class CosmosModule {
 
   /**
    * module load
-   * 
+   *
    * @return {void}
    */
   static load(option = {}) {
@@ -18,24 +18,24 @@ class CosmosModule {
 
   /**
    * get defaultOption
-   * 
+   *
    * @return {Object}
    */
   static get defaultOption() {
-    let m = new this;
+    let m = new this();
     return m.getDefaultOption();
   }
 
   /**
    * init - abstract method.
-   * 
+   *
    * @return {void}
    */
   init() {}
 
   /**
    * setOption
-   * 
+   *
    * @param {Object} option
    */
   setOption(option) {
@@ -44,7 +44,7 @@ class CosmosModule {
 
   /**
    * getOption
-   * 
+   *
    * @return {Object}
    */
   getOption() {
@@ -53,7 +53,7 @@ class CosmosModule {
 
   /**
    * getDefaultOption - abstract method.
-   * 
+   *
    * @return {Object}
    */
   getDefaultOption() {

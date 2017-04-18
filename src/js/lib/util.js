@@ -6,14 +6,14 @@ const NAME = 'Cosmos.lib.Util';
 class Util {
 
   // static
-  
+
   static get name() {
     return NAME;
   }
 
   /**
    * event on selector
-   * 
+   *
    * @param  {String}   selector   querySelector
    * @param  {String}   type       event type
    * @param  {Function} listener   event listener
@@ -22,7 +22,7 @@ class Util {
    */
   static eventOnSelector(selector, type, listener, useCapture = false) {
     let elements = document.querySelectorAll(selector);
-    if (elements.length == 0) {
+    if (elements.length === 0) {
       return null;
     }
     for (let element of elements) {
@@ -33,7 +33,7 @@ class Util {
 
   /**
    * find ancestor by selector
-   * 
+   *
    * @param  {Element} element
    * @param  {String}  selector
    * @return {Element|null}
@@ -56,7 +56,7 @@ class Util {
     var elements = document.querySelectorAll(target);
     var div = document.createElement('div');
     div.classList.add(wrapper);
-    
+
     for (let el of elements) {
       let parent = el.parentNode;
       let sibling = el.nextSibling;
@@ -97,7 +97,7 @@ class Util {
 
   /**
    * location.search to Object.
-   * 
+   *
    * @return {Object|null}
    */
   static locationSearchToObject() {
@@ -111,7 +111,7 @@ class Util {
    * @return {Object|null}
    */
   static searchToObject(search) {
-    if (search == '') return null;
+    if (search === '') return null;
 
     let queries = search.substring(1).split('&');
     let obj = {};
@@ -127,7 +127,7 @@ class Util {
 
   /**
    * returns true if 'big' contains 'small'.
-   * 
+   *
    * @param  {mixed}  big
    * @param  {mixed}  small
    * @return {Boolean}

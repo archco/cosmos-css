@@ -18,18 +18,18 @@ const Selector = {
   TAB: `.${ClassName.TAB}`,
   LINK: `.${ClassName.LINK}`,
   CONTENT: `.${ClassName.CONTENT}`
-}
+};
 
 class Tab extends CosmosModule {
 
   // static
-  
+
   static get name() {
     return NAME;
   }
 
   // public
-  
+
   init() {
     // add event handler on links.
     Util.eventOnSelector(Selector.LINK, 'click', this._tabHandle.bind(this));
@@ -39,24 +39,24 @@ class Tab extends CosmosModule {
     if (tabs.length > 0) {
       for (let t of tabs) {
         this._loadTab(t);
-      }  
+      }
     }
   }
 
   setDefault(linkIndex, tabIndex = null) {
-    if (tabIndex == null) {
+    if (tabIndex === null) {
       // all tabs.
       let tabs = this._getTabs();
       tabs.forEach((e, i, a) => {
         this._default(linkIndex, i);
       });
     } else {
-      this._default(linkIndex, tabIndex);  
+      this._default(linkIndex, tabIndex);
     }
   }
 
   // private
-  
+
   _tabHandle(event) {
     let a = event.currentTarget;
     let tab = Util.findAncestor(a, Selector.TAB);
@@ -79,7 +79,7 @@ class Tab extends CosmosModule {
   _extractID(str) {
     let result = /([#])\S+/.exec(str);
 
-    return (result == null) ? null : result[0];
+    return (result === null) ? null : result[0];
   }
 
   _getContent(link) {

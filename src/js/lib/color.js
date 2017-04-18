@@ -18,7 +18,7 @@ class Color {
   }
 
   // static methods
-  
+
   static get name() {
     return NAME;
   }
@@ -62,7 +62,7 @@ class Color {
 
   /**
    * rgb values to hex color string
-   * 
+   *
    * @param  number r
    * @param  number g
    * @param  number b
@@ -73,11 +73,11 @@ class Color {
     g = g.toString(16);
     b = b.toString(16);
     return "#" + r + g + b;
-  };
+  }
 
   /**
    * get rgb color's lightness value.
-   * 
+   *
    * @param  string|array  color
    * @return number  (0 ~ 255)
    */
@@ -86,7 +86,7 @@ class Color {
     // Color lightness formula.
     // @link https://www.w3.org/TR/AERT#color-contrast
     return ((rgb[0] * 299) + (rgb[1] * 587) + (rgb[2] * 114)) / 1000;
-  };
+  }
 
   /**
    * get contrast color

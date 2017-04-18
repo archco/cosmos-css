@@ -30,18 +30,18 @@ class Modal extends CosmosModule {
   }
 
   // static
-  
+
   static get name() {
     return NAME;
   }
 
   static dialog(text) {
-    let m = new Modal;
+    let m = new Modal();
     m.makeDialog(text);
   }
 
   // public
-  
+
   init() {
     // modal open button.
     Util.eventOnSelector(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
@@ -55,7 +55,7 @@ class Modal extends CosmosModule {
         this._modalHide(event.target);
       }
     });
-    
+
     // If modal doesn't have close button, add it.
     let modals = document.querySelectorAll(Selector.MODAL);
     if (modals.length > 0) {
@@ -81,7 +81,7 @@ class Modal extends CosmosModule {
   }
 
   // private
-  
+
   _modalCloseHandler(event) {
     let m = Util.findAncestor(event.currentTarget, Selector.MODAL);
     this._modalHide(m);

@@ -25,13 +25,13 @@ const Selector = {
 class Collapse extends CosmosModule {
 
   // static
-  
+
   static get name() {
     return NAME;
   }
-  
+
   // public
-  
+
   init() {
     // collapse toggle listener
     Util.eventOnSelector(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
@@ -43,7 +43,7 @@ class Collapse extends CosmosModule {
   }
 
   // private
-  
+
   _toggleHandler(event) {
     let t = event.currentTarget;
     let p = document.querySelector(t.dataset.target);
@@ -55,7 +55,7 @@ class Collapse extends CosmosModule {
     let h = event.currentTarget;
     let b = h.nextElementSibling;
     let a = Util.findAncestor(h, Selector.ACCORDION);
-    
+
     if (h.classList.contains(ClassName.ACTIVE)) {
       this._collapseToggle(h, b);
     } else {
@@ -79,7 +79,7 @@ class Collapse extends CosmosModule {
     for (let h of heads) {
       if (h.classList.contains(ClassName.ACTIVE)) {
         let b = h.nextElementSibling;
-        this._collapseClose(h, b);  
+        this._collapseClose(h, b);
       }
     }
   }
@@ -87,7 +87,7 @@ class Collapse extends CosmosModule {
   _activatedCollapse() {
     // Collapse can multiple active.
     let ts = document.querySelectorAll(Selector.C_ACTIVE);
-    if (ts.length == 0) { return; }
+    if (ts.length === 0) { return; }
 
     for (let t of ts) {
       let b = t.nextElementSibling;
@@ -98,7 +98,7 @@ class Collapse extends CosmosModule {
   _activatedAccordion() {
     // Only one accordion can be active at a time. After all, only the last one will be activated.
     let hs = document.querySelectorAll(Selector.A_ACTIVE);
-    if (hs.length == 0) { return; }
+    if (hs.length === 0) { return; }
 
     for (let h of hs) {
       let a = Util.findAncestor(h, Selector.ACCORDION);

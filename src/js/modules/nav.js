@@ -28,18 +28,18 @@ const MenuGroups = [
 class Nav extends CosmosModule {
 
   // static
-  
+
   static get name() {
     return NAME;
   }
 
   // public
-  
+
   init() {
     Util.eventOnSelector(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
 
     this.activator(Selector.USE_ACTIVATOR);
-    
+
     // handle jQuery slide style.
     $(window).resize(function () {
       var w = $(window).width();
@@ -52,14 +52,14 @@ class Nav extends CosmosModule {
 
   /**
    * activator
-   * 
+   *
    * @param  string selector  menu selector string
    * @return void
    */
   activator(selector) {
     let links = document.querySelectorAll(selector + ' a');
-    if (links.length == 0) return;
-    
+    if (links.length === 0) return;
+
     for (let a of links) {
       if (compareWithLocation(a)) {
         a.parentNode.classList.add('active');
@@ -75,7 +75,7 @@ class Nav extends CosmosModule {
         path: lastTerm(anchor.pathname),
         query: Util.searchToObject(anchor.search)
       };
-      
+
       if (anchor.getAttribute('href') == '#') {
         // sample link (e.g. <a href="#">)
         return false;
@@ -84,7 +84,7 @@ class Nav extends CosmosModule {
       if (l.path == a.path) {
         if (!a.query || Util.isContains(l.query, a.query)) return true;
       }
-      
+
       return false;
     }
 
@@ -94,7 +94,7 @@ class Nav extends CosmosModule {
   }
 
   // private
-  
+
   _toggleHandler(event) {
     let t = event.currentTarget;
     let nav = t.parentNode.parentNode;

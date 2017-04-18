@@ -12,7 +12,7 @@ const ClassName = {
 class Parallax extends CosmosModule {
 
   // static
-  
+
   static get name() {
     return NAME;
   }
@@ -21,7 +21,7 @@ class Parallax extends CosmosModule {
   
   init() {
     let ps = document.querySelectorAll(`.${ClassName.PARALLAX}`);
-    if (ps.length == 0) { return; }
+    if (ps.length === 0) { return; }
 
     for (let p of ps) {
       this._process(p);
@@ -29,7 +29,7 @@ class Parallax extends CosmosModule {
   }
 
   // private
-  
+
   _process(p) {
     let i = p.querySelector('img');
     if (!i) { return; }

@@ -36,24 +36,24 @@ class Message extends CosmosModule {
   }
 
   // static
-  
+
   static get name() {
     return NAME;
   }
 
   /**
    * add '.message-box' into '#message-container'
-   * 
+   *
    * @param  {String} message
    * @param  {String} status  ['info','success','warning','error']
    */
   static showMessage(message, status = Status.INFO) {
-    let m = new Message;
+    let m = new Message();
     m.show(message, status);
   }
 
   // public
-  
+
   init() {
     // add event listener - close buttons
     Util.eventOnSelector(Selector.CLOSE, 'click', this._closeButtonHandler, true);
@@ -66,7 +66,7 @@ class Message extends CosmosModule {
     c = document.querySelector(Selector.CONTAINER); // container
     b = document.createElement('DIV'); // message box
     span = document.createElement('SPAN'); // message text
-    
+
     span.textContent = message;
     b.classList.add(ClassName.BOX);
     b.classList.add(status);
@@ -78,10 +78,10 @@ class Message extends CosmosModule {
   }
 
   // private
-  
+
   _closeButtonHandler(event) {
     let messageBox = Util.findAncestor(event.currentTarget, Selector.BOX);
-    
+
     messageBox.style.opacity = '0';
     setTimeout(function () {
       messageBox.style.display = 'none';
