@@ -24,7 +24,9 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: [
-            ['env', {
+            [
+              'env',
+              {
                 'targets': {
                   'browsers': ['> 1%']
                 }
