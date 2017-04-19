@@ -3,7 +3,7 @@
 //======================================================================
 
 // used for %link-no-deco
-@mixin no-decoration() {
+@mixin no-decoration {
   text-decoration: none;
 
   &:focus,
@@ -37,7 +37,7 @@
 // Form
 //======================================================================
 
-@mixin form-inline-target() {
+@mixin form-inline-target {
   input:not([type="color"]),
   select,
   textarea {
@@ -49,7 +49,7 @@
 // Loader
 //======================================================================
 
-@mixin loader-one() {
+@mixin loader-one {
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -69,7 +69,7 @@
 // Button
 //======================================================================
 
-@mixin btn-base() {
+@mixin btn-base {
   @include no-decoration;
   line-height: 1.15;
   white-space: nowrap;
@@ -131,7 +131,7 @@
 //======================================================================
 
 // clear-both
-@mixin clear-both() {
+@mixin clear-both {
   &::after {
     display: block;
     clear: both;
@@ -140,7 +140,7 @@
 }
 
 // debug outline
-@mixin debug() {
+@mixin debug {
   &.outline {
     * {
       $_outline-color: rgba(#f00, .5);
@@ -150,7 +150,7 @@
 }
 
 // reset-text
-@mixin reset-text() {
+@mixin reset-text {
   font-family: $font-base;
   // We deliberately do NOT reset font-size or word-wrap.
   font-style: normal;
@@ -167,7 +167,7 @@
   word-spacing: normal;
 }
 
-@mixin reset-list() {
+@mixin reset-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -247,51 +247,55 @@
 }
 
 // functions
-@mixin media-only-mobile() {
+@mixin media-only-mobile {
   @include media-down($mobile-size) {
     @content;
   }
 }
 
-@mixin media-tablet-up() {
+@mixin media-tablet-up {
   @include media-up($mobile-size) {
     @content;
   }
 }
 
-@mixin media-tablet-down() {
+@mixin media-tablet-down {
   @include media-down($tablet-size) {
     @content;
   }
 }
 
-@mixin media-only-tablet() {
+@mixin media-only-tablet {
   @include media-between($mobile-size, $tablet-size) {
     @content;
   }
 }
 
-@mixin media-only-desktop() {
+@mixin media-only-desktop {
   @include media-up($tablet-size) {
     @content;
   }
 }
 
 //======================================================================
-// Helper
+// Positioning Helper
 //======================================================================
 
 // Centering
-@mixin position-center-container() {
+@mixin position-center-container {
   position: relative;
 }
 
-@mixin position-center() {
+@mixin position-center {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
 }
 
+// flex container's positional alignment.
+//
+// @param {String} $horizontal flex-start|flex-end|center|...
+// @param {String} $vertical stretch|flex-start|flex-end|center|...
 @mixin flex-container($horizontal:'flex-start', $vertical:'stretch') {
   display: flex;
   justify-content: #{$horizontal}; // horizontally
