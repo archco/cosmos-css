@@ -1,3 +1,14 @@
+@mixin _modal-close-btn {
+  .btn-close {
+    font-size: 1.5em;
+    color: $modal-close-button-color;
+
+    &:hover {
+      color: $modal-close-button-hover-color;
+    }
+  }
+}
+
 //======================================================================
 // Modal
 //======================================================================
@@ -29,6 +40,7 @@
   &.show { display: block; }
 
   .modal-content {
+    @include _modal-close-btn;
     $_border-color: #888;
     position: relative;
     width: 70%;
@@ -37,14 +49,5 @@
     background-color: $modal-content-bg-color;
     border: 1px solid $_border-color;
     animation: .4s from-top;
-
-    .btn-close {
-      font-size: 1.5em;
-      color: $modal-close-button-color;
-
-      &:hover {
-        color: $modal-close-button-hover-color;
-      }
-    }
   }
 }

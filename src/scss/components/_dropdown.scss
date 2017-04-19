@@ -1,3 +1,41 @@
+@mixin _navbar-dropdown {
+  > .dropdown-toggle,
+  > .dropdown-btn {
+    @extend %nav-button;
+    @extend %nav-link;
+    min-width: $dropdown-min-width;
+    line-height: $nav-line-height;
+  }
+
+  .dropdown-content > .active > a {
+    border-color: transparent;
+    border-radius: 0;
+  }
+}
+
+@mixin _dropdown-content-list {
+  &.active > a {
+    color: $dropdown-active-color;
+    background-color: $dropdown-active-bg-color;
+  }
+
+  a {
+    @include no-decoration;
+    display: block;
+    padding: .5em 1em;
+    font-family: inherit;
+    font-size: inherit;
+    color: $dropdown-link-color;
+    transition: color $transition-time, background-color $transition-time;
+
+    &:hover,
+    &:focus {
+      color: $dropdown-link-hover-color;
+      background-color: $dropdown-bg-hover-color;
+    }
+  }
+}
+
 //======================================================================
 // dropdown
 //======================================================================
@@ -35,26 +73,7 @@
     &.show { display: block; }
 
     li {
-      &.active > a {
-        color: $dropdown-active-color;
-        background-color: $dropdown-active-bg-color;
-      }
-
-      a {
-        @include no-decoration;
-        display: block;
-        padding: .5em 1em;
-        font-family: inherit;
-        font-size: inherit;
-        color: $dropdown-link-color;
-        transition: color $transition-time, background-color $transition-time;
-
-        &:hover,
-        &:focus {
-          color: $dropdown-link-hover-color;
-          background-color: $dropdown-bg-hover-color;
-        }
-      }
+      @include _dropdown-content-list;
     }
 
     // dropdown-content position
@@ -78,18 +97,7 @@
 
 // nav dropdown
 .navbar .dropdown {
-  > .dropdown-toggle,
-  > .dropdown-btn {
-    @extend %nav-button;
-    @extend %nav-link;
-    min-width: $dropdown-min-width;
-    line-height: $nav-line-height;
-  }
-
-  .dropdown-content > .active > a {
-    border-color: transparent;
-    border-radius: 0;
-  }
+  @include _navbar-dropdown;
 }
 
 // Responsive

@@ -1,3 +1,31 @@
+@mixin _list-group {
+  li {
+    padding: $list-group-padding;
+    margin-bottom: -$list-border-width;
+    border: $list-border-width solid $list-border-color;
+    transition: background-color $transition-time;
+
+    &.active {
+      color: $list-group-active-color;
+      background-color: $list-group-active-bg-color;
+    }
+  }
+
+  li:first-child {
+    @include border-top-radius($list-group-border-radius);
+  }
+
+  li:last-child {
+    @include border-bottom-radius($list-group-border-radius);
+  }
+
+  &.hover {
+    li:hover:not(.active) {
+      background-color: $list-group-hover-bg;
+    }
+  }
+}
+
 //======================================================================
 // Scaffolding - Tag Default
 //======================================================================
@@ -142,10 +170,8 @@ table {
   }
 
   &.hover {
-    tr {
-      &:hover {
-        background-color: $table-row-hover-bg;
-      }
+    tr:hover {
+      background-color: $table-row-hover-bg;
     }
   }
 }
@@ -249,31 +275,7 @@ ul {
 
   // .list-group
   &.list-group {
-    li {
-      padding: $list-group-padding;
-      margin-bottom: -$list-border-width;
-      border: $list-border-width solid $list-border-color;
-      transition: background-color $transition-time;
-
-      &.active {
-        color: $list-group-active-color;
-        background-color: $list-group-active-bg-color;
-      }
-    }
-
-    li:first-child {
-      @include border-top-radius($list-group-border-radius);
-    }
-
-    li:last-child {
-      @include border-bottom-radius($list-group-border-radius);
-    }
-
-    &.hover {
-      li:hover:not(.active) {
-        background-color: $list-group-hover-bg;
-      }
-    }
+    @include _list-group;
   }
 
   // .list-horizontal

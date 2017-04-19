@@ -1,3 +1,10 @@
+@mixin _simple-crud-common {
+  @include clear-both;
+  display: none;
+
+  &.show { display: block; }
+}
+
 //======================================================================
 // Simple CRUD
 //======================================================================
@@ -17,10 +24,7 @@
     .simple-crud-view-read,
     .simple-crud-view-update,
     .simple-crud-view-delete {
-      @include clear-both;
-
-      display: none;
-      &.show { display: block; }
+      @include _simple-crud-common;
     }
   }
 

@@ -1,3 +1,23 @@
+@mixin _accordion-list {
+  li:first-child > .accordion-head {
+    @include border-top-radius($accordion-border-radius);
+  }
+
+  li:last-child > .accordion-head {
+    @include border-bottom-radius($accordion-border-radius);
+    margin-bottom: 0;
+
+    &.active {
+      border-radius: 0;
+
+      + .accordion-body {
+        @include border-bottom-radius($accordion-border-radius);
+        border-bottom: $accordion-border-width solid $accordion-border-color;
+      }
+    }
+  }
+}
+
 //======================================================================
 // Collapse
 //======================================================================
@@ -34,6 +54,7 @@
 
 .accordion {
   @include reset-list;
+  @include _accordion-list;
 
   .accordion-head {
     @extend %collapse-toggle;
@@ -51,23 +72,5 @@
     @extend %collapse-panel;
     border-right: $accordion-border-width solid $accordion-border-color;
     border-left: $accordion-border-width solid $accordion-border-color;
-  }
-
-  li:first-child > .accordion-head {
-    @include border-top-radius($accordion-border-radius);
-  }
-
-  li:last-child > .accordion-head {
-    @include border-bottom-radius($accordion-border-radius);
-    margin-bottom: 0;
-
-    &.active {
-      border-radius: 0;
-
-      + .accordion-body {
-        @include border-bottom-radius($accordion-border-radius);
-        border-bottom: $accordion-border-width solid $accordion-border-color;
-      }
-    }
   }
 }

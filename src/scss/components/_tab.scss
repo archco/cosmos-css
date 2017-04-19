@@ -1,3 +1,20 @@
+@mixin _tag-link-active {
+  color: $tab-active-color;
+  cursor: default;
+  background-color: $tab-active-bg-color;
+  border-top-color: $tab-active-border-accent-color;
+  border-right-color: $tab-border-color;
+  border-bottom-color: $tab-active-bg-color;
+  border-left-color: $tab-border-color;
+  border-radius: $tab-active-border-radius $tab-active-border-radius 0 0;
+
+  @each $name, $color in $color-set {
+    &.#{$name} {
+      border-top-color: $color;
+    }
+  }
+}
+
 //======================================================================
 // Tab
 //======================================================================
@@ -30,20 +47,7 @@
     }
 
     &.active {
-      color: $tab-active-color;
-      cursor: default;
-      background-color: $tab-active-bg-color;
-      border-top-color: $tab-active-border-accent-color;
-      border-right-color: $tab-border-color;
-      border-bottom-color: $tab-active-bg-color;
-      border-left-color: $tab-border-color;
-      border-radius: $tab-active-border-radius $tab-active-border-radius 0 0;
-
-      @each $name, $color in $color-set {
-        &.#{$name} {
-          border-top-color: $color;
-        }
-      }
+      @include _tag-link-active;
     }
   }
 
