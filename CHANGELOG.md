@@ -8,6 +8,8 @@ This changelog started from v0.8.4.
 If want to see more previous information to [Releases](https://github.com/archco/cosmos-css/releases) page.
 
 ## [Unreleased]
+### Changed
+- Change scss function and mixin names to "hyphenated lowercase(kebab-case)." #132
 
 ## [0.10.0]
 ### Added
@@ -32,7 +34,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 - Add "isContains()" method to Util.js
 
 ### Changed
-- Modify "block code" style in scaffolding.scss #121 
+- Modify "block code" style in scaffolding.scss #121
 - Improve Nav - activator #119
 
 ### Fixed
@@ -71,7 +73,7 @@ import { Util, Color } from 'cosmos-css'; // import member.
 - Use npm scripts as build tool. #104
 
 ### Removed
-- Removed deprecated scss class names. #99 
+- Removed deprecated scss class names. #99
 
 ### Fixed
 - Underline problem in link as btn in table. #101

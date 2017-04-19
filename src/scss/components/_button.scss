@@ -27,7 +27,7 @@
     color: transparent !important;
 
     &::after {
-      @include loaderOne();
+      @include loader-one();
       position: absolute;
       top: 50%;
       left: 50%;
@@ -48,14 +48,14 @@
 
 %btn-color-set {
   // default color
-  @include btnColor($primary-color);
+  @include btn-color($primary-color);
   // each color-set
   @each $name, $color in $color-set {
     &.#{$name} {
-      @include btnColor($color);
+      @include btn-color($color);
 
       &.is-loading:not([disabled])::after {
-        @include loaderOneColor(get-contrast($color));
+        @include loader-one-color(get-contrast($color));
       }
     }
   }
@@ -63,11 +63,11 @@
 
 %btn-flat-color-set {
   // default color
-  @include btnFlatColor($link-color);
+  @include btn-flat-color($link-color);
   // each color-set
   @each $name, $color in $color-set {
     &.#{$name} {
-      @include btnFlatColor($color);
+      @include btn-flat-color($color);
     }
   }
 }

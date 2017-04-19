@@ -16,6 +16,6 @@ $color-set: (
 // get color value from color-set map
 // @param  string  $key
 // @return string  color value
-@function getColor($key) {
+@function get-color($key) {
   @return map-get($color-set, $key);
 }

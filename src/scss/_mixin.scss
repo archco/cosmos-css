@@ -13,7 +13,7 @@
 }
 
 // set link state color
-@mixin setLinkStateColor($link, $visited: null, $hover: null, $active: null) {
+@mixin set-link-state-color($link, $visited: null, $hover: null, $active: null) {
   &,
   &:link {
     color: $link;
@@ -37,7 +37,7 @@
 // Form
 //======================================================================
 
-@mixin formInlineTarget() {
+@mixin form-inline-target() {
   input:not([type="color"]),
   select,
   textarea {
@@ -49,7 +49,7 @@
 // Loader
 //======================================================================
 
-@mixin loaderOne() {
+@mixin loader-one() {
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -60,7 +60,7 @@
   animation: .5s linear 0s infinite spin;
 }
 
-@mixin loaderOneColor($color: $text-color) {
+@mixin loader-one-color($color: $text-color) {
   border-left-color: $color;
   border-bottom-color: $color;
 }
@@ -78,7 +78,7 @@
   user-select: none;
 }
 
-@mixin btnColor($bg-color, $color: $button-color) {
+@mixin btn-color($bg-color, $color: $button-color) {
   @if not $button-color-is-enable {
     $color: get-contrast($bg-color);
   }
@@ -107,7 +107,7 @@
   }
 }
 
-@mixin btnFlatColor($color) {
+@mixin btn-flat-color($color) {
   color: $color;
   background-color: transparent;
   outline-color: rgba($color, .2);
@@ -201,7 +201,7 @@
 // Message
 //======================================================================
 
-@mixin messageBox($bg-color) {
+@mixin message-box($bg-color) {
   $color: get-contrast($bg-color);
 
   color: $color;
@@ -225,7 +225,7 @@
 //======================================================================
 
 // calculate card size
-@mixin calCardSize($size, $direction:'vertical') {
+@mixin cal-card-size($size, $direction:'vertical') {
   @if ($direction == 'vertical') {
     width: $size * 1.25;
   } @else if ($direction == 'horizontal') {
@@ -233,7 +233,7 @@
   }
 }
 
-@mixin cardImageSize($direction:'vertical') {
+@mixin card-image-size($direction:'vertical') {
   @if ($direction == 'vertical') {
     width: 105%;
     height: auto;
@@ -307,17 +307,17 @@
 //======================================================================
 
 // Centering
-@mixin positionCenterContainer() {
+@mixin position-center-container() {
   position: relative;
 }
 
-@mixin positionCenter() {
+@mixin position-center() {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
 }
 
-@mixin flexContainer($horizontal:'flex-start', $vertical:'stretch') {
+@mixin flex-container($horizontal:'flex-start', $vertical:'stretch') {
   display: flex;
   justify-content: #{$horizontal}; // horizontally
   align-items: #{$vertical}; // vertically
@@ -326,13 +326,13 @@
 //======================================================================
 // Badge
 //======================================================================
-@mixin badgeColor($bg-color) {
+@mixin badge-color($bg-color) {
   $color: get-contrast($bg-color);
   background-color: $bg-color;
   color: $color;
 
   &[href] {
-    @include setLinkStateColor($color);
+    @include set-link-state-color($color);
 
     &:hover,
     &:focus {

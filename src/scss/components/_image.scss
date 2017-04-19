@@ -35,7 +35,7 @@
   }
 
   .overlay {
-    @include flexContainer('center', 'center');
+    @include flex-container('center', 'center');
     position: absolute;
     top: 0;
     right: 0;

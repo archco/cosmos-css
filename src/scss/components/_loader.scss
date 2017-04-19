@@ -3,13 +3,13 @@
 //======================================================================
 
 .loader-one {
-  @include loaderOne();
+  @include loader-one();
 
   &.light {
-    @include loaderOneColor($text-color-light);
+    @include loader-one-color($text-color-light);
   }
 
   &.dark {
-    @include loaderOneColor($text-color-dark);
+    @include loader-one-color($text-color-dark);
   }
 }

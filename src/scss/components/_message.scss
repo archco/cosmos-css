@@ -5,7 +5,7 @@
 /** message-box */
 .message-box {
   // default color
-  @include messageBox($secondary-color);
+  @include message-box($secondary-color);
   // common attributes.
   position: relative;
   z-index: $z-index-message-box;
@@ -22,7 +22,7 @@
   // each color-set
   @each $name, $color in $color-set {
     &.#{$name} {
-      @include messageBox($color);
+      @include message-box($color);
     }
   }
 }

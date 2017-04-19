@@ -52,19 +52,19 @@
 
 // centering
 %flex-center {
-  @include flexContainer('center', 'center');
+  @include flex-container('center', 'center');
 }
 
 %position-center-container {
-  @include positionCenterContainer;
+  @include position-center-container;
 }
 
 %position-center {
-  @include positionCenter;
+  @include position-center;
 }
 
 .vertical-center-container {
-  @include flexContainer('flex-start', 'center');
+  @include flex-container('flex-start', 'center');
 
   .flex-item {
     display: block;
@@ -72,14 +72,14 @@
 }
 
 .flex-center-container {
-  @include flexContainer('center', 'center');
+  @include flex-container('center', 'center');
 }
 
 .center-position-container {
-  @include positionCenterContainer;
+  @include position-center-container;
 
   .center-position {
-    @include positionCenter;
+    @include position-center;
   }
 }
 

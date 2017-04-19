@@ -12,7 +12,7 @@
   $badge-rounded-padding-x: $badge-padding-base * 4;
   $badge-rounded-border-radius: $badge-font-size * 2;
 
-  @include badgeColor($badge-default-color); // default color
+  @include badge-color($badge-default-color); // default color
 
   display: inline-block;
   padding: $badge-padding-y $badge-padding-x;
@@ -28,7 +28,7 @@
   // color-set
   @each $name, $color in $color-set {
     &.#{$name} {
-      @include badgeColor($color);
+      @include badge-color($color);
     }
   }
 

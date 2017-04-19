@@ -108,7 +108,7 @@ input[type="color"] {
   padding: 0;
   margin: 0;
 
-  @include formInlineTarget {
+  @include form-inline-target {
     @extend %form-inline;
   }
 
@@ -117,7 +117,7 @@ input[type="color"] {
   }
 }
 
-@include formInlineTarget {
+@include form-inline-target {
   &.inline {
     @extend %form-inline;
   }

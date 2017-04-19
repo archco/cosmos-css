@@ -60,7 +60,7 @@ img {
 
 // link
 a {
-  @include setLinkStateColor($link-color, $link-color-visited, $link-color-hover);
+  @include set-link-state-color($link-color, $link-color-visited, $link-color-hover);
   text-decoration: $link-decoration;
 
   &:hover,
