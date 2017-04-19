@@ -219,31 +219,6 @@
   }
 }
 
-
-//======================================================================
-// Card
-//======================================================================
-
-// calculate card size
-@mixin cal-card-size($size, $direction:'vertical') {
-  @if ($direction == 'vertical') {
-    width: $size * 1.25;
-  } @else if ($direction == 'horizontal') {
-    width: $size * 1.25;
-  }
-}
-
-@mixin card-image-size($direction:'vertical') {
-  @if ($direction == 'vertical') {
-    width: 105%;
-    height: auto;
-  } @else if ($direction == 'horizontal') {
-    width: auto;
-    height: 105%;
-  }
-}
-
-
 //======================================================================
 // Media queries
 //======================================================================

@@ -1,3 +1,49 @@
+//============================================================
+// private mixins
+//============================================================
+
+@mixin _card-image-size($direction:'vertical') {
+  @if ($direction == 'vertical') {
+    width: 105%;
+    height: auto;
+  } @else if ($direction == 'horizontal') {
+    width: auto;
+    height: 105%;
+  }
+}
+
+// calculate card size
+@mixin _cal-card-size($size, $direction:'vertical') {
+  @if ($direction == 'vertical') {
+    width: $size * 1.25;
+  } @else if ($direction == 'horizontal') {
+    width: $size * 1.25;
+  }
+}
+
+@mixin _card-size {
+  height: $card-size;
+  &.small { height: $card-size-small; }
+  &.large { height: $card-size-large; }
+}
+
+@mixin _card-horizontal-size {
+  height: $card-size * .75;
+  &.small { height: $card-size-small * .75; }
+  &.large { height: $card-size-large * .75; }
+}
+
+@mixin _card-inline-size {
+  @include _cal-card-size($card-size);
+  &.small { @include _cal-card-size($card-size-small); }
+  &.large { @include _cal-card-size($card-size-large); }
+  &.horizontal {
+    @include _cal-card-size($card-size, 'horizontal');
+    &.small { @include _cal-card-size($card-size-small, 'horizontal'); }
+    &.large { @include _cal-card-size($card-size-large, 'horizontal'); }
+  }
+}
+
 //======================================================================
 // Card
 //======================================================================
@@ -15,24 +61,15 @@ ul.card-list {
 
 // default - vertical
 .card {
+  @include _card-size;
   z-index: $z-index-card;
   display: flex;
-  height: $card-size;
   padding: 0;
   margin: .5rem 0;
   flex-direction: column;
   background-color: $card-bg-color;
   border-radius: $card-radius;
   box-shadow: $card-shadow;
-
-  // card size
-  &.small {
-    height: $card-size-small;
-  }
-
-  &.large {
-    height: $card-size-large;
-  }
 
   .card-image {
     position: relative;
@@ -44,7 +81,7 @@ ul.card-list {
     border-radius: $card-radius $card-radius 0 0;
 
     img {
-      @include card-image-size('vertical');
+      @include _card-image-size('vertical');
       max-width: none;
     }
 
@@ -67,28 +104,12 @@ ul.card-list {
 
   // horizontal
   &.horizontal {
-    height: $card-size * .75;
+    @include _card-horizontal-size;
     flex-direction: row;
-
-    // card size
-    &.small { height: $card-size-small * .75; }
-    &.large { height: $card-size-large * .75; }
-
-    %card-horizontal-child {
-      display: inline-block;
-      width: auto;
-      height: 100%;
-      max-height: none;
-    }
 
     .card-image {
       @extend %card-horizontal-child;
-      flex: 2;
-      border-radius: $card-radius 0 0 $card-radius;
-
-      img {
-        @include card-image-size('horizontal');
-      }
+      @extend %card-horizontal-image;
     }
 
     .card-content {
@@ -98,8 +119,7 @@ ul.card-list {
   }
 
   &.inline {
-    @include cal-card-size($card-size);
-
+    @include _card-inline-size;
     display: inline-flex;
     max-width: 100%;
     margin: .5rem 0;
@@ -107,15 +127,6 @@ ul.card-list {
 
     @include media-tablet-up {
       margin: .5rem;
-    }
-
-    // width size
-    &.small { @include cal-card-size($card-size-small); }
-    &.large { @include cal-card-size($card-size-large); }
-    &.horizontal {
-      @include cal-card-size($card-size, 'horizontal');
-      &.small { @include cal-card-size($card-size-small, 'horizontal'); }
-      &.large { @include cal-card-size($card-size-large, 'horizontal'); }
     }
   }
 
@@ -127,5 +138,25 @@ ul.card-list {
     &:hover {
       box-shadow: $card-hover-shadow;
     }
+  }
+}
+
+//============================================================
+// Placeholders
+//============================================================
+
+%card-horizontal-child {
+  display: inline-block;
+  width: auto;
+  height: 100%;
+  max-height: none;
+}
+
+%card-horizontal-image {
+  flex: 2;
+  border-radius: $card-radius 0 0 $card-radius;
+
+  img {
+    @include _card-image-size('horizontal');
   }
 }

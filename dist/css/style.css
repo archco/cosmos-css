@@ -2029,10 +2029,10 @@ ul.card-list {
     vertical-align: top; }
 
 .card {
+  height: 300px;
   z-index: 2;
   display: -webkit-box;
   display: flex;
-  height: 300px;
   padding: 0;
   margin: .5rem 0;
   -webkit-box-orient: vertical;
@@ -2082,18 +2082,6 @@ ul.card-list {
       height: 150px; }
     .card.horizontal.large {
       height: 300px; }
-    .card.horizontal .card-image, .card.horizontal .card-content {
-      display: inline-block;
-      width: auto;
-      height: 100%;
-      max-height: none; }
-    .card.horizontal .card-image {
-      -webkit-box-flex: 2;
-              flex: 2;
-      border-radius: 2px 0 0 2px; }
-      .card.horizontal .card-image img {
-        width: auto;
-        height: 105%; }
     .card.horizontal .card-content {
       -webkit-box-flex: 3;
               flex: 3; }
@@ -2104,9 +2092,6 @@ ul.card-list {
     max-width: 100%;
     margin: .5rem 0;
     vertical-align: text-top; }
-    @media only screen and (min-width: 768px) {
-      .card.inline {
-        margin: .5rem; } }
     .card.inline.small {
       width: 250px; }
     .card.inline.large {
@@ -2117,6 +2102,9 @@ ul.card-list {
         width: 250px; }
       .card.inline.horizontal.large {
         width: 500px; }
+    @media only screen and (min-width: 768px) {
+      .card.inline {
+        margin: .5rem; } }
   .card.hoverable {
     text-decoration: none;
     -webkit-transition: box-shadow 0.3s;
@@ -2125,6 +2113,20 @@ ul.card-list {
       text-decoration: none; }
     .card.hoverable:focus, .card.hoverable:hover {
       box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.3); }
+
+.card.horizontal .card-image, .card.horizontal .card-content {
+  display: inline-block;
+  width: auto;
+  height: 100%;
+  max-height: none; }
+
+.card.horizontal .card-image {
+  -webkit-box-flex: 2;
+          flex: 2;
+  border-radius: 2px 0 0 2px; }
+  .card.horizontal .card-image img {
+    width: auto;
+    height: 105%; }
 
 /** pagination */
 ul.pagination {
