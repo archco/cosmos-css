@@ -12,11 +12,9 @@ const ClassName = {
   SHOW: 'show'
 };
 const Selector = {
-  CONTAINER: `.${ClassName.CONTAINER}`,
   TOP: `.${ClassName.TOTOP}`,
   BOTTOM: `.${ClassName.TOBOTTOM}`
 };
-
 // default option.
 const Default = {
   btn_top: Selector.TOP,
@@ -29,8 +27,6 @@ const Default = {
 class ScrollTo extends CosmosModule {
   constructor(option) {
     super(option);
-    this.btnTop = this.option.btn_top;
-    this.btnBottom = this.option.btn_bottom;
   }
 
   // static
@@ -46,16 +42,19 @@ class ScrollTo extends CosmosModule {
     let easing = this.option.scroll_easing;
 
     // button listener
-    Util.eventOnSelector(this.btnTop, 'click', () => {
+    Util.eventOnSelector(this.option.btn_top, 'click', () => {
       Util.scrollIt(0, duration, easing);
     });
-    Util.eventOnSelector(this.btnBottom, 'click', () => {
+    Util.eventOnSelector(this.option.btn_bottom, 'click', () => {
       Util.scrollIt(this._getDocumentBottom(), duration, easing);
     });
 
     // scroll listener
     if (this.option.show_distance) {
       window.addEventListener('scroll', this._scrollHandler.bind(this));
+      this._scrollHandler(); // invoke once.
+    } else {
+      this._showBtns(); // show buttons.
     }
   }
 
@@ -69,8 +68,8 @@ class ScrollTo extends CosmosModule {
     let top = this._getScrollTop();
     let bottom = this._getScrollBottom();
     let distance = this.option.show_distance;
-    let toTop = document.querySelector(Selector.TOP);
-    let toBottom = document.querySelector(Selector.BOTTOM);
+    let toTop = document.querySelector(this.option.btn_top);
+    let toBottom = document.querySelector(this.option.btn_bottom);
 
     // toTop
     if (top > distance && !this._isShown(toTop)) {
@@ -104,6 +103,14 @@ class ScrollTo extends CosmosModule {
 
   _getDocumentBottom() {
     return document.documentElement.scrollHeight;
+  }
+
+  _showBtns() {
+    let toTop = document.querySelector(this.option.btn_top);
+    let toBottom = document.querySelector(this.option.btn_bottom);
+
+    if (toTop) toTop.classList.add(ClassName.SHOW);
+    if (toBottom) toBottom.classList.add(ClassName.SHOW);
   }
 }
 

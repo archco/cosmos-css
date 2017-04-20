@@ -2197,11 +2197,9 @@ var ClassName = {
   SHOW: 'show'
 };
 var Selector = {
-  CONTAINER: '.' + ClassName.CONTAINER,
   TOP: '.' + ClassName.TOTOP,
   BOTTOM: '.' + ClassName.TOBOTTOM
 };
-
 // default option.
 var Default = {
   btn_top: Selector.TOP,
@@ -2217,11 +2215,7 @@ var ScrollTo = function (_CosmosModule) {
   function ScrollTo(option) {
     _classCallCheck(this, ScrollTo);
 
-    var _this = _possibleConstructorReturn(this, (ScrollTo.__proto__ || Object.getPrototypeOf(ScrollTo)).call(this, option));
-
-    _this.btnTop = _this.option.btn_top;
-    _this.btnBottom = _this.option.btn_bottom;
-    return _this;
+    return _possibleConstructorReturn(this, (ScrollTo.__proto__ || Object.getPrototypeOf(ScrollTo)).call(this, option));
   }
 
   // static
@@ -2239,16 +2233,19 @@ var ScrollTo = function (_CosmosModule) {
       var easing = this.option.scroll_easing;
 
       // button listener
-      _util2.default.eventOnSelector(this.btnTop, 'click', function () {
+      _util2.default.eventOnSelector(this.option.btn_top, 'click', function () {
         _util2.default.scrollIt(0, duration, easing);
       });
-      _util2.default.eventOnSelector(this.btnBottom, 'click', function () {
+      _util2.default.eventOnSelector(this.option.btn_bottom, 'click', function () {
         _util2.default.scrollIt(_this2._getDocumentBottom(), duration, easing);
       });
 
       // scroll listener
       if (this.option.show_distance) {
         window.addEventListener('scroll', this._scrollHandler.bind(this));
+        this._scrollHandler(); // invoke once.
+      } else {
+        this._showBtns(); // show buttons.
       }
     }
   }, {
@@ -2265,8 +2262,8 @@ var ScrollTo = function (_CosmosModule) {
       var top = this._getScrollTop();
       var bottom = this._getScrollBottom();
       var distance = this.option.show_distance;
-      var toTop = document.querySelector(Selector.TOP);
-      var toBottom = document.querySelector(Selector.BOTTOM);
+      var toTop = document.querySelector(this.option.btn_top);
+      var toBottom = document.querySelector(this.option.btn_bottom);
 
       // toTop
       if (top > distance && !this._isShown(toTop)) {
@@ -2305,6 +2302,15 @@ var ScrollTo = function (_CosmosModule) {
     key: '_getDocumentBottom',
     value: function _getDocumentBottom() {
       return document.documentElement.scrollHeight;
+    }
+  }, {
+    key: '_showBtns',
+    value: function _showBtns() {
+      var toTop = document.querySelector(this.option.btn_top);
+      var toBottom = document.querySelector(this.option.btn_bottom);
+
+      if (toTop) toTop.classList.add(ClassName.SHOW);
+      if (toBottom) toBottom.classList.add(ClassName.SHOW);
     }
   }], [{
     key: 'name',
