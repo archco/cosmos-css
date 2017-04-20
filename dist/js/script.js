@@ -13,9 +13,9 @@ window["Cosmos"] =
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -196,6 +196,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _scrollIt = __webpack_require__(18);
+
+var _scrollIt2 = _interopRequireDefault(_scrollIt);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /************************************************************
@@ -364,7 +370,7 @@ var Util = function () {
 
     /**
      * searchToObject
-     * 
+     *
      * @param  {String} search [HTMLAnchorElement.search]
      * @return {Object|null}
      */
@@ -427,6 +433,8 @@ var Util = function () {
 
   return Util;
 }();
+
+Util.scrollIt = _scrollIt2.default;
 
 exports.default = Util;
 
@@ -2166,6 +2174,10 @@ var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
+var _util = __webpack_require__(1);
+
+var _util2 = _interopRequireDefault(_util);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2178,16 +2190,24 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
   scroll-to
 *************************************************************/
 var NAME = 'Cosmos.ScrollTo';
-var Selector = {
-  TOP: '#scroll-to-top'
-};
 var ClassName = {
+  CONTAINER: 'scroll-to-container',
+  TOTOP: 'scroll-to-top',
+  TOBOTTOM: 'scroll-to-bottom',
   SHOW: 'show'
 };
+var Selector = {
+  CONTAINER: '.' + ClassName.CONTAINER,
+  TOP: '.' + ClassName.TOTOP,
+  BOTTOM: '.' + ClassName.TOBOTTOM
+};
+
 // default option.
 var Default = {
   btn_top: Selector.TOP,
-  animate_duration: 'default' // fast(200), default(400), slow(600)
+  btn_bottom: Selector.BOTTOM,
+  scroll_duration: 600, // 300: fast, 600: default, 900: slow
+  scroll_easing: 'easeOutCubic'
 };
 
 var ScrollTo = function (_CosmosModule) {
@@ -2198,7 +2218,8 @@ var ScrollTo = function (_CosmosModule) {
 
     var _this = _possibleConstructorReturn(this, (ScrollTo.__proto__ || Object.getPrototypeOf(ScrollTo)).call(this, option));
 
-    _this.btnTop = document.querySelector(_this.option.btn_top);
+    _this.btnTop = _this.option.btn_top;
+    _this.btnBottom = _this.option.btn_bottom;
     return _this;
   }
 
@@ -2213,13 +2234,15 @@ var ScrollTo = function (_CosmosModule) {
     value: function init() {
       var _this2 = this;
 
-      if (!this.btnTop) {
-        return;
-      }
+      var duration = this.option.scroll_duration;
+      var easing = this.option.scroll_easing;
 
-      // scroll-to-top button listener
-      this.btnTop.addEventListener('click', function () {
-        $('html,body').animate({ scrollTop: 0 }, _this2.option.animate_duration, 'swing');
+      // button listener
+      _util2.default.eventOnSelector(this.btnTop, 'click', function () {
+        _util2.default.scrollIt(0, duration, easing);
+      });
+      _util2.default.eventOnSelector(this.btnBottom, 'click', function () {
+        _util2.default.scrollIt(_this2._getDocumentBottom(), duration, easing);
       });
 
       // scroll listener
@@ -2237,23 +2260,29 @@ var ScrollTo = function (_CosmosModule) {
     key: '_scrollHandler',
     value: function _scrollHandler() {
       var top = this._getScrollTop();
-      var isShow = this.btnTop.classList.contains(ClassName.SHOW);
+      var container = document.querySelector(Selector.CONTAINER);
+      var isShow = container.classList.contains(ClassName.SHOW);
 
       if (top > 500 && !isShow) {
-        this.btnTop.classList.add(ClassName.SHOW);
+        container.classList.add(ClassName.SHOW);
       } else if (top <= 500 && isShow) {
-        this.btnTop.classList.remove(ClassName.SHOW);
+        container.classList.remove(ClassName.SHOW);
       }
     }
   }, {
     key: '_getScrollTop',
     value: function _getScrollTop() {
-      return $(window).scrollTop();
+      return window.scrollY || window.pageYOffset;
     }
   }, {
-    key: '_getScrollBottom',
-    value: function _getScrollBottom() {
-      return $(document).height();
+    key: '_getDocumentTop',
+    value: function _getDocumentTop() {
+      return document.documentElement.offsetTop || 0;
+    }
+  }, {
+    key: '_getDocumentBottom',
+    value: function _getDocumentBottom() {
+      return document.documentElement.scrollHeight;
     }
   }], [{
     key: 'name',
@@ -2642,7 +2671,7 @@ module.exports = {
 		"test": "tests"
 	},
 	"dependencies": {
-		"scss-palette": "^0.2.1"
+		"scss-palette": "^0.3.1"
 	},
 	"devDependencies": {
 		"autoprefixer": "^6.7.7",
@@ -2819,6 +2848,111 @@ exports.Color = _color2.default;
 exports.Helper = _helper2.default;
 exports.Button = _button2.default;
 exports.Chip = _chip2.default;
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = scrollIt;
+/**
+ * scrollIt
+ * @links https://pawelgrzybek.com/page-scroll-in-vanilla-javascript/
+ * @links https://docs111.mootools.net/Effects/Fx-Transitions // easing types.
+ *
+ * @param  {Number|Element} destination
+ * @param  {Number}   [duration=200]
+ * @param  {String}   [easing='linear']
+ * @param  {Function} callback
+ * @return {void}
+ */
+function scrollIt(destination) {
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 200;
+  var easing = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'linear';
+  var callback = arguments[3];
+
+
+  var easings = {
+    linear: function linear(t) {
+      return t;
+    },
+    easeInQuad: function easeInQuad(t) {
+      return t * t;
+    },
+    easeOutQuad: function easeOutQuad(t) {
+      return t * (2 - t);
+    },
+    easeInOutQuad: function easeInOutQuad(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    },
+    easeInCubic: function easeInCubic(t) {
+      return t * t * t;
+    },
+    easeOutCubic: function easeOutCubic(t) {
+      return --t * t * t + 1;
+    },
+    easeInOutCubic: function easeInOutCubic(t) {
+      return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    },
+    easeInQuart: function easeInQuart(t) {
+      return t * t * t * t;
+    },
+    easeOutQuart: function easeOutQuart(t) {
+      return 1 - --t * t * t * t;
+    },
+    easeInOutQuart: function easeInOutQuart(t) {
+      return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
+    },
+    easeInQuint: function easeInQuint(t) {
+      return t * t * t * t * t;
+    },
+    easeOutQuint: function easeOutQuint(t) {
+      return 1 + --t * t * t * t * t;
+    },
+    easeInOutQuint: function easeInOutQuint(t) {
+      return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
+    }
+  };
+
+  var start = window.pageYOffset;
+  var startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
+
+  var documentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+  var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
+  var destinationOffset = typeof destination === 'number' ? destination : destination.offsetTop;
+  var destinationOffsetToScroll = Math.round(documentHeight - destinationOffset < windowHeight ? documentHeight - windowHeight : destinationOffset);
+
+  if ('requestAnimationFrame' in window === false) {
+    window.scroll(0, destinationOffsetToScroll);
+    if (callback) {
+      callback();
+    }
+    return;
+  }
+
+  function scroll() {
+    var now = 'now' in window.performance ? performance.now() : new Date().getTime();
+    var time = Math.min(1, (now - startTime) / duration);
+    var timeFunction = easings[easing](time);
+    window.scroll(0, Math.ceil(timeFunction * (destinationOffsetToScroll - start) + start));
+
+    if (window.pageYOffset === destinationOffsetToScroll) {
+      if (callback) {
+        callback();
+      }
+      return;
+    }
+
+    requestAnimationFrame(scroll);
+  }
+
+  scroll();
+}
 
 /***/ })
 /******/ ]);

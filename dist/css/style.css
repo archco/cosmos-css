@@ -788,7 +788,8 @@ textarea.inline {
 input[type="submit"],
 input[type="button"],
 input[type="reset"], .btn, .btn-flat, .btn-icon, .btn-close, .dropdown .dropdown-toggle, .dropdown .dropdown-btn, .navbar .dropdown > .dropdown-toggle,
-.navbar .dropdown > .dropdown-btn, .navbar .nav-header .menu-toggle, #scroll-to-top {
+.navbar .dropdown > .dropdown-btn, .navbar .nav-header .menu-toggle, .scroll-to-container .scroll-to-top,
+.scroll-to-container .scroll-to-bottom {
   text-decoration: none;
   line-height: 1.15;
   white-space: nowrap;
@@ -803,9 +804,11 @@ input[type="reset"], .btn, .btn-flat, .btn-icon, .btn-close, .dropdown .dropdown
   vertical-align: middle; }
   input[type="submit"]:focus,
   input[type="button"]:focus,
-  input[type="reset"]:focus, .btn:focus, .btn-flat:focus, .btn-icon:focus, .btn-close:focus, .dropdown .dropdown-toggle:focus, .dropdown .dropdown-btn:focus, .navbar .nav-header .menu-toggle:focus, #scroll-to-top:focus, input[type="submit"]:hover,
+  input[type="reset"]:focus, .btn:focus, .btn-flat:focus, .btn-icon:focus, .btn-close:focus, .dropdown .dropdown-toggle:focus, .dropdown .dropdown-btn:focus, .navbar .nav-header .menu-toggle:focus, .scroll-to-container .scroll-to-top:focus,
+  .scroll-to-container .scroll-to-bottom:focus, input[type="submit"]:hover,
   input[type="button"]:hover,
-  input[type="reset"]:hover, .btn:hover, .btn-flat:hover, .btn-icon:hover, .btn-close:hover, .dropdown .dropdown-toggle:hover, .dropdown .dropdown-btn:hover, .navbar .nav-header .menu-toggle:hover, #scroll-to-top:hover {
+  input[type="reset"]:hover, .btn:hover, .btn-flat:hover, .btn-icon:hover, .btn-close:hover, .dropdown .dropdown-toggle:hover, .dropdown .dropdown-btn:hover, .navbar .nav-header .menu-toggle:hover, .scroll-to-container .scroll-to-top:hover,
+  .scroll-to-container .scroll-to-bottom:hover {
     text-decoration: none; }
 
 input[type="submit"],
@@ -1242,13 +1245,13 @@ input[type="reset"], .btn, .btn-icon {
   position: relative;
   display: -webkit-inline-box;
   display: inline-flex;
+  -webkit-box-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
   -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center; }
+          justify-content: center; }
   .dropdown .dropdown-content {
     list-style: none;
     margin: 0;
@@ -2032,11 +2035,11 @@ ul.card-list {
   z-index: 2;
   display: -webkit-box;
   display: flex;
-  padding: 0;
-  margin: .5rem 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
+  padding: 0;
+  margin: .5rem 0;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
@@ -2048,12 +2051,12 @@ ul.card-list {
     position: relative;
     display: -webkit-box;
     display: flex;
-    -webkit-box-pack: center;
-            justify-content: center;
     -webkit-box-align: center;
             align-items: center;
     -webkit-box-flex: 3;
             flex: 3;
+    -webkit-box-pack: center;
+            justify-content: center;
     overflow: hidden;
     border-radius: 2px 2px 0 0; }
     .card .card-image img {
@@ -2069,9 +2072,9 @@ ul.card-list {
       color: #fff;
       text-shadow: 0 0 4px #000; }
   .card .card-content {
-    padding: .5rem;
     -webkit-box-flex: 1;
-            flex: 1; }
+            flex: 1;
+    padding: .5rem; }
   .card.horizontal {
     height: 225px;
     -webkit-box-orient: horizontal;
@@ -2133,9 +2136,9 @@ ul.pagination {
   padding: 0;
   display: -webkit-box;
   display: flex;
-  margin: 1rem 0;
   -webkit-box-pack: center;
-          justify-content: center; }
+          justify-content: center;
+  margin: 1rem 0; }
   ul.pagination li {
     display: inline-block;
     margin: 0 .2rem;
@@ -2187,13 +2190,8 @@ ul.pagination {
     border-left-color: #343434;
     border-bottom-color: #343434; }
 
-/** scroll to top button */
-#scroll-to-top {
-  position: fixed;
-  right: 4%;
-  bottom: 4%;
-  z-index: 16;
-  display: none;
+.scroll-to-container .scroll-to-top,
+.scroll-to-container .scroll-to-bottom {
   min-width: 1rem;
   min-height: 1rem;
   padding: 1rem;
@@ -2204,10 +2202,18 @@ ul.pagination {
   box-sizing: content-box;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s; }
-  #scroll-to-top.show {
-    display: block; }
-  #scroll-to-top:hover {
+  .scroll-to-container .scroll-to-top:hover,
+  .scroll-to-container .scroll-to-bottom:hover {
     background-color: #004d6b; }
+
+.scroll-to-container {
+  position: fixed;
+  right: 4%;
+  bottom: 4%;
+  z-index: 16;
+  display: none; }
+  .scroll-to-container.show {
+    display: block; }
 
 .tooltip {
   position: relative; }

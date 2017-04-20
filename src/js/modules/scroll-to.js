@@ -1,25 +1,35 @@
 import CosmosModule from '../lib/cosmos-module.js';
+import Util from '../lib/util.js';
 
 /************************************************************
   scroll-to
 *************************************************************/
 const NAME = 'Cosmos.ScrollTo';
-const Selector = {
-  TOP: '#scroll-to-top'
-};
 const ClassName = {
+  CONTAINER: 'scroll-to-container',
+  TOTOP: 'scroll-to-top',
+  TOBOTTOM: 'scroll-to-bottom',
   SHOW: 'show'
 };
+const Selector = {
+  CONTAINER: `.${ClassName.CONTAINER}`,
+  TOP: `.${ClassName.TOTOP}`,
+  BOTTOM: `.${ClassName.TOBOTTOM}`
+};
+
 // default option.
 const Default = {
   btn_top: Selector.TOP,
-  animate_duration: 'default' // fast(200), default(400), slow(600)
+  btn_bottom: Selector.BOTTOM,
+  scroll_duration: 600, // 300: fast, 600: default, 900: slow
+  scroll_easing: 'easeOutCubic'
 };
 
 class ScrollTo extends CosmosModule {
   constructor(option) {
     super(option);
-    this.btnTop = document.querySelector(this.option.btn_top);
+    this.btnTop = this.option.btn_top;
+    this.btnBottom = this.option.btn_bottom;
   }
 
   // static
@@ -31,11 +41,15 @@ class ScrollTo extends CosmosModule {
   // public
 
   init() {
-    if (!this.btnTop) { return; }
+    let duration = this.option.scroll_duration;
+    let easing = this.option.scroll_easing;
 
-    // scroll-to-top button listener
-    this.btnTop.addEventListener('click', () => {
-      $('html,body').animate({scrollTop: 0}, this.option.animate_duration, 'swing');
+    // button listener
+    Util.eventOnSelector(this.btnTop, 'click', () => {
+      Util.scrollIt(0, duration, easing);
+    });
+    Util.eventOnSelector(this.btnBottom, 'click', () => {
+      Util.scrollIt(this._getDocumentBottom(), duration, easing);
     });
 
     // scroll listener
@@ -50,21 +64,26 @@ class ScrollTo extends CosmosModule {
 
   _scrollHandler() {
     let top = this._getScrollTop();
-    let isShow = this.btnTop.classList.contains(ClassName.SHOW);
+    let container = document.querySelector(Selector.CONTAINER);
+    let isShow = container.classList.contains(ClassName.SHOW);
 
     if (top > 500 && !isShow) {
-      this.btnTop.classList.add(ClassName.SHOW);
+      container.classList.add(ClassName.SHOW);
     } else if (top <= 500 && isShow) {
-      this.btnTop.classList.remove(ClassName.SHOW);
+      container.classList.remove(ClassName.SHOW);
     }
   }
 
   _getScrollTop() {
-    return $(window).scrollTop();
+    return window.scrollY || window.pageYOffset;
   }
 
-  _getScrollBottom() {
-    return $(document).height();
+  _getDocumentTop() {
+    return document.documentElement.offsetTop || 0;
+  }
+
+  _getDocumentBottom() {
+    return document.documentElement.scrollHeight;
   }
 }
 

@@ -1,15 +1,8 @@
 //======================================================================
 // Scroll-to
 //======================================================================
-
-/** scroll to top button */
-#scroll-to-top {
+%scroll-to-button {
   @extend %btn-common;
-  position: fixed;
-  right: 4%;
-  bottom: 4%;
-  z-index: $z-index-scroll-to-button;
-  display: none;
   min-width: 1rem;
   min-height: 1rem;
   padding: 1rem;
@@ -20,7 +13,20 @@
   box-sizing: content-box;
   transition: background-color $transition-time;
 
+  &:hover { background-color: $scroll-to-bg-color; }
+}
+
+.scroll-to-container {
+  position: fixed;
+  right: 4%;
+  bottom: 4%;
+  z-index: $z-index-scroll-to-button;
+  display: none;
+
   &.show { display: block; }
 
-  &:hover { background-color: $scroll-to-bg-color; }
+  .scroll-to-top,
+  .scroll-to-bottom {
+    @extend %scroll-to-button;
+  }
 }
