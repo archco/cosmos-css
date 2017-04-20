@@ -1,3 +1,5 @@
+import scrollIt from './utils/scroll-it.js';
+
 /************************************************************
   util
 *************************************************************/
@@ -106,7 +108,7 @@ class Util {
 
   /**
    * searchToObject
-   * 
+   *
    * @param  {String} search [HTMLAnchorElement.search]
    * @return {Object|null}
    */
@@ -151,5 +153,7 @@ class Util {
     }
   }
 }
+
+Util.scrollIt = scrollIt;
 
 export default Util;
