@@ -45,8 +45,8 @@
 ul.pagination {
   @include reset-list;
   display: flex;
-  margin: 1rem 0;
   justify-content: center;
+  margin: 1rem 0;
 
   li {
     @include _pagination-list;

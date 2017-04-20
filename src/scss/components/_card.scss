@@ -64,9 +64,9 @@ ul.card-list {
   @include _card-size;
   z-index: $z-index-card;
   display: flex;
+  flex-direction: column;
   padding: 0;
   margin: .5rem 0;
-  flex-direction: column;
   background-color: $card-bg-color;
   border-radius: $card-radius;
   box-shadow: $card-shadow;
@@ -74,9 +74,9 @@ ul.card-list {
   .card-image {
     position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex: 3;
+    justify-content: center;
     overflow: hidden;
     border-radius: $card-radius $card-radius 0 0;
 
@@ -98,8 +98,8 @@ ul.card-list {
   }
 
   .card-content {
-    padding: .5rem;
     flex: 1;
+    padding: .5rem;
   }
 
   // horizontal
