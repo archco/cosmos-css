@@ -22,7 +22,8 @@ const Default = {
   btn_top: Selector.TOP,
   btn_bottom: Selector.BOTTOM,
   scroll_duration: 600, // 300: fast, 600: default, 900: slow
-  scroll_easing: 'easeOutCubic'
+  scroll_easing: 'easeOutCubic',
+  show_distance: 400
 };
 
 class ScrollTo extends CosmosModule {
@@ -53,7 +54,9 @@ class ScrollTo extends CosmosModule {
     });
 
     // scroll listener
-    window.addEventListener('scroll', this._scrollHandler.bind(this));
+    if (this.option.show_distance) {
+      window.addEventListener('scroll', this._scrollHandler.bind(this));
+    }
   }
 
   getDefaultOption() {
@@ -64,18 +67,35 @@ class ScrollTo extends CosmosModule {
 
   _scrollHandler() {
     let top = this._getScrollTop();
-    let container = document.querySelector(Selector.CONTAINER);
-    let isShow = container.classList.contains(ClassName.SHOW);
+    let bottom = this._getScrollBottom();
+    let distance = this.option.show_distance;
+    let toTop = document.querySelector(Selector.TOP);
+    let toBottom = document.querySelector(Selector.BOTTOM);
 
-    if (top > 500 && !isShow) {
-      container.classList.add(ClassName.SHOW);
-    } else if (top <= 500 && isShow) {
-      container.classList.remove(ClassName.SHOW);
+    // toTop
+    if (top > distance && !this._isShown(toTop)) {
+      toTop.classList.add(ClassName.SHOW);
+    } else if (top <= distance && this._isShown(toTop)) {
+      toTop.classList.remove(ClassName.SHOW);
     }
+    // toBottom
+    if (bottom > distance && !this._isShown(toBottom)) {
+      toBottom.classList.add(ClassName.SHOW);
+    } else if (bottom <= distance && this._isShown(toBottom)) {
+      toBottom.classList.remove(ClassName.SHOW);
+    }
+  }
+
+  _isShown(elm) {
+    return elm.classList.contains(ClassName.SHOW);
   }
 
   _getScrollTop() {
     return window.scrollY || window.pageYOffset;
+  }
+
+  _getScrollBottom() {
+    return this._getDocumentBottom() - (this._getScrollTop() + window.innerHeight);
   }
 
   _getDocumentTop() {

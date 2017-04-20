@@ -3,6 +3,7 @@
 //======================================================================
 %scroll-to-button {
   @extend %btn-common;
+  display: none;
   min-width: 1rem;
   min-height: 1rem;
   padding: 1rem;
@@ -14,6 +15,8 @@
   transition: background-color $transition-time;
 
   &:hover { background-color: $scroll-to-bg-color; }
+
+  &.show { display: inline-block; }
 }
 
 .scroll-to-container {
@@ -21,9 +24,6 @@
   right: 4%;
   bottom: 4%;
   z-index: $z-index-scroll-to-button;
-  display: none;
-
-  &.show { display: block; }
 
   .scroll-to-top,
   .scroll-to-bottom {

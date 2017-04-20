@@ -2192,6 +2192,7 @@ ul.pagination {
 
 .scroll-to-container .scroll-to-top,
 .scroll-to-container .scroll-to-bottom {
+  display: none;
   min-width: 1rem;
   min-height: 1rem;
   padding: 1rem;
@@ -2205,15 +2206,15 @@ ul.pagination {
   .scroll-to-container .scroll-to-top:hover,
   .scroll-to-container .scroll-to-bottom:hover {
     background-color: #004d6b; }
+  .scroll-to-container .show.scroll-to-top,
+  .scroll-to-container .show.scroll-to-bottom {
+    display: inline-block; }
 
 .scroll-to-container {
   position: fixed;
   right: 4%;
   bottom: 4%;
-  z-index: 16;
-  display: none; }
-  .scroll-to-container.show {
-    display: block; }
+  z-index: 16; }
 
 .tooltip {
   position: relative; }

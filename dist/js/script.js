@@ -2207,7 +2207,8 @@ var Default = {
   btn_top: Selector.TOP,
   btn_bottom: Selector.BOTTOM,
   scroll_duration: 600, // 300: fast, 600: default, 900: slow
-  scroll_easing: 'easeOutCubic'
+  scroll_easing: 'easeOutCubic',
+  show_distance: 400
 };
 
 var ScrollTo = function (_CosmosModule) {
@@ -2246,7 +2247,9 @@ var ScrollTo = function (_CosmosModule) {
       });
 
       // scroll listener
-      window.addEventListener('scroll', this._scrollHandler.bind(this));
+      if (this.option.show_distance) {
+        window.addEventListener('scroll', this._scrollHandler.bind(this));
+      }
     }
   }, {
     key: 'getDefaultOption',
@@ -2260,19 +2263,38 @@ var ScrollTo = function (_CosmosModule) {
     key: '_scrollHandler',
     value: function _scrollHandler() {
       var top = this._getScrollTop();
-      var container = document.querySelector(Selector.CONTAINER);
-      var isShow = container.classList.contains(ClassName.SHOW);
+      var bottom = this._getScrollBottom();
+      var distance = this.option.show_distance;
+      var toTop = document.querySelector(Selector.TOP);
+      var toBottom = document.querySelector(Selector.BOTTOM);
 
-      if (top > 500 && !isShow) {
-        container.classList.add(ClassName.SHOW);
-      } else if (top <= 500 && isShow) {
-        container.classList.remove(ClassName.SHOW);
+      // toTop
+      if (top > distance && !this._isShown(toTop)) {
+        toTop.classList.add(ClassName.SHOW);
+      } else if (top <= distance && this._isShown(toTop)) {
+        toTop.classList.remove(ClassName.SHOW);
       }
+      // toBottom
+      if (bottom > distance && !this._isShown(toBottom)) {
+        toBottom.classList.add(ClassName.SHOW);
+      } else if (bottom <= distance && this._isShown(toBottom)) {
+        toBottom.classList.remove(ClassName.SHOW);
+      }
+    }
+  }, {
+    key: '_isShown',
+    value: function _isShown(elm) {
+      return elm.classList.contains(ClassName.SHOW);
     }
   }, {
     key: '_getScrollTop',
     value: function _getScrollTop() {
       return window.scrollY || window.pageYOffset;
+    }
+  }, {
+    key: '_getScrollBottom',
+    value: function _getScrollBottom() {
+      return this._getDocumentBottom() - (this._getScrollTop() + window.innerHeight);
     }
   }, {
     key: '_getDocumentTop',
