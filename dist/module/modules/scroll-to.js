@@ -26,16 +26,23 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
   scroll-to
 *************************************************************/
 var NAME = 'Cosmos.ScrollTo';
-var Selector = {
-  TOP: '#scroll-to-top'
-};
 var ClassName = {
+  CONTAINER: 'scroll-to-container',
+  TOTOP: 'scroll-to-top',
+  TOBOTTOM: 'scroll-to-bottom',
   SHOW: 'show'
+};
+var Selector = {
+  TOP: '.' + ClassName.TOTOP,
+  BOTTOM: '.' + ClassName.TOBOTTOM
 };
 // default option.
 var Default = {
   btn_top: Selector.TOP,
-  animate_duration: 'default' // fast(200), default(400), slow(600)
+  btn_bottom: Selector.BOTTOM,
+  scroll_duration: 600, // 300: fast, 600: default, 900: slow
+  scroll_easing: 'easeOutCubic',
+  show_distance: 400
 };
 
 var ScrollTo = function (_CosmosModule) {
@@ -44,10 +51,7 @@ var ScrollTo = function (_CosmosModule) {
   function ScrollTo(option) {
     _classCallCheck(this, ScrollTo);
 
-    var _this = _possibleConstructorReturn(this, (ScrollTo.__proto__ || Object.getPrototypeOf(ScrollTo)).call(this, option));
-
-    _this.btnTop = document.querySelector(_this.option.btn_top);
-    return _this;
+    return _possibleConstructorReturn(this, (ScrollTo.__proto__ || Object.getPrototypeOf(ScrollTo)).call(this, option));
   }
 
   // static
@@ -61,17 +65,24 @@ var ScrollTo = function (_CosmosModule) {
     value: function init() {
       var _this2 = this;
 
-      if (!this.btnTop) {
-        return;
-      }
+      var duration = this.option.scroll_duration;
+      var easing = this.option.scroll_easing;
 
-      // scroll-to-top button listener
-      this.btnTop.addEventListener('click', function () {
-        $('html,body').animate({ scrollTop: 0 }, _this2.option.animate_duration, 'swing');
+      // button listener
+      _util2.default.eventOnSelector(this.option.btn_top, 'click', function () {
+        _util2.default.scrollIt(0, duration, easing);
+      });
+      _util2.default.eventOnSelector(this.option.btn_bottom, 'click', function () {
+        _util2.default.scrollIt(_this2._getDocumentBottom(), duration, easing);
       });
 
       // scroll listener
-      window.addEventListener('scroll', this._scrollHandler.bind(this));
+      if (this.option.show_distance) {
+        window.addEventListener('scroll', this._scrollHandler.bind(this));
+        this._scrollHandler(); // invoke once.
+      } else {
+        this._showBtns(); // show buttons.
+      }
     }
   }, {
     key: 'getDefaultOption',
@@ -85,23 +96,57 @@ var ScrollTo = function (_CosmosModule) {
     key: '_scrollHandler',
     value: function _scrollHandler() {
       var top = this._getScrollTop();
-      var isShow = this.btnTop.classList.contains(ClassName.SHOW);
+      var bottom = this._getScrollBottom();
+      var distance = this.option.show_distance;
+      var toTop = document.querySelector(this.option.btn_top);
+      var toBottom = document.querySelector(this.option.btn_bottom);
 
-      if (top > 500 && !isShow) {
-        this.btnTop.classList.add(ClassName.SHOW);
-      } else if (top <= 500 && isShow) {
-        this.btnTop.classList.remove(ClassName.SHOW);
+      // toTop
+      if (top > distance && !this._isShown(toTop)) {
+        toTop.classList.add(ClassName.SHOW);
+      } else if (top <= distance && this._isShown(toTop)) {
+        toTop.classList.remove(ClassName.SHOW);
       }
+      // toBottom
+      if (bottom > distance && !this._isShown(toBottom)) {
+        toBottom.classList.add(ClassName.SHOW);
+      } else if (bottom <= distance && this._isShown(toBottom)) {
+        toBottom.classList.remove(ClassName.SHOW);
+      }
+    }
+  }, {
+    key: '_isShown',
+    value: function _isShown(elm) {
+      return elm.classList.contains(ClassName.SHOW);
     }
   }, {
     key: '_getScrollTop',
     value: function _getScrollTop() {
-      return $(window).scrollTop();
+      return window.scrollY || window.pageYOffset;
     }
   }, {
     key: '_getScrollBottom',
     value: function _getScrollBottom() {
-      return $(document).height();
+      return this._getDocumentBottom() - (this._getScrollTop() + window.innerHeight);
+    }
+  }, {
+    key: '_getDocumentTop',
+    value: function _getDocumentTop() {
+      return document.documentElement.offsetTop || 0;
+    }
+  }, {
+    key: '_getDocumentBottom',
+    value: function _getDocumentBottom() {
+      return document.documentElement.scrollHeight;
+    }
+  }, {
+    key: '_showBtns',
+    value: function _showBtns() {
+      var toTop = document.querySelector(this.option.btn_top);
+      var toBottom = document.querySelector(this.option.btn_bottom);
+
+      if (toTop) toTop.classList.add(ClassName.SHOW);
+      if (toBottom) toBottom.classList.add(ClassName.SHOW);
     }
   }], [{
     key: 'name',

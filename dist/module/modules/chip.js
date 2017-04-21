@@ -10,10 +10,6 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = require('../lib/util.js');
-
-var _util2 = _interopRequireDefault(_util);
-
 var _button = require('./button.js');
 
 var _button2 = _interopRequireDefault(_button);
@@ -69,7 +65,7 @@ var Chip = function (_CosmosModule) {
 
     /**
      * add
-     * 
+     *
      * @param {String} text
      * @param {String} imgSrc
      * @param {Object} data  dataset values.
@@ -86,7 +82,7 @@ var Chip = function (_CosmosModule) {
 
     /**
      * removeAll
-     * 
+     *
      * @return {Number}
      */
 
@@ -126,7 +122,7 @@ var Chip = function (_CosmosModule) {
 
     /**
      * getContainer
-     * 
+     *
      * @return {Element}
      */
 

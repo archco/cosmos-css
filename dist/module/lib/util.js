@@ -8,6 +8,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _scrollIt = require('./utils/scroll-it.js');
+
+var _scrollIt2 = _interopRequireDefault(_scrollIt);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /************************************************************
@@ -26,7 +32,7 @@ var Util = function () {
 
     /**
      * event on selector
-     * 
+     *
      * @param  {String}   selector   querySelector
      * @param  {String}   type       event type
      * @param  {Function} listener   event listener
@@ -37,7 +43,7 @@ var Util = function () {
       var useCapture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
       var elements = document.querySelectorAll(selector);
-      if (elements.length == 0) {
+      if (elements.length === 0) {
         return null;
       }
       var _iteratorNormalCompletion = true;
@@ -70,7 +76,7 @@ var Util = function () {
 
     /**
      * find ancestor by selector
-     * 
+     *
      * @param  {Element} element
      * @param  {String}  selector
      * @return {Element|null}
@@ -164,7 +170,7 @@ var Util = function () {
 
     /**
      * location.search to Object.
-     * 
+     *
      * @return {Object|null}
      */
 
@@ -176,7 +182,7 @@ var Util = function () {
 
     /**
      * searchToObject
-     * 
+     *
      * @param  {String} search [HTMLAnchorElement.search]
      * @return {Object|null}
      */
@@ -184,7 +190,7 @@ var Util = function () {
   }, {
     key: 'searchToObject',
     value: function searchToObject(search) {
-      if (search == '') return null;
+      if (search === '') return null;
 
       var queries = search.substring(1).split('&');
       var obj = {};
@@ -200,7 +206,7 @@ var Util = function () {
 
     /**
      * returns true if 'big' contains 'small'.
-     * 
+     *
      * @param  {mixed}  big
      * @param  {mixed}  small
      * @return {Boolean}
@@ -239,5 +245,7 @@ var Util = function () {
 
   return Util;
 }();
+
+Util.scrollIt = _scrollIt2.default;
 
 exports.default = Util;

@@ -22,7 +22,7 @@ var CosmosModule = function () {
 
   /**
    * module load
-   * 
+   *
    * @return {void}
    */
 
@@ -33,14 +33,14 @@ var CosmosModule = function () {
 
     /**
      * init - abstract method.
-     * 
+     *
      * @return {void}
      */
     value: function init() {}
 
     /**
      * setOption
-     * 
+     *
      * @param {Object} option
      */
 
@@ -52,7 +52,7 @@ var CosmosModule = function () {
 
     /**
      * getOption
-     * 
+     *
      * @return {Object}
      */
 
@@ -64,7 +64,7 @@ var CosmosModule = function () {
 
     /**
      * getDefaultOption - abstract method.
-     * 
+     *
      * @return {Object}
      */
 
@@ -84,7 +84,7 @@ var CosmosModule = function () {
 
     /**
      * get defaultOption
-     * 
+     *
      * @return {Object}
      */
 

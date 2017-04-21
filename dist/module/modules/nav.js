@@ -70,7 +70,7 @@ var Nav = function (_CosmosModule) {
 
     /**
      * activator
-     * 
+     *
      * @param  string selector  menu selector string
      * @return void
      */
@@ -79,7 +79,7 @@ var Nav = function (_CosmosModule) {
     key: 'activator',
     value: function activator(selector) {
       var links = document.querySelectorAll(selector + ' a');
-      if (links.length == 0) return;
+      if (links.length === 0) return;
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;

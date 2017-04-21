@@ -141,7 +141,7 @@ var Collapse = function (_CosmosModule) {
     value: function _activatedCollapse() {
       // Collapse can multiple active.
       var ts = document.querySelectorAll(Selector.C_ACTIVE);
-      if (ts.length == 0) {
+      if (ts.length === 0) {
         return;
       }
 
@@ -176,7 +176,7 @@ var Collapse = function (_CosmosModule) {
     value: function _activatedAccordion() {
       // Only one accordion can be active at a time. After all, only the last one will be activated.
       var hs = document.querySelectorAll(Selector.A_ACTIVE);
-      if (hs.length == 0) {
+      if (hs.length === 0) {
         return;
       }
 

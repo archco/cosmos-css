@@ -120,7 +120,7 @@ var Message = function (_CosmosModule) {
 
     /**
      * add '.message-box' into '#message-container'
-     * 
+     *
      * @param  {String} message
      * @param  {String} status  ['info','success','warning','error']
      */

@@ -96,10 +96,10 @@ var Tab = function (_CosmosModule) {
 
       var tabIndex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-      if (tabIndex == null) {
+      if (tabIndex === null) {
         // all tabs.
         var tabs = this._getTabs();
-        tabs.forEach(function (e, i, a) {
+        tabs.forEach(function (e, i) {
           _this2._default(linkIndex, i);
         });
       } else {
@@ -156,7 +156,7 @@ var Tab = function (_CosmosModule) {
     value: function _extractID(str) {
       var result = /([#])\S+/.exec(str);
 
-      return result == null ? null : result[0];
+      return result === null ? null : result[0];
     }
   }, {
     key: '_getContent',

@@ -10,6 +10,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 ## [Unreleased]
 ### Changed
 - Change scss function and mixin names to "hyphenated lowercase(kebab-case)." #132
+- Improve scroll-to.js, html structure are changed. #133
 
 ## [0.10.0]
 ### Added

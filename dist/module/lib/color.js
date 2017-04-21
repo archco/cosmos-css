@@ -75,7 +75,7 @@ var Color = function () {
 
     /**
      * rgb values to hex color string
-     * 
+     *
      * @param  number r
      * @param  number g
      * @param  number b
@@ -90,25 +90,22 @@ var Color = function () {
       b = b.toString(16);
       return "#" + r + g + b;
     }
-  }, {
-    key: 'lightness',
-
 
     /**
      * get rgb color's lightness value.
-     * 
+     *
      * @param  string|array  color
      * @return number  (0 ~ 255)
      */
+
+  }, {
+    key: 'lightness',
     value: function lightness(color) {
       var rgb = Color.colorToArray(color);
       // Color lightness formula.
       // @link https://www.w3.org/TR/AERT#color-contrast
       return (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
     }
-  }, {
-    key: 'contrast',
-
 
     /**
      * get contrast color
@@ -117,6 +114,9 @@ var Color = function () {
      * @param  string  light
      * @return string  dark or light
      */
+
+  }, {
+    key: 'contrast',
     value: function contrast(color) {
       var dark = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Config.darkDefault;
       var light = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Config.lightDefault;

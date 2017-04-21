@@ -44,7 +44,7 @@ var Parallax = function (_CosmosModule) {
 
     value: function init() {
       var ps = document.querySelectorAll('.' + ClassName.PARALLAX);
-      if (ps.length == 0) {
+      if (ps.length === 0) {
         return;
       }
 
