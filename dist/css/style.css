@@ -477,13 +477,16 @@ footer {
   color: #fff;
   background-color: #0087bd; }
   .footer a {
-    color: #fff;
     -webkit-transition: color 0.3s;
     transition: color 0.3s; }
+    .footer a, .footer a:link {
+      color: #fff; }
     .footer a:visited {
-      color: inherit; }
-    .footer a:hover {
+      color: #fff; }
+    .footer a:hover, .footer a:focus {
       color: #91a3b0; }
+    .footer a:active {
+      color: #fff; }
   .footer .footer-copyright {
     padding: .5rem 0;
     color: rgba(255, 255, 255, 0.8);

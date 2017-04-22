@@ -56,10 +56,8 @@ footer {
 
   a {
     @extend %link-no-deco;
-    color: $footer-link-color;
+    @include set-link-state-color($footer-link-color, null, $footer-link-hover-color);
     transition: color $transition-time;
-    &:visited { color: inherit; }
-    &:hover { color: $footer-link-hover-color; }
   }
 
   .footer-copyright {
