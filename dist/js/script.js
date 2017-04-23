@@ -1,6 +1,6 @@
 /*!
  * cosmos-css - The css framework for personal practice.
- * @version v0.10.1
+ * @version v0.10.2
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
@@ -2691,7 +2691,7 @@ exports.default = Tab;
 
 module.exports = {
 	"name": "cosmos-css",
-	"version": "0.10.1",
+	"version": "0.10.2",
 	"description": "The css framework for personal practice.",
 	"main": "dist/module/cosmos.js",
 	"sass": "src/scss/style.scss",
@@ -2834,7 +2834,7 @@ _scaffolding2.default.load();
 // Functional modules. - nonloadable
 /*!
  * cosmos-css - The css framework for personal practice.
- * @version v0.10.1
+ * @version v0.10.2
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */

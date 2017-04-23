@@ -9,6 +9,16 @@ If want to see more previous information to [Releases](https://github.com/archco
 
 ## [Unreleased]
 
+## [0.10.2] - 2017-04-23
+### Added
+- Add scss helper class: `.caret` #134
+
+### Changed
+- Change dropdown style: appends caret automatically. #134
+
+### Fixed
+- Fix footer link color.
+
 ## [0.10.1] - 2017-04-21
 ### Changed
 - Change scss function and mixin names to "hyphenated lowercase(kebab-case)." #132
@@ -81,7 +91,8 @@ import { Util, Color } from 'cosmos-css'; // import member.
 ### Fixed
 - Underline problem in link as btn in table. #101
 
-[Unreleased]: https://github.com/archco/cosmos-css/compare/v0.10.1...master
+[Unreleased]: https://github.com/archco/cosmos-css/compare/v0.10.2...master
+[0.10.2]: https://github.com/archco/cosmos-css/compare/v0.10.1...v0.10.2
 [0.10.1]: https://github.com/archco/cosmos-css/compare/v0.10.0...v0.10.1
 [0.10.0]: https://github.com/archco/cosmos-css/compare/v0.9.1...v0.10.0
 [0.9.1]: https://github.com/archco/cosmos-css/compare/v0.9.0...v0.9.1

@@ -1,6 +1,6 @@
 {
   "name": "cosmos-css",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "The css framework for personal practice.",
   "main": "dist/module/cosmos.js",
   "sass": "src/scss/style.scss",
