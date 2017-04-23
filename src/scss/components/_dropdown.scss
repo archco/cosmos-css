@@ -47,14 +47,14 @@
   flex-direction: column;
   justify-content: center;
 
-  // toggle button
-  .dropdown-toggle {
-    @extend %btn-common;
-  }
-
-  // hover button
+  // button
+  .dropdown-toggle,
   .dropdown-btn {
     @extend %btn-common;
+
+    &::after {
+      @include caret('down');
+    }
   }
 
   .dropdown-content {

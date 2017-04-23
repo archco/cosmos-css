@@ -196,29 +196,6 @@
   border-bottom-left-radius: $radius;
 }
 
-
-//======================================================================
-// Message
-//======================================================================
-
-@mixin message-box($bg-color) {
-  $color: get-contrast($bg-color);
-
-  color: $color;
-  background-color: $bg-color;
-
-  .btn-close-message {
-    color: $color;
-    background-color: transparent;
-    transition: color $transition-time;
-
-    &:hover {
-      $_hover-color: rgba(#000, .3);
-      color: $_hover-color;
-    }
-  }
-}
-
 //======================================================================
 // Media queries
 //======================================================================
@@ -322,5 +299,32 @@
     &:active {
       background-color: darken($bg-color, 4%);
     }
+  }
+}
+
+//============================================================
+// caret
+//============================================================
+@mixin caret($direction: 'down') {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: $caret-width;
+  vertical-align: baseline;
+  border: $caret-width solid transparent;
+  content: '';
+
+  @if $direction == 'up' {
+    border-bottom-color: initial;
+  } @else if $direction == 'right' {
+    border-left-color: initial;
+  } @else if $direction == 'down' {
+    border-top-color: initial;
+  } @else if $direction == 'left' {
+    border-right-color: initial;
+  }
+
+  &:empty {
+    margin-left: 0;
   }
 }

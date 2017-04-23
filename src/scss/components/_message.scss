@@ -1,11 +1,27 @@
+@mixin _message-box($bg-color) {
+  $color: get-contrast($bg-color);
+
+  color: $color;
+  background-color: $bg-color;
+
+  .btn-close-message {
+    color: $color;
+    background-color: transparent;
+    transition: color $transition-time;
+
+    &:hover {
+      $_hover-color: rgba(#000, .3);
+      color: $_hover-color;
+    }
+  }
+}
+
 //======================================================================
 // Message
 //======================================================================
-
-/** message-box */
 .message-box {
   // default color
-  @include message-box($secondary-color);
+  @include _message-box($secondary-color);
   // common attributes.
   position: relative;
   z-index: $z-index-message-box;
@@ -22,7 +38,7 @@
   // each color-set
   @each $name, $color in $color-set {
     &.#{$name} {
-      @include message-box($color);
+      @include _message-box($color);
     }
   }
 }
