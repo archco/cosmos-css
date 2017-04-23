@@ -2,5 +2,3 @@
 node_modules/
 tests/html/
 .editorconfig
-.jshintrc
-.scss-lint.yml
