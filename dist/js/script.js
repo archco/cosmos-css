@@ -2699,25 +2699,23 @@ module.exports = {
 		"test": "tests"
 	},
 	"dependencies": {
-		"scss-palette": "^0.3.1"
+		"scss-palette": "^0.3.2"
 	},
 	"devDependencies": {
 		"autoprefixer": "^6.7.7",
 		"babel-cli": "^6.24.1",
-		"babel-core": "^6.24.1",
-		"babel-eslint": "^7.2.2",
-		"babel-loader": "^6.4.1",
+		"babel-eslint": "^7.2.3",
+		"babel-loader": "^7.0.0",
 		"babel-preset-env": "^1.3.3",
 		"concurrently": "^3.4.0",
 		"eslint": "^3.19.0",
 		"fs-extra": "^2.1.2",
-		"jquery": "^3.2.1",
 		"node-sass": "^4.5.2",
 		"postcss": "^5.2.17",
-		"postcss-cli": "^3.1.1",
+		"postcss-cli": "^3.2.0",
 		"pug": "^2.0.0-beta11",
 		"pug-cli": "^1.0.0-alpha6",
-		"webpack": "^2.3.3"
+		"webpack": "^2.4.1"
 	},
 	"scripts": {
 		"build": "npm run dev && npm run production && npm run js-module",
