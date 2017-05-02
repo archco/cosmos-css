@@ -2970,14 +2970,12 @@ var UtilElement = function () {
   }, {
     key: 'hide',
     value: function hide(selector) {
-      this.removeClass(selector, ClassName.SHOW);
       this.addClass(selector, ClassName.HIDE);
     }
   }, {
     key: 'show',
     value: function show(selector) {
       this.removeClass(selector, ClassName.HIDE);
-      this.addClass(selector, ClassName.SHOW);
     }
   }, {
     key: 'toggleShow',
@@ -2988,6 +2986,45 @@ var UtilElement = function () {
       } else {
         this.hide(selector);
       }
+    }
+  }, {
+    key: 'filter',
+    value: function filter(selector, _filter) {
+      var elms = this.getElements(selector);
+      var hit = 0;
+      _filter = _filter.toUpperCase();
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = elms[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var elm = _step.value;
+
+          if (elm.textContent.toUpperCase().indexOf(_filter) === -1) {
+            this.hide(elm);
+          } else {
+            this.show(elm);
+            hit++;
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      return hit;
     }
   }, {
     key: 'name',

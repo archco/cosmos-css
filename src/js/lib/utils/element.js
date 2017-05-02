@@ -60,13 +60,11 @@ export default class UtilElement {
   }
 
   static hide(selector) {
-    this.removeClass(selector, ClassName.SHOW);
     this.addClass(selector, ClassName.HIDE);
   }
 
   static show(selector) {
     this.removeClass(selector, ClassName.HIDE);
-    this.addClass(selector, ClassName.SHOW);
   }
 
   static toggleShow(selector) {
@@ -76,5 +74,22 @@ export default class UtilElement {
     } else {
       this.hide(selector);
     }
+  }
+
+  static filter(selector, filter) {
+    let elms = this.getElements(selector);
+    let hit = 0;
+    filter = filter.toUpperCase();
+
+    for (let elm of elms) {
+      if (elm.textContent.toUpperCase().indexOf(filter) === -1) {
+        this.hide(elm);
+      } else {
+        this.show(elm);
+        hit++;
+      }
+    }
+
+    return hit;
   }
 }
