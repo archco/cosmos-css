@@ -196,9 +196,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _scrollIt = __webpack_require__(18);
+var _scrollIt = __webpack_require__(19);
 
 var _scrollIt2 = _interopRequireDefault(_scrollIt);
+
+var _element = __webpack_require__(18);
+
+var _element2 = _interopRequireDefault(_element);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -434,7 +438,10 @@ var Util = function () {
   return Util;
 }();
 
-Util.scrollIt = _scrollIt2.default;
+Object.assign(Util, {
+  scrollIt: _scrollIt2.default,
+  ElementUtil: _element2.default
+});
 
 exports.default = Util;
 
@@ -2877,6 +2884,125 @@ exports.Chip = _chip2.default;
 
 /***/ }),
 /* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/************************************************************
+  Element
+*************************************************************/
+var NAME = 'Cosmos.Util.Element';
+var ClassName = {
+  SHOW: 'display-show',
+  HIDE: 'display-hide'
+};
+
+var UtilElement = function () {
+  function UtilElement() {
+    _classCallCheck(this, UtilElement);
+  }
+
+  _createClass(UtilElement, null, [{
+    key: 'getElement',
+
+
+    /**
+     * getElement
+     *
+     * @param  {String|Element} selector
+     * @return {Element}
+     */
+    value: function getElement(selector) {
+      if (typeof selector === 'string') {
+        return document.querySelector(selector);
+      } else if (selector instanceof Element) {
+        return selector;
+      } else {
+        throw new TypeError('selector is must be String or Element');
+      }
+    }
+
+    /**
+     * getElements
+     *
+     * @param  {String|NodeList} selector
+     * @return {NodeList}
+     */
+
+  }, {
+    key: 'getElements',
+    value: function getElements(selector) {
+      if (typeof selector === 'string') {
+        return document.querySelectorAll(selector);
+      } else if (selector instanceof NodeList) {
+        return selector;
+      } else {
+        throw new TypeError('selector is must be String or NodeList');
+      }
+    }
+  }, {
+    key: 'addClass',
+    value: function addClass(selector, className) {
+      var elm = this.getElement(selector);
+      elm.classList.add(className);
+    }
+  }, {
+    key: 'removeClass',
+    value: function removeClass(selector, className) {
+      var elm = this.getElement(selector);
+      elm.classList.remove(className);
+    }
+  }, {
+    key: 'toggleClass',
+    value: function toggleClass(selector, className) {
+      var elm = this.getElement(selector);
+      elm.classList.toggle(className);
+    }
+  }, {
+    key: 'hide',
+    value: function hide(selector) {
+      this.removeClass(selector, ClassName.SHOW);
+      this.addClass(selector, ClassName.HIDE);
+    }
+  }, {
+    key: 'show',
+    value: function show(selector) {
+      this.removeClass(selector, ClassName.HIDE);
+      this.addClass(selector, ClassName.SHOW);
+    }
+  }, {
+    key: 'toggleShow',
+    value: function toggleShow(selector) {
+      var elm = this.getElement(selector);
+      if (elm.classList.contains(ClassName.HIDE)) {
+        this.show(selector);
+      } else {
+        this.hide(selector);
+      }
+    }
+  }, {
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }]);
+
+  return UtilElement;
+}();
+
+exports.default = UtilElement;
+
+/***/ }),
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
