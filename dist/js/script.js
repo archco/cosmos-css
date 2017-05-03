@@ -2918,14 +2918,18 @@ var UtilElement = function () {
     /**
      * getElement
      *
-     * @param  {String|Element} selector
+     * @param  {String|Element|NodeList} selector
      * @return {Element}
      */
     value: function getElement(selector) {
+      var elm = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+
       if (typeof selector === 'string') {
-        return document.querySelector(selector);
+        return elm.querySelector(selector);
       } else if (selector instanceof Element) {
         return selector;
+      } else if (selector instanceof NodeList) {
+        return selector[0];
       } else {
         throw new TypeError('selector is must be String or Element');
       }
@@ -2934,20 +2938,40 @@ var UtilElement = function () {
     /**
      * getElements
      *
-     * @param  {String|NodeList} selector
+     * @param  {String|Element|NodeList} selector
      * @return {NodeList}
      */
 
   }, {
     key: 'getElements',
     value: function getElements(selector) {
+      var elm = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+
       if (typeof selector === 'string') {
-        return document.querySelectorAll(selector);
+        return elm.querySelectorAll(selector);
+      } else if (selector instanceof Element) {
+        return this.toNodeList(selector);
       } else if (selector instanceof NodeList) {
         return selector;
       } else {
         throw new TypeError('selector is must be String or NodeList');
       }
+    }
+
+    /**
+     * Element to NodeList
+     *
+     * @param  {Element} element
+     * @return {NodeList}
+     */
+
+  }, {
+    key: 'toNodeList',
+    value: function toNodeList(element) {
+      element.setAttribute('toNodeList', '');
+      var nodelist = document.querySelectorAll('[toNodeList]');
+      element.removeAttribute('toNodeList');
+      return nodelist;
     }
   }, {
     key: 'addClass',
@@ -2990,9 +3014,24 @@ var UtilElement = function () {
   }, {
     key: 'filter',
     value: function filter(selector, _filter) {
+      var htmlMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+      var elms = this.getElements(selector);
+
+      if (elms.length === 1 && elms[0].tagName === 'TABLE') {
+        return this.filterTable(elms[0], _filter, htmlMode);
+      } else {
+        return this.filterElements(elms, _filter, htmlMode);
+      }
+    }
+  }, {
+    key: 'filterElements',
+    value: function filterElements(selector, filter) {
+      var htmlMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
       var elms = this.getElements(selector);
       var hit = 0;
-      _filter = _filter.toUpperCase();
+      filter = filter.toUpperCase();
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -3002,7 +3041,9 @@ var UtilElement = function () {
         for (var _iterator = elms[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var elm = _step.value;
 
-          if (elm.textContent.toUpperCase().indexOf(_filter) === -1) {
+          var content = htmlMode ? elm.innerHTML : elm.textContent;
+
+          if (content.toUpperCase().indexOf(filter) === -1) {
             this.hide(elm);
           } else {
             this.show(elm);
@@ -3020,6 +3061,50 @@ var UtilElement = function () {
         } finally {
           if (_didIteratorError) {
             throw _iteratorError;
+          }
+        }
+      }
+
+      return hit;
+    }
+  }, {
+    key: 'filterTable',
+    value: function filterTable(selector, filter) {
+      var htmlMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+      var table = this.getElement(selector);
+      var tableRows = this.getElements('tbody tr', table);
+      var hit = 0;
+      filter = filter.toUpperCase();
+
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = tableRows[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var tr = _step2.value;
+
+          var content = htmlMode ? tr.innerHTML : tr.textContent;
+
+          if (content.toUpperCase().indexOf(filter) === -1) {
+            this.hide(tr);
+          } else {
+            this.show(tr);
+            hit++;
+          }
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
           }
         }
       }
