@@ -2919,6 +2919,7 @@ var UtilElement = function () {
      * getElement
      *
      * @param  {String|Element|NodeList} selector
+     * @param  {Element} elm  baseElement
      * @return {Element}
      */
     value: function getElement(selector) {
@@ -2939,6 +2940,7 @@ var UtilElement = function () {
      * getElements
      *
      * @param  {String|Element|NodeList} selector
+     * @param  {Element} elm  baseElement
      * @return {NodeList}
      */
 
@@ -2972,6 +2974,19 @@ var UtilElement = function () {
       var nodelist = document.querySelectorAll('[toNodeList]');
       element.removeAttribute('toNodeList');
       return nodelist;
+    }
+
+    /**
+     * Converting a NodeList to an Array.
+     *
+     * @param  {NodeList} nodelist
+     * @return {Array}
+     */
+
+  }, {
+    key: 'nodeListToArray',
+    value: function nodeListToArray(nodelist) {
+      return Array.prototype.slice.call(nodelist);
     }
   }, {
     key: 'addClass',
@@ -3030,6 +3045,24 @@ var UtilElement = function () {
       var htmlMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
       var elms = this.getElements(selector);
+
+      return this._filtering(elms, filter, htmlMode);
+    }
+  }, {
+    key: 'filterTable',
+    value: function filterTable(selector, filter) {
+      var htmlMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+      var table = this.getElement(selector);
+      var tableRows = this.getElements('tbody tr', table);
+
+      return this._filtering(tableRows, filter, htmlMode);
+    }
+  }, {
+    key: '_filtering',
+    value: function _filtering(nodes, filter) {
+      var htmlMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
       var hit = 0;
       filter = filter.toUpperCase();
 
@@ -3038,15 +3071,15 @@ var UtilElement = function () {
       var _iteratorError = undefined;
 
       try {
-        for (var _iterator = elms[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var elm = _step.value;
+        for (var _iterator = nodes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var node = _step.value;
 
-          var content = htmlMode ? elm.innerHTML : elm.textContent;
+          var content = htmlMode ? node.innerHTML : node.textContent;
 
           if (content.toUpperCase().indexOf(filter) === -1) {
-            this.hide(elm);
+            this.hide(node);
           } else {
-            this.show(elm);
+            this.show(node);
             hit++;
           }
         }
@@ -3068,48 +3101,84 @@ var UtilElement = function () {
       return hit;
     }
   }, {
-    key: 'filterTable',
-    value: function filterTable(selector, filter) {
-      var htmlMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-      var table = this.getElement(selector);
-      var tableRows = this.getElements('tbody tr', table);
-      var hit = 0;
-      filter = filter.toUpperCase();
-
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
-
-      try {
-        for (var _iterator2 = tableRows[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var tr = _step2.value;
-
-          var content = htmlMode ? tr.innerHTML : tr.textContent;
-
-          if (content.toUpperCase().indexOf(filter) === -1) {
-            this.hide(tr);
-          } else {
-            this.show(tr);
-            hit++;
-          }
+    key: 'sortElements',
+    value: function sortElements(selector, itemSelector) {
+      var parent = this.getElement(selector);
+      var items = this.nodeListToArray(this.getElements(itemSelector, parent));
+      var order = {
+        asc: function asc(a, b) {
+          var aVal = (a.dataset.sortValue + a.textContent).toUpperCase();
+          var bVal = (b.dataset.sortValue + b.textContent).toUpperCase();
+          return aVal.localeCompare(bVal);
+        },
+        desc: function desc(a, b) {
+          var aVal = (a.dataset.sortValue + a.textContent).toUpperCase();
+          var bVal = (b.dataset.sortValue + b.textContent).toUpperCase();
+          return bVal.localeCompare(aVal);
         }
-      } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return) {
-            _iterator2.return();
-          }
-        } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
-          }
-        }
+      };
+
+      if (parent.dataset.sortOrderBy === 'asc') {
+        parent.dataset.sortOrderBy = 'desc';
+      } else {
+        parent.dataset.sortOrderBy = 'asc';
       }
 
-      return hit;
+      this._sorting(items, order[parent.dataset.sortOrderBy]);
+    }
+  }, {
+    key: 'sortTable',
+    value: function sortTable(selector) {
+      var _this = this;
+
+      var table = this.getElement(selector);
+      var heads = this.getElements('thead th', table);
+      var rows = this.nodeListToArray(this.getElements('tbody tr', table));
+
+      heads.forEach(function (v, i) {
+        v.addEventListener('click', function (e) {
+          e.preventDefault();
+          var th = e.currentTarget;
+          if (th.dataset.sortOrderBy === 'asc') {
+            th.dataset.sortOrderBy = 'desc';
+          } else {
+            th.dataset.sortOrderBy = 'asc';
+          }
+          _this._sortingTable(rows, i + 1, th.dataset.sortOrderBy);
+        });
+      });
+    }
+  }, {
+    key: '_sortingTable',
+    value: function _sortingTable(rows, nth, direction) {
+      var order = {
+        asc: function asc(a, b) {
+          a = this.getElement('td:nth-child(' + nth + ')', a);
+          b = this.getElement('td:nth-child(' + nth + ')', b);
+          var aVal = (a.dataset.sortValue + a.textContent).toUpperCase();
+          var bVal = (b.dataset.sortValue + b.textContent).toUpperCase();
+          return aVal.localeCompare(bVal);
+        },
+        desc: function desc(a, b) {
+          a = this.getElement('td:nth-child(' + nth + ')', a);
+          b = this.getElement('td:nth-child(' + nth + ')', b);
+          var aVal = (a.dataset.sortValue + a.textContent).toUpperCase();
+          var bVal = (b.dataset.sortValue + b.textContent).toUpperCase();
+          return bVal.localeCompare(aVal);
+        }
+      };
+
+      this._sorting(rows, order[direction].bind(this));
+    }
+  }, {
+    key: '_sorting',
+    value: function _sorting(items, compareMethod) {
+      items.sort(compareMethod);
+      items.forEach(function (v) {
+        var p = v.parentNode;
+        p.removeChild(v);
+        p.appendChild(v);
+      });
     }
   }, {
     key: 'name',

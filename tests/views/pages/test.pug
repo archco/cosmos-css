@@ -11,4 +11,34 @@ block content
     h1 Image test
     include ../includes/image.pug
 
+    table(class='table striped bordered hover')
+      thead
+        tr
+          th Name
+          th Description
+          th date
+      tbody
+        tr
+          td test1
+          td(data-sort-value='3') 가나다라
+          td 2015-04-01
+        tr
+          td test2
+          td(data-sort-value='2') 하히후헤호
+          td 2015-06-01
+        tr
+          td test3
+          td(data-sort-value='1') abcde
+          td 2017-01-01
+        tr
+          td test4
+          td(data-sort-value='5') abcde
+          td 1999-01-01
+        tr
+          td test5
+          td(data-sort-value='4') abcde
+          td 1998-02-01
 block script
+  <script>
+  | Cosmos.Util.ElementUtil.sortTable('table');
+  </script>
