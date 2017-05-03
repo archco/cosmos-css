@@ -1,5 +1,5 @@
 import scrollIt from './utils/scroll-it.js';
-import ElementUtil from './utils/element.js';
+import ElementUtil from './utils/element-util.js';
 
 /************************************************************
   util

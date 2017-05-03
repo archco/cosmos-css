@@ -200,9 +200,9 @@ var _scrollIt = __webpack_require__(19);
 
 var _scrollIt2 = _interopRequireDefault(_scrollIt);
 
-var _element = __webpack_require__(18);
+var _elementUtil = __webpack_require__(18);
 
-var _element2 = _interopRequireDefault(_element);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -440,7 +440,7 @@ var Util = function () {
 
 Object.assign(Util, {
   scrollIt: _scrollIt2.default,
-  ElementUtil: _element2.default
+  ElementUtil: _elementUtil2.default
 });
 
 exports.default = Util;
@@ -2898,20 +2898,24 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /************************************************************
-  Element
+  ElementUtil
 *************************************************************/
-var NAME = 'Cosmos.Util.Element';
+var NAME = 'Cosmos.Util.ElementUtil';
 var ClassName = {
   SHOW: 'display-show',
   HIDE: 'display-hide'
 };
+var DataSet = {
+  SORT_DIRECTION: 'sortDirection',
+  SORT_VALUE: 'sortValue'
+};
 
-var UtilElement = function () {
-  function UtilElement() {
-    _classCallCheck(this, UtilElement);
+var ElementUtil = function () {
+  function ElementUtil() {
+    _classCallCheck(this, ElementUtil);
   }
 
-  _createClass(UtilElement, null, [{
+  _createClass(ElementUtil, null, [{
     key: 'getElement',
 
 
@@ -2988,34 +2992,85 @@ var UtilElement = function () {
     value: function nodeListToArray(nodelist) {
       return Array.prototype.slice.call(nodelist);
     }
+
+    /**
+     * addClass
+     *
+     * @param  {String} selector
+     * @param  {String} className
+     * @return {void}
+     */
+
   }, {
     key: 'addClass',
     value: function addClass(selector, className) {
       var elm = this.getElement(selector);
       elm.classList.add(className);
     }
+
+    /**
+     * removeClass
+     *
+     * @param  {String} selector
+     * @param  {String} className
+     * @return {void}
+     */
+
   }, {
     key: 'removeClass',
     value: function removeClass(selector, className) {
       var elm = this.getElement(selector);
       elm.classList.remove(className);
     }
+
+    /**
+     * toggleClass
+     *
+     * @param  {String} selector
+     * @param  {String} className
+     * @return {void}
+     */
+
   }, {
     key: 'toggleClass',
     value: function toggleClass(selector, className) {
       var elm = this.getElement(selector);
       elm.classList.toggle(className);
     }
+
+    /**
+     * hide element
+     *
+     * @param  {String} selector
+     * @return {void}
+     */
+
   }, {
     key: 'hide',
     value: function hide(selector) {
       this.addClass(selector, ClassName.HIDE);
     }
+
+    /**
+     * show element
+     *
+     * @param  {String} selector
+     * @return {void}
+     */
+
   }, {
     key: 'show',
     value: function show(selector) {
       this.removeClass(selector, ClassName.HIDE);
     }
+
+    /**
+     * toggleShow
+     *
+     * @param  {String} selector
+     * @return {void}
+     */
+
   }, {
     key: 'toggleShow',
     value: function toggleShow(selector) {
@@ -3026,6 +3081,16 @@ var UtilElement = function () {
         this.hide(selector);
       }
     }
+
+    /**
+     * filter
+     *
+     * @param  {String}  selector
+     * @param  {String}  filter
+     * @param  {Boolean} [htmlMode=false]
+     * @return {Number}  hit number
+     */
+
   }, {
     key: 'filter',
     value: function filter(selector, _filter) {
@@ -3039,6 +3104,16 @@ var UtilElement = function () {
         return this.filterElements(elms, _filter, htmlMode);
       }
     }
+
+    /**
+     * filterElements
+     *
+     * @param  {String}  selector
+     * @param  {String}  filter
+     * @param  {Boolean} [htmlMode=false]
+     * @return {Number}  hit number
+     */
+
   }, {
     key: 'filterElements',
     value: function filterElements(selector, filter) {
@@ -3048,6 +3123,16 @@ var UtilElement = function () {
 
       return this._filtering(elms, filter, htmlMode);
     }
+
+    /**
+     * filterTable
+     *
+     * @param  {String}  selector
+     * @param  {String}  filter
+     * @param  {Boolean} [htmlMode=false]
+     * @return {Number}  hit number
+     */
+
   }, {
     key: 'filterTable',
     value: function filterTable(selector, filter) {
@@ -3100,32 +3185,44 @@ var UtilElement = function () {
 
       return hit;
     }
+
+    /**
+     * sortElements
+     *
+     * @param  {String} selector
+     * @param  {String} itemSelector
+     * @return {void}
+     */
+
   }, {
     key: 'sortElements',
     value: function sortElements(selector, itemSelector) {
       var parent = this.getElement(selector);
       var items = this.nodeListToArray(this.getElements(itemSelector, parent));
-      var order = {
+      var compareMethods = {
         asc: function asc(a, b) {
-          var aVal = (a.dataset.sortValue + a.textContent).toUpperCase();
-          var bVal = (b.dataset.sortValue + b.textContent).toUpperCase();
+          var aVal = (a.dataset[DataSet.SORT_VALUE] + a.textContent).toUpperCase();
+          var bVal = (b.dataset[DataSet.SORT_VALUE] + b.textContent).toUpperCase();
           return aVal.localeCompare(bVal);
         },
         desc: function desc(a, b) {
-          var aVal = (a.dataset.sortValue + a.textContent).toUpperCase();
-          var bVal = (b.dataset.sortValue + b.textContent).toUpperCase();
+          var aVal = (a.dataset[DataSet.SORT_VALUE] + a.textContent).toUpperCase();
+          var bVal = (b.dataset[DataSet.SORT_VALUE] + b.textContent).toUpperCase();
           return bVal.localeCompare(aVal);
         }
       };
 
-      if (parent.dataset.sortOrderBy === 'asc') {
-        parent.dataset.sortOrderBy = 'desc';
-      } else {
-        parent.dataset.sortOrderBy = 'asc';
-      }
-
-      this._sorting(items, order[parent.dataset.sortOrderBy]);
+      this._toggleSortDirection(parent);
+      this._sorting(items, compareMethods[parent.dataset[DataSet.SORT_DIRECTION]]);
     }
+
+    /**
+     * sortTable
+     *
+     * @param  {String} selector
+     * @return {void}
+     */
+
   }, {
     key: 'sortTable',
     value: function sortTable(selector) {
@@ -3139,36 +3236,32 @@ var UtilElement = function () {
         v.addEventListener('click', function (e) {
           e.preventDefault();
           var th = e.currentTarget;
-          if (th.dataset.sortOrderBy === 'asc') {
-            th.dataset.sortOrderBy = 'desc';
-          } else {
-            th.dataset.sortOrderBy = 'asc';
-          }
-          _this._sortingTable(rows, i + 1, th.dataset.sortOrderBy);
+          _this._toggleSortDirection(th);
+          _this._sortingTable(rows, i + 1, th.dataset[DataSet.SORT_DIRECTION]);
         });
       });
     }
   }, {
     key: '_sortingTable',
     value: function _sortingTable(rows, nth, direction) {
-      var order = {
+      var compareMethods = {
         asc: function asc(a, b) {
           a = this.getElement('td:nth-child(' + nth + ')', a);
           b = this.getElement('td:nth-child(' + nth + ')', b);
-          var aVal = (a.dataset.sortValue + a.textContent).toUpperCase();
-          var bVal = (b.dataset.sortValue + b.textContent).toUpperCase();
+          var aVal = (a.dataset[DataSet.SORT_VALUE] + a.textContent).toUpperCase();
+          var bVal = (b.dataset[DataSet.SORT_VALUE] + b.textContent).toUpperCase();
           return aVal.localeCompare(bVal);
         },
         desc: function desc(a, b) {
           a = this.getElement('td:nth-child(' + nth + ')', a);
           b = this.getElement('td:nth-child(' + nth + ')', b);
-          var aVal = (a.dataset.sortValue + a.textContent).toUpperCase();
-          var bVal = (b.dataset.sortValue + b.textContent).toUpperCase();
+          var aVal = (a.dataset[DataSet.SORT_VALUE] + a.textContent).toUpperCase();
+          var bVal = (b.dataset[DataSet.SORT_VALUE] + b.textContent).toUpperCase();
           return bVal.localeCompare(aVal);
         }
       };
 
-      this._sorting(rows, order[direction].bind(this));
+      this._sorting(rows, compareMethods[direction].bind(this));
     }
   }, {
     key: '_sorting',
@@ -3181,16 +3274,25 @@ var UtilElement = function () {
       });
     }
   }, {
+    key: '_toggleSortDirection',
+    value: function _toggleSortDirection(elm) {
+      if (elm.dataset[DataSet.SORT_DIRECTION] === 'asc') {
+        elm.dataset[DataSet.SORT_DIRECTION] = 'desc';
+      } else {
+        elm.dataset[DataSet.SORT_DIRECTION] = 'asc';
+      }
+    }
+  }, {
     key: 'name',
     get: function get() {
       return NAME;
     }
   }]);
 
-  return UtilElement;
+  return ElementUtil;
 }();
 
-exports.default = UtilElement;
+exports.default = ElementUtil;
 
 /***/ }),
 /* 19 */
