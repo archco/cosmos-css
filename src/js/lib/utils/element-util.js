@@ -20,12 +20,12 @@ export default class ElementUtil {
    * getElement
    *
    * @param  {String|Element|NodeList} selector
-   * @param  {Element} elm  baseElement
+   * @param  {Element} [ base = document ]
    * @return {Element}
    */
-  static getElement(selector, elm = document) {
+  static getElement(selector, base = document) {
     if (typeof selector === 'string') {
-      return elm.querySelector(selector);
+      return base.querySelector(selector);
     } else if (selector instanceof Element) {
       return selector;
     } else if (selector instanceof NodeList) {
@@ -39,12 +39,12 @@ export default class ElementUtil {
    * getElements
    *
    * @param  {String|Element|NodeList} selector
-   * @param  {Element} elm  baseElement
+   * @param  {Element} [ base = document ]
    * @return {NodeList}
    */
-  static getElements(selector, elm = document) {
+  static getElements(selector, base = document) {
     if (typeof selector === 'string') {
-      return elm.querySelectorAll(selector);
+      return base.querySelectorAll(selector);
     } else if (selector instanceof Element) {
       return this.toNodeList(selector);
     } else if (selector instanceof NodeList) {
