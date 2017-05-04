@@ -139,3 +139,7 @@
 .caret {
   @include caret('down');
 }
+
+.arrow {
+  @include arrow;
+}

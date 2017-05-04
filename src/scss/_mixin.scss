@@ -328,3 +328,45 @@
     margin-left: 0;
   }
 }
+
+//============================================================
+// arrow
+//============================================================
+@mixin arrow($direction: 'down') {
+  display: inline-block;
+  padding: .19em;
+  margin-left: .19em;
+  border-style: solid;
+  border-width: 0 .19em .19em 0;
+  content: '';
+
+  @if $direction == 'up' {
+    transform: rotate(-135deg);
+  } @else if $direction == 'right' {
+    transform: rotate(-45deg);
+  } @else if $direction == 'down' {
+    transform: rotate(45deg);
+  } @else if $direction == 'left' {
+    transform: rotate(135deg);
+  }
+
+  &:empty {
+    margin-left: 0;
+  }
+
+  &.up {
+    transform: rotate(-135deg);
+  }
+
+  &.right {
+    transform: rotate(-45deg);
+  }
+
+  &.down {
+    transform: rotate(45deg);
+  }
+
+  &.left {
+    transform: rotate(135deg);
+  }
+}
