@@ -313,19 +313,42 @@
   vertical-align: baseline;
   border: $caret-width solid transparent;
   content: '';
-
-  @if $direction == 'up' {
-    border-bottom-color: initial;
-  } @else if $direction == 'right' {
-    border-left-color: initial;
-  } @else if $direction == 'down' {
-    border-top-color: initial;
-  } @else if $direction == 'left' {
-    border-right-color: initial;
-  }
+  @include caret-direction($direction);
 
   &:empty {
     margin-left: 0;
+  }
+
+  &.up {
+    @include caret-direction('up');
+  }
+
+  &.right {
+    @include caret-direction('right');
+  }
+
+  &.down {
+    @include caret-direction('down');
+  }
+
+  &.left {
+    @include caret-direction('left');
+  }
+}
+
+@mixin caret-direction($direction) {
+  @if $direction == 'up' {
+    border-color: transparent;
+    border-bottom-color: initial;
+  } @else if $direction == 'right' {
+    border-color: transparent;
+    border-left-color: initial;
+  } @else if $direction == 'down' {
+    border-color: transparent;
+    border-top-color: initial;
+  } @else if $direction == 'left' {
+    border-color: transparent;
+    border-right-color: initial;
   }
 }
 
@@ -333,31 +356,27 @@
 // arrow
 //============================================================
 @mixin arrow($direction: 'down') {
-  @include arrow-direction($direction);
   display: inline-block;
   padding: .19em;
   border-style: solid;
   border-width: 0 .19em .19em 0;
   content: '';
-
-  &:empty {
-    margin-left: 0;
-  }
+  @include arrow-direction($direction);
 
   &.up {
-    transform: rotate(-135deg);
+    @include arrow-direction('up');
   }
 
   &.right {
-    transform: rotate(-45deg);
+    @include arrow-direction('right');
   }
 
   &.down {
-    transform: rotate(45deg);
+    @include arrow-direction('down');
   }
 
   &.left {
-    transform: rotate(135deg);
+    @include arrow-direction('left');
   }
 }
 
