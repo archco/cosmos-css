@@ -333,22 +333,12 @@
 // arrow
 //============================================================
 @mixin arrow($direction: 'down') {
+  @include arrow-direction($direction);
   display: inline-block;
   padding: .19em;
-  margin-left: .19em;
   border-style: solid;
   border-width: 0 .19em .19em 0;
   content: '';
-
-  @if $direction == 'up' {
-    transform: rotate(-135deg);
-  } @else if $direction == 'right' {
-    transform: rotate(-45deg);
-  } @else if $direction == 'down' {
-    transform: rotate(45deg);
-  } @else if $direction == 'left' {
-    transform: rotate(135deg);
-  }
 
   &:empty {
     margin-left: 0;
@@ -367,6 +357,18 @@
   }
 
   &.left {
+    transform: rotate(135deg);
+  }
+}
+
+@mixin arrow-direction($direction) {
+  @if $direction == 'up' {
+    transform: rotate(-135deg);
+  } @else if $direction == 'right' {
+    transform: rotate(-45deg);
+  } @else if $direction == 'down' {
+    transform: rotate(45deg);
+  } @else if $direction == 'left' {
     transform: rotate(135deg);
   }
 }

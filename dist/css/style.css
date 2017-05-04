@@ -2589,14 +2589,13 @@ ul.pagination {
     margin-left: 0; }
 
 .arrow {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
   display: inline-block;
   padding: .19em;
-  margin-left: .19em;
   border-style: solid;
   border-width: 0 .19em .19em 0;
-  content: '';
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg); }
+  content: ''; }
   .arrow:empty {
     margin-left: 0; }
   .arrow.up {

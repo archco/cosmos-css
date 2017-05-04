@@ -2923,14 +2923,14 @@ var ElementUtil = function () {
      * getElement
      *
      * @param  {String|Element|NodeList} selector
-     * @param  {Element} elm  baseElement
+     * @param  {Element} [ base = document ]
      * @return {Element}
      */
     value: function getElement(selector) {
-      var elm = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+      var base = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
 
       if (typeof selector === 'string') {
-        return elm.querySelector(selector);
+        return base.querySelector(selector);
       } else if (selector instanceof Element) {
         return selector;
       } else if (selector instanceof NodeList) {
@@ -2944,17 +2944,17 @@ var ElementUtil = function () {
      * getElements
      *
      * @param  {String|Element|NodeList} selector
-     * @param  {Element} elm  baseElement
+     * @param  {Element} [ base = document ]
      * @return {NodeList}
      */
 
   }, {
     key: 'getElements',
     value: function getElements(selector) {
-      var elm = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+      var base = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
 
       if (typeof selector === 'string') {
-        return elm.querySelectorAll(selector);
+        return base.querySelectorAll(selector);
       } else if (selector instanceof Element) {
         return this.toNodeList(selector);
       } else if (selector instanceof NodeList) {
