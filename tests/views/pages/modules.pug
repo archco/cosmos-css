@@ -26,7 +26,7 @@ block append content
           a(href='#simple-crud') Simple CRUD
         li
           a(href='#tab') Tab
-        
+
     section(class='col-10')
       h1(id='chip') Chip
       include ../includes/chip.pug
@@ -55,7 +55,5 @@ block append content
       include ../includes/tab.pug
 
 block append script
-  <script>
-  | var chip = new Cosmos.default.Chip('#chip-container', {tag: 'a'});
-  | chip.add('hello', 'https://pbs.twimg.com/profile_images/804347579475509248/THjHIDnN_400x400.jpg', {id:1, href:'#'});
-  </script>
+  script.
+    //

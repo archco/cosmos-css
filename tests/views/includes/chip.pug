@@ -25,3 +25,13 @@ a(class='chip' href='#')
 
 h2 Chip with script
 div(id='chip-container')
+
+script.
+  window.addEventListener('load', function () {
+    var chip = new Cosmos.default.Chip('#chip-container', {tag: 'a'});
+    chip.add(
+      'hello',
+      'https://www.aikido-almere.nl/img/youtube-256.png',
+      {id:1, href:'#'}
+    );
+  });
