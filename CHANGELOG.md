@@ -8,6 +8,8 @@ This changelog started from v0.8.4.
 If want to see more previous information to [Releases](https://github.com/archco/cosmos-css/releases) page.
 
 ## [Unreleased]
+### Added
+- Add new js util library: ElementUtil #140
 
 ## [0.10.2] - 2017-04-23
 ### Added
