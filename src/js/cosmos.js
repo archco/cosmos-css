@@ -9,6 +9,7 @@
 import Util from './lib/util.js';
 import Color from './lib/color.js';
 import Helper from './lib/helper.js';
+import ElementUtil from './lib/element-util.js';
 // Loadable Modules.
 import Scaffolding from './modules/scaffolding.js';
 import Button from './modules/button.js';
@@ -45,15 +46,18 @@ window.modalDialog = Modal.dialog;
 
 // export
 let version = require('../../package.json').version;
+const lib = {
+  Util,
+  Color,
+  ElementUtil
+};
 const Cosmos = {
   name: 'cosmos-css',
   version: `v${version}`,
-  Util,
-  Color,
-  Helper,
+  lib,
   Button,
   Chip
 };
 
 export default Cosmos;
-export { Util, Color, Helper, Button, Chip };
+export { Util, ElementUtil, Color, Helper, Button, Chip };

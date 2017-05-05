@@ -10,6 +10,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 ## [Unreleased]
 ### Added
 - Add new js util library: ElementUtil #140
+- Add scss helper: arrow #136
 
 ## [0.10.2] - 2017-04-23
 ### Added

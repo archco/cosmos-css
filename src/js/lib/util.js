@@ -1,5 +1,4 @@
 import scrollIt from './utils/scroll-it.js';
-import ElementUtil from './utils/element-util.js';
 
 /************************************************************
   util
@@ -156,8 +155,7 @@ class Util {
 }
 
 Object.assign(Util, {
-  scrollIt,
-  ElementUtil
+  scrollIt
 });
 
 export default Util;
