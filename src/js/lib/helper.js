@@ -1,19 +1,20 @@
 /************************************************************
-  Helper
+  Helper - will be deprecated.
 *************************************************************/
 const NAME = 'Cosmos.lib.Helper';
 
 class Helper {
 
   // static
-  
+
   static get name() {
     return NAME;
   }
-  
+
   /**
    * submitConfirm - confirm 을 취소하면 event.preventDefault()
-   * 
+   * instead -> ElementUtil.submitConfirm()
+   *
    * @param  {element} form
    * @param  {sting} message
    * @return {void}
@@ -31,7 +32,8 @@ class Helper {
 
   /**
    * check mobile size
-   * 
+   * instead -> Util.isMobileSize()
+   *
    * @return {boolean}
    */
   static checkMobileSize() {

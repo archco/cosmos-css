@@ -14,7 +14,8 @@ class Util {
   }
 
   /**
-   * event on selector
+   * event on selector - will be deprecated.
+   * instead -> ElementUtil.addListener()
    *
    * @param  {String}   selector   querySelector
    * @param  {String}   type       event type
@@ -34,7 +35,8 @@ class Util {
   }
 
   /**
-   * find ancestor by selector
+   * find ancestor by selector - will be deprecated.
+   * instead -> ElementUtil.findAncestor()
    *
    * @param  {Element} element
    * @param  {String}  selector
@@ -49,7 +51,9 @@ class Util {
   }
 
   /**
-   * wrap elements by div.wrapper
+   * wrap elements by div.wrapper - will be deprecated.
+   * instead -> ElementUtil.wrap()
+   *
    * @param  {String} target  querySelector
    * @param  {String} wrapper wrapper's class name
    * @return {void}
@@ -74,7 +78,9 @@ class Util {
   }
 
   /**
-   * wrap all elements inside to div.wrapper
+   * wrap all elements inside to div.wrapper - will be deprecated.
+   * instead -> ElementUtil.wrapAll()
+   *
    * @param  {String}  target  querySelector
    * @param  {String}  wrapper wrapper's class name
    * @return {void}
@@ -151,6 +157,15 @@ class Util {
     } else {
       return big === small;
     }
+  }
+
+  /**
+   * isMobileSize
+   * @param  {Number}  [ size = 800 ]
+   * @return {Boolean}
+   */
+  static isMobileSize(size = 800) {
+    return window.innerWidth < size;
   }
 }
 
