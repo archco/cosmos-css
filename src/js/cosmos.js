@@ -39,8 +39,8 @@ Collapse.load();
 SimpleCRUD.load();
 
 // define global helper functions.
-window.submitConfirm = Helper.submitConfirm;
-window.checkMobileSize = Helper.checkMobileSize;
+window.submitConfirm = ElementUtil.submitConfirm;
+window.checkMobileSize = ElementUtil.checkMobileSize;
 window.showMessage = Message.showMessage;
 window.modalDialog = Modal.dialog;
 

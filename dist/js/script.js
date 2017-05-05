@@ -192,610 +192,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _scrollIt = __webpack_require__(19);
-
-var _scrollIt2 = _interopRequireDefault(_scrollIt);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/************************************************************
-  util
-*************************************************************/
-var NAME = 'Cosmos.lib.Util';
-
-var Util = function () {
-  function Util() {
-    _classCallCheck(this, Util);
-  }
-
-  _createClass(Util, null, [{
-    key: 'eventOnSelector',
-
-
-    /**
-     * event on selector - will be deprecated.
-     * instead -> ElementUtil.addListener()
-     *
-     * @param  {String}   selector   querySelector
-     * @param  {String}   type       event type
-     * @param  {Function} listener   event listener
-     * @param  {Boolean}  useCapture
-     * @return {number|null}
-     */
-    value: function eventOnSelector(selector, type, listener) {
-      var useCapture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-
-      var elements = document.querySelectorAll(selector);
-      if (elements.length === 0) {
-        return null;
-      }
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var element = _step.value;
-
-          element.addEventListener(type, listener, useCapture);
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
-
-      return elements.length;
-    }
-
-    /**
-     * find ancestor by selector - will be deprecated.
-     * instead -> ElementUtil.findAncestor()
-     *
-     * @param  {Element} element
-     * @param  {String}  selector
-     * @return {Element|null}
-     */
-
-  }, {
-    key: 'findAncestor',
-    value: function findAncestor(element, selector) {
-      do {
-        if (element == document.querySelector('html')) return null;
-        element = element.parentElement;
-      } while (!element.matches(selector));
-      return element;
-    }
-
-    /**
-     * wrap elements by div.wrapper - will be deprecated.
-     * instead -> ElementUtil.wrap()
-     *
-     * @param  {String} target  querySelector
-     * @param  {String} wrapper wrapper's class name
-     * @return {void}
-     */
-
-  }, {
-    key: 'wrap',
-    value: function wrap(target, wrapper) {
-      var elements = document.querySelectorAll(target);
-      var div = document.createElement('div');
-      div.classList.add(wrapper);
-
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
-
-      try {
-        for (var _iterator2 = elements[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var el = _step2.value;
-
-          var parent = el.parentNode;
-          var sibling = el.nextSibling;
-
-          div.appendChild(el);
-
-          if (sibling) {
-            parent.insertBefore(div, sibling);
-          } else {
-            parent.appendChild(div);
-          }
-        }
-      } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return) {
-            _iterator2.return();
-          }
-        } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
-          }
-        }
-      }
-    }
-
-    /**
-     * wrap all elements inside to div.wrapper - will be deprecated.
-     * instead -> ElementUtil.wrapAll()
-     *
-     * @param  {String}  target  querySelector
-     * @param  {String}  wrapper wrapper's class name
-     * @return {void}
-     */
-
-  }, {
-    key: 'wrapAll',
-    value: function wrapAll(target, wrapper) {
-      var elements = document.querySelectorAll(target);
-      var div = document.createElement('div');
-      div.classList.add(wrapper);
-      var parent = elements[0].parentNode;
-      var sibling = elements[0].nextSibling;
-
-      elements.forEach(function (elm) {
-        div.appendChild(elm);
-      });
-
-      if (sibling) {
-        parent.insertBefore(div, sibling);
-      } else {
-        parent.appendChild(div);
-      }
-    }
-
-    /**
-     * location.search to Object.
-     *
-     * @return {Object|null}
-     */
-
-  }, {
-    key: 'locationSearchToObject',
-    value: function locationSearchToObject() {
-      return this.searchToObject(window.location.search);
-    }
-
-    /**
-     * searchToObject
-     *
-     * @param  {String} search HTMLAnchorElement.search
-     * @return {Object|null}
-     */
-
-  }, {
-    key: 'searchToObject',
-    value: function searchToObject(search) {
-      if (search === '') return null;
-
-      var queries = search.substring(1).split('&');
-      var obj = {};
-
-      queries.forEach(function (value) {
-        var q = value.split('=');
-        if (!q[1]) return;
-        obj[decodeURIComponent(q[0])] = decodeURIComponent(q[1]);
-      });
-
-      return obj;
-    }
-
-    /**
-     * returns true if 'big' contains 'small'.
-     *
-     * @param  {mixed}  big
-     * @param  {mixed}  small
-     * @return {Boolean}
-     */
-
-  }, {
-    key: 'isContains',
-    value: function isContains(big, small) {
-      if ((typeof big === 'undefined' ? 'undefined' : _typeof(big)) !== (typeof small === 'undefined' ? 'undefined' : _typeof(small))) return false;
-
-      if (Array.isArray(big) && Array.isArray(small)) {
-        var correct = 0;
-        big.forEach(function (v) {
-          if (small.includes(v)) correct++;
-        });
-        return correct == small.length;
-      } else if (Object(big) === big && Object(small) === small) {
-        for (var p in small) {
-          if (!(p in big && this.isContains(big[p], small[p]))) return false;
-        }
-        return true;
-      } else {
-        return big === small;
-      }
-    }
-
-    /**
-     * isMobileSize
-     *
-     * @param  {Number}  [ size = 800 ]
-     * @return {Boolean}
-     */
-
-  }, {
-    key: 'isMobileSize',
-    value: function isMobileSize() {
-      var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 800;
-
-      return window.innerWidth < size;
-    }
-  }, {
-    key: 'name',
-
-
-    // static
-
-    get: function get() {
-      return NAME;
-    }
-  }]);
-
-  return Util;
-}();
-
-Object.assign(Util, {
-  scrollIt: _scrollIt2.default
-});
-
-exports.default = Util;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _cosmosModule = __webpack_require__(0);
-
-var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
-
-var _util = __webpack_require__(1);
-
-var _util2 = _interopRequireDefault(_util);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/************************************************************
-  Button
-*************************************************************/
-var NAME = 'Cosmos.Button';
-var ClassName = {
-  CLOSE: 'btn-close',
-  POSITION_CORNER: 'at-corner',
-  POSITION_RIGHT_MIDDLE: 'at-right-middle',
-  HIDE: 'display-hide',
-  REMOVEABLE: 'removeable',
-  HIDEABLE: 'hideable'
-};
-var Selector = {
-  CLOSE: '.' + ClassName.CLOSE,
-  HAS_ACTION: '.' + ClassName.CLOSE + '.' + ClassName.REMOVEABLE + ', .' + ClassName.CLOSE + '.' + ClassName.HIDEABLE
-};
-// default option.
-var Default = {
-  close_init_enable: true,
-  close_action: 'remove', // remove | hide
-  close_position: 'default', // default | corner | right_middle
-  close_style: 'default', // default | icon | circle_default | circle_icon
-  close_content: {
-    default: '✖',
-    icon: '<i class="fa fa-times" aria-hidden="true"></i>'
-  }
-};
-
-var Button = function (_CosmosModule) {
-  _inherits(Button, _CosmosModule);
-
-  function Button() {
-    _classCallCheck(this, Button);
-
-    return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
-  }
-
-  _createClass(Button, [{
-    key: 'appendBtnClose',
-
-
-    // public
-
-    value: function appendBtnClose(element) {
-      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      if (this._hasBtnClose(element)) {
-        console.log('already has .btn-close');
-        return;
-      }
-      var btnClose = this._createBtnClose();
-      var handler = callback || this._btnCloseClickHandler;
-
-      btnClose.addEventListener('click', handler.bind(this));
-      element.appendChild(btnClose);
-    }
-  }, {
-    key: 'init',
-    value: function init() {
-      // btn-close addEventListener.
-      if (this.option.close_init_enable) {
-        _util2.default.eventOnSelector(Selector.HAS_ACTION, 'click', this._btnCloseClickHandler.bind(this));
-      }
-    }
-  }, {
-    key: 'getDefaultOption',
-    value: function getDefaultOption() {
-      return Default;
-    }
-
-    // private
-
-  }, {
-    key: '_btnCloseClickHandler',
-    value: function _btnCloseClickHandler(event) {
-      var btnClose = event.currentTarget;
-      var element = btnClose.parentNode;
-      var parent = element.parentNode;
-      var action = this._getActionType(btnClose);
-
-      if (action == 'hide') {
-        element.classList.add(ClassName.HIDE);
-      } else if (action == 'remove') {
-        parent.removeChild(element);
-      }
-      event.preventDefault();
-    }
-  }, {
-    key: '_createBtnClose',
-    value: function _createBtnClose() {
-      var btnClose = document.createElement('button');
-
-      btnClose.classList.add(ClassName.CLOSE);
-      if (this.option.close_position == 'corner') {
-        btnClose.classList.add(ClassName.POSITION_CORNER);
-      } else if (this.option.close_position == 'right_middle') {
-        btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
-      }
-      btnClose.innerHTML = this.option.close_content[this.option.close_style];
-
-      return btnClose;
-    }
-  }, {
-    key: '_hasBtnClose',
-    value: function _hasBtnClose(element) {
-      if (element.querySelector(Selector.CLOSE)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  }, {
-    key: '_getActionType',
-    value: function _getActionType(btnClose) {
-      if (btnClose.classList.contains(ClassName.REMOVEABLE)) {
-        return 'remove';
-      } else if (btnClose.classList.contains(ClassName.HIDEABLE)) {
-        return 'hide';
-      } else {
-        return this.option.close_action;
-      }
-    }
-  }], [{
-    key: 'addBtnClose',
-    value: function addBtnClose(element) {
-      var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-
-      var b = new Button(option);
-      b.appendBtnClose(element, callback);
-    }
-  }, {
-    key: 'name',
-
-
-    // static
-
-    get: function get() {
-      return NAME;
-    }
-  }]);
-
-  return Button;
-}(_cosmosModule2.default);
-
-exports.default = Button;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/************************************************************
-  Color
-*************************************************************/
-var NAME = 'Cosmos.lib.Color';
-var Config = {
-  lightnessPoint: 166, // 65%
-  darkDefault: '#000',
-  lightDefault: '#fff'
-};
-
-var Color = function () {
-  function Color(color) {
-    _classCallCheck(this, Color);
-
-    this._color = Color.colorToArray(color);
-  }
-
-  _createClass(Color, [{
-    key: 'getContrast',
-    value: function getContrast() {
-      var dark = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Config.darkDefault;
-      var light = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Config.lightDefault;
-
-      return Color.contrast(this._color, dark, light);
-    }
-
-    // static
-
-  }], [{
-    key: 'colorToArray',
-
-
-    /**
-     * color to rgb array.
-     *
-     * @param  {String|Array} color
-     * @return {Array}  [red, green, blue]
-     */
-    value: function colorToArray(color) {
-      var array = [];
-      if (typeof color == 'string') {
-        array = this.hexToRgb(color);
-      } else if (Array.isArray(color)) {
-        array = color;
-      } else {
-        throw new Error('parameter only "hex color" or "rgb array"');
-      }
-      return array;
-    }
-
-    /**
-     * hex color to rgb array.
-     * @link http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
-     *
-     * @param  {String}  hex
-     * @return {Array|Null}
-     */
-
-  }, {
-    key: 'hexToRgb',
-    value: function hexToRgb(hex) {
-      // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
-      var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-      hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-        return r + r + g + g + b + b;
-      });
-      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-      return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null;
-    }
-
-    /**
-     * rgb values to hex color string
-     *
-     * @param  {Number} r
-     * @param  {Number} g
-     * @param  {Number} b
-     * @return {String}
-     */
-
-  }, {
-    key: 'rgbToHex',
-    value: function rgbToHex(r, g, b) {
-      r = r.toString(16);
-      g = g.toString(16);
-      b = b.toString(16);
-      return "#" + r + g + b;
-    }
-
-    /**
-     * get rgb color's lightness value.
-     *
-     * @param  {String|Array} color
-     * @return {Number}  (0 ~ 255)
-     */
-
-  }, {
-    key: 'lightness',
-    value: function lightness(color) {
-      var rgb = this.colorToArray(color);
-      // Color lightness formula.
-      // @link https://www.w3.org/TR/AERT#color-contrast
-      return (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
-    }
-
-    /**
-     * return contrast color of input.
-     *
-     * @param  {Array|String} color
-     * @param  {String}  dark
-     * @param  {String}  light
-     * @return {String}  dark or light
-     */
-
-  }, {
-    key: 'contrast',
-    value: function contrast(color) {
-      var dark = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Config.darkDefault;
-      var light = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Config.lightDefault;
-
-      return this.lightness(color) > Config.lightnessPoint ? dark : light;
-    }
-  }, {
-    key: 'name',
-    get: function get() {
-      return NAME;
-    }
-  }]);
-
-  return Color;
-}();
-
-exports.default = Color;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1363,6 +759,610 @@ var ElementUtil = function () {
 exports.default = ElementUtil;
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _elementUtil = __webpack_require__(1);
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/************************************************************
+  Button
+*************************************************************/
+var NAME = 'Cosmos.Button';
+var ClassName = {
+  CLOSE: 'btn-close',
+  POSITION_CORNER: 'at-corner',
+  POSITION_RIGHT_MIDDLE: 'at-right-middle',
+  HIDE: 'display-hide',
+  REMOVEABLE: 'removeable',
+  HIDEABLE: 'hideable'
+};
+var Selector = {
+  CLOSE: '.' + ClassName.CLOSE,
+  HAS_ACTION: '.' + ClassName.CLOSE + '.' + ClassName.REMOVEABLE + ', .' + ClassName.CLOSE + '.' + ClassName.HIDEABLE
+};
+// default option.
+var Default = {
+  close_init_enable: true,
+  close_action: 'remove', // remove | hide
+  close_position: 'default', // default | corner | right_middle
+  close_style: 'default', // default | icon | circle_default | circle_icon
+  close_content: {
+    default: '✖',
+    icon: '<i class="fa fa-times" aria-hidden="true"></i>'
+  }
+};
+
+var Button = function (_CosmosModule) {
+  _inherits(Button, _CosmosModule);
+
+  function Button() {
+    _classCallCheck(this, Button);
+
+    return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
+  }
+
+  _createClass(Button, [{
+    key: 'appendBtnClose',
+
+
+    // public
+
+    value: function appendBtnClose(element) {
+      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (this._hasBtnClose(element)) {
+        console.log('already has .btn-close');
+        return;
+      }
+      var btnClose = this._createBtnClose();
+      var handler = callback || this._btnCloseClickHandler;
+
+      btnClose.addEventListener('click', handler.bind(this));
+      element.appendChild(btnClose);
+    }
+  }, {
+    key: 'init',
+    value: function init() {
+      // btn-close addEventListener.
+      if (this.option.close_init_enable) {
+        _elementUtil2.default.addListener(Selector.HAS_ACTION, 'click', this._btnCloseClickHandler.bind(this));
+      }
+    }
+  }, {
+    key: 'getDefaultOption',
+    value: function getDefaultOption() {
+      return Default;
+    }
+
+    // private
+
+  }, {
+    key: '_btnCloseClickHandler',
+    value: function _btnCloseClickHandler(event) {
+      var btnClose = event.currentTarget;
+      var element = btnClose.parentNode;
+      var parent = element.parentNode;
+      var action = this._getActionType(btnClose);
+
+      if (action == 'hide') {
+        element.classList.add(ClassName.HIDE);
+      } else if (action == 'remove') {
+        parent.removeChild(element);
+      }
+      event.preventDefault();
+    }
+  }, {
+    key: '_createBtnClose',
+    value: function _createBtnClose() {
+      var btnClose = document.createElement('button');
+
+      btnClose.classList.add(ClassName.CLOSE);
+      if (this.option.close_position == 'corner') {
+        btnClose.classList.add(ClassName.POSITION_CORNER);
+      } else if (this.option.close_position == 'right_middle') {
+        btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
+      }
+      btnClose.innerHTML = this.option.close_content[this.option.close_style];
+
+      return btnClose;
+    }
+  }, {
+    key: '_hasBtnClose',
+    value: function _hasBtnClose(element) {
+      if (element.querySelector(Selector.CLOSE)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }, {
+    key: '_getActionType',
+    value: function _getActionType(btnClose) {
+      if (btnClose.classList.contains(ClassName.REMOVEABLE)) {
+        return 'remove';
+      } else if (btnClose.classList.contains(ClassName.HIDEABLE)) {
+        return 'hide';
+      } else {
+        return this.option.close_action;
+      }
+    }
+  }], [{
+    key: 'addBtnClose',
+    value: function addBtnClose(element) {
+      var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+      var b = new Button(option);
+      b.appendBtnClose(element, callback);
+    }
+  }, {
+    key: 'name',
+
+
+    // static
+
+    get: function get() {
+      return NAME;
+    }
+  }]);
+
+  return Button;
+}(_cosmosModule2.default);
+
+exports.default = Button;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _scrollIt = __webpack_require__(19);
+
+var _scrollIt2 = _interopRequireDefault(_scrollIt);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/************************************************************
+  util
+*************************************************************/
+var NAME = 'Cosmos.lib.Util';
+
+var Util = function () {
+  function Util() {
+    _classCallCheck(this, Util);
+  }
+
+  _createClass(Util, null, [{
+    key: 'eventOnSelector',
+
+
+    /**
+     * event on selector - will be deprecated.
+     * instead -> ElementUtil.addListener()
+     *
+     * @param  {String}   selector   querySelector
+     * @param  {String}   type       event type
+     * @param  {Function} listener   event listener
+     * @param  {Boolean}  useCapture
+     * @return {number|null}
+     */
+    value: function eventOnSelector(selector, type, listener) {
+      var useCapture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+      var elements = document.querySelectorAll(selector);
+      if (elements.length === 0) {
+        return null;
+      }
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var element = _step.value;
+
+          element.addEventListener(type, listener, useCapture);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      return elements.length;
+    }
+
+    /**
+     * find ancestor by selector - will be deprecated.
+     * instead -> ElementUtil.findAncestor()
+     *
+     * @param  {Element} element
+     * @param  {String}  selector
+     * @return {Element|null}
+     */
+
+  }, {
+    key: 'findAncestor',
+    value: function findAncestor(element, selector) {
+      do {
+        if (element == document.querySelector('html')) return null;
+        element = element.parentElement;
+      } while (!element.matches(selector));
+      return element;
+    }
+
+    /**
+     * wrap elements by div.wrapper - will be deprecated.
+     * instead -> ElementUtil.wrap()
+     *
+     * @param  {String} target  querySelector
+     * @param  {String} wrapper wrapper's class name
+     * @return {void}
+     */
+
+  }, {
+    key: 'wrap',
+    value: function wrap(target, wrapper) {
+      var elements = document.querySelectorAll(target);
+      var div = document.createElement('div');
+      div.classList.add(wrapper);
+
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = elements[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var el = _step2.value;
+
+          var parent = el.parentNode;
+          var sibling = el.nextSibling;
+
+          div.appendChild(el);
+
+          if (sibling) {
+            parent.insertBefore(div, sibling);
+          } else {
+            parent.appendChild(div);
+          }
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+    }
+
+    /**
+     * wrap all elements inside to div.wrapper - will be deprecated.
+     * instead -> ElementUtil.wrapAll()
+     *
+     * @param  {String}  target  querySelector
+     * @param  {String}  wrapper wrapper's class name
+     * @return {void}
+     */
+
+  }, {
+    key: 'wrapAll',
+    value: function wrapAll(target, wrapper) {
+      var elements = document.querySelectorAll(target);
+      var div = document.createElement('div');
+      div.classList.add(wrapper);
+      var parent = elements[0].parentNode;
+      var sibling = elements[0].nextSibling;
+
+      elements.forEach(function (elm) {
+        div.appendChild(elm);
+      });
+
+      if (sibling) {
+        parent.insertBefore(div, sibling);
+      } else {
+        parent.appendChild(div);
+      }
+    }
+
+    /**
+     * location.search to Object.
+     *
+     * @return {Object|null}
+     */
+
+  }, {
+    key: 'locationSearchToObject',
+    value: function locationSearchToObject() {
+      return this.searchToObject(window.location.search);
+    }
+
+    /**
+     * searchToObject
+     *
+     * @param  {String} search HTMLAnchorElement.search
+     * @return {Object|null}
+     */
+
+  }, {
+    key: 'searchToObject',
+    value: function searchToObject(search) {
+      if (search === '') return null;
+
+      var queries = search.substring(1).split('&');
+      var obj = {};
+
+      queries.forEach(function (value) {
+        var q = value.split('=');
+        if (!q[1]) return;
+        obj[decodeURIComponent(q[0])] = decodeURIComponent(q[1]);
+      });
+
+      return obj;
+    }
+
+    /**
+     * returns true if 'big' contains 'small'.
+     *
+     * @param  {mixed}  big
+     * @param  {mixed}  small
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isContains',
+    value: function isContains(big, small) {
+      if ((typeof big === 'undefined' ? 'undefined' : _typeof(big)) !== (typeof small === 'undefined' ? 'undefined' : _typeof(small))) return false;
+
+      if (Array.isArray(big) && Array.isArray(small)) {
+        var correct = 0;
+        big.forEach(function (v) {
+          if (small.includes(v)) correct++;
+        });
+        return correct == small.length;
+      } else if (Object(big) === big && Object(small) === small) {
+        for (var p in small) {
+          if (!(p in big && this.isContains(big[p], small[p]))) return false;
+        }
+        return true;
+      } else {
+        return big === small;
+      }
+    }
+
+    /**
+     * isMobileSize
+     *
+     * @param  {Number}  [ size = 800 ]
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isMobileSize',
+    value: function isMobileSize() {
+      var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 800;
+
+      return window.innerWidth < size;
+    }
+  }, {
+    key: 'name',
+
+
+    // static
+
+    get: function get() {
+      return NAME;
+    }
+  }]);
+
+  return Util;
+}();
+
+Object.assign(Util, {
+  scrollIt: _scrollIt2.default
+});
+
+exports.default = Util;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/************************************************************
+  Color
+*************************************************************/
+var NAME = 'Cosmos.lib.Color';
+var Config = {
+  lightnessPoint: 166, // 65%
+  darkDefault: '#000',
+  lightDefault: '#fff'
+};
+
+var Color = function () {
+  function Color(color) {
+    _classCallCheck(this, Color);
+
+    this._color = Color.colorToArray(color);
+  }
+
+  _createClass(Color, [{
+    key: 'getContrast',
+    value: function getContrast() {
+      var dark = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Config.darkDefault;
+      var light = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Config.lightDefault;
+
+      return Color.contrast(this._color, dark, light);
+    }
+
+    // static
+
+  }], [{
+    key: 'colorToArray',
+
+
+    /**
+     * color to rgb array.
+     *
+     * @param  {String|Array} color
+     * @return {Array}  [red, green, blue]
+     */
+    value: function colorToArray(color) {
+      var array = [];
+      if (typeof color == 'string') {
+        array = this.hexToRgb(color);
+      } else if (Array.isArray(color)) {
+        array = color;
+      } else {
+        throw new Error('parameter only "hex color" or "rgb array"');
+      }
+      return array;
+    }
+
+    /**
+     * hex color to rgb array.
+     * @link http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+     *
+     * @param  {String}  hex
+     * @return {Array|Null}
+     */
+
+  }, {
+    key: 'hexToRgb',
+    value: function hexToRgb(hex) {
+      // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+      var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+      hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+        return r + r + g + g + b + b;
+      });
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null;
+    }
+
+    /**
+     * rgb values to hex color string
+     *
+     * @param  {Number} r
+     * @param  {Number} g
+     * @param  {Number} b
+     * @return {String}
+     */
+
+  }, {
+    key: 'rgbToHex',
+    value: function rgbToHex(r, g, b) {
+      r = r.toString(16);
+      g = g.toString(16);
+      b = b.toString(16);
+      return "#" + r + g + b;
+    }
+
+    /**
+     * get rgb color's lightness value.
+     *
+     * @param  {String|Array} color
+     * @return {Number}  (0 ~ 255)
+     */
+
+  }, {
+    key: 'lightness',
+    value: function lightness(color) {
+      var rgb = this.colorToArray(color);
+      // Color lightness formula.
+      // @link https://www.w3.org/TR/AERT#color-contrast
+      return (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+    }
+
+    /**
+     * return contrast color of input.
+     *
+     * @param  {Array|String} color
+     * @param  {String}  dark
+     * @param  {String}  light
+     * @return {String}  dark or light
+     */
+
+  }, {
+    key: 'contrast',
+    value: function contrast(color) {
+      var dark = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Config.darkDefault;
+      var light = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Config.lightDefault;
+
+      return this.lightness(color) > Config.lightnessPoint ? dark : light;
+    }
+  }, {
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }]);
+
+  return Color;
+}();
+
+exports.default = Color;
+
+/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1652,9 +1652,9 @@ var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(1);
+var _elementUtil = __webpack_require__(1);
 
-var _util2 = _interopRequireDefault(_util);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1702,9 +1702,9 @@ var Collapse = function (_CosmosModule) {
 
     value: function init() {
       // collapse toggle listener
-      _util2.default.eventOnSelector(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
+      _elementUtil2.default.addListener(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
       // accordion head listener
-      _util2.default.eventOnSelector(Selector.A_HEAD, 'click', this._headClickHandler.bind(this));
+      _elementUtil2.default.addListener(Selector.A_HEAD, 'click', this._headClickHandler.bind(this));
       // Handle on activated collapse and accordion.
       this._activatedCollapse();
       this._activatedAccordion();
@@ -1725,7 +1725,7 @@ var Collapse = function (_CosmosModule) {
     value: function _headClickHandler(event) {
       var h = event.currentTarget;
       var b = h.nextElementSibling;
-      var a = _util2.default.findAncestor(h, Selector.ACCORDION);
+      var a = _elementUtil2.default.findAncestor(h, Selector.ACCORDION);
 
       if (h.classList.contains(ClassName.ACTIVE)) {
         this._collapseToggle(h, b);
@@ -1830,7 +1830,7 @@ var Collapse = function (_CosmosModule) {
         for (var _iterator3 = hs[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
           var h = _step3.value;
 
-          var a = _util2.default.findAncestor(h, Selector.ACCORDION);
+          var a = _elementUtil2.default.findAncestor(h, Selector.ACCORDION);
           this._allClose(a);
           h.click();
         }
@@ -1898,9 +1898,9 @@ var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(1);
+var _elementUtil = __webpack_require__(1);
 
-var _util2 = _interopRequireDefault(_util);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1943,7 +1943,7 @@ var Dropdown = function (_CosmosModule) {
 
     value: function init() {
       // toggling dropdown content.
-      _util2.default.eventOnSelector(Selector.TOGGLE, 'click', this._toggleButtonHandler.bind(this));
+      _elementUtil2.default.addListener(Selector.TOGGLE, 'click', this._toggleButtonHandler.bind(this));
 
       // Close the dropdown menu if the user clicks outside of it
       window.addEventListener('click', this._otherClickHandler.bind(this));
@@ -1976,7 +1976,7 @@ var Dropdown = function (_CosmosModule) {
 
     /**
      * close dropdown contents
-     * 
+     *
      * @param  {element} t  except target
      * @return {void}
      */
@@ -2052,13 +2052,13 @@ var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(1);
-
-var _util2 = _interopRequireDefault(_util);
-
 var _button = __webpack_require__(2);
 
 var _button2 = _interopRequireDefault(_button);
+
+var _elementUtil = __webpack_require__(1);
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2119,7 +2119,7 @@ var Message = function (_CosmosModule) {
 
     value: function init() {
       // add event listener - close buttons
-      _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._closeButtonHandler, true);
+      _elementUtil2.default.addListener(Selector.CLOSE, 'click', this._closeButtonHandler, true);
     }
   }, {
     key: 'show',
@@ -2148,7 +2148,7 @@ var Message = function (_CosmosModule) {
   }, {
     key: '_closeButtonHandler',
     value: function _closeButtonHandler(event) {
-      var messageBox = _util2.default.findAncestor(event.currentTarget, Selector.BOX);
+      var messageBox = _elementUtil2.default.findAncestor(event.currentTarget, Selector.BOX);
 
       messageBox.style.opacity = '0';
       setTimeout(function () {
@@ -2201,13 +2201,13 @@ var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(1);
-
-var _util2 = _interopRequireDefault(_util);
-
 var _button = __webpack_require__(2);
 
 var _button2 = _interopRequireDefault(_button);
+
+var _elementUtil = __webpack_require__(1);
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2264,10 +2264,10 @@ var Modal = function (_CosmosModule) {
       var _this2 = this;
 
       // modal open button.
-      _util2.default.eventOnSelector(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
+      _elementUtil2.default.addListener(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
 
       // modal close button.
-      _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this), true);
+      _elementUtil2.default.addListener(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this), true);
 
       // window onclick.
       window.addEventListener('click', function (event) {
@@ -2327,7 +2327,7 @@ var Modal = function (_CosmosModule) {
   }, {
     key: '_modalCloseHandler',
     value: function _modalCloseHandler(event) {
-      var m = _util2.default.findAncestor(event.currentTarget, Selector.MODAL);
+      var m = _elementUtil2.default.findAncestor(event.currentTarget, Selector.MODAL);
       this._modalHide(m);
       event.stopPropagation();
     }
@@ -2401,9 +2401,13 @@ var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(1);
+var _util = __webpack_require__(3);
 
 var _util2 = _interopRequireDefault(_util);
+
+var _elementUtil = __webpack_require__(1);
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2445,7 +2449,7 @@ var Nav = function (_CosmosModule) {
     // public
 
     value: function init() {
-      _util2.default.eventOnSelector(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
+      _elementUtil2.default.addListener(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
 
       this.activator(Selector.USE_ACTIVATOR);
 
@@ -2708,9 +2712,9 @@ var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(1);
+var _elementUtil = __webpack_require__(1);
 
-var _util2 = _interopRequireDefault(_util);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2742,7 +2746,7 @@ var Scaffolding = function (_CosmosModule) {
 
     value: function init() {
       // wrap table.responsive
-      _util2.default.wrap('table.responsive', 'table-responsive-wrapper');
+      _elementUtil2.default.wrap('table.responsive', 'table-responsive-wrapper');
     }
   }], [{
     key: 'name',
@@ -2777,9 +2781,13 @@ var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(1);
+var _util = __webpack_require__(3);
 
 var _util2 = _interopRequireDefault(_util);
+
+var _elementUtil = __webpack_require__(1);
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2836,10 +2844,10 @@ var ScrollTo = function (_CosmosModule) {
       var easing = this.option.scroll_easing;
 
       // button listener
-      _util2.default.eventOnSelector(this.option.btn_top, 'click', function () {
+      _elementUtil2.default.addListener(this.option.btn_top, 'click', function () {
         _util2.default.scrollIt(0, duration, easing);
       });
-      _util2.default.eventOnSelector(this.option.btn_bottom, 'click', function () {
+      _elementUtil2.default.addListener(this.option.btn_bottom, 'click', function () {
         _util2.default.scrollIt(_this2._getDocumentBottom(), duration, easing);
       });
 
@@ -2944,9 +2952,9 @@ var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(1);
+var _elementUtil = __webpack_require__(1);
 
-var _util2 = _interopRequireDefault(_util);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2999,13 +3007,13 @@ var SimpleCRUD = function (_CosmosModule) {
     value: function init() {
       var _this2 = this;
 
-      _util2.default.eventOnSelector(Selector.BTN_UPDATE, 'click', function (e) {
+      _elementUtil2.default.addListener(Selector.BTN_UPDATE, 'click', function (e) {
         _this2._switchView(e.currentTarget, 'update');
       });
-      _util2.default.eventOnSelector(Selector.BTN_DELETE, 'click', function (e) {
+      _elementUtil2.default.addListener(Selector.BTN_DELETE, 'click', function (e) {
         _this2._switchView(e.currentTarget, 'delete');
       });
-      _util2.default.eventOnSelector(Selector.BTN_CANCEL, 'click', function (e) {
+      _elementUtil2.default.addListener(Selector.BTN_CANCEL, 'click', function (e) {
         _this2._switchView(e.currentTarget, 'read');
       });
     }
@@ -3015,8 +3023,8 @@ var SimpleCRUD = function (_CosmosModule) {
   }, {
     key: '_getNodes',
     value: function _getNodes(element) {
-      var item = _util2.default.findAncestor(element, Selector.ITEM);
-      var current = _util2.default.findAncestor(element, Selector.VIEW);
+      var item = _elementUtil2.default.findAncestor(element, Selector.ITEM);
+      var current = _elementUtil2.default.findAncestor(element, Selector.VIEW);
 
       return {
         item: item,
@@ -3067,9 +3075,9 @@ var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = __webpack_require__(1);
+var _elementUtil = __webpack_require__(1);
 
-var _util2 = _interopRequireDefault(_util);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3115,7 +3123,7 @@ var Tab = function (_CosmosModule) {
 
     value: function init() {
       // add event handler on links.
-      _util2.default.eventOnSelector(Selector.LINK, 'click', this._tabHandle.bind(this));
+      _elementUtil2.default.addListener(Selector.LINK, 'click', this._tabHandle.bind(this));
 
       // initialize tabs.
       var tabs = this._getTabs();
@@ -3170,7 +3178,7 @@ var Tab = function (_CosmosModule) {
     key: '_tabHandle',
     value: function _tabHandle(event) {
       var a = event.currentTarget;
-      var tab = _util2.default.findAncestor(a, Selector.TAB);
+      var tab = _elementUtil2.default.findAncestor(a, Selector.TAB);
       var links = tab.querySelectorAll(Selector.LINK);
       var content = this._getContent(a);
 
@@ -3366,11 +3374,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
 
-var _util = __webpack_require__(1);
+var _util = __webpack_require__(3);
 
 var _util2 = _interopRequireDefault(_util);
 
-var _color = __webpack_require__(3);
+var _color = __webpack_require__(4);
 
 var _color2 = _interopRequireDefault(_color);
 
@@ -3378,7 +3386,7 @@ var _helper = __webpack_require__(5);
 
 var _helper2 = _interopRequireDefault(_helper);
 
-var _elementUtil = __webpack_require__(4);
+var _elementUtil = __webpack_require__(1);
 
 var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
@@ -3458,8 +3466,8 @@ _collapse2.default.load();
 _simpleCrud2.default.load();
 
 // define global helper functions.
-window.submitConfirm = _helper2.default.submitConfirm;
-window.checkMobileSize = _helper2.default.checkMobileSize;
+window.submitConfirm = _elementUtil2.default.submitConfirm;
+window.checkMobileSize = _elementUtil2.default.checkMobileSize;
 window.showMessage = _message2.default.showMessage;
 window.modalDialog = _modal2.default.dialog;
 

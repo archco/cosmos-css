@@ -1,5 +1,5 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import Util from '../lib/util.js';
+import eu from '../lib/element-util.js';
 
 /************************************************************
   dropdown
@@ -20,23 +20,23 @@ const Selector = {
 class Dropdown extends CosmosModule {
 
   // static
-  
+
   static get name() {
     return NAME;
   }
 
   // public
-  
+
   init() {
     // toggling dropdown content.
-    Util.eventOnSelector(Selector.TOGGLE, 'click', this._toggleButtonHandler.bind(this));
-    
+    eu.addListener(Selector.TOGGLE, 'click', this._toggleButtonHandler.bind(this));
+
     // Close the dropdown menu if the user clicks outside of it
     window.addEventListener('click', this._otherClickHandler.bind(this));
   }
 
   // private
-  
+
   _toggleButtonHandler(event) {
     let c = event.currentTarget.parentNode.querySelector(Selector.CONTENT);
     if (c) {
@@ -46,7 +46,7 @@ class Dropdown extends CosmosModule {
 
   _otherClickHandler(event) {
     let t = event.target;
-    
+
     if (t.classList.contains(ClassName.TOGGLE)) {
       // dropdown
       let dropdown = t.parentNode;
@@ -59,7 +59,7 @@ class Dropdown extends CosmosModule {
 
   /**
    * close dropdown contents
-   * 
+   *
    * @param  {element} t  except target
    * @return {void}
    */

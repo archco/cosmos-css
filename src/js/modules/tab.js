@@ -1,5 +1,5 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import Util from '../lib/util.js';
+import eu from '../lib/element-util.js';
 
 /************************************************************
   Tab
@@ -32,7 +32,7 @@ class Tab extends CosmosModule {
 
   init() {
     // add event handler on links.
-    Util.eventOnSelector(Selector.LINK, 'click', this._tabHandle.bind(this));
+    eu.addListener(Selector.LINK, 'click', this._tabHandle.bind(this));
 
     // initialize tabs.
     let tabs = this._getTabs();
@@ -59,7 +59,7 @@ class Tab extends CosmosModule {
 
   _tabHandle(event) {
     let a = event.currentTarget;
-    let tab = Util.findAncestor(a, Selector.TAB);
+    let tab = eu.findAncestor(a, Selector.TAB);
     let links = tab.querySelectorAll(Selector.LINK);
     let content = this._getContent(a);
 

@@ -1,5 +1,5 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import Util from '../lib/util.js';
+import eu from '../lib/element-util.js';
 
 /************************************************************
   Button
@@ -30,9 +30,9 @@ const Default = {
 };
 
 class Button extends CosmosModule{
-  
+
   // static
-  
+
   static get name() {
     return NAME;
   }
@@ -43,7 +43,7 @@ class Button extends CosmosModule{
   }
 
   // public
-  
+
   appendBtnClose(element, callback = null) {
     if (this._hasBtnClose(element)) {
       console.log('already has .btn-close');
@@ -59,7 +59,11 @@ class Button extends CosmosModule{
   init() {
     // btn-close addEventListener.
     if (this.option.close_init_enable) {
-      Util.eventOnSelector(Selector.HAS_ACTION, 'click', this._btnCloseClickHandler.bind(this));
+      eu.addListener(
+        Selector.HAS_ACTION,
+        'click',
+        this._btnCloseClickHandler.bind(this)
+      );
     }
   }
 

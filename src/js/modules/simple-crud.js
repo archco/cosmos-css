@@ -1,5 +1,5 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import Util from '../lib/util.js';
+import eu from '../lib/element-util.js';
 
 /************************************************************
   SipleCRUD
@@ -29,21 +29,21 @@ const Selector = {
 class SimpleCRUD extends CosmosModule {
 
   // static
-  
+
   static get name() {
     return NAME;
   }
 
   // public
-   
+
   init() {
-    Util.eventOnSelector(Selector.BTN_UPDATE, 'click', (e) => {
+    eu.addListener(Selector.BTN_UPDATE, 'click', (e) => {
       this._switchView(e.currentTarget, 'update');
     });
-    Util.eventOnSelector(Selector.BTN_DELETE, 'click', (e) => {
+    eu.addListener(Selector.BTN_DELETE, 'click', (e) => {
       this._switchView(e.currentTarget, 'delete');
     });
-    Util.eventOnSelector(Selector.BTN_CANCEL, 'click', (e) => {
+    eu.addListener(Selector.BTN_CANCEL, 'click', (e) => {
       this._switchView(e.currentTarget, 'read');
     });
   }
@@ -51,8 +51,8 @@ class SimpleCRUD extends CosmosModule {
   // private
 
   _getNodes(element) {
-    let item = Util.findAncestor(element, Selector.ITEM);
-    let current = Util.findAncestor(element, Selector.VIEW);
+    let item = eu.findAncestor(element, Selector.ITEM);
+    let current = eu.findAncestor(element, Selector.VIEW);
 
     return {
       item: item,

@@ -1,5 +1,6 @@
 import CosmosModule from '../lib/cosmos-module.js';
 import Util from '../lib/util.js';
+import eu from '../lib/element-util.js';
 
 /************************************************************
   scroll-to
@@ -42,10 +43,10 @@ class ScrollTo extends CosmosModule {
     let easing = this.option.scroll_easing;
 
     // button listener
-    Util.eventOnSelector(this.option.btn_top, 'click', () => {
+    eu.addListener(this.option.btn_top, 'click', () => {
       Util.scrollIt(0, duration, easing);
     });
-    Util.eventOnSelector(this.option.btn_bottom, 'click', () => {
+    eu.addListener(this.option.btn_bottom, 'click', () => {
       Util.scrollIt(this._getDocumentBottom(), duration, easing);
     });
 

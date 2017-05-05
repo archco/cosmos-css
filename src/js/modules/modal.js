@@ -1,6 +1,6 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import Util from '../lib/util.js';
 import Button from './button.js';
+import eu from '../lib/element-util.js';
 
 /************************************************************
   Modal
@@ -44,10 +44,10 @@ class Modal extends CosmosModule {
 
   init() {
     // modal open button.
-    Util.eventOnSelector(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
+    eu.addListener(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
 
     // modal close button.
-    Util.eventOnSelector(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this), true);
+    eu.addListener(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this), true);
 
     // window onclick.
     window.addEventListener('click', (event) => {
@@ -83,7 +83,7 @@ class Modal extends CosmosModule {
   // private
 
   _modalCloseHandler(event) {
-    let m = Util.findAncestor(event.currentTarget, Selector.MODAL);
+    let m = eu.findAncestor(event.currentTarget, Selector.MODAL);
     this._modalHide(m);
     event.stopPropagation();
   }

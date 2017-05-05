@@ -1,6 +1,6 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import Util from '../lib/util.js';
 import Button from './button.js';
+import eu from '../lib/element-util.js';
 
 /************************************************************
   message
@@ -56,7 +56,7 @@ class Message extends CosmosModule {
 
   init() {
     // add event listener - close buttons
-    Util.eventOnSelector(Selector.CLOSE, 'click', this._closeButtonHandler, true);
+    eu.addListener(Selector.CLOSE, 'click', this._closeButtonHandler, true);
   }
 
   show(message, status = Status.INFO) {
@@ -80,7 +80,7 @@ class Message extends CosmosModule {
   // private
 
   _closeButtonHandler(event) {
-    let messageBox = Util.findAncestor(event.currentTarget, Selector.BOX);
+    let messageBox = eu.findAncestor(event.currentTarget, Selector.BOX);
 
     messageBox.style.opacity = '0';
     setTimeout(function () {

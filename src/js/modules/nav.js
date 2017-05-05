@@ -1,5 +1,6 @@
 import CosmosModule from '../lib/cosmos-module.js';
 import Util from '../lib/util.js';
+import eu from '../lib/element-util.js';
 
 /************************************************************
   nav
@@ -36,7 +37,7 @@ class Nav extends CosmosModule {
   // public
 
   init() {
-    Util.eventOnSelector(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
+    eu.addListener(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
 
     this.activator(Selector.USE_ACTIVATOR);
 

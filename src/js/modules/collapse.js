@@ -1,5 +1,5 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import Util from '../lib/util.js';
+import eu from '../lib/element-util.js';
 
 /************************************************************
     Collapse
@@ -34,9 +34,9 @@ class Collapse extends CosmosModule {
 
   init() {
     // collapse toggle listener
-    Util.eventOnSelector(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
+    eu.addListener(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
     // accordion head listener
-    Util.eventOnSelector(Selector.A_HEAD, 'click', this._headClickHandler.bind(this));
+    eu.addListener(Selector.A_HEAD, 'click', this._headClickHandler.bind(this));
     // Handle on activated collapse and accordion.
     this._activatedCollapse();
     this._activatedAccordion();
@@ -54,7 +54,7 @@ class Collapse extends CosmosModule {
   _headClickHandler(event) {
     let h = event.currentTarget;
     let b = h.nextElementSibling;
-    let a = Util.findAncestor(h, Selector.ACCORDION);
+    let a = eu.findAncestor(h, Selector.ACCORDION);
 
     if (h.classList.contains(ClassName.ACTIVE)) {
       this._collapseToggle(h, b);
@@ -101,7 +101,7 @@ class Collapse extends CosmosModule {
     if (hs.length === 0) { return; }
 
     for (let h of hs) {
-      let a = Util.findAncestor(h, Selector.ACCORDION);
+      let a = eu.findAncestor(h, Selector.ACCORDION);
       this._allClose(a);
       h.click();
     }
