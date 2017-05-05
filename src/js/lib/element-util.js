@@ -78,6 +78,103 @@ export default class ElementUtil {
   }
 
   /**
+   * add event listener on selector.
+   *
+   * @param {String}   selector
+   * @param {String}   type  event type
+   * @param {Function} listener
+   * @param {Boolean}  [ useCapture = false ]
+   */
+  static addListener(selector, type, listener, useCapture = false) {
+    let elements = this.getElements(selector);
+    if (elements.length === 0) return null;
+    for (let element of elements) {
+      element.addEventListener(type, listener, useCapture);
+    }
+    return elements.length;
+  }
+
+  /**
+   * find ancestor by selector.
+   *
+   * @param  {Element|String} element or querySelector
+   * @param  {String}  selector
+   * @return {Element|null}
+   */
+  static findAncestor(element, selector) {
+    element = this.getElement(element);
+    do {
+      if(element == this.getElement('html')) return null;
+      element = element.parentElement;
+    } while(!element.matches(selector));
+    return element;
+  }
+
+  /**
+   * wrap elements by wrapper, one by one.
+   *
+   * @param  {String} selector
+   * @param  {String} className wrapper's class name.
+   * @param  {String} [ tagName = 'DIV' ] wrapper's tag name.
+   * @return {void}
+   */
+  static wrap(selector, className, tagName = 'DIV') {
+    let elements = this.getElements(selector);
+
+    for (let elm of elements) {
+      let parent = elm.parentNode;
+      let sibling = elm.nextSibling;
+      let div = document.createElement(tagName);
+      div.classList.add(className);
+
+      div.appendChild(elm);
+
+      if (sibling) {
+        parent.insertBefore(div, sibling);
+      } else {
+        parent.appendChild(div);
+      }
+    }
+  }
+
+  /**
+   * wrap all elements inside to wrapper.
+   *
+   * @param  {String} selector
+   * @param  {String} className wrapper's class name.
+   * @param  {String} [ tagName = 'DIV' ] wrapper's tag name.
+   * @return {void}
+   */
+  static wrapAll(selector, className, tagName = 'DIV') {
+    let elements = this.getElements(selector);
+    let parent = elements[0].parentNode;
+    let sibling = elements[0].nextSibling;
+    let div = document.createElement(tagName);
+    div.classList.add(className);
+
+    elements.forEach(elm => div.appendChild(elm));
+
+    if (sibling) {
+      parent.insertBefore(div, sibling);
+    } else {
+      parent.appendChild(div);
+    }
+  }
+
+  /**
+   * submitConfirm
+   *
+   * @param  {String|Element|NodeList} selector
+   * @param  {String} [ message = 'Are you confirm?' ]
+   * @return {void}
+   */
+  static submitConfirm(selector, message = 'Are you confirm?') {
+    this.addListener(selector, 'submit', event => {
+      if (!confirm(message)) event.preventDefault();
+    }, true); // use capture.
+  }
+
+  /**
    * addClass
    *
    * @param  {String} selector
@@ -297,100 +394,5 @@ export default class ElementUtil {
     } else {
       elm.dataset[DataSet.SORT_DIRECTION] = 'asc';
     }
-  }
-
-  /**
-   * add event listener on selector.
-   *
-   * @param {String}   selector
-   * @param {String}   type  event type
-   * @param {Function} listener
-   * @param {Boolean}  [ useCapture = false ]
-   */
-  static addListener(selector, type, listener, useCapture = false) {
-    let elements = this.getElements(selector);
-    if (elements.length === 0) return null;
-    for (let element of elements) {
-      element.addEventListener(type, listener, useCapture);
-    }
-    return elements.length;
-  }
-
-  /**
-   * find ancestor by selector.
-   *
-   * @param  {Element|String} element or querySelector
-   * @param  {String}  selector
-   * @return {Element|null}
-   */
-  static findAncestor(element, selector) {
-    element = this.getElement(element);
-    do {
-      if(element == this.getElement('html')) return null;
-      element = element.parentElement;
-    } while(!element.matches(selector));
-    return element;
-  }
-
-  /**
-   * wrap elements by div.wrapper
-   *
-   * @param  {String} selector
-   * @param  {String} className
-   * @return {void}
-   */
-  static wrap(selector, className) {
-    let elements = this.getElements(selector);
-    let div = document.createElement('div');
-    div.classList.add(className);
-
-    for (let elm of elements) {
-      let parent = elm.parentNode;
-      let sibling = elm.nextSibling;
-
-      div.appendChild(elm);
-
-      if (sibling) {
-        parent.insertBefore(div, sibling);
-      } else {
-        parent.appendChild(div);
-      }
-    }
-  }
-
-  /**
-   * wrap all elements inside to div.wrapper
-   *
-   * @param  {String} selector
-   * @param  {String} className
-   * @return {void}
-   */
-  static wrapAll(selector, className) {
-    let elements = this.getElements(selector);
-    let div = document.createElement('div');
-    div.classList.add(className);
-    let parent = elements[0].parentNode;
-    let sibling = elements[0].nextSibling;
-
-    elements.forEach(elm => div.appendChild(elm));
-
-    if (sibling) {
-      parent.insertBefore(div, sibling);
-    } else {
-      parent.appendChild(div);
-    }
-  }
-
-  /**
-   * submitConfirm
-   *
-   * @param  {String|Element|NodeList} selector
-   * @param  {String} [ message = 'Are you confirm?' ]
-   * @return {void}
-   */
-  static submitConfirm(selector, message = 'Are you confirm?') {
-    this.addListener(selector, 'submit', event => {
-      if (!confirm(message)) event.preventDefault();
-    }, true); // use capture.
   }
 }

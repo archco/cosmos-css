@@ -115,7 +115,7 @@ class Util {
   /**
    * searchToObject
    *
-   * @param  {String} search [HTMLAnchorElement.search]
+   * @param  {String} search HTMLAnchorElement.search
    * @return {Object|null}
    */
   static searchToObject(search) {
@@ -161,6 +161,7 @@ class Util {
 
   /**
    * isMobileSize
+   *
    * @param  {Number}  [ size = 800 ]
    * @return {Boolean}
    */

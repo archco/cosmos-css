@@ -4,8 +4,8 @@
 const NAME = 'Cosmos.lib.Color';
 const Config = {
   lightnessPoint: 166, // 65%
-  darkDefault: '#000000',
-  lightDefault: '#FFFFFF'
+  darkDefault: '#000',
+  lightDefault: '#fff'
 };
 
 class Color {
@@ -13,25 +13,26 @@ class Color {
     this._color = Color.colorToArray(color);
   }
 
-  getContrast(dark, light) {
+  getContrast(dark = Config.darkDefault, light = Config.lightDefault) {
     return Color.contrast(this._color, dark, light);
   }
 
-  // static methods
+  // static
 
   static get name() {
     return NAME;
   }
 
   /**
-   * color to rgb array
-   * @param  string|array color
-   * @return array  [red, green, blue]
+   * color to rgb array.
+   *
+   * @param  {String|Array} color
+   * @return {Array}  [red, green, blue]
    */
   static colorToArray(color) {
     let array = [];
     if (typeof color == 'string') {
-      array = Color.hexToRgb(color);
+      array = this.hexToRgb(color);
     } else if (Array.isArray(color)) {
       array = color;
     } else {
@@ -41,10 +42,11 @@ class Color {
   }
 
   /**
-   * hexToRgb
+   * hex color to rgb array.
    * @link http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
-   * @param  string  hex
-   * @return array|null
+   *
+   * @param  {String}  hex
+   * @return {Array|Null}
    */
   static hexToRgb(hex) {
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -63,10 +65,10 @@ class Color {
   /**
    * rgb values to hex color string
    *
-   * @param  number r
-   * @param  number g
-   * @param  number b
-   * @return string
+   * @param  {Number} r
+   * @param  {Number} g
+   * @param  {Number} b
+   * @return {String}
    */
   static rgbToHex(r, g, b) {
     r = r.toString(16);
@@ -78,30 +80,26 @@ class Color {
   /**
    * get rgb color's lightness value.
    *
-   * @param  string|array  color
-   * @return number  (0 ~ 255)
+   * @param  {String|Array} color
+   * @return {Number}  (0 ~ 255)
    */
   static lightness(color) {
-    let rgb = Color.colorToArray(color);
+    let rgb = this.colorToArray(color);
     // Color lightness formula.
     // @link https://www.w3.org/TR/AERT#color-contrast
     return ((rgb[0] * 299) + (rgb[1] * 587) + (rgb[2] * 114)) / 1000;
   }
 
   /**
-   * get contrast color
-   * @param  array|string color
-   * @param  string  dark
-   * @param  string  light
-   * @return string  dark or light
+   * return contrast color of input.
+   *
+   * @param  {Array|String} color
+   * @param  {String}  dark
+   * @param  {String}  light
+   * @return {String}  dark or light
    */
   static contrast(color, dark = Config.darkDefault, light = Config.lightDefault) {
-    let lightness = Color.lightness(color);
-    if (lightness > Config.lightnessPoint) {
-      return dark;
-    } else {
-      return light;
-    }
+    return (this.lightness(color) > Config.lightnessPoint) ? dark : light;
   }
 }
 

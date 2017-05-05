@@ -219,7 +219,8 @@ var Util = function () {
 
 
     /**
-     * event on selector
+     * event on selector - will be deprecated.
+     * instead -> ElementUtil.addListener()
      *
      * @param  {String}   selector   querySelector
      * @param  {String}   type       event type
@@ -263,7 +264,8 @@ var Util = function () {
     }
 
     /**
-     * find ancestor by selector
+     * find ancestor by selector - will be deprecated.
+     * instead -> ElementUtil.findAncestor()
      *
      * @param  {Element} element
      * @param  {String}  selector
@@ -281,7 +283,9 @@ var Util = function () {
     }
 
     /**
-     * wrap elements by div.wrapper
+     * wrap elements by div.wrapper - will be deprecated.
+     * instead -> ElementUtil.wrap()
+     *
      * @param  {String} target  querySelector
      * @param  {String} wrapper wrapper's class name
      * @return {void}
@@ -330,7 +334,9 @@ var Util = function () {
     }
 
     /**
-     * wrap all elements inside to div.wrapper
+     * wrap all elements inside to div.wrapper - will be deprecated.
+     * instead -> ElementUtil.wrapAll()
+     *
      * @param  {String}  target  querySelector
      * @param  {String}  wrapper wrapper's class name
      * @return {void}
@@ -371,7 +377,7 @@ var Util = function () {
     /**
      * searchToObject
      *
-     * @param  {String} search [HTMLAnchorElement.search]
+     * @param  {String} search HTMLAnchorElement.search
      * @return {Object|null}
      */
 
@@ -419,6 +425,21 @@ var Util = function () {
       } else {
         return big === small;
       }
+    }
+
+    /**
+     * isMobileSize
+     *
+     * @param  {Number}  [ size = 800 ]
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isMobileSize',
+    value: function isMobileSize() {
+      var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 800;
+
+      return window.innerWidth < size;
     }
   }, {
     key: 'name',
@@ -637,8 +658,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var NAME = 'Cosmos.lib.Color';
 var Config = {
   lightnessPoint: 166, // 65%
-  darkDefault: '#000000',
-  lightDefault: '#FFFFFF'
+  darkDefault: '#000',
+  lightDefault: '#fff'
 };
 
 var Color = function () {
@@ -650,25 +671,29 @@ var Color = function () {
 
   _createClass(Color, [{
     key: 'getContrast',
-    value: function getContrast(dark, light) {
+    value: function getContrast() {
+      var dark = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Config.darkDefault;
+      var light = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Config.lightDefault;
+
       return Color.contrast(this._color, dark, light);
     }
 
-    // static methods
+    // static
 
   }], [{
     key: 'colorToArray',
 
 
     /**
-     * color to rgb array
-     * @param  string|array color
-     * @return array  [red, green, blue]
+     * color to rgb array.
+     *
+     * @param  {String|Array} color
+     * @return {Array}  [red, green, blue]
      */
     value: function colorToArray(color) {
       var array = [];
       if (typeof color == 'string') {
-        array = Color.hexToRgb(color);
+        array = this.hexToRgb(color);
       } else if (Array.isArray(color)) {
         array = color;
       } else {
@@ -678,10 +703,11 @@ var Color = function () {
     }
 
     /**
-     * hexToRgb
+     * hex color to rgb array.
      * @link http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
-     * @param  string  hex
-     * @return array|null
+     *
+     * @param  {String}  hex
+     * @return {Array|Null}
      */
 
   }, {
@@ -699,10 +725,10 @@ var Color = function () {
     /**
      * rgb values to hex color string
      *
-     * @param  number r
-     * @param  number g
-     * @param  number b
-     * @return string
+     * @param  {Number} r
+     * @param  {Number} g
+     * @param  {Number} b
+     * @return {String}
      */
 
   }, {
@@ -717,25 +743,26 @@ var Color = function () {
     /**
      * get rgb color's lightness value.
      *
-     * @param  string|array  color
-     * @return number  (0 ~ 255)
+     * @param  {String|Array} color
+     * @return {Number}  (0 ~ 255)
      */
 
   }, {
     key: 'lightness',
     value: function lightness(color) {
-      var rgb = Color.colorToArray(color);
+      var rgb = this.colorToArray(color);
       // Color lightness formula.
       // @link https://www.w3.org/TR/AERT#color-contrast
       return (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
     }
 
     /**
-     * get contrast color
-     * @param  array|string color
-     * @param  string  dark
-     * @param  string  light
-     * @return string  dark or light
+     * return contrast color of input.
+     *
+     * @param  {Array|String} color
+     * @param  {String}  dark
+     * @param  {String}  light
+     * @return {String}  dark or light
      */
 
   }, {
@@ -744,12 +771,7 @@ var Color = function () {
       var dark = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Config.darkDefault;
       var light = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Config.lightDefault;
 
-      var lightness = Color.lightness(color);
-      if (lightness > Config.lightnessPoint) {
-        return dark;
-      } else {
-        return light;
-      }
+      return this.lightness(color) > Config.lightnessPoint ? dark : light;
     }
   }, {
     key: 'name',
@@ -872,6 +894,171 @@ var ElementUtil = function () {
     key: 'nodeListToArray',
     value: function nodeListToArray(nodelist) {
       return Array.prototype.slice.call(nodelist);
+    }
+
+    /**
+     * add event listener on selector.
+     *
+     * @param {String}   selector
+     * @param {String}   type  event type
+     * @param {Function} listener
+     * @param {Boolean}  [ useCapture = false ]
+     */
+
+  }, {
+    key: 'addListener',
+    value: function addListener(selector, type, listener) {
+      var useCapture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+      var elements = this.getElements(selector);
+      if (elements.length === 0) return null;
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var element = _step.value;
+
+          element.addEventListener(type, listener, useCapture);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      return elements.length;
+    }
+
+    /**
+     * find ancestor by selector.
+     *
+     * @param  {Element|String} element or querySelector
+     * @param  {String}  selector
+     * @return {Element|null}
+     */
+
+  }, {
+    key: 'findAncestor',
+    value: function findAncestor(element, selector) {
+      element = this.getElement(element);
+      do {
+        if (element == this.getElement('html')) return null;
+        element = element.parentElement;
+      } while (!element.matches(selector));
+      return element;
+    }
+
+    /**
+     * wrap elements by wrapper, one by one.
+     *
+     * @param  {String} selector
+     * @param  {String} className wrapper's class name.
+     * @param  {String} [ tagName = 'DIV' ] wrapper's tag name.
+     * @return {void}
+     */
+
+  }, {
+    key: 'wrap',
+    value: function wrap(selector, className) {
+      var tagName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'DIV';
+
+      var elements = this.getElements(selector);
+
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = elements[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var elm = _step2.value;
+
+          var parent = elm.parentNode;
+          var sibling = elm.nextSibling;
+          var div = document.createElement(tagName);
+          div.classList.add(className);
+
+          div.appendChild(elm);
+
+          if (sibling) {
+            parent.insertBefore(div, sibling);
+          } else {
+            parent.appendChild(div);
+          }
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+    }
+
+    /**
+     * wrap all elements inside to wrapper.
+     *
+     * @param  {String} selector
+     * @param  {String} className wrapper's class name.
+     * @param  {String} [ tagName = 'DIV' ] wrapper's tag name.
+     * @return {void}
+     */
+
+  }, {
+    key: 'wrapAll',
+    value: function wrapAll(selector, className) {
+      var tagName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'DIV';
+
+      var elements = this.getElements(selector);
+      var parent = elements[0].parentNode;
+      var sibling = elements[0].nextSibling;
+      var div = document.createElement(tagName);
+      div.classList.add(className);
+
+      elements.forEach(function (elm) {
+        return div.appendChild(elm);
+      });
+
+      if (sibling) {
+        parent.insertBefore(div, sibling);
+      } else {
+        parent.appendChild(div);
+      }
+    }
+
+    /**
+     * submitConfirm
+     *
+     * @param  {String|Element|NodeList} selector
+     * @param  {String} [ message = 'Are you confirm?' ]
+     * @return {void}
+     */
+
+  }, {
+    key: 'submitConfirm',
+    value: function submitConfirm(selector) {
+      var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
+
+      this.addListener(selector, 'submit', function (event) {
+        if (!confirm(message)) event.preventDefault();
+      }, true); // use capture.
     }
 
     /**
@@ -1032,13 +1219,13 @@ var ElementUtil = function () {
       var hit = 0;
       filter = filter.toUpperCase();
 
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
 
       try {
-        for (var _iterator = nodes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var node = _step.value;
+        for (var _iterator3 = nodes[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var node = _step3.value;
 
           var content = htmlMode ? node.innerHTML : node.textContent;
 
@@ -1050,16 +1237,16 @@ var ElementUtil = function () {
           }
         }
       } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
+          if (!_iteratorNormalCompletion3 && _iterator3.return) {
+            _iterator3.return();
           }
         } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
+          if (_didIteratorError3) {
+            throw _iteratorError3;
           }
         }
       }
@@ -1191,7 +1378,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /************************************************************
-  Helper
+  Helper - will be deprecated.
 *************************************************************/
 var NAME = 'Cosmos.lib.Helper';
 
@@ -1206,7 +1393,8 @@ var Helper = function () {
 
     /**
      * submitConfirm - confirm 을 취소하면 event.preventDefault()
-     * 
+     * instead -> ElementUtil.submitConfirm()
+     *
      * @param  {element} form
      * @param  {sting} message
      * @return {void}
@@ -1226,7 +1414,8 @@ var Helper = function () {
 
     /**
      * check mobile size
-     * 
+     * instead -> Util.isMobileSize()
+     *
      * @return {boolean}
      */
 
