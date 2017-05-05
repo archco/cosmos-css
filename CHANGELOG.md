@@ -12,6 +12,12 @@ If want to see more previous information to [Releases](https://github.com/archco
 - Add new js util library: ElementUtil #140
 - Add scss helper: arrow #136
 
+### Changed
+- Repackaging of js library files. #144
+
+### Deprecated
+- Some js library functions will be deprecated. #145
+
 ## [0.10.2] - 2017-04-23
 ### Added
 - Add scss helper class: `.caret` #134
