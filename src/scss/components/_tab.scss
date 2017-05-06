@@ -1,16 +1,40 @@
-@mixin _tag-link-active {
+%tab {
+  @include reset-list;
+  overflow: hidden;
+  font-family: $tab-font;
+  font-size: $tab-font-size;
+}
+
+%tab-link {
+  @include no-decoration;
+  display: inline-block;
+  padding: .5em 1em;
+  color: $tab-color;
+  text-align: center;
+  background-color: $tab-bg-color;
+  border-color: transparent;
+  border-style: solid;
+
+  &:hover,
+  &:focus {
+    color: $tab-hover-color;
+  }
+}
+
+%tab-link-active {
   color: $tab-active-color;
   cursor: default;
   background-color: $tab-active-bg-color;
-  border-top-color: $tab-active-border-accent-color;
-  border-right-color: $tab-border-color;
-  border-bottom-color: $tab-active-bg-color;
-  border-left-color: $tab-border-color;
-  border-radius: $tab-active-border-radius $tab-active-border-radius 0 0;
+}
 
+@mixin _tab-link-active($direction: 'default') {
   @each $name, $color in $color-set {
     &.#{$name} {
-      border-top-color: $color;
+      @if ($direction == 'default') {
+        border-top-color: $color;
+      } @else if ($direction == 'vertical') {
+        border-bottom-color: $color;
+      }
     }
   }
 }
@@ -18,36 +42,26 @@
 //======================================================================
 // Tab
 //======================================================================
-
 .tab {
-  @include reset-list;
-  overflow: hidden;
-  font-family: $tab-font;
-  font-size: $tab-font-size;
+  @extend %tab;
 
   li {
     display: inline-block;
   }
 
   .tab-link {
-    @include no-decoration;
-    display: inline-block;
-    padding: .5em 1em;
-    color: $tab-color;
-    text-align: center;
-    background-color: $tab-bg-color;
-    border-color: transparent;
-    border-style: solid;
+    @extend %tab-link;
     // border-width: top right&left bottom
     border-width: $tab-border-width * 3  $tab-border-width $tab-border-width;
 
-    &:hover,
-    &:focus {
-      color: $tab-hover-color;
-    }
-
     &.active {
-      @include _tag-link-active;
+      @extend %tab-link-active;
+      @include _tab-link-active('default');
+      border-top-color: $tab-active-border-accent-color;
+      border-right-color: $tab-border-color;
+      border-bottom-color: $tab-active-bg-color;
+      border-left-color: $tab-border-color;
+      border-radius: $tab-active-border-radius $tab-active-border-radius 0 0;
     }
   }
 
@@ -56,6 +70,22 @@
     margin-top: -$tab-border-width * 2;
     border-top: $tab-border-width solid $tab-border-color;
     content: '';
+  }
+}
+
+.tab-vertical {
+  @extend %tab;
+
+  .tab-link {
+    @extend %tab-link;
+    border-width: $tab-border-width;
+    border-bottom-width: $tab-border-width * 2;
+
+    &.active {
+      @extend %tab-link-active;
+      @include _tab-link-active('vertical');
+      border-bottom-color: $tab-active-border-accent-color;
+    }
   }
 }
 

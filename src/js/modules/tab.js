@@ -7,6 +7,7 @@ import eu from '../lib/element-util.js';
 const NAME = 'Cosmos.Tab';
 const ClassName = {
   TAB: 'tab',
+  TAB_VERTICAL: 'tab-vertical',
   LINK: 'tab-link',
   CONTENT: 'tab-content',
   SHOW: 'show',
@@ -15,7 +16,7 @@ const ClassName = {
   EFFECT_FADE: 'tab-fade-effect'
 };
 const Selector = {
-  TAB: `.${ClassName.TAB}`,
+  TAB: `.${ClassName.TAB},.${ClassName.TAB_VERTICAL}`,
   LINK: `.${ClassName.LINK}`,
   CONTENT: `.${ClassName.CONTENT}`
 };

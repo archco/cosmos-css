@@ -3093,6 +3093,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var NAME = 'Cosmos.Tab';
 var ClassName = {
   TAB: 'tab',
+  TAB_VERTICAL: 'tab-vertical',
   LINK: 'tab-link',
   CONTENT: 'tab-content',
   SHOW: 'show',
@@ -3101,7 +3102,7 @@ var ClassName = {
   EFFECT_FADE: 'tab-fade-effect'
 };
 var Selector = {
-  TAB: '.' + ClassName.TAB,
+  TAB: '.' + ClassName.TAB + ',.' + ClassName.TAB_VERTICAL,
   LINK: '.' + ClassName.LINK,
   CONTENT: '.' + ClassName.CONTENT
 };
@@ -3339,7 +3340,7 @@ module.exports = {
 		"postscss": "npm run css",
 		"scss:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/style.scss dist/css/style.min.css",
 		"postscss:min": "npm run css:min",
-		"scss:watch": "npm run sass -- --watch",
+		"scss:watch": "npm run scss -- --watch",
 		"pug": "node node_modules/pug-cli --pretty tests/views/pages/ --out ./tests/html/",
 		"pug:watch": "npm run pug -- --watch",
 		"js": "node node_modules/webpack/bin/webpack --config ./task/webpack.config.js",

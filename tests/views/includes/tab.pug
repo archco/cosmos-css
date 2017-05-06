@@ -42,3 +42,24 @@ ul(class='tab')
 each color in colorSet
   div(class='tab-content' id='tab3-'+color)
     = color
+
+h2 Vertical Tab
+div(class='row')
+  div(class='col-sm-2')
+    ul(class='tab-vertical fade')
+      li
+        a(href='#tab3-1' class='tab-link') tab 3-1
+      li
+        a(href='#tab3-2' class='tab-link success active') tab 3-2
+      li
+        a(href='#tab3-3' class='tab-link danger') tab 3-3
+  div(class='col-sm-10')
+    div(id='tab3-1' class='tab-content')
+      h3 Tab 1
+      p= lorem
+    div(id='tab3-2' class='tab-content')
+      h3 Tab 2
+      p= lorem
+    div(id='tab3-3' class='tab-content')
+      h3 Tab 3
+      p= lorem
