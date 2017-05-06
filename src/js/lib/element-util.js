@@ -348,14 +348,14 @@ export default class ElementUtil {
     let heads = this.getElements('thead th', table);
     let rows = this.nodeListToArray(this.getElements('tbody tr', table));
 
-    heads.forEach((v, i) => {
+    for (let [i, v] of heads.entries()) {
       v.addEventListener('click', (e) => {
         e.preventDefault();
         let th = e.currentTarget;
         this._toggleSortDirection(th);
         this._sortingTable(rows, i + 1, th.dataset[DataSet.SORT_DIRECTION]);
       });
-    });
+    }
   }
 
   static _sortingTable(rows, nth, direction) {
