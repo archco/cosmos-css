@@ -18,10 +18,10 @@ class Parallax extends CosmosModule {
   }
 
   // public
-  
+
   init() {
     let ps = document.querySelectorAll(`.${ClassName.PARALLAX}`);
-    if (ps.length === 0) { return; }
+    if (!ps.length) return;
 
     for (let p of ps) {
       this._process(p);

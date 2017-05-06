@@ -37,7 +37,7 @@ class Tab extends CosmosModule {
 
     // initialize tabs.
     let tabs = this._getTabs();
-    if (tabs.length > 0) {
+    if (tabs.length) {
       for (let t of tabs) {
         this._loadTab(t);
       }

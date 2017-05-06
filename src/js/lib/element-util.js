@@ -87,10 +87,12 @@ export default class ElementUtil {
    */
   static addListener(selector, type, listener, useCapture = false) {
     let elements = this.getElements(selector);
-    if (elements.length === 0) return null;
+    if (!elements.length) return null;
+
     for (let element of elements) {
       element.addEventListener(type, listener, useCapture);
     }
+
     return elements.length;
   }
 

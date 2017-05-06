@@ -59,7 +59,7 @@ class Nav extends CosmosModule {
    */
   activator(selector) {
     let links = document.querySelectorAll(selector + ' a');
-    if (links.length === 0) return;
+    if (!links.length) return;
 
     for (let a of links) {
       if (compareWithLocation(a)) {

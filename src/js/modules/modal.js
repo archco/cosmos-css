@@ -58,7 +58,7 @@ class Modal extends CosmosModule {
 
     // If modal doesn't have close button, add it.
     let modals = document.querySelectorAll(Selector.MODAL);
-    if (modals.length > 0) {
+    if (modals.length) {
       for (let m of modals) {
         this._addCloseBtn(m);
       }

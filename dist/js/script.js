@@ -309,7 +309,8 @@ var ElementUtil = function () {
       var useCapture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
       var elements = this.getElements(selector);
-      if (elements.length === 0) return null;
+      if (!elements.length) return null;
+
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -1815,9 +1816,7 @@ var Collapse = function (_CosmosModule) {
     value: function _activatedCollapse() {
       // Collapse can multiple active.
       var ts = document.querySelectorAll(Selector.C_ACTIVE);
-      if (ts.length === 0) {
-        return;
-      }
+      if (!ts.length) return;
 
       var _iteratorNormalCompletion2 = true;
       var _didIteratorError2 = false;
@@ -1850,9 +1849,7 @@ var Collapse = function (_CosmosModule) {
     value: function _activatedAccordion() {
       // Only one accordion can be active at a time. After all, only the last one will be activated.
       var hs = document.querySelectorAll(Selector.A_ACTIVE);
-      if (hs.length === 0) {
-        return;
-      }
+      if (!hs.length) return;
 
       var _iteratorNormalCompletion3 = true;
       var _didIteratorError3 = false;
@@ -2310,7 +2307,7 @@ var Modal = function (_CosmosModule) {
 
       // If modal doesn't have close button, add it.
       var modals = document.querySelectorAll(Selector.MODAL);
-      if (modals.length > 0) {
+      if (modals.length) {
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
         var _iteratorError = undefined;
@@ -2506,7 +2503,7 @@ var Nav = function (_CosmosModule) {
     key: 'activator',
     value: function activator(selector) {
       var links = document.querySelectorAll(selector + ' a');
-      if (links.length === 0) return;
+      if (!links.length) return;
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -2664,9 +2661,7 @@ var Parallax = function (_CosmosModule) {
 
     value: function init() {
       var ps = document.querySelectorAll('.' + ClassName.PARALLAX);
-      if (ps.length === 0) {
-        return;
-      }
+      if (!ps.length) return;
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -3160,7 +3155,7 @@ var Tab = function (_CosmosModule) {
 
       // initialize tabs.
       var tabs = this._getTabs();
-      if (tabs.length > 0) {
+      if (tabs.length) {
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
         var _iteratorError = undefined;

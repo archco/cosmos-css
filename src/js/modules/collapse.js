@@ -87,7 +87,7 @@ class Collapse extends CosmosModule {
   _activatedCollapse() {
     // Collapse can multiple active.
     let ts = document.querySelectorAll(Selector.C_ACTIVE);
-    if (ts.length === 0) { return; }
+    if (!ts.length) return;
 
     for (let t of ts) {
       let b = t.nextElementSibling;
@@ -98,7 +98,7 @@ class Collapse extends CosmosModule {
   _activatedAccordion() {
     // Only one accordion can be active at a time. After all, only the last one will be activated.
     let hs = document.querySelectorAll(Selector.A_ACTIVE);
-    if (hs.length === 0) { return; }
+    if (!hs.length) return;
 
     for (let h of hs) {
       let a = eu.findAncestor(h, Selector.ACCORDION);
