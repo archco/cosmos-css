@@ -310,7 +310,7 @@
   width: 0;
   height: 0;
   margin-left: $caret-width;
-  vertical-align: baseline;
+  vertical-align: middle;
   border: $caret-width solid transparent;
   content: '';
   @include caret-direction($direction);
@@ -357,6 +357,7 @@
 //============================================================
 @mixin arrow($direction: 'down') {
   display: inline-block;
+  vertical-align: middle;
   padding: .19em;
   border-style: solid;
   border-width: 0 .19em .19em 0;

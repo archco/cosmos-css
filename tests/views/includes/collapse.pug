@@ -23,3 +23,29 @@ ul(class='accordion')
     div(class='accordion-head') List item 3
     div(class='accordion-body')
       p(class='pad')= lorem
+
+h2 with icon
+h3 Collapse /w icon
+div(class='collapse-toggle with-plus pad bg-color-primary' data-target='#panel2-1') Panel One
+div(class='collapse-panel' id="panel2-1")
+  p(class='pad')= lorem
+div(class='collapse-toggle with-caret pad bg-color-secondary' data-target='#panel2-2') Panel Two
+div(class='collapse-panel' id="panel2-2")
+  p(class='pad')= lorem
+div(class='collapse-toggle with-arrow pad bg-color-warning' data-target='#panel2-3') Panel Three
+div(class='collapse-panel' id="panel2-3")
+  p(class='pad')= lorem
+h3 Accordion /w icon
+ul(class='accordion')
+  li
+    div(class='accordion-head with-plus') List item 1
+    div(class='accordion-body')
+      p(class='pad')= lorem
+  li
+    div(class='accordion-head with-caret') List item 2
+    div(class='accordion-body')
+      p(class='pad')= lorem
+  li
+    div(class='accordion-head with-arrow') List item 3
+    div(class='accordion-body')
+      p(class='pad')= lorem

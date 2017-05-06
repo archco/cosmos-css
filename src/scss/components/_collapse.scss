@@ -18,24 +18,45 @@
   }
 }
 
-//======================================================================
-// Collapse
-//======================================================================
-%collapse-toggle {
-  @include btn-base;
-  position: relative;
-
+@mixin _collapse-toggle-with-icon {
   &::after {
     position: absolute;
+    top: 50%;
     right: 1em;
-    font-weight: bold;
-    color: inherit;
+    transform: translate(0, -50%);
+  }
+
+  &.with-plus::after {
     content: '\002B';
   }
 
-  &.active::after {
+  &.with-plus.active::after {
     content: '\2212';
   }
+
+  &.with-caret::after {
+    @include caret('down');
+  }
+
+  &.with-caret.active::after {
+    @include caret('up');
+  }
+
+  &.with-arrow::after {
+    @include arrow('down');
+    transform: translate(0, -50%) rotate(45deg);
+  }
+
+  &.with-arrow.active::after {
+    @include arrow('up');
+    transform: translate(0, -50%) rotate(-135deg);
+  }
+}
+
+%collapse-toggle {
+  @include btn-base;
+  @include _collapse-toggle-with-icon;
+  position: relative;
 }
 
 %collapse-panel {
@@ -44,6 +65,9 @@
   transition: max-height .3s ease-out;
 }
 
+//======================================================================
+// Collapse
+//======================================================================
 .collapse-toggle {
   @extend %collapse-toggle;
 }

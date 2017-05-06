@@ -11,9 +11,11 @@ If want to see more previous information to [Releases](https://github.com/archco
 ### Added
 - Add new js util library: ElementUtil #140
 - Add scss helper: arrow #136
+- Implement tab-vertical in tab module. #128
 
 ### Changed
 - Repackaging of js library files. #144
+- Changed Collapse: optional icon at right. #135
 
 ### Deprecated
 - Some js library functions will be deprecated. #145

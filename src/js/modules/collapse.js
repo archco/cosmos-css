@@ -2,7 +2,7 @@ import CosmosModule from '../lib/cosmos-module.js';
 import eu from '../lib/element-util.js';
 
 /************************************************************
-    Collapse
+  Collapse
 *************************************************************/
 const NAME = 'Cosmos.Collapse';
 const ClassName = {
