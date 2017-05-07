@@ -14,10 +14,10 @@ const Default = {
   text: 'no text',
   duration_short: 3000,
   duration_long: 8000,
-  base: `.${ClassName.CONTAINER}`,
-  transition_time: 600,
+  container: `.${ClassName.CONTAINER}`,
+  transition_duration: 600,
   log_enable: true,
-  close_type: 'hide', // 'hide' or 'remove'
+  close_type: 'remove', // 'hide' or 'remove'
 };
 
 export default class Toast extends CosmosModule {
@@ -26,7 +26,7 @@ export default class Toast extends CosmosModule {
     // set defaults.
     this.setText(this.option.text);
     this.setDuration(this.option.duration_short);
-    this.setBase(this.option.base);
+    this.setContainer(this.option.container);
   }
 
   // static
@@ -35,9 +35,17 @@ export default class Toast extends CosmosModule {
     return NAME;
   }
 
-  static makeText(text, duration = null) {
+  /**
+   * makeText
+   *
+   * @param  {String} text
+   * @param  {Number} [ duration = null ]
+   * @param  {Object} [ option = {} ]
+   * @return {Toast}
+   */
+  static makeText(text, duration = null, option = {}) {
     duration = duration || Default.duration_short;
-    let instance = new this();
+    let instance = new this(option);
     return instance.setText(text).setDuration(duration);
   }
 
@@ -57,14 +65,14 @@ export default class Toast extends CosmosModule {
     return this;
   }
 
-  setBase(selector) {
+  setContainer(selector) {
     let elm = eu.getElement(selector, eu.getElement('body'));
     if (!elm) {
       elm = document.createElement('DIV');
       elm.classList.add(ClassName.CONTAINER);
       eu.getElement('body').appendChild(elm);
     }
-    this.base = elm;
+    this.container = elm;
     return this;
   }
 
@@ -77,11 +85,11 @@ export default class Toast extends CosmosModule {
       toast.classList.remove(ClassName.SHOW);
       setTimeout(() => {
         if (this.option.close_type === 'remove') {
-          this.base.removeChild(toast); // remove.
+          this.container.removeChild(toast); // remove.
         } else {
           eu.hide(toast); // hide.
         }
-      }, this.option.transition_time);
+      }, this.option.transition_duration);
     }, this.duration);
   }
 
@@ -91,7 +99,7 @@ export default class Toast extends CosmosModule {
     let div = document.createElement('DIV');
     div.textContent = this.text;
     div.classList.add(ClassName.TOAST);
-    this.base.appendChild(div);
+    this.container.appendChild(div);
     return div;
   }
 

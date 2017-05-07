@@ -3366,10 +3366,10 @@ var Default = {
   text: 'no text',
   duration_short: 3000,
   duration_long: 8000,
-  base: '.' + ClassName.CONTAINER,
-  transition_time: 600,
+  container: '.' + ClassName.CONTAINER,
+  transition_duration: 600,
   log_enable: true,
-  close_type: 'hide' };
+  close_type: 'remove' };
 
 var Toast = function (_CosmosModule) {
   _inherits(Toast, _CosmosModule);
@@ -3384,7 +3384,7 @@ var Toast = function (_CosmosModule) {
 
     _this.setText(_this.option.text);
     _this.setDuration(_this.option.duration_short);
-    _this.setBase(_this.option.base);
+    _this.setContainer(_this.option.container);
     return _this;
   }
 
@@ -3412,15 +3412,15 @@ var Toast = function (_CosmosModule) {
       return this;
     }
   }, {
-    key: 'setBase',
-    value: function setBase(selector) {
+    key: 'setContainer',
+    value: function setContainer(selector) {
       var elm = _elementUtil2.default.getElement(selector, _elementUtil2.default.getElement('body'));
       if (!elm) {
         elm = document.createElement('DIV');
         elm.classList.add(ClassName.CONTAINER);
         _elementUtil2.default.getElement('body').appendChild(elm);
       }
-      this.base = elm;
+      this.container = elm;
       return this;
     }
   }, {
@@ -3436,11 +3436,11 @@ var Toast = function (_CosmosModule) {
         toast.classList.remove(ClassName.SHOW);
         setTimeout(function () {
           if (_this2.option.close_type === 'remove') {
-            _this2.base.removeChild(toast); // remove.
+            _this2.container.removeChild(toast); // remove.
           } else {
             _elementUtil2.default.hide(toast); // hide.
           }
-        }, _this2.option.transition_time);
+        }, _this2.option.transition_duration);
       }, this.duration);
     }
 
@@ -3452,7 +3452,7 @@ var Toast = function (_CosmosModule) {
       var div = document.createElement('DIV');
       div.textContent = this.text;
       div.classList.add(ClassName.TOAST);
-      this.base.appendChild(div);
+      this.container.appendChild(div);
       return div;
     }
   }, {
@@ -3463,11 +3463,22 @@ var Toast = function (_CosmosModule) {
     }
   }], [{
     key: 'makeText',
+
+
+    /**
+     * makeText
+     *
+     * @param  {String} text
+     * @param  {Number} [ duration = null ]
+     * @param  {Object} [ option = {} ]
+     * @return {Toast}
+     */
     value: function makeText(text) {
       var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var option = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
       duration = duration || Default.duration_short;
-      var instance = new this();
+      var instance = new this(option);
       return instance.setText(text).setDuration(duration);
     }
   }, {
