@@ -12,6 +12,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 - Add new js util library: ElementUtil #140
 - Add scss helper: arrow #136
 - Implement tab-vertical in tab module. #128
+- Add new Module: Toast #137
 
 ### Changed
 - Repackaging of js library files. #144

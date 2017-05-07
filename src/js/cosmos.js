@@ -44,6 +44,9 @@ window.submitConfirm = ElementUtil.submitConfirm;
 window.checkMobileSize = ElementUtil.checkMobileSize;
 window.showMessage = Message.showMessage;
 window.modalDialog = Modal.dialog;
+window.showToast = (text, duration = null, option = {}) => {
+  Toast.makeText(text, duration, option).show();
+};
 
 // export
 let version = require('../../package.json').version;
