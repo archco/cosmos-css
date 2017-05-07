@@ -132,6 +132,7 @@ $z-index-dropdown-content:    14 !default;
 $z-index-tooltip:             14 !default;
 $z-index-scroll-to-button:    16 !default;
 $z-index-modal:               18 !default;
+$z-index-toast:               20 !default;
 
 
 //======================================================================
@@ -285,3 +286,11 @@ $image-overlay-bg-color: $background-color-invert !default;
 
 // helper
 $caret-width: .25em !default;
+
+// toast
+$toast-min-width: 10em !default;
+$toast-padding-y: .8em;
+$toast-padding-x: .5em;
+$toast-text-color: $text-color-invert !default;
+$toast-bg-color: rgba($background-color-invert, .85) !default;
+$toast-border-radius: $radius-normal !default;
