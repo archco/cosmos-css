@@ -116,15 +116,6 @@ $code-border-radius: $radius-normal !default;
 $code-block-padding: 1em !default;
 $code-block-line-height: 1.45 !default;
 
-// list
-$list-border-width: 1px !default;
-$list-border-color: $border-color !default;
-$list-padding: .3em .6em !default;
-$list-group-padding: .4em .8em !default;
-$list-group-border-radius: $radius-normal !default;
-$list-group-hover-bg: rgba($background-color-invert, .1) !default;
-$list-group-active-bg-color: $primary-color !default;
-$list-group-active-color: get-contrast($list-group-active-bg-color) !default;
 
 //======================================================================
 // Z-index Lists
@@ -146,6 +137,20 @@ $z-index-modal:               18 !default;
 //======================================================================
 // Component's Variables
 //======================================================================
+
+// list
+$list-border-width: 1px !default;
+$list-border-color: $border-color !default;
+$list-padding-y: .6em !default;
+$list-padding-x: .3em !default;
+$list-group-padding-y: .4em !default;
+$list-group-padding-x: .8em !default;
+$list-group-padding: .4em .8em !default;
+$list-group-border-radius: $radius-normal !default;
+$list-group-hover-bg: rgba($background-color-invert, .1) !default;
+$list-group-active-bg-color: $primary-color !default;
+$list-group-active-color: get-contrast($list-group-active-bg-color) !default;
+$breadcrumb-separator: '/' !default;
 
 // badge
 $badge-font-size: .85em !default;
