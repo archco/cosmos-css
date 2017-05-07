@@ -7,7 +7,7 @@
 
   // tooltip bubble
   &::after {
-    @include reset-text();
+    @include reset-text;
     position: absolute;
     z-index: $z-index-tooltip;
     display: none;
