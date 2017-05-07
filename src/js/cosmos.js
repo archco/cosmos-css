@@ -24,6 +24,7 @@ import Collapse from './modules/collapse.js';
 import SimpleCRUD from './modules/simple-crud.js';
 // Functional modules. - nonloadable
 import Chip from './modules/chip.js';
+import Toast from './modules/toast.js';
 
 // initialize - loading modules.
 Scaffolding.load();
@@ -56,8 +57,9 @@ const Cosmos = {
   version: `v${version}`,
   lib,
   Button,
-  Chip
+  Chip,
+  Toast
 };
 
 export default Cosmos;
-export { Util, ElementUtil, Color, Helper, Button, Chip };
+export { Util, ElementUtil, Color, Helper, Button, Chip, Toast };

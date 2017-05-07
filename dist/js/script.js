@@ -70,7 +70,7 @@ window["Cosmos"] =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -982,7 +982,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _scrollIt = __webpack_require__(19);
+var _scrollIt = __webpack_require__(20);
 
 var _scrollIt2 = _interopRequireDefault(_scrollIt);
 
@@ -3326,6 +3326,164 @@ exports.default = Tab;
 
 /***/ }),
 /* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _elementUtil = __webpack_require__(1);
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/************************************************************
+  Toast
+*************************************************************/
+var NAME = 'Cosmos.Toast';
+var ClassName = {
+  TOAST: 'toast',
+  SHOW: 'show',
+  CONTAINER: 'toast-container'
+};
+var Default = {
+  text: 'no text',
+  duration_short: 3000,
+  duration_long: 8000,
+  base: '.' + ClassName.CONTAINER,
+  transition_time: 600,
+  log_enable: true,
+  close_type: 'hide' };
+
+var Toast = function (_CosmosModule) {
+  _inherits(Toast, _CosmosModule);
+
+  function Toast() {
+    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    _classCallCheck(this, Toast);
+
+    // set defaults.
+    var _this = _possibleConstructorReturn(this, (Toast.__proto__ || Object.getPrototypeOf(Toast)).call(this, option));
+
+    _this.setText(_this.option.text);
+    _this.setDuration(_this.option.duration_short);
+    _this.setBase(_this.option.base);
+    return _this;
+  }
+
+  // static
+
+  _createClass(Toast, [{
+    key: 'getDefaultOption',
+
+
+    // public
+
+    value: function getDefaultOption() {
+      return Default;
+    }
+  }, {
+    key: 'setText',
+    value: function setText(text) {
+      this.text = text;
+      return this;
+    }
+  }, {
+    key: 'setDuration',
+    value: function setDuration(duration) {
+      this.duration = duration;
+      return this;
+    }
+  }, {
+    key: 'setBase',
+    value: function setBase(selector) {
+      var elm = _elementUtil2.default.getElement(selector, _elementUtil2.default.getElement('body'));
+      if (!elm) {
+        elm = document.createElement('DIV');
+        elm.classList.add(ClassName.CONTAINER);
+        _elementUtil2.default.getElement('body').appendChild(elm);
+      }
+      this.base = elm;
+      return this;
+    }
+  }, {
+    key: 'show',
+    value: function show() {
+      var _this2 = this;
+
+      var toast = this._makeToast();
+      if (this.option.log_enable) this._log(); // log
+
+      toast.classList.add(ClassName.SHOW);
+      setTimeout(function () {
+        toast.classList.remove(ClassName.SHOW);
+        setTimeout(function () {
+          if (_this2.option.close_type === 'remove') {
+            _this2.base.removeChild(toast); // remove.
+          } else {
+            _elementUtil2.default.hide(toast); // hide.
+          }
+        }, _this2.option.transition_time);
+      }, this.duration);
+    }
+
+    // private
+
+  }, {
+    key: '_makeToast',
+    value: function _makeToast() {
+      var div = document.createElement('DIV');
+      div.textContent = this.text;
+      div.classList.add(ClassName.TOAST);
+      this.base.appendChild(div);
+      return div;
+    }
+  }, {
+    key: '_log',
+    value: function _log() {
+      var date = new Date().toString();
+      console.log('ToastLog[' + date + ']: ' + this.text);
+    }
+  }], [{
+    key: 'makeText',
+    value: function makeText(text) {
+      var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      duration = duration || Default.duration_short;
+      var instance = new this();
+      return instance.setText(text).setDuration(duration);
+    }
+  }, {
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }]);
+
+  return Toast;
+}(_cosmosModule2.default);
+
+exports.default = Toast;
+
+/***/ }),
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -3391,7 +3549,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3400,7 +3558,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
+exports.Toast = exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
 
 var _util = __webpack_require__(3);
 
@@ -3466,10 +3624,16 @@ var _chip = __webpack_require__(6);
 
 var _chip2 = _interopRequireDefault(_chip);
 
+var _toast = __webpack_require__(17);
+
+var _toast2 = _interopRequireDefault(_toast);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // initialize - loading modules.
 
+// Functional modules. - nonloadable
+_scaffolding2.default.load();
 // Loadable Modules.
 /*!
  * cosmos-css - The css framework for personal practice.
@@ -3479,8 +3643,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 // Libraries.
-_scaffolding2.default.load();
-// Functional modules. - nonloadable
 
 _button2.default.load();
 _dropdown2.default.load();
@@ -3500,7 +3662,7 @@ window.showMessage = _message2.default.showMessage;
 window.modalDialog = _modal2.default.dialog;
 
 // export
-var version = __webpack_require__(17).version;
+var version = __webpack_require__(18).version;
 var lib = {
   Util: _util2.default,
   Color: _color2.default,
@@ -3511,7 +3673,8 @@ var Cosmos = {
   version: 'v' + version,
   lib: lib,
   Button: _button2.default,
-  Chip: _chip2.default
+  Chip: _chip2.default,
+  Toast: _toast2.default
 };
 
 exports.default = Cosmos;
@@ -3521,9 +3684,10 @@ exports.Color = _color2.default;
 exports.Helper = _helper2.default;
 exports.Button = _button2.default;
 exports.Chip = _chip2.default;
+exports.Toast = _toast2.default;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
