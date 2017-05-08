@@ -8,6 +8,7 @@
     "test": "tests"
   },
   "dependencies": {
+    "normalize.css": "^7.0.0",
     "scss-palette": "^0.3.2"
   },
   "devDependencies": {

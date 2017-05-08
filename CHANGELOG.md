@@ -18,6 +18,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 - Repackaging of js library files. #144
 - Changed Collapse: optional icon at right. #135
 - Separates component "list" from scaffolding.scss. #139
+- Replace normalize.css as dependency. #151
 
 ### Deprecated
 - Some js library functions will be deprecated. #145
