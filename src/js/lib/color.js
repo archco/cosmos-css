@@ -46,7 +46,7 @@ class Color {
    * @link http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
    *
    * @param  {String}  hex
-   * @return {Array|Null}
+   * @return {Array}
    */
   static hexToRgb(hex) {
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -100,7 +100,7 @@ class Color {
   /**
    * return contrast color of input.
    *
-   * @param  {Array|String} color
+   * @param  {String|Array} color
    * @param  {String}  dark
    * @param  {String}  light
    * @return {String}  dark or light
