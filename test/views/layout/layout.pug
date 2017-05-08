@@ -21,7 +21,7 @@ html
     link(rel="stylesheet" href="../../dist/css/style.css")
   body
     header(class='bg-color-secondary pad flex-center-container' style="height:100px;")
-      h1 cosmos-css
+      h1(id='project-name') cosmos-css
 
     nav(class='navbar sticky-top')
       div(class='nav-header')
@@ -79,5 +79,6 @@ html
     <script>
     | var year = new Date().getFullYear();
     | document.querySelector('.footer-copyright').innerHTML = "copyright \&copy; " + year + " cosmos all rights reserved.";
+    | document.querySelector('#project-name').innerHTML = "cosmos-css " + Cosmos.default.version;
     </script>
     block script

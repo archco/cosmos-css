@@ -13,6 +13,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 - Add scss helper: arrow #136
 - Implement tab-vertical in tab module. #128
 - Add new Module: Toast #137
+- Create [github pages](https://archco.github.io/cosmos-css/) #141
 
 ### Changed
 - Repackaging of js library files. #144
