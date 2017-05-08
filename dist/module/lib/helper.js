@@ -9,7 +9,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /************************************************************
-  Helper
+  Helper - will be deprecated.
 *************************************************************/
 var NAME = 'Cosmos.lib.Helper';
 
@@ -24,7 +24,8 @@ var Helper = function () {
 
     /**
      * submitConfirm - confirm 을 취소하면 event.preventDefault()
-     * 
+     * instead -> ElementUtil.submitConfirm()
+     *
      * @param  {element} form
      * @param  {sting} message
      * @return {void}
@@ -44,7 +45,8 @@ var Helper = function () {
 
     /**
      * check mobile size
-     * 
+     * instead -> Util.isMobileSize()
+     *
      * @return {boolean}
      */
 

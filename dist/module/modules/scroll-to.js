@@ -14,6 +14,10 @@ var _util = require('../lib/util.js');
 
 var _util2 = _interopRequireDefault(_util);
 
+var _elementUtil = require('../lib/element-util.js');
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -69,10 +73,10 @@ var ScrollTo = function (_CosmosModule) {
       var easing = this.option.scroll_easing;
 
       // button listener
-      _util2.default.eventOnSelector(this.option.btn_top, 'click', function () {
+      _elementUtil2.default.addListener(this.option.btn_top, 'click', function () {
         _util2.default.scrollIt(0, duration, easing);
       });
-      _util2.default.eventOnSelector(this.option.btn_bottom, 'click', function () {
+      _elementUtil2.default.addListener(this.option.btn_bottom, 'click', function () {
         _util2.default.scrollIt(_this2._getDocumentBottom(), duration, easing);
       });
 

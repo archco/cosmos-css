@@ -31,7 +31,8 @@ var Util = function () {
 
 
     /**
-     * event on selector
+     * event on selector - will be deprecated.
+     * instead -> ElementUtil.addListener()
      *
      * @param  {String}   selector   querySelector
      * @param  {String}   type       event type
@@ -75,7 +76,8 @@ var Util = function () {
     }
 
     /**
-     * find ancestor by selector
+     * find ancestor by selector - will be deprecated.
+     * instead -> ElementUtil.findAncestor()
      *
      * @param  {Element} element
      * @param  {String}  selector
@@ -93,7 +95,9 @@ var Util = function () {
     }
 
     /**
-     * wrap elements by div.wrapper
+     * wrap elements by div.wrapper - will be deprecated.
+     * instead -> ElementUtil.wrap()
+     *
      * @param  {String} target  querySelector
      * @param  {String} wrapper wrapper's class name
      * @return {void}
@@ -142,7 +146,9 @@ var Util = function () {
     }
 
     /**
-     * wrap all elements inside to div.wrapper
+     * wrap all elements inside to div.wrapper - will be deprecated.
+     * instead -> ElementUtil.wrapAll()
+     *
      * @param  {String}  target  querySelector
      * @param  {String}  wrapper wrapper's class name
      * @return {void}
@@ -183,7 +189,7 @@ var Util = function () {
     /**
      * searchToObject
      *
-     * @param  {String} search [HTMLAnchorElement.search]
+     * @param  {String} search HTMLAnchorElement.search
      * @return {Object|null}
      */
 
@@ -232,6 +238,21 @@ var Util = function () {
         return big === small;
       }
     }
+
+    /**
+     * isMobileSize
+     *
+     * @param  {Number}  [ size = 800 ]
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isMobileSize',
+    value: function isMobileSize() {
+      var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 800;
+
+      return window.innerWidth < size;
+    }
   }, {
     key: 'name',
 
@@ -246,6 +267,8 @@ var Util = function () {
   return Util;
 }();
 
-Util.scrollIt = _scrollIt2.default;
+Object.assign(Util, {
+  scrollIt: _scrollIt2.default
+});
 
 exports.default = Util;

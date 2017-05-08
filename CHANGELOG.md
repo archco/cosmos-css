@@ -8,6 +8,8 @@ This changelog started from v0.8.4.
 If want to see more previous information to [Releases](https://github.com/archco/cosmos-css/releases) page.
 
 ## [Unreleased]
+
+## [0.11.0] - 2017-05-08
 ### Added
 - Add new js util library: ElementUtil #140
 - Add scss helper: arrow #136
@@ -106,7 +108,8 @@ import { Util, Color } from 'cosmos-css'; // import member.
 ### Fixed
 - Underline problem in link as btn in table. #101
 
-[Unreleased]: https://github.com/archco/cosmos-css/compare/v0.10.2...master
+[Unreleased]: https://github.com/archco/cosmos-css/compare/v0.11.0...master
+[0.11.0]: https://github.com/archco/cosmos-css/compare/v0.10.2...v0.11.0
 [0.10.2]: https://github.com/archco/cosmos-css/compare/v0.10.1...v0.10.2
 [0.10.1]: https://github.com/archco/cosmos-css/compare/v0.10.0...v0.10.1
 [0.10.0]: https://github.com/archco/cosmos-css/compare/v0.9.1...v0.10.0

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Chip = exports.Button = exports.Helper = exports.Color = exports.Util = undefined;
+exports.Toast = exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
 
 var _util = require('./lib/util.js');
 
@@ -16,6 +16,10 @@ var _color2 = _interopRequireDefault(_color);
 var _helper = require('./lib/helper.js');
 
 var _helper2 = _interopRequireDefault(_helper);
+
+var _elementUtil = require('./lib/element-util.js');
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 var _scaffolding = require('./modules/scaffolding.js');
 
@@ -65,16 +69,20 @@ var _chip = require('./modules/chip.js');
 
 var _chip2 = _interopRequireDefault(_chip);
 
+var _toast = require('./modules/toast.js');
+
+var _toast2 = _interopRequireDefault(_toast);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // initialize - loading modules.
 
-// Loadable Modules.
-_scaffolding2.default.load();
 // Functional modules. - nonloadable
+_scaffolding2.default.load();
+// Loadable Modules.
 /*!
  * cosmos-css - The css framework for personal practice.
- * @version v0.10.2
+ * @version v0.11.0
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
@@ -93,26 +101,38 @@ _collapse2.default.load();
 _simpleCrud2.default.load();
 
 // define global helper functions.
-window.submitConfirm = _helper2.default.submitConfirm;
-window.checkMobileSize = _helper2.default.checkMobileSize;
+window.submitConfirm = _elementUtil2.default.submitConfirm;
+window.checkMobileSize = _elementUtil2.default.checkMobileSize;
 window.showMessage = _message2.default.showMessage;
 window.modalDialog = _modal2.default.dialog;
+window.showToast = function (text) {
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var option = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  _toast2.default.makeText(text, duration, option).show();
+};
 
 // export
 var version = require('../../package.json').version;
+var lib = {
+  Util: _util2.default,
+  Color: _color2.default,
+  ElementUtil: _elementUtil2.default
+};
 var Cosmos = {
   name: 'cosmos-css',
   version: 'v' + version,
-  Util: _util2.default,
-  Color: _color2.default,
-  Helper: _helper2.default,
+  lib: lib,
   Button: _button2.default,
-  Chip: _chip2.default
+  Chip: _chip2.default,
+  Toast: _toast2.default
 };
 
 exports.default = Cosmos;
 exports.Util = _util2.default;
+exports.ElementUtil = _elementUtil2.default;
 exports.Color = _color2.default;
 exports.Helper = _helper2.default;
 exports.Button = _button2.default;
 exports.Chip = _chip2.default;
+exports.Toast = _toast2.default;

@@ -10,9 +10,9 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = require('../lib/util.js');
+var _elementUtil = require('../lib/element-util.js');
 
-var _util2 = _interopRequireDefault(_util);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23,7 +23,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
-    Collapse
+  Collapse
 *************************************************************/
 var NAME = 'Cosmos.Collapse';
 var ClassName = {
@@ -60,9 +60,9 @@ var Collapse = function (_CosmosModule) {
 
     value: function init() {
       // collapse toggle listener
-      _util2.default.eventOnSelector(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
+      _elementUtil2.default.addListener(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
       // accordion head listener
-      _util2.default.eventOnSelector(Selector.A_HEAD, 'click', this._headClickHandler.bind(this));
+      _elementUtil2.default.addListener(Selector.A_HEAD, 'click', this._headClickHandler.bind(this));
       // Handle on activated collapse and accordion.
       this._activatedCollapse();
       this._activatedAccordion();
@@ -83,7 +83,7 @@ var Collapse = function (_CosmosModule) {
     value: function _headClickHandler(event) {
       var h = event.currentTarget;
       var b = h.nextElementSibling;
-      var a = _util2.default.findAncestor(h, Selector.ACCORDION);
+      var a = _elementUtil2.default.findAncestor(h, Selector.ACCORDION);
 
       if (h.classList.contains(ClassName.ACTIVE)) {
         this._collapseToggle(h, b);
@@ -141,9 +141,7 @@ var Collapse = function (_CosmosModule) {
     value: function _activatedCollapse() {
       // Collapse can multiple active.
       var ts = document.querySelectorAll(Selector.C_ACTIVE);
-      if (ts.length === 0) {
-        return;
-      }
+      if (!ts.length) return;
 
       var _iteratorNormalCompletion2 = true;
       var _didIteratorError2 = false;
@@ -176,9 +174,7 @@ var Collapse = function (_CosmosModule) {
     value: function _activatedAccordion() {
       // Only one accordion can be active at a time. After all, only the last one will be activated.
       var hs = document.querySelectorAll(Selector.A_ACTIVE);
-      if (hs.length === 0) {
-        return;
-      }
+      if (!hs.length) return;
 
       var _iteratorNormalCompletion3 = true;
       var _didIteratorError3 = false;
@@ -188,7 +184,7 @@ var Collapse = function (_CosmosModule) {
         for (var _iterator3 = hs[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
           var h = _step3.value;
 
-          var a = _util2.default.findAncestor(h, Selector.ACCORDION);
+          var a = _elementUtil2.default.findAncestor(h, Selector.ACCORDION);
           this._allClose(a);
           h.click();
         }

@@ -10,9 +10,9 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = require('../lib/util.js');
+var _elementUtil = require('../lib/element-util.js');
 
-var _util2 = _interopRequireDefault(_util);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65,13 +65,13 @@ var SimpleCRUD = function (_CosmosModule) {
     value: function init() {
       var _this2 = this;
 
-      _util2.default.eventOnSelector(Selector.BTN_UPDATE, 'click', function (e) {
+      _elementUtil2.default.addListener(Selector.BTN_UPDATE, 'click', function (e) {
         _this2._switchView(e.currentTarget, 'update');
       });
-      _util2.default.eventOnSelector(Selector.BTN_DELETE, 'click', function (e) {
+      _elementUtil2.default.addListener(Selector.BTN_DELETE, 'click', function (e) {
         _this2._switchView(e.currentTarget, 'delete');
       });
-      _util2.default.eventOnSelector(Selector.BTN_CANCEL, 'click', function (e) {
+      _elementUtil2.default.addListener(Selector.BTN_CANCEL, 'click', function (e) {
         _this2._switchView(e.currentTarget, 'read');
       });
     }
@@ -81,8 +81,8 @@ var SimpleCRUD = function (_CosmosModule) {
   }, {
     key: '_getNodes',
     value: function _getNodes(element) {
-      var item = _util2.default.findAncestor(element, Selector.ITEM);
-      var current = _util2.default.findAncestor(element, Selector.VIEW);
+      var item = _elementUtil2.default.findAncestor(element, Selector.ITEM);
+      var current = _elementUtil2.default.findAncestor(element, Selector.VIEW);
 
       return {
         item: item,

@@ -10,9 +10,9 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = require('../lib/util.js');
+var _elementUtil = require('../lib/element-util.js');
 
-var _util2 = _interopRequireDefault(_util);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55,7 +55,7 @@ var Dropdown = function (_CosmosModule) {
 
     value: function init() {
       // toggling dropdown content.
-      _util2.default.eventOnSelector(Selector.TOGGLE, 'click', this._toggleButtonHandler.bind(this));
+      _elementUtil2.default.addListener(Selector.TOGGLE, 'click', this._toggleButtonHandler.bind(this));
 
       // Close the dropdown menu if the user clicks outside of it
       window.addEventListener('click', this._otherClickHandler.bind(this));
@@ -88,7 +88,7 @@ var Dropdown = function (_CosmosModule) {
 
     /**
      * close dropdown contents
-     * 
+     *
      * @param  {element} t  except target
      * @return {void}
      */

@@ -10,13 +10,13 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = require('../lib/util.js');
-
-var _util2 = _interopRequireDefault(_util);
-
 var _button = require('./button.js');
 
 var _button2 = _interopRequireDefault(_button);
+
+var _elementUtil = require('../lib/element-util.js');
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73,10 +73,10 @@ var Modal = function (_CosmosModule) {
       var _this2 = this;
 
       // modal open button.
-      _util2.default.eventOnSelector(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
+      _elementUtil2.default.addListener(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
 
       // modal close button.
-      _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this), true);
+      _elementUtil2.default.addListener(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this), true);
 
       // window onclick.
       window.addEventListener('click', function (event) {
@@ -87,7 +87,7 @@ var Modal = function (_CosmosModule) {
 
       // If modal doesn't have close button, add it.
       var modals = document.querySelectorAll(Selector.MODAL);
-      if (modals.length > 0) {
+      if (modals.length) {
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
         var _iteratorError = undefined;
@@ -136,7 +136,7 @@ var Modal = function (_CosmosModule) {
   }, {
     key: '_modalCloseHandler',
     value: function _modalCloseHandler(event) {
-      var m = _util2.default.findAncestor(event.currentTarget, Selector.MODAL);
+      var m = _elementUtil2.default.findAncestor(event.currentTarget, Selector.MODAL);
       this._modalHide(m);
       event.stopPropagation();
     }

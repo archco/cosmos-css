@@ -14,6 +14,10 @@ var _util = require('../lib/util.js');
 
 var _util2 = _interopRequireDefault(_util);
 
+var _elementUtil = require('../lib/element-util.js');
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -54,7 +58,7 @@ var Nav = function (_CosmosModule) {
     // public
 
     value: function init() {
-      _util2.default.eventOnSelector(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
+      _elementUtil2.default.addListener(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
 
       this.activator(Selector.USE_ACTIVATOR);
 
@@ -79,7 +83,7 @@ var Nav = function (_CosmosModule) {
     key: 'activator',
     value: function activator(selector) {
       var links = document.querySelectorAll(selector + ' a');
-      if (links.length === 0) return;
+      if (!links.length) return;
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;

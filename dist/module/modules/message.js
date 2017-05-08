@@ -10,13 +10,13 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = require('../lib/util.js');
-
-var _util2 = _interopRequireDefault(_util);
-
 var _button = require('./button.js');
 
 var _button2 = _interopRequireDefault(_button);
+
+var _elementUtil = require('../lib/element-util.js');
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -77,7 +77,7 @@ var Message = function (_CosmosModule) {
 
     value: function init() {
       // add event listener - close buttons
-      _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._closeButtonHandler, true);
+      _elementUtil2.default.addListener(Selector.CLOSE, 'click', this._closeButtonHandler, true);
     }
   }, {
     key: 'show',
@@ -106,7 +106,7 @@ var Message = function (_CosmosModule) {
   }, {
     key: '_closeButtonHandler',
     value: function _closeButtonHandler(event) {
-      var messageBox = _util2.default.findAncestor(event.currentTarget, Selector.BOX);
+      var messageBox = _elementUtil2.default.findAncestor(event.currentTarget, Selector.BOX);
 
       messageBox.style.opacity = '0';
       setTimeout(function () {
