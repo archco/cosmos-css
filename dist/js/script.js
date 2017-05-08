@@ -3688,16 +3688,20 @@ _collapse2.default.load();
 _simpleCrud2.default.load();
 
 // define global helper functions.
-window.submitConfirm = _elementUtil2.default.submitConfirm;
-window.checkMobileSize = _elementUtil2.default.checkMobileSize;
-window.showMessage = _message2.default.showMessage;
-window.modalDialog = _modal2.default.dialog;
+window.submitConfirm = function (selector) {
+  var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
+
+  _elementUtil2.default.submitConfirm(selector, message);
+};
 window.showToast = function (text) {
   var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var option = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
   _toast2.default.makeText(text, duration, option).show();
 };
+window.checkMobileSize = window.isMobileSize = _util2.default.isMobileSize;
+window.showMessage = _message2.default.showMessage;
+window.modalDialog = _modal2.default.dialog;
 
 // export
 var version = __webpack_require__(18).version;

@@ -40,13 +40,15 @@ Collapse.load();
 SimpleCRUD.load();
 
 // define global helper functions.
-window.submitConfirm = ElementUtil.submitConfirm;
-window.checkMobileSize = ElementUtil.checkMobileSize;
-window.showMessage = Message.showMessage;
-window.modalDialog = Modal.dialog;
+window.submitConfirm = (selector, message = 'Are you confirm?') => {
+  ElementUtil.submitConfirm(selector, message);
+};
 window.showToast = (text, duration = null, option = {}) => {
   Toast.makeText(text, duration, option).show();
 };
+window.checkMobileSize = window.isMobileSize = Util.isMobileSize;
+window.showMessage = Message.showMessage;
+window.modalDialog = Modal.dialog;
 
 // export
 let version = require('../../package.json').version;
