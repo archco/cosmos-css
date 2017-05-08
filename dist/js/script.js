@@ -1325,11 +1325,12 @@ var Color = function () {
     value: function hexToRgb(hex) {
       // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
       var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-      hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-        return r + r + g + g + b + b;
+
+      return hex.replace(shorthandRegex, function (m, r, g, b) {
+        return '#' + r + r + g + g + b + b;
+      }).substring(1).match(/.{2}/g).map(function (x) {
+        return parseInt(x, 16);
       });
-      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-      return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null;
     }
 
     /**
@@ -1338,16 +1339,35 @@ var Color = function () {
      * @param  {Number} r
      * @param  {Number} g
      * @param  {Number} b
+     * @param  {Boolean} [ toShort = false ] convert to shorthand.
      * @return {String}
      */
 
   }, {
     key: 'rgbToHex',
     value: function rgbToHex(r, g, b) {
-      r = r.toString(16);
-      g = g.toString(16);
-      b = b.toString(16);
-      return "#" + r + g + b;
+      var toShort = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+      var hex = '#' + [r, g, b].map(function (x) {
+        return x.toString(16).padStart(2, '0');
+      }).join('');
+
+      return toShort ? this._hexToShorthand(hex) : hex;
+    }
+  }, {
+    key: '_hexToShorthand',
+    value: function _hexToShorthand(hex) {
+      var check = true;
+      var rgb = hex.substring(1).match(/.{2}/g);
+
+      // check.
+      rgb.map(function (x) {
+        if (!x.match(/(.)\1+/)) check = false;
+      });
+
+      return check ? '#' + rgb.map(function (x) {
+        return x.substring(1);
+      }).join('') : hex;
     }
 
     /**
@@ -3504,9 +3524,10 @@ module.exports = {
 	"main": "dist/module/cosmos.js",
 	"sass": "src/scss/style.scss",
 	"directories": {
-		"test": "tests"
+		"test": "test"
 	},
 	"dependencies": {
+		"normalize.css": "^7.0.0",
 		"scss-palette": "^0.3.2"
 	},
 	"devDependencies": {
@@ -3537,7 +3558,7 @@ module.exports = {
 		"scss:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/style.scss dist/css/style.min.css",
 		"postscss:min": "npm run css:min",
 		"scss:watch": "npm run scss -- --watch",
-		"pug": "node node_modules/pug-cli --pretty tests/views/pages/ --out ./tests/html/",
+		"pug": "node node_modules/pug-cli --pretty test/views/pages/ --out ./test/html/",
 		"pug:watch": "npm run pug -- --watch",
 		"js": "node node_modules/webpack/bin/webpack --config ./task/webpack.config.js",
 		"js:min": "npm run js -- --optimize-minimize --output-filename script.min.js --devtool false",

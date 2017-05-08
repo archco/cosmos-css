@@ -51,15 +51,10 @@ class Color {
   static hexToRgb(hex) {
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
     let shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
-      return r + r + g + g + b + b;
-    });
-    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? [
-      parseInt(result[1],16),
-      parseInt(result[2],16),
-      parseInt(result[3],16)
-    ] : null;
+
+    return hex.replace(shorthandRegex, (m, r, g, b) => '#' + r + r + g + g + b + b)
+              .substring(1).match(/.{2}/g)
+              .map(x => parseInt(x, 16));
   }
 
   /**
@@ -68,13 +63,25 @@ class Color {
    * @param  {Number} r
    * @param  {Number} g
    * @param  {Number} b
+   * @param  {Boolean} [ toShort = false ] convert to shorthand.
    * @return {String}
    */
-  static rgbToHex(r, g, b) {
-    r = r.toString(16);
-    g = g.toString(16);
-    b = b.toString(16);
-    return "#" + r + g + b;
+  static rgbToHex(r, g, b, toShort = false) {
+    let hex = '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
+
+    return toShort ? this._hexToShorthand(hex) : hex;
+  }
+
+  static _hexToShorthand(hex) {
+    let check = true;
+    let rgb = hex.substring(1).match(/.{2}/g);
+
+    // check.
+    rgb.map(x => {
+      if (!x.match(/(.)\1+/)) check = false;
+    });
+
+    return check ? '#' + rgb.map(x => x.substring(1)).join('') : hex;
   }
 
   /**
