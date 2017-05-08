@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/dist/css/style.css">
+  </head>
+  <body>
+    <header class="bg-color-secondary pad flex-center-container" style="height:100px;">
+      <h1>cosmos-css</h1>
+    </header>
+    <nav class="navbar sticky-top">
+      <div class="nav-header"><a class="nav-brand text" href="index.html">Brand Logo</a>
+        <button class="menu-toggle" type="button"><span class="display-hide">Toggle Navigation</span>
+          <div class="icon-bar1"></div>
+          <div class="icon-bar2"></div>
+          <div class="icon-bar3"></div>
+        </button>
+      </div>
+      <ul class="menu-center use-activator">
+        <li class="hide-only-mobile"><a href="index.html">Home</a></li>
+        <li><a href="components.html?q=components">Components</a></li>
+        <li><a href="modules.html">Modules</a></li>
+        <li><a href="js-libraries.html">JS Libraries</a></li>
+        <li class="dropdown">
+          <button class="dropdown-toggle">dropdown</button>
+          <ul class="dropdown-content">
+            <li><a href="#">link1</a></li>
+            <li><a href="#">link2</a></li>
+            <li><a href="#">link3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <section class="pad">
+      <h1>Hello, World!</h1>
+      <p>test page.</p>
+      <h1>Toast</h1>
+      <button class="btn info" id="btn-toast">Toast</button>
+      <script>
+        var toastCount = 0;
+        window.addEventListener('load', function () {
+          document.querySelector('#btn-toast').addEventListener('click', function () {
+            toastCount++;
+            Cosmos.Toast.makeText('toast test ' + toastCount).show();
+          });
+        });
+      </script>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <h3>Footer content</h3>
+            <p>footer content here..</p>
+          </div>
+          <div class="col-6">
+            <h3>Links</h3>
+            <ul class="list-horizontal">
+              <li><a href="#">Link1</a></li>
+              <li><a href="#">Link2</a></li>
+              <li><a href="#">Link3</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">copyright &copy; 2016 cosmos all rights reserved.</div>
+    </footer>
+    <div class="scroll-to-container">
+      <button class="scroll-to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+      <button class="scroll-to-bottom"><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+    </div><script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.min.js"></script>
+    <script src="/dist/js/script.js"></script><script>
+    var year = new Date().getFullYear();
+    document.querySelector('.footer-copyright').innerHTML = "copyright \&copy; " + year + " cosmos all rights reserved.";</script>
+    <script>//</script>
+  </body>
+</html>
