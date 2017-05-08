@@ -5,7 +5,7 @@
   "main": "dist/module/cosmos.js",
   "sass": "src/scss/style.scss",
   "directories": {
-    "test": "tests"
+    "test": "test"
   },
   "dependencies": {
     "normalize.css": "^7.0.0",
@@ -39,7 +39,7 @@
     "scss:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/style.scss dist/css/style.min.css",
     "postscss:min": "npm run css:min",
     "scss:watch": "npm run scss -- --watch",
-    "pug": "node node_modules/pug-cli --pretty tests/views/pages/ --out ./tests/html/",
+    "pug": "node node_modules/pug-cli --pretty test/views/pages/ --out ./test/html/",
     "pug:watch": "npm run pug -- --watch",
     "js": "node node_modules/webpack/bin/webpack --config ./task/webpack.config.js",
     "js:min": "npm run js -- --optimize-minimize --output-filename script.min.js --devtool false",

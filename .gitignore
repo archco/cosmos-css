@@ -1,4 +1,4 @@
 #
 node_modules/
-tests/html/
+test/html/
 .editorconfig
