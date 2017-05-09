@@ -1,6 +1,6 @@
 /*!
  * cosmos-css - The css framework for personal practice.
- * @version v0.11.0
+ * @version v0.11.1
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
@@ -3556,7 +3556,7 @@ exports.default = Toast;
 
 module.exports = {
 	"name": "cosmos-css",
-	"version": "0.11.0",
+	"version": "0.11.1",
 	"description": "The css framework for personal practice.",
 	"main": "dist/module/cosmos.js",
 	"sass": "src/scss/style.scss",
@@ -3706,7 +3706,7 @@ _scaffolding2.default.load();
 // Loadable Modules.
 /*!
  * cosmos-css - The css framework for personal practice.
- * @version v0.11.0
+ * @version v0.11.1
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
