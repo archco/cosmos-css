@@ -352,7 +352,6 @@ export default class ElementUtil {
         e.preventDefault();
         let th = e.currentTarget;
         this._toggleSortDirection(th);
-        console.log(th.dataset[DataSet.SORT_TYPE]);
         this._sortingTable(rows, i + 1, th.dataset[DataSet.SORT_TYPE], th.dataset[DataSet.SORT_DIRECTION]);
       });
     }
@@ -375,11 +374,7 @@ export default class ElementUtil {
 
   static _getSortValue(element) {
     let sortValue = element.dataset[DataSet.SORT_VALUE];
-    if (sortValue) {
-      sortValue += element.textContent;
-    } else {
-      sortValue = element.textContent;
-    }
+    if (!sortValue) sortValue = element.textContent;
 
     return sortValue.toUpperCase();
   }

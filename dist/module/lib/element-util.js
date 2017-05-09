@@ -515,7 +515,6 @@ var ElementUtil = function () {
           e.preventDefault();
           var th = e.currentTarget;
           _this2._toggleSortDirection(th);
-          console.log(th.dataset[DataSet.SORT_TYPE]);
           _this2._sortingTable(rows, i + 1, th.dataset[DataSet.SORT_TYPE], th.dataset[DataSet.SORT_DIRECTION]);
         });
       };
@@ -572,11 +571,7 @@ var ElementUtil = function () {
     key: '_getSortValue',
     value: function _getSortValue(element) {
       var sortValue = element.dataset[DataSet.SORT_VALUE];
-      if (sortValue) {
-        sortValue += element.textContent;
-      } else {
-        sortValue = element.textContent;
-      }
+      if (!sortValue) sortValue = element.textContent;
 
       return sortValue.toUpperCase();
     }
