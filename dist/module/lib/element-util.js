@@ -20,7 +20,8 @@ var ClassName = {
 };
 var DataSet = {
   SORT_DIRECTION: 'sortDirection',
-  SORT_VALUE: 'sortValue'
+  SORT_VALUE: 'sortValue',
+  SORT_TYPE: 'sortType'
 };
 
 var ElementUtil = function () {
@@ -476,23 +477,21 @@ var ElementUtil = function () {
   }, {
     key: 'sortElements',
     value: function sortElements(selector, itemSelector) {
+      var _this = this;
+
       var parent = this.getElement(selector);
       var items = this.nodeListToArray(this.getElements(itemSelector, parent));
-      var compareMethods = {
-        asc: function asc(a, b) {
-          var aVal = (a.dataset[DataSet.SORT_VALUE] + a.textContent).toUpperCase();
-          var bVal = (b.dataset[DataSet.SORT_VALUE] + b.textContent).toUpperCase();
-          return aVal.localeCompare(bVal);
-        },
-        desc: function desc(a, b) {
-          var aVal = (a.dataset[DataSet.SORT_VALUE] + a.textContent).toUpperCase();
-          var bVal = (b.dataset[DataSet.SORT_VALUE] + b.textContent).toUpperCase();
-          return bVal.localeCompare(aVal);
-        }
+      var compareMethod = function compareMethod(a, b) {
+        var aVal = _this._getSortValue(a);
+        var bVal = _this._getSortValue(b);
+        var type = parent.dataset[DataSet.SORT_TYPE] || a.dataset[DataSet.SORT_TYPE] || null;
+        var asc = parent.dataset[DataSet.SORT_DIRECTION] === 'asc';
+
+        return _this._compare(aVal, bVal, type, asc);
       };
 
       this._toggleSortDirection(parent);
-      this._sorting(items, compareMethods[parent.dataset[DataSet.SORT_DIRECTION]]);
+      this._sorting(items, compareMethod.bind(this));
     }
 
     /**
@@ -505,7 +504,7 @@ var ElementUtil = function () {
   }, {
     key: 'sortTable',
     value: function sortTable(selector) {
-      var _this = this;
+      var _this2 = this;
 
       var table = this.getElement(selector);
       var heads = this.getElements('thead th', table);
@@ -515,8 +514,9 @@ var ElementUtil = function () {
         v.addEventListener('click', function (e) {
           e.preventDefault();
           var th = e.currentTarget;
-          _this._toggleSortDirection(th);
-          _this._sortingTable(rows, i + 1, th.dataset[DataSet.SORT_DIRECTION]);
+          _this2._toggleSortDirection(th);
+          console.log(th.dataset[DataSet.SORT_TYPE]);
+          _this2._sortingTable(rows, i + 1, th.dataset[DataSet.SORT_TYPE], th.dataset[DataSet.SORT_DIRECTION]);
         });
       };
 
@@ -552,25 +552,33 @@ var ElementUtil = function () {
     }
   }, {
     key: '_sortingTable',
-    value: function _sortingTable(rows, nth, direction) {
-      var compareMethods = {
-        asc: function asc(a, b) {
-          a = this.getElement('td:nth-child(' + nth + ')', a);
-          b = this.getElement('td:nth-child(' + nth + ')', b);
-          var aVal = (a.dataset[DataSet.SORT_VALUE] + a.textContent).toUpperCase();
-          var bVal = (b.dataset[DataSet.SORT_VALUE] + b.textContent).toUpperCase();
-          return aVal.localeCompare(bVal);
-        },
-        desc: function desc(a, b) {
-          a = this.getElement('td:nth-child(' + nth + ')', a);
-          b = this.getElement('td:nth-child(' + nth + ')', b);
-          var aVal = (a.dataset[DataSet.SORT_VALUE] + a.textContent).toUpperCase();
-          var bVal = (b.dataset[DataSet.SORT_VALUE] + b.textContent).toUpperCase();
-          return bVal.localeCompare(aVal);
-        }
+    value: function _sortingTable(rows, nth, type, direction) {
+      var _this3 = this;
+
+      var compareMethod = function compareMethod(a, b) {
+        a = _this3.getElement('td:nth-child(' + nth + ')', a);
+        b = _this3.getElement('td:nth-child(' + nth + ')', b);
+        var aVal = _this3._getSortValue(a);
+        var bVal = _this3._getSortValue(b);
+        var asc = direction === 'asc';
+        type = type || a.dataset[DataSet.SORT_TYPE] || null;
+
+        return _this3._compare(aVal, bVal, type, asc);
       };
 
-      this._sorting(rows, compareMethods[direction].bind(this));
+      this._sorting(rows, compareMethod.bind(this));
+    }
+  }, {
+    key: '_getSortValue',
+    value: function _getSortValue(element) {
+      var sortValue = element.dataset[DataSet.SORT_VALUE];
+      if (sortValue) {
+        sortValue += element.textContent;
+      } else {
+        sortValue = element.textContent;
+      }
+
+      return sortValue.toUpperCase();
     }
   }, {
     key: '_sorting',
@@ -590,6 +598,40 @@ var ElementUtil = function () {
       } else {
         elm.dataset[DataSet.SORT_DIRECTION] = 'asc';
       }
+    }
+  }, {
+    key: '_compare',
+    value: function _compare(a, b, type) {
+      var asc = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+
+      if (type === 'number') {
+        return this._compareNumber(a, b, asc);
+      } else if (type === 'date') {
+        return this._compareDate(a, b, asc);
+      } else {
+        // default: string
+        return asc ? a.localeCompare(b) : b.localeCompare(a);
+      }
+    }
+  }, {
+    key: '_compareNumber',
+    value: function _compareNumber(a, b) {
+      var asc = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+      a = parseFloat(a);
+      b = parseFloat(b);
+
+      return asc ? a - b : b - a;
+    }
+  }, {
+    key: '_compareDate',
+    value: function _compareDate(a, b) {
+      var asc = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+      a = new Date(a);
+      b = new Date(b);
+
+      return asc ? a - b : b - a;
     }
   }, {
     key: 'name',
