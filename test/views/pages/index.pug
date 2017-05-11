@@ -9,10 +9,15 @@ block content
     h1 Hello, World!
     p test page.
 
+    h2(id='c-test') collapse-test
+    div(id='c-target')
+      p(class='pad bg-color-success')=lorem
+
     h1 Toast
     include ../includes/toast.pug
 
 block script
   <script>
-  | //
+  | var c = new Cosmos.Collapse('#c-test', {target: '#c-target', is_collapsed: false});
+  | c.on();
   </script>

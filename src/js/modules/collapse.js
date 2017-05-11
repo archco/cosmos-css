@@ -21,8 +21,16 @@ const Selector = {
   C_ACTIVE: `.${ClassName.TOGGLE}.${ClassName.ACTIVE}`,
   A_ACTIVE: `.${ClassName.ACCORDION} .${ClassName.A_HEAD}.${ClassName.ACTIVE}`,
 };
+const Default = {
+  target: '',
+  is_collapsed: true, // initial state.
+};
 
 class Collapse extends CosmosModule {
+  constructor(element = null, option = {}) {
+    super(option);
+    this.setElement(element);
+  }
 
   // static
 
@@ -30,94 +38,156 @@ class Collapse extends CosmosModule {
     return NAME;
   }
 
+  static load(element = null, option = {}) {
+    let c = new this(element, option);
+    c.init();
+  }
+
   // public
+
+  getDefaultOption() {
+    return Default;
+  }
 
   init() {
     // collapse toggle listener
-    eu.addListener(Selector.TOGGLE, 'click', this._toggleHandler.bind(this));
+    eu.addListener(Selector.TOGGLE, 'click', this._collapseToggleHandler.bind(this));
     // accordion head listener
-    eu.addListener(Selector.A_HEAD, 'click', this._headClickHandler.bind(this));
+    eu.addListener(Selector.A_HEAD, 'click', this._accordionHeadHandler.bind(this));
     // Handle on activated collapse and accordion.
     this._activatedCollapse();
     this._activatedAccordion();
   }
 
-  // private
+  /**
+   * initialize on this.element.
+   *
+   * @return {void}
+   */
+  on() {
+    eu.addListener(this.element, 'click', () => {
+      this._toggle(this.element, this.target);
+    });
 
-  _toggleHandler(event) {
-    let t = event.currentTarget;
-    let p = document.querySelector(t.dataset.target);
-
-    this._collapseToggle(t, p);
-  }
-
-  _headClickHandler(event) {
-    let h = event.currentTarget;
-    let b = h.nextElementSibling;
-    let a = eu.findAncestor(h, Selector.ACCORDION);
-
-    if (h.classList.contains(ClassName.ACTIVE)) {
-      this._collapseToggle(h, b);
+    if (this.option.is_collapsed) {
+      this.hide();
     } else {
-      this._allClose(a);
-      this._collapseToggle(h, b);
+      this.show();
     }
   }
 
-  _collapseToggle(head, body) {
-    head.classList.toggle(ClassName.ACTIVE);
-    this._toggleMaxHeight(body);
+  /**
+   * show element's target.
+   *
+   * @return {void}
+   */
+  show() {
+    this._show(this.element, this.target);
   }
 
-  _collapseClose(head, body) {
-    head.classList.remove(ClassName.ACTIVE);
-    body.style.maxHeight = null;
+  /**
+   * hide element's target.
+   *
+   * @return {void}
+   */
+  hide() {
+    this._hide(this.element, this.target);
+  }
+
+  /**
+   * set element property.
+   *
+   * @param {String|Element} element
+   * @return {Collapse}
+   */
+  setElement(element) {
+    this.element = element ? eu.getElement(element) : element;
+    this.target = this.option.target
+      ? eu.getElement(this.option.target)
+      : this._getTarget(this.element);
+
+    if (this.target && !this.target.classList.contains(ClassName.PANNEL)) {
+      this.target.classList.add(ClassName.PANNEL);
+    }
+    return this;
+  }
+
+  // private
+
+  _toggle(element, target) {
+    if (element.classList.contains(ClassName.ACTIVE)) {
+      this._hide(element, target);
+    } else {
+      this._show(element, target);
+    }
+  }
+
+  _show(element, target) {
+    element.classList.add(ClassName.ACTIVE);
+    target.style.maxHeight = target.scrollHeight + 'px';
+  }
+
+  _hide(element, target) {
+    element.classList.remove(ClassName.ACTIVE);
+    target.style.maxHeight = null;
+  }
+
+  _collapseToggleHandler(event) {
+    let element = event.currentTarget;
+    let target = this._getTarget(element);
+
+    this._toggle(element, target);
+  }
+
+  _accordionHeadHandler(event) {
+    let head = event.currentTarget;
+    let body = head.nextElementSibling;
+    let accordion = eu.findAncestor(head, Selector.ACCORDION);
+
+    if (head.classList.contains(ClassName.ACTIVE)) {
+      this._toggle(head, body);
+    } else {
+      this._allClose(accordion);
+      this._toggle(head, body);
+    }
   }
 
   _allClose(accordion) {
     let heads = accordion.querySelectorAll(Selector.A_HEAD);
-    for (let h of heads) {
-      if (h.classList.contains(ClassName.ACTIVE)) {
-        let b = h.nextElementSibling;
-        this._collapseClose(h, b);
+    for (let head of heads) {
+      if (head.classList.contains(ClassName.ACTIVE)) {
+        let body = head.nextElementSibling;
+        this._hide(head, body);
       }
     }
   }
 
   _activatedCollapse() {
     // Collapse can multiple active.
-    let ts = document.querySelectorAll(Selector.C_ACTIVE);
-    if (!ts.length) return;
+    let elements = document.querySelectorAll(Selector.C_ACTIVE);
+    if (!elements.length) return;
 
-    for (let t of ts) {
-      let b = t.nextElementSibling;
-      this._toggleMaxHeight(b);
+    for (let element of elements) {
+      let target = this._getTarget(element);
+      this._show(element, target);
     }
   }
 
   _activatedAccordion() {
     // Only one accordion can be active at a time. After all, only the last one will be activated.
-    let hs = document.querySelectorAll(Selector.A_ACTIVE);
-    if (!hs.length) return;
+    let heads = document.querySelectorAll(Selector.A_ACTIVE);
+    if (!heads.length) return;
 
-    for (let h of hs) {
-      let a = eu.findAncestor(h, Selector.ACCORDION);
-      this._allClose(a);
-      h.click();
+    for (let head of heads) {
+      let accordion = eu.findAncestor(head, Selector.ACCORDION);
+      this._allClose(accordion);
+      head.click();
     }
   }
 
-  /**
-   * _toggleMaxHeight
-   * @param  {Element} elm
-   * @return {void}
-   */
-  _toggleMaxHeight(elm) {
-    if (elm.style.maxHeight) {
-      elm.style.maxHeight = null;
-    } else {
-      elm.style.maxHeight = elm.scrollHeight + 'px';
-    }
+  _getTarget(element) {
+    if (!element) return null;
+    return eu.getElement(element.dataset.target);
   }
 }
 

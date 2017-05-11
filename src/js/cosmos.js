@@ -63,8 +63,17 @@ const Cosmos = {
   lib,
   Button,
   Chip,
-  Toast
+  Toast,
+  Collapse
 };
 
 export default Cosmos;
-export { Util, ElementUtil, Color, Helper, Button, Chip, Toast };
+export { Util,
+  ElementUtil,
+  Color,
+  Helper,
+  Button,
+  Chip,
+  Toast,
+  Collapse
+};
