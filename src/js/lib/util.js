@@ -25,12 +25,12 @@ class Util {
    */
   static eventOnSelector(selector, type, listener, useCapture = false) {
     let elements = document.querySelectorAll(selector);
-    if (elements.length === 0) {
-      return null;
-    }
+    if (elements.length === 0) return null;
+
     for (let element of elements) {
       element.addEventListener(type, listener, useCapture);
     }
+
     return elements.length;
   }
 
@@ -44,9 +44,10 @@ class Util {
    */
   static findAncestor(element, selector) {
     do {
-      if(element == document.querySelector('html')) return null;
+      if (element == document.querySelector('html')) return null;
       element = element.parentElement;
-    } while(!element.matches(selector));
+    } while (!element.matches(selector));
+
     return element;
   }
 
@@ -153,6 +154,7 @@ class Util {
       for (let p in small) {
         if (!(p in big && this.isContains(big[p], small[p]))) return false;
       }
+
       return true;
     } else {
       return big === small;
@@ -171,7 +173,7 @@ class Util {
 }
 
 Object.assign(Util, {
-  scrollIt
+  scrollIt,
 });
 
 export default Util;

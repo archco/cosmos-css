@@ -8,7 +8,7 @@ const NAME = 'Cosmos.Toast';
 const ClassName = {
   TOAST: 'toast',
   SHOW: 'show',
-  CONTAINER: 'toast-container'
+  CONTAINER: 'toast-container',
 };
 const Default = {
   text: 'no text',
@@ -23,6 +23,7 @@ const Default = {
 export default class Toast extends CosmosModule {
   constructor(option = {}) {
     super(option);
+
     // set defaults.
     this.setText(this.option.text);
     this.setDuration(this.option.duration_short);
@@ -72,6 +73,7 @@ export default class Toast extends CosmosModule {
       elm.classList.add(ClassName.CONTAINER);
       eu.getElement('body').appendChild(elm);
     }
+
     this.container = elm;
     return this;
   }

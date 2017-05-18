@@ -20,13 +20,10 @@ class Helper {
    * @return {void}
    */
   static submitConfirm(form, message = 'Are you confirm?') {
-    if (!form) {
-      throw new Error('Form target is not exist.');
-    }
-    form.addEventListener('submit', function(event) {
-      if (!confirm(message)) {
-        event.preventDefault();
-      }
+    if (!form) throw new Error('Form target is not exist.');
+
+    form.addEventListener('submit', function (event) {
+      if (!confirm(message)) event.preventDefault();
     });
   }
 

@@ -1,5 +1,5 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import eu from '../lib/element-util.js';
+import ElementUtil from '../lib/element-util.js';
 
 /************************************************************
   Button
@@ -11,12 +11,14 @@ const ClassName = {
   POSITION_RIGHT_MIDDLE: 'at-right-middle',
   HIDE: 'display-hide',
   REMOVEABLE: 'removeable',
-  HIDEABLE: 'hideable'
+  HIDEABLE: 'hideable',
 };
 const Selector = {
   CLOSE: `.${ClassName.CLOSE}`,
-  HAS_ACTION: `.${ClassName.CLOSE}.${ClassName.REMOVEABLE}, .${ClassName.CLOSE}.${ClassName.HIDEABLE}`
+  HAS_ACTION: `.${ClassName.CLOSE}.${ClassName.REMOVEABLE},
+    .${ClassName.CLOSE}.${ClassName.HIDEABLE}`,
 };
+
 // default option.
 const Default = {
   close_init_enable: true,
@@ -25,8 +27,8 @@ const Default = {
   close_style: 'default', // default | icon | circle_default | circle_icon
   close_content: {
     default: '✖',
-    icon: `<i class="fa fa-times" aria-hidden="true"></i>`
-  }
+    icon: `<i class="fa fa-times" aria-hidden="true"></i>`,
+  },
 };
 
 class Button extends CosmosModule{
@@ -49,6 +51,7 @@ class Button extends CosmosModule{
       console.log('already has .btn-close');
       return;
     }
+
     let btnClose = this._createBtnClose();
     let handler = callback || this._btnCloseClickHandler;
 
@@ -59,7 +62,7 @@ class Button extends CosmosModule{
   init() {
     // btn-close addEventListener.
     if (this.option.close_init_enable) {
-      eu.addListener(
+      ElementUtil.addListener(
         Selector.HAS_ACTION,
         'click',
         this._btnCloseClickHandler.bind(this)
@@ -84,6 +87,7 @@ class Button extends CosmosModule{
     } else if (action == 'remove') {
       parent.removeChild(element);
     }
+
     event.preventDefault();
   }
 
@@ -96,6 +100,7 @@ class Button extends CosmosModule{
     } else if (this.option.close_position == 'right_middle') {
       btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
     }
+
     btnClose.innerHTML = this.option.close_content[this.option.close_style];
 
     return btnClose;

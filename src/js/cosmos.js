@@ -10,6 +10,7 @@ import Util from './lib/util.js';
 import Color from './lib/color.js';
 import Helper from './lib/helper.js';
 import ElementUtil from './lib/element-util.js';
+
 // Loadable Modules.
 import Scaffolding from './modules/scaffolding.js';
 import Button from './modules/button.js';
@@ -22,6 +23,7 @@ import ScrollTo from './modules/scroll-to.js';
 import Tab from './modules/tab.js';
 import Collapse from './modules/collapse.js';
 import SimpleCRUD from './modules/simple-crud.js';
+
 // Functional modules. - nonloadable
 import Chip from './modules/chip.js';
 import Toast from './modules/toast.js';
@@ -43,9 +45,11 @@ SimpleCRUD.load();
 window.submitConfirm = (selector, message = 'Are you confirm?') => {
   ElementUtil.submitConfirm(selector, message);
 };
+
 window.showToast = (text, duration = null, option = {}) => {
   Toast.makeText(text, duration, option).show();
 };
+
 window.checkMobileSize = window.isMobileSize = Util.isMobileSize;
 window.showMessage = Message.showMessage;
 window.modalDialog = Modal.dialog;
@@ -55,7 +59,7 @@ let version = require('../../package.json').version;
 const lib = {
   Util,
   Color,
-  ElementUtil
+  ElementUtil,
 };
 const Cosmos = {
   name: 'cosmos-css',
@@ -64,7 +68,7 @@ const Cosmos = {
   Button,
   Chip,
   Toast,
-  Collapse
+  Collapse,
 };
 
 export default Cosmos;

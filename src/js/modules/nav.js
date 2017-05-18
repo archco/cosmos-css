@@ -1,6 +1,6 @@
 import CosmosModule from '../lib/cosmos-module.js';
 import Util from '../lib/util.js';
-import eu from '../lib/element-util.js';
+import ElementUtil from '../lib/element-util.js';
 
 /************************************************************
   nav
@@ -13,6 +13,7 @@ const ClassName = {
   USE_ACTIVATOR: 'use-activator',
 };
 const Selector = {
+  NAVBAR: `nav.${ClassName.NAVBAR}`,
   TOGGLE_BTN: `nav.${ClassName.NAVBAR} .${ClassName.TOGGLE_BTN}`,
   USE_ACTIVATOR: `nav.${ClassName.NAVBAR} ul.${ClassName.USE_ACTIVATOR}`,
 };
@@ -37,16 +38,16 @@ class Nav extends CosmosModule {
   // public
 
   init() {
-    eu.addListener(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
+    ElementUtil.addListener(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
 
     this.activator(Selector.USE_ACTIVATOR);
 
     // handle jQuery slide style.
     $(window).resize(function () {
       var w = $(window).width();
-      var menu = $("nav ul");
-      if (w > 768 && menu.is(':hidden')) {
-        menu.removeAttr('style');
+      var $menu = $('nav ul');
+      if (w > 768 && $menu.is(':hidden')) {
+        $menu.removeAttr('style');
       }
     });
   }
@@ -70,11 +71,11 @@ class Nav extends CosmosModule {
     function compareWithLocation(anchor) {
       let l = {
         path: lastTerm(document.location.pathname),
-        query: Util.locationSearchToObject()
+        query: Util.locationSearchToObject(),
       };
       let a = {
         path: lastTerm(anchor.pathname),
-        query: Util.searchToObject(anchor.search)
+        query: Util.searchToObject(anchor.search),
       };
 
       if (anchor.getAttribute('href') == '#') {
@@ -90,17 +91,19 @@ class Nav extends CosmosModule {
     }
 
     function lastTerm(string) {
-      return string.substr(string.lastIndexOf("/"));
+      return string.substr(string.lastIndexOf('/'));
     }
   }
 
   // private
 
   _toggleHandler(event) {
-    let t = event.currentTarget;
-    let nav = t.parentNode.parentNode;
+    let toggleBtn = event.currentTarget;
+    let nav = ElementUtil.findAncestor(toggleBtn, Selector.NAVBAR);
+
     // toggle button class change.
-    t.classList.toggle(ClassName.CHANGE);
+    toggleBtn.classList.toggle(ClassName.CHANGE);
+
     // menu slide (use jQuery)
     for (let m of MenuGroups) {
       $(nav).find(m).slideToggle();

@@ -31,7 +31,7 @@ class CosmosModule {
    *
    * @return {void}
    */
-  init() {}
+  init() {} // jscs:ignore disallowEmptyBlocks
 
   /**
    * setOption

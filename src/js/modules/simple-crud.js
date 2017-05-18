@@ -65,6 +65,7 @@ class SimpleCRUD extends CosmosModule {
 
   _switchView(element, name) {
     let nodes = this._getNodes(element);
+
     // console.log(NAME, 'switchView: ' + name);
     nodes.current.classList.remove(ClassName.SHOW);
     nodes[name].classList.add(ClassName.SHOW);

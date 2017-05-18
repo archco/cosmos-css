@@ -116,7 +116,7 @@ var CosmosModule = function () {
      *
      * @return {void}
      */
-    value: function init() {}
+    value: function init() {} // jscs:ignore disallowEmptyBlocks
 
     /**
      * setOption
@@ -871,8 +871,9 @@ var ClassName = {
 };
 var Selector = {
   CLOSE: '.' + ClassName.CLOSE,
-  HAS_ACTION: '.' + ClassName.CLOSE + '.' + ClassName.REMOVEABLE + ', .' + ClassName.CLOSE + '.' + ClassName.HIDEABLE
+  HAS_ACTION: '.' + ClassName.CLOSE + '.' + ClassName.REMOVEABLE + ',\n    .' + ClassName.CLOSE + '.' + ClassName.HIDEABLE
 };
+
 // default option.
 var Default = {
   close_init_enable: true,
@@ -907,6 +908,7 @@ var Button = function (_CosmosModule) {
         console.log('already has .btn-close');
         return;
       }
+
       var btnClose = this._createBtnClose();
       var handler = callback || this._btnCloseClickHandler;
 
@@ -942,6 +944,7 @@ var Button = function (_CosmosModule) {
       } else if (action == 'remove') {
         parent.removeChild(element);
       }
+
       event.preventDefault();
     }
   }, {
@@ -955,6 +958,7 @@ var Button = function (_CosmosModule) {
       } else if (this.option.close_position == 'right_middle') {
         btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
       }
+
       btnClose.innerHTML = this.option.close_content[this.option.close_style];
 
       return btnClose;
@@ -1055,9 +1059,8 @@ var Util = function () {
       var useCapture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
       var elements = document.querySelectorAll(selector);
-      if (elements.length === 0) {
-        return null;
-      }
+      if (elements.length === 0) return null;
+
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -1102,6 +1105,7 @@ var Util = function () {
         if (element == document.querySelector('html')) return null;
         element = element.parentElement;
       } while (!element.matches(selector));
+
       return element;
     }
 
@@ -1244,6 +1248,7 @@ var Util = function () {
         for (var p in small) {
           if (!(p in big && this.isContains(big[p], small[p]))) return false;
         }
+
         return true;
       } else {
         return big === small;
@@ -1346,6 +1351,7 @@ var Color = function () {
       } else {
         throw new Error('parameter only "hex color" or "rgb array"');
       }
+
       return array;
     }
 
@@ -1418,6 +1424,7 @@ var Color = function () {
     key: 'lightness',
     value: function lightness(color) {
       var rgb = this.colorToArray(color);
+
       // Color lightness formula.
       // @link https://www.w3.org/TR/AERT#color-contrast
       return (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
@@ -1492,13 +1499,10 @@ var Helper = function () {
     value: function submitConfirm(form) {
       var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
 
-      if (!form) {
-        throw new Error('Form target is not exist.');
-      }
+      if (!form) throw new Error('Form target is not exist.');
+
       form.addEventListener('submit', function (event) {
-        if (!confirm(message)) {
-          event.preventDefault();
-        }
+        if (!confirm(message)) event.preventDefault();
       });
     }
 
@@ -1576,8 +1580,7 @@ var Selector = {
 var Default = {
   tag: 'span', // chip's tagName. span, div, a ...
   close_button: true, // enable close button.
-  close_action: 'remove' // close action. remove | hide
-};
+  close_action: 'remove' };
 
 var Chip = function (_CosmosModule) {
   _inherits(Chip, _CosmosModule);
@@ -1684,21 +1687,24 @@ var Chip = function (_CosmosModule) {
     key: '_createChip',
     value: function _createChip(text, imgSrc, data) {
       var chip = document.createElement(this.option.tag);
+
       // base.
       chip.classList.add(ClassName.CHIP);
       chip.textContent = text;
+
       // img.
-      if (imgSrc) {
-        chip.appendChild(this._createImg(imgSrc));
-      }
+      if (imgSrc) chip.appendChild(this._createImg(imgSrc));
+
       // dataset.
       for (var key in data) {
         if (key == 'href' && chip.tagName == 'A') {
           chip.href = data[key];
           continue;
         }
+
         chip.dataset[key] = data[key];
       }
+
       // close button.
       if (this.option.close_button) {
         this.button.appendBtnClose(chip);
@@ -1809,8 +1815,10 @@ var Collapse = function (_CosmosModule) {
     value: function init() {
       // collapse toggle listener
       _elementUtil2.default.addListener(Selector.TOGGLE, 'click', this._collapseToggleHandler.bind(this));
+
       // accordion head listener
       _elementUtil2.default.addListener(Selector.A_HEAD, 'click', this._accordionHeadHandler.bind(this));
+
       // Handle on activated collapse and accordion.
       this._activatedCollapse();
       this._activatedAccordion();
@@ -1878,6 +1886,7 @@ var Collapse = function (_CosmosModule) {
       if (this.target && !this.target.classList.contains(ClassName.PANNEL)) {
         this.target.classList.add(ClassName.PANNEL);
       }
+
       return this;
     }
 
@@ -2148,31 +2157,30 @@ var Dropdown = function (_CosmosModule) {
     /**
      * close dropdown contents
      *
-     * @param  {element} t  except target
+     * @param  {element} target  except target
      * @return {void}
      */
 
   }, {
     key: '_closeElseDropdown',
     value: function _closeElseDropdown() {
-      var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-      var ds = document.querySelectorAll(Selector.DROPDOWN);
+      var dropdowns = document.querySelectorAll(Selector.DROPDOWN);
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
 
       try {
-        for (var _iterator = ds[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var d = _step.value;
+        for (var _iterator = dropdowns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var dropdown = _step.value;
 
-          var c = d.querySelector(Selector.CONTENT);
-          if (t && t == d) {
-            continue;
-          } // except target
-          if (c.classList.contains(ClassName.SHOW)) {
-            c.classList.remove(ClassName.SHOW);
+          var content = dropdown.querySelector(Selector.CONTENT);
+          if (target && target == dropdown) continue; // except target
+
+          if (content.classList.contains(ClassName.SHOW)) {
+            content.classList.remove(ClassName.SHOW);
           }
         }
       } catch (err) {
@@ -2297,21 +2305,19 @@ var Message = function (_CosmosModule) {
     value: function show(message) {
       var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
 
-      var c, b, span;
-
       // create message box
-      c = document.querySelector(Selector.CONTAINER); // container
-      b = document.createElement('DIV'); // message box
-      span = document.createElement('SPAN'); // message text
+      var container = document.querySelector(Selector.CONTAINER); // container
+      var box = document.createElement('DIV'); // message box
+      var span = document.createElement('SPAN'); // message text
 
       span.textContent = message;
-      b.classList.add(ClassName.BOX);
-      b.classList.add(status);
+      box.classList.add(ClassName.BOX);
+      box.classList.add(status);
 
       // append child
-      b.appendChild(span);
-      this.button.appendBtnClose(b, this._closeButtonHandler);
-      c.appendChild(b);
+      box.appendChild(span);
+      this.button.appendBtnClose(box, this._closeButtonHandler);
+      container.appendChild(box);
     }
 
     // private
@@ -2325,6 +2331,7 @@ var Message = function (_CosmosModule) {
       setTimeout(function () {
         messageBox.style.display = 'none';
       }, 600); // 0.6s
+
       event.stopPropagation();
     }
   }], [{
@@ -2481,14 +2488,17 @@ var Modal = function (_CosmosModule) {
     value: function makeDialog(text) {
       var m = document.createElement('div'); // modal
       var c = document.createElement('div'); // modal-content
+
       // modal-content
       c.classList.add(ClassName.CONTENT);
       c.textContent = text;
+
       // modal
       m.classList.add(ClassName.MODAL);
       m.appendChild(c);
       this._addCloseBtn(m);
       document.body.appendChild(m);
+
       // show
       this._modalShow(m);
     }
@@ -2599,6 +2609,7 @@ var ClassName = {
   USE_ACTIVATOR: 'use-activator'
 };
 var Selector = {
+  NAVBAR: 'nav.' + ClassName.NAVBAR,
   TOGGLE_BTN: 'nav.' + ClassName.NAVBAR + ' .' + ClassName.TOGGLE_BTN,
   USE_ACTIVATOR: 'nav.' + ClassName.NAVBAR + ' ul.' + ClassName.USE_ACTIVATOR
 };
@@ -2627,9 +2638,9 @@ var Nav = function (_CosmosModule) {
       // handle jQuery slide style.
       $(window).resize(function () {
         var w = $(window).width();
-        var menu = $("nav ul");
-        if (w > 768 && menu.is(':hidden')) {
-          menu.removeAttr('style');
+        var $menu = $('nav ul');
+        if (w > 768 && $menu.is(':hidden')) {
+          $menu.removeAttr('style');
         }
       });
     }
@@ -2697,7 +2708,7 @@ var Nav = function (_CosmosModule) {
       }
 
       function lastTerm(string) {
-        return string.substr(string.lastIndexOf("/"));
+        return string.substr(string.lastIndexOf('/'));
       }
     }
 
@@ -2706,10 +2717,12 @@ var Nav = function (_CosmosModule) {
   }, {
     key: '_toggleHandler',
     value: function _toggleHandler(event) {
-      var t = event.currentTarget;
-      var nav = t.parentNode.parentNode;
+      var toggleBtn = event.currentTarget;
+      var nav = _elementUtil2.default.findAncestor(toggleBtn, Selector.NAVBAR);
+
       // toggle button class change.
-      t.classList.toggle(ClassName.CHANGE);
+      toggleBtn.classList.toggle(ClassName.CHANGE);
+
       // menu slide (use jQuery)
       var _iteratorNormalCompletion2 = true;
       var _didIteratorError2 = false;
@@ -2837,14 +2850,15 @@ var Parallax = function (_CosmosModule) {
     key: '_process',
     value: function _process(p) {
       var i = p.querySelector('img');
-      if (!i) {
-        return;
-      }
+      if (!i) return;
       var h = p.dataset.height || i.clientHeight;
+
       // hide <img>
       i.classList.add(ClassName.HIDE);
+
       // set parallax background image.
       p.style.backgroundImage = 'url(\'' + i.src + '\')';
+
       // set parallax height.
       p.style.height = h + 'px';
     }
@@ -2980,6 +2994,7 @@ var Selector = {
   TOP: '.' + ClassName.TOTOP,
   BOTTOM: '.' + ClassName.TOBOTTOM
 };
+
 // default option.
 var Default = {
   btn_top: Selector.TOP,
@@ -3051,6 +3066,7 @@ var ScrollTo = function (_CosmosModule) {
       } else if (top <= distance && this._isShown(toTop)) {
         toTop.classList.remove(ClassName.SHOW);
       }
+
       // toBottom
       if (bottom > distance && !this._isShown(toBottom)) {
         toBottom.classList.add(ClassName.SHOW);
@@ -3207,6 +3223,7 @@ var SimpleCRUD = function (_CosmosModule) {
     key: '_switchView',
     value: function _switchView(element, name) {
       var nodes = this._getNodes(element);
+
       // console.log(NAME, 'switchView: ' + name);
       nodes.current.classList.remove(ClassName.SHOW);
       nodes[name].classList.add(ClassName.SHOW);
@@ -3358,14 +3375,16 @@ var Tab = function (_CosmosModule) {
 
       try {
         for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var l = _step2.value;
+          var link = _step2.value;
 
           // content hide
-          var c = this._getContent(l);
-          c.classList.remove(ClassName.SHOW);
+          var _content = this._getContent(link);
+          _content.classList.remove(ClassName.SHOW);
+
           // remove link.active
-          l.classList.remove(ClassName.ACTIVE);
+          link.classList.remove(ClassName.ACTIVE);
         }
+
         // active and show content.
       } catch (err) {
         _didIteratorError2 = true;
@@ -3396,11 +3415,12 @@ var Tab = function (_CosmosModule) {
   }, {
     key: '_getContent',
     value: function _getContent(link) {
-      var c = document.querySelector(this._extractID(link.href));
-      if (c && !c.classList.contains(ClassName.CONTENT)) {
-        c.classList.add(ClassName.CONTENT);
+      var content = document.querySelector(this._extractID(link.href));
+      if (content && !content.classList.contains(ClassName.CONTENT)) {
+        content.classList.add(ClassName.CONTENT);
       }
-      return c;
+
+      return content;
     }
   }, {
     key: '_getTabs',
@@ -3417,15 +3437,16 @@ var Tab = function (_CosmosModule) {
 
       try {
         for (var _iterator3 = links[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-          var l = _step3.value;
+          var link = _step3.value;
 
           // set default.
-          if (l.classList.contains(ClassName.ACTIVE)) {
-            l.click();
+          if (link.classList.contains(ClassName.ACTIVE)) {
+            link.click();
           }
+
           // tab fade effect.
           if (tab.classList.contains(ClassName.FADE)) {
-            this._getContent(l).classList.add(ClassName.EFFECT_FADE);
+            this._getContent(link).classList.add(ClassName.EFFECT_FADE);
           }
         }
       } catch (err) {
@@ -3562,6 +3583,7 @@ var Toast = function (_CosmosModule) {
         elm.classList.add(ClassName.CONTAINER);
         _elementUtil2.default.getElement('body').appendChild(elm);
       }
+
       this.container = elm;
       return this;
     }
@@ -3786,8 +3808,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // initialize - loading modules.
 
+
 // Functional modules. - nonloadable
 _scaffolding2.default.load();
+
 // Loadable Modules.
 /*!
  * cosmos-css - The css framework for personal practice.
@@ -3815,12 +3839,14 @@ window.submitConfirm = function (selector) {
 
   _elementUtil2.default.submitConfirm(selector, message);
 };
+
 window.showToast = function (text) {
   var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var option = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
   _toast2.default.makeText(text, duration, option).show();
 };
+
 window.checkMobileSize = window.isMobileSize = _util2.default.isMobileSize;
 window.showMessage = _message2.default.showMessage;
 window.modalDialog = _modal2.default.dialog;
@@ -3932,9 +3958,7 @@ function scrollIt(destination) {
 
   if ('requestAnimationFrame' in window === false) {
     window.scroll(0, destinationOffsetToScroll);
-    if (callback) {
-      callback();
-    }
+    if (callback) callback();
     return;
   }
 
@@ -3945,9 +3969,7 @@ function scrollIt(destination) {
     window.scroll(0, Math.ceil(timeFunction * (destinationOffsetToScroll - start) + start));
 
     if (window.pageYOffset === destinationOffsetToScroll) {
-      if (callback) {
-        callback();
-      }
+      if (callback) callback();
       return;
     }
 

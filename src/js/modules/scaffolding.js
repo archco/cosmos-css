@@ -1,5 +1,5 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import eu from '../lib/element-util.js';
+import ElementUtil from '../lib/element-util.js';
 
 /************************************************************
   Scaffolding
@@ -18,7 +18,7 @@ class Scaffolding extends CosmosModule {
 
   init() {
     // wrap table.responsive
-    eu.wrap('table.responsive', 'table-responsive-wrapper');
+    ElementUtil.wrap('table.responsive', 'table-responsive-wrapper');
   }
 }
 

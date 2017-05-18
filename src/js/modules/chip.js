@@ -6,15 +6,15 @@ import Button from './button.js';
 *************************************************************/
 const NAME = 'Cosmos.Chip';
 const ClassName = {
-  CHIP: 'chip'
+  CHIP: 'chip',
 };
 const Selector = {
-  CHIP: `.${ClassName.CHIP}`
+  CHIP: `.${ClassName.CHIP}`,
 };
 const Default = {
   tag: 'span', // chip's tagName. span, div, a ...
   close_button: true, // enable close button.
-  close_action: 'remove' // close action. remove | hide
+  close_action: 'remove', // close action. remove | hide
 };
 
 class Chip extends CosmosModule {
@@ -22,7 +22,7 @@ class Chip extends CosmosModule {
     super(option);
     this.container = document.querySelector(container);
     this.button = new Button({
-      close_action: this.option.close_action
+      close_action: this.option.close_action,
     });
   }
 
@@ -60,6 +60,7 @@ class Chip extends CosmosModule {
     for (let chip of chips) {
       this.container.removeChild(chip);
     }
+
     return count;
   }
 
@@ -80,21 +81,24 @@ class Chip extends CosmosModule {
 
   _createChip(text, imgSrc, data) {
     let chip = document.createElement(this.option.tag);
+
     // base.
     chip.classList.add(ClassName.CHIP);
     chip.textContent = text;
+
     // img.
-    if (imgSrc) {
-      chip.appendChild(this._createImg(imgSrc));
-    }
+    if (imgSrc) chip.appendChild(this._createImg(imgSrc));
+
     // dataset.
     for (let key in data) {
       if (key == 'href' && chip.tagName == 'A') {
         chip.href = data[key];
         continue;
       }
+
       chip.dataset[key] = data[key];
     }
+
     // close button.
     if (this.option.close_button) {
       this.button.appendBtnClose(chip);

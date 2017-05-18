@@ -10,17 +10,17 @@ const ClassName = {
   MODAL: 'modal',
   CONTENT: 'modal-content',
   CLOSE: 'btn-close',
-  SHOW: 'show'
+  SHOW: 'show',
 };
 const Selector = {
   MODAL: `.${ClassName.MODAL}`,
   OPEN: `button[data-toggle="modal"]`,
   CLOSE: `.${ClassName.MODAL} .${ClassName.CLOSE}`,
-  CONTENT: `.${ClassName.CONTENT}`
+  CONTENT: `.${ClassName.CONTENT}`,
 };
 const ButtonOption = {
   close_position: 'corner',
-  close_style: 'icon'
+  close_style: 'icon',
 };
 
 class Modal extends CosmosModule {
@@ -68,14 +68,17 @@ class Modal extends CosmosModule {
   makeDialog(text) {
     let m = document.createElement('div'); // modal
     let c = document.createElement('div'); // modal-content
+
     // modal-content
     c.classList.add(ClassName.CONTENT);
     c.textContent = text;
+
     // modal
     m.classList.add(ClassName.MODAL);
     m.appendChild(c);
     this._addCloseBtn(m);
     document.body.appendChild(m);
+
     // show
     this._modalShow(m);
   }

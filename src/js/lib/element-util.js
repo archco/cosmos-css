@@ -4,12 +4,12 @@
 const NAME = 'Cosmos.lib.ElementUtil';
 const ClassName = {
   SHOW: 'display-show',
-  HIDE: 'display-hide'
+  HIDE: 'display-hide',
 };
 const DataSet = {
   SORT_DIRECTION: 'sortDirection',
   SORT_VALUE: 'sortValue',
-  SORT_TYPE: 'sortType'
+  SORT_TYPE: 'sortType',
 };
 
 export default class ElementUtil {
@@ -107,9 +107,9 @@ export default class ElementUtil {
   static findAncestor(element, selector) {
     element = this.getElement(element);
     do {
-      if(element == this.getElement('html')) return null;
+      if (element == this.getElement('html')) return null;
       element = element.parentElement;
-    } while(!element.matches(selector));
+    } while (!element.matches(selector));
     return element;
   }
 
@@ -352,7 +352,12 @@ export default class ElementUtil {
         e.preventDefault();
         let th = e.currentTarget;
         this._toggleSortDirection(th);
-        this._sortingTable(rows, i + 1, th.dataset[DataSet.SORT_TYPE], th.dataset[DataSet.SORT_DIRECTION]);
+        this._sortingTable(
+          rows,
+          i + 1,
+          th.dataset[DataSet.SORT_TYPE],
+          th.dataset[DataSet.SORT_DIRECTION]
+        );
       });
     }
   }

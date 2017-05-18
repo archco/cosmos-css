@@ -52,8 +52,10 @@ class Collapse extends CosmosModule {
   init() {
     // collapse toggle listener
     eu.addListener(Selector.TOGGLE, 'click', this._collapseToggleHandler.bind(this));
+
     // accordion head listener
     eu.addListener(Selector.A_HEAD, 'click', this._accordionHeadHandler.bind(this));
+
     // Handle on activated collapse and accordion.
     this._activatedCollapse();
     this._activatedAccordion();
@@ -109,6 +111,7 @@ class Collapse extends CosmosModule {
     if (this.target && !this.target.classList.contains(ClassName.PANNEL)) {
       this.target.classList.add(ClassName.PANNEL);
     }
+
     return this;
   }
 
