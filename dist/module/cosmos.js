@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Toast = exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
+exports.Collapse = exports.Toast = exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
 
 var _util = require('./lib/util.js');
 
@@ -77,8 +77,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // initialize - loading modules.
 
+
 // Functional modules. - nonloadable
 _scaffolding2.default.load();
+
 // Loadable Modules.
 /*!
  * cosmos-css - The css framework for personal practice.
@@ -106,12 +108,14 @@ window.submitConfirm = function (selector) {
 
   _elementUtil2.default.submitConfirm(selector, message);
 };
+
 window.showToast = function (text) {
   var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var option = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
   _toast2.default.makeText(text, duration, option).show();
 };
+
 window.checkMobileSize = window.isMobileSize = _util2.default.isMobileSize;
 window.showMessage = _message2.default.showMessage;
 window.modalDialog = _modal2.default.dialog;
@@ -129,7 +133,8 @@ var Cosmos = {
   lib: lib,
   Button: _button2.default,
   Chip: _chip2.default,
-  Toast: _toast2.default
+  Toast: _toast2.default,
+  Collapse: _collapse2.default
 };
 
 exports.default = Cosmos;
@@ -140,3 +145,4 @@ exports.Helper = _helper2.default;
 exports.Button = _button2.default;
 exports.Chip = _chip2.default;
 exports.Toast = _toast2.default;
+exports.Collapse = _collapse2.default;

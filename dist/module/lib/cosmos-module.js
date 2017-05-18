@@ -36,7 +36,7 @@ var CosmosModule = function () {
      *
      * @return {void}
      */
-    value: function init() {}
+    value: function init() {} // jscs:ignore disallowEmptyBlocks
 
     /**
      * setOption

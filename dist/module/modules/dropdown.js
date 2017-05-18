@@ -89,31 +89,30 @@ var Dropdown = function (_CosmosModule) {
     /**
      * close dropdown contents
      *
-     * @param  {element} t  except target
+     * @param  {element} target  except target
      * @return {void}
      */
 
   }, {
     key: '_closeElseDropdown',
     value: function _closeElseDropdown() {
-      var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-      var ds = document.querySelectorAll(Selector.DROPDOWN);
+      var dropdowns = document.querySelectorAll(Selector.DROPDOWN);
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
 
       try {
-        for (var _iterator = ds[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var d = _step.value;
+        for (var _iterator = dropdowns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var dropdown = _step.value;
 
-          var c = d.querySelector(Selector.CONTENT);
-          if (t && t == d) {
-            continue;
-          } // except target
-          if (c.classList.contains(ClassName.SHOW)) {
-            c.classList.remove(ClassName.SHOW);
+          var content = dropdown.querySelector(Selector.CONTENT);
+          if (target && target == dropdown) continue; // except target
+
+          if (content.classList.contains(ClassName.SHOW)) {
+            content.classList.remove(ClassName.SHOW);
           }
         }
       } catch (err) {

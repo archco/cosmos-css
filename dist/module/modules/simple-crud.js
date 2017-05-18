@@ -96,6 +96,7 @@ var SimpleCRUD = function (_CosmosModule) {
     key: '_switchView',
     value: function _switchView(element, name) {
       var nodes = this._getNodes(element);
+
       // console.log(NAME, 'switchView: ' + name);
       nodes.current.classList.remove(ClassName.SHOW);
       nodes[name].classList.add(ClassName.SHOW);

@@ -44,9 +44,8 @@ var Util = function () {
       var useCapture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
       var elements = document.querySelectorAll(selector);
-      if (elements.length === 0) {
-        return null;
-      }
+      if (elements.length === 0) return null;
+
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -91,6 +90,7 @@ var Util = function () {
         if (element == document.querySelector('html')) return null;
         element = element.parentElement;
       } while (!element.matches(selector));
+
       return element;
     }
 
@@ -233,6 +233,7 @@ var Util = function () {
         for (var p in small) {
           if (!(p in big && this.isContains(big[p], small[p]))) return false;
         }
+
         return true;
       } else {
         return big === small;

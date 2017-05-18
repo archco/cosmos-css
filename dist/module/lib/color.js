@@ -55,6 +55,7 @@ var Color = function () {
       } else {
         throw new Error('parameter only "hex color" or "rgb array"');
       }
+
       return array;
     }
 
@@ -127,6 +128,7 @@ var Color = function () {
     key: 'lightness',
     value: function lightness(color) {
       var rgb = this.colorToArray(color);
+
       // Color lightness formula.
       // @link https://www.w3.org/TR/AERT#color-contrast
       return (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;

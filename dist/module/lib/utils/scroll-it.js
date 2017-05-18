@@ -73,9 +73,7 @@ function scrollIt(destination) {
 
   if ('requestAnimationFrame' in window === false) {
     window.scroll(0, destinationOffsetToScroll);
-    if (callback) {
-      callback();
-    }
+    if (callback) callback();
     return;
   }
 
@@ -86,9 +84,7 @@ function scrollIt(destination) {
     window.scroll(0, Math.ceil(timeFunction * (destinationOffsetToScroll - start) + start));
 
     if (window.pageYOffset === destinationOffsetToScroll) {
-      if (callback) {
-        callback();
-      }
+      if (callback) callback();
       return;
     }
 

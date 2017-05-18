@@ -124,14 +124,16 @@ var Tab = function (_CosmosModule) {
 
       try {
         for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var l = _step2.value;
+          var link = _step2.value;
 
           // content hide
-          var c = this._getContent(l);
-          c.classList.remove(ClassName.SHOW);
+          var _content = this._getContent(link);
+          _content.classList.remove(ClassName.SHOW);
+
           // remove link.active
-          l.classList.remove(ClassName.ACTIVE);
+          link.classList.remove(ClassName.ACTIVE);
         }
+
         // active and show content.
       } catch (err) {
         _didIteratorError2 = true;
@@ -162,11 +164,12 @@ var Tab = function (_CosmosModule) {
   }, {
     key: '_getContent',
     value: function _getContent(link) {
-      var c = document.querySelector(this._extractID(link.href));
-      if (c && !c.classList.contains(ClassName.CONTENT)) {
-        c.classList.add(ClassName.CONTENT);
+      var content = document.querySelector(this._extractID(link.href));
+      if (content && !content.classList.contains(ClassName.CONTENT)) {
+        content.classList.add(ClassName.CONTENT);
       }
-      return c;
+
+      return content;
     }
   }, {
     key: '_getTabs',
@@ -183,15 +186,16 @@ var Tab = function (_CosmosModule) {
 
       try {
         for (var _iterator3 = links[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-          var l = _step3.value;
+          var link = _step3.value;
 
           // set default.
-          if (l.classList.contains(ClassName.ACTIVE)) {
-            l.click();
+          if (link.classList.contains(ClassName.ACTIVE)) {
+            link.click();
           }
+
           // tab fade effect.
           if (tab.classList.contains(ClassName.FADE)) {
-            this._getContent(l).classList.add(ClassName.EFFECT_FADE);
+            this._getContent(link).classList.add(ClassName.EFFECT_FADE);
           }
         }
       } catch (err) {

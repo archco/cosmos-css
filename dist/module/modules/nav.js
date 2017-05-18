@@ -37,6 +37,7 @@ var ClassName = {
   USE_ACTIVATOR: 'use-activator'
 };
 var Selector = {
+  NAVBAR: 'nav.' + ClassName.NAVBAR,
   TOGGLE_BTN: 'nav.' + ClassName.NAVBAR + ' .' + ClassName.TOGGLE_BTN,
   USE_ACTIVATOR: 'nav.' + ClassName.NAVBAR + ' ul.' + ClassName.USE_ACTIVATOR
 };
@@ -65,9 +66,9 @@ var Nav = function (_CosmosModule) {
       // handle jQuery slide style.
       $(window).resize(function () {
         var w = $(window).width();
-        var menu = $("nav ul");
-        if (w > 768 && menu.is(':hidden')) {
-          menu.removeAttr('style');
+        var $menu = $('nav ul');
+        if (w > 768 && $menu.is(':hidden')) {
+          $menu.removeAttr('style');
         }
       });
     }
@@ -135,7 +136,7 @@ var Nav = function (_CosmosModule) {
       }
 
       function lastTerm(string) {
-        return string.substr(string.lastIndexOf("/"));
+        return string.substr(string.lastIndexOf('/'));
       }
     }
 
@@ -144,10 +145,12 @@ var Nav = function (_CosmosModule) {
   }, {
     key: '_toggleHandler',
     value: function _toggleHandler(event) {
-      var t = event.currentTarget;
-      var nav = t.parentNode.parentNode;
+      var toggleBtn = event.currentTarget;
+      var nav = _elementUtil2.default.findAncestor(toggleBtn, Selector.NAVBAR);
+
       // toggle button class change.
-      t.classList.toggle(ClassName.CHANGE);
+      toggleBtn.classList.toggle(ClassName.CHANGE);
+
       // menu slide (use jQuery)
       var _iteratorNormalCompletion2 = true;
       var _didIteratorError2 = false;

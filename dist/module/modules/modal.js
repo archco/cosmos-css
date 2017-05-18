@@ -119,14 +119,17 @@ var Modal = function (_CosmosModule) {
     value: function makeDialog(text) {
       var m = document.createElement('div'); // modal
       var c = document.createElement('div'); // modal-content
+
       // modal-content
       c.classList.add(ClassName.CONTENT);
       c.textContent = text;
+
       // modal
       m.classList.add(ClassName.MODAL);
       m.appendChild(c);
       this._addCloseBtn(m);
       document.body.appendChild(m);
+
       // show
       this._modalShow(m);
     }

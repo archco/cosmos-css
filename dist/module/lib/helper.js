@@ -33,13 +33,10 @@ var Helper = function () {
     value: function submitConfirm(form) {
       var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
 
-      if (!form) {
-        throw new Error('Form target is not exist.');
-      }
+      if (!form) throw new Error('Form target is not exist.');
+
       form.addEventListener('submit', function (event) {
-        if (!confirm(message)) {
-          event.preventDefault();
-        }
+        if (!confirm(message)) event.preventDefault();
       });
     }
 

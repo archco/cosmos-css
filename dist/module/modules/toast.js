@@ -89,6 +89,7 @@ var Toast = function (_CosmosModule) {
         elm.classList.add(ClassName.CONTAINER);
         _elementUtil2.default.getElement('body').appendChild(elm);
       }
+
       this.container = elm;
       return this;
     }

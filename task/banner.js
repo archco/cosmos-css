@@ -10,7 +10,7 @@ const banner = `/*!
  */`;
 const files = [
   path.join(__dirname, '../src/scss/style.scss'),
-  path.join(__dirname, '../src/js/cosmos.js')
+  path.join(__dirname, '../src/js/cosmos.js'),
 ];
 
 files.forEach(file => {

@@ -78,14 +78,15 @@ var Parallax = function (_CosmosModule) {
     key: '_process',
     value: function _process(p) {
       var i = p.querySelector('img');
-      if (!i) {
-        return;
-      }
+      if (!i) return;
       var h = p.dataset.height || i.clientHeight;
+
       // hide <img>
       i.classList.add(ClassName.HIDE);
+
       // set parallax background image.
       p.style.backgroundImage = 'url(\'' + i.src + '\')';
+
       // set parallax height.
       p.style.height = h + 'px';
     }

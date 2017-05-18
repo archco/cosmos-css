@@ -84,21 +84,19 @@ var Message = function (_CosmosModule) {
     value: function show(message) {
       var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
 
-      var c, b, span;
-
       // create message box
-      c = document.querySelector(Selector.CONTAINER); // container
-      b = document.createElement('DIV'); // message box
-      span = document.createElement('SPAN'); // message text
+      var container = document.querySelector(Selector.CONTAINER); // container
+      var box = document.createElement('DIV'); // message box
+      var span = document.createElement('SPAN'); // message text
 
       span.textContent = message;
-      b.classList.add(ClassName.BOX);
-      b.classList.add(status);
+      box.classList.add(ClassName.BOX);
+      box.classList.add(status);
 
       // append child
-      b.appendChild(span);
-      this.button.appendBtnClose(b, this._closeButtonHandler);
-      c.appendChild(b);
+      box.appendChild(span);
+      this.button.appendBtnClose(box, this._closeButtonHandler);
+      container.appendChild(box);
     }
 
     // private
@@ -112,6 +110,7 @@ var Message = function (_CosmosModule) {
       setTimeout(function () {
         messageBox.style.display = 'none';
       }, 600); // 0.6s
+
       event.stopPropagation();
     }
   }], [{

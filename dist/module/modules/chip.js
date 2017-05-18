@@ -35,8 +35,7 @@ var Selector = {
 var Default = {
   tag: 'span', // chip's tagName. span, div, a ...
   close_button: true, // enable close button.
-  close_action: 'remove' // close action. remove | hide
-};
+  close_action: 'remove' };
 
 var Chip = function (_CosmosModule) {
   _inherits(Chip, _CosmosModule);
@@ -143,21 +142,24 @@ var Chip = function (_CosmosModule) {
     key: '_createChip',
     value: function _createChip(text, imgSrc, data) {
       var chip = document.createElement(this.option.tag);
+
       // base.
       chip.classList.add(ClassName.CHIP);
       chip.textContent = text;
+
       // img.
-      if (imgSrc) {
-        chip.appendChild(this._createImg(imgSrc));
-      }
+      if (imgSrc) chip.appendChild(this._createImg(imgSrc));
+
       // dataset.
       for (var key in data) {
         if (key == 'href' && chip.tagName == 'A') {
           chip.href = data[key];
           continue;
         }
+
         chip.dataset[key] = data[key];
       }
+
       // close button.
       if (this.option.close_button) {
         this.button.appendBtnClose(chip);

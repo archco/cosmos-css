@@ -40,6 +40,7 @@ var Selector = {
   TOP: '.' + ClassName.TOTOP,
   BOTTOM: '.' + ClassName.TOBOTTOM
 };
+
 // default option.
 var Default = {
   btn_top: Selector.TOP,
@@ -111,6 +112,7 @@ var ScrollTo = function (_CosmosModule) {
       } else if (top <= distance && this._isShown(toTop)) {
         toTop.classList.remove(ClassName.SHOW);
       }
+
       // toBottom
       if (bottom > distance && !this._isShown(toBottom)) {
         toBottom.classList.add(ClassName.SHOW);

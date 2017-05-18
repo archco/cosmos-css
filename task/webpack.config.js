@@ -14,7 +14,7 @@ module.exports = {
     filename: 'script.js',
     path: path.resolve(__dirname, '../dist/js/'),
     library: 'Cosmos',
-    libraryTarget: 'window'
+    libraryTarget: 'window',
   },
   module: {
     loaders: [
@@ -27,21 +27,21 @@ module.exports = {
             [
               'env',
               {
-                'targets': {
-                  'browsers': ['> 1%']
-                }
-              }
-            ]
-          ]
-        }
-      }
-    ]
+                targets: {
+                  browsers: ['> 1%'],
+                },
+              },
+            ],
+          ],
+        },
+      },
+    ],
   },
   devtool: 'source-map',
   plugins: [
     new webpack.BannerPlugin({
       banner: banner,
-      raw: true
-    })
-  ]
+      raw: true,
+    }),
+  ],
 };

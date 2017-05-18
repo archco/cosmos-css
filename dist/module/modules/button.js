@@ -36,8 +36,9 @@ var ClassName = {
 };
 var Selector = {
   CLOSE: '.' + ClassName.CLOSE,
-  HAS_ACTION: '.' + ClassName.CLOSE + '.' + ClassName.REMOVEABLE + ', .' + ClassName.CLOSE + '.' + ClassName.HIDEABLE
+  HAS_ACTION: '.' + ClassName.CLOSE + '.' + ClassName.REMOVEABLE + ',\n    .' + ClassName.CLOSE + '.' + ClassName.HIDEABLE
 };
+
 // default option.
 var Default = {
   close_init_enable: true,
@@ -72,6 +73,7 @@ var Button = function (_CosmosModule) {
         console.log('already has .btn-close');
         return;
       }
+
       var btnClose = this._createBtnClose();
       var handler = callback || this._btnCloseClickHandler;
 
@@ -107,6 +109,7 @@ var Button = function (_CosmosModule) {
       } else if (action == 'remove') {
         parent.removeChild(element);
       }
+
       event.preventDefault();
     }
   }, {
@@ -120,6 +123,7 @@ var Button = function (_CosmosModule) {
       } else if (this.option.close_position == 'right_middle') {
         btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
       }
+
       btnClose.innerHTML = this.option.close_content[this.option.close_style];
 
       return btnClose;
