@@ -39,6 +39,13 @@ class Button extends CosmosModule{
     return NAME;
   }
 
+  /**
+   * addBtnClose
+   *
+   * @param {Element} element
+   * @param {Object} [ option = {} ]
+   * @param {Function} [ callback = null ]
+   */
   static addBtnClose(element, option = {}, callback = null) {
     let b = new Button(option);
     b.appendBtnClose(element, callback);
@@ -46,6 +53,13 @@ class Button extends CosmosModule{
 
   // public
 
+  /**
+   * appendBtnClose
+   *
+   * @param  {Element} element
+   * @param  {Function} [ callback = null ]
+   * @return {void}
+   */
   appendBtnClose(element, callback = null) {
     if (this._hasBtnClose(element)) {
       console.log('already has .btn-close');
