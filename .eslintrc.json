@@ -3,11 +3,8 @@
     "node": true,
     "browser": true,
     "commonjs": true,
-    "es6": true
-  },
-  "globals":{
-    "jQuery": true,
-    "$": true
+    "es6": true,
+    "jquery": true
   },
   "extends": "eslint:recommended",
   "parser": "babel-eslint",
@@ -15,10 +12,6 @@
     "sourceType": "module"
   },
   "rules": {
-    "indent": [
-      "error",
-      2
-    ],
     "no-console": "off"
   }
 }
