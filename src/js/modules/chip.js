@@ -17,7 +17,7 @@ const Default = {
   close_action: 'remove', // close action. remove | hide
 };
 
-class Chip extends CosmosModule {
+export default class Chip extends CosmosModule {
   constructor(container, option = {}) {
     super(option);
     this.container = document.querySelector(container);
@@ -113,5 +113,3 @@ class Chip extends CosmosModule {
     return img;
   }
 }
-
-export default Chip;

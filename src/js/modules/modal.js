@@ -23,7 +23,7 @@ const ButtonOption = {
   close_style: 'icon',
 };
 
-class Modal extends CosmosModule {
+export default class Modal extends CosmosModule {
   constructor(option = {}) {
     super(option);
     this.button = new Button(ButtonOption);
@@ -122,5 +122,3 @@ class Modal extends CosmosModule {
     this.button.appendBtnClose(content, this._modalCloseHandler.bind(this));
   }
 }
-
-export default Modal;

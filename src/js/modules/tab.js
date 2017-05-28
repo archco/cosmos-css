@@ -21,7 +21,7 @@ const Selector = {
   CONTENT: `.${ClassName.CONTENT}`,
 };
 
-class Tab extends CosmosModule {
+export default class Tab extends CosmosModule {
 
   // static
 
@@ -119,5 +119,3 @@ class Tab extends CosmosModule {
     link.click();
   }
 }
-
-export default Tab;

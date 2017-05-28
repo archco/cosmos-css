@@ -9,7 +9,7 @@ const ClassName = {
   HIDE: 'display-hide',
 };
 
-class Parallax extends CosmosModule {
+export default class Parallax extends CosmosModule {
 
   // static
 
@@ -49,5 +49,3 @@ class Parallax extends CosmosModule {
     p.style.height = `${h}px`;
   }
 }
-
-export default Parallax;

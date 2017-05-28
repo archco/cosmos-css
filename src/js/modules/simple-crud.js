@@ -26,7 +26,7 @@ const Selector = {
   BTN_CANCEL: `button.${ClassName.BTN_CANCEL}`,
 };
 
-class SimpleCRUD extends CosmosModule {
+export default class SimpleCRUD extends CosmosModule {
 
   // static
 
@@ -75,5 +75,3 @@ class SimpleCRUD extends CosmosModule {
     nodes[name].classList.add(ClassName.SHOW);
   }
 }
-
-export default SimpleCRUD;

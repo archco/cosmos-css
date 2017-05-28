@@ -31,7 +31,7 @@ const Default = {
   },
 };
 
-class Button extends CosmosModule{
+export default class Button extends CosmosModule{
 
   // static
 
@@ -142,5 +142,3 @@ class Button extends CosmosModule{
     }
   }
 }
-
-export default Button;

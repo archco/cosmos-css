@@ -6,7 +6,7 @@ import ElementUtil from '../lib/element-util.js';
 *************************************************************/
 const NAME = 'scaffolding';
 
-class Scaffolding extends CosmosModule {
+export default class Scaffolding extends CosmosModule {
 
   // static
 
@@ -25,5 +25,3 @@ class Scaffolding extends CosmosModule {
     ElementUtil.wrap('table.responsive', 'table-responsive-wrapper');
   }
 }
-
-export default Scaffolding;

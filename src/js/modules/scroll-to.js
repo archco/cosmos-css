@@ -26,7 +26,7 @@ const Default = {
   show_distance: 400,
 };
 
-class ScrollTo extends CosmosModule {
+export default class ScrollTo extends CosmosModule {
   constructor(option) {
     super(option);
   }
@@ -120,5 +120,3 @@ class ScrollTo extends CosmosModule {
     if (toBottom) toBottom.classList.add(ClassName.SHOW);
   }
 }
-
-export default ScrollTo;

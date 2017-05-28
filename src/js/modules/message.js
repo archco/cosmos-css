@@ -29,7 +29,7 @@ const ButtonOption = {
   close_style: 'icon',
 };
 
-class Message extends CosmosModule {
+export default class Message extends CosmosModule {
   constructor(option = {}) {
     super(option);
     this.button = new Button(ButtonOption);
@@ -92,5 +92,3 @@ class Message extends CosmosModule {
     event.stopPropagation();
   }
 }
-
-export default Message;

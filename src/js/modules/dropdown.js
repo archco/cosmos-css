@@ -17,7 +17,7 @@ const Selector = {
   CONTENT: `.${ClassName.CONTENT}`,
 };
 
-class Dropdown extends CosmosModule {
+export default class Dropdown extends CosmosModule {
 
   // static
 
@@ -80,5 +80,3 @@ class Dropdown extends CosmosModule {
     }
   }
 }
-
-export default Dropdown;

@@ -3,7 +3,7 @@
 *************************************************************/
 const NAME = 'helper';
 
-class Helper {
+export default class Helper {
 
   // static
 
@@ -41,5 +41,3 @@ class Helper {
     }
   }
 }
-
-export default Helper;

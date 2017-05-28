@@ -8,7 +8,7 @@ const Config = {
   lightDefault: '#fff',
 };
 
-class Color {
+export default class Color {
   constructor(color) {
     this._color = Color.colorToArray(color);
   }
@@ -111,5 +111,3 @@ class Color {
     return (this.lightness(color) > Config.lightnessPoint) ? dark : light;
   }
 }
-
-export default Color;

@@ -26,7 +26,7 @@ const Default = {
   is_collapsed: true, // initial state.
 };
 
-class Collapse extends CosmosModule {
+export default class Collapse extends CosmosModule {
   constructor(element = null, option = {}) {
     super(option);
     this.setElement(element);
@@ -197,5 +197,3 @@ class Collapse extends CosmosModule {
     return eu.getElement(element.dataset.target);
   }
 }
-
-export default Collapse;

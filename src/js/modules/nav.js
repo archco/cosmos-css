@@ -27,7 +27,7 @@ const MenuGroups = [
   '.menu-around',
 ];
 
-class Nav extends CosmosModule {
+export default class Nav extends CosmosModule {
 
   // static
 
@@ -114,5 +114,3 @@ class Nav extends CosmosModule {
     }
   }
 }
-
-export default Nav;
