@@ -5,7 +5,7 @@ import ElementUtil from '../lib/element-util.js';
 /************************************************************
   nav
 *************************************************************/
-const NAME = 'Cosmos.Nav';
+const NAME = 'nav';
 const ClassName = {
   NAVBAR: 'navbar',
   TOGGLE_BTN: 'menu-toggle',
@@ -33,6 +33,10 @@ class Nav extends CosmosModule {
 
   static get name() {
     return NAME;
+  }
+
+  static get isLoadable() {
+    return true;
   }
 
   // public

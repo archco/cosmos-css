@@ -4,7 +4,7 @@ import ElementUtil from '../lib/element-util.js';
 /************************************************************
   dropdown
 *************************************************************/
-const NAME = 'Cosmos.Dropdown';
+const NAME = 'dropdown';
 const ClassName = {
   DROPDOWN: 'dropdown',
   TOGGLE: 'dropdown-toggle',
@@ -23,6 +23,10 @@ class Dropdown extends CosmosModule {
 
   static get name() {
     return NAME;
+  }
+
+  static get isLoadable() {
+    return true;
   }
 
   // public

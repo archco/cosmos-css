@@ -4,7 +4,7 @@ import Button from './button.js';
 /************************************************************
   Chip
 *************************************************************/
-const NAME = 'Cosmos.Chip';
+const NAME = 'chip';
 const ClassName = {
   CHIP: 'chip',
 };

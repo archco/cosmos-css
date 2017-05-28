@@ -1,7 +1,7 @@
 /************************************************************
   Helper - will be deprecated.
 *************************************************************/
-const NAME = 'Cosmos.lib.Helper';
+const NAME = 'helper';
 
 class Helper {
 

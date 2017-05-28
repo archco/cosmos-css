@@ -4,7 +4,7 @@ import ElementUtil from '../lib/element-util.js';
 /************************************************************
   Scaffolding
 *************************************************************/
-const NAME = 'Cosmos.Scaffolding';
+const NAME = 'scaffolding';
 
 class Scaffolding extends CosmosModule {
 
@@ -12,6 +12,10 @@ class Scaffolding extends CosmosModule {
 
   static get name() {
     return NAME;
+  }
+
+  static get isLoadable() {
+    return true;
   }
 
   // public

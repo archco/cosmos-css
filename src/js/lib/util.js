@@ -3,7 +3,7 @@ import scrollIt from './utils/scroll-it.js';
 /************************************************************
   util
 *************************************************************/
-const NAME = 'Cosmos.lib.Util';
+const NAME = 'util';
 
 class Util {
 

@@ -1,7 +1,7 @@
 /************************************************************
   CosmosModule
 *************************************************************/
-class CosmosModule {
+export default class CosmosModule {
   constructor(option = {}) {
     this.setOption(option);
   }
@@ -27,6 +27,15 @@ class CosmosModule {
   }
 
   /**
+   * is loadable
+   *
+   * @return {Boolean}
+   */
+  static get isLoadable() {
+    return false;
+  }
+
+  /**
    * init - abstract method.
    *
    * @return {void}
@@ -37,9 +46,11 @@ class CosmosModule {
    * setOption
    *
    * @param {Object} option
+   * @return {CosmosModule} instance
    */
   setOption(option) {
     this.option = Object.assign({}, this.getDefaultOption(), option);
+    return this;
   }
 
   /**
@@ -60,5 +71,3 @@ class CosmosModule {
     return {};
   }
 }
-
-export default CosmosModule;

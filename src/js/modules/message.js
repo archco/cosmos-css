@@ -5,7 +5,7 @@ import eu from '../lib/element-util.js';
 /************************************************************
   message
 *************************************************************/
-const NAME = 'Cosmos.Message';
+const NAME = 'message';
 const Status = {
   INFO: 'info',
   SUCCESS: 'success',
@@ -39,6 +39,10 @@ class Message extends CosmosModule {
 
   static get name() {
     return NAME;
+  }
+
+  static get isLoadable() {
+    return true;
   }
 
   /**

@@ -5,7 +5,7 @@ import eu from '../lib/element-util.js';
 /************************************************************
   Modal
 *************************************************************/
-const NAME = 'Cosmos.Modal';
+const NAME = 'modal';
 const ClassName = {
   MODAL: 'modal',
   CONTENT: 'modal-content',
@@ -33,6 +33,10 @@ class Modal extends CosmosModule {
 
   static get name() {
     return NAME;
+  }
+
+  static get isLoadable() {
+    return true;
   }
 
   static dialog(text) {

@@ -4,7 +4,7 @@ import eu from '../lib/element-util.js';
 /************************************************************
   Tab
 *************************************************************/
-const NAME = 'Cosmos.Tab';
+const NAME = 'tab';
 const ClassName = {
   TAB: 'tab',
   TAB_VERTICAL: 'tab-vertical',

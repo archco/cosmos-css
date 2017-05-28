@@ -4,7 +4,6 @@
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
-window["Cosmos"] =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,7 +69,7 @@ window["Cosmos"] =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 19);
+/******/ 	return __webpack_require__(__webpack_require__.s = 20);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -122,12 +121,14 @@ var CosmosModule = function () {
      * setOption
      *
      * @param {Object} option
+     * @return {CosmosModule} instance
      */
 
   }, {
     key: "setOption",
     value: function setOption(option) {
       this.option = Object.assign({}, this.getDefaultOption(), option);
+      return this;
     }
 
     /**
@@ -174,6 +175,18 @@ var CosmosModule = function () {
       var m = new this();
       return m.getDefaultOption();
     }
+
+    /**
+     * is loadable
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: "isLoadable",
+    get: function get() {
+      return false;
+    }
   }]);
 
   return CosmosModule;
@@ -201,7 +214,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************
   ElementUtil
 *************************************************************/
-var NAME = 'Cosmos.lib.ElementUtil';
+var NAME = 'element_util';
 var ClassName = {
   SHOW: 'display-show',
   HIDE: 'display-hide'
@@ -860,7 +873,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Button
 *************************************************************/
-var NAME = 'Cosmos.Button';
+var NAME = 'button';
 var ClassName = {
   CLOSE: 'btn-close',
   POSITION_CORNER: 'at-corner',
@@ -901,6 +914,13 @@ var Button = function (_CosmosModule) {
 
     // public
 
+    /**
+     * appendBtnClose
+     *
+     * @param  {Element} element
+     * @param  {Function} [ callback = null ]
+     * @return {void}
+     */
     value: function appendBtnClose(element) {
       var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
@@ -985,6 +1005,15 @@ var Button = function (_CosmosModule) {
     }
   }], [{
     key: 'addBtnClose',
+
+
+    /**
+     * addBtnClose
+     *
+     * @param {Element} element
+     * @param {Object} [ option = {} ]
+     * @param {Function} [ callback = null ]
+     */
     value: function addBtnClose(element) {
       var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
@@ -1000,6 +1029,11 @@ var Button = function (_CosmosModule) {
 
     get: function get() {
       return NAME;
+    }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
     }
   }]);
 
@@ -1023,7 +1057,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _scrollIt = __webpack_require__(20);
+var _scrollIt = __webpack_require__(7);
 
 var _scrollIt2 = _interopRequireDefault(_scrollIt);
 
@@ -1034,7 +1068,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************
   util
 *************************************************************/
-var NAME = 'Cosmos.lib.Util';
+var NAME = 'util';
 
 var Util = function () {
   function Util() {
@@ -1299,6 +1333,300 @@ exports.default = Util;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Collapse = exports.Toast = exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _cosmosModule = __webpack_require__(0);
+
+var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
+
+var _package = __webpack_require__(21);
+
+var _package2 = _interopRequireDefault(_package);
+
+var _util = __webpack_require__(3);
+
+var _util2 = _interopRequireDefault(_util);
+
+var _color = __webpack_require__(5);
+
+var _color2 = _interopRequireDefault(_color);
+
+var _helper = __webpack_require__(6);
+
+var _helper2 = _interopRequireDefault(_helper);
+
+var _elementUtil = __webpack_require__(1);
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
+
+var _scaffolding = __webpack_require__(15);
+
+var _scaffolding2 = _interopRequireDefault(_scaffolding);
+
+var _button = __webpack_require__(2);
+
+var _button2 = _interopRequireDefault(_button);
+
+var _dropdown = __webpack_require__(10);
+
+var _dropdown2 = _interopRequireDefault(_dropdown);
+
+var _message = __webpack_require__(11);
+
+var _message2 = _interopRequireDefault(_message);
+
+var _modal = __webpack_require__(12);
+
+var _modal2 = _interopRequireDefault(_modal);
+
+var _nav = __webpack_require__(13);
+
+var _nav2 = _interopRequireDefault(_nav);
+
+var _parallax = __webpack_require__(14);
+
+var _parallax2 = _interopRequireDefault(_parallax);
+
+var _scrollTo = __webpack_require__(16);
+
+var _scrollTo2 = _interopRequireDefault(_scrollTo);
+
+var _tab = __webpack_require__(18);
+
+var _tab2 = _interopRequireDefault(_tab);
+
+var _collapse = __webpack_require__(9);
+
+var _collapse2 = _interopRequireDefault(_collapse);
+
+var _simpleCrud = __webpack_require__(17);
+
+var _simpleCrud2 = _interopRequireDefault(_simpleCrud);
+
+var _chip = __webpack_require__(8);
+
+var _chip2 = _interopRequireDefault(_chip);
+
+var _toast = __webpack_require__(19);
+
+var _toast2 = _interopRequireDefault(_toast);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*!
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * cosmos-css - The css framework for personal practice.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @version v0.11.1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @link https://github.com/archco/cosmos-css#readme
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license MIT
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+// Libraries.
+
+
+// Loadable Modules.
+
+
+// Functional modules. - nonloadable
+
+
+var Cosmos = function (_CosmosModule) {
+  _inherits(Cosmos, _CosmosModule);
+
+  function Cosmos() {
+    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    _classCallCheck(this, Cosmos);
+
+    var _this = _possibleConstructorReturn(this, (Cosmos.__proto__ || Object.getPrototypeOf(Cosmos)).call(this, option));
+
+    _this.modules = new Map();
+    return _this;
+  }
+
+  _createClass(Cosmos, [{
+    key: 'init',
+    value: function init() {
+      this.addModules([_scaffolding2.default, _button2.default, _dropdown2.default, _message2.default, _modal2.default, _nav2.default, _parallax2.default, _scrollTo2.default, _tab2.default, _collapse2.default, _simpleCrud2.default]);
+      this.loadModules();
+      this.defineGlobalHelperFunctions();
+      return this;
+    }
+  }, {
+    key: 'addModules',
+    value: function addModules(modules) {
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = modules[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var mod = _step.value;
+
+          this.modules.set(mod.name, mod);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      return this;
+    }
+  }, {
+    key: 'removeModules',
+    value: function removeModules(modules) {
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = modules[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var mod = _step2.value;
+
+          this.modules.delete(mod.name);
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+
+      return this;
+    }
+  }, {
+    key: 'loadModules',
+    value: function loadModules() {
+      var _this2 = this;
+
+      this.modules.forEach(function (mod) {
+        if (!mod.isLoadable) return;
+        mod.load(_this2.getModuleOption(mod.name));
+      });
+    }
+  }, {
+    key: 'getModuleOption',
+    value: function getModuleOption(modName) {
+      if (this.option.modules && this.option.modules[modName]) {
+        return this.option.modules[modName];
+      } else {
+        return {};
+      }
+    }
+  }, {
+    key: 'setModuleOption',
+    value: function setModuleOption(modName, option) {
+      this.option.modules[modName] = option;
+      return this;
+    }
+  }, {
+    key: 'defineGlobalHelperFunctions',
+    value: function defineGlobalHelperFunctions() {
+      // define global helper functions.
+      window.submitConfirm = function (selector) {
+        var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
+
+        _elementUtil2.default.submitConfirm(selector, message);
+      };
+
+      window.showToast = function (text) {
+        var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+        var option = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+        _toast2.default.makeText(text, duration, option).show();
+      };
+
+      window.checkMobileSize = window.isMobileSize = _util2.default.isMobileSize;
+      window.showMessage = _message2.default.showMessage;
+      window.modalDialog = _modal2.default.dialog;
+    }
+  }], [{
+    key: 'load',
+    value: function load() {
+      var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var cosmos = new this(option);
+      cosmos.init();
+      return this;
+    }
+  }, {
+    key: 'version',
+    get: function get() {
+      return _package2.default.version;
+    }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
+  }, {
+    key: 'lib',
+    get: function get() {
+      return {
+        Util: _util2.default,
+        Color: _color2.default,
+        ElementUtil: _elementUtil2.default
+      };
+    }
+  }]);
+
+  return Cosmos;
+}(_cosmosModule2.default);
+
+// export.
+
+
+Object.assign(Cosmos, {
+  Button: _button2.default,
+  Chip: _chip2.default,
+  Toast: _toast2.default,
+  Collapse: _collapse2.default
+});
+
+exports.default = Cosmos;
+exports.Util = _util2.default;
+exports.ElementUtil = _elementUtil2.default;
+exports.Color = _color2.default;
+exports.Helper = _helper2.default;
+exports.Button = _button2.default;
+exports.Chip = _chip2.default;
+exports.Toast = _toast2.default;
+exports.Collapse = _collapse2.default;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -1307,7 +1635,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************
   Color
 *************************************************************/
-var NAME = 'Cosmos.lib.Color';
+var NAME = 'color';
 var Config = {
   lightnessPoint: 166, // 65%
   darkDefault: '#000',
@@ -1460,7 +1788,7 @@ var Color = function () {
 exports.default = Color;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1477,7 +1805,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************
   Helper - will be deprecated.
 *************************************************************/
-var NAME = 'Cosmos.lib.Helper';
+var NAME = 'helper';
 
 var Helper = function () {
   function Helper() {
@@ -1539,7 +1867,108 @@ var Helper = function () {
 exports.default = Helper;
 
 /***/ }),
-/* 6 */
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = scrollIt;
+/**
+ * scrollIt
+ * @links https://pawelgrzybek.com/page-scroll-in-vanilla-javascript/
+ * @links https://docs111.mootools.net/Effects/Fx-Transitions // easing types.
+ *
+ * @param  {Number|Element} destination
+ * @param  {Number}   [duration=200]
+ * @param  {String}   [easing='linear']
+ * @param  {Function} callback
+ * @return {void}
+ */
+function scrollIt(destination) {
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 200;
+  var easing = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'linear';
+  var callback = arguments[3];
+
+
+  var easings = {
+    linear: function linear(t) {
+      return t;
+    },
+    easeInQuad: function easeInQuad(t) {
+      return t * t;
+    },
+    easeOutQuad: function easeOutQuad(t) {
+      return t * (2 - t);
+    },
+    easeInOutQuad: function easeInOutQuad(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    },
+    easeInCubic: function easeInCubic(t) {
+      return t * t * t;
+    },
+    easeOutCubic: function easeOutCubic(t) {
+      return --t * t * t + 1;
+    },
+    easeInOutCubic: function easeInOutCubic(t) {
+      return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    },
+    easeInQuart: function easeInQuart(t) {
+      return t * t * t * t;
+    },
+    easeOutQuart: function easeOutQuart(t) {
+      return 1 - --t * t * t * t;
+    },
+    easeInOutQuart: function easeInOutQuart(t) {
+      return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
+    },
+    easeInQuint: function easeInQuint(t) {
+      return t * t * t * t * t;
+    },
+    easeOutQuint: function easeOutQuint(t) {
+      return 1 + --t * t * t * t * t;
+    },
+    easeInOutQuint: function easeInOutQuint(t) {
+      return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
+    }
+  };
+
+  var start = window.pageYOffset;
+  var startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
+
+  var documentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+  var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
+  var destinationOffset = typeof destination === 'number' ? destination : destination.offsetTop;
+  var destinationOffsetToScroll = Math.round(documentHeight - destinationOffset < windowHeight ? documentHeight - windowHeight : destinationOffset);
+
+  if ('requestAnimationFrame' in window === false) {
+    window.scroll(0, destinationOffsetToScroll);
+    if (callback) callback();
+    return;
+  }
+
+  function scroll() {
+    var now = 'now' in window.performance ? performance.now() : new Date().getTime();
+    var time = Math.min(1, (now - startTime) / duration);
+    var timeFunction = easings[easing](time);
+    window.scroll(0, Math.ceil(timeFunction * (destinationOffsetToScroll - start) + start));
+
+    if (window.pageYOffset === destinationOffsetToScroll) {
+      if (callback) callback();
+      return;
+    }
+
+    requestAnimationFrame(scroll);
+  }
+
+  scroll();
+}
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1570,7 +1999,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Chip
 *************************************************************/
-var NAME = 'Cosmos.Chip';
+var NAME = 'chip';
 var ClassName = {
   CHIP: 'chip'
 };
@@ -1732,7 +2161,7 @@ var Chip = function (_CosmosModule) {
 exports.default = Chip;
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1763,7 +2192,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Collapse
 *************************************************************/
-var NAME = 'Cosmos.Collapse';
+var NAME = 'collapse';
 var ClassName = {
   TOGGLE: 'collapse-toggle',
   PANNEL: 'collapse-panel',
@@ -2043,16 +2472,20 @@ var Collapse = function (_CosmosModule) {
   }], [{
     key: 'load',
     value: function load() {
-      var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-      var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-      var c = new this(element, option);
+      var c = new this(null, option);
       c.init();
     }
   }, {
     key: 'name',
     get: function get() {
       return NAME;
+    }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
     }
   }]);
 
@@ -2062,7 +2495,7 @@ var Collapse = function (_CosmosModule) {
 exports.default = Collapse;
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2093,7 +2526,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   dropdown
 *************************************************************/
-var NAME = 'Cosmos.Dropdown';
+var NAME = 'dropdown';
 var ClassName = {
   DROPDOWN: 'dropdown',
   TOGGLE: 'dropdown-toggle',
@@ -2207,6 +2640,11 @@ var Dropdown = function (_CosmosModule) {
     get: function get() {
       return NAME;
     }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
   }]);
 
   return Dropdown;
@@ -2215,7 +2653,7 @@ var Dropdown = function (_CosmosModule) {
 exports.default = Dropdown;
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2250,7 +2688,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   message
 *************************************************************/
-var NAME = 'Cosmos.Message';
+var NAME = 'message';
 var Status = {
   INFO: 'info',
   SUCCESS: 'success',
@@ -2355,6 +2793,11 @@ var Message = function (_CosmosModule) {
     get: function get() {
       return NAME;
     }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
   }]);
 
   return Message;
@@ -2363,7 +2806,7 @@ var Message = function (_CosmosModule) {
 exports.default = Message;
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2398,7 +2841,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Modal
 *************************************************************/
-var NAME = 'Cosmos.Modal';
+var NAME = 'modal';
 var ClassName = {
   MODAL: 'modal',
   CONTENT: 'modal-content',
@@ -2558,6 +3001,11 @@ var Modal = function (_CosmosModule) {
     get: function get() {
       return NAME;
     }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
   }]);
 
   return Modal;
@@ -2566,7 +3014,7 @@ var Modal = function (_CosmosModule) {
 exports.default = Modal;
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2601,7 +3049,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   nav
 *************************************************************/
-var NAME = 'Cosmos.Nav';
+var NAME = 'nav';
 var ClassName = {
   NAVBAR: 'navbar',
   TOGGLE_BTN: 'menu-toggle',
@@ -2758,6 +3206,11 @@ var Nav = function (_CosmosModule) {
     get: function get() {
       return NAME;
     }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
   }]);
 
   return Nav;
@@ -2766,7 +3219,7 @@ var Nav = function (_CosmosModule) {
 exports.default = Nav;
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2793,7 +3246,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Parallax
 *************************************************************/
-var NAME = 'Cosmos.Parallax';
+var NAME = 'parallax';
 var ClassName = {
   PARALLAX: 'parallax',
   HIDE: 'display-hide'
@@ -2871,6 +3324,11 @@ var Parallax = function (_CosmosModule) {
     get: function get() {
       return NAME;
     }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
   }]);
 
   return Parallax;
@@ -2879,7 +3337,7 @@ var Parallax = function (_CosmosModule) {
 exports.default = Parallax;
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2910,7 +3368,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Scaffolding
 *************************************************************/
-var NAME = 'Cosmos.Scaffolding';
+var NAME = 'scaffolding';
 
 var Scaffolding = function (_CosmosModule) {
   _inherits(Scaffolding, _CosmosModule);
@@ -2940,6 +3398,11 @@ var Scaffolding = function (_CosmosModule) {
     get: function get() {
       return NAME;
     }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
   }]);
 
   return Scaffolding;
@@ -2948,7 +3411,7 @@ var Scaffolding = function (_CosmosModule) {
 exports.default = Scaffolding;
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2983,7 +3446,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   scroll-to
 *************************************************************/
-var NAME = 'Cosmos.ScrollTo';
+var NAME = 'scroll_to';
 var ClassName = {
   CONTAINER: 'scroll-to-container',
   TOTOP: 'scroll-to-top',
@@ -3113,6 +3576,11 @@ var ScrollTo = function (_CosmosModule) {
     get: function get() {
       return NAME;
     }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
   }]);
 
   return ScrollTo;
@@ -3121,7 +3589,7 @@ var ScrollTo = function (_CosmosModule) {
 exports.default = ScrollTo;
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3152,7 +3620,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   SipleCRUD
 *************************************************************/
-var NAME = 'Cosmos.SimpleCRUD';
+var NAME = 'simple_crud';
 var ClassName = {
   ITEM: 'simple-crud-item',
   VIEW_READ: 'simple-crud-view-read',
@@ -3237,6 +3705,11 @@ var SimpleCRUD = function (_CosmosModule) {
     get: function get() {
       return NAME;
     }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
   }]);
 
   return SimpleCRUD;
@@ -3245,7 +3718,7 @@ var SimpleCRUD = function (_CosmosModule) {
 exports.default = SimpleCRUD;
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3276,7 +3749,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Tab
 *************************************************************/
-var NAME = 'Cosmos.Tab';
+var NAME = 'tab';
 var ClassName = {
   TAB: 'tab',
   TAB_VERTICAL: 'tab-vertical',
@@ -3488,7 +3961,7 @@ var Tab = function (_CosmosModule) {
 exports.default = Tab;
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3519,7 +3992,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Toast
 *************************************************************/
-var NAME = 'Cosmos.Toast';
+var NAME = 'toast';
 var ClassName = {
   TOAST: 'toast',
   SHOW: 'show',
@@ -3658,7 +4131,22 @@ var Toast = function (_CosmosModule) {
 exports.default = Toast;
 
 /***/ }),
-/* 18 */
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _cosmos = __webpack_require__(4);
+
+var _cosmos2 = _interopRequireDefault(_cosmos);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+window.Cosmos = _cosmos2.default.load();
+
+/***/ }),
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -3723,261 +4211,6 @@ module.exports = {
 	},
 	"homepage": "https://github.com/archco/cosmos-css#readme"
 };
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Collapse = exports.Toast = exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
-
-var _util = __webpack_require__(3);
-
-var _util2 = _interopRequireDefault(_util);
-
-var _color = __webpack_require__(4);
-
-var _color2 = _interopRequireDefault(_color);
-
-var _helper = __webpack_require__(5);
-
-var _helper2 = _interopRequireDefault(_helper);
-
-var _elementUtil = __webpack_require__(1);
-
-var _elementUtil2 = _interopRequireDefault(_elementUtil);
-
-var _scaffolding = __webpack_require__(13);
-
-var _scaffolding2 = _interopRequireDefault(_scaffolding);
-
-var _button = __webpack_require__(2);
-
-var _button2 = _interopRequireDefault(_button);
-
-var _dropdown = __webpack_require__(8);
-
-var _dropdown2 = _interopRequireDefault(_dropdown);
-
-var _message = __webpack_require__(9);
-
-var _message2 = _interopRequireDefault(_message);
-
-var _modal = __webpack_require__(10);
-
-var _modal2 = _interopRequireDefault(_modal);
-
-var _nav = __webpack_require__(11);
-
-var _nav2 = _interopRequireDefault(_nav);
-
-var _parallax = __webpack_require__(12);
-
-var _parallax2 = _interopRequireDefault(_parallax);
-
-var _scrollTo = __webpack_require__(14);
-
-var _scrollTo2 = _interopRequireDefault(_scrollTo);
-
-var _tab = __webpack_require__(16);
-
-var _tab2 = _interopRequireDefault(_tab);
-
-var _collapse = __webpack_require__(7);
-
-var _collapse2 = _interopRequireDefault(_collapse);
-
-var _simpleCrud = __webpack_require__(15);
-
-var _simpleCrud2 = _interopRequireDefault(_simpleCrud);
-
-var _chip = __webpack_require__(6);
-
-var _chip2 = _interopRequireDefault(_chip);
-
-var _toast = __webpack_require__(17);
-
-var _toast2 = _interopRequireDefault(_toast);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// initialize - loading modules.
-
-
-// Functional modules. - nonloadable
-_scaffolding2.default.load();
-
-// Loadable Modules.
-/*!
- * cosmos-css - The css framework for personal practice.
- * @version v0.11.1
- * @link https://github.com/archco/cosmos-css#readme
- * @license MIT
- */
-
-// Libraries.
-
-_button2.default.load();
-_dropdown2.default.load();
-_message2.default.load();
-_modal2.default.load();
-_nav2.default.load();
-_parallax2.default.load();
-_scrollTo2.default.load();
-_tab2.default.load();
-_collapse2.default.load();
-_simpleCrud2.default.load();
-
-// define global helper functions.
-window.submitConfirm = function (selector) {
-  var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Are you confirm?';
-
-  _elementUtil2.default.submitConfirm(selector, message);
-};
-
-window.showToast = function (text) {
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-  var option = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-  _toast2.default.makeText(text, duration, option).show();
-};
-
-window.checkMobileSize = window.isMobileSize = _util2.default.isMobileSize;
-window.showMessage = _message2.default.showMessage;
-window.modalDialog = _modal2.default.dialog;
-
-// export
-var version = __webpack_require__(18).version;
-var lib = {
-  Util: _util2.default,
-  Color: _color2.default,
-  ElementUtil: _elementUtil2.default
-};
-var Cosmos = {
-  name: 'cosmos-css',
-  version: 'v' + version,
-  lib: lib,
-  Button: _button2.default,
-  Chip: _chip2.default,
-  Toast: _toast2.default,
-  Collapse: _collapse2.default
-};
-
-exports.default = Cosmos;
-exports.Util = _util2.default;
-exports.ElementUtil = _elementUtil2.default;
-exports.Color = _color2.default;
-exports.Helper = _helper2.default;
-exports.Button = _button2.default;
-exports.Chip = _chip2.default;
-exports.Toast = _toast2.default;
-exports.Collapse = _collapse2.default;
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = scrollIt;
-/**
- * scrollIt
- * @links https://pawelgrzybek.com/page-scroll-in-vanilla-javascript/
- * @links https://docs111.mootools.net/Effects/Fx-Transitions // easing types.
- *
- * @param  {Number|Element} destination
- * @param  {Number}   [duration=200]
- * @param  {String}   [easing='linear']
- * @param  {Function} callback
- * @return {void}
- */
-function scrollIt(destination) {
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 200;
-  var easing = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'linear';
-  var callback = arguments[3];
-
-
-  var easings = {
-    linear: function linear(t) {
-      return t;
-    },
-    easeInQuad: function easeInQuad(t) {
-      return t * t;
-    },
-    easeOutQuad: function easeOutQuad(t) {
-      return t * (2 - t);
-    },
-    easeInOutQuad: function easeInOutQuad(t) {
-      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-    },
-    easeInCubic: function easeInCubic(t) {
-      return t * t * t;
-    },
-    easeOutCubic: function easeOutCubic(t) {
-      return --t * t * t + 1;
-    },
-    easeInOutCubic: function easeInOutCubic(t) {
-      return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-    },
-    easeInQuart: function easeInQuart(t) {
-      return t * t * t * t;
-    },
-    easeOutQuart: function easeOutQuart(t) {
-      return 1 - --t * t * t * t;
-    },
-    easeInOutQuart: function easeInOutQuart(t) {
-      return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
-    },
-    easeInQuint: function easeInQuint(t) {
-      return t * t * t * t * t;
-    },
-    easeOutQuint: function easeOutQuint(t) {
-      return 1 + --t * t * t * t * t;
-    },
-    easeInOutQuint: function easeInOutQuint(t) {
-      return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
-    }
-  };
-
-  var start = window.pageYOffset;
-  var startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
-
-  var documentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
-  var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
-  var destinationOffset = typeof destination === 'number' ? destination : destination.offsetTop;
-  var destinationOffsetToScroll = Math.round(documentHeight - destinationOffset < windowHeight ? documentHeight - windowHeight : destinationOffset);
-
-  if ('requestAnimationFrame' in window === false) {
-    window.scroll(0, destinationOffsetToScroll);
-    if (callback) callback();
-    return;
-  }
-
-  function scroll() {
-    var now = 'now' in window.performance ? performance.now() : new Date().getTime();
-    var time = Math.min(1, (now - startTime) / duration);
-    var timeFunction = easings[easing](time);
-    window.scroll(0, Math.ceil(timeFunction * (destinationOffsetToScroll - start) + start));
-
-    if (window.pageYOffset === destinationOffsetToScroll) {
-      if (callback) callback();
-      return;
-    }
-
-    requestAnimationFrame(scroll);
-  }
-
-  scroll();
-}
 
 /***/ })
 /******/ ]);

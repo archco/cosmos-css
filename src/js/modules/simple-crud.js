@@ -4,7 +4,7 @@ import eu from '../lib/element-util.js';
 /************************************************************
   SipleCRUD
 *************************************************************/
-const NAME = 'Cosmos.SimpleCRUD';
+const NAME = 'simple_crud';
 const ClassName = {
   ITEM: 'simple-crud-item',
   VIEW_READ: 'simple-crud-view-read',
@@ -32,6 +32,10 @@ class SimpleCRUD extends CosmosModule {
 
   static get name() {
     return NAME;
+  }
+
+  static get isLoadable() {
+    return true;
   }
 
   // public

@@ -4,6 +4,8 @@
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
+import CosmosModule from './lib/cosmos-module.js';
+import pkg from '../../package.json';
 
 // Libraries.
 import Util from './lib/util.js';
@@ -28,56 +30,121 @@ import SimpleCRUD from './modules/simple-crud.js';
 import Chip from './modules/chip.js';
 import Toast from './modules/toast.js';
 
-// initialize - loading modules.
-Scaffolding.load();
-Button.load();
-Dropdown.load();
-Message.load();
-Modal.load();
-Nav.load();
-Parallax.load();
-ScrollTo.load();
-Tab.load();
-Collapse.load();
-SimpleCRUD.load();
+class Cosmos extends CosmosModule {
+  constructor(option = {}) {
+    super(option);
+    this.modules = new Map();
+  }
 
-// define global helper functions.
-window.submitConfirm = (selector, message = 'Are you confirm?') => {
-  ElementUtil.submitConfirm(selector, message);
-};
+  static get version() {
+    return pkg.version;
+  }
 
-window.showToast = (text, duration = null, option = {}) => {
-  Toast.makeText(text, duration, option).show();
-};
+  static get isLoadable() {
+    return true;
+  }
 
-window.checkMobileSize = window.isMobileSize = Util.isMobileSize;
-window.showMessage = Message.showMessage;
-window.modalDialog = Modal.dialog;
+  static get lib() {
+    return {
+      Util,
+      Color,
+      ElementUtil,
+    };
+  }
 
-// export
-let version = require('../../package.json').version;
-const lib = {
-  Util,
-  Color,
-  ElementUtil,
-};
-const Cosmos = {
-  name: 'cosmos-css',
-  version: `v${version}`,
-  lib,
+  static load(option = {}) {
+    let cosmos = new this(option);
+    cosmos.init();
+    return this;
+  }
+
+  init() {
+    this.addModules([
+      Scaffolding,
+      Button,
+      Dropdown,
+      Message,
+      Modal,
+      Nav,
+      Parallax,
+      ScrollTo,
+      Tab,
+      Collapse,
+      SimpleCRUD,
+    ]);
+    this.loadModules();
+    this.defineGlobalHelperFunctions();
+    return this;
+  }
+
+  addModules(modules) {
+    for (let mod of modules) {
+      this.modules.set(mod.name, mod);
+    }
+
+    return this;
+  }
+
+  removeModules(modules) {
+    for (let mod of modules) {
+      this.modules.delete(mod.name);
+    }
+
+    return this;
+  }
+
+  loadModules() {
+    this.modules.forEach(mod => {
+      if (!mod.isLoadable) return;
+      mod.load(this.getModuleOption(mod.name));
+    });
+  }
+
+  getModuleOption(modName) {
+    if (this.option.modules && this.option.modules[modName]) {
+      return this.option.modules[modName];
+    } else {
+      return {};
+    }
+  }
+
+  setModuleOption(modName, option) {
+    this.option.modules[modName] = option;
+    return this;
+  }
+
+  defineGlobalHelperFunctions() {
+    // define global helper functions.
+    window.submitConfirm = (selector, message = 'Are you confirm?') => {
+      ElementUtil.submitConfirm(selector, message);
+    };
+
+    window.showToast = (text, duration = null, option = {}) => {
+      Toast.makeText(text, duration, option).show();
+    };
+
+    window.checkMobileSize = window.isMobileSize = Util.isMobileSize;
+    window.showMessage = Message.showMessage;
+    window.modalDialog = Modal.dialog;
+  }
+}
+
+// export.
+Object.assign(Cosmos, {
   Button,
   Chip,
   Toast,
   Collapse,
-};
+});
 
 export default Cosmos;
-export { Util,
+export {
+  Util,
   ElementUtil,
   Color,
   Helper,
   Button,
   Chip,
   Toast,
-  Collapse
+  Collapse,
 };

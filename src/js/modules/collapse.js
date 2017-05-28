@@ -4,7 +4,7 @@ import eu from '../lib/element-util.js';
 /************************************************************
   Collapse
 *************************************************************/
-const NAME = 'Cosmos.Collapse';
+const NAME = 'collapse';
 const ClassName = {
   TOGGLE: 'collapse-toggle',
   PANNEL: 'collapse-panel',
@@ -38,8 +38,12 @@ class Collapse extends CosmosModule {
     return NAME;
   }
 
-  static load(element = null, option = {}) {
-    let c = new this(element, option);
+  static get isLoadable() {
+    return true;
+  }
+
+  static load(option = {}) {
+    let c = new this(null, option);
     c.init();
   }
 

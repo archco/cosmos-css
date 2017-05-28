@@ -4,7 +4,7 @@ import ElementUtil from '../lib/element-util.js';
 /************************************************************
   Button
 *************************************************************/
-const NAME = 'Cosmos.Button';
+const NAME = 'button';
 const ClassName = {
   CLOSE: 'btn-close',
   POSITION_CORNER: 'at-corner',
@@ -37,6 +37,10 @@ class Button extends CosmosModule{
 
   static get name() {
     return NAME;
+  }
+
+  static get isLoadable() {
+    return true;
   }
 
   /**

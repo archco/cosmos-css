@@ -1,7 +1,7 @@
 /************************************************************
   ElementUtil
 *************************************************************/
-const NAME = 'Cosmos.lib.ElementUtil';
+const NAME = 'element_util';
 const ClassName = {
   SHOW: 'display-show',
   HIDE: 'display-hide',
