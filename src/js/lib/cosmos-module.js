@@ -4,16 +4,20 @@
 export default class CosmosModule {
   constructor(option = {}) {
     this.setOption(option);
+    this.subModules = new Map();
+    this.subModuleInstances = new Map();
   }
 
   /**
    * module load
    *
-   * @return {void}
+   * @return {CosmosModule}
    */
   static load(option = {}) {
-    let m = new this(option);
-    m.init();
+    if (!this.isLoadable) return;
+    let instance = new this(option);
+    instance.init();
+    return instance;
   }
 
   /**
@@ -22,8 +26,8 @@ export default class CosmosModule {
    * @return {Object}
    */
   static get defaultOption() {
-    let m = new this();
-    return m.getDefaultOption();
+    let instance = new this();
+    return instance.getDefaultOption();
   }
 
   /**
@@ -32,6 +36,10 @@ export default class CosmosModule {
    * @return {Boolean}
    */
   static get isLoadable() {
+    return false;
+  }
+
+  static get isFunctional() {
     return false;
   }
 
@@ -69,5 +77,69 @@ export default class CosmosModule {
    */
   getDefaultOption() {
     return {};
+  }
+
+  /**
+   * addSubModules
+   *
+   * @param {Array} modules
+   * @return {CosmosModule}
+   */
+  addSubModules(modules) {
+    for (let mod of modules) {
+      this.subModules.set(mod.name, mod);
+    }
+
+    return this;
+  }
+
+  /**
+   * removeSubModules
+   *
+   * @param  {Array} modules
+   * @return {CosmosModule}
+   */
+  removeSubModules(modules) {
+    for (let mod of modules) {
+      this.subModules.delete(mod.name);
+    }
+
+    return this;
+  }
+
+  loadSubModules() {
+    this.subModules.forEach(Mod => {
+      let instance = new Mod(this.getSubModuleOption(Mod.name));
+
+      if (Mod.isLoadable) {
+        instance.init();
+      }
+
+      if (Mod.isFunctional) {
+        // TODO: mod's instance name to be camelCase.
+        this[Mod.name] = instance;
+      }
+
+      this.subModuleInstances.set(Mod.name, instance);
+    });
+  }
+
+  getSubModuleOption(modName) {
+    let options = this.option.sub_modules;
+    if (options && options[modName]) {
+      return options[modName];
+    } else {
+      return {};
+    }
+  }
+
+  setSubModuleOption(modName, option) {
+    // TODO: option key to be snake_case.
+    this.option.sub_modules[modName] = option;
+    return this;
+  }
+
+  getSubModuleInstance(modName) {
+    return this.subModuleInstances.get(modName);
   }
 }

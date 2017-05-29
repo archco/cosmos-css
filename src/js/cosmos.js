@@ -15,7 +15,6 @@ import ElementUtil from './lib/element-util.js';
 
 // Loadable Modules.
 import Scaffolding from './modules/scaffolding.js';
-import Button from './modules/button.js';
 import Dropdown from './modules/dropdown.js';
 import Message from './modules/message.js';
 import Modal from './modules/modal.js';
@@ -23,8 +22,11 @@ import Nav from './modules/nav.js';
 import Parallax from './modules/parallax.js';
 import ScrollTo from './modules/scroll-to.js';
 import Tab from './modules/tab.js';
-import Collapse from './modules/collapse.js';
 import SimpleCRUD from './modules/simple-crud.js';
+
+// both of loadable and Functional.
+import Collapse from './modules/collapse.js';
+import Button from './modules/button.js';
 
 // Functional modules. - nonloadable
 import Chip from './modules/chip.js';
@@ -33,7 +35,6 @@ import Toast from './modules/toast.js';
 class Cosmos extends CosmosModule {
   constructor(option = {}) {
     super(option);
-    this.modules = new Map();
   }
 
   static get version() {
@@ -41,6 +42,10 @@ class Cosmos extends CosmosModule {
   }
 
   static get isLoadable() {
+    return true;
+  }
+
+  static get isFunctional() {
     return true;
   }
 
@@ -52,14 +57,8 @@ class Cosmos extends CosmosModule {
     };
   }
 
-  static load(option = {}) {
-    let cosmos = new this(option);
-    cosmos.init();
-    return this;
-  }
-
   init() {
-    this.addModules([
+    this.addSubModules([
       Scaffolding,
       Button,
       Dropdown,
@@ -71,45 +70,11 @@ class Cosmos extends CosmosModule {
       Tab,
       Collapse,
       SimpleCRUD,
+      Chip,
+      Toast,
     ]);
-    this.loadModules();
+    this.loadSubModules();
     this.defineGlobalHelperFunctions();
-    return this;
-  }
-
-  addModules(modules) {
-    for (let mod of modules) {
-      this.modules.set(mod.name, mod);
-    }
-
-    return this;
-  }
-
-  removeModules(modules) {
-    for (let mod of modules) {
-      this.modules.delete(mod.name);
-    }
-
-    return this;
-  }
-
-  loadModules() {
-    this.modules.forEach(mod => {
-      if (!mod.isLoadable) return;
-      mod.load(this.getModuleOption(mod.name));
-    });
-  }
-
-  getModuleOption(modName) {
-    if (this.option.modules && this.option.modules[modName]) {
-      return this.option.modules[modName];
-    } else {
-      return {};
-    }
-  }
-
-  setModuleOption(modName, option) {
-    this.option.modules[modName] = option;
     return this;
   }
 
@@ -129,7 +94,7 @@ class Cosmos extends CosmosModule {
   }
 }
 
-// export.
+// For convenience to access functional modules.
 Object.assign(Cosmos, {
   Button,
   Chip,
@@ -137,6 +102,7 @@ Object.assign(Cosmos, {
   Collapse,
 });
 
+// export.
 export default Cosmos;
 export {
   Util,
