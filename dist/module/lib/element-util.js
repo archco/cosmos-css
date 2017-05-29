@@ -13,7 +13,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************
   ElementUtil
 *************************************************************/
-var NAME = 'Cosmos.lib.ElementUtil';
+var NAME = 'element_util';
 var ClassName = {
   SHOW: 'display-show',
   HIDE: 'display-hide'

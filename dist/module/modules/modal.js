@@ -29,7 +29,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Modal
 *************************************************************/
-var NAME = 'Cosmos.Modal';
+var NAME = 'modal';
 var ClassName = {
   MODAL: 'modal',
   CONTENT: 'modal-content',
@@ -188,6 +188,11 @@ var Modal = function (_CosmosModule) {
     key: 'name',
     get: function get() {
       return NAME;
+    }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
     }
   }]);
 

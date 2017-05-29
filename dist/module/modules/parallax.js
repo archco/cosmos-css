@@ -21,7 +21,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Parallax
 *************************************************************/
-var NAME = 'Cosmos.Parallax';
+var NAME = 'parallax';
 var ClassName = {
   PARALLAX: 'parallax',
   HIDE: 'display-hide'
@@ -98,6 +98,11 @@ var Parallax = function (_CosmosModule) {
 
     get: function get() {
       return NAME;
+    }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
     }
   }]);
 

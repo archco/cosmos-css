@@ -28,7 +28,7 @@ div(id='chip-container')
 
 script.
   window.addEventListener('load', function () {
-    var chip = new Cosmos.Chip('#chip-container', {tag: 'a'});
+    var chip = new Cosmos.Chip({container: '#chip-container', tag: 'a'});
     chip.add(
       'hello',
       'https://www.aikido-almere.nl/img/youtube-256.png',

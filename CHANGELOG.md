@@ -10,9 +10,11 @@ If want to see more previous information to [Releases](https://github.com/archco
 ## [Unreleased]
 ### Added
 - Add sort type "number" and "date" in ElementUtil. #152
+- Implement core of cosmos.js #150
 
 ### Changed
 - Improve Collapse: Available use instance for individual element. #153
+- Change constructor of chip.js and collapse.js. #150
 
 ## [0.11.0] - 2017-05-08
 ### Added

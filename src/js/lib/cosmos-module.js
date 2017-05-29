@@ -107,6 +107,11 @@ export default class CosmosModule {
     return this;
   }
 
+  /**
+   * loadSubModules
+   *
+   * @return {CosmosModule}
+   */
   loadSubModules() {
     this.subModules.forEach(Mod => {
       let instance = new Mod(this.getSubModuleOption(Mod.name));
@@ -122,8 +127,16 @@ export default class CosmosModule {
 
       this.subModuleInstances.set(Mod.name, instance);
     });
+
+    return this;
   }
 
+  /**
+   * getSubModuleOption
+   *
+   * @param  {String} modName
+   * @return {Object}
+   */
   getSubModuleOption(modName) {
     let options = this.option.sub_modules;
     if (options && options[modName]) {
@@ -133,12 +146,25 @@ export default class CosmosModule {
     }
   }
 
+  /**
+   * setSubModuleOption
+   *
+   * @param {String} modName
+   * @param {Object} option
+   * @return {CosmosModule}
+   */
   setSubModuleOption(modName, option) {
     // TODO: option key to be snake_case.
     this.option.sub_modules[modName] = option;
     return this;
   }
 
+  /**
+   * getSubModuleInstance
+   *
+   * @param  {String} modName
+   * @return {Object} instance of sub-module.
+   */
   getSubModuleInstance(modName) {
     return this.subModuleInstances.get(modName);
   }

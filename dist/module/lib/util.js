@@ -19,7 +19,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************
   util
 *************************************************************/
-var NAME = 'Cosmos.lib.Util';
+var NAME = 'util';
 
 var Util = function () {
   function Util() {

@@ -29,7 +29,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   nav
 *************************************************************/
-var NAME = 'Cosmos.Nav';
+var NAME = 'nav';
 var ClassName = {
   NAVBAR: 'navbar',
   TOGGLE_BTN: 'menu-toggle',
@@ -185,6 +185,11 @@ var Nav = function (_CosmosModule) {
 
     get: function get() {
       return NAME;
+    }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
     }
   }]);
 

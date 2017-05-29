@@ -25,7 +25,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Button
 *************************************************************/
-var NAME = 'Cosmos.Button';
+var NAME = 'button';
 var ClassName = {
   CLOSE: 'btn-close',
   POSITION_CORNER: 'at-corner',
@@ -66,6 +66,13 @@ var Button = function (_CosmosModule) {
 
     // public
 
+    /**
+     * appendBtnClose
+     *
+     * @param  {Element} element
+     * @param  {Function} [ callback = null ]
+     * @return {void}
+     */
     value: function appendBtnClose(element) {
       var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
@@ -150,6 +157,15 @@ var Button = function (_CosmosModule) {
     }
   }], [{
     key: 'addBtnClose',
+
+
+    /**
+     * addBtnClose
+     *
+     * @param {Element} element
+     * @param {Object} [ option = {} ]
+     * @param {Function} [ callback = null ]
+     */
     value: function addBtnClose(element) {
       var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
@@ -165,6 +181,16 @@ var Button = function (_CosmosModule) {
 
     get: function get() {
       return NAME;
+    }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
+  }, {
+    key: 'isFunctional',
+    get: function get() {
+      return true;
     }
   }]);
 

@@ -25,7 +25,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Tab
 *************************************************************/
-var NAME = 'Cosmos.Tab';
+var NAME = 'tab';
 var ClassName = {
   TAB: 'tab',
   TAB_VERTICAL: 'tab-vertical',

@@ -11,7 +11,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************
   Helper - will be deprecated.
 *************************************************************/
-var NAME = 'Cosmos.lib.Helper';
+var NAME = 'helper';
 
 var Helper = function () {
   function Helper() {

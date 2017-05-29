@@ -97,12 +97,14 @@ var CosmosModule = function () {
     _classCallCheck(this, CosmosModule);
 
     this.setOption(option);
+    this.subModules = new Map();
+    this.subModuleInstances = new Map();
   }
 
   /**
    * module load
    *
-   * @return {void}
+   * @return {CosmosModule}
    */
 
 
@@ -154,13 +156,167 @@ var CosmosModule = function () {
     value: function getDefaultOption() {
       return {};
     }
+
+    /**
+     * addSubModules
+     *
+     * @param {Array} modules
+     * @return {CosmosModule}
+     */
+
+  }, {
+    key: "addSubModules",
+    value: function addSubModules(modules) {
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = modules[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var mod = _step.value;
+
+          this.subModules.set(mod.name, mod);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      return this;
+    }
+
+    /**
+     * removeSubModules
+     *
+     * @param  {Array} modules
+     * @return {CosmosModule}
+     */
+
+  }, {
+    key: "removeSubModules",
+    value: function removeSubModules(modules) {
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = modules[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var mod = _step2.value;
+
+          this.subModules.delete(mod.name);
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+
+      return this;
+    }
+
+    /**
+     * loadSubModules
+     *
+     * @return {CosmosModule}
+     */
+
+  }, {
+    key: "loadSubModules",
+    value: function loadSubModules() {
+      var _this = this;
+
+      this.subModules.forEach(function (Mod) {
+        var instance = new Mod(_this.getSubModuleOption(Mod.name));
+
+        if (Mod.isLoadable) {
+          instance.init();
+        }
+
+        if (Mod.isFunctional) {
+          // TODO: mod's instance name to be camelCase.
+          _this[Mod.name] = instance;
+        }
+
+        _this.subModuleInstances.set(Mod.name, instance);
+      });
+
+      return this;
+    }
+
+    /**
+     * getSubModuleOption
+     *
+     * @param  {String} modName
+     * @return {Object}
+     */
+
+  }, {
+    key: "getSubModuleOption",
+    value: function getSubModuleOption(modName) {
+      var options = this.option.sub_modules;
+      if (options && options[modName]) {
+        return options[modName];
+      } else {
+        return {};
+      }
+    }
+
+    /**
+     * setSubModuleOption
+     *
+     * @param {String} modName
+     * @param {Object} option
+     * @return {CosmosModule}
+     */
+
+  }, {
+    key: "setSubModuleOption",
+    value: function setSubModuleOption(modName, option) {
+      // TODO: option key to be snake_case.
+      this.option.sub_modules[modName] = option;
+      return this;
+    }
+
+    /**
+     * getSubModuleInstance
+     *
+     * @param  {String} modName
+     * @return {Object} instance of module.
+     */
+
+  }, {
+    key: "getSubModuleInstance",
+    value: function getSubModuleInstance(modName) {
+      return this.subModuleInstances.get(modName);
+    }
   }], [{
     key: "load",
     value: function load() {
       var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-      var m = new this(option);
-      m.init();
+      if (!this.isLoadable) return;
+      var instance = new this(option);
+      instance.init();
+      return instance;
     }
 
     /**
@@ -172,8 +328,8 @@ var CosmosModule = function () {
   }, {
     key: "defaultOption",
     get: function get() {
-      var m = new this();
-      return m.getDefaultOption();
+      var instance = new this();
+      return instance.getDefaultOption();
     }
 
     /**
@@ -184,6 +340,11 @@ var CosmosModule = function () {
 
   }, {
     key: "isLoadable",
+    get: function get() {
+      return false;
+    }
+  }, {
+    key: "isFunctional",
     get: function get() {
       return false;
     }
@@ -1035,6 +1196,11 @@ var Button = function (_CosmosModule) {
     get: function get() {
       return true;
     }
+  }, {
+    key: 'isFunctional',
+    get: function get() {
+      return true;
+    }
   }]);
 
   return Button;
@@ -1365,10 +1531,6 @@ var _scaffolding = __webpack_require__(15);
 
 var _scaffolding2 = _interopRequireDefault(_scaffolding);
 
-var _button = __webpack_require__(2);
-
-var _button2 = _interopRequireDefault(_button);
-
 var _dropdown = __webpack_require__(10);
 
 var _dropdown2 = _interopRequireDefault(_dropdown);
@@ -1397,13 +1559,17 @@ var _tab = __webpack_require__(18);
 
 var _tab2 = _interopRequireDefault(_tab);
 
+var _simpleCrud = __webpack_require__(17);
+
+var _simpleCrud2 = _interopRequireDefault(_simpleCrud);
+
 var _collapse = __webpack_require__(9);
 
 var _collapse2 = _interopRequireDefault(_collapse);
 
-var _simpleCrud = __webpack_require__(17);
+var _button = __webpack_require__(2);
 
-var _simpleCrud2 = _interopRequireDefault(_simpleCrud);
+var _button2 = _interopRequireDefault(_button);
 
 var _chip = __webpack_require__(8);
 
@@ -1433,6 +1599,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // Loadable Modules.
 
 
+// both of loadable and Functional.
+
+
 // Functional modules. - nonloadable
 
 
@@ -1444,103 +1613,15 @@ var Cosmos = function (_CosmosModule) {
 
     _classCallCheck(this, Cosmos);
 
-    var _this = _possibleConstructorReturn(this, (Cosmos.__proto__ || Object.getPrototypeOf(Cosmos)).call(this, option));
-
-    _this.modules = new Map();
-    return _this;
+    return _possibleConstructorReturn(this, (Cosmos.__proto__ || Object.getPrototypeOf(Cosmos)).call(this, option));
   }
 
   _createClass(Cosmos, [{
     key: 'init',
     value: function init() {
-      this.addModules([_scaffolding2.default, _button2.default, _dropdown2.default, _message2.default, _modal2.default, _nav2.default, _parallax2.default, _scrollTo2.default, _tab2.default, _collapse2.default, _simpleCrud2.default]);
-      this.loadModules();
+      this.addSubModules([_scaffolding2.default, _button2.default, _dropdown2.default, _message2.default, _modal2.default, _nav2.default, _parallax2.default, _scrollTo2.default, _tab2.default, _collapse2.default, _simpleCrud2.default, _chip2.default, _toast2.default]);
+      this.loadSubModules();
       this.defineGlobalHelperFunctions();
-      return this;
-    }
-  }, {
-    key: 'addModules',
-    value: function addModules(modules) {
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = modules[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var mod = _step.value;
-
-          this.modules.set(mod.name, mod);
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
-
-      return this;
-    }
-  }, {
-    key: 'removeModules',
-    value: function removeModules(modules) {
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
-
-      try {
-        for (var _iterator2 = modules[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var mod = _step2.value;
-
-          this.modules.delete(mod.name);
-        }
-      } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return) {
-            _iterator2.return();
-          }
-        } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
-          }
-        }
-      }
-
-      return this;
-    }
-  }, {
-    key: 'loadModules',
-    value: function loadModules() {
-      var _this2 = this;
-
-      this.modules.forEach(function (mod) {
-        if (!mod.isLoadable) return;
-        mod.load(_this2.getModuleOption(mod.name));
-      });
-    }
-  }, {
-    key: 'getModuleOption',
-    value: function getModuleOption(modName) {
-      if (this.option.modules && this.option.modules[modName]) {
-        return this.option.modules[modName];
-      } else {
-        return {};
-      }
-    }
-  }, {
-    key: 'setModuleOption',
-    value: function setModuleOption(modName, option) {
-      this.option.modules[modName] = option;
       return this;
     }
   }, {
@@ -1565,21 +1646,17 @@ var Cosmos = function (_CosmosModule) {
       window.modalDialog = _modal2.default.dialog;
     }
   }], [{
-    key: 'load',
-    value: function load() {
-      var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      var cosmos = new this(option);
-      cosmos.init();
-      return this;
-    }
-  }, {
     key: 'version',
     get: function get() {
       return _package2.default.version;
     }
   }, {
     key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
+  }, {
+    key: 'isFunctional',
     get: function get() {
       return true;
     }
@@ -1597,7 +1674,7 @@ var Cosmos = function (_CosmosModule) {
   return Cosmos;
 }(_cosmosModule2.default);
 
-// export.
+// For convenience to access functional modules.
 
 
 Object.assign(Cosmos, {
@@ -1607,6 +1684,7 @@ Object.assign(Cosmos, {
   Collapse: _collapse2.default
 });
 
+// export.
 exports.default = Cosmos;
 exports.Util = _util2.default;
 exports.ElementUtil = _elementUtil2.default;
@@ -1984,6 +2062,10 @@ var _cosmosModule = __webpack_require__(0);
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
+var _elementUtil = __webpack_require__(1);
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
+
 var _button = __webpack_require__(2);
 
 var _button2 = _interopRequireDefault(_button);
@@ -2007,6 +2089,7 @@ var Selector = {
   CHIP: '.' + ClassName.CHIP
 };
 var Default = {
+  container: '#chip-container',
   tag: 'span', // chip's tagName. span, div, a ...
   close_button: true, // enable close button.
   close_action: 'remove' };
@@ -2014,14 +2097,14 @@ var Default = {
 var Chip = function (_CosmosModule) {
   _inherits(Chip, _CosmosModule);
 
-  function Chip(container) {
-    var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  function Chip() {
+    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
     _classCallCheck(this, Chip);
 
     var _this = _possibleConstructorReturn(this, (Chip.__proto__ || Object.getPrototypeOf(Chip)).call(this, option));
 
-    _this.container = document.querySelector(container);
+    _this.setContainer(_this.option.container);
     _this.button = new _button2.default({
       close_action: _this.option.close_action
     });
@@ -2042,7 +2125,7 @@ var Chip = function (_CosmosModule) {
      * @param {String} text
      * @param {String} imgSrc
      * @param {Object} data  dataset values.
-     * @return {void}
+     * @return {Element} element of new chip.
      */
     value: function add(text) {
       var imgSrc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -2051,6 +2134,7 @@ var Chip = function (_CosmosModule) {
       var chip = this._createChip(text, imgSrc, data);
 
       this.container.appendChild(chip);
+      return chip;
     }
 
     /**
@@ -2104,6 +2188,20 @@ var Chip = function (_CosmosModule) {
     value: function getContainer() {
       return this.container;
     }
+
+    /**
+     * setContainer
+     *
+     * @param {String|Element} selector
+     * @return {Chip}
+     */
+
+  }, {
+    key: 'setContainer',
+    value: function setContainer(selector) {
+      this.container = _elementUtil2.default.getElement(selector);
+      return this;
+    }
   }, {
     key: 'getDefaultOption',
     value: function getDefaultOption() {
@@ -2152,6 +2250,11 @@ var Chip = function (_CosmosModule) {
     key: 'name',
     get: function get() {
       return NAME;
+    }
+  }, {
+    key: 'isFunctional',
+    get: function get() {
+      return true;
     }
   }]);
 
@@ -2210,6 +2313,7 @@ var Selector = {
   A_ACTIVE: '.' + ClassName.ACCORDION + ' .' + ClassName.A_HEAD + '.' + ClassName.ACTIVE
 };
 var Default = {
+  element: null,
   target: '',
   is_collapsed: true };
 
@@ -2217,14 +2321,13 @@ var Collapse = function (_CosmosModule) {
   _inherits(Collapse, _CosmosModule);
 
   function Collapse() {
-    var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
     _classCallCheck(this, Collapse);
 
     var _this = _possibleConstructorReturn(this, (Collapse.__proto__ || Object.getPrototypeOf(Collapse)).call(this, option));
 
-    _this.setElement(element);
+    _this.setElement(_this.option.element);
     return _this;
   }
 
@@ -2470,20 +2573,17 @@ var Collapse = function (_CosmosModule) {
       return _elementUtil2.default.getElement(element.dataset.target);
     }
   }], [{
-    key: 'load',
-    value: function load() {
-      var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      var c = new this(null, option);
-      c.init();
-    }
-  }, {
     key: 'name',
     get: function get() {
       return NAME;
     }
   }, {
     key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
+  }, {
+    key: 'isFunctional',
     get: function get() {
       return true;
     }
@@ -4123,6 +4223,11 @@ var Toast = function (_CosmosModule) {
     get: function get() {
       return NAME;
     }
+  }, {
+    key: 'isFunctional',
+    get: function get() {
+      return true;
+    }
   }]);
 
   return Toast;
@@ -4143,7 +4248,23 @@ var _cosmos2 = _interopRequireDefault(_cosmos);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-window.Cosmos = _cosmos2.default.load();
+var option = {
+  sub_modules: {
+    button: {
+      close_style: 'icon'
+    },
+    toast: {
+      log_enable: false
+    },
+    scroll_to: {
+      scroll_duration: 3000
+    }
+  }
+};
+
+window.Cosmos = _cosmos2.default;
+var cosmos = new _cosmos2.default(option);
+window.cosmos = cosmos.init();
 
 /***/ }),
 /* 21 */

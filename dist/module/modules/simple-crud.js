@@ -25,7 +25,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   SipleCRUD
 *************************************************************/
-var NAME = 'Cosmos.SimpleCRUD';
+var NAME = 'simple_crud';
 var ClassName = {
   ITEM: 'simple-crud-item',
   VIEW_READ: 'simple-crud-view-read',
@@ -109,6 +109,11 @@ var SimpleCRUD = function (_CosmosModule) {
 
     get: function get() {
       return NAME;
+    }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
     }
   }]);
 

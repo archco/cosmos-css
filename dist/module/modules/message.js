@@ -29,7 +29,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   message
 *************************************************************/
-var NAME = 'Cosmos.Message';
+var NAME = 'message';
 var Status = {
   INFO: 'info',
   SUCCESS: 'success',
@@ -133,6 +133,11 @@ var Message = function (_CosmosModule) {
     key: 'name',
     get: function get() {
       return NAME;
+    }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
     }
   }]);
 

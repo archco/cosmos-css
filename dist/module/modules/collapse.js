@@ -25,7 +25,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Collapse
 *************************************************************/
-var NAME = 'Cosmos.Collapse';
+var NAME = 'collapse';
 var ClassName = {
   TOGGLE: 'collapse-toggle',
   PANNEL: 'collapse-panel',
@@ -43,6 +43,7 @@ var Selector = {
   A_ACTIVE: '.' + ClassName.ACCORDION + ' .' + ClassName.A_HEAD + '.' + ClassName.ACTIVE
 };
 var Default = {
+  element: null,
   target: '',
   is_collapsed: true };
 
@@ -50,14 +51,13 @@ var Collapse = function (_CosmosModule) {
   _inherits(Collapse, _CosmosModule);
 
   function Collapse() {
-    var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
     _classCallCheck(this, Collapse);
 
     var _this = _possibleConstructorReturn(this, (Collapse.__proto__ || Object.getPrototypeOf(Collapse)).call(this, option));
 
-    _this.setElement(element);
+    _this.setElement(_this.option.element);
     return _this;
   }
 
@@ -303,18 +303,19 @@ var Collapse = function (_CosmosModule) {
       return _elementUtil2.default.getElement(element.dataset.target);
     }
   }], [{
-    key: 'load',
-    value: function load() {
-      var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-      var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-      var c = new this(element, option);
-      c.init();
-    }
-  }, {
     key: 'name',
     get: function get() {
       return NAME;
+    }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
+  }, {
+    key: 'isFunctional',
+    get: function get() {
+      return true;
     }
   }]);
 
