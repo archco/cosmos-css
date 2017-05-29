@@ -1,4 +1,5 @@
 import CosmosModule from '../lib/cosmos-module.js';
+import ElementUtil from '../lib/element-util.js';
 import Button from './button.js';
 
 /************************************************************
@@ -12,15 +13,16 @@ const Selector = {
   CHIP: `.${ClassName.CHIP}`,
 };
 const Default = {
+  container: '#chip-container',
   tag: 'span', // chip's tagName. span, div, a ...
   close_button: true, // enable close button.
   close_action: 'remove', // close action. remove | hide
 };
 
 export default class Chip extends CosmosModule {
-  constructor(container, option = {}) {
+  constructor(option = {}) {
     super(option);
-    this.container = document.querySelector(container);
+    this.setContainer(this.option.container);
     this.button = new Button({
       close_action: this.option.close_action,
     });
@@ -32,6 +34,10 @@ export default class Chip extends CosmosModule {
     return NAME;
   }
 
+  static get isFunctional() {
+    return true;
+  }
+
   // public
 
   /**
@@ -40,12 +46,13 @@ export default class Chip extends CosmosModule {
    * @param {String} text
    * @param {String} imgSrc
    * @param {Object} data  dataset values.
-   * @return {void}
+   * @return {Element} element of new chip.
    */
   add(text, imgSrc = '', data = {}) {
     let chip = this._createChip(text, imgSrc, data);
 
     this.container.appendChild(chip);
+    return chip;
   }
 
   /**
@@ -71,6 +78,17 @@ export default class Chip extends CosmosModule {
    */
   getContainer() {
     return this.container;
+  }
+
+  /**
+   * setContainer
+   *
+   * @param {String|Element} selector
+   * @return {Chip}
+   */
+  setContainer(selector) {
+    this.container = ElementUtil.getElement(selector);
+    return this;
   }
 
   getDefaultOption() {

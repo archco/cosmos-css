@@ -22,14 +22,15 @@ const Selector = {
   A_ACTIVE: `.${ClassName.ACCORDION} .${ClassName.A_HEAD}.${ClassName.ACTIVE}`,
 };
 const Default = {
+  element: null,
   target: '',
   is_collapsed: true, // initial state.
 };
 
 export default class Collapse extends CosmosModule {
-  constructor(element = null, option = {}) {
+  constructor(option = {}) {
     super(option);
-    this.setElement(element);
+    this.setElement(this.option.element);
   }
 
   // static
@@ -42,9 +43,8 @@ export default class Collapse extends CosmosModule {
     return true;
   }
 
-  static load(option = {}) {
-    let c = new this(null, option);
-    c.init();
+  static get isFunctional() {
+    return true;
   }
 
   // public

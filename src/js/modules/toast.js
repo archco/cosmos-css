@@ -36,6 +36,10 @@ export default class Toast extends CosmosModule {
     return NAME;
   }
 
+  static get isFunctional() {
+    return true;
+  }
+
   /**
    * makeText
    *

@@ -43,6 +43,10 @@ export default class Button extends CosmosModule{
     return true;
   }
 
+  static get isFunctional() {
+    return true;
+  }
+
   /**
    * addBtnClose
    *
