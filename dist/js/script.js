@@ -300,7 +300,7 @@ var CosmosModule = function () {
      * getSubModuleInstance
      *
      * @param  {String} modName
-     * @return {Object} instance of module.
+     * @return {Object} instance of sub-module.
      */
 
   }, {
@@ -1644,6 +1644,11 @@ var Cosmos = function (_CosmosModule) {
       window.checkMobileSize = window.isMobileSize = _util2.default.isMobileSize;
       window.showMessage = _message2.default.showMessage;
       window.modalDialog = _modal2.default.dialog;
+    }
+  }, {
+    key: 'version',
+    get: function get() {
+      return _package2.default.version;
     }
   }], [{
     key: 'version',
@@ -4263,8 +4268,7 @@ var option = {
 };
 
 window.Cosmos = _cosmos2.default;
-var cosmos = new _cosmos2.default(option);
-window.cosmos = cosmos.init();
+window.cosmos = new _cosmos2.default(option).init();
 
 /***/ }),
 /* 21 */

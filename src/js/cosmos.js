@@ -57,6 +57,10 @@ class Cosmos extends CosmosModule {
     };
   }
 
+  get version() {
+    return pkg.version;
+  }
+
   init() {
     this.addSubModules([
       Scaffolding,

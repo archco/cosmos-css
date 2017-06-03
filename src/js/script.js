@@ -15,5 +15,4 @@ const option = {
 };
 
 window.Cosmos = Cosmos;
-const cosmos = new Cosmos(option);
-window.cosmos = cosmos.init();
+window.cosmos = new Cosmos(option).init();
