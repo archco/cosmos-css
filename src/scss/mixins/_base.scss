@@ -1,0 +1,46 @@
+//======================================================================
+// Scaffolding
+//======================================================================
+
+// used for %link-no-deco
+@mixin no-decoration {
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// set link state color
+@mixin set-link-state-color($link, $visited: null, $hover: null, $active: null) {
+  &,
+  &:link {
+    color: $link;
+  }
+
+  &:visited {
+    color: if($visited, $visited, $link);
+  }
+
+  &:hover,
+  &:focus {
+    color: if($hover, $hover, $link);
+  }
+
+  &:active {
+    color: if($active, $active, $link);
+  }
+}
+
+//======================================================================
+// Form
+//======================================================================
+
+@mixin form-inline-target {
+  input:not([type="color"]),
+  select,
+  textarea {
+    @content;
+  }
+}

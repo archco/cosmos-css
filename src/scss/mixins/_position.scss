@@ -1,0 +1,24 @@
+//======================================================================
+// Positioning Helper
+//======================================================================
+
+// Centering
+@mixin position-center-container {
+  position: relative;
+}
+
+@mixin position-center {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+// flex container's positional alignment.
+//
+// @param {String} $horizontal flex-start|flex-end|center|...
+// @param {String} $vertical stretch|flex-start|flex-end|center|...
+@mixin flex-container($horizontal:'flex-start', $vertical:'stretch') {
+  display: flex;
+  justify-content: #{$horizontal}; // horizontally
+  align-items: #{$vertical}; // vertically
+}

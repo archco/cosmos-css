@@ -1,0 +1,51 @@
+// [ Guide ]
+// mixin-name() : default mixin.
+// mixin-name($param1, $param2: 'default_value') : mixin with parameters.
+// mixin-name() { @content } : mixin with @content directive.
+
+@import './mixins/base';
+// no-decoration()
+// set-link-state-color($link, $visited: null, $hover: null, $active: null)
+// form-inline-target() { @content }
+
+@import './mixins/loader';
+// loader-one()
+// loader-one-color($color: $text-color)
+
+@import './mixins/button';
+// btn-base()
+// btn-color($bg-color, $color: $button-color)
+// btn-flat-color($color)
+
+@import './mixins/utilities';
+// clear-bot()
+// debug()
+// reset-text()
+// reset-list()
+
+@import './mixins/border';
+// border-top-radius($radius)
+// border-right-radius($radius)
+// border-bottom-radius($radius)
+// border-left-radius($radius)
+
+@import './mixins/media';
+// media-up($width) { @content }
+// media-down($width) { @content }
+// media-between($min, $max) { @content }
+// media-only-mobile() { @content }
+// media-tablet-up() { @content }
+// media-tablet-down() { @content }
+// media-only-tablet() { @content }
+// media-only-desktop() { @content }
+
+@import './mixins/position';
+// position-center-container()
+// position-center()
+// flex-container($horizontal:'flex-start', $vertical:'stretch')
+
+@import './mixins/caret-arrow';
+// caret($direction: 'down')
+// caret-direction($direction)
+// arrow($direction: 'down')
+// arrow-direction($direction)
