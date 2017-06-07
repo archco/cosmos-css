@@ -5,10 +5,6 @@
  * @license MIT
  */
 
-//======================================================================
-// Import
-//======================================================================
-
 // library.
 @import 'node_modules/normalize.css/normalize';
 @import 'node_modules/scss-palette/src/palette';
@@ -17,7 +13,7 @@
 @import 'lib/keyframes';
 
 // base.
-@import 'variable';
+@import 'variables';
 @import 'mixins';
 
 // components.

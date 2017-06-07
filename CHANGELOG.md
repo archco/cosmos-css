@@ -15,6 +15,8 @@ If want to see more previous information to [Releases](https://github.com/archco
 ### Changed
 - Improve Collapse: Available use instance for individual element. #153
 - Change constructor of chip.js and collapse.js. #150
+- Separates mixin.scss #162
+- Change entry file name "style.scss" to "cosmos.scss". #162
 
 ## [0.11.0] - 2017-05-08
 ### Added

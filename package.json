@@ -3,7 +3,7 @@
   "version": "0.11.1",
   "description": "The css framework for personal practice.",
   "main": "dist/module/cosmos.js",
-  "sass": "src/scss/style.scss",
+  "scss": "src/scss/cosmos.scss",
   "directories": {
     "test": "test"
   },
@@ -34,9 +34,9 @@
     "dev": "npm run scss && npm run pug && npm run js",
     "watch": "node node_modules/concurrently/src/main \"npm run scss:watch\" \"npm run pug:watch\" \"npm run js:watch\"",
     "production": "npm run scss:min && npm run js:min",
-    "scss": "node node_modules/node-sass/bin/node-sass --source-map true src/scss/style.scss dist/css/style.css",
+    "scss": "node node_modules/node-sass/bin/node-sass --source-map true src/scss/cosmos.scss dist/css/style.css",
     "postscss": "npm run css",
-    "scss:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/style.scss dist/css/style.min.css",
+    "scss:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/cosmos.scss dist/css/style.min.css",
     "postscss:min": "npm run css:min",
     "scss:watch": "npm run scss -- --watch",
     "pug": "node node_modules/pug-cli --pretty test/views/pages/ --out ./test/html/",
