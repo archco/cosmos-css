@@ -29,6 +29,10 @@ export default class Tab extends CosmosModule {
     return NAME;
   }
 
+  static get isLoadable() {
+    return true;
+  }
+
   // public
 
   init() {
