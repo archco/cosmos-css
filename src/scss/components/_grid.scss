@@ -2,22 +2,23 @@
 // Grid
 //======================================================================
 
-/** container */
+// container
 .container {
-  width: 90%;
-  margin: 0 auto;
+  width: 92%;
+  margin-right: auto;
+  margin-left: auto;
 
   .row {
-    margin-right: (-1 * $gutter-width / 2);
-    margin-left: (-1 * $gutter-width / 2);
+    margin-right: (-1 * $grid-gutter-width / 2);
+    margin-left: (-1 * $grid-gutter-width / 2);
   }
 }
 
 @include media-tablet-up {
-  .container { width: 75%; }
+  .container { width: 84%; }
 }
 
-/** Grid */
+// grid
 .row {
   @include clear-both;
   margin-right: auto;
@@ -29,11 +30,11 @@
   float: left;
   width: 100%;
   min-height: 1px;
-  padding: 0 $gutter-width / 2;
+  padding: 0 $grid-gutter-width / 2;
   box-sizing: border-box;
 }
 
-@mixin make-columns($term: null, $count: $num-cols) {
+@mixin make-columns($term: null, $count: $grid-columns) {
   $colname: '.col-';
 
   @if ($term != null) {

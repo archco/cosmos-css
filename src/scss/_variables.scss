@@ -175,8 +175,8 @@ $dropdown-active-color: get-contrast($dropdown-active-bg-color) !default;
 $dropdown-min-width: 120px !default;
 
 // grid
-$num-cols: 12 !default;
-$gutter-width: 1.5rem !default;
+$grid-columns: 12 !default;
+$grid-gutter-width: 1.5rem !default;
 
 // card
 $card-size: 300px !default;
