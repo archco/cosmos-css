@@ -11,6 +11,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 ### Added
 - Add sort type "number" and "date" in ElementUtil. #152
 - Implement core of cosmos.js #150
+- Add scss mixins for using flexbox. #143
 
 ### Changed
 - Improve Collapse: Available use instance for individual element. #153
