@@ -51,10 +51,6 @@
 }
 
 // centering
-%flex-center {
-  @include flex-container('center', 'center');
-}
-
 %position-center-container {
   @include position-center-container;
 }
@@ -63,16 +59,16 @@
   @include position-center;
 }
 
-.vertical-center-container {
-  @include flex-container('flex-start', 'center');
-
-  .flex-item {
-    display: block;
-  }
+.vertical-center-container,
+.flex-container-vertical-center {
+  @include flex-container-align('flex-start', 'center');
+  display: flex;
 }
 
-.flex-center-container {
-  @include flex-container('center', 'center');
+.flex-center-container,
+.flex-container-center {
+  @include flex-container-align('center', 'center');
+  display: flex;
 }
 
 .center-position-container {

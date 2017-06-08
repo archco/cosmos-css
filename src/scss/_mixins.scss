@@ -3,25 +3,16 @@
 // mixin-name($param1, $param2: 'default_value') : mixin with parameters.
 // mixin-name() { @content } : mixin with @content directive.
 
-@import './mixins/base';
-// no-decoration()
-// set-link-state-color($link, $visited: null, $hover: null, $active: null)
-// form-inline-target() { @content }
-
-@import './mixins/loader';
-// loader-one()
-// loader-one-color($color: $text-color)
-
-@import './mixins/button';
-// btn-base()
-// btn-color($bg-color, $color: $button-color)
-// btn-flat-color($color)
-
 @import './mixins/utilities';
 // clear-bot()
 // debug()
 // reset-text()
 // reset-list()
+
+@import './mixins/base';
+// no-decoration()
+// set-link-state-color($link, $visited: null, $hover: null, $active: null)
+// form-inline-target() { @content }
 
 @import './mixins/border';
 // border-top-radius($radius)
@@ -39,10 +30,25 @@
 // media-only-tablet() { @content }
 // media-only-desktop() { @content }
 
+@import './mixins/flex';
+// flex-container-align($main-axis: 'flex-start', $cross-axis: 'stretch', $multi-line: false)
+// flex-container-flow($direction: 'row', $wrap: 'nowrap')
+// flex-item($grow: 0, $shrink: 0, $basis: 'auto')
+// flex-item-align($self: 'auto', $order: 0)
+// flex-container($horizontal:'flex-start', $vertical:'stretch')
+
 @import './mixins/position';
 // position-center-container()
 // position-center()
-// flex-container($horizontal:'flex-start', $vertical:'stretch')
+
+@import './mixins/loader';
+// loader-one()
+// loader-one-color($color: $text-color)
+
+@import './mixins/button';
+// btn-base()
+// btn-color($bg-color, $color: $button-color)
+// btn-flat-color($color)
 
 @import './mixins/caret-arrow';
 // caret($direction: 'down')
