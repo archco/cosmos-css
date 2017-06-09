@@ -1744,6 +1744,9 @@ aside {
   @media only screen and (min-width: 768px) {
     .container {
       width: 84%; } }
+  .container .row {
+    margin-right: -0.75rem;
+    margin-left: -0.75rem; }
 
 .row {
   display: -webkit-box;

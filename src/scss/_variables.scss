@@ -176,11 +176,11 @@ $dropdown-min-width: 120px !default;
 
 // grid
 $grid-breakpoints: (
-  base: 768px,
+  base: 768px, // default responsive breakpoint: tablet-size.
   sm: 0,
   md: 768px,
   lg: 992px,
-);
+) !default;
 $grid-columns: 12 !default;
 $grid-gutter-width: 1.5rem !default;
 
