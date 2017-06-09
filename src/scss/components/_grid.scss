@@ -8,6 +8,18 @@
   max-width: percentage-round($size / $columns, 2); // for browser compatibility.
 }
 
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  margin-left: percentage-round($size / $columns, 2);
+}
+
+@mixin make-col-push($size, $columns: $grid-columns) {
+  left: if($size > 0, percentage-round($size / $columns, 2), auto);
+}
+
+@mixin make-col-pull($size, $columns: $grid-columns) {
+  right: if($size > 0, percentage-round($size / $columns, 2), auto);
+}
+
 @mixin make-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
   %column-common {
     @include make-gutters();
@@ -49,6 +61,23 @@
       @for $i from 1 through $columns {
         .col#{$infix}-#{$i} {
           @include make-col($i, $columns);
+        }
+      }
+
+      // column modifiers.
+      @for $i from 0 through $columns {
+        .pull#{$infix}-#{$i} {
+          @include make-col-pull($i, $columns);
+        }
+
+        .push#{$infix}-#{$i} {
+          @include make-col-push($i, $columns);
+        }
+
+        @if (0 < $i and $i < $columns) {
+          .offset#{$infix}-#{$i} {
+            @include make-col-offset($i, $columns);
+          }
         }
       }
     }
