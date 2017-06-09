@@ -21,9 +21,9 @@
 // border-left-radius($radius)
 
 @import './mixins/media';
-// media-up($width) { @content }
-// media-down($width) { @content }
-// media-between($min, $max) { @content }
+// media-up($min-width) { @content }
+// media-down($max-width) { @content }
+// media-between($min-width, $max-width) { @content }
 // media-only-mobile() { @content }
 // media-tablet-up() { @content }
 // media-tablet-down() { @content }

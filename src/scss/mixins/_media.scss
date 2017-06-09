@@ -27,31 +27,42 @@
 
 // functions
 @mixin media-only-mobile {
-  @include media-down($mobile-size) {
+  $medium: map-get($grid-breakpoints, 'md');
+
+  @include media-down($medium) {
     @content;
   }
 }
 
 @mixin media-tablet-up {
-  @include media-up($mobile-size) {
+  $medium: map-get($grid-breakpoints, 'md');
+
+  @include media-up($medium) {
     @content;
   }
 }
 
 @mixin media-tablet-down {
-  @include media-down($tablet-size) {
+  $large: map-get($grid-breakpoints, 'lg');
+
+  @include media-down($large) {
     @content;
   }
 }
 
 @mixin media-only-tablet {
-  @include media-between($mobile-size, $tablet-size) {
+  $medium: map-get($grid-breakpoints, 'md');
+  $large: map-get($grid-breakpoints, 'lg');
+
+  @include media-between($medium, $large) {
     @content;
   }
 }
 
 @mixin media-only-desktop {
-  @include media-up($tablet-size) {
+  $large: map-get($grid-breakpoints, 'lg');
+
+  @include media-up($large) {
     @content;
   }
 }
