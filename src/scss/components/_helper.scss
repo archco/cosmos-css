@@ -131,7 +131,8 @@
 .no-margin { padding: 0; margin: 0;}
 .full-width { width: 100%; }
 .full-height { height: 100%; }
-.group { margin: 1rem 0; }
+.group { margin-bottom: 1rem; }
+.debug-line { @include debug; }
 .caret {
   @include caret('down');
 }

@@ -89,7 +89,6 @@
 
 // nav
 .navbar {
-  @include debug;
   z-index: $z-index-nav;
   margin: 0 auto;
   font-family: $nav-font;

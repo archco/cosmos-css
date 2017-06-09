@@ -13,11 +13,9 @@
 
 // debug outline
 @mixin debug {
-  &.outline {
-    * {
-      $_outline-color: rgba(#f00, .5);
-      outline: 1px solid $_outline-color;
-    }
+  * {
+    $_outline-color: rgba(#f00, .5);
+    outline: 1px solid $_outline-color;
   }
 }
 
