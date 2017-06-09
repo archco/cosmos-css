@@ -3,24 +3,24 @@
 //======================================================================
 
 // base mixins
-@mixin media-up($width) {
-  @media only screen and (min-width: $width) {
+@mixin media-up($min-width) {
+  @media only screen and (min-width: $min-width) {
     @content;
   }
 }
 
-@mixin media-down($width) {
-  $width: $width - 1;
+@mixin media-down($max-width) {
+  $max-width: $max-width - 1;
 
-  @media only screen and (max-width: $width) {
+  @media only screen and (max-width: $max-width) {
     @content;
   }
 }
 
-@mixin media-between($min, $max) {
-  $max: $max - 1;
+@mixin media-between($min-width, $max-width) {
+  $max-width: $max-width - 1;
 
-  @media only screen and (min-width: $min) and (max-width: $max) {
+  @media only screen and (min-width: $min-width) and (max-width: $max-width) {
     @content;
   }
 }

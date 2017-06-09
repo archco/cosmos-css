@@ -175,6 +175,12 @@ $dropdown-active-color: get-contrast($dropdown-active-bg-color) !default;
 $dropdown-min-width: 120px !default;
 
 // grid
+$grid-breakpoints: (
+  base: 768px,
+  sm: 0,
+  md: 768px,
+  lg: 992px,
+);
 $grid-columns: 12 !default;
 $grid-gutter-width: 1.5rem !default;
 
