@@ -1,3 +1,4 @@
+h3 Toggle Dropdown
 div(class='dropdown')
   button(class='dropdown-toggle btn') TOGGLE
   ul(class='dropdown-content')
@@ -7,6 +8,8 @@ div(class='dropdown')
       a(href='#') drop
     li
       a(href='#') down
+
+h3 Hover Dropdown
 div(class='dropdown')
   button(class='dropdown-btn btn info') HOVER
   ul(class='dropdown-content')
@@ -16,23 +19,33 @@ div(class='dropdown')
       a(href='#') drop
     li
       a(href='#') down
-br
-div(class='dropdown float-left')
-  button(class='dropdown-btn btn success') LEFT
-  ul(class='dropdown-content' data-align='left')
-    li
-      a(href='#') hello
-    li
-      a(href='#') drop
-    li
-      a(href='#') down
-div(class='dropdown float-right')
-  button(class='dropdown-btn btn warning') RIGHT
-  ul(class='dropdown-content' data-align='right')
-    li
-      a(href='#') hello
-    li
-      a(href='#') drop
-    li
-      a(href='#') down
-div(class='float-clear')
+
+h3 Dropdown Content Alignment
+div(style='display:flex;width:100%;justify-content:space-between;')
+  div(class='dropdown')
+    button(class='dropdown-btn btn success') LEFT
+    ul(class='dropdown-content' data-align='left')
+      li
+        a(href='#') hello
+      li
+        a(href='#') drop
+      li
+        a(href='#') down
+  div(class='dropdown')
+    button(class='dropdown-btn btn secondary') CENTER
+    ul(class='dropdown-content' data-align='center')
+      li
+        a(href='#') hello
+      li
+        a(href='#') drop
+      li
+        a(href='#') down
+  div(class='dropdown')
+    button(class='dropdown-btn btn warning') RIGHT
+    ul(class='dropdown-content' data-align='right')
+      li
+        a(href='#') hello
+      li
+        a(href='#') drop
+      li
+        a(href='#') down

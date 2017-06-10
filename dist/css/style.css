@@ -1324,6 +1324,11 @@ input[type="reset"], .btn, .btn-icon {
     .dropdown .dropdown-content[data-align='left'] {
       right: auto;
       left: 0; }
+    .dropdown .dropdown-content[data-align='center'] {
+      right: auto;
+      left: auto;
+      -ms-grid-row-align: center;
+          align-self: center; }
     .dropdown .dropdown-content[data-align='right'] {
       right: 0;
       left: auto; }
