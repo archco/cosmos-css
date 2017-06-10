@@ -20,6 +20,9 @@ If want to see more previous information to [Releases](https://github.com/archco
 - Change entry file name "style.scss" to "cosmos.scss". #162
 - Improve grid with flexbox. #146
 
+### Fixed
+- Dropdown: browser compatibility problem. #63
+
 ## [0.11.0] - 2017-05-08
 ### Added
 - Add new js util library: ElementUtil #140
