@@ -17,7 +17,7 @@
   flex-wrap: #{$wrap}; // [nowrap] | wrap | wrap-reverse
 }
 
-@mixin flex-item($grow: 0, $shrink: 0, $basis: 'auto') {
+@mixin flex-item($grow: 0, $shrink: 1, $basis: 'auto') {
   flex-grow: #{$grow}; // number
   flex-shrink: #{$shrink}; // number
   flex-basis: #{$basis}; // basis size of main-axis. ['auto'] | content | fill

@@ -3156,15 +3156,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 *************************************************************/
 var NAME = 'nav';
 var ClassName = {
-  NAVBAR: 'navbar',
-  TOGGLE_BTN: 'menu-toggle',
   CHANGE: 'change',
-  USE_ACTIVATOR: 'use-activator'
+  HIDE: 'display-hide'
 };
 var Selector = {
-  NAVBAR: 'nav.' + ClassName.NAVBAR,
-  TOGGLE_BTN: 'nav.' + ClassName.NAVBAR + ' .' + ClassName.TOGGLE_BTN,
-  USE_ACTIVATOR: 'nav.' + ClassName.NAVBAR + ' ul.' + ClassName.USE_ACTIVATOR
+  NAVBAR: '.navbar',
+  NAVBAR_BODY: '.navbar .navbar-body',
+  NAVBAR_TOGGLE: '.navbar-toggle',
+  USE_ACTIVATOR: '.navbar .use-activator'
 };
 var MenuGroups = ['.menu-float-left', '.menu-float-right', '.menu-left', '.menu-right', '.menu-center', '.menu-between', '.menu-around'];
 
@@ -3184,18 +3183,37 @@ var Nav = function (_CosmosModule) {
     // public
 
     value: function init() {
-      _elementUtil2.default.addListener(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
+      var btns = _elementUtil2.default.getElements(Selector.NAVBAR_TOGGLE);
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = btns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var btn = _step.value;
+
+          this._convertNavbarToggle(btn);
+          btn.addEventListener('click', this._toggleHandler);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
 
       this.activator(Selector.USE_ACTIVATOR);
 
-      // handle jQuery slide style.
-      $(window).resize(function () {
-        var w = $(window).width();
-        var $menu = $('nav ul');
-        if (w > 768 && $menu.is(':hidden')) {
-          $menu.removeAttr('style');
-        }
-      });
+      window.addEventListener('resize', this._bodyInitialize);
+      this._bodyInitialize();
     }
 
     /**
@@ -3211,29 +3229,29 @@ var Nav = function (_CosmosModule) {
       var links = document.querySelectorAll(selector + ' a');
       if (!links.length) return;
 
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
 
       try {
-        for (var _iterator = links[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var a = _step.value;
+        for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var a = _step2.value;
 
           if (compareWithLocation(a)) {
             a.parentNode.classList.add('active');
           }
         }
       } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
           }
         } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
+          if (_didIteratorError2) {
+            throw _iteratorError2;
           }
         }
       }
@@ -3270,34 +3288,72 @@ var Nav = function (_CosmosModule) {
   }, {
     key: '_toggleHandler',
     value: function _toggleHandler(event) {
-      var toggleBtn = event.currentTarget;
-      var nav = _elementUtil2.default.findAncestor(toggleBtn, Selector.NAVBAR);
+      var btn = event.currentTarget;
+      var navbar = _elementUtil2.default.findAncestor(btn, Selector.NAVBAR);
+      var body = navbar.querySelector(Selector.NAVBAR_BODY);
+      var isBodyHide = body.classList.contains(ClassName.HIDE);
 
-      // toggle button class change.
-      toggleBtn.classList.toggle(ClassName.CHANGE);
+      if (isBodyHide) {
+        btn.classList.add(ClassName.CHANGE);
+        body.classList.remove(ClassName.HIDE);
+      } else {
+        btn.classList.remove(ClassName.CHANGE);
+        body.classList.add(ClassName.HIDE);
+      }
+    }
+  }, {
+    key: '_convertNavbarToggle',
+    value: function _convertNavbarToggle(btn) {
+      var bar1 = document.createElement('DIV');
+      var bar2 = document.createElement('DIV');
+      var bar3 = document.createElement('DIV');
+      var span = document.createElement('SPAN');
 
-      // menu slide (use jQuery)
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
+      [bar1, bar2, bar3].forEach(function (elm, i) {
+        return elm.classList.add('icon-bar' + (i + 1));
+      });
+      span.textContent = btn.textContent;
+      span.classList.add(ClassName.HIDE);
+      btn.innerHTML = '';
+      [span, bar1, bar2, bar3].forEach(function (elm) {
+        return btn.appendChild(elm);
+      });
+      return btn;
+    }
+  }, {
+    key: '_bodyInitialize',
+    value: function _bodyInitialize() {
+      var navBodys = document.querySelectorAll(Selector.NAVBAR_BODY);
+      var isMobileSize = _util2.default.isMobileSize(768);
+
+      if (!navBodys.length) return;
+
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
 
       try {
-        for (var _iterator2 = MenuGroups[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var m = _step2.value;
+        for (var _iterator3 = navBodys[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var body = _step3.value;
 
-          $(nav).find(m).slideToggle();
+          var isHide = body.classList.contains(ClassName.HIDE);
+
+          if (isMobileSize && !isHide) {
+            body.classList.add(ClassName.HIDE);
+          }
+          if (!isMobileSize && isHide) body.classList.remove(ClassName.HIDE);
         }
       } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return) {
-            _iterator2.return();
+          if (!_iteratorNormalCompletion3 && _iterator3.return) {
+            _iterator3.return();
           }
         } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
+          if (_didIteratorError3) {
+            throw _iteratorError3;
           }
         }
       }
@@ -4284,7 +4340,7 @@ module.exports = {
 	"version": "0.11.1",
 	"description": "The css framework for personal practice.",
 	"main": "dist/module/cosmos.js",
-	"sass": "src/scss/style.scss",
+	"scss": "src/scss/cosmos.scss",
 	"directories": {
 		"test": "test"
 	},
@@ -4315,9 +4371,9 @@ module.exports = {
 		"dev": "npm run scss && npm run pug && npm run js",
 		"watch": "node node_modules/concurrently/src/main \"npm run scss:watch\" \"npm run pug:watch\" \"npm run js:watch\"",
 		"production": "npm run scss:min && npm run js:min",
-		"scss": "node node_modules/node-sass/bin/node-sass --source-map true src/scss/style.scss dist/css/style.css",
+		"scss": "node node_modules/node-sass/bin/node-sass --source-map true src/scss/cosmos.scss dist/css/style.css",
 		"postscss": "npm run css",
-		"scss:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/style.scss dist/css/style.min.css",
+		"scss:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/cosmos.scss dist/css/style.min.css",
 		"postscss:min": "npm run css:min",
 		"scss:watch": "npm run scss -- --watch",
 		"pug": "node node_modules/pug-cli --pretty test/views/pages/ --out ./test/html/",

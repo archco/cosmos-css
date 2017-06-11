@@ -7,15 +7,14 @@ import ElementUtil from '../lib/element-util.js';
 *************************************************************/
 const NAME = 'nav';
 const ClassName = {
-  NAVBAR: 'navbar',
-  TOGGLE_BTN: 'menu-toggle',
   CHANGE: 'change',
-  USE_ACTIVATOR: 'use-activator',
+  HIDE: 'display-hide',
 };
 const Selector = {
-  NAVBAR: `nav.${ClassName.NAVBAR}`,
-  TOGGLE_BTN: `nav.${ClassName.NAVBAR} .${ClassName.TOGGLE_BTN}`,
-  USE_ACTIVATOR: `nav.${ClassName.NAVBAR} ul.${ClassName.USE_ACTIVATOR}`,
+  NAVBAR: '.navbar',
+  NAVBAR_BODY: '.navbar .navbar-body',
+  NAVBAR_TOGGLE: '.navbar-toggle',
+  USE_ACTIVATOR: '.navbar .use-activator',
 };
 const MenuGroups = [
   '.menu-float-left',
@@ -42,18 +41,16 @@ export default class Nav extends CosmosModule {
   // public
 
   init() {
-    ElementUtil.addListener(Selector.TOGGLE_BTN, 'click', this._toggleHandler);
+    let btns = ElementUtil.getElements(Selector.NAVBAR_TOGGLE);
+    for (let btn of btns) {
+      this._convertNavbarToggle(btn);
+      btn.addEventListener('click', this._toggleHandler);
+    }
 
     this.activator(Selector.USE_ACTIVATOR);
 
-    // handle jQuery slide style.
-    $(window).resize(function () {
-      var w = $(window).width();
-      var $menu = $('nav ul');
-      if (w > 768 && $menu.is(':hidden')) {
-        $menu.removeAttr('style');
-      }
-    });
+    window.addEventListener('resize', this._bodyInitialize);
+    this._bodyInitialize();
   }
 
   /**
@@ -102,15 +99,47 @@ export default class Nav extends CosmosModule {
   // private
 
   _toggleHandler(event) {
-    let toggleBtn = event.currentTarget;
-    let nav = ElementUtil.findAncestor(toggleBtn, Selector.NAVBAR);
+    let btn = event.currentTarget;
+    let navbar = ElementUtil.findAncestor(btn, Selector.NAVBAR);
+    let body = navbar.querySelector(Selector.NAVBAR_BODY);
+    let isBodyHide = body.classList.contains(ClassName.HIDE);
 
-    // toggle button class change.
-    toggleBtn.classList.toggle(ClassName.CHANGE);
+    if (isBodyHide) {
+      btn.classList.add(ClassName.CHANGE);
+      body.classList.remove(ClassName.HIDE);
+    } else {
+      btn.classList.remove(ClassName.CHANGE);
+      body.classList.add(ClassName.HIDE);
+    }
+  }
 
-    // menu slide (use jQuery)
-    for (let m of MenuGroups) {
-      $(nav).find(m).slideToggle();
+  _convertNavbarToggle(btn) {
+    let bar1 = document.createElement('DIV');
+    let bar2 = document.createElement('DIV');
+    let bar3 = document.createElement('DIV');
+    let span = document.createElement('SPAN');
+
+    [bar1, bar2, bar3].forEach((elm, i) => elm.classList.add(`icon-bar${i + 1}`));
+    span.textContent = btn.textContent;
+    span.classList.add(ClassName.HIDE);
+    btn.innerHTML = '';
+    [span, bar1, bar2, bar3].forEach(elm => btn.appendChild(elm));
+    return btn;
+  }
+
+  _bodyInitialize() {
+    let navBodys = document.querySelectorAll(Selector.NAVBAR_BODY);
+    let isMobileSize = Util.isMobileSize(768);
+
+    if (!navBodys.length) return;
+
+    for (let body of navBodys) {
+      let isHide = body.classList.contains(ClassName.HIDE);
+
+      if (isMobileSize && !isHide) {
+        body.classList.add(ClassName.HIDE);
+      }
+      if (!isMobileSize && isHide) body.classList.remove(ClassName.HIDE);
     }
   }
 }

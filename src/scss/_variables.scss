@@ -73,7 +73,6 @@ $shadow-near: 1px 1px 4px $shadow-color !default;
 $shadow-normal: 2px 2px 8px $shadow-color !default;
 $shadow-far: 4px 4px 16px $shadow-color !default;
 $transition-time: .3s !default;
-$icon-size: 35px !default; // nav toggle button's width
 $default-focus-outline: 2px solid $primary-color !default;
 $outline-color: $primary-color !default;
 $body-line-height: 1.5 !default;
@@ -191,15 +190,16 @@ $card-bg-color: $background-color !default;
 $card-title-color: $text-color-invert !default;
 
 // nav
-$nav-bg-color: $primary-color !default;
-$nav-active-bg-color: $background-color !default;
-$nav-active-color: $nav-bg-color !default;
-$nav-link-color: $text-color-invert !default;
+$nav-bg-color: $background-color-shade !default;
+$nav-active-color: $primary-color !default;
+$nav-link-color: $text-color-weak !default;
 $nav-link-hover-color: $secondary-color !default;
-$nav-link-padding: .5em 1em !default;
+$nav-link-padding-y: .5em !default;
+$nav-link-padding-x: 1em !default;
 $nav-font: $font-accent !default;
 $nav-font-size: 1.25em !default;
 $nav-line-height: 1.25 !default;
+$navbar-toggle-width: 35px !default;
 
 // footer
 $footer-color: $text-color-invert !default;
