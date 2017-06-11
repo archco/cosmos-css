@@ -3165,7 +3165,6 @@ var Selector = {
   NAVBAR_TOGGLE: '.navbar-toggle',
   USE_ACTIVATOR: '.navbar .use-activator'
 };
-var MenuGroups = ['.menu-float-left', '.menu-float-right', '.menu-left', '.menu-right', '.menu-center', '.menu-between', '.menu-around'];
 
 var Nav = function (_CosmosModule) {
   _inherits(Nav, _CosmosModule);
@@ -3212,7 +3211,7 @@ var Nav = function (_CosmosModule) {
 
       this.activator(Selector.USE_ACTIVATOR);
 
-      window.addEventListener('resize', this._bodyInitialize);
+      window.addEventListener('resize', this._bodyInitialize.bind(this));
       this._bodyInitialize();
     }
 
@@ -3302,6 +3301,41 @@ var Nav = function (_CosmosModule) {
       }
     }
   }, {
+    key: '_showBody',
+    value: function _showBody(navbar) {
+      var body = navbar.querySelector(Selector.NAVBAR_BODY);
+      var btn = navbar.querySelector(Selector.NAVBAR_TOGGLE);
+
+      btn.classList.add(ClassName.CHANGE);
+      body.classList.remove(ClassName.HIDE);
+    }
+  }, {
+    key: '_hideBody',
+    value: function _hideBody(navbar) {
+      var body = navbar.querySelector(Selector.NAVBAR_BODY);
+      var btn = navbar.querySelector(Selector.NAVBAR_TOGGLE);
+
+      btn.classList.remove(ClassName.CHANGE);
+      body.classList.add(ClassName.HIDE);
+    }
+  }, {
+    key: '_toggleBody',
+    value: function _toggleBody(navbar) {
+      var isHide = this._isHide(navbar);
+
+      if (isHide) {
+        this._showBody(navbar);
+      } else {
+        this._hideBody(navbar);
+      }
+    }
+  }, {
+    key: '_isHide',
+    value: function _isHide(navbar) {
+      var body = navbar.querySelector(Selector.NAVBAR_BODY);
+      return body.classList.contains(ClassName.HIDE);
+    }
+  }, {
     key: '_convertNavbarToggle',
     value: function _convertNavbarToggle(btn) {
       var bar1 = document.createElement('DIV');
@@ -3323,25 +3357,24 @@ var Nav = function (_CosmosModule) {
   }, {
     key: '_bodyInitialize',
     value: function _bodyInitialize() {
-      var navBodys = document.querySelectorAll(Selector.NAVBAR_BODY);
+      var navbars = document.querySelectorAll(Selector.NAVBAR);
       var isMobileSize = _util2.default.isMobileSize(768);
 
-      if (!navBodys.length) return;
+      if (!navbars.length) return;
 
       var _iteratorNormalCompletion3 = true;
       var _didIteratorError3 = false;
       var _iteratorError3 = undefined;
 
       try {
-        for (var _iterator3 = navBodys[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-          var body = _step3.value;
+        for (var _iterator3 = navbars[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var navbar = _step3.value;
 
-          var isHide = body.classList.contains(ClassName.HIDE);
+          if (!navbar.querySelector(Selector.NAVBAR_BODY)) continue; // temporary.
+          var isHide = this._isHide(navbar);
 
-          if (isMobileSize && !isHide) {
-            body.classList.add(ClassName.HIDE);
-          }
-          if (!isMobileSize && isHide) body.classList.remove(ClassName.HIDE);
+          if (isMobileSize && !isHide) this._hideBody(navbar);
+          if (!isMobileSize && isHide) this._showBody(navbar);
         }
       } catch (err) {
         _didIteratorError3 = true;

@@ -21,7 +21,8 @@ If want to see more previous information to [Releases](https://github.com/archco
 - Improve grid with flexbox. #146
 
 ### Fixed
-- Dropdown: browser compatibility problem. #63
+- Fix Dropdown: browser compatibility problem. #63
+- Fix Nav: tag name selector problem #165
 
 ## [0.11.0] - 2017-05-08
 ### Added

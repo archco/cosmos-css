@@ -16,15 +16,6 @@ const Selector = {
   NAVBAR_TOGGLE: '.navbar-toggle',
   USE_ACTIVATOR: '.navbar .use-activator',
 };
-const MenuGroups = [
-  '.menu-float-left',
-  '.menu-float-right',
-  '.menu-left',
-  '.menu-right',
-  '.menu-center',
-  '.menu-between',
-  '.menu-around',
-];
 
 export default class Nav extends CosmosModule {
 
@@ -49,7 +40,7 @@ export default class Nav extends CosmosModule {
 
     this.activator(Selector.USE_ACTIVATOR);
 
-    window.addEventListener('resize', this._bodyInitialize);
+    window.addEventListener('resize', this._bodyInitialize.bind(this));
     this._bodyInitialize();
   }
 
@@ -113,6 +104,37 @@ export default class Nav extends CosmosModule {
     }
   }
 
+  _showBody(navbar) {
+    let body = navbar.querySelector(Selector.NAVBAR_BODY);
+    let btn = navbar.querySelector(Selector.NAVBAR_TOGGLE);
+
+    btn.classList.add(ClassName.CHANGE);
+    body.classList.remove(ClassName.HIDE);
+  }
+
+  _hideBody(navbar) {
+    let body = navbar.querySelector(Selector.NAVBAR_BODY);
+    let btn = navbar.querySelector(Selector.NAVBAR_TOGGLE);
+
+    btn.classList.remove(ClassName.CHANGE);
+    body.classList.add(ClassName.HIDE);
+  }
+
+  _toggleBody(navbar) {
+    let isHide = this._isHide(navbar);
+
+    if (isHide) {
+      this._showBody(navbar);
+    } else {
+      this._hideBody(navbar);
+    }
+  }
+
+  _isHide(navbar) {
+    let body = navbar.querySelector(Selector.NAVBAR_BODY);
+    return body.classList.contains(ClassName.HIDE);
+  }
+
   _convertNavbarToggle(btn) {
     let bar1 = document.createElement('DIV');
     let bar2 = document.createElement('DIV');
@@ -128,18 +150,17 @@ export default class Nav extends CosmosModule {
   }
 
   _bodyInitialize() {
-    let navBodys = document.querySelectorAll(Selector.NAVBAR_BODY);
+    let navbars = document.querySelectorAll(Selector.NAVBAR);
     let isMobileSize = Util.isMobileSize(768);
 
-    if (!navBodys.length) return;
+    if (!navbars.length) return;
 
-    for (let body of navBodys) {
-      let isHide = body.classList.contains(ClassName.HIDE);
+    for (let navbar of navbars) {
+      if (!navbar.querySelector(Selector.NAVBAR_BODY)) continue; // temporary.
+      let isHide = this._isHide(navbar);
 
-      if (isMobileSize && !isHide) {
-        body.classList.add(ClassName.HIDE);
-      }
-      if (!isMobileSize && isHide) body.classList.remove(ClassName.HIDE);
+      if (isMobileSize && !isHide) this._hideBody(navbar);
+      if (!isMobileSize && isHide) this._showBody(navbar);
     }
   }
 }
