@@ -128,6 +128,11 @@
   }
 }
 
+// shadow
+.shadow { box-shadow: $shadow-normal; }
+.shadow-near { box-shadow: $shadow-near; }
+.shadow-far { box-shadow: $shadow-far; }
+
 // misc
 .box-line { border: 1px solid $secondary-color; }
 .no-margin { padding: 0; margin: 0;}

@@ -14,7 +14,7 @@ const Selector = {
   NAVBAR: '.navbar',
   NAVBAR_BODY: '.navbar .navbar-body',
   NAVBAR_TOGGLE: '.navbar-toggle',
-  USE_ACTIVATOR: '.navbar .use-activator',
+  USE_ACTIVATOR: '.use-activator',
 };
 
 export default class Nav extends CosmosModule {

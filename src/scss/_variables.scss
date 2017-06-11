@@ -190,10 +190,10 @@ $card-bg-color: $background-color !default;
 $card-title-color: $text-color-invert !default;
 
 // nav
-$nav-bg-color: $background-color-shade !default;
+$nav-bg-color: $background-color !default;
 $nav-active-color: $primary-color !default;
 $nav-link-color: $text-color-weak !default;
-$nav-link-hover-color: $secondary-color !default;
+$nav-link-hover-color: $text-color !default;
 $nav-link-padding-y: .5em !default;
 $nav-link-padding-x: 1em !default;
 $nav-font: $font-accent !default;

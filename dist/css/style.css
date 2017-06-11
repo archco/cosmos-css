@@ -1631,7 +1631,7 @@ img.filter.sepia {
   transition: color 0.3s; }
   .navbar .dropdown > .dropdown-toggle:hover,
   .navbar .dropdown > .dropdown-btn:hover, .navbar-nav .nav-link:hover, .navbar-brand.text:hover {
-    color: #91a3b0; }
+    color: #343434; }
 
 .navbar .dropdown > .dropdown-toggle,
 .navbar .dropdown > .dropdown-btn, .navbar-toggle {
@@ -1650,7 +1650,7 @@ img.filter.sepia {
   font-family: Georgia, serif;
   font-size: 1.25em;
   line-height: 1.25;
-  background-color: rgba(52, 52, 52, 0.1); }
+  background-color: #fff; }
   .navbar .navbar-header {
     display: -webkit-box;
     display: flex;
@@ -1727,7 +1727,8 @@ img.filter.sepia {
     -webkit-box-pack: start;
             justify-content: flex-start; }
   .navbar-header {
-    align-self: flex-start; }
+    align-self: flex-start;
+    width: 100%; }
   .navbar-toggle {
     display: inline-block; } }
 
@@ -3264,6 +3265,15 @@ ul.pagination {
 .bg-color-error {
   color: #fff;
   background-color: #e23d28; }
+
+.shadow {
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); }
+
+.shadow-near {
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); }
+
+.shadow-far {
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.3); }
 
 .box-line {
   border: 1px solid #91a3b0; }
