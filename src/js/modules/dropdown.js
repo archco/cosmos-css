@@ -6,15 +6,13 @@ import ElementUtil from '../lib/element-util.js';
 *************************************************************/
 const NAME = 'dropdown';
 const ClassName = {
-  DROPDOWN: 'dropdown',
   TOGGLE: 'dropdown-toggle',
-  CONTENT: 'dropdown-content',
   SHOW: 'show',
 };
 const Selector = {
-  DROPDOWN: `.${ClassName.DROPDOWN}`,
+  DROPDOWN: `.dropdown`,
+  CONTENT: `.dropdown-content`,
   TOGGLE: `.${ClassName.TOGGLE}`,
-  CONTENT: `.${ClassName.CONTENT}`,
 };
 
 export default class Dropdown extends CosmosModule {
@@ -42,10 +40,10 @@ export default class Dropdown extends CosmosModule {
   // private
 
   _toggleButtonHandler(event) {
-    let c = event.currentTarget.parentNode.querySelector(Selector.CONTENT);
-    if (c) {
-      c.classList.toggle(ClassName.SHOW);
-    }
+    let dropdown = ElementUtil.findAncestor(event.currentTarget, Selector.DROPDOWN);
+    let content = dropdown.querySelector(Selector.CONTENT);
+
+    if (content) content.classList.toggle(ClassName.SHOW);
   }
 
   _otherClickHandler(event) {
@@ -53,7 +51,7 @@ export default class Dropdown extends CosmosModule {
 
     if (t.classList.contains(ClassName.TOGGLE)) {
       // dropdown
-      let dropdown = t.parentNode;
+      let dropdown = ElementUtil.findAncestor(t, Selector.DROPDOWN);
       this._closeElseDropdown(dropdown);
     } else {
       // not dropdown
@@ -68,7 +66,7 @@ export default class Dropdown extends CosmosModule {
    * @return {void}
    */
   _closeElseDropdown(target = null) {
-    var dropdowns = document.querySelectorAll(Selector.DROPDOWN);
+    let dropdowns = document.querySelectorAll(Selector.DROPDOWN);
 
     for (let dropdown of dropdowns) {
       let content = dropdown.querySelector(Selector.CONTENT);

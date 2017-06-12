@@ -2633,15 +2633,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 *************************************************************/
 var NAME = 'dropdown';
 var ClassName = {
-  DROPDOWN: 'dropdown',
   TOGGLE: 'dropdown-toggle',
-  CONTENT: 'dropdown-content',
   SHOW: 'show'
 };
 var Selector = {
-  DROPDOWN: '.' + ClassName.DROPDOWN,
-  TOGGLE: '.' + ClassName.TOGGLE,
-  CONTENT: '.' + ClassName.CONTENT
+  DROPDOWN: '.dropdown',
+  CONTENT: '.dropdown-content',
+  TOGGLE: '.' + ClassName.TOGGLE
 };
 
 var Dropdown = function (_CosmosModule) {
@@ -2672,10 +2670,10 @@ var Dropdown = function (_CosmosModule) {
   }, {
     key: '_toggleButtonHandler',
     value: function _toggleButtonHandler(event) {
-      var c = event.currentTarget.parentNode.querySelector(Selector.CONTENT);
-      if (c) {
-        c.classList.toggle(ClassName.SHOW);
-      }
+      var dropdown = _elementUtil2.default.findAncestor(event.currentTarget, Selector.DROPDOWN);
+      var content = dropdown.querySelector(Selector.CONTENT);
+
+      if (content) content.classList.toggle(ClassName.SHOW);
     }
   }, {
     key: '_otherClickHandler',
@@ -2684,7 +2682,7 @@ var Dropdown = function (_CosmosModule) {
 
       if (t.classList.contains(ClassName.TOGGLE)) {
         // dropdown
-        var dropdown = t.parentNode;
+        var dropdown = _elementUtil2.default.findAncestor(t, Selector.DROPDOWN);
         this._closeElseDropdown(dropdown);
       } else {
         // not dropdown
