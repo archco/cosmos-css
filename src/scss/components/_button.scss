@@ -48,7 +48,7 @@
 
 %btn-color-set {
   // default color
-  @include btn-color($primary-color);
+  @include btn-color($button-default-bg-color);
   // each color-set
   @each $name, $color in $color-set {
     &.#{$name} {
@@ -63,7 +63,7 @@
 
 %btn-flat-color-set {
   // default color
-  @include btn-flat-color($link-color);
+  @include btn-flat-color($button-flat-default-bg-color);
   // each color-set
   @each $name, $color in $color-set {
     &.#{$name} {

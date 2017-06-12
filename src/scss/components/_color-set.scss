@@ -1,10 +1,9 @@
 //======================================================================
 // Color-set
 //======================================================================
-// uses: button, message, helper
 
 $color-set: (
-  default: $default-color,
+  default: $default-color, // It's half value of background-color and background-color-invert.
   primary: $primary-color,
   secondary: $secondary-color,
   info: $info-color,

@@ -155,13 +155,14 @@ $breadcrumb-separator: '/' !default;
 // badge
 $badge-font-size: .85em !default;
 $badge-border-radius: $radius-small !default;
-$badge-default-color: $text-color-middle !default;
+$badge-default-color: $default-color !default;
 
 // button
 $button-radius: $radius-small !default;
 $button-color: $white !default;
 $button-color-is-enable: false !default; // If this set false, button color will be background color based contrast color.
-$button-bg-color: $primary-color !default;
+$button-default-bg-color: $primary-color !default;
+$button-flat-default-bg-color: $link-color !default;
 $button-outline-color: $outline-color !default;
 
 // dropdown
@@ -303,3 +304,9 @@ $toast-padding-x: .5em;
 $toast-text-color: $text-color-invert !default;
 $toast-bg-color: rgba($background-color-invert, .85) !default;
 $toast-border-radius: $radius-normal !default;
+
+// message-box
+$message-box-default-bg-color: $default-color !default;
+$message-box-padding-y: 1rem !default;
+$message-box-padding-x: 1.5rem !default;
+$message-box-margin: 8px !default;
