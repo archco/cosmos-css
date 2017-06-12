@@ -38,19 +38,19 @@ $primary-color: $lightblue !default;
 $primary-color-accent: darken($primary-color, 16%) !default;
 $secondary-color: $cadetgray !default;
 
-// text colors.
-$text-color: $black !default;
-$text-color-invert: $white !default;
-$text-color-weak: rgba($text-color, .67) !default;
-$text-color-strong: $primary-color-accent !default;
-$text-color-light: if(lightness($text-color) > 50, $text-color, $text-color-invert) !default;
-$text-color-dark: if(lightness($text-color) > 50, $text-color-invert, $text-color) !default;
-$text-color-middle: mix($text-color-light, $text-color-dark) !default;
-
 // background colors.
 $background-color: $white !default;
 $background-color-invert: $black !default;
 $background-color-shade: rgba($background-color-invert, .1) !default;
+
+// text colors.
+$text-color: $black !default;
+$text-color-invert: $white !default;
+$text-color-weak: rgba-to-rgb(rgba($text-color, .67), $background-color) !default;
+$text-color-strong: $primary-color-accent !default;
+$text-color-light: if(lightness($text-color) > 50, $text-color, $text-color-invert) !default;
+$text-color-dark: if(lightness($text-color) > 50, $text-color-invert, $text-color) !default;
+$text-color-middle: mix($text-color-light, $text-color-dark) !default;
 
 // color-set.
 $info-color: $teal !default;
@@ -163,11 +163,14 @@ $button-outline-color: $outline-color !default;
 // dropdown
 $dropdown-bg-color: $background-color !default;
 $dropdown-bg-hover-color: $background-color-shade !default;
+$dropdown-link-padding-y: .5em !default;
+$dropdown-link-padding-x: 1em !default;
 $dropdown-link-color: $text-color-weak !default;
 $dropdown-link-hover-color: $text-color !default;
 $dropdown-active-bg-color: $primary-color-accent !default;
 $dropdown-active-color: get-contrast($dropdown-active-bg-color) !default;
 $dropdown-min-width: 120px !default;
+$dropdown-shadow: $shadow-normal !default;
 
 // grid
 $grid-breakpoints: (

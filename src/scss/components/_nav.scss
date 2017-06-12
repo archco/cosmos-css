@@ -119,6 +119,12 @@
   .navbar-nav {
     flex-flow: column nowrap;
     justify-content: flex-start;
+    width: 100%;
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: center;
   }
 
   .navbar-header {
@@ -127,4 +133,25 @@
   }
 
   .navbar-toggle { display: inline-block; }
+}
+
+// navbar dropdown
+// scss-lint:disable MergeableSelector
+.navbar .dropdown {
+  .dropdown-toggle,
+  .dropdown-btn {
+    @extend %nav-button;
+    @extend %nav-link;
+    min-width: $dropdown-min-width;
+    line-height: $nav-line-height;
+  }
+}
+
+@include media-only-mobile {
+  .navbar {
+    .dropdown,
+    .dropdown-content {
+      width: 100%;
+    }
+  }
 }
