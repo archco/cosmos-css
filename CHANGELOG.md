@@ -21,6 +21,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 - Change entry file name "style.scss" to "cosmos.scss". #162
 - Improve grid with flexbox. #146
 - Change Nav: base structure of navbar. #166
+- Refactoring dropdown #148
 
 ### Fixed
 - Fix Dropdown: browser compatibility problem. #63
