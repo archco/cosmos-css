@@ -53,6 +53,10 @@ $text-color-dark: if(lightness($text-color) > 50, $text-color-invert, $text-colo
 $text-color-middle: mix($text-color-light, $text-color-dark) !default;
 
 // color-set.
+$default-color: mix($background-color, $background-color-invert) !default;
+$light-color: $text-color-light !default;
+$dark-color: $text-color-dark !default;
+$shade-color: rgba-to-rgb($background-color-shade, $background-color) !default;
 $info-color: $teal !default;
 $success-color: $green !default;
 $danger-color: $red !default;
@@ -195,8 +199,8 @@ $card-title-color: $text-color-invert !default;
 // nav
 $nav-bg-color: $background-color !default;
 $nav-active-color: $primary-color !default;
-$nav-link-color: $text-color-weak !default;
-$nav-link-hover-color: $text-color !default;
+$nav-link-color: inherit !default;
+$nav-link-hover-color: $secondary-color !default;
 $nav-link-padding-y: .5em !default;
 $nav-link-padding-x: 1em !default;
 $nav-font: $font-accent !default;
