@@ -200,7 +200,7 @@ $card-title-color: $text-color-invert !default;
 // nav
 $nav-bg-color: $background-color !default;
 $nav-active-color: $primary-color !default;
-$nav-link-color: $text-color-weak !default;
+$nav-link-color: inherit !default;
 $nav-link-hover-color: $secondary-color !default;
 $nav-link-padding-y: .5em !default;
 $nav-link-padding-x: 1em !default;

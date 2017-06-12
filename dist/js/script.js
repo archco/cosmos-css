@@ -3161,7 +3161,8 @@ var Selector = {
   NAVBAR: '.navbar',
   NAVBAR_BODY: '.navbar .navbar-body',
   NAVBAR_TOGGLE: '.navbar-toggle',
-  USE_ACTIVATOR: '.use-activator'
+  USE_ACTIVATOR: '.use-activator',
+  NAV_LINK: '.nav-link'
 };
 
 var Nav = function (_CosmosModule) {
@@ -3336,13 +3337,17 @@ var Nav = function (_CosmosModule) {
   }, {
     key: '_convertNavbarToggle',
     value: function _convertNavbarToggle(btn) {
+      var navbar = _elementUtil2.default.findAncestor(btn, Selector.NAVBAR);
+      var navLink = navbar.querySelector(Selector.NAV_LINK);
+      var style = window.getComputedStyle(navLink);
       var bar1 = document.createElement('DIV');
       var bar2 = document.createElement('DIV');
       var bar3 = document.createElement('DIV');
       var span = document.createElement('SPAN');
 
       [bar1, bar2, bar3].forEach(function (elm, i) {
-        return elm.classList.add('icon-bar' + (i + 1));
+        elm.classList.add('icon-bar' + (i + 1));
+        elm.style.backgroundColor = style.color;
       });
       span.textContent = btn.textContent;
       span.classList.add(ClassName.HIDE);

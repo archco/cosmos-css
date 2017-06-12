@@ -15,6 +15,7 @@ const Selector = {
   NAVBAR_BODY: '.navbar .navbar-body',
   NAVBAR_TOGGLE: '.navbar-toggle',
   USE_ACTIVATOR: '.use-activator',
+  NAV_LINK: '.nav-link',
 };
 
 export default class Nav extends CosmosModule {
@@ -136,12 +137,18 @@ export default class Nav extends CosmosModule {
   }
 
   _convertNavbarToggle(btn) {
+    let navbar = ElementUtil.findAncestor(btn, Selector.NAVBAR);
+    let navLink = navbar.querySelector(Selector.NAV_LINK);
+    let style = window.getComputedStyle(navLink);
     let bar1 = document.createElement('DIV');
     let bar2 = document.createElement('DIV');
     let bar3 = document.createElement('DIV');
     let span = document.createElement('SPAN');
 
-    [bar1, bar2, bar3].forEach((elm, i) => elm.classList.add(`icon-bar${i + 1}`));
+    [bar1, bar2, bar3].forEach((elm, i) => {
+      elm.classList.add(`icon-bar${i + 1}`);
+      elm.style.backgroundColor = style.color;
+    });
     span.textContent = btn.textContent;
     span.classList.add(ClassName.HIDE);
     btn.innerHTML = '';

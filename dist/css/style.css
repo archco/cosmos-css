@@ -1919,7 +1919,7 @@ img.filter.sepia {
   padding: 0.5em 1em;
   font-family: inherit;
   font-size: inherit;
-  color: #777777;
+  color: inherit;
   -webkit-transition: color 0.3s;
   transition: color 0.3s; }
   .navbar-nav .nav-link:hover, .navbar-brand.text:hover, .navbar .dropdown .dropdown-toggle:hover,
@@ -1994,7 +1994,7 @@ img.filter.sepia {
     width: 35px;
     height: 5px;
     margin: 6px;
-    background-color: #777777;
+    background-color: inherit;
     border-radius: 2px;
     -webkit-transition: 0.3s;
     transition: 0.3s; }
