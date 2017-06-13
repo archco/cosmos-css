@@ -164,6 +164,9 @@ $button-color-is-enable: false !default; // If this set false, button color will
 $button-default-bg-color: $primary-color !default;
 $button-flat-default-bg-color: $link-color !default;
 $button-outline-color: $outline-color !default;
+$button-padding-y: .5em !default;
+$button-padding-x: 1em !default;
+$button-margin: .2em !default;
 
 // dropdown
 $dropdown-bg-color: $background-color !default;
