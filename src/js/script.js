@@ -9,7 +9,7 @@ const option = {
       log_enable: false,
     },
     scroll_to: {
-      scroll_duration: 3000,
+      scroll_duration: 600,
     },
   },
 };
