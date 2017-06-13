@@ -1,51 +1,36 @@
 h3 Toggle Dropdown
 div(class='dropdown')
   button(class='dropdown-toggle btn') TOGGLE
-  ul(class='dropdown-content')
-    li(class='dropdown-item active')
-      a(href='#') hello
-    li(class='dropdown-item')
-      a(href='#') drop
-    li(class='dropdown-item')
-      a(href='#') down
+  div(class='dropdown-content')
+    a(class='dropdown-item active' href='#') hello
+    a(class='dropdown-item' href='#') drop
+    a(class='dropdown-item' href='#') down
 
 h3 Hover Dropdown
 div(class='dropdown')
   button(class='dropdown-btn btn info') HOVER
-  ul(class='dropdown-content')
-    li(class='dropdown-item')
-      a(href='#') hello
-    li(class='dropdown-item')
-      a(href='#') drop
-    li(class='dropdown-item')
-      a(href='#') down
+  div(class='dropdown-content')
+    a(class='dropdown-item' href='#') hello
+    a(class='dropdown-item' href='#') drop
+    a(class='dropdown-item' href='#') down
 
 h3 Dropdown Content Alignment
 div(style='display:flex;width:100%;justify-content:space-between;')
   div(class='dropdown')
     button(class='dropdown-btn btn success') LEFT
-    ul(class='dropdown-content' data-align='left')
-      li(class='dropdown-item')
-        a(href='#') hello
-      li(class='dropdown-item')
-        a(href='#') drop
-      li(class='dropdown-item')
-        a(href='#') down
+    div(class='dropdown-content' data-align='left')
+      a(class='dropdown-item' href='#') hello
+      a(class='dropdown-item' href='#') drop
+      a(class='dropdown-item' href='#') down
   div(class='dropdown')
     button(class='dropdown-btn btn secondary') CENTER
-    ul(class='dropdown-content' data-align='center')
-      li(class='dropdown-item')
-        a(href='#') hello
-      li(class='dropdown-item')
-        a(href='#') drop
-      li(class='dropdown-item')
-        a(href='#') down
+    div(class='dropdown-content' data-align='center')
+      a(class='dropdown-item' href='#') hello
+      a(class='dropdown-item' href='#') drop
+      a(class='dropdown-item' href='#') down
   div(class='dropdown')
     button(class='dropdown-btn btn warning') RIGHT
-    ul(class='dropdown-content' data-align='right')
-      li(class='dropdown-item')
-        a(href='#') hello
-      li(class='dropdown-item')
-        a(href='#') drop
-      li(class='dropdown-item')
-        a(href='#') down
+    div(class='dropdown-content' data-align='right')
+      a(class='dropdown-item' href='#') hello
+      a(class='dropdown-item' href='#') drop
+      a(class='dropdown-item' href='#') down
