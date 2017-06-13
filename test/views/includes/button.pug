@@ -1,20 +1,20 @@
-h2 Default Buttons with Color-set
+h3 Default Buttons with Color-set
 button(class='btn') btn
 each color in colorSet
   button(class='btn '+color)= color
 
-h2 Flat button
+h3 Flat button
 button(class='btn-flat') btn-flat
 each color in colorSet
   button(class='btn-flat '+color)= color
 
-h2 Other tag as button
+h3 Other tag as button
 input(type='submit')
 a(href='#button' class='btn info') link button
 br
 a(href='#' class='btn-flat') link flat button
 
-h2 Icon Button
+h3 Icon Button
 button(class='btn-icon')
   <i class="fa fa-calendar" aria-hidden="true"></i>
 button(class='btn-icon primary')
@@ -31,16 +31,32 @@ button(class='btn-icon danger')
   <i class="fa fa-times" aria-hidden="true"></i>
 
 
-h2 Disabled
+h3 Disabled
 button(class='btn' disabled) btn
 button(class='btn-flat' disabled) btn-flat
 button(class='btn-icon danger' disabled)
   <i class="fa fa-times" aria-hidden="true"></i>
 
-h2 Close Button
+h3 Close Button
 span test text<button class="btn-close">✖</button>
 br
 span(class='badge') Badge<button class="btn-close">✖</button>
 div(class='pad bg-color-secondary' style='font-size:1.5em;position:relative;')
   p=lorem
   button(class='btn-close at-corner') ✖
+
+h3 Button Group
+div(class='btn-group')
+  button(class='btn') Left
+  button(class='btn info') Center
+  button(class='btn dark') Right
+br
+div(class='btn-group')
+  button(class='btn-flat') Left
+  button(class='btn-flat') Center
+  button(class='btn-flat') Right
+br
+div(class='btn-group-vertical')
+  button(class='btn') Top
+  button(class='btn') Middle
+  button(class='btn') Bottom

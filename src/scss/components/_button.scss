@@ -127,3 +127,54 @@
     transform: translateY(-50%);
   }
 }
+
+//============================================================
+// Button Group
+//============================================================
+
+%btn-group {
+  position: relative;
+  display: inline-flex;
+  margin: .2em;
+
+  > .btn,
+  > .btn-flat {
+    flex: 0 1 auto;
+    margin: 0;
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+  }
+}
+
+.btn-group {
+  @extend %btn-group;
+
+  > .btn,
+  > .btn-flat {
+    &:first-child {
+      @include border-right-radius(0);
+    }
+
+    &:last-child {
+      @include border-left-radius(0);
+    }
+  }
+}
+
+.btn-group-vertical {
+  @extend %btn-group;
+  flex-direction: column;
+
+  > .btn,
+  > .btn-flat {
+    &:first-child {
+      @include border-bottom-radius(0);
+    }
+
+    &:last-child {
+      @include border-top-radius(0);
+    }
+  }
+}
