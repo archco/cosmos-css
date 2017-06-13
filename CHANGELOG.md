@@ -14,6 +14,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 - Add scss mixins for using flexbox. #143
 - Add scss helper class for using flexbox. #167
 - Add some colors into color-set.scss #156
+- Improve Button: button group #138
 
 ### Changed
 - Improve Collapse: Available use instance for individual element. #153
