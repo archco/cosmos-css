@@ -11,13 +11,14 @@ const ClassName = {
   CONTAINER: 'toast-container',
 };
 const Default = {
-  text: 'no text',
+  text: 'no text', // set default text.
   duration_short: 3000,
   duration_long: 8000,
+  duration: 'short', // toast duration. 'short'|'long'|integer number (ms)
   container: `.${ClassName.CONTAINER}`,
   container_position: '', // nine-positions: top-left.. middle-center.. bottom-right..
   transition_duration: 600,
-  log_enable: true,
+  log_enable: true, // Enable console.log() when toast.show().
   close_type: 'remove', // 'hide' or 'remove'
 };
 
@@ -27,7 +28,7 @@ export default class Toast extends CosmosModule {
 
     // set defaults.
     this.setText(this.option.text);
-    this.setDuration(this.option.duration_short);
+    this.setDuration(this.option.duration);
     this.setContainer(this.option.container);
   }
 
@@ -50,7 +51,6 @@ export default class Toast extends CosmosModule {
    * @return {Toast}
    */
   static makeText(text, duration = null, option = {}) {
-    duration = duration || Default.duration_short;
     let instance = new this(option);
     return instance.setText(text).setDuration(duration);
   }
@@ -67,7 +67,15 @@ export default class Toast extends CosmosModule {
   }
 
   setDuration(duration) {
-    this.duration = duration;
+    if (typeof duration === 'string') {
+      if (duration.toLowerCase() === 'long') {
+        duration = this.option.duration_long;
+      } else {
+        duration = this.option.duration_short;
+      }
+    }
+
+    this.duration = duration || this.option.duration_short;
     return this;
   }
 
