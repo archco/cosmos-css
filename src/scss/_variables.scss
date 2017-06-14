@@ -80,6 +80,7 @@ $transition-time: .3s !default;
 $default-focus-outline: 2px solid $primary-color !default;
 $outline-color: $primary-color !default;
 $body-line-height: 1.5 !default;
+$position-default-offset: 5% !default;
 
 
 // Scaffolding
@@ -303,12 +304,14 @@ $image-overlay-bg-color: $background-color-invert !default;
 $caret-width: .25em !default;
 
 // toast
+$toast-font-size: 1em !default;
 $toast-min-width: 10em !default;
 $toast-padding-y: .8em;
 $toast-padding-x: .5em;
 $toast-text-color: $text-color-invert !default;
 $toast-bg-color: rgba($background-color-invert, .85) !default;
 $toast-border-radius: $radius-normal !default;
+$toast-container-position-offset: 5% !default;
 
 // message-box
 $message-box-default-bg-color: $default-color !default;

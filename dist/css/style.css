@@ -3399,8 +3399,8 @@ ul.pagination {
   -webkit-box-pack: justify;
           justify-content: space-between;
   min-height: 3em;
-  padding-right: .5rem;
-  padding-left: .5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
   background-color: rgba(52, 52, 52, 0.1); }
   .simple-crud-view-read .content,
   .simple-crud-view-update .content,
@@ -3424,12 +3424,16 @@ ul.pagination {
   padding: 0; }
 
 .simple-crud-item {
-  margin-bottom: .75rem; }
+  margin-bottom: 0.75rem; }
 
 .toast-container {
-  position: fixed;
   bottom: 5%;
   left: 50%;
+  top: initial;
+  right: initial;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  position: fixed;
   z-index: 20;
   display: -webkit-box;
   display: flex;
@@ -3437,14 +3441,76 @@ ul.pagination {
   -webkit-box-direction: normal;
           flex-direction: column;
   -webkit-box-pack: end;
-          justify-content: flex-end;
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0); }
+          justify-content: flex-end; }
+  .toast-container.top-left {
+    top: 5%;
+    left: 5%;
+    bottom: initial;
+    right: initial;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0); }
+  .toast-container.top-center {
+    top: 5%;
+    left: 50%;
+    bottom: initial;
+    right: initial;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); }
+  .toast-container.top-right {
+    top: 5%;
+    right: 5%;
+    bottom: initial;
+    left: initial;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0); }
+  .toast-container.middle-left {
+    top: 50%;
+    left: 5%;
+    bottom: initial;
+    right: initial;
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%); }
+  .toast-container.middle-center {
+    top: 50%;
+    left: 50%;
+    bottom: initial;
+    right: initial;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+  .toast-container.middle-right {
+    top: 50%;
+    right: 5%;
+    bottom: initial;
+    left: initial;
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%); }
+  .toast-container.bottom-left {
+    bottom: 5%;
+    left: 5%;
+    top: initial;
+    right: initial;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0); }
+  .toast-container.bottom-center {
+    bottom: 5%;
+    left: 50%;
+    top: initial;
+    right: initial;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); }
+  .toast-container.bottom-right {
+    bottom: 5%;
+    right: 5%;
+    top: initial;
+    left: initial;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0); }
 
 .toast {
   min-width: 10em;
   padding: 0.8em 0.5em;
   margin-top: 1rem;
+  font-size: 1em;
   color: #fff;
   text-align: center;
   background-color: rgba(52, 52, 52, 0.85);
