@@ -6,9 +6,9 @@
   display: none;
   align-items: center;
   justify-content: space-between;
-  min-height: 3em;
-  padding-right: .5rem;
-  padding-left: .5rem;
+  min-height: $simple-crud-min-height;
+  padding-right: $simple-crud-padding-x;
+  padding-left: $simple-crud-padding-x;
   background-color: $background-color-shade;
 
   .content {
@@ -27,7 +27,7 @@
 }
 
 .simple-crud-item {
-  margin-bottom: .75rem;
+  margin-bottom: $simple-crud-margin-bottom;
 }
 
 .simple-crud-view-read,

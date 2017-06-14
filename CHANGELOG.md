@@ -22,8 +22,9 @@ If want to see more previous information to [Releases](https://github.com/archco
 - Separates mixin.scss #162
 - Change entry file name "style.scss" to "cosmos.scss". #162
 - Improve grid with flexbox. #146
-- Change Nav: base structure of navbar. #166
-- Refactoring dropdown #148
+- Change html structure of navbar. #166
+- Change html structure of dropdown. #148
+- Change html structure of simple-crud. #159
 
 ### Fixed
 - Fix Dropdown: browser compatibility problem. #63
