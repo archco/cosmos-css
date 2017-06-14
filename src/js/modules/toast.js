@@ -12,14 +12,14 @@ const ClassName = {
 };
 const Default = {
   text: 'no text', // set default text.
-  duration_short: 3000,
-  duration_long: 8000,
   duration: 'short', // toast duration. 'short'|'long'|integer number (ms)
-  container: `.${ClassName.CONTAINER}`,
   container_position: '', // nine-positions: top-left.. middle-center.. bottom-right..
-  transition_duration: 600,
   log_enable: true, // Enable console.log() when toast.show().
   close_type: 'remove', // 'hide' or 'remove'
+  duration_short: 3000,
+  duration_long: 8000,
+  container: `.${ClassName.CONTAINER}`,
+  transition_duration: 600,
 };
 
 export default class Toast extends CosmosModule {
