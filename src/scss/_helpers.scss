@@ -5,29 +5,17 @@
 //======================================================================
 
 // toggling content
-.display-hide {
-  display: none !important;
-}
-
-.display-show {
-  display: block !important;
-}
-
-.display-invisible {
-  visibility: hidden;
-}
+.display-hide { display: none !important; }
+.display-show { display: block !important; }
+.display-invisible { visibility: hidden; }
 
 // responsive hiding
 %resopnsive-tablet-hide {
-  @include media-tablet-up() {
-    display: none;
-  }
+  @include media-tablet-up() { display: none; }
 }
 
 %responsive-mobile-hide {
-  @include media-only-mobile() {
-    display: none;
-  }
+  @include media-only-mobile() { display: none; }
 }
 
 .hide-only-mobile {
@@ -40,26 +28,13 @@
 .font-sans-serif { font-family: $font-sans-serif; }
 
 // align
-.align-center {
-  text-align: center;
-}
-
-.align-right {
-  text-align: right;
-}
-
-.align-left {
-  text-align: left;
-}
+.align-center { text-align: center; }
+.align-right { text-align: right; }
+.align-left { text-align: left; }
 
 // centering
-%position-center-container {
-  @include position-center-container;
-}
-
-%position-center {
-  @include position-center;
-}
+%position-center-container { @include position-center-container; }
+%position-center { @include position-center; }
 
 .vertical-center-container,
 .flex-container-vertical-center {
@@ -73,10 +48,12 @@
   display: flex;
 }
 
-.center-position-container {
+.center-position-container,
+.position-center-container {
   @include position-center-container;
 
-  .center-position {
+  .center-position,
+  .position-center {
     @include position-center;
   }
 }
@@ -88,10 +65,7 @@
 }
 
 // float
-.float-clear {
-  @include clear-both;
-}
-
+.float-clear { @include clear-both; }
 .float-left { float: left !important; }
 .float-right { float: right !important; }
 
@@ -140,10 +114,5 @@
 .full-height { height: 100%; }
 .group { margin-bottom: 1rem; }
 .debug-line { @include debug; }
-.caret {
-  @include caret('down');
-}
-
-.arrow {
-  @include arrow;
-}
+.caret { @include caret('down'); }
+.arrow { @include arrow; }
