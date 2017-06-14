@@ -3819,24 +3819,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 *************************************************************/
 var NAME = 'simple_crud';
 var ClassName = {
-  ITEM: 'simple-crud-item',
-  VIEW_READ: 'simple-crud-view-read',
-  VIEW_UPDATE: 'simple-crud-view-update',
-  VIEW_DELETE: 'simple-crud-view-delete',
-  BTN_UPDATE: 'simple-crud-update',
-  BTN_DELETE: 'simple-crud-delete',
-  BTN_CANCEL: 'simple-crud-cancel',
   SHOW: 'show'
 };
 var Selector = {
-  ITEM: '.' + ClassName.ITEM,
+  ITEM: '.simple-crud-item',
   VIEW: '[class*="simple-crud-view-"]',
-  VIEW_READ: '.' + ClassName.VIEW_READ,
-  VIEW_UPDATE: '.' + ClassName.VIEW_UPDATE,
-  VIEW_DELETE: '.' + ClassName.VIEW_DELETE,
-  BTN_UPDATE: 'button.' + ClassName.BTN_UPDATE,
-  BTN_DELETE: 'button.' + ClassName.BTN_DELETE,
-  BTN_CANCEL: 'button.' + ClassName.BTN_CANCEL
+  VIEW_READ: '.simple-crud-view-read',
+  VIEW_UPDATE: '.simple-crud-view-update',
+  VIEW_DELETE: '.simple-crud-view-delete',
+  BTN_UPDATE: 'button.simple-crud-update',
+  BTN_DELETE: 'button.simple-crud-delete',
+  BTN_CANCEL: 'button.simple-crud-cancel'
 };
 
 var SimpleCRUD = function (_CosmosModule) {
