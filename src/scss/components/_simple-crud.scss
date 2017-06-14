@@ -1,36 +1,37 @@
-@mixin _simple-crud-common {
-  @include clear-both;
-  display: none;
-
-  &.show { display: block; }
-}
-
 //======================================================================
 // Simple CRUD
 //======================================================================
-%simple-list {
-  @include reset-list;
 
-  li {
-    padding: .2em .4em;
-    margin: .1em 0;
+%simple-crud-view {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3em;
+  padding-right: .5rem;
+  padding-left: .5rem;
+  background-color: $background-color-shade;
+
+  .content {
+    flex: 1 1 auto;
   }
+
+  .actions {
+    flex: 0 1 auto;
+  }
+
+  &.show { display: flex; }
 }
 
 .simple-crud-list {
-  @extend %simple-list;
+  @include reset-list;
+}
 
-  .simple-crud-item {
-    .simple-crud-view-read,
-    .simple-crud-view-update,
-    .simple-crud-view-delete {
-      @include _simple-crud-common;
-    }
-  }
+.simple-crud-item {
+  margin-bottom: .75rem;
+}
 
-  .simple-crud-actions {
-    display: inline-block;
-    float: right;
-    vertical-align: middle;
-  }
+.simple-crud-view-read,
+.simple-crud-view-update,
+.simple-crud-view-delete {
+  @extend %simple-crud-view;
 }
