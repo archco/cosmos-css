@@ -15,6 +15,7 @@ const Default = {
   duration_short: 3000,
   duration_long: 8000,
   container: `.${ClassName.CONTAINER}`,
+  container_position: '', // nine-positions: top-left.. middle-center.. bottom-right..
   transition_duration: 600,
   log_enable: true,
   close_type: 'remove', // 'hide' or 'remove'
@@ -71,11 +72,17 @@ export default class Toast extends CosmosModule {
   }
 
   setContainer(selector) {
-    let elm = eu.getElement(selector, eu.getElement('body'));
+    let body = eu.getElement('body');
+    let elm = eu.getElement(selector, body);
+
     if (!elm) {
       elm = document.createElement('DIV');
       elm.classList.add(ClassName.CONTAINER);
-      eu.getElement('body').appendChild(elm);
+      body.appendChild(elm);
+    }
+
+    if (this.option.container_position) {
+      elm.classList.add(this.option.container_position);
     }
 
     this.container = elm;

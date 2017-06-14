@@ -4198,6 +4198,7 @@ var Default = {
   duration_short: 3000,
   duration_long: 8000,
   container: '.' + ClassName.CONTAINER,
+  container_position: '', // nine-positions: top-left.. middle-center.. bottom-right..
   transition_duration: 600,
   log_enable: true,
   close_type: 'remove' };
@@ -4245,11 +4246,17 @@ var Toast = function (_CosmosModule) {
   }, {
     key: 'setContainer',
     value: function setContainer(selector) {
-      var elm = _elementUtil2.default.getElement(selector, _elementUtil2.default.getElement('body'));
+      var body = _elementUtil2.default.getElement('body');
+      var elm = _elementUtil2.default.getElement(selector, body);
+
       if (!elm) {
         elm = document.createElement('DIV');
         elm.classList.add(ClassName.CONTAINER);
-        _elementUtil2.default.getElement('body').appendChild(elm);
+        body.appendChild(elm);
+      }
+
+      if (this.option.container_position) {
+        elm.classList.add(this.option.container_position);
       }
 
       this.container = elm;
@@ -4349,7 +4356,9 @@ var option = {
       close_style: 'icon'
     },
     toast: {
-      log_enable: false
+      log_enable: true,
+      container_position: 'middle-right',
+      close_type: 'hide'
     },
     scroll_to: {
       scroll_duration: 600
