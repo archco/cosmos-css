@@ -1499,7 +1499,7 @@ exports.default = Util;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Collapse = exports.Toast = exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
+exports.Modal = exports.Collapse = exports.Toast = exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -1686,7 +1686,8 @@ Object.assign(Cosmos, {
   Button: _button2.default,
   Chip: _chip2.default,
   Toast: _toast2.default,
-  Collapse: _collapse2.default
+  Collapse: _collapse2.default,
+  Modal: _modal2.default
 });
 
 // export.
@@ -1699,6 +1700,7 @@ exports.Button = _button2.default;
 exports.Chip = _chip2.default;
 exports.Toast = _toast2.default;
 exports.Collapse = _collapse2.default;
+exports.Modal = _modal2.default;
 
 /***/ }),
 /* 5 */
@@ -2953,13 +2955,17 @@ var ClassName = {
 };
 var Selector = {
   MODAL: '.' + ClassName.MODAL,
-  OPEN: 'button[data-toggle="modal"]',
+  TRIGGER: '[data-trigger="modal"]',
   CLOSE: '.' + ClassName.MODAL + ' .' + ClassName.CLOSE,
   CONTENT: '.' + ClassName.CONTENT
 };
 var ButtonOption = {
   close_position: 'corner',
   close_style: 'icon'
+};
+var Default = {
+  trigger: '',
+  target: ''
 };
 
 var Modal = function (_CosmosModule) {
@@ -2973,25 +2979,32 @@ var Modal = function (_CosmosModule) {
     var _this = _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, option));
 
     _this.button = new _button2.default(ButtonOption);
+    _this.setTrigger(_this.option.trigger);
+    _this.setTarget(_this.option.target);
     return _this;
   }
 
   // static
 
   _createClass(Modal, [{
-    key: 'init',
+    key: 'getDefaultOption',
 
 
     // public
 
+    value: function getDefaultOption() {
+      return Default;
+    }
+  }, {
+    key: 'init',
     value: function init() {
       var _this2 = this;
 
-      // modal open button.
-      _elementUtil2.default.addListener(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
+      // modal trigger button.
+      _elementUtil2.default.addListener(Selector.TRIGGER, 'click', this._triggerHandler.bind(this));
 
       // modal close button.
-      _elementUtil2.default.addListener(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this), true);
+      _elementUtil2.default.addListener(Selector.CLOSE, 'click', this._closeHandler.bind(this), true);
 
       // window onclick.
       window.addEventListener('click', function (event) {
@@ -3009,9 +3022,9 @@ var Modal = function (_CosmosModule) {
 
         try {
           for (var _iterator = modals[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var m = _step.value;
+            var modal = _step.value;
 
-            this._addCloseBtn(m);
+            this._addCloseBtn(modal);
           }
         } catch (err) {
           _didIteratorError = true;
@@ -3032,72 +3045,110 @@ var Modal = function (_CosmosModule) {
   }, {
     key: 'makeDialog',
     value: function makeDialog(text) {
-      var m = document.createElement('div'); // modal
-      var c = document.createElement('div'); // modal-content
+      var modal = document.createElement('div');
+      var content = document.createElement('div');
 
       // modal-content
-      c.classList.add(ClassName.CONTENT);
-      c.textContent = text;
+      content.classList.add(ClassName.CONTENT);
+      content.textContent = text;
 
       // modal
-      m.classList.add(ClassName.MODAL);
-      m.appendChild(c);
-      this._addCloseBtn(m);
-      document.body.appendChild(m);
+      modal.classList.add(ClassName.MODAL);
+      modal.appendChild(content);
+      this._addCloseBtn(modal);
+      document.body.appendChild(modal);
 
       // show
-      this._modalShow(m);
+      this._modalShow(modal);
+    }
+  }, {
+    key: 'setTrigger',
+    value: function setTrigger(selector) {
+      if (!selector) return;
+      this.trigger = _elementUtil2.default.getElement(selector);
+      this.target = this._getTargetFromTrigger(this.trigger);
+      return this;
+    }
+  }, {
+    key: 'setTarget',
+    value: function setTarget(selector) {
+      if (!selector) return;
+      this.target = _elementUtil2.default.getElement(selector);
+      return this;
+    }
+  }, {
+    key: 'show',
+    value: function show() {
+      this._modalShow(this.target);
+    }
+  }, {
+    key: 'hide',
+    value: function hide() {
+      this._modalHide(this.target);
+    }
+  }, {
+    key: 'toggle',
+    value: function toggle() {
+      if (this._isShown(this.target)) {
+        this.hide();
+      } else {
+        this.show();
+      }
     }
 
     // private
 
   }, {
-    key: '_modalCloseHandler',
-    value: function _modalCloseHandler(event) {
-      var m = _elementUtil2.default.findAncestor(event.currentTarget, Selector.MODAL);
-      this._modalHide(m);
+    key: '_closeHandler',
+    value: function _closeHandler(event) {
+      var modal = _elementUtil2.default.findAncestor(event.currentTarget, Selector.MODAL);
+      this._modalHide(modal);
       event.stopPropagation();
     }
   }, {
-    key: '_modalOpenHandler',
-    value: function _modalOpenHandler(event) {
-      var targetID = event.currentTarget.dataset.target;
-      var t = document.querySelector(targetID);
-      if (!t) {
+    key: '_triggerHandler',
+    value: function _triggerHandler(event) {
+      var target = this._getTargetFromTrigger(event.currentTarget);
+      if (!target) {
         return;
       }
 
-      this._modalShow(t);
+      this._modalShow(target);
     }
   }, {
     key: '_modalShow',
     value: function _modalShow(modal) {
-      if (!modal.classList.contains(ClassName.SHOW)) {
-        modal.classList.add(ClassName.SHOW);
-      }
+      modal.classList.add(ClassName.SHOW);
     }
   }, {
     key: '_modalHide',
     value: function _modalHide(modal) {
-      if (modal.classList.contains(ClassName.SHOW)) {
-        modal.classList.remove(ClassName.SHOW);
-      }
+      modal.classList.remove(ClassName.SHOW);
+    }
+  }, {
+    key: '_isShown',
+    value: function _isShown(modal) {
+      return modal.classList.contains(ClassName.SHOW);
     }
   }, {
     key: '_addCloseBtn',
     value: function _addCloseBtn(modal) {
-      if (modal.querySelector(Selector.CLOSE)) {
-        return;
-      }
-
+      if (modal.querySelector(Selector.CLOSE)) return;
       var content = modal.querySelector(Selector.CONTENT);
-      this.button.appendBtnClose(content, this._modalCloseHandler.bind(this));
+      this.button.appendBtnClose(content, this._closeHandler.bind(this));
+    }
+  }, {
+    key: '_getTargetFromTrigger',
+    value: function _getTargetFromTrigger(trigger) {
+      var selector = trigger.getAttribute('href') || trigger.dataset.target || '';
+      if (!selector) return;
+      return _elementUtil2.default.getElement(selector);
     }
   }], [{
     key: 'dialog',
     value: function dialog(text) {
-      var m = new Modal();
-      m.makeDialog(text);
+      var modal = new Modal();
+      modal.makeDialog(text);
     }
   }, {
     key: 'name',

@@ -104,6 +104,7 @@ Object.assign(Cosmos, {
   Chip,
   Toast,
   Collapse,
+  Modal,
 });
 
 // export.
@@ -117,4 +118,5 @@ export {
   Chip,
   Toast,
   Collapse,
+  Modal,
 };

@@ -2928,29 +2928,30 @@ aside {
 .modal {
   position: fixed;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
   z-index: 18;
   display: none;
-  width: 100%;
-  height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4); }
   .modal.show {
     display: block; }
-  .modal .modal-content {
-    position: relative;
-    width: 70%;
-    padding: 20px;
-    margin: 15% auto;
-    background-color: #fff;
-    border: 1px solid #888;
-    -webkit-animation: .4s from-top;
-            animation: .4s from-top; }
-    .modal .modal-content .btn-close {
-      font-size: 1.5em;
-      color: rgba(226, 61, 40, 0.5); }
-      .modal .modal-content .btn-close:hover {
-        color: #e23d28; }
+
+.modal-content {
+  position: relative;
+  width: 70%;
+  padding: 20px;
+  margin: 15% auto;
+  background-color: #fff;
+  border: 1px solid #888;
+  -webkit-animation: .4s from-top;
+          animation: .4s from-top; }
+  .modal-content .btn-close {
+    font-size: 1.5em;
+    color: rgba(226, 61, 40, 0.5); }
+    .modal-content .btn-close:hover {
+      color: #e23d28; }
 
 .card, .card-horizontal {
   z-index: 2;
@@ -3689,9 +3690,13 @@ ul.pagination {
   display: -webkit-box;
   display: flex; }
 
-.center-position-container {
+.center-position-container,
+.position-center-container {
   position: relative; }
-  .center-position-container .center-position {
+  .center-position-container .center-position,
+  .center-position-container .position-center,
+  .position-center-container .center-position,
+  .position-center-container .position-center {
     position: absolute;
     top: 50%;
     -webkit-transform: translate(0, -50%);
