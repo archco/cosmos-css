@@ -2970,9 +2970,8 @@ var ButtonOption = {
 var Default = {
   trigger: '',
   target: '',
-  enable_auto_header: true,
-  default_title: 'Modal Dialog'
-};
+  default_title: 'Modal Dialog',
+  enable_outside_close: false };
 
 var Modal = function (_CosmosModule) {
   _inherits(Modal, _CosmosModule);
@@ -3004,22 +3003,17 @@ var Modal = function (_CosmosModule) {
   }, {
     key: 'init',
     value: function init() {
-      var _this2 = this;
-
       // modal trigger button.
       _elementUtil2.default.addListener(Selector.TRIGGER, 'click', this._triggerHandler.bind(this));
 
       // modal close button.
       _elementUtil2.default.addListener(Selector.CLOSE + ',' + Selector.TRIGGER_CLOSE, 'click', this._closeHandler.bind(this), true);
 
-      // window onclick.
-      window.addEventListener('click', function (event) {
-        if (event.target.classList.contains(ClassName.MODAL)) {
-          _this2._modalHide(event.target);
-        }
-      });
+      if (this.option.enable_outside_close) {
+        window.addEventListener('click', this._modalOutsideClickHandler.bind(this));
+      }
 
-      // If modal doesn't have close button, add it.
+      // If modal-header does not have close button, add it.
       var modals = document.querySelectorAll(Selector.MODAL);
       if (modals.length) {
         var _iteratorNormalCompletion = true;
@@ -3162,6 +3156,13 @@ var Modal = function (_CosmosModule) {
       var selector = trigger.getAttribute('href') || trigger.dataset.target || '';
       if (!selector) return;
       return _elementUtil2.default.getElement(selector);
+    }
+  }, {
+    key: '_modalOutsideClickHandler',
+    value: function _modalOutsideClickHandler(event) {
+      if (event.target.classList.contains(ClassName.MODAL)) {
+        this._modalHide(event.target);
+      }
     }
   }], [{
     key: 'dialog',

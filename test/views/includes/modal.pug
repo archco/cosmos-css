@@ -1,4 +1,5 @@
-button(class='btn warning' data-trigger='modal' data-target='#modal1') Open Modal
+button(class='btn warning' data-trigger='modal' data-target='#modal1') Modal Trigger Button
+a(id='test' href='#modal2' class='btn-flat' data-trigger='modal') Link Modal
 br
 div(id='modal1' class='modal')
   div(class='modal-content')
@@ -10,16 +11,15 @@ div(id='modal1' class='modal')
       button(class='btn default' data-trigger='modal-close') Cancel
       button(class='btn success') OK
 
-input(type='text' id='modal-dialog-input' class='inline')
-button(type='button' id='modal-dialog-btn' class='btn success') Modal Dialog
-
 div(id='modal2' class='modal')
   div(class='modal-content')
     div(class='modal-header bg-color-dark')
       h3 Link Trigger Test
     div(class='modal-body')
       p=lorem
-a(id='test' href='#modal2' class='btn-flat' data-trigger='modal') Link Test
+
+input(type='text' id='modal-dialog-input' class='inline')
+button(type='button' id='modal-dialog-btn' class='btn success') Modal Dialog
 
 script.
   document.querySelector('#modal-dialog-btn').addEventListener('click', function () {

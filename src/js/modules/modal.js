@@ -29,8 +29,8 @@ const ButtonOption = {
 const Default = {
   trigger: '',
   target: '',
-  enable_auto_header: true,
   default_title: 'Modal Dialog',
+  enable_outside_close: true, // If true, modal close when click outside of modal-content.
 };
 
 export default class Modal extends CosmosModule {
@@ -74,14 +74,11 @@ export default class Modal extends CosmosModule {
       true
     );
 
-    // window onclick.
-    window.addEventListener('click', (event) => {
-      if (event.target.classList.contains(ClassName.MODAL)) {
-        this._modalHide(event.target);
-      }
-    });
+    if (this.option.enable_outside_close) {
+      window.addEventListener('click', this._modalOutsideClickHandler.bind(this));
+    }
 
-    // If modal doesn't have close button, add it.
+    // If modal-header does not have close button, add it.
     let modals = document.querySelectorAll(Selector.MODAL);
     if (modals.length) {
       for (let modal of modals) {
@@ -185,5 +182,11 @@ export default class Modal extends CosmosModule {
     let selector = trigger.getAttribute('href') || trigger.dataset.target || '';
     if (!selector) return;
     return eu.getElement(selector);
+  }
+
+  _modalOutsideClickHandler(event) {
+    if (event.target.classList.contains(ClassName.MODAL)) {
+      this._modalHide(event.target);
+    }
   }
 }
