@@ -221,7 +221,7 @@ var CosmosModule = function () {
      * getSubModuleInstance
      *
      * @param  {String} modName
-     * @return {Object} instance of module.
+     * @return {Object} instance of sub-module.
      */
 
   }, {

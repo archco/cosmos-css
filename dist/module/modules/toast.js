@@ -32,13 +32,16 @@ var ClassName = {
   CONTAINER: 'toast-container'
 };
 var Default = {
-  text: 'no text',
+  text: 'no text', // set default text.
+  duration: 'short', // toast duration. 'short'|'long'|integer number (ms)
+  container_position: '', // nine-positions: top-left.. middle-center.. bottom-right..
+  log_enable: true, // Enable console.log() when toast.show().
+  close_type: 'remove', // 'hide' or 'remove'
   duration_short: 3000,
   duration_long: 8000,
   container: '.' + ClassName.CONTAINER,
-  transition_duration: 600,
-  log_enable: true,
-  close_type: 'remove' };
+  transition_duration: 600
+};
 
 var Toast = function (_CosmosModule) {
   _inherits(Toast, _CosmosModule);
@@ -52,7 +55,7 @@ var Toast = function (_CosmosModule) {
     var _this = _possibleConstructorReturn(this, (Toast.__proto__ || Object.getPrototypeOf(Toast)).call(this, option));
 
     _this.setText(_this.option.text);
-    _this.setDuration(_this.option.duration_short);
+    _this.setDuration(_this.option.duration);
     _this.setContainer(_this.option.container);
     return _this;
   }
@@ -77,17 +80,31 @@ var Toast = function (_CosmosModule) {
   }, {
     key: 'setDuration',
     value: function setDuration(duration) {
-      this.duration = duration;
+      if (typeof duration === 'string') {
+        if (duration.toLowerCase() === 'long') {
+          duration = this.option.duration_long;
+        } else {
+          duration = this.option.duration_short;
+        }
+      }
+
+      this.duration = duration || this.option.duration_short;
       return this;
     }
   }, {
     key: 'setContainer',
     value: function setContainer(selector) {
-      var elm = _elementUtil2.default.getElement(selector, _elementUtil2.default.getElement('body'));
+      var body = _elementUtil2.default.getElement('body');
+      var elm = _elementUtil2.default.getElement(selector, body);
+
       if (!elm) {
         elm = document.createElement('DIV');
         elm.classList.add(ClassName.CONTAINER);
-        _elementUtil2.default.getElement('body').appendChild(elm);
+        body.appendChild(elm);
+      }
+
+      if (this.option.container_position) {
+        elm.classList.add(this.option.container_position);
       }
 
       this.container = elm;
@@ -147,7 +164,6 @@ var Toast = function (_CosmosModule) {
       var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
       var option = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
-      duration = duration || Default.duration_short;
       var instance = new this(option);
       return instance.setText(text).setDuration(duration);
     }

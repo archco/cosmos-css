@@ -2971,7 +2971,7 @@ var Default = {
   trigger: '',
   target: '',
   default_title: 'Modal Dialog',
-  enable_outside_close: false };
+  enable_outside_close: true };
 
 var Modal = function (_CosmosModule) {
   _inherits(Modal, _CosmosModule);
@@ -4465,6 +4465,7 @@ module.exports = {
 		"test": "test"
 	},
 	"dependencies": {
+		"change-case": "^3.0.1",
 		"normalize.css": "^7.0.0",
 		"scss-palette": "^0.3.2"
 	},
@@ -4473,16 +4474,16 @@ module.exports = {
 		"babel-cli": "^6.24.1",
 		"babel-eslint": "^7.2.3",
 		"babel-loader": "^7.0.0",
-		"babel-preset-env": "^1.3.3",
+		"babel-preset-env": "^1.5.2",
 		"concurrently": "^3.4.0",
 		"eslint": "^3.19.0",
 		"fs-extra": "^2.1.2",
-		"node-sass": "^4.5.2",
+		"node-sass": "^4.5.3",
 		"postcss": "^5.2.17",
 		"postcss-cli": "^3.2.0",
-		"pug": "^2.0.0-beta11",
+		"pug": "^2.0.0-rc.2",
 		"pug-cli": "^1.0.0-alpha6",
-		"webpack": "^2.4.1"
+		"webpack": "^2.6.1"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",

@@ -12,14 +12,15 @@ var option = {
       close_style: 'icon'
     },
     toast: {
-      log_enable: false
+      log_enable: true,
+      container_position: 'middle-right',
+      close_type: 'hide'
     },
     scroll_to: {
-      scroll_duration: 3000
+      scroll_duration: 600
     }
   }
 };
 
 window.Cosmos = _cosmos2.default;
-var cosmos = new _cosmos2.default(option);
-window.cosmos = cosmos.init();
+window.cosmos = new _cosmos2.default(option).init();

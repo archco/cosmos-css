@@ -229,6 +229,11 @@ var Tab = function (_CosmosModule) {
     get: function get() {
       return NAME;
     }
+  }, {
+    key: 'isLoadable',
+    get: function get() {
+      return true;
+    }
   }]);
 
   return Tab;

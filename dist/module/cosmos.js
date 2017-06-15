@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Collapse = exports.Toast = exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
+exports.Modal = exports.Collapse = exports.Toast = exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -149,6 +149,11 @@ var Cosmos = function (_CosmosModule) {
       window.showMessage = _message2.default.showMessage;
       window.modalDialog = _modal2.default.dialog;
     }
+  }, {
+    key: 'version',
+    get: function get() {
+      return _package2.default.version;
+    }
   }], [{
     key: 'version',
     get: function get() {
@@ -185,7 +190,8 @@ Object.assign(Cosmos, {
   Button: _button2.default,
   Chip: _chip2.default,
   Toast: _toast2.default,
-  Collapse: _collapse2.default
+  Collapse: _collapse2.default,
+  Modal: _modal2.default
 });
 
 // export.
@@ -198,3 +204,4 @@ exports.Button = _button2.default;
 exports.Chip = _chip2.default;
 exports.Toast = _toast2.default;
 exports.Collapse = _collapse2.default;
+exports.Modal = _modal2.default;
