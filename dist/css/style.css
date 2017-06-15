@@ -2940,18 +2940,56 @@ aside {
 
 .modal-content {
   position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
   width: 70%;
-  padding: 20px;
   margin: 15% auto;
   background-color: #fff;
-  border: 1px solid #888;
+  border: 1px solid #bebebe;
   -webkit-animation: .4s from-top;
           animation: .4s from-top; }
-  .modal-content .btn-close {
+  @media only screen and (max-width: 767px) {
+    .modal-content {
+      width: 90%;
+      margin: 5% auto; } }
+
+.modal-header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: baseline;
+          align-items: baseline;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  padding: .8rem .5rem; }
+  .modal-header h1,
+  .modal-header h2,
+  .modal-header h3,
+  .modal-header h4,
+  .modal-header h5,
+  .modal-header h6 {
+    margin: 0; }
+  .modal-header .btn-close {
     font-size: 1.5em;
     color: rgba(226, 61, 40, 0.5); }
-    .modal-content .btn-close:hover {
+    .modal-header .btn-close:hover {
       color: #e23d28; }
+
+.modal-body {
+  -webkit-box-flex: 1;
+          flex-grow: 1;
+  padding: .8rem .5rem; }
+
+.modal-footer {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: baseline;
+          align-items: baseline;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+  padding: .8rem .5rem; }
 
 .card, .card-horizontal {
   z-index: 2;

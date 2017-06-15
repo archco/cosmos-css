@@ -9,22 +9,28 @@ const NAME = 'modal';
 const ClassName = {
   MODAL: 'modal',
   CONTENT: 'modal-content',
+  HEADER: 'modal-header',
+  BODY: 'modal-body',
+  FOOTER: 'modal-footer',
   CLOSE: 'btn-close',
   SHOW: 'show',
 };
 const Selector = {
   MODAL: `.${ClassName.MODAL}`,
   TRIGGER: `[data-trigger="modal"]`,
+  TRIGGER_CLOSE: `[data-trigger="modal-close"]`,
   CLOSE: `.${ClassName.MODAL} .${ClassName.CLOSE}`,
   CONTENT: `.${ClassName.CONTENT}`,
+  HEADER: `.${ClassName.HEADER}`,
 };
 const ButtonOption = {
-  close_position: 'corner',
   close_style: 'icon',
 };
 const Default = {
   trigger: '',
   target: '',
+  enable_auto_header: true,
+  default_title: 'Modal Dialog',
 };
 
 export default class Modal extends CosmosModule {
@@ -45,9 +51,9 @@ export default class Modal extends CosmosModule {
     return true;
   }
 
-  static dialog(text) {
+  static dialog(text, title = '') {
     let modal = new Modal();
-    modal.makeDialog(text);
+    modal.makeDialog(text, title);
   }
 
   // public
@@ -61,7 +67,12 @@ export default class Modal extends CosmosModule {
     eu.addListener(Selector.TRIGGER, 'click', this._triggerHandler.bind(this));
 
     // modal close button.
-    eu.addListener(Selector.CLOSE, 'click', this._closeHandler.bind(this), true);
+    eu.addListener(
+      `${Selector.CLOSE},${Selector.TRIGGER_CLOSE}`,
+      'click',
+      this._closeHandler.bind(this),
+      true
+    );
 
     // window onclick.
     window.addEventListener('click', (event) => {
@@ -79,16 +90,25 @@ export default class Modal extends CosmosModule {
     }
   }
 
-  makeDialog(text) {
-    let modal = document.createElement('div');
-    let content = document.createElement('div');
+  makeDialog(text, title = '') {
+    let modal = document.createElement('DIV');
+    let content = document.createElement('DIV');
+    let header = document.createElement('DIV');
+    let h3 = document.createElement('H3');
+    let body = document.createElement('DIV');
 
-    // modal-content
-    content.classList.add(ClassName.CONTENT);
-    content.textContent = text;
-
-    // modal
+    // set elements.
     modal.classList.add(ClassName.MODAL);
+    content.classList.add(ClassName.CONTENT);
+    header.classList.add(ClassName.HEADER);
+    h3.textContent = title || this.option.default_title;
+    body.classList.add(ClassName.BODY);
+    body.textContent = text;
+
+    // assemble.
+    header.appendChild(h3);
+    content.appendChild(header);
+    content.appendChild(body);
     modal.appendChild(content);
     this._addCloseBtn(modal);
     document.body.appendChild(modal);
@@ -154,9 +174,11 @@ export default class Modal extends CosmosModule {
   }
 
   _addCloseBtn(modal) {
-    if (modal.querySelector(Selector.CLOSE)) return;
-    let content = modal.querySelector(Selector.CONTENT);
-    this.button.appendBtnClose(content, this._closeHandler.bind(this));
+    let header = modal.querySelector(Selector.HEADER);
+    let close = modal.querySelector(Selector.CLOSE);
+
+    if (!header || close) return;
+    this.button.appendBtnClose(header, this._closeHandler.bind(this));
   }
 
   _getTargetFromTrigger(trigger) {

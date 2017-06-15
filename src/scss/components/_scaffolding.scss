@@ -202,6 +202,7 @@ p {
     padding: 1em .5em;
   }
 }
+
 // section
 @include media-tablet-up() {
   section.pad {
@@ -215,13 +216,8 @@ p {
   }
 }
 
-// .accent
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+// h1.accent
+@include headings {
   &.accent {
     font-family: $font-accent;
   }

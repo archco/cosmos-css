@@ -30,21 +30,46 @@
 }
 
 .modal-content {
-  $_border-color: #888;
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 70%;
-  padding: 20px;
   margin: 15% auto;
   background-color: $modal-content-bg-color;
-  border: 1px solid $_border-color;
+  border: 1px solid $border-color;
   animation: .4s from-top;
+
+  @include media-only-mobile {
+    width: 90%;
+    margin: 5% auto;
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: .8rem .5rem;
+
+  @include headings {
+    margin: 0;
+  }
 
   .btn-close {
     font-size: 1.5em;
     color: $modal-close-button-color;
-
-    &:hover {
-      color: $modal-close-button-hover-color;
-    }
+    &:hover { color: $modal-close-button-hover-color; }
   }
+}
+
+.modal-body {
+  flex-grow: 1;
+  padding: .8rem .5rem;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  padding: .8rem .5rem;
 }

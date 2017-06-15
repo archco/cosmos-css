@@ -4,11 +4,10 @@ div(id='modal1' class='modal')
   div(class='modal-content')
     div(class='modal-header')
       h3 Dialog Title
-      button(class='btn-close') x
     div(class='modal-body')
       p=lorem
     div(class='modal-footer')
-      button(class='btn default') Cancel
+      button(class='btn default' data-trigger='modal-close') Cancel
       button(class='btn success') OK
 
 input(type='text' id='modal-dialog-input' class='inline')
@@ -16,12 +15,14 @@ button(type='button' id='modal-dialog-btn' class='btn success') Modal Dialog
 
 div(id='modal2' class='modal')
   div(class='modal-content')
-    h4 JS Trigger
-    p=lorem
+    div(class='modal-header bg-color-dark')
+      h3 Link Trigger Test
+    div(class='modal-body')
+      p=lorem
 a(id='test' href='#modal2' class='btn-flat' data-trigger='modal') Link Test
 
 script.
   document.querySelector('#modal-dialog-btn').addEventListener('click', function () {
     var msg = document.querySelector('#modal-dialog-input').value || 'Empty';
-    modalDialog(msg);
+    Cosmos.Modal.dialog(msg, 'Title');
   });

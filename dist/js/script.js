@@ -2950,22 +2950,28 @@ var NAME = 'modal';
 var ClassName = {
   MODAL: 'modal',
   CONTENT: 'modal-content',
+  HEADER: 'modal-header',
+  BODY: 'modal-body',
+  FOOTER: 'modal-footer',
   CLOSE: 'btn-close',
   SHOW: 'show'
 };
 var Selector = {
   MODAL: '.' + ClassName.MODAL,
   TRIGGER: '[data-trigger="modal"]',
+  TRIGGER_CLOSE: '[data-trigger="modal-close"]',
   CLOSE: '.' + ClassName.MODAL + ' .' + ClassName.CLOSE,
-  CONTENT: '.' + ClassName.CONTENT
+  CONTENT: '.' + ClassName.CONTENT,
+  HEADER: '.' + ClassName.HEADER
 };
 var ButtonOption = {
-  close_position: 'corner',
   close_style: 'icon'
 };
 var Default = {
   trigger: '',
-  target: ''
+  target: '',
+  enable_auto_header: true,
+  default_title: 'Modal Dialog'
 };
 
 var Modal = function (_CosmosModule) {
@@ -3004,7 +3010,7 @@ var Modal = function (_CosmosModule) {
       _elementUtil2.default.addListener(Selector.TRIGGER, 'click', this._triggerHandler.bind(this));
 
       // modal close button.
-      _elementUtil2.default.addListener(Selector.CLOSE, 'click', this._closeHandler.bind(this), true);
+      _elementUtil2.default.addListener(Selector.CLOSE + ',' + Selector.TRIGGER_CLOSE, 'click', this._closeHandler.bind(this), true);
 
       // window onclick.
       window.addEventListener('click', function (event) {
@@ -3045,15 +3051,26 @@ var Modal = function (_CosmosModule) {
   }, {
     key: 'makeDialog',
     value: function makeDialog(text) {
-      var modal = document.createElement('div');
-      var content = document.createElement('div');
+      var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
-      // modal-content
-      content.classList.add(ClassName.CONTENT);
-      content.textContent = text;
+      var modal = document.createElement('DIV');
+      var content = document.createElement('DIV');
+      var header = document.createElement('DIV');
+      var h3 = document.createElement('H3');
+      var body = document.createElement('DIV');
 
-      // modal
+      // set elements.
       modal.classList.add(ClassName.MODAL);
+      content.classList.add(ClassName.CONTENT);
+      header.classList.add(ClassName.HEADER);
+      h3.textContent = title || this.option.default_title;
+      body.classList.add(ClassName.BODY);
+      body.textContent = text;
+
+      // assemble.
+      header.appendChild(h3);
+      content.appendChild(header);
+      content.appendChild(body);
       modal.appendChild(content);
       this._addCloseBtn(modal);
       document.body.appendChild(modal);
@@ -3133,9 +3150,11 @@ var Modal = function (_CosmosModule) {
   }, {
     key: '_addCloseBtn',
     value: function _addCloseBtn(modal) {
-      if (modal.querySelector(Selector.CLOSE)) return;
-      var content = modal.querySelector(Selector.CONTENT);
-      this.button.appendBtnClose(content, this._closeHandler.bind(this));
+      var header = modal.querySelector(Selector.HEADER);
+      var close = modal.querySelector(Selector.CLOSE);
+
+      if (!header || close) return;
+      this.button.appendBtnClose(header, this._closeHandler.bind(this));
     }
   }, {
     key: '_getTargetFromTrigger',
@@ -3147,8 +3166,10 @@ var Modal = function (_CosmosModule) {
   }], [{
     key: 'dialog',
     value: function dialog(text) {
+      var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
       var modal = new Modal();
-      modal.makeDialog(text);
+      modal.makeDialog(text, title);
     }
   }, {
     key: 'name',
