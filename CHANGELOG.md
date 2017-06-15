@@ -26,6 +26,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 - Change html structure of navbar. #166
 - Change html structure of dropdown. #148
 - Change html structure of simple-crud. #159
+- Change html structure of modal. #158
 
 ### Fixed
 - Fix Dropdown: browser compatibility problem. #63
