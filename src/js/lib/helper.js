@@ -1,15 +1,9 @@
 /************************************************************
   Helper - will be deprecated.
 *************************************************************/
-const NAME = 'helper';
-
 export default class Helper {
 
   // static
-
-  static get name() {
-    return NAME;
-  }
 
   /**
    * submitConfirm - confirm 을 취소하면 event.preventDefault()

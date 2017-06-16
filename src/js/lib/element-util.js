@@ -1,7 +1,6 @@
 /************************************************************
   ElementUtil
 *************************************************************/
-const NAME = 'element_util';
 const ClassName = {
   SHOW: 'display-show',
   HIDE: 'display-hide',
@@ -13,10 +12,6 @@ const DataSet = {
 };
 
 export default class ElementUtil {
-  static get name() {
-    return NAME;
-  }
-
   /**
    * getElement
    *

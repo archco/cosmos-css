@@ -4,7 +4,6 @@ import ElementUtil from '../lib/element-util.js';
 /************************************************************
   Button
 *************************************************************/
-const NAME = 'button';
 const ClassName = {
   CLOSE: 'btn-close',
   POSITION_CORNER: 'at-corner',
@@ -18,8 +17,6 @@ const Selector = {
   HAS_ACTION: `.${ClassName.CLOSE}.${ClassName.REMOVEABLE},
     .${ClassName.CLOSE}.${ClassName.HIDEABLE}`,
 };
-
-// default option.
 const Default = {
   close_init_enable: true,
   close_action: 'remove', // remove | hide
@@ -34,10 +31,6 @@ const Default = {
 export default class Button extends CosmosModule{
 
   // static
-
-  static get name() {
-    return NAME;
-  }
 
   static get isLoadable() {
     return true;

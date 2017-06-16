@@ -1,7 +1,6 @@
 /************************************************************
   Color
 *************************************************************/
-const NAME = 'color';
 const Config = {
   lightnessPoint: 166, // 65%
   darkDefault: '#000',
@@ -18,10 +17,6 @@ export default class Color {
   }
 
   // static
-
-  static get name() {
-    return NAME;
-  }
 
   /**
    * color to rgb array.

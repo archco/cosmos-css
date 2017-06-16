@@ -3,15 +3,7 @@ import scrollIt from './utils/scroll-it.js';
 /************************************************************
   util
 *************************************************************/
-const NAME = 'util';
-
 class Util {
-
-  // static
-
-  static get name() {
-    return NAME;
-  }
 
   /**
    * event on selector - will be deprecated.

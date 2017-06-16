@@ -4,21 +4,11 @@ import ElementUtil from '../lib/element-util.js';
 /************************************************************
   Scaffolding
 *************************************************************/
-const NAME = 'scaffolding';
-
 export default class Scaffolding extends CosmosModule {
-
-  // static
-
-  static get name() {
-    return NAME;
-  }
 
   static get isLoadable() {
     return true;
   }
-
-  // public
 
   init() {
     // wrap table.responsive

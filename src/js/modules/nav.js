@@ -5,7 +5,6 @@ import ElementUtil from '../lib/element-util.js';
 /************************************************************
   nav
 *************************************************************/
-const NAME = 'nav';
 const ClassName = {
   CHANGE: 'change',
   HIDE: 'display-hide',
@@ -21,10 +20,6 @@ const Selector = {
 export default class Nav extends CosmosModule {
 
   // static
-
-  static get name() {
-    return NAME;
-  }
 
   static get isLoadable() {
     return true;
