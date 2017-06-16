@@ -29,7 +29,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   nav
 *************************************************************/
-var NAME = 'nav';
 var ClassName = {
   CHANGE: 'change',
   HIDE: 'display-hide'
@@ -272,16 +271,11 @@ var Nav = function (_CosmosModule) {
       }
     }
   }], [{
-    key: 'name',
+    key: 'isLoadable',
 
 
     // static
 
-    get: function get() {
-      return NAME;
-    }
-  }, {
-    key: 'isLoadable',
     get: function get() {
       return true;
     }

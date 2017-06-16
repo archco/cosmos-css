@@ -8,6 +8,8 @@ This changelog started from v0.8.4.
 If want to see more previous information to [Releases](https://github.com/archco/cosmos-css/releases) page.
 
 ## [Unreleased]
+
+## [0.12.0] - 2017-06-16
 ### Added
 - Add sort type "number" and "date" in ElementUtil. #152
 - Implement core of cosmos.js #150
@@ -136,7 +138,8 @@ import { Util, Color } from 'cosmos-css'; // import member.
 ### Fixed
 - Underline problem in link as btn in table. #101
 
-[Unreleased]: https://github.com/archco/cosmos-css/compare/v0.11.0...master
+[Unreleased]: https://github.com/archco/cosmos-css/compare/v0.12.0...master
+[0.12.0]: https://github.com/archco/cosmos-css/compare/v0.11.0...v0.12.0
 [0.11.0]: https://github.com/archco/cosmos-css/compare/v0.10.2...v0.11.0
 [0.10.2]: https://github.com/archco/cosmos-css/compare/v0.10.1...v0.10.2
 [0.10.1]: https://github.com/archco/cosmos-css/compare/v0.10.0...v0.10.1

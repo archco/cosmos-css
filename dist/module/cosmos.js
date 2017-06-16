@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Modal = exports.Collapse = exports.Toast = exports.Chip = exports.Button = exports.Helper = exports.Color = exports.ElementUtil = exports.Util = undefined;
+exports.Modal = exports.Collapse = exports.Toast = exports.Chip = exports.Button = exports.Color = exports.ElementUtil = exports.Util = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -23,13 +23,13 @@ var _color = require('./lib/color.js');
 
 var _color2 = _interopRequireDefault(_color);
 
-var _helper = require('./lib/helper.js');
-
-var _helper2 = _interopRequireDefault(_helper);
-
 var _elementUtil = require('./lib/element-util.js');
 
 var _elementUtil2 = _interopRequireDefault(_elementUtil);
+
+var _changeCase = require('change-case');
+
+var _changeCase2 = _interopRequireDefault(_changeCase);
 
 var _scaffolding = require('./modules/scaffolding.js');
 
@@ -91,7 +91,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*!
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * cosmos-css - The css framework for personal practice.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @version v0.11.1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @version v0.12.0
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @link https://github.com/archco/cosmos-css#readme
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @license MIT
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
@@ -175,7 +175,8 @@ var Cosmos = function (_CosmosModule) {
       return {
         Util: _util2.default,
         Color: _color2.default,
-        ElementUtil: _elementUtil2.default
+        ElementUtil: _elementUtil2.default,
+        changeCase: _changeCase2.default
       };
     }
   }]);
@@ -199,7 +200,6 @@ exports.default = Cosmos;
 exports.Util = _util2.default;
 exports.ElementUtil = _elementUtil2.default;
 exports.Color = _color2.default;
-exports.Helper = _helper2.default;
 exports.Button = _button2.default;
 exports.Chip = _chip2.default;
 exports.Toast = _toast2.default;

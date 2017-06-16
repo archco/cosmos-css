@@ -11,7 +11,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************
   Color
 *************************************************************/
-var NAME = 'color';
 var Config = {
   lightnessPoint: 166, // 65%
   darkDefault: '#000',
@@ -36,16 +35,15 @@ var Color = function () {
 
     // static
 
-  }], [{
-    key: 'colorToArray',
-
-
     /**
      * color to rgb array.
      *
      * @param  {String|Array} color
      * @return {Array}  [red, green, blue]
      */
+
+  }], [{
+    key: 'colorToArray',
     value: function colorToArray(color) {
       var array = [];
       if (typeof color == 'string') {
@@ -150,11 +148,6 @@ var Color = function () {
       var light = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Config.lightDefault;
 
       return this.lightness(color) > Config.lightnessPoint ? dark : light;
-    }
-  }, {
-    key: 'name',
-    get: function get() {
-      return NAME;
     }
   }]);
 

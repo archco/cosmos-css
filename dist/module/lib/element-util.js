@@ -13,7 +13,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************
   ElementUtil
 *************************************************************/
-var NAME = 'element_util';
 var ClassName = {
   SHOW: 'display-show',
   HIDE: 'display-hide'
@@ -31,7 +30,6 @@ var ElementUtil = function () {
 
   _createClass(ElementUtil, null, [{
     key: 'getElement',
-
 
     /**
      * getElement
@@ -627,11 +625,6 @@ var ElementUtil = function () {
       b = new Date(b);
 
       return asc ? a - b : b - a;
-    }
-  }, {
-    key: 'name',
-    get: function get() {
-      return NAME;
     }
   }]);
 

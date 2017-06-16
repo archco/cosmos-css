@@ -1,6 +1,6 @@
 /*!
  * cosmos-css - The css framework for personal practice.
- * @version v0.11.1
+ * @version v0.12.0
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
@@ -1681,7 +1681,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*!
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * cosmos-css - The css framework for personal practice.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @version v0.11.1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @version v0.12.0
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @link https://github.com/archco/cosmos-css#readme
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @license MIT
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
@@ -4651,7 +4651,7 @@ module.exports = function (value, locale) {
 
 module.exports = {
 	"name": "cosmos-css",
-	"version": "0.11.1",
+	"version": "0.12.0",
 	"description": "The css framework for personal practice.",
 	"main": "dist/module/cosmos.js",
 	"scss": "src/scss/cosmos.scss",

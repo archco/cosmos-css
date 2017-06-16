@@ -25,7 +25,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Button
 *************************************************************/
-var NAME = 'button';
 var ClassName = {
   CLOSE: 'btn-close',
   POSITION_CORNER: 'at-corner',
@@ -38,8 +37,6 @@ var Selector = {
   CLOSE: '.' + ClassName.CLOSE,
   HAS_ACTION: '.' + ClassName.CLOSE + '.' + ClassName.REMOVEABLE + ',\n    .' + ClassName.CLOSE + '.' + ClassName.HIDEABLE
 };
-
-// default option.
 var Default = {
   close_init_enable: true,
   close_action: 'remove', // remove | hide
@@ -174,16 +171,11 @@ var Button = function (_CosmosModule) {
       b.appendBtnClose(element, callback);
     }
   }, {
-    key: 'name',
+    key: 'isLoadable',
 
 
     // static
 
-    get: function get() {
-      return NAME;
-    }
-  }, {
-    key: 'isLoadable',
     get: function get() {
       return true;
     }

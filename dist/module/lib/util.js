@@ -19,169 +19,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************
   util
 *************************************************************/
-var NAME = 'util';
-
 var Util = function () {
   function Util() {
     _classCallCheck(this, Util);
   }
 
   _createClass(Util, null, [{
-    key: 'eventOnSelector',
+    key: 'locationSearchToObject',
 
-
-    /**
-     * event on selector - will be deprecated.
-     * instead -> ElementUtil.addListener()
-     *
-     * @param  {String}   selector   querySelector
-     * @param  {String}   type       event type
-     * @param  {Function} listener   event listener
-     * @param  {Boolean}  useCapture
-     * @return {number|null}
-     */
-    value: function eventOnSelector(selector, type, listener) {
-      var useCapture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-
-      var elements = document.querySelectorAll(selector);
-      if (elements.length === 0) return null;
-
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var element = _step.value;
-
-          element.addEventListener(type, listener, useCapture);
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
-
-      return elements.length;
-    }
-
-    /**
-     * find ancestor by selector - will be deprecated.
-     * instead -> ElementUtil.findAncestor()
-     *
-     * @param  {Element} element
-     * @param  {String}  selector
-     * @return {Element|null}
-     */
-
-  }, {
-    key: 'findAncestor',
-    value: function findAncestor(element, selector) {
-      do {
-        if (element == document.querySelector('html')) return null;
-        element = element.parentElement;
-      } while (!element.matches(selector));
-
-      return element;
-    }
-
-    /**
-     * wrap elements by div.wrapper - will be deprecated.
-     * instead -> ElementUtil.wrap()
-     *
-     * @param  {String} target  querySelector
-     * @param  {String} wrapper wrapper's class name
-     * @return {void}
-     */
-
-  }, {
-    key: 'wrap',
-    value: function wrap(target, wrapper) {
-      var elements = document.querySelectorAll(target);
-      var div = document.createElement('div');
-      div.classList.add(wrapper);
-
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
-
-      try {
-        for (var _iterator2 = elements[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var el = _step2.value;
-
-          var parent = el.parentNode;
-          var sibling = el.nextSibling;
-
-          div.appendChild(el);
-
-          if (sibling) {
-            parent.insertBefore(div, sibling);
-          } else {
-            parent.appendChild(div);
-          }
-        }
-      } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return) {
-            _iterator2.return();
-          }
-        } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
-          }
-        }
-      }
-    }
-
-    /**
-     * wrap all elements inside to div.wrapper - will be deprecated.
-     * instead -> ElementUtil.wrapAll()
-     *
-     * @param  {String}  target  querySelector
-     * @param  {String}  wrapper wrapper's class name
-     * @return {void}
-     */
-
-  }, {
-    key: 'wrapAll',
-    value: function wrapAll(target, wrapper) {
-      var elements = document.querySelectorAll(target);
-      var div = document.createElement('div');
-      div.classList.add(wrapper);
-      var parent = elements[0].parentNode;
-      var sibling = elements[0].nextSibling;
-
-      elements.forEach(function (elm) {
-        div.appendChild(elm);
-      });
-
-      if (sibling) {
-        parent.insertBefore(div, sibling);
-      } else {
-        parent.appendChild(div);
-      }
-    }
 
     /**
      * location.search to Object.
      *
      * @return {Object|null}
      */
-
-  }, {
-    key: 'locationSearchToObject',
     value: function locationSearchToObject() {
       return this.searchToObject(window.location.search);
     }
@@ -253,15 +104,6 @@ var Util = function () {
       var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 800;
 
       return window.innerWidth < size;
-    }
-  }, {
-    key: 'name',
-
-
-    // static
-
-    get: function get() {
-      return NAME;
     }
   }]);
 

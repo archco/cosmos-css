@@ -1,10 +1,16 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _changeCase = require('change-case');
+
+var _changeCase2 = _interopRequireDefault(_changeCase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -30,7 +36,7 @@ var CosmosModule = function () {
 
 
   _createClass(CosmosModule, [{
-    key: "init",
+    key: 'init',
 
 
     /**
@@ -48,7 +54,7 @@ var CosmosModule = function () {
      */
 
   }, {
-    key: "setOption",
+    key: 'setOption',
     value: function setOption(option) {
       this.option = Object.assign({}, this.getDefaultOption(), option);
       return this;
@@ -61,7 +67,7 @@ var CosmosModule = function () {
      */
 
   }, {
-    key: "getOption",
+    key: 'getOption',
     value: function getOption() {
       return this.option;
     }
@@ -73,7 +79,7 @@ var CosmosModule = function () {
      */
 
   }, {
-    key: "getDefaultOption",
+    key: 'getDefaultOption',
     value: function getDefaultOption() {
       return {};
     }
@@ -86,7 +92,7 @@ var CosmosModule = function () {
      */
 
   }, {
-    key: "addSubModules",
+    key: 'addSubModules',
     value: function addSubModules(modules) {
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -96,7 +102,8 @@ var CosmosModule = function () {
         for (var _iterator = modules[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var mod = _step.value;
 
-          this.subModules.set(mod.name, mod);
+          var name = _changeCase2.default.pascalCase(mod.name);
+          this.subModules.set(name, mod);
         }
       } catch (err) {
         _didIteratorError = true;
@@ -124,7 +131,7 @@ var CosmosModule = function () {
      */
 
   }, {
-    key: "removeSubModules",
+    key: 'removeSubModules',
     value: function removeSubModules(modules) {
       var _iteratorNormalCompletion2 = true;
       var _didIteratorError2 = false;
@@ -134,7 +141,8 @@ var CosmosModule = function () {
         for (var _iterator2 = modules[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
           var mod = _step2.value;
 
-          this.subModules.delete(mod.name);
+          var name = _changeCase2.default.pascalCase(mod.name);
+          this.subModules.delete(name);
         }
       } catch (err) {
         _didIteratorError2 = true;
@@ -161,23 +169,23 @@ var CosmosModule = function () {
      */
 
   }, {
-    key: "loadSubModules",
+    key: 'loadSubModules',
     value: function loadSubModules() {
       var _this = this;
 
       this.subModules.forEach(function (Mod) {
         var instance = new Mod(_this.getSubModuleOption(Mod.name));
+        var instanceName = _changeCase2.default.camelCase(Mod.name); // mod's instance name to be camelCase.
 
         if (Mod.isLoadable) {
           instance.init();
         }
 
         if (Mod.isFunctional) {
-          // TODO: mod's instance name to be camelCase.
-          _this[Mod.name] = instance;
+          _this[instanceName] = instance;
         }
 
-        _this.subModuleInstances.set(Mod.name, instance);
+        _this.subModuleInstances.set(instanceName, instance);
       });
 
       return this;
@@ -191,9 +199,11 @@ var CosmosModule = function () {
      */
 
   }, {
-    key: "getSubModuleOption",
+    key: 'getSubModuleOption',
     value: function getSubModuleOption(modName) {
       var options = this.option.sub_modules;
+      modName = _changeCase2.default.snakeCase(modName);
+
       if (options && options[modName]) {
         return options[modName];
       } else {
@@ -210,9 +220,9 @@ var CosmosModule = function () {
      */
 
   }, {
-    key: "setSubModuleOption",
+    key: 'setSubModuleOption',
     value: function setSubModuleOption(modName, option) {
-      // TODO: option key to be snake_case.
+      modName = _changeCase2.default.snakeCase(modName);
       this.option.sub_modules[modName] = option;
       return this;
     }
@@ -225,12 +235,13 @@ var CosmosModule = function () {
      */
 
   }, {
-    key: "getSubModuleInstance",
+    key: 'getSubModuleInstance',
     value: function getSubModuleInstance(modName) {
+      modName = _changeCase2.default.camelCase(modName);
       return this.subModuleInstances.get(modName);
     }
   }], [{
-    key: "load",
+    key: 'load',
     value: function load() {
       var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -247,7 +258,7 @@ var CosmosModule = function () {
      */
 
   }, {
-    key: "defaultOption",
+    key: 'defaultOption',
     get: function get() {
       var instance = new this();
       return instance.getDefaultOption();
@@ -260,12 +271,12 @@ var CosmosModule = function () {
      */
 
   }, {
-    key: "isLoadable",
+    key: 'isLoadable',
     get: function get() {
       return false;
     }
   }, {
-    key: "isFunctional",
+    key: 'isFunctional',
     get: function get() {
       return false;
     }

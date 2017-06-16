@@ -29,7 +29,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   scroll-to
 *************************************************************/
-var NAME = 'scroll_to';
 var ClassName = {
   CONTAINER: 'scroll-to-container',
   TOTOP: 'scroll-to-top',
@@ -155,11 +154,6 @@ var ScrollTo = function (_CosmosModule) {
       if (toBottom) toBottom.classList.add(ClassName.SHOW);
     }
   }], [{
-    key: 'name',
-    get: function get() {
-      return NAME;
-    }
-  }, {
     key: 'isLoadable',
     get: function get() {
       return true;
