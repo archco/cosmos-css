@@ -1,68 +1,126 @@
-//======================================================================
-// Grid
-//======================================================================
-
-/** container */
-.container {
-  width: 90%;
-  margin: 0 auto;
-
-  .row {
-    margin-right: (-1 * $gutter-width / 2);
-    margin-left: (-1 * $gutter-width / 2);
-  }
+@mixin make-gutters($gutter: $grid-gutter-width) {
+  padding-right: ($gutter / 2);
+  padding-left: ($gutter / 2);
 }
 
-@include media-tablet-up {
-  .container { width: 75%; }
+@mixin make-col($size, $columns: $grid-columns) {
+  flex: 0 0 percentage-round($size / $columns, 2);
+  max-width: percentage-round($size / $columns, 2); // for browser compatibility.
 }
 
-/** Grid */
-.row {
-  @include clear-both;
-  margin-right: auto;
-  margin-left: auto;
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  margin-left: percentage-round($size / $columns, 2);
 }
 
-// Grid mobile (default)
-[class*="col-"] {
-  float: left;
-  width: 100%;
-  min-height: 1px;
-  padding: 0 $gutter-width / 2;
-  box-sizing: border-box;
+@mixin make-col-push($size, $columns: $grid-columns) {
+  left: if($size > 0, percentage-round($size / $columns, 2), auto);
 }
 
-@mixin make-columns($term: null, $count: $num-cols) {
-  $colname: '.col-';
+@mixin make-col-pull($size, $columns: $grid-columns) {
+  right: if($size > 0, percentage-round($size / $columns, 2), auto);
+}
 
-  @if ($term != null) {
-    $colname: $colname + $term + '-';
+@mixin make-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+  %column-common {
+    @include make-gutters();
+    position: relative;
+    width: 100%;
+    min-height: 1px;
   }
 
-  @for $i from 1 through $count {
-    $perc: percentage($i / $count);
+  @each $key in map-keys($breakpoints) {
+    $infix: if($key == 'base', '', ('-' + $key));
+    $size: map-get($breakpoints, $key);
 
-    #{$colname + $i} {
-      width: decimal-round($perc, 2);
+    // common-values.
+    @for $i from 1 through $columns {
+      .col#{$infix}-#{$i} {
+        @extend %column-common;
+      }
+    }
+
+    .col#{$infix},
+    .col#{$infix}-auto {
+      @extend %column-common;
+    }
+
+    // media-query
+    @include media-up($size) {
+      .col#{$infix} {
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+      }
+
+      .col#{$infix}-auto {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: none;
+      }
+
+      @for $i from 1 through $columns {
+        .col#{$infix}-#{$i} {
+          @include make-col($i, $columns);
+        }
+      }
+
+      // column modifiers.
+      @for $i from 0 through $columns {
+        .pull#{$infix}-#{$i} {
+          @include make-col-pull($i, $columns);
+        }
+
+        .push#{$infix}-#{$i} {
+          @include make-col-push($i, $columns);
+        }
+
+        @if (0 < $i and $i < $columns) {
+          .offset#{$infix}-#{$i} {
+            @include make-col-offset($i, $columns);
+          }
+        }
+      }
     }
   }
 }
 
-// (default) tablet, desktop
-@include media-tablet-up {
-  @include make-columns();
+//======================================================================
+// Grid
+//======================================================================
+
+// container
+.container {
+  width: 92%;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media-tablet-up {
+    width: 84%;
+  }
+
+  .row {
+    margin-right: - ($grid-gutter-width / 2);
+    margin-left: - ($grid-gutter-width / 2);
+  }
 }
 
-// sm - small device and up.
-@include make-columns('sm');
-
-// md - tablet device and up.
-@include media-tablet-up {
-  @include make-columns('md');
+// grid
+// row
+.row {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-// lg - desktop.
-@include media-only-desktop {
-  @include make-columns('lg');
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
+
+// col
+@include make-grid-columns();

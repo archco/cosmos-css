@@ -10,9 +10,9 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = require('../lib/util.js');
+var _elementUtil = require('../lib/element-util.js');
 
-var _util2 = _interopRequireDefault(_util);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25,7 +25,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Button
 *************************************************************/
-var NAME = 'Cosmos.Button';
 var ClassName = {
   CLOSE: 'btn-close',
   POSITION_CORNER: 'at-corner',
@@ -36,9 +35,8 @@ var ClassName = {
 };
 var Selector = {
   CLOSE: '.' + ClassName.CLOSE,
-  HAS_ACTION: '.' + ClassName.CLOSE + '.' + ClassName.REMOVEABLE + ', .' + ClassName.CLOSE + '.' + ClassName.HIDEABLE
+  HAS_ACTION: '.' + ClassName.CLOSE + '.' + ClassName.REMOVEABLE + ',\n    .' + ClassName.CLOSE + '.' + ClassName.HIDEABLE
 };
-// default option.
 var Default = {
   close_init_enable: true,
   close_action: 'remove', // remove | hide
@@ -65,6 +63,13 @@ var Button = function (_CosmosModule) {
 
     // public
 
+    /**
+     * appendBtnClose
+     *
+     * @param  {Element} element
+     * @param  {Function} [ callback = null ]
+     * @return {void}
+     */
     value: function appendBtnClose(element) {
       var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
@@ -72,6 +77,7 @@ var Button = function (_CosmosModule) {
         console.log('already has .btn-close');
         return;
       }
+
       var btnClose = this._createBtnClose();
       var handler = callback || this._btnCloseClickHandler;
 
@@ -83,7 +89,7 @@ var Button = function (_CosmosModule) {
     value: function init() {
       // btn-close addEventListener.
       if (this.option.close_init_enable) {
-        _util2.default.eventOnSelector(Selector.HAS_ACTION, 'click', this._btnCloseClickHandler.bind(this));
+        _elementUtil2.default.addListener(Selector.HAS_ACTION, 'click', this._btnCloseClickHandler.bind(this));
       }
     }
   }, {
@@ -107,6 +113,7 @@ var Button = function (_CosmosModule) {
       } else if (action == 'remove') {
         parent.removeChild(element);
       }
+
       event.preventDefault();
     }
   }, {
@@ -120,6 +127,7 @@ var Button = function (_CosmosModule) {
       } else if (this.option.close_position == 'right_middle') {
         btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
       }
+
       btnClose.innerHTML = this.option.close_content[this.option.close_style];
 
       return btnClose;
@@ -146,6 +154,15 @@ var Button = function (_CosmosModule) {
     }
   }], [{
     key: 'addBtnClose',
+
+
+    /**
+     * addBtnClose
+     *
+     * @param {Element} element
+     * @param {Object} [ option = {} ]
+     * @param {Function} [ callback = null ]
+     */
     value: function addBtnClose(element) {
       var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
@@ -154,13 +171,18 @@ var Button = function (_CosmosModule) {
       b.appendBtnClose(element, callback);
     }
   }, {
-    key: 'name',
+    key: 'isLoadable',
 
 
     // static
 
     get: function get() {
-      return NAME;
+      return true;
+    }
+  }, {
+    key: 'isFunctional',
+    get: function get() {
+      return true;
     }
   }]);
 

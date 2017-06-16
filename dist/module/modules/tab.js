@@ -10,9 +10,9 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = require('../lib/util.js');
+var _elementUtil = require('../lib/element-util.js');
 
-var _util2 = _interopRequireDefault(_util);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25,9 +25,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Tab
 *************************************************************/
-var NAME = 'Cosmos.Tab';
 var ClassName = {
   TAB: 'tab',
+  TAB_VERTICAL: 'tab-vertical',
   LINK: 'tab-link',
   CONTENT: 'tab-content',
   SHOW: 'show',
@@ -36,7 +36,7 @@ var ClassName = {
   EFFECT_FADE: 'tab-fade-effect'
 };
 var Selector = {
-  TAB: '.' + ClassName.TAB,
+  TAB: '.' + ClassName.TAB + ',.' + ClassName.TAB_VERTICAL,
   LINK: '.' + ClassName.LINK,
   CONTENT: '.' + ClassName.CONTENT
 };
@@ -58,11 +58,11 @@ var Tab = function (_CosmosModule) {
 
     value: function init() {
       // add event handler on links.
-      _util2.default.eventOnSelector(Selector.LINK, 'click', this._tabHandle.bind(this));
+      _elementUtil2.default.addListener(Selector.LINK, 'click', this._tabHandle.bind(this));
 
       // initialize tabs.
       var tabs = this._getTabs();
-      if (tabs.length > 0) {
+      if (tabs.length) {
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
         var _iteratorError = undefined;
@@ -113,7 +113,7 @@ var Tab = function (_CosmosModule) {
     key: '_tabHandle',
     value: function _tabHandle(event) {
       var a = event.currentTarget;
-      var tab = _util2.default.findAncestor(a, Selector.TAB);
+      var tab = _elementUtil2.default.findAncestor(a, Selector.TAB);
       var links = tab.querySelectorAll(Selector.LINK);
       var content = this._getContent(a);
 
@@ -123,14 +123,16 @@ var Tab = function (_CosmosModule) {
 
       try {
         for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var l = _step2.value;
+          var link = _step2.value;
 
           // content hide
-          var c = this._getContent(l);
-          c.classList.remove(ClassName.SHOW);
+          var _content = this._getContent(link);
+          _content.classList.remove(ClassName.SHOW);
+
           // remove link.active
-          l.classList.remove(ClassName.ACTIVE);
+          link.classList.remove(ClassName.ACTIVE);
         }
+
         // active and show content.
       } catch (err) {
         _didIteratorError2 = true;
@@ -161,11 +163,12 @@ var Tab = function (_CosmosModule) {
   }, {
     key: '_getContent',
     value: function _getContent(link) {
-      var c = document.querySelector(this._extractID(link.href));
-      if (c && !c.classList.contains(ClassName.CONTENT)) {
-        c.classList.add(ClassName.CONTENT);
+      var content = document.querySelector(this._extractID(link.href));
+      if (content && !content.classList.contains(ClassName.CONTENT)) {
+        content.classList.add(ClassName.CONTENT);
       }
-      return c;
+
+      return content;
     }
   }, {
     key: '_getTabs',
@@ -182,15 +185,16 @@ var Tab = function (_CosmosModule) {
 
       try {
         for (var _iterator3 = links[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-          var l = _step3.value;
+          var link = _step3.value;
 
           // set default.
-          if (l.classList.contains(ClassName.ACTIVE)) {
-            l.click();
+          if (link.classList.contains(ClassName.ACTIVE)) {
+            link.click();
           }
+
           // tab fade effect.
           if (tab.classList.contains(ClassName.FADE)) {
-            this._getContent(l).classList.add(ClassName.EFFECT_FADE);
+            this._getContent(link).classList.add(ClassName.EFFECT_FADE);
           }
         }
       } catch (err) {
@@ -216,13 +220,13 @@ var Tab = function (_CosmosModule) {
       link.click();
     }
   }], [{
-    key: 'name',
+    key: 'isLoadable',
 
 
     // static
 
     get: function get() {
-      return NAME;
+      return true;
     }
   }]);
 

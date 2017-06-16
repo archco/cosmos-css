@@ -2,14 +2,13 @@
 // Toast
 //============================================================
 .toast-container {
+  @include positioning('bottom-center', $toast-container-position-offset); // default position.
+  @include nine-positions($toast-container-position-offset);
   position: fixed;
-  bottom: 5%;
-  left: 50%;
   z-index: $z-index-toast;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  transform: translate(-50%, 0);
 }
 
 .toast {
@@ -19,6 +18,7 @@
   min-width: $toast-min-width;
   padding: $toast-padding-y $toast-padding-x;
   margin-top: $_margin-bottom;
+  font-size: $toast-font-size;
   color: $toast-text-color;
   text-align: center;
   background-color: $toast-bg-color;

@@ -5,7 +5,6 @@ import eu from '../lib/element-util.js';
 /************************************************************
   message
 *************************************************************/
-const NAME = 'Cosmos.Message';
 const Status = {
   INFO: 'info',
   SUCCESS: 'success',
@@ -13,23 +12,23 @@ const Status = {
   ERROR: 'error',
   DANGER: 'danger',
   PRIMARY: 'primary',
-  SECONDARY: 'secondary'
+  SECONDARY: 'secondary',
 };
 const ClassName = {
   CLOSE: 'btn-close',
-  BOX: 'message-box'
+  BOX: 'message-box',
 };
 const Selector = {
   CONTAINER: '#message-container',
   BOX: `.${ClassName.BOX}`,
-  CLOSE: `.${ClassName.BOX} .${ClassName.CLOSE}`
+  CLOSE: `.${ClassName.BOX} .${ClassName.CLOSE}`,
 };
 const ButtonOption = {
   close_position: 'right_middle',
-  close_style: 'icon'
+  close_style: 'icon',
 };
 
-class Message extends CosmosModule {
+export default class Message extends CosmosModule {
   constructor(option = {}) {
     super(option);
     this.button = new Button(ButtonOption);
@@ -37,8 +36,8 @@ class Message extends CosmosModule {
 
   // static
 
-  static get name() {
-    return NAME;
+  static get isLoadable() {
+    return true;
   }
 
   /**
@@ -60,21 +59,19 @@ class Message extends CosmosModule {
   }
 
   show(message, status = Status.INFO) {
-    var c, b, span;
-
     // create message box
-    c = document.querySelector(Selector.CONTAINER); // container
-    b = document.createElement('DIV'); // message box
-    span = document.createElement('SPAN'); // message text
+    let container = document.querySelector(Selector.CONTAINER); // container
+    let box = document.createElement('DIV'); // message box
+    let span = document.createElement('SPAN'); // message text
 
     span.textContent = message;
-    b.classList.add(ClassName.BOX);
-    b.classList.add(status);
+    box.classList.add(ClassName.BOX);
+    box.classList.add(status);
 
     // append child
-    b.appendChild(span);
-    this.button.appendBtnClose(b, this._closeButtonHandler);
-    c.appendChild(b);
+    box.appendChild(span);
+    this.button.appendBtnClose(box, this._closeButtonHandler);
+    container.appendChild(box);
   }
 
   // private
@@ -86,8 +83,7 @@ class Message extends CosmosModule {
     setTimeout(function () {
       messageBox.style.display = 'none';
     }, 600); // 0.6s
+
     event.stopPropagation();
   }
 }
-
-export default Message;

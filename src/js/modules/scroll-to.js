@@ -5,35 +5,35 @@ import eu from '../lib/element-util.js';
 /************************************************************
   scroll-to
 *************************************************************/
-const NAME = 'Cosmos.ScrollTo';
 const ClassName = {
   CONTAINER: 'scroll-to-container',
   TOTOP: 'scroll-to-top',
   TOBOTTOM: 'scroll-to-bottom',
-  SHOW: 'show'
+  SHOW: 'show',
 };
 const Selector = {
   TOP: `.${ClassName.TOTOP}`,
-  BOTTOM: `.${ClassName.TOBOTTOM}`
+  BOTTOM: `.${ClassName.TOBOTTOM}`,
 };
+
 // default option.
 const Default = {
   btn_top: Selector.TOP,
   btn_bottom: Selector.BOTTOM,
   scroll_duration: 600, // 300: fast, 600: default, 900: slow
   scroll_easing: 'easeOutCubic',
-  show_distance: 400
+  show_distance: 400,
 };
 
-class ScrollTo extends CosmosModule {
+export default class ScrollTo extends CosmosModule {
   constructor(option) {
     super(option);
   }
 
   // static
 
-  static get name() {
-    return NAME;
+  static get isLoadable() {
+    return true;
   }
 
   // public
@@ -78,6 +78,7 @@ class ScrollTo extends CosmosModule {
     } else if (top <= distance && this._isShown(toTop)) {
       toTop.classList.remove(ClassName.SHOW);
     }
+
     // toBottom
     if (bottom > distance && !this._isShown(toBottom)) {
       toBottom.classList.add(ClassName.SHOW);
@@ -114,5 +115,3 @@ class ScrollTo extends CosmosModule {
     if (toBottom) toBottom.classList.add(ClassName.SHOW);
   }
 }
-
-export default ScrollTo;

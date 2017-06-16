@@ -1,3 +1,22 @@
+@mixin _badge-color($bg-color) {
+  $color: get-contrast($bg-color);
+  background-color: $bg-color;
+  color: $color;
+
+  &[href] {
+    @include set-link-state-color($color);
+
+    &:hover,
+    &:focus {
+      background-color: lighten($bg-color, 4%);
+    }
+
+    &:active {
+      background-color: darken($bg-color, 4%);
+    }
+  }
+}
+
 //======================================================================
 // Badge
 //======================================================================
@@ -12,7 +31,7 @@
   $badge-rounded-padding-x: $badge-padding-base * 4;
   $badge-rounded-border-radius: $badge-font-size * 2;
 
-  @include badge-color($badge-default-color); // default color
+  @include _badge-color($badge-default-color); // default color
 
   display: inline-block;
   padding: $badge-padding-y $badge-padding-x;
@@ -28,7 +47,7 @@
   // color-set
   @each $name, $color in $color-set {
     &.#{$name} {
-      @include badge-color($color);
+      @include _badge-color($color);
     }
   }
 

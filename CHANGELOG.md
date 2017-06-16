@@ -8,11 +8,44 @@ This changelog started from v0.8.4.
 If want to see more previous information to [Releases](https://github.com/archco/cosmos-css/releases) page.
 
 ## [Unreleased]
+
+## [0.12.0] - 2017-06-16
+### Added
+- Add sort type "number" and "date" in ElementUtil. #152
+- Implement core of cosmos.js #150
+- Add scss mixins for using flexbox. #143
+- Add scss helper class for using flexbox. #167
+- Add some colors into color-set.scss #156
+- Improve Button: button group #138
+- Now available give a option "container_position" in toast.js. #149
+- Add a new component: Hero Banner #155
+
+### Changed
+- Improve Collapse: Available use instance for individual element. #153
+- Change constructor of chip.js and collapse.js. #150
+- Separates mixin.scss #162
+- Change entry file name "style.scss" to "cosmos.scss". #162
+- Improve grid with flexbox. #146
+- Change html structure of navbar. #166
+- Change html structure of dropdown. #148
+- Change html structure of simple-crud. #159
+- Change html structure of modal. #158
+
+### Fixed
+- Fix Dropdown: browser compatibility problem. #63
+- Fix Nav: tag name selector problem #165
+
+### Removed
+- No jquery required anymore.
+- Remove deprecated part in js files. #145
+
+## [0.11.0] - 2017-05-08
 ### Added
 - Add new js util library: ElementUtil #140
 - Add scss helper: arrow #136
 - Implement tab-vertical in tab module. #128
 - Add new Module: Toast #137
+- Create [github pages](https://archco.github.io/cosmos-css/) #141
 
 ### Changed
 - Repackaging of js library files. #144
@@ -105,7 +138,9 @@ import { Util, Color } from 'cosmos-css'; // import member.
 ### Fixed
 - Underline problem in link as btn in table. #101
 
-[Unreleased]: https://github.com/archco/cosmos-css/compare/v0.10.2...master
+[Unreleased]: https://github.com/archco/cosmos-css/compare/v0.12.0...master
+[0.12.0]: https://github.com/archco/cosmos-css/compare/v0.11.0...v0.12.0
+[0.11.0]: https://github.com/archco/cosmos-css/compare/v0.10.2...v0.11.0
 [0.10.2]: https://github.com/archco/cosmos-css/compare/v0.10.1...v0.10.2
 [0.10.1]: https://github.com/archco/cosmos-css/compare/v0.10.0...v0.10.1
 [0.10.0]: https://github.com/archco/cosmos-css/compare/v0.9.1...v0.10.0

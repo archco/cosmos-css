@@ -10,6 +10,10 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
+var _elementUtil = require('../lib/element-util.js');
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
+
 var _button = require('./button.js');
 
 var _button2 = _interopRequireDefault(_button);
@@ -25,7 +29,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Chip
 *************************************************************/
-var NAME = 'Cosmos.Chip';
 var ClassName = {
   CHIP: 'chip'
 };
@@ -33,22 +36,22 @@ var Selector = {
   CHIP: '.' + ClassName.CHIP
 };
 var Default = {
+  container: '#chip-container',
   tag: 'span', // chip's tagName. span, div, a ...
   close_button: true, // enable close button.
-  close_action: 'remove' // close action. remove | hide
-};
+  close_action: 'remove' };
 
 var Chip = function (_CosmosModule) {
   _inherits(Chip, _CosmosModule);
 
-  function Chip(container) {
-    var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  function Chip() {
+    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
     _classCallCheck(this, Chip);
 
     var _this = _possibleConstructorReturn(this, (Chip.__proto__ || Object.getPrototypeOf(Chip)).call(this, option));
 
-    _this.container = document.querySelector(container);
+    _this.setContainer(_this.option.container);
     _this.button = new _button2.default({
       close_action: _this.option.close_action
     });
@@ -69,7 +72,7 @@ var Chip = function (_CosmosModule) {
      * @param {String} text
      * @param {String} imgSrc
      * @param {Object} data  dataset values.
-     * @return {void}
+     * @return {Element} element of new chip.
      */
     value: function add(text) {
       var imgSrc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -78,6 +81,7 @@ var Chip = function (_CosmosModule) {
       var chip = this._createChip(text, imgSrc, data);
 
       this.container.appendChild(chip);
+      return chip;
     }
 
     /**
@@ -131,6 +135,20 @@ var Chip = function (_CosmosModule) {
     value: function getContainer() {
       return this.container;
     }
+
+    /**
+     * setContainer
+     *
+     * @param {String|Element} selector
+     * @return {Chip}
+     */
+
+  }, {
+    key: 'setContainer',
+    value: function setContainer(selector) {
+      this.container = _elementUtil2.default.getElement(selector);
+      return this;
+    }
   }, {
     key: 'getDefaultOption',
     value: function getDefaultOption() {
@@ -143,21 +161,24 @@ var Chip = function (_CosmosModule) {
     key: '_createChip',
     value: function _createChip(text, imgSrc, data) {
       var chip = document.createElement(this.option.tag);
+
       // base.
       chip.classList.add(ClassName.CHIP);
       chip.textContent = text;
+
       // img.
-      if (imgSrc) {
-        chip.appendChild(this._createImg(imgSrc));
-      }
+      if (imgSrc) chip.appendChild(this._createImg(imgSrc));
+
       // dataset.
       for (var key in data) {
         if (key == 'href' && chip.tagName == 'A') {
           chip.href = data[key];
           continue;
         }
+
         chip.dataset[key] = data[key];
       }
+
       // close button.
       if (this.option.close_button) {
         this.button.appendBtnClose(chip);
@@ -173,9 +194,9 @@ var Chip = function (_CosmosModule) {
       return img;
     }
   }], [{
-    key: 'name',
+    key: 'isFunctional',
     get: function get() {
-      return NAME;
+      return true;
     }
   }]);
 

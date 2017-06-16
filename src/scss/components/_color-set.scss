@@ -1,16 +1,20 @@
 //======================================================================
 // Color-set
 //======================================================================
-// uses: button, message, helper
 
 $color-set: (
-  "primary": $primary-color,
-  "secondary": $secondary-color,
-  "info": $info-color,
-  "success": $success-color,
-  "warning": $warning-color,
-  "danger": $danger-color,
-  "error": $danger-color,
+  default: $default-color, // It's half value of background-color and background-color-invert.
+  primary: $primary-color,
+  secondary: $secondary-color,
+  info: $info-color,
+  success: $success-color,
+  warning: $warning-color,
+  danger: $danger-color,
+  error: $danger-color,
+  light: $light-color,
+  dark: $dark-color,
+  shade: $shade-color,
+  link: $link-color,
 );
 
 // get color value from color-set map

@@ -10,13 +10,13 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = require('../lib/util.js');
-
-var _util2 = _interopRequireDefault(_util);
-
 var _button = require('./button.js');
 
 var _button2 = _interopRequireDefault(_button);
+
+var _elementUtil = require('../lib/element-util.js');
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29,7 +29,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   message
 *************************************************************/
-var NAME = 'Cosmos.Message';
 var Status = {
   INFO: 'info',
   SUCCESS: 'success',
@@ -77,28 +76,26 @@ var Message = function (_CosmosModule) {
 
     value: function init() {
       // add event listener - close buttons
-      _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._closeButtonHandler, true);
+      _elementUtil2.default.addListener(Selector.CLOSE, 'click', this._closeButtonHandler, true);
     }
   }, {
     key: 'show',
     value: function show(message) {
       var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Status.INFO;
 
-      var c, b, span;
-
       // create message box
-      c = document.querySelector(Selector.CONTAINER); // container
-      b = document.createElement('DIV'); // message box
-      span = document.createElement('SPAN'); // message text
+      var container = document.querySelector(Selector.CONTAINER); // container
+      var box = document.createElement('DIV'); // message box
+      var span = document.createElement('SPAN'); // message text
 
       span.textContent = message;
-      b.classList.add(ClassName.BOX);
-      b.classList.add(status);
+      box.classList.add(ClassName.BOX);
+      box.classList.add(status);
 
       // append child
-      b.appendChild(span);
-      this.button.appendBtnClose(b, this._closeButtonHandler);
-      c.appendChild(b);
+      box.appendChild(span);
+      this.button.appendBtnClose(box, this._closeButtonHandler);
+      container.appendChild(box);
     }
 
     // private
@@ -106,12 +103,13 @@ var Message = function (_CosmosModule) {
   }, {
     key: '_closeButtonHandler',
     value: function _closeButtonHandler(event) {
-      var messageBox = _util2.default.findAncestor(event.currentTarget, Selector.BOX);
+      var messageBox = _elementUtil2.default.findAncestor(event.currentTarget, Selector.BOX);
 
       messageBox.style.opacity = '0';
       setTimeout(function () {
         messageBox.style.display = 'none';
       }, 600); // 0.6s
+
       event.stopPropagation();
     }
   }], [{
@@ -131,9 +129,9 @@ var Message = function (_CosmosModule) {
       m.show(message, status);
     }
   }, {
-    key: 'name',
+    key: 'isLoadable',
     get: function get() {
-      return NAME;
+      return true;
     }
   }]);
 

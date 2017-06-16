@@ -1,35 +1,32 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import eu from '../lib/element-util.js';
+import ElementUtil from '../lib/element-util.js';
 
 /************************************************************
   dropdown
 *************************************************************/
-const NAME = 'Cosmos.Dropdown';
 const ClassName = {
-  DROPDOWN: 'dropdown',
   TOGGLE: 'dropdown-toggle',
-  CONTENT: 'dropdown-content',
-  SHOW: 'show'
+  SHOW: 'show',
 };
 const Selector = {
-  DROPDOWN: `.${ClassName.DROPDOWN}`,
+  DROPDOWN: `.dropdown`,
+  CONTENT: `.dropdown-content`,
   TOGGLE: `.${ClassName.TOGGLE}`,
-  CONTENT: `.${ClassName.CONTENT}`
 };
 
-class Dropdown extends CosmosModule {
+export default class Dropdown extends CosmosModule {
 
   // static
 
-  static get name() {
-    return NAME;
+  static get isLoadable() {
+    return true;
   }
 
   // public
 
   init() {
     // toggling dropdown content.
-    eu.addListener(Selector.TOGGLE, 'click', this._toggleButtonHandler.bind(this));
+    ElementUtil.addListener(Selector.TOGGLE, 'click', this._toggleButtonHandler.bind(this));
 
     // Close the dropdown menu if the user clicks outside of it
     window.addEventListener('click', this._otherClickHandler.bind(this));
@@ -38,10 +35,10 @@ class Dropdown extends CosmosModule {
   // private
 
   _toggleButtonHandler(event) {
-    let c = event.currentTarget.parentNode.querySelector(Selector.CONTENT);
-    if (c) {
-      c.classList.toggle(ClassName.SHOW);
-    }
+    let dropdown = ElementUtil.findAncestor(event.currentTarget, Selector.DROPDOWN);
+    let content = dropdown.querySelector(Selector.CONTENT);
+
+    if (content) content.classList.toggle(ClassName.SHOW);
   }
 
   _otherClickHandler(event) {
@@ -49,7 +46,7 @@ class Dropdown extends CosmosModule {
 
     if (t.classList.contains(ClassName.TOGGLE)) {
       // dropdown
-      let dropdown = t.parentNode;
+      let dropdown = ElementUtil.findAncestor(t, Selector.DROPDOWN);
       this._closeElseDropdown(dropdown);
     } else {
       // not dropdown
@@ -60,20 +57,19 @@ class Dropdown extends CosmosModule {
   /**
    * close dropdown contents
    *
-   * @param  {element} t  except target
+   * @param  {element} target  except target
    * @return {void}
    */
-  _closeElseDropdown(t = null) {
-    var ds = document.querySelectorAll(Selector.DROPDOWN);
+  _closeElseDropdown(target = null) {
+    let dropdowns = document.querySelectorAll(Selector.DROPDOWN);
 
-    for (let d of ds) {
-      let c = d.querySelector(Selector.CONTENT);
-      if (t && t == d) { continue; } // except target
-      if (c.classList.contains(ClassName.SHOW)) {
-        c.classList.remove(ClassName.SHOW);
+    for (let dropdown of dropdowns) {
+      let content = dropdown.querySelector(Selector.CONTENT);
+      if (target && target == dropdown) continue; // except target
+
+      if (content.classList.contains(ClassName.SHOW)) {
+        content.classList.remove(ClassName.SHOW);
       }
     }
   }
 }
-
-export default Dropdown;

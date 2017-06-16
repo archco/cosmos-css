@@ -1,23 +1,22 @@
 import CosmosModule from '../lib/cosmos-module.js';
-import eu from '../lib/element-util.js';
+import ElementUtil from '../lib/element-util.js';
 
 /************************************************************
   Button
 *************************************************************/
-const NAME = 'Cosmos.Button';
 const ClassName = {
   CLOSE: 'btn-close',
   POSITION_CORNER: 'at-corner',
   POSITION_RIGHT_MIDDLE: 'at-right-middle',
   HIDE: 'display-hide',
   REMOVEABLE: 'removeable',
-  HIDEABLE: 'hideable'
+  HIDEABLE: 'hideable',
 };
 const Selector = {
   CLOSE: `.${ClassName.CLOSE}`,
-  HAS_ACTION: `.${ClassName.CLOSE}.${ClassName.REMOVEABLE}, .${ClassName.CLOSE}.${ClassName.HIDEABLE}`
+  HAS_ACTION: `.${ClassName.CLOSE}.${ClassName.REMOVEABLE},
+    .${ClassName.CLOSE}.${ClassName.HIDEABLE}`,
 };
-// default option.
 const Default = {
   close_init_enable: true,
   close_action: 'remove', // remove | hide
@@ -25,18 +24,29 @@ const Default = {
   close_style: 'default', // default | icon | circle_default | circle_icon
   close_content: {
     default: '✖',
-    icon: `<i class="fa fa-times" aria-hidden="true"></i>`
-  }
+    icon: `<i class="fa fa-times" aria-hidden="true"></i>`,
+  },
 };
 
-class Button extends CosmosModule{
+export default class Button extends CosmosModule{
 
   // static
 
-  static get name() {
-    return NAME;
+  static get isLoadable() {
+    return true;
   }
 
+  static get isFunctional() {
+    return true;
+  }
+
+  /**
+   * addBtnClose
+   *
+   * @param {Element} element
+   * @param {Object} [ option = {} ]
+   * @param {Function} [ callback = null ]
+   */
   static addBtnClose(element, option = {}, callback = null) {
     let b = new Button(option);
     b.appendBtnClose(element, callback);
@@ -44,11 +54,19 @@ class Button extends CosmosModule{
 
   // public
 
+  /**
+   * appendBtnClose
+   *
+   * @param  {Element} element
+   * @param  {Function} [ callback = null ]
+   * @return {void}
+   */
   appendBtnClose(element, callback = null) {
     if (this._hasBtnClose(element)) {
       console.log('already has .btn-close');
       return;
     }
+
     let btnClose = this._createBtnClose();
     let handler = callback || this._btnCloseClickHandler;
 
@@ -59,7 +77,7 @@ class Button extends CosmosModule{
   init() {
     // btn-close addEventListener.
     if (this.option.close_init_enable) {
-      eu.addListener(
+      ElementUtil.addListener(
         Selector.HAS_ACTION,
         'click',
         this._btnCloseClickHandler.bind(this)
@@ -84,6 +102,7 @@ class Button extends CosmosModule{
     } else if (action == 'remove') {
       parent.removeChild(element);
     }
+
     event.preventDefault();
   }
 
@@ -96,6 +115,7 @@ class Button extends CosmosModule{
     } else if (this.option.close_position == 'right_middle') {
       btnClose.classList.add(ClassName.POSITION_RIGHT_MIDDLE);
     }
+
     btnClose.innerHTML = this.option.close_content[this.option.close_style];
 
     return btnClose;
@@ -119,5 +139,3 @@ class Button extends CosmosModule{
     }
   }
 }
-
-export default Button;

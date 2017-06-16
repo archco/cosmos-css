@@ -21,7 +21,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Parallax
 *************************************************************/
-var NAME = 'Cosmos.Parallax';
 var ClassName = {
   PARALLAX: 'parallax',
   HIDE: 'display-hide'
@@ -44,9 +43,7 @@ var Parallax = function (_CosmosModule) {
 
     value: function init() {
       var ps = document.querySelectorAll('.' + ClassName.PARALLAX);
-      if (ps.length === 0) {
-        return;
-      }
+      if (!ps.length) return;
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -80,25 +77,26 @@ var Parallax = function (_CosmosModule) {
     key: '_process',
     value: function _process(p) {
       var i = p.querySelector('img');
-      if (!i) {
-        return;
-      }
+      if (!i) return;
       var h = p.dataset.height || i.clientHeight;
+
       // hide <img>
       i.classList.add(ClassName.HIDE);
+
       // set parallax background image.
       p.style.backgroundImage = 'url(\'' + i.src + '\')';
+
       // set parallax height.
       p.style.height = h + 'px';
     }
   }], [{
-    key: 'name',
+    key: 'isLoadable',
 
 
     // static
 
     get: function get() {
-      return NAME;
+      return true;
     }
   }]);
 

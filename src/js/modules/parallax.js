@@ -3,18 +3,17 @@ import CosmosModule from '../lib/cosmos-module.js';
 /************************************************************
   Parallax
 *************************************************************/
-const NAME = 'Cosmos.Parallax';
 const ClassName = {
   PARALLAX: 'parallax',
-  HIDE: 'display-hide'
+  HIDE: 'display-hide',
 };
 
-class Parallax extends CosmosModule {
+export default class Parallax extends CosmosModule {
 
   // static
 
-  static get name() {
-    return NAME;
+  static get isLoadable() {
+    return true;
   }
 
   // public
@@ -32,15 +31,16 @@ class Parallax extends CosmosModule {
 
   _process(p) {
     let i = p.querySelector('img');
-    if (!i) { return; }
+    if (!i) return;
     let h = p.dataset.height || i.clientHeight;
+
     // hide <img>
     i.classList.add(ClassName.HIDE);
+
     // set parallax background image.
     p.style.backgroundImage = `url('${i.src}')`;
+
     // set parallax height.
     p.style.height = `${h}px`;
   }
 }
-
-export default Parallax;

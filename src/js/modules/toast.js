@@ -4,35 +4,37 @@ import eu from '../lib/element-util.js';
 /************************************************************
   Toast
 *************************************************************/
-const NAME = 'Cosmos.Toast';
 const ClassName = {
   TOAST: 'toast',
   SHOW: 'show',
-  CONTAINER: 'toast-container'
+  CONTAINER: 'toast-container',
 };
 const Default = {
-  text: 'no text',
+  text: 'no text', // set default text.
+  duration: 'short', // toast duration. 'short'|'long'|integer number (ms)
+  container_position: '', // nine-positions: top-left.. middle-center.. bottom-right..
+  log_enable: true, // Enable console.log() when toast.show().
+  close_type: 'remove', // 'hide' or 'remove'
   duration_short: 3000,
   duration_long: 8000,
   container: `.${ClassName.CONTAINER}`,
   transition_duration: 600,
-  log_enable: true,
-  close_type: 'remove', // 'hide' or 'remove'
 };
 
 export default class Toast extends CosmosModule {
   constructor(option = {}) {
     super(option);
+
     // set defaults.
     this.setText(this.option.text);
-    this.setDuration(this.option.duration_short);
+    this.setDuration(this.option.duration);
     this.setContainer(this.option.container);
   }
 
   // static
 
-  static get name() {
-    return NAME;
+  static get isFunctional() {
+    return true;
   }
 
   /**
@@ -44,7 +46,6 @@ export default class Toast extends CosmosModule {
    * @return {Toast}
    */
   static makeText(text, duration = null, option = {}) {
-    duration = duration || Default.duration_short;
     let instance = new this(option);
     return instance.setText(text).setDuration(duration);
   }
@@ -61,17 +62,32 @@ export default class Toast extends CosmosModule {
   }
 
   setDuration(duration) {
-    this.duration = duration;
+    if (typeof duration === 'string') {
+      if (duration.toLowerCase() === 'long') {
+        duration = this.option.duration_long;
+      } else {
+        duration = this.option.duration_short;
+      }
+    }
+
+    this.duration = duration || this.option.duration_short;
     return this;
   }
 
   setContainer(selector) {
-    let elm = eu.getElement(selector, eu.getElement('body'));
+    let body = eu.getElement('body');
+    let elm = eu.getElement(selector, body);
+
     if (!elm) {
       elm = document.createElement('DIV');
       elm.classList.add(ClassName.CONTAINER);
-      eu.getElement('body').appendChild(elm);
+      body.appendChild(elm);
     }
+
+    if (this.option.container_position) {
+      elm.classList.add(this.option.container_position);
+    }
+
     this.container = elm;
     return this;
   }

@@ -21,12 +21,12 @@
 //======================================================================
 .message-box {
   // default color
-  @include _message-box($secondary-color);
+  @include _message-box($message-box-default-bg-color);
   // common attributes.
   position: relative;
   z-index: $z-index-message-box;
-  padding: 1rem 1.5rem;
-  margin: 8px;
+  padding: $message-box-padding-y $message-box-padding-x;
+  margin: $message-box-margin;
   vertical-align: middle;
   border-radius: $radius-normal;
   transition: opacity ($transition-time * 2);

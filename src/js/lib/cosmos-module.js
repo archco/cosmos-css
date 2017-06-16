@@ -1,19 +1,25 @@
+import changeCase from 'change-case';
+
 /************************************************************
   CosmosModule
 *************************************************************/
-class CosmosModule {
+export default class CosmosModule {
   constructor(option = {}) {
     this.setOption(option);
+    this.subModules = new Map();
+    this.subModuleInstances = new Map();
   }
 
   /**
    * module load
    *
-   * @return {void}
+   * @return {CosmosModule}
    */
   static load(option = {}) {
-    let m = new this(option);
-    m.init();
+    if (!this.isLoadable) return;
+    let instance = new this(option);
+    instance.init();
+    return instance;
   }
 
   /**
@@ -22,8 +28,21 @@ class CosmosModule {
    * @return {Object}
    */
   static get defaultOption() {
-    let m = new this();
-    return m.getDefaultOption();
+    let instance = new this();
+    return instance.getDefaultOption();
+  }
+
+  /**
+   * is loadable
+   *
+   * @return {Boolean}
+   */
+  static get isLoadable() {
+    return false;
+  }
+
+  static get isFunctional() {
+    return false;
   }
 
   /**
@@ -31,15 +50,17 @@ class CosmosModule {
    *
    * @return {void}
    */
-  init() {}
+  init() {} // jscs:ignore disallowEmptyBlocks
 
   /**
    * setOption
    *
    * @param {Object} option
+   * @return {CosmosModule} instance
    */
   setOption(option) {
     this.option = Object.assign({}, this.getDefaultOption(), option);
+    return this;
   }
 
   /**
@@ -59,6 +80,99 @@ class CosmosModule {
   getDefaultOption() {
     return {};
   }
-}
 
-export default CosmosModule;
+  /**
+   * addSubModules
+   *
+   * @param {Array} modules
+   * @return {CosmosModule}
+   */
+  addSubModules(modules) {
+    for (let mod of modules) {
+      let name = changeCase.pascalCase(mod.name);
+      this.subModules.set(name, mod);
+    }
+
+    return this;
+  }
+
+  /**
+   * removeSubModules
+   *
+   * @param  {Array} modules
+   * @return {CosmosModule}
+   */
+  removeSubModules(modules) {
+    for (let mod of modules) {
+      let name = changeCase.pascalCase(mod.name);
+      this.subModules.delete(name);
+    }
+
+    return this;
+  }
+
+  /**
+   * loadSubModules
+   *
+   * @return {CosmosModule}
+   */
+  loadSubModules() {
+    this.subModules.forEach(Mod => {
+      let instance = new Mod(this.getSubModuleOption(Mod.name));
+      let instanceName = changeCase.camelCase(Mod.name); // mod's instance name to be camelCase.
+
+      if (Mod.isLoadable) {
+        instance.init();
+      }
+
+      if (Mod.isFunctional) {
+        this[instanceName] = instance;
+      }
+
+      this.subModuleInstances.set(instanceName, instance);
+    });
+
+    return this;
+  }
+
+  /**
+   * getSubModuleOption
+   *
+   * @param  {String} modName
+   * @return {Object}
+   */
+  getSubModuleOption(modName) {
+    let options = this.option.sub_modules;
+    modName = changeCase.snakeCase(modName);
+
+    if (options && options[modName]) {
+      return options[modName];
+    } else {
+      return {};
+    }
+  }
+
+  /**
+   * setSubModuleOption
+   *
+   * @param {String} modName
+   * @param {Object} option
+   * @return {CosmosModule}
+   */
+  setSubModuleOption(modName, option) {
+    modName = changeCase.snakeCase(modName);
+    this.option.sub_modules[modName] = option;
+    return this;
+  }
+
+  /**
+   * getSubModuleInstance
+   *
+   * @param  {String} modName
+   * @return {Object} instance of sub-module.
+   */
+  getSubModuleInstance(modName) {
+    modName = changeCase.camelCase(modName);
+    return this.subModuleInstances.get(modName);
+  }
+}

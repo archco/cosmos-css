@@ -1,6 +1,4 @@
-//============================================================
 // private mixins
-//============================================================
 
 @mixin _card-image-size($direction:'vertical') {
   @if ($direction == 'vertical') {
@@ -9,15 +7,6 @@
   } @else if ($direction == 'horizontal') {
     width: auto;
     height: 105%;
-  }
-}
-
-// calculate card size
-@mixin _cal-card-size($size, $direction:'vertical') {
-  @if ($direction == 'vertical') {
-    width: $size * 1.25;
-  } @else if ($direction == 'horizontal') {
-    width: $size * 1.25;
   }
 }
 
@@ -33,96 +22,36 @@
   &.large { height: $card-size-large * .75; }
 }
 
-@mixin _card-inline-size {
-  @include _cal-card-size($card-size);
-  &.small { @include _cal-card-size($card-size-small); }
-  &.large { @include _cal-card-size($card-size-large); }
-  &.horizontal {
-    @include _cal-card-size($card-size, 'horizontal');
-    &.small { @include _cal-card-size($card-size-small, 'horizontal'); }
-    &.large { @include _cal-card-size($card-size-large, 'horizontal'); }
-  }
+@mixin _card-inline-width {
+  $_rate: 1.25;
+  width: $card-size * $_rate;
+  &.small { width: $card-size-small * $_rate; }
+  &.large { width: $card-size-large * $_rate; }
 }
 
 //======================================================================
 // Card
 //======================================================================
 
-// card list
-ul.card-list {
-  @include reset-list;
-
-  li:not(.card) {
-    display: inline-block;
-    max-width: 100%;
-    vertical-align: top;
-  }
-}
-
-// default - vertical
-.card {
-  @include _card-size;
+%card {
   z-index: $z-index-card;
   display: flex;
-  flex-direction: column;
   padding: 0;
-  margin: .5rem 0;
+  margin-bottom: .75rem;
   background-color: $card-bg-color;
   border-radius: $card-radius;
   box-shadow: $card-shadow;
 
-  .card-image {
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex: 3;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: $card-radius $card-radius 0 0;
-
-    img {
-      @include _card-image-size('vertical');
-      max-width: none;
-    }
-
-    .card-title {
-      $_shadow-color: #000;
-      position: absolute;
-      bottom: .2em;
-      left: .5em;
-      z-index: $z-index-card-content;
-      margin: .3em 0;
-      color: $card-title-color;
-      text-shadow: 0 0 4px $_shadow-color;
-    }
-  }
-
-  .card-content {
-    flex: 1;
-    padding: .5rem;
-  }
-
-  // horizontal
-  &.horizontal {
-    @include _card-horizontal-size;
-    flex-direction: row;
-
-    .card-image {
-      @extend %card-horizontal-child;
-      @extend %card-horizontal-image;
-    }
-
-    .card-content {
-      @extend %card-horizontal-child;
-      flex: 3;
-    }
+  &.bordered {
+    padding: .2em;
+    border: 1px solid $border-color;
+    box-shadow: none;
   }
 
   &.inline {
-    @include _card-inline-size;
+    @include _card-inline-width;
     display: inline-flex;
     max-width: 100%;
-    margin: .5rem 0;
     vertical-align: text-top;
 
     @include media-tablet-up {
@@ -139,24 +68,83 @@ ul.card-list {
       box-shadow: $card-hover-shadow;
     }
   }
+
+  .card-content {
+    padding: $card-content-padding-y $card-content-padding-x;
+  }
 }
 
-//============================================================
-// Placeholders
-//============================================================
+%card-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 
-%card-horizontal-child {
-  display: inline-block;
-  width: auto;
-  height: 100%;
-  max-height: none;
+  .card-title {
+    $_shadow-color: #000;
+    position: absolute;
+    bottom: .2em;
+    left: .5em;
+    z-index: $z-index-card-content;
+    margin: .3em 0;
+    color: $card-title-color;
+    text-shadow: 0 0 4px $_shadow-color;
+  }
 }
 
-%card-horizontal-image {
-  flex: 2;
-  border-radius: $card-radius 0 0 $card-radius;
+// default - vertical
+.card {
+  @extend %card;
+  @include _card-size;
+  flex-direction: column;
 
-  img {
-    @include _card-image-size('horizontal');
+  .card-image {
+    @extend %card-image;
+    @include border-top-radius($card-radius);
+    flex: 3 1 0;
+
+    img {
+      @include _card-image-size('vertical');
+      max-width: none;
+    }
+  }
+
+  .card-content {
+    flex: 1 3 0;
+  }
+}
+
+.card-horizontal {
+  @extend %card;
+  @include _card-horizontal-size;
+  flex-direction: row;
+
+  .card-image {
+    @extend %card-image;
+    @include border-left-radius($card-radius);
+    flex: 2 3 0;
+
+    img {
+      @include _card-image-size('horizontal');
+      width: auto;
+      height: 100%;
+      max-width: none;
+    }
+  }
+
+  .card-content {
+    flex: 3 2 0;
+  }
+}
+
+// card list
+ul.card-list {
+  @include reset-list;
+
+  li:not(.card):not(.card-horizontal) {
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: top;
   }
 }

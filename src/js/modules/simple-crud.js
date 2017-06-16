@@ -4,34 +4,26 @@ import eu from '../lib/element-util.js';
 /************************************************************
   SipleCRUD
 *************************************************************/
-const NAME = 'Cosmos.SimpleCRUD';
 const ClassName = {
-  ITEM: 'simple-crud-item',
-  VIEW_READ: 'simple-crud-view-read',
-  VIEW_UPDATE: 'simple-crud-view-update',
-  VIEW_DELETE: 'simple-crud-view-delete',
-  BTN_UPDATE: 'simple-crud-update',
-  BTN_DELETE: 'simple-crud-delete',
-  BTN_CANCEL: 'simple-crud-cancel',
   SHOW: 'show',
 };
 const Selector = {
-  ITEM: `.${ClassName.ITEM}`,
+  ITEM: '.simple-crud-item',
   VIEW: '[class*="simple-crud-view-"]',
-  VIEW_READ: `.${ClassName.VIEW_READ}`,
-  VIEW_UPDATE: `.${ClassName.VIEW_UPDATE}`,
-  VIEW_DELETE: `.${ClassName.VIEW_DELETE}`,
-  BTN_UPDATE: `button.${ClassName.BTN_UPDATE}`,
-  BTN_DELETE: `button.${ClassName.BTN_DELETE}`,
-  BTN_CANCEL: `button.${ClassName.BTN_CANCEL}`,
+  VIEW_READ: '.simple-crud-view-read',
+  VIEW_UPDATE: '.simple-crud-view-update',
+  VIEW_DELETE: '.simple-crud-view-delete',
+  BTN_UPDATE: 'button.simple-crud-update',
+  BTN_DELETE: 'button.simple-crud-delete',
+  BTN_CANCEL: 'button.simple-crud-cancel',
 };
 
-class SimpleCRUD extends CosmosModule {
+export default class SimpleCRUD extends CosmosModule {
 
   // static
 
-  static get name() {
-    return NAME;
+  static get isLoadable() {
+    return true;
   }
 
   // public
@@ -65,10 +57,9 @@ class SimpleCRUD extends CosmosModule {
 
   _switchView(element, name) {
     let nodes = this._getNodes(element);
+
     // console.log(NAME, 'switchView: ' + name);
     nodes.current.classList.remove(ClassName.SHOW);
     nodes[name].classList.add(ClassName.SHOW);
   }
 }
-
-export default SimpleCRUD;

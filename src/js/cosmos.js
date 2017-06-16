@@ -1,18 +1,20 @@
 /*!
  * cosmos-css - The css framework for personal practice.
- * @version v0.10.2
+ * @version v0.12.0
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
+import CosmosModule from './lib/cosmos-module.js';
+import pkg from '../../package.json';
 
 // Libraries.
 import Util from './lib/util.js';
 import Color from './lib/color.js';
-import Helper from './lib/helper.js';
 import ElementUtil from './lib/element-util.js';
+import changeCase from 'change-case';
+
 // Loadable Modules.
 import Scaffolding from './modules/scaffolding.js';
-import Button from './modules/button.js';
 import Dropdown from './modules/dropdown.js';
 import Message from './modules/message.js';
 import Modal from './modules/modal.js';
@@ -20,49 +22,101 @@ import Nav from './modules/nav.js';
 import Parallax from './modules/parallax.js';
 import ScrollTo from './modules/scroll-to.js';
 import Tab from './modules/tab.js';
-import Collapse from './modules/collapse.js';
 import SimpleCRUD from './modules/simple-crud.js';
+
+// both of loadable and Functional.
+import Collapse from './modules/collapse.js';
+import Button from './modules/button.js';
+
 // Functional modules. - nonloadable
 import Chip from './modules/chip.js';
 import Toast from './modules/toast.js';
 
-// initialize - loading modules.
-Scaffolding.load();
-Button.load();
-Dropdown.load();
-Message.load();
-Modal.load();
-Nav.load();
-Parallax.load();
-ScrollTo.load();
-Tab.load();
-Collapse.load();
-SimpleCRUD.load();
+class Cosmos extends CosmosModule {
+  constructor(option = {}) {
+    super(option);
+  }
 
-// define global helper functions.
-window.submitConfirm = ElementUtil.submitConfirm;
-window.checkMobileSize = ElementUtil.checkMobileSize;
-window.showMessage = Message.showMessage;
-window.modalDialog = Modal.dialog;
-window.showToast = (text, duration = null, option = {}) => {
-  Toast.makeText(text, duration, option).show();
-};
+  static get version() {
+    return pkg.version;
+  }
 
-// export
-let version = require('../../package.json').version;
-const lib = {
-  Util,
-  Color,
-  ElementUtil
-};
-const Cosmos = {
-  name: 'cosmos-css',
-  version: `v${version}`,
-  lib,
+  static get isLoadable() {
+    return true;
+  }
+
+  static get isFunctional() {
+    return true;
+  }
+
+  static get lib() {
+    return {
+      Util,
+      Color,
+      ElementUtil,
+      changeCase,
+    };
+  }
+
+  get version() {
+    return pkg.version;
+  }
+
+  init() {
+    this.addSubModules([
+      Scaffolding,
+      Button,
+      Dropdown,
+      Message,
+      Modal,
+      Nav,
+      Parallax,
+      ScrollTo,
+      Tab,
+      Collapse,
+      SimpleCRUD,
+      Chip,
+      Toast,
+    ]);
+    this.loadSubModules();
+    this.defineGlobalHelperFunctions();
+    return this;
+  }
+
+  defineGlobalHelperFunctions() {
+    // define global helper functions.
+    window.submitConfirm = (selector, message = 'Are you confirm?') => {
+      ElementUtil.submitConfirm(selector, message);
+    };
+
+    window.showToast = (text, duration = null, option = {}) => {
+      Toast.makeText(text, duration, option).show();
+    };
+
+    window.checkMobileSize = window.isMobileSize = Util.isMobileSize;
+    window.showMessage = Message.showMessage;
+    window.modalDialog = Modal.dialog;
+  }
+}
+
+// For convenience to access functional modules.
+Object.assign(Cosmos, {
   Button,
   Chip,
-  Toast
-};
+  Toast,
+  Collapse,
+  Modal,
+});
 
+// export.
 export default Cosmos;
-export { Util, ElementUtil, Color, Helper, Button, Chip, Toast };
+export {
+  Util,
+  ElementUtil,
+  Color,
+  Button,
+  Chip,
+  Toast,
+  Collapse,
+  Modal,
+};

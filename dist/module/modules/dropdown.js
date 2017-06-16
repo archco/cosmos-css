@@ -10,9 +10,9 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = require('../lib/util.js');
+var _elementUtil = require('../lib/element-util.js');
 
-var _util2 = _interopRequireDefault(_util);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25,17 +25,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   dropdown
 *************************************************************/
-var NAME = 'Cosmos.Dropdown';
 var ClassName = {
-  DROPDOWN: 'dropdown',
   TOGGLE: 'dropdown-toggle',
-  CONTENT: 'dropdown-content',
   SHOW: 'show'
 };
 var Selector = {
-  DROPDOWN: '.' + ClassName.DROPDOWN,
-  TOGGLE: '.' + ClassName.TOGGLE,
-  CONTENT: '.' + ClassName.CONTENT
+  DROPDOWN: '.dropdown',
+  CONTENT: '.dropdown-content',
+  TOGGLE: '.' + ClassName.TOGGLE
 };
 
 var Dropdown = function (_CosmosModule) {
@@ -55,7 +52,7 @@ var Dropdown = function (_CosmosModule) {
 
     value: function init() {
       // toggling dropdown content.
-      _util2.default.eventOnSelector(Selector.TOGGLE, 'click', this._toggleButtonHandler.bind(this));
+      _elementUtil2.default.addListener(Selector.TOGGLE, 'click', this._toggleButtonHandler.bind(this));
 
       // Close the dropdown menu if the user clicks outside of it
       window.addEventListener('click', this._otherClickHandler.bind(this));
@@ -66,10 +63,10 @@ var Dropdown = function (_CosmosModule) {
   }, {
     key: '_toggleButtonHandler',
     value: function _toggleButtonHandler(event) {
-      var c = event.currentTarget.parentNode.querySelector(Selector.CONTENT);
-      if (c) {
-        c.classList.toggle(ClassName.SHOW);
-      }
+      var dropdown = _elementUtil2.default.findAncestor(event.currentTarget, Selector.DROPDOWN);
+      var content = dropdown.querySelector(Selector.CONTENT);
+
+      if (content) content.classList.toggle(ClassName.SHOW);
     }
   }, {
     key: '_otherClickHandler',
@@ -78,7 +75,7 @@ var Dropdown = function (_CosmosModule) {
 
       if (t.classList.contains(ClassName.TOGGLE)) {
         // dropdown
-        var dropdown = t.parentNode;
+        var dropdown = _elementUtil2.default.findAncestor(t, Selector.DROPDOWN);
         this._closeElseDropdown(dropdown);
       } else {
         // not dropdown
@@ -88,32 +85,31 @@ var Dropdown = function (_CosmosModule) {
 
     /**
      * close dropdown contents
-     * 
-     * @param  {element} t  except target
+     *
+     * @param  {element} target  except target
      * @return {void}
      */
 
   }, {
     key: '_closeElseDropdown',
     value: function _closeElseDropdown() {
-      var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-      var ds = document.querySelectorAll(Selector.DROPDOWN);
+      var dropdowns = document.querySelectorAll(Selector.DROPDOWN);
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
 
       try {
-        for (var _iterator = ds[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var d = _step.value;
+        for (var _iterator = dropdowns[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var dropdown = _step.value;
 
-          var c = d.querySelector(Selector.CONTENT);
-          if (t && t == d) {
-            continue;
-          } // except target
-          if (c.classList.contains(ClassName.SHOW)) {
-            c.classList.remove(ClassName.SHOW);
+          var content = dropdown.querySelector(Selector.CONTENT);
+          if (target && target == dropdown) continue; // except target
+
+          if (content.classList.contains(ClassName.SHOW)) {
+            content.classList.remove(ClassName.SHOW);
           }
         }
       } catch (err) {
@@ -132,13 +128,13 @@ var Dropdown = function (_CosmosModule) {
       }
     }
   }], [{
-    key: 'name',
+    key: 'isLoadable',
 
 
     // static
 
     get: function get() {
-      return NAME;
+      return true;
     }
   }]);
 

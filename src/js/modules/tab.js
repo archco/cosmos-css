@@ -4,7 +4,6 @@ import eu from '../lib/element-util.js';
 /************************************************************
   Tab
 *************************************************************/
-const NAME = 'Cosmos.Tab';
 const ClassName = {
   TAB: 'tab',
   TAB_VERTICAL: 'tab-vertical',
@@ -13,20 +12,20 @@ const ClassName = {
   SHOW: 'show',
   ACTIVE: 'active',
   FADE: 'fade',
-  EFFECT_FADE: 'tab-fade-effect'
+  EFFECT_FADE: 'tab-fade-effect',
 };
 const Selector = {
   TAB: `.${ClassName.TAB},.${ClassName.TAB_VERTICAL}`,
   LINK: `.${ClassName.LINK}`,
-  CONTENT: `.${ClassName.CONTENT}`
+  CONTENT: `.${ClassName.CONTENT}`,
 };
 
-class Tab extends CosmosModule {
+export default class Tab extends CosmosModule {
 
   // static
 
-  static get name() {
-    return NAME;
+  static get isLoadable() {
+    return true;
   }
 
   // public
@@ -64,13 +63,15 @@ class Tab extends CosmosModule {
     let links = tab.querySelectorAll(Selector.LINK);
     let content = this._getContent(a);
 
-    for (let l of links) {
+    for (let link of links) {
       // content hide
-      let c = this._getContent(l);
-      c.classList.remove(ClassName.SHOW);
+      let content = this._getContent(link);
+      content.classList.remove(ClassName.SHOW);
+
       // remove link.active
-      l.classList.remove(ClassName.ACTIVE);
+      link.classList.remove(ClassName.ACTIVE);
     }
+
     // active and show content.
     a.classList.add(ClassName.ACTIVE);
     content.classList.add(ClassName.SHOW);
@@ -84,11 +85,12 @@ class Tab extends CosmosModule {
   }
 
   _getContent(link) {
-    let c = document.querySelector(this._extractID(link.href));
-    if (c && !c.classList.contains(ClassName.CONTENT)) {
-      c.classList.add(ClassName.CONTENT);
+    let content = document.querySelector(this._extractID(link.href));
+    if (content && !content.classList.contains(ClassName.CONTENT)) {
+      content.classList.add(ClassName.CONTENT);
     }
-    return c;
+
+    return content;
   }
 
   _getTabs() {
@@ -97,14 +99,15 @@ class Tab extends CosmosModule {
 
   _loadTab(tab) {
     let links = tab.querySelectorAll(Selector.LINK);
-    for (let l of links) {
+    for (let link of links) {
       // set default.
-      if (l.classList.contains(ClassName.ACTIVE)) {
-        l.click();
+      if (link.classList.contains(ClassName.ACTIVE)) {
+        link.click();
       }
+
       // tab fade effect.
       if (tab.classList.contains(ClassName.FADE)) {
-        this._getContent(l).classList.add(ClassName.EFFECT_FADE);
+        this._getContent(link).classList.add(ClassName.EFFECT_FADE);
       }
     }
   }
@@ -115,5 +118,3 @@ class Tab extends CosmosModule {
     link.click();
   }
 }
-
-export default Tab;

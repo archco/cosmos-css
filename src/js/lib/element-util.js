@@ -1,21 +1,17 @@
 /************************************************************
   ElementUtil
 *************************************************************/
-const NAME = 'Cosmos.lib.ElementUtil';
 const ClassName = {
   SHOW: 'display-show',
-  HIDE: 'display-hide'
+  HIDE: 'display-hide',
 };
 const DataSet = {
   SORT_DIRECTION: 'sortDirection',
-  SORT_VALUE: 'sortValue'
+  SORT_VALUE: 'sortValue',
+  SORT_TYPE: 'sortType',
 };
 
 export default class ElementUtil {
-  static get name() {
-    return NAME;
-  }
-
   /**
    * getElement
    *
@@ -106,9 +102,9 @@ export default class ElementUtil {
   static findAncestor(element, selector) {
     element = this.getElement(element);
     do {
-      if(element == this.getElement('html')) return null;
+      if (element == this.getElement('html')) return null;
       element = element.parentElement;
-    } while(!element.matches(selector));
+    } while (!element.matches(selector));
     return element;
   }
 
@@ -322,21 +318,17 @@ export default class ElementUtil {
   static sortElements(selector, itemSelector) {
     let parent = this.getElement(selector);
     let items = this.nodeListToArray(this.getElements(itemSelector, parent));
-    let compareMethods = {
-      asc(a, b) {
-        let aVal = (a.dataset[DataSet.SORT_VALUE] + a.textContent).toUpperCase();
-        let bVal = (b.dataset[DataSet.SORT_VALUE] + b.textContent).toUpperCase();
-        return aVal.localeCompare(bVal);
-      },
-      desc(a, b) {
-        let aVal = (a.dataset[DataSet.SORT_VALUE] + a.textContent).toUpperCase();
-        let bVal = (b.dataset[DataSet.SORT_VALUE] + b.textContent).toUpperCase();
-        return bVal.localeCompare(aVal);
-      }
+    let compareMethod = (a, b) => {
+      let aVal = this._getSortValue(a);
+      let bVal = this._getSortValue(b);
+      let type = parent.dataset[DataSet.SORT_TYPE] || a.dataset[DataSet.SORT_TYPE] || null;
+      let asc = (parent.dataset[DataSet.SORT_DIRECTION] === 'asc');
+
+      return this._compare(aVal, bVal, type, asc);
     };
 
     this._toggleSortDirection(parent);
-    this._sorting(items, compareMethods[parent.dataset[DataSet.SORT_DIRECTION]]);
+    this._sorting(items, compareMethod.bind(this));
   }
 
   /**
@@ -355,30 +347,36 @@ export default class ElementUtil {
         e.preventDefault();
         let th = e.currentTarget;
         this._toggleSortDirection(th);
-        this._sortingTable(rows, i + 1, th.dataset[DataSet.SORT_DIRECTION]);
+        this._sortingTable(
+          rows,
+          i + 1,
+          th.dataset[DataSet.SORT_TYPE],
+          th.dataset[DataSet.SORT_DIRECTION]
+        );
       });
     }
   }
 
-  static _sortingTable(rows, nth, direction) {
-    let compareMethods = {
-      asc(a, b) {
-        a = this.getElement(`td:nth-child(${nth})`, a);
-        b = this.getElement(`td:nth-child(${nth})`, b);
-        let aVal = (a.dataset[DataSet.SORT_VALUE] + a.textContent).toUpperCase();
-        let bVal = (b.dataset[DataSet.SORT_VALUE] + b.textContent).toUpperCase();
-        return aVal.localeCompare(bVal);
-      },
-      desc(a, b) {
-        a = this.getElement(`td:nth-child(${nth})`, a);
-        b = this.getElement(`td:nth-child(${nth})`, b);
-        let aVal = (a.dataset[DataSet.SORT_VALUE] + a.textContent).toUpperCase();
-        let bVal = (b.dataset[DataSet.SORT_VALUE] + b.textContent).toUpperCase();
-        return bVal.localeCompare(aVal);
-      }
+  static _sortingTable(rows, nth, type, direction) {
+    let compareMethod = (a, b) => {
+      a = this.getElement(`td:nth-child(${nth})`, a);
+      b = this.getElement(`td:nth-child(${nth})`, b);
+      let aVal = this._getSortValue(a);
+      let bVal = this._getSortValue(b);
+      let asc = (direction === 'asc');
+      type = type || a.dataset[DataSet.SORT_TYPE] || null;
+
+      return this._compare(aVal, bVal, type, asc);
     };
 
-    this._sorting(rows, compareMethods[direction].bind(this));
+    this._sorting(rows, compareMethod.bind(this));
+  }
+
+  static _getSortValue(element) {
+    let sortValue = element.dataset[DataSet.SORT_VALUE];
+    if (!sortValue) sortValue = element.textContent;
+
+    return sortValue.toUpperCase();
   }
 
   static _sorting(items, compareMethod) {
@@ -396,5 +394,30 @@ export default class ElementUtil {
     } else {
       elm.dataset[DataSet.SORT_DIRECTION] = 'asc';
     }
+  }
+
+  static _compare(a, b, type, asc = true) {
+    if (type === 'number') {
+      return this._compareNumber(a, b, asc);
+    } else if (type === 'date') {
+      return this._compareDate(a, b, asc);
+    } else {
+      // default: string
+      return asc ? a.localeCompare(b) : b.localeCompare(a);
+    }
+  }
+
+  static _compareNumber(a, b, asc = true) {
+    a = parseFloat(a);
+    b = parseFloat(b);
+
+    return asc ? a - b : b - a;
+  }
+
+  static _compareDate(a, b, asc = true) {
+    a = new Date(a);
+    b = new Date(b);
+
+    return asc ? a - b : b - a;
   }
 }

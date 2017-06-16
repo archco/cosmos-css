@@ -10,9 +10,9 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = require('../lib/util.js');
+var _elementUtil = require('../lib/element-util.js');
 
-var _util2 = _interopRequireDefault(_util);
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25,26 +25,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   SipleCRUD
 *************************************************************/
-var NAME = 'Cosmos.SimpleCRUD';
 var ClassName = {
-  ITEM: 'simple-crud-item',
-  VIEW_READ: 'simple-crud-view-read',
-  VIEW_UPDATE: 'simple-crud-view-update',
-  VIEW_DELETE: 'simple-crud-view-delete',
-  BTN_UPDATE: 'simple-crud-update',
-  BTN_DELETE: 'simple-crud-delete',
-  BTN_CANCEL: 'simple-crud-cancel',
   SHOW: 'show'
 };
 var Selector = {
-  ITEM: '.' + ClassName.ITEM,
+  ITEM: '.simple-crud-item',
   VIEW: '[class*="simple-crud-view-"]',
-  VIEW_READ: '.' + ClassName.VIEW_READ,
-  VIEW_UPDATE: '.' + ClassName.VIEW_UPDATE,
-  VIEW_DELETE: '.' + ClassName.VIEW_DELETE,
-  BTN_UPDATE: 'button.' + ClassName.BTN_UPDATE,
-  BTN_DELETE: 'button.' + ClassName.BTN_DELETE,
-  BTN_CANCEL: 'button.' + ClassName.BTN_CANCEL
+  VIEW_READ: '.simple-crud-view-read',
+  VIEW_UPDATE: '.simple-crud-view-update',
+  VIEW_DELETE: '.simple-crud-view-delete',
+  BTN_UPDATE: 'button.simple-crud-update',
+  BTN_DELETE: 'button.simple-crud-delete',
+  BTN_CANCEL: 'button.simple-crud-cancel'
 };
 
 var SimpleCRUD = function (_CosmosModule) {
@@ -65,13 +57,13 @@ var SimpleCRUD = function (_CosmosModule) {
     value: function init() {
       var _this2 = this;
 
-      _util2.default.eventOnSelector(Selector.BTN_UPDATE, 'click', function (e) {
+      _elementUtil2.default.addListener(Selector.BTN_UPDATE, 'click', function (e) {
         _this2._switchView(e.currentTarget, 'update');
       });
-      _util2.default.eventOnSelector(Selector.BTN_DELETE, 'click', function (e) {
+      _elementUtil2.default.addListener(Selector.BTN_DELETE, 'click', function (e) {
         _this2._switchView(e.currentTarget, 'delete');
       });
-      _util2.default.eventOnSelector(Selector.BTN_CANCEL, 'click', function (e) {
+      _elementUtil2.default.addListener(Selector.BTN_CANCEL, 'click', function (e) {
         _this2._switchView(e.currentTarget, 'read');
       });
     }
@@ -81,8 +73,8 @@ var SimpleCRUD = function (_CosmosModule) {
   }, {
     key: '_getNodes',
     value: function _getNodes(element) {
-      var item = _util2.default.findAncestor(element, Selector.ITEM);
-      var current = _util2.default.findAncestor(element, Selector.VIEW);
+      var item = _elementUtil2.default.findAncestor(element, Selector.ITEM);
+      var current = _elementUtil2.default.findAncestor(element, Selector.VIEW);
 
       return {
         item: item,
@@ -96,18 +88,19 @@ var SimpleCRUD = function (_CosmosModule) {
     key: '_switchView',
     value: function _switchView(element, name) {
       var nodes = this._getNodes(element);
+
       // console.log(NAME, 'switchView: ' + name);
       nodes.current.classList.remove(ClassName.SHOW);
       nodes[name].classList.add(ClassName.SHOW);
     }
   }], [{
-    key: 'name',
+    key: 'isLoadable',
 
 
     // static
 
     get: function get() {
-      return NAME;
+      return true;
     }
   }]);
 

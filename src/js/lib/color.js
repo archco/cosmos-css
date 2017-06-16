@@ -1,14 +1,13 @@
 /************************************************************
   Color
 *************************************************************/
-const NAME = 'Cosmos.lib.Color';
 const Config = {
   lightnessPoint: 166, // 65%
   darkDefault: '#000',
-  lightDefault: '#fff'
+  lightDefault: '#fff',
 };
 
-class Color {
+export default class Color {
   constructor(color) {
     this._color = Color.colorToArray(color);
   }
@@ -18,10 +17,6 @@ class Color {
   }
 
   // static
-
-  static get name() {
-    return NAME;
-  }
 
   /**
    * color to rgb array.
@@ -38,6 +33,7 @@ class Color {
     } else {
       throw new Error('parameter only "hex color" or "rgb array"');
     }
+
     return array;
   }
 
@@ -92,6 +88,7 @@ class Color {
    */
   static lightness(color) {
     let rgb = this.colorToArray(color);
+
     // Color lightness formula.
     // @link https://www.w3.org/TR/AERT#color-contrast
     return ((rgb[0] * 299) + (rgb[1] * 587) + (rgb[2] * 114)) / 1000;
@@ -109,5 +106,3 @@ class Color {
     return (this.lightness(color) > Config.lightnessPoint) ? dark : light;
   }
 }
-
-export default Color;

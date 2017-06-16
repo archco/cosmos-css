@@ -5,14 +5,12 @@ block title
   title= 'Test Page'
 
 block content
+  div(class='hero-banner pad-large')
+    div(class='hero-background filter gray' style=`background-image:url('${imageSrc[0]}');`)
+    div(class='hero-content font-accent align-center' style='font-size:1.4em;')
+      h1(class='color-primary') COSMOS-CSS
+      p The css framework for personal practice.
+
   section(class='pad')
-    h1 Hello, World!
-    p test page.
-
-    h1 Toast
-    include ../includes/toast.pug
-
-block script
-  <script>
-  | //
-  </script>
+    h1 Helper
+    include ../includes/helper.pug

@@ -9,8 +9,8 @@ const banner = `/*!
  * @license ${pkg.license}
  */`;
 const files = [
-  path.join(__dirname, '../src/scss/style.scss'),
-  path.join(__dirname, '../src/js/cosmos.js')
+  path.join(__dirname, '../src/scss/cosmos.scss'),
+  path.join(__dirname, '../src/js/cosmos.js'),
 ];
 
 files.forEach(file => {

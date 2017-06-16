@@ -1,13 +1,9 @@
 /*!
  * cosmos-css - The css framework for personal practice.
- * @version v0.10.2
+ * @version v0.12.0
  * @link https://github.com/archco/cosmos-css#readme
  * @license MIT
  */
-
-//======================================================================
-// Import
-//======================================================================
 
 // library.
 @import 'node_modules/normalize.css/normalize';
@@ -17,8 +13,8 @@
 @import 'lib/keyframes';
 
 // base.
-@import 'variable';
-@import 'mixin';
+@import 'variables';
+@import 'mixins';
 
 // components.
 @import 'components/color-set';
@@ -45,4 +41,7 @@
 @import 'components/collapse';
 @import 'components/simple-crud';
 @import 'components/toast';
-@import 'components/helper'; // helper class should be last.
+@import 'components/hero-banner';
+
+// helper class should be last.
+@import 'helpers';

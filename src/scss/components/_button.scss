@@ -12,8 +12,8 @@
 
 %btn {
   @extend %btn-common;
-  padding: .5em 1em;
-  margin: .2em;
+  padding: $button-padding-y $button-padding-x;
+  margin: $button-margin;
   border-radius: $button-radius;
   outline-color: $button-outline-color;
 
@@ -48,7 +48,7 @@
 
 %btn-color-set {
   // default color
-  @include btn-color($primary-color);
+  @include btn-color($button-default-bg-color);
   // each color-set
   @each $name, $color in $color-set {
     &.#{$name} {
@@ -63,7 +63,7 @@
 
 %btn-flat-color-set {
   // default color
-  @include btn-flat-color($link-color);
+  @include btn-flat-color($button-flat-default-bg-color);
   // each color-set
   @each $name, $color in $color-set {
     &.#{$name} {
@@ -125,5 +125,96 @@
     top: 50%;
     right: 1em;
     transform: translateY(-50%);
+  }
+}
+
+//============================================================
+// Button Group
+//============================================================
+
+%btn-group {
+  position: relative;
+  display: inline-flex;
+  margin: .2em;
+
+  > .btn,
+  > .btn-flat,
+  > .dropdown > .dropdown-btn,
+  > .dropdown > .dropdown-toggle {
+    flex: 0 1 auto;
+    margin: 0;
+  }
+
+  > .btn,
+  > .btn-flat {
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+  }
+
+  > .dropdown:not(:first-child):not(:last-child) {
+    > .dropdown-btn,
+    > .dropdown-toggle {
+      border-radius: 0;
+    }
+  }
+}
+
+.btn-group {
+  @extend %btn-group;
+
+  > .btn,
+  > .btn-flat {
+    &:first-child {
+      @include border-right-radius(0);
+    }
+
+    &:last-child {
+      @include border-left-radius(0);
+    }
+  }
+
+  > .dropdown:first-child {
+    > .dropdown-btn,
+    > .dropdown-toggle {
+      @include border-right-radius(0);
+    }
+  }
+
+  > .dropdown:last-child {
+    > .dropdown-btn,
+    > .dropdown-toggle {
+      @include border-left-radius(0);
+    }
+  }
+}
+
+.btn-group-vertical {
+  @extend %btn-group;
+  flex-direction: column;
+
+  > .btn,
+  > .btn-flat {
+    &:first-child {
+      @include border-bottom-radius(0);
+    }
+
+    &:last-child {
+      @include border-top-radius(0);
+    }
+  }
+
+  > .dropdown:first-child {
+    > .dropdown-btn,
+    > .dropdown-toggle {
+      @include border-bottom-radius(0);
+    }
+  }
+
+  > .dropdown:last-child {
+    > .dropdown-btn,
+    > .dropdown-toggle {
+      @include border-top-radius(0);
+    }
   }
 }

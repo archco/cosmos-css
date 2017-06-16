@@ -10,13 +10,13 @@ var _cosmosModule = require('../lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
-var _util = require('../lib/util.js');
-
-var _util2 = _interopRequireDefault(_util);
-
 var _button = require('./button.js');
 
 var _button2 = _interopRequireDefault(_button);
+
+var _elementUtil = require('../lib/element-util.js');
+
+var _elementUtil2 = _interopRequireDefault(_elementUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29,23 +29,31 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Modal
 *************************************************************/
-var NAME = 'Cosmos.Modal';
 var ClassName = {
   MODAL: 'modal',
   CONTENT: 'modal-content',
+  HEADER: 'modal-header',
+  BODY: 'modal-body',
+  FOOTER: 'modal-footer',
   CLOSE: 'btn-close',
   SHOW: 'show'
 };
 var Selector = {
   MODAL: '.' + ClassName.MODAL,
-  OPEN: 'button[data-toggle="modal"]',
+  TRIGGER: '[data-trigger="modal"]',
+  TRIGGER_CLOSE: '[data-trigger="modal-close"]',
   CLOSE: '.' + ClassName.MODAL + ' .' + ClassName.CLOSE,
-  CONTENT: '.' + ClassName.CONTENT
+  CONTENT: '.' + ClassName.CONTENT,
+  HEADER: '.' + ClassName.HEADER
 };
 var ButtonOption = {
-  close_position: 'corner',
   close_style: 'icon'
 };
+var Default = {
+  trigger: '',
+  target: '',
+  default_title: 'Modal Dialog',
+  enable_outside_close: true };
 
 var Modal = function (_CosmosModule) {
   _inherits(Modal, _CosmosModule);
@@ -58,45 +66,47 @@ var Modal = function (_CosmosModule) {
     var _this = _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, option));
 
     _this.button = new _button2.default(ButtonOption);
+    _this.setTrigger(_this.option.trigger);
+    _this.setTarget(_this.option.target);
     return _this;
   }
 
   // static
 
   _createClass(Modal, [{
-    key: 'init',
+    key: 'getDefaultOption',
 
 
     // public
 
+    value: function getDefaultOption() {
+      return Default;
+    }
+  }, {
+    key: 'init',
     value: function init() {
-      var _this2 = this;
-
-      // modal open button.
-      _util2.default.eventOnSelector(Selector.OPEN, 'click', this._modalOpenHandler.bind(this));
+      // modal trigger button.
+      _elementUtil2.default.addListener(Selector.TRIGGER, 'click', this._triggerHandler.bind(this));
 
       // modal close button.
-      _util2.default.eventOnSelector(Selector.CLOSE, 'click', this._modalCloseHandler.bind(this), true);
+      _elementUtil2.default.addListener(Selector.CLOSE + ',' + Selector.TRIGGER_CLOSE, 'click', this._closeHandler.bind(this), true);
 
-      // window onclick.
-      window.addEventListener('click', function (event) {
-        if (event.target.classList.contains(ClassName.MODAL)) {
-          _this2._modalHide(event.target);
-        }
-      });
+      if (this.option.enable_outside_close) {
+        window.addEventListener('click', this._modalOutsideClickHandler.bind(this));
+      }
 
-      // If modal doesn't have close button, add it.
+      // If modal-header does not have close button, add it.
       var modals = document.querySelectorAll(Selector.MODAL);
-      if (modals.length > 0) {
+      if (modals.length) {
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
         var _iteratorError = undefined;
 
         try {
           for (var _iterator = modals[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var m = _step.value;
+            var modal = _step.value;
 
-            this._addCloseBtn(m);
+            this._addCloseBtn(modal);
           }
         } catch (err) {
           _didIteratorError = true;
@@ -117,74 +127,137 @@ var Modal = function (_CosmosModule) {
   }, {
     key: 'makeDialog',
     value: function makeDialog(text) {
-      var m = document.createElement('div'); // modal
-      var c = document.createElement('div'); // modal-content
-      // modal-content
-      c.classList.add(ClassName.CONTENT);
-      c.textContent = text;
-      // modal
-      m.classList.add(ClassName.MODAL);
-      m.appendChild(c);
-      this._addCloseBtn(m);
-      document.body.appendChild(m);
+      var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+      var modal = document.createElement('DIV');
+      var content = document.createElement('DIV');
+      var header = document.createElement('DIV');
+      var h3 = document.createElement('H3');
+      var body = document.createElement('DIV');
+
+      // set elements.
+      modal.classList.add(ClassName.MODAL);
+      content.classList.add(ClassName.CONTENT);
+      header.classList.add(ClassName.HEADER);
+      h3.textContent = title || this.option.default_title;
+      body.classList.add(ClassName.BODY);
+      body.textContent = text;
+
+      // assemble.
+      header.appendChild(h3);
+      content.appendChild(header);
+      content.appendChild(body);
+      modal.appendChild(content);
+      this._addCloseBtn(modal);
+      document.body.appendChild(modal);
+
       // show
-      this._modalShow(m);
+      this._modalShow(modal);
+    }
+  }, {
+    key: 'setTrigger',
+    value: function setTrigger(selector) {
+      if (!selector) return;
+      this.trigger = _elementUtil2.default.getElement(selector);
+      this.target = this._getTargetFromTrigger(this.trigger);
+      return this;
+    }
+  }, {
+    key: 'setTarget',
+    value: function setTarget(selector) {
+      if (!selector) return;
+      this.target = _elementUtil2.default.getElement(selector);
+      return this;
+    }
+  }, {
+    key: 'show',
+    value: function show() {
+      this._modalShow(this.target);
+    }
+  }, {
+    key: 'hide',
+    value: function hide() {
+      this._modalHide(this.target);
+    }
+  }, {
+    key: 'toggle',
+    value: function toggle() {
+      if (this._isShown(this.target)) {
+        this.hide();
+      } else {
+        this.show();
+      }
     }
 
     // private
 
   }, {
-    key: '_modalCloseHandler',
-    value: function _modalCloseHandler(event) {
-      var m = _util2.default.findAncestor(event.currentTarget, Selector.MODAL);
-      this._modalHide(m);
+    key: '_closeHandler',
+    value: function _closeHandler(event) {
+      var modal = _elementUtil2.default.findAncestor(event.currentTarget, Selector.MODAL);
+      this._modalHide(modal);
       event.stopPropagation();
     }
   }, {
-    key: '_modalOpenHandler',
-    value: function _modalOpenHandler(event) {
-      var targetID = event.currentTarget.dataset.target;
-      var t = document.querySelector(targetID);
-      if (!t) {
+    key: '_triggerHandler',
+    value: function _triggerHandler(event) {
+      var target = this._getTargetFromTrigger(event.currentTarget);
+      if (!target) {
         return;
       }
 
-      this._modalShow(t);
+      this._modalShow(target);
     }
   }, {
     key: '_modalShow',
     value: function _modalShow(modal) {
-      if (!modal.classList.contains(ClassName.SHOW)) {
-        modal.classList.add(ClassName.SHOW);
-      }
+      modal.classList.add(ClassName.SHOW);
     }
   }, {
     key: '_modalHide',
     value: function _modalHide(modal) {
-      if (modal.classList.contains(ClassName.SHOW)) {
-        modal.classList.remove(ClassName.SHOW);
-      }
+      modal.classList.remove(ClassName.SHOW);
+    }
+  }, {
+    key: '_isShown',
+    value: function _isShown(modal) {
+      return modal.classList.contains(ClassName.SHOW);
     }
   }, {
     key: '_addCloseBtn',
     value: function _addCloseBtn(modal) {
-      if (modal.querySelector(Selector.CLOSE)) {
-        return;
-      }
+      var header = modal.querySelector(Selector.HEADER);
+      var close = modal.querySelector(Selector.CLOSE);
 
-      var content = modal.querySelector(Selector.CONTENT);
-      this.button.appendBtnClose(content, this._modalCloseHandler.bind(this));
+      if (!header || close) return;
+      this.button.appendBtnClose(header, this._closeHandler.bind(this));
+    }
+  }, {
+    key: '_getTargetFromTrigger',
+    value: function _getTargetFromTrigger(trigger) {
+      var selector = trigger.getAttribute('href') || trigger.dataset.target || '';
+      if (!selector) return;
+      return _elementUtil2.default.getElement(selector);
+    }
+  }, {
+    key: '_modalOutsideClickHandler',
+    value: function _modalOutsideClickHandler(event) {
+      if (event.target.classList.contains(ClassName.MODAL)) {
+        this._modalHide(event.target);
+      }
     }
   }], [{
     key: 'dialog',
     value: function dialog(text) {
-      var m = new Modal();
-      m.makeDialog(text);
+      var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+      var modal = new Modal();
+      modal.makeDialog(text, title);
     }
   }, {
-    key: 'name',
+    key: 'isLoadable',
     get: function get() {
-      return NAME;
+      return true;
     }
   }]);
 

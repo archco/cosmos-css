@@ -11,11 +11,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************
   Color
 *************************************************************/
-var NAME = 'Cosmos.lib.Color';
 var Config = {
   lightnessPoint: 166, // 65%
-  darkDefault: '#000000',
-  lightDefault: '#FFFFFF'
+  darkDefault: '#000',
+  lightDefault: '#fff'
 };
 
 var Color = function () {
@@ -27,38 +26,43 @@ var Color = function () {
 
   _createClass(Color, [{
     key: 'getContrast',
-    value: function getContrast(dark, light) {
+    value: function getContrast() {
+      var dark = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Config.darkDefault;
+      var light = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Config.lightDefault;
+
       return Color.contrast(this._color, dark, light);
     }
 
-    // static methods
+    // static
+
+    /**
+     * color to rgb array.
+     *
+     * @param  {String|Array} color
+     * @return {Array}  [red, green, blue]
+     */
 
   }], [{
     key: 'colorToArray',
-
-
-    /**
-     * color to rgb array
-     * @param  string|array color
-     * @return array  [red, green, blue]
-     */
     value: function colorToArray(color) {
       var array = [];
       if (typeof color == 'string') {
-        array = Color.hexToRgb(color);
+        array = this.hexToRgb(color);
       } else if (Array.isArray(color)) {
         array = color;
       } else {
         throw new Error('parameter only "hex color" or "rgb array"');
       }
+
       return array;
     }
 
     /**
-     * hexToRgb
+     * hex color to rgb array.
      * @link http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
-     * @param  string  hex
-     * @return array|null
+     *
+     * @param  {String}  hex
+     * @return {Array}
      */
 
   }, {
@@ -66,53 +70,75 @@ var Color = function () {
     value: function hexToRgb(hex) {
       // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
       var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-      hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-        return r + r + g + g + b + b;
+
+      return hex.replace(shorthandRegex, function (m, r, g, b) {
+        return '#' + r + r + g + g + b + b;
+      }).substring(1).match(/.{2}/g).map(function (x) {
+        return parseInt(x, 16);
       });
-      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-      return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null;
     }
 
     /**
      * rgb values to hex color string
      *
-     * @param  number r
-     * @param  number g
-     * @param  number b
-     * @return string
+     * @param  {Number} r
+     * @param  {Number} g
+     * @param  {Number} b
+     * @param  {Boolean} [ toShort = false ] convert to shorthand.
+     * @return {String}
      */
 
   }, {
     key: 'rgbToHex',
     value: function rgbToHex(r, g, b) {
-      r = r.toString(16);
-      g = g.toString(16);
-      b = b.toString(16);
-      return "#" + r + g + b;
+      var toShort = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+      var hex = '#' + [r, g, b].map(function (x) {
+        return x.toString(16).padStart(2, '0');
+      }).join('');
+
+      return toShort ? this._hexToShorthand(hex) : hex;
+    }
+  }, {
+    key: '_hexToShorthand',
+    value: function _hexToShorthand(hex) {
+      var check = true;
+      var rgb = hex.substring(1).match(/.{2}/g);
+
+      // check.
+      rgb.map(function (x) {
+        if (!x.match(/(.)\1+/)) check = false;
+      });
+
+      return check ? '#' + rgb.map(function (x) {
+        return x.substring(1);
+      }).join('') : hex;
     }
 
     /**
      * get rgb color's lightness value.
      *
-     * @param  string|array  color
-     * @return number  (0 ~ 255)
+     * @param  {String|Array} color
+     * @return {Number}  (0 ~ 255)
      */
 
   }, {
     key: 'lightness',
     value: function lightness(color) {
-      var rgb = Color.colorToArray(color);
+      var rgb = this.colorToArray(color);
+
       // Color lightness formula.
       // @link https://www.w3.org/TR/AERT#color-contrast
       return (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
     }
 
     /**
-     * get contrast color
-     * @param  array|string color
-     * @param  string  dark
-     * @param  string  light
-     * @return string  dark or light
+     * return contrast color of input.
+     *
+     * @param  {String|Array} color
+     * @param  {String}  dark
+     * @param  {String}  light
+     * @return {String}  dark or light
      */
 
   }, {
@@ -121,17 +147,7 @@ var Color = function () {
       var dark = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Config.darkDefault;
       var light = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Config.lightDefault;
 
-      var lightness = Color.lightness(color);
-      if (lightness > Config.lightnessPoint) {
-        return dark;
-      } else {
-        return light;
-      }
-    }
-  }, {
-    key: 'name',
-    get: function get() {
-      return NAME;
+      return this.lightness(color) > Config.lightnessPoint ? dark : light;
     }
   }]);
 

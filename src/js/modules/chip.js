@@ -1,35 +1,36 @@
 import CosmosModule from '../lib/cosmos-module.js';
+import ElementUtil from '../lib/element-util.js';
 import Button from './button.js';
 
 /************************************************************
   Chip
 *************************************************************/
-const NAME = 'Cosmos.Chip';
 const ClassName = {
-  CHIP: 'chip'
+  CHIP: 'chip',
 };
 const Selector = {
-  CHIP: `.${ClassName.CHIP}`
+  CHIP: `.${ClassName.CHIP}`,
 };
 const Default = {
+  container: '#chip-container',
   tag: 'span', // chip's tagName. span, div, a ...
   close_button: true, // enable close button.
-  close_action: 'remove' // close action. remove | hide
+  close_action: 'remove', // close action. remove | hide
 };
 
-class Chip extends CosmosModule {
-  constructor(container, option = {}) {
+export default class Chip extends CosmosModule {
+  constructor(option = {}) {
     super(option);
-    this.container = document.querySelector(container);
+    this.setContainer(this.option.container);
     this.button = new Button({
-      close_action: this.option.close_action
+      close_action: this.option.close_action,
     });
   }
 
   // static
 
-  static get name() {
-    return NAME;
+  static get isFunctional() {
+    return true;
   }
 
   // public
@@ -40,12 +41,13 @@ class Chip extends CosmosModule {
    * @param {String} text
    * @param {String} imgSrc
    * @param {Object} data  dataset values.
-   * @return {void}
+   * @return {Element} element of new chip.
    */
   add(text, imgSrc = '', data = {}) {
     let chip = this._createChip(text, imgSrc, data);
 
     this.container.appendChild(chip);
+    return chip;
   }
 
   /**
@@ -60,6 +62,7 @@ class Chip extends CosmosModule {
     for (let chip of chips) {
       this.container.removeChild(chip);
     }
+
     return count;
   }
 
@@ -72,6 +75,17 @@ class Chip extends CosmosModule {
     return this.container;
   }
 
+  /**
+   * setContainer
+   *
+   * @param {String|Element} selector
+   * @return {Chip}
+   */
+  setContainer(selector) {
+    this.container = ElementUtil.getElement(selector);
+    return this;
+  }
+
   getDefaultOption() {
     return Default;
   }
@@ -80,21 +94,24 @@ class Chip extends CosmosModule {
 
   _createChip(text, imgSrc, data) {
     let chip = document.createElement(this.option.tag);
+
     // base.
     chip.classList.add(ClassName.CHIP);
     chip.textContent = text;
+
     // img.
-    if (imgSrc) {
-      chip.appendChild(this._createImg(imgSrc));
-    }
+    if (imgSrc) chip.appendChild(this._createImg(imgSrc));
+
     // dataset.
     for (let key in data) {
       if (key == 'href' && chip.tagName == 'A') {
         chip.href = data[key];
         continue;
       }
+
       chip.dataset[key] = data[key];
     }
+
     // close button.
     if (this.option.close_button) {
       this.button.appendBtnClose(chip);
@@ -109,5 +126,3 @@ class Chip extends CosmosModule {
     return img;
   }
 }
-
-export default Chip;

@@ -1,13 +1,14 @@
 {
   "name": "cosmos-css",
-  "version": "0.10.2",
+  "version": "0.12.0",
   "description": "The css framework for personal practice.",
   "main": "dist/module/cosmos.js",
-  "sass": "src/scss/style.scss",
+  "scss": "src/scss/cosmos.scss",
   "directories": {
     "test": "test"
   },
   "dependencies": {
+    "change-case": "^3.0.1",
     "normalize.css": "^7.0.0",
     "scss-palette": "^0.3.2"
   },
@@ -16,16 +17,16 @@
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
-    "babel-preset-env": "^1.3.3",
+    "babel-preset-env": "^1.5.2",
     "concurrently": "^3.4.0",
     "eslint": "^3.19.0",
     "fs-extra": "^2.1.2",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.5.3",
     "postcss": "^5.2.17",
     "postcss-cli": "^3.2.0",
-    "pug": "^2.0.0-beta11",
+    "pug": "^2.0.0-rc.2",
     "pug-cli": "^1.0.0-alpha6",
-    "webpack": "^2.4.1"
+    "webpack": "^2.6.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -34,9 +35,9 @@
     "dev": "npm run scss && npm run pug && npm run js",
     "watch": "node node_modules/concurrently/src/main \"npm run scss:watch\" \"npm run pug:watch\" \"npm run js:watch\"",
     "production": "npm run scss:min && npm run js:min",
-    "scss": "node node_modules/node-sass/bin/node-sass --source-map true src/scss/style.scss dist/css/style.css",
+    "scss": "node node_modules/node-sass/bin/node-sass --source-map true src/scss/cosmos.scss dist/css/style.css",
     "postscss": "npm run css",
-    "scss:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/style.scss dist/css/style.min.css",
+    "scss:min": "node node_modules/node-sass/bin/node-sass --output-style compressed src/scss/cosmos.scss dist/css/style.min.css",
     "postscss:min": "npm run css:min",
     "scss:watch": "npm run scss -- --watch",
     "pug": "node node_modules/pug-cli --pretty test/views/pages/ --out ./test/html/",

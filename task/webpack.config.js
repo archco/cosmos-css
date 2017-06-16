@@ -9,12 +9,10 @@ const banner = `/*!
  */`;
 
 module.exports = {
-  entry: path.join(__dirname, '../src/js/cosmos.js'),
+  entry: path.join(__dirname, '../src/js/script.js'),
   output: {
     filename: 'script.js',
     path: path.resolve(__dirname, '../dist/js/'),
-    library: 'Cosmos',
-    libraryTarget: 'window'
   },
   module: {
     loaders: [
@@ -27,21 +25,21 @@ module.exports = {
             [
               'env',
               {
-                'targets': {
-                  'browsers': ['> 1%']
-                }
-              }
-            ]
-          ]
-        }
-      }
-    ]
+                targets: {
+                  browsers: ['> 1%'],
+                },
+              },
+            ],
+          ],
+        },
+      },
+    ],
   },
   devtool: 'source-map',
   plugins: [
     new webpack.BannerPlugin({
       banner: banner,
-      raw: true
-    })
-  ]
+      raw: true,
+    }),
+  ],
 };

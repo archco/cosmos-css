@@ -3,105 +3,7 @@ import scrollIt from './utils/scroll-it.js';
 /************************************************************
   util
 *************************************************************/
-const NAME = 'Cosmos.lib.Util';
-
 class Util {
-
-  // static
-
-  static get name() {
-    return NAME;
-  }
-
-  /**
-   * event on selector - will be deprecated.
-   * instead -> ElementUtil.addListener()
-   *
-   * @param  {String}   selector   querySelector
-   * @param  {String}   type       event type
-   * @param  {Function} listener   event listener
-   * @param  {Boolean}  useCapture
-   * @return {number|null}
-   */
-  static eventOnSelector(selector, type, listener, useCapture = false) {
-    let elements = document.querySelectorAll(selector);
-    if (elements.length === 0) {
-      return null;
-    }
-    for (let element of elements) {
-      element.addEventListener(type, listener, useCapture);
-    }
-    return elements.length;
-  }
-
-  /**
-   * find ancestor by selector - will be deprecated.
-   * instead -> ElementUtil.findAncestor()
-   *
-   * @param  {Element} element
-   * @param  {String}  selector
-   * @return {Element|null}
-   */
-  static findAncestor(element, selector) {
-    do {
-      if(element == document.querySelector('html')) return null;
-      element = element.parentElement;
-    } while(!element.matches(selector));
-    return element;
-  }
-
-  /**
-   * wrap elements by div.wrapper - will be deprecated.
-   * instead -> ElementUtil.wrap()
-   *
-   * @param  {String} target  querySelector
-   * @param  {String} wrapper wrapper's class name
-   * @return {void}
-   */
-  static wrap(target, wrapper) {
-    var elements = document.querySelectorAll(target);
-    var div = document.createElement('div');
-    div.classList.add(wrapper);
-
-    for (let el of elements) {
-      let parent = el.parentNode;
-      let sibling = el.nextSibling;
-
-      div.appendChild(el);
-
-      if (sibling) {
-        parent.insertBefore(div, sibling);
-      } else {
-        parent.appendChild(div);
-      }
-    }
-  }
-
-  /**
-   * wrap all elements inside to div.wrapper - will be deprecated.
-   * instead -> ElementUtil.wrapAll()
-   *
-   * @param  {String}  target  querySelector
-   * @param  {String}  wrapper wrapper's class name
-   * @return {void}
-   */
-  static wrapAll(target, wrapper) {
-    var elements = document.querySelectorAll(target);
-    var div = document.createElement('div');
-    div.classList.add(wrapper);
-    var parent = elements[0].parentNode;
-    var sibling = elements[0].nextSibling;
-
-    elements.forEach((elm) => {
-      div.appendChild(elm);
-    });
-
-    if (sibling) {
-      parent.insertBefore(div, sibling);
-    } else {
-      parent.appendChild(div);
-    }
-  }
 
   /**
    * location.search to Object.
@@ -153,6 +55,7 @@ class Util {
       for (let p in small) {
         if (!(p in big && this.isContains(big[p], small[p]))) return false;
       }
+
       return true;
     } else {
       return big === small;
@@ -171,7 +74,7 @@ class Util {
 }
 
 Object.assign(Util, {
-  scrollIt
+  scrollIt,
 });
 
 export default Util;
