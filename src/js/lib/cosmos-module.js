@@ -1,3 +1,5 @@
+import changeCase from 'change-case';
+
 /************************************************************
   CosmosModule
 *************************************************************/
@@ -87,7 +89,8 @@ export default class CosmosModule {
    */
   addSubModules(modules) {
     for (let mod of modules) {
-      this.subModules.set(mod.name, mod);
+      let name = changeCase.pascalCase(mod.name);
+      this.subModules.set(name, mod);
     }
 
     return this;
@@ -101,7 +104,8 @@ export default class CosmosModule {
    */
   removeSubModules(modules) {
     for (let mod of modules) {
-      this.subModules.delete(mod.name);
+      let name = changeCase.pascalCase(mod.name);
+      this.subModules.delete(name);
     }
 
     return this;
@@ -115,17 +119,17 @@ export default class CosmosModule {
   loadSubModules() {
     this.subModules.forEach(Mod => {
       let instance = new Mod(this.getSubModuleOption(Mod.name));
+      let instanceName = changeCase.camelCase(Mod.name); // mod's instance name to be camelCase.
 
       if (Mod.isLoadable) {
         instance.init();
       }
 
       if (Mod.isFunctional) {
-        // TODO: mod's instance name to be camelCase.
-        this[Mod.name] = instance;
+        this[instanceName] = instance;
       }
 
-      this.subModuleInstances.set(Mod.name, instance);
+      this.subModuleInstances.set(instanceName, instance);
     });
 
     return this;
@@ -139,6 +143,8 @@ export default class CosmosModule {
    */
   getSubModuleOption(modName) {
     let options = this.option.sub_modules;
+    modName = changeCase.snakeCase(modName);
+
     if (options && options[modName]) {
       return options[modName];
     } else {
@@ -154,7 +160,7 @@ export default class CosmosModule {
    * @return {CosmosModule}
    */
   setSubModuleOption(modName, option) {
-    // TODO: option key to be snake_case.
+    modName = changeCase.snakeCase(modName);
     this.option.sub_modules[modName] = option;
     return this;
   }
@@ -166,6 +172,7 @@ export default class CosmosModule {
    * @return {Object} instance of sub-module.
    */
   getSubModuleInstance(modName) {
+    modName = changeCase.camelCase(modName);
     return this.subModuleInstances.get(modName);
   }
 }
