@@ -6,38 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js modules</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./dist/css/style.css">
+    <link rel="stylesheet" href="dist/css/style.css">
   </head>
   <body>
-    <header class="bg-color-secondary pad flex-center-container" style="height:100px;">
-      <h1>cosmos-css</h1>
+    <header class="bg-color-primary pad flex-container-center" style="height:100px;">
+      <h1 id="project-name">cosmos-css</h1>
     </header>
-    <nav class="navbar sticky-top">
-      <div class="nav-header"><a class="nav-brand text" href="index.html">Brand Logo</a>
-        <button class="menu-toggle" type="button"><span class="display-hide">Toggle Navigation</span>
-          <div class="icon-bar1"></div>
-          <div class="icon-bar2"></div>
-          <div class="icon-bar3"></div>
-        </button>
+    <nav class="navbar sticky-top use-activator shadow-near">
+      <div class="navbar-header"><a class="navbar-brand text" href="index.html">cosmos-css</a>
+        <button class="navbar-toggle" type="button">Toggle Navigation</button>
       </div>
-      <ul class="menu-center use-activator">
-        <li class="hide-only-mobile"><a href="index.html">Home</a></li>
-        <li><a href="components.html?q=components">Components</a></li>
-        <li><a href="modules.html">Modules</a></li>
-        <li><a href="js-libraries.html">JS Libraries</a></li>
-        <li class="dropdown">
-          <button class="dropdown-toggle">dropdown</button>
-          <ul class="dropdown-content">
-            <li><a href="#">link1</a></li>
-            <li><a href="#">link2</a></li>
-            <li><a href="#">link3</a></li>
-          </ul>
-        </li>
-      </ul>
+      <div class="navbar-body justify-content-end">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="components.html?q=components">Components</a></li>
+          <li class="nav-item"><a class="nav-link" href="modules.html">Modules</a></li>
+          <li class="nav-item"><a class="nav-link" href="js-libraries.html">JS Libraries</a></li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="dropdown-toggle">dropdown</button>
+              <div class="dropdown-content" data-align="center"><a class="dropdown-item" href="#">link 1</a><a class="dropdown-item" href="#">link 2</a><a class="dropdown-item" href="#">link 3</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </nav>
     <div class="row">
-      <aside class="col-2">
-        <ul class="list fixed hide-only-mobile">
+      <aside class="col-md-2 hide-only-mobile">
+        <ul class="list fixed">
           <li><a href="#chip">Chip</a></li>
           <li><a href="#collapse">Collapse</a></li>
           <li><a href="#dropdown">Dropdown</a></li>
@@ -50,7 +45,7 @@
           <li><a href="#toast">Toast</a></li>
         </ul>
       </aside>
-      <section class="col-10">
+      <section class="col-md-10">
         <h1 id="chip">Chip</h1>
         <h2>Tag Chip</h2>
         <div class="chip">TagSample</div>
@@ -69,7 +64,7 @@
         <div id="chip-container"></div>
         <script>
           window.addEventListener('load', function () {
-            var chip = new Cosmos.Chip('#chip-container', {tag: 'a'});
+            var chip = new Cosmos.Chip({container: '#chip-container', tag: 'a'});
             chip.add(
               'hello',
               'https://www.aikido-almere.nl/img/youtube-256.png',
@@ -150,67 +145,38 @@
         </ul>
         <h1 id="dropdown">Dropdown</h1>
         <hr>
+        <h3>Toggle Dropdown</h3>
         <div class="dropdown">
           <button class="dropdown-toggle btn">TOGGLE</button>
-          <ul class="dropdown-content">
-            <li class="active"><a href="#">hello</a></li>
-            <li><a href="#">drop</a></li>
-            <li><a href="#">down</a></li>
-          </ul>
+          <div class="dropdown-content"><a class="dropdown-item active" href="#">hello</a><a class="dropdown-item" href="#">drop</a><a class="dropdown-item" href="#">down</a></div>
         </div>
+        <h3>Hover Dropdown</h3>
         <div class="dropdown">
           <button class="dropdown-btn btn info">HOVER</button>
-          <ul class="dropdown-content">
-            <li><a href="#">hello</a></li>
-            <li><a href="#">drop</a></li>
-            <li><a href="#">down</a></li>
-          </ul>
-        </div><br>
-        <div class="dropdown float-left">
-          <button class="dropdown-btn btn success">LEFT</button>
-          <ul class="dropdown-content" data-align="left">
-            <li><a href="#">hello</a></li>
-            <li><a href="#">drop</a></li>
-            <li><a href="#">down</a></li>
-          </ul>
+          <div class="dropdown-content"><a class="dropdown-item" href="#">hello</a><a class="dropdown-item" href="#">drop</a><a class="dropdown-item" href="#">down</a></div>
         </div>
-        <div class="dropdown float-right">
-          <button class="dropdown-btn btn warning">RIGHT</button>
-          <ul class="dropdown-content" data-align="right">
-            <li><a href="#">hello</a></li>
-            <li><a href="#">drop</a></li>
-            <li><a href="#">down</a></li>
-          </ul>
+        <h3>Dropdown Content Alignment</h3>
+        <div style="display:flex;width:100%;justify-content:space-between;">
+          <div class="dropdown">
+            <button class="dropdown-btn btn success">LEFT</button>
+            <div class="dropdown-content" data-align="left"><a class="dropdown-item" href="#">hello</a><a class="dropdown-item" href="#">drop</a><a class="dropdown-item" href="#">down</a></div>
+          </div>
+          <div class="dropdown">
+            <button class="dropdown-btn btn secondary">CENTER</button>
+            <div class="dropdown-content" data-align="center"><a class="dropdown-item" href="#">hello</a><a class="dropdown-item" href="#">drop</a><a class="dropdown-item" href="#">down</a></div>
+          </div>
+          <div class="dropdown">
+            <button class="dropdown-btn btn warning">RIGHT</button>
+            <div class="dropdown-content" data-align="right"><a class="dropdown-item" href="#">hello</a><a class="dropdown-item" href="#">drop</a><a class="dropdown-item" href="#">down</a></div>
+          </div>
         </div>
-        <div class="float-clear"></div>
         <h1 id="message">Message</h1>
         <hr>
-        <h2>Message text color</h2>
-        <ul>
-          <li>
-            <p class="color-primary">primary color</p>
-          </li>
-          <li>
-            <p class="color-secondary">secondary color</p>
-          </li>
-          <li>
-            <p class="color-info">info color</p>
-          </li>
-          <li>
-            <p class="color-success">success color</p>
-          </li>
-          <li>
-            <p class="color-warning">warning color</p>
-          </li>
-          <li>
-            <p class="color-danger">danger color</p>
-          </li>
-          <li>
-            <p class="color-error">error color</p>
-          </li>
-        </ul>
-        <h2>Message box</h2>
+        <h3>Message box</h3>
         <div class="message-box"><span>This is message box.</span>
+          <button class="btn-close at-right-middle"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div class="message-box default"><span>This is default message box.</span>
           <button class="btn-close at-right-middle"><i class="fa fa-times" aria-hidden="true"></i></button>
         </div>
         <div class="message-box primary"><span>This is primary message box.</span>
@@ -231,7 +197,16 @@
         <div class="message-box danger"><span>This is danger message box.</span>
           <button class="btn-close at-right-middle"><i class="fa fa-times" aria-hidden="true"></i></button>
         </div>
-        <div class="message-box error"><span>This is error message box.</span>
+        <div class="message-box light"><span>This is light message box.</span>
+          <button class="btn-close at-right-middle"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div class="message-box dark"><span>This is dark message box.</span>
+          <button class="btn-close at-right-middle"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div class="message-box shade"><span>This is shade message box.</span>
+          <button class="btn-close at-right-middle"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div class="message-box link"><span>This is link message box.</span>
           <button class="btn-close at-right-middle"><i class="fa fa-times" aria-hidden="true"></i></button>
         </div>
         <h2>showMessage()</h2>
@@ -239,85 +214,70 @@
         <div>
           <input class="inline" type="text" id="input-msg">
           <button class="btn" type="button" id="btn-msg">show message</button>
-        </div><script>
-        var b = document.querySelector('#btn-msg');
+        </div><script>var b = document.querySelector('#btn-msg');
         b.onclick = function () {
           var i = document.querySelector('#input-msg');
           showMessage(i.value);
         };</script>
         <h1 id="modal">Modal</h1>
         <hr>
-        <button class="btn warning" data-toggle="modal" data-target="#modal1">Open Modal</button><br>
+        <button class="btn warning" data-trigger="modal" data-target="#modal1">Modal Trigger Button</button><a class="btn-flat" id="test" href="#modal2" data-trigger="modal">Link Modal</a><br>
         <div class="modal" id="modal1">
           <div class="modal-content">
-            <h4>Modal Test</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="modal-header">
+              <h3>Dialog Title</h3>
+            </div>
+            <div class="modal-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn default" data-trigger="modal-close">Cancel</button>
+              <button class="btn success">OK</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="modal2">
+          <div class="modal-content">
+            <div class="modal-header bg-color-dark">
+              <h3>Link Trigger Test</h3>
+            </div>
+            <div class="modal-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
           </div>
         </div>
         <input class="inline" type="text" id="modal-dialog-input">
-        <button class="btn success" type="button" id="modal-dialog-btn">Modal Dialog</button><script>
-        document.querySelector('#modal-dialog-btn').addEventListener('click', function () {
-          var msg = document.querySelector('#modal-dialog-input').value || 'Empty';
-          modalDialog(msg);
-        });</script>
+        <button class="btn success" type="button" id="modal-dialog-btn">Modal Dialog</button>
+        <script>
+          document.querySelector('#modal-dialog-btn').addEventListener('click', function () {
+            var msg = document.querySelector('#modal-dialog-input').value || 'Empty';
+            Cosmos.Modal.dialog(msg, 'Title');
+          });
+        </script>
         <h1 id="nav">Nav</h1>
         <hr>
-        <h2>Left and Right Menu (float)</h2>
-        <div class="container">
-          <nav class="navbar">
-            <div class="nav-header"><a class="nav-brand text" href="test.html">Brand Logo</a>
-              <button class="menu-toggle" type="button"><span class="display-hide">Toggle Navigation</span>
-                <div class="icon-bar1"></div>
-                <div class="icon-bar2"></div>
-                <div class="icon-bar3"></div>
-              </button>
+        <h3>navbar</h3>
+        <div class="group">
+          <nav class="navbar bg-color-dark">
+            <div class="navbar-header"><a class="navbar-brand text" href="#">Navbar</a>
+              <button class="navbar-toggle right" type="button">Toggle Navigation</button>
             </div>
-            <div class="menu-float-wrapper">
-              <ul class="menu-float-left">
-                <li class="hide-only-mobile"><a href="test.html">Home</a></li>
-                <li class="active"><a href="#">active</a></li>
-                <li><a href="#">link</a></li>
-                <li class="dropdown">
-                  <button class="dropdown-toggle">dropdown</button>
-                  <ul class="dropdown-content">
-                    <li><a href="#">link1</a></li>
-                    <li><a href="#">link2</a></li>
-                    <li><a href="#">link3</a></li>
-                  </ul>
+            <div class="navbar-body justify-content-between">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#">link1</a></li>
+                <li class="nav-item active"><a class="nav-link" href="#">link2</a></li>
+                <li class="nav-item">
+                  <div class="dropdown">
+                    <button class="dropdown-toggle">dropdown</button>
+                    <div class="dropdown-content" data-align="center"><a class="dropdown-item" href="#">link 1</a><a class="dropdown-item" href="#">link 2</a><a class="dropdown-item" href="#">link 3</a></div>
+                  </div>
                 </li>
               </ul>
-              <ul class="menu-float-right">
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Register</a></li>
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#">right</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">logout</a></li>
               </ul>
             </div>
-          </nav>
-        </div>
-        <h2>Center Menu (inline)</h2>
-        <div class="container">
-          <nav class="navbar">
-            <div class="nav-header"><a class="nav-brand text" href="test.html">Brand Logo</a>
-              <button class="menu-toggle" type="button"><span class="display-hide">Toggle Navigation</span>
-                <div class="icon-bar1"></div>
-                <div class="icon-bar2"></div>
-                <div class="icon-bar3"></div>
-              </button>
-            </div>
-            <ul class="menu-center">
-              <li class="hide-only-mobile"><a href="test.html">Home</a></li>
-              <li class="active"><a href="#">active</a></li>
-              <li><a href="#">link</a></li>
-              <li class="dropdown">
-                <button class="dropdown-toggle">dropdown</button>
-                <ul class="dropdown-content">
-                  <li><a href="#">link1</a></li>
-                  <li><a href="#">link2</a></li>
-                  <li><a href="#">link3</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Register</a></li>
-            </ul>
           </nav>
         </div>
         <h1 id="parallax">Parallax</h1>
@@ -341,73 +301,58 @@
         </form>
         <ul class="simple-crud-list">
           <li class="simple-crud-item">
-            <div class="simple-crud-view-read show"><span>id: 1 name: James age: 35</span><span class="simple-crud-actions">
+            <div class="simple-crud-view-read show"><span class="content"><span>id: 1 name: James age: 35</span></span><span class="actions btn-group">
                 <button class="simple-crud-update btn">Edit</button>
                 <button class="simple-crud-delete btn danger">Delete</button></span></div>
-            <div class="simple-crud-view-update">
-              <form class="form-inline" action="#" method="POST"><span>id: 1</span>
+            <form class="form-inline simple-crud-view-update" action="#" method="POST"><span class="content"><span>id: 1</span>
                 <input type="hidden" name="id" value="1">
-                <label><span>Name: </span>
+                <label><span>Name:</span>
                   <input type="text" name="name" value="James">
                 </label>
                 <label><span>Age:</span>
                   <input type="number" name="age" value="35">
-                </label><span class="simple-crud-actions">
-                  <button class="simple-crud-cancel btn" type="button">Cancel</button>
-                  <button class="btn success" type="submit">Edit</button></span>
-              </form>
-            </div>
-            <div class="simple-crud-view-delete"><span class="color-danger"><b>Are you sure?</b> Remove this model?</span><span class="simple-crud-actions">
-                <form class="form-inline" action="#" method="POST">
-                  <button class="btn danger" type="submit">Delete</button>
-                  <button class="simple-crud-cancel btn" type="button">Cancel</button>
-                </form></span></div>
+                </label></span><span class="actions btn-group">
+                <button class="simple-crud-cancel btn" type="button">Cancel</button>
+                <button class="btn success" type="submit">Edit</button></span></form>
+            <form class="form-inline simple-crud-view-delete" action="#" method="POST"><span class="content"><span class="color-danger"><b>Are you sure?</b> Remove this model?</span></span><span class="actions btn-group">
+                <button class="btn danger" type="submit">Delete</button>
+                <button class="simple-crud-cancel btn" type="button">Cancel</button></span></form>
           </li>
           <li class="simple-crud-item">
-            <div class="simple-crud-view-read show"><span>id: 2 name: Caren age: 24</span><span class="simple-crud-actions">
+            <div class="simple-crud-view-read show"><span class="content"><span>id: 2 name: Caren age: 24</span></span><span class="actions btn-group">
                 <button class="simple-crud-update btn">Edit</button>
                 <button class="simple-crud-delete btn danger">Delete</button></span></div>
-            <div class="simple-crud-view-update">
-              <form class="form-inline" action="#" method="POST"><span>id: 2</span>
+            <form class="form-inline simple-crud-view-update" action="#" method="POST"><span class="content"><span>id: 2</span>
                 <input type="hidden" name="id" value="2">
-                <label><span>Name: </span>
+                <label><span>Name:</span>
                   <input type="text" name="name" value="Caren">
                 </label>
                 <label><span>Age:</span>
                   <input type="number" name="age" value="24">
-                </label><span class="simple-crud-actions">
-                  <button class="simple-crud-cancel btn" type="button">Cancel</button>
-                  <button class="btn success" type="submit">Edit</button></span>
-              </form>
-            </div>
-            <div class="simple-crud-view-delete"><span class="color-danger"><b>Are you sure?</b> Remove this model?</span><span class="simple-crud-actions">
-                <form class="form-inline" action="#" method="POST">
-                  <button class="btn danger" type="submit">Delete</button>
-                  <button class="simple-crud-cancel btn" type="button">Cancel</button>
-                </form></span></div>
+                </label></span><span class="actions btn-group">
+                <button class="simple-crud-cancel btn" type="button">Cancel</button>
+                <button class="btn success" type="submit">Edit</button></span></form>
+            <form class="form-inline simple-crud-view-delete" action="#" method="POST"><span class="content"><span class="color-danger"><b>Are you sure?</b> Remove this model?</span></span><span class="actions btn-group">
+                <button class="btn danger" type="submit">Delete</button>
+                <button class="simple-crud-cancel btn" type="button">Cancel</button></span></form>
           </li>
           <li class="simple-crud-item">
-            <div class="simple-crud-view-read show"><span>id: 3 name: Bob age: 30</span><span class="simple-crud-actions">
+            <div class="simple-crud-view-read show"><span class="content"><span>id: 3 name: Bob age: 30</span></span><span class="actions btn-group">
                 <button class="simple-crud-update btn">Edit</button>
                 <button class="simple-crud-delete btn danger">Delete</button></span></div>
-            <div class="simple-crud-view-update">
-              <form class="form-inline" action="#" method="POST"><span>id: 3</span>
+            <form class="form-inline simple-crud-view-update" action="#" method="POST"><span class="content"><span>id: 3</span>
                 <input type="hidden" name="id" value="3">
-                <label><span>Name: </span>
+                <label><span>Name:</span>
                   <input type="text" name="name" value="Bob">
                 </label>
                 <label><span>Age:</span>
                   <input type="number" name="age" value="30">
-                </label><span class="simple-crud-actions">
-                  <button class="simple-crud-cancel btn" type="button">Cancel</button>
-                  <button class="btn success" type="submit">Edit</button></span>
-              </form>
-            </div>
-            <div class="simple-crud-view-delete"><span class="color-danger"><b>Are you sure?</b> Remove this model?</span><span class="simple-crud-actions">
-                <form class="form-inline" action="#" method="POST">
-                  <button class="btn danger" type="submit">Delete</button>
-                  <button class="simple-crud-cancel btn" type="button">Cancel</button>
-                </form></span></div>
+                </label></span><span class="actions btn-group">
+                <button class="simple-crud-cancel btn" type="button">Cancel</button>
+                <button class="btn success" type="submit">Edit</button></span></form>
+            <form class="form-inline simple-crud-view-delete" action="#" method="POST"><span class="content"><span class="color-danger"><b>Are you sure?</b> Remove this model?</span></span><span class="actions btn-group">
+                <button class="btn danger" type="submit">Delete</button>
+                <button class="simple-crud-cancel btn" type="button">Cancel</button></span></form>
           </li>
         </ul>
         <h1 id="tab">Tab</h1>
@@ -450,14 +395,20 @@
         </div>
         <h2>Tab Tip based by Color-set</h2>
         <ul class="tab">
+          <li><a class="tab-link default" href="#tab3-default">default</a></li>
           <li><a class="tab-link primary" href="#tab3-primary">primary</a></li>
           <li><a class="tab-link secondary" href="#tab3-secondary">secondary</a></li>
           <li><a class="tab-link info" href="#tab3-info">info</a></li>
           <li><a class="tab-link success" href="#tab3-success">success</a></li>
           <li><a class="tab-link warning" href="#tab3-warning">warning</a></li>
           <li><a class="tab-link danger" href="#tab3-danger">danger</a></li>
-          <li><a class="tab-link error" href="#tab3-error">error</a></li>
+          <li><a class="tab-link light" href="#tab3-light">light</a></li>
+          <li><a class="tab-link dark" href="#tab3-dark">dark</a></li>
+          <li><a class="tab-link shade" href="#tab3-shade">shade</a></li>
+          <li><a class="tab-link link" href="#tab3-link">link</a></li>
         </ul>
+        <div class="tab-content" id="tab3-default">default
+        </div>
         <div class="tab-content" id="tab3-primary">primary
         </div>
         <div class="tab-content" id="tab3-secondary">secondary
@@ -470,7 +421,13 @@
         </div>
         <div class="tab-content" id="tab3-danger">danger
         </div>
-        <div class="tab-content" id="tab3-error">error
+        <div class="tab-content" id="tab3-light">light
+        </div>
+        <div class="tab-content" id="tab3-dark">dark
+        </div>
+        <div class="tab-content" id="tab3-shade">shade
+        </div>
+        <div class="tab-content" id="tab3-link">link
         </div>
         <h2>Vertical Tab</h2>
         <div class="row">
@@ -504,7 +461,7 @@
           window.addEventListener('load', function () {
             document.querySelector('#btn-toast').addEventListener('click', function () {
               toastCount++;
-              Cosmos.Toast.makeText('toast test ' + toastCount).show();
+              cosmos.toast.setText('toast test ' + toastCount).show();
             });
           });
         </script>
@@ -533,10 +490,10 @@
       <button class="scroll-to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
       <button class="scroll-to-bottom"><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
     </div><script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.min.js"></script>
-    <script src="./dist/js/script.js"></script><script>
-    var year = new Date().getFullYear();
-    document.querySelector('.footer-copyright').innerHTML = "copyright \&copy; " + year + " cosmos all rights reserved.";</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.min.js"></script>
+    <script src="dist/js/script.js"></script><script>var year = new Date().getFullYear();
+    document.querySelector('.footer-copyright').innerHTML = "copyright \&copy; " + year + " cosmos all rights reserved.";
+    document.querySelector('#project-name').innerHTML = "cosmos-css " + Cosmos.version;</script>
     <script>//</script>
   </body>
 </html>
