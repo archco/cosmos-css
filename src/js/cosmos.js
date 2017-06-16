@@ -10,7 +10,6 @@ import pkg from '../../package.json';
 // Libraries.
 import Util from './lib/util.js';
 import Color from './lib/color.js';
-import Helper from './lib/helper.js';
 import ElementUtil from './lib/element-util.js';
 import changeCase from 'change-case';
 
@@ -115,7 +114,6 @@ export {
   Util,
   ElementUtil,
   Color,
-  Helper,
   Button,
   Chip,
   Toast,

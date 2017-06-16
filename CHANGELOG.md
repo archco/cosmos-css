@@ -16,6 +16,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 - Add some colors into color-set.scss #156
 - Improve Button: button group #138
 - Now available give a option "container_position" in toast.js. #149
+- Add a new component: Hero Banner #155
 
 ### Changed
 - Improve Collapse: Available use instance for individual element. #153
@@ -34,6 +35,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 
 ### Removed
 - No jquery required anymore.
+- Remove deprecated part in js files. #145
 
 ## [0.11.0] - 2017-05-08
 ### Added
