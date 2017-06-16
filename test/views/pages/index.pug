@@ -6,8 +6,11 @@ block title
 
 block content
   section(class='pad')
-    h1 Hello, World!
-    p test page.
+    div(class='hero-block')
+      img(src=imageSrc[0] alt='bg-image' class='hero-image')
+      div(class='hero-content')
+        h1 Hello, World!
+        p test page.
 
     h1 Helper
     include ../includes/helper.pug

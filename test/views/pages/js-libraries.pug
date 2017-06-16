@@ -6,8 +6,8 @@ block title
 
 block append content
   div(class='row')
-    aside(class='col-2')
-      ul(class='list fixed hide-only-mobile')
+    aside(class='col-md-2 hide-only-mobile')
+      ul(class='list fixed')
         li
           a(href='#color') Color
         li
@@ -15,7 +15,7 @@ block append content
         li
           a(href='#util') Util
 
-    section(class='col-10')
+    section(class='col-md-10')
       h1(id='color') Color
       hr
       include ../includes/color.pug

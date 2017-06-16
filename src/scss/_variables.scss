@@ -186,10 +186,11 @@ $dropdown-shadow: $shadow-normal !default;
 
 // grid
 $grid-breakpoints: (
-  base: 768px, // default responsive breakpoint: tablet-size.
-  sm: 0,
+  base: 0, // Applies all width size.
+  sm: 576px,
   md: 768px,
   lg: 992px,
+  xl: 1200px,
 ) !default;
 $grid-columns: 12 !default;
 $grid-gutter-width: 1.5rem !default;
