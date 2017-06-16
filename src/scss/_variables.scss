@@ -123,6 +123,8 @@ $code-block-line-height: 1.45 !default;
 //======================================================================
 // Z-index Lists
 //======================================================================
+$z-index-hero-background:     1 !default;
+$z-index-hero-content:        2 !default;
 $z-index-message-box:         2 !default;
 $z-index-card:                2 !default;
 $z-index-card-content:        3 !default;
@@ -327,3 +329,9 @@ $message-box-margin: 8px !default;
 $simple-crud-min-height: 3em !default;
 $simple-crud-padding-x: .5rem !default;
 $simple-crud-margin-bottom: .75rem !default;
+
+// hero-banner
+$hero-banner-min-height: 10em !default;
+$hero-banner-pad-small: 3em !default;
+$hero-banner-pad-medium: 6em !default;
+$hero-banner-pad-large: 9em !default;
