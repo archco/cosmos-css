@@ -1,0 +1,52 @@
+@mixin _banner-padding-y($size) {
+  padding-top: $size;
+  padding-bottom: $size;
+
+  @include media-only-mobile {
+    padding-top: $size / 2;
+    padding-bottom: $size / 2;
+  }
+}
+
+//============================================================
+// Hero Banner
+//============================================================
+
+.hero-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 10em;
+  overflow: hidden;
+
+  &.pad-small { @include _banner-padding-y(3em); }
+  &.pad-medium { @include _banner-padding-y(6em); }
+  &.pad-large { @include _banner-padding-y(9em); }
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &.filter {
+    @include filter-set;
+  }
+}
+
+.hero-content {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  flex-direction: column;
+}

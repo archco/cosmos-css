@@ -3695,6 +3695,95 @@ ul.pagination {
   .toast.show {
     opacity: 1; }
 
+.hero-banner {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+  width: 100%;
+  min-height: 10em;
+  overflow: hidden; }
+  .hero-banner.pad-small {
+    padding-top: 3em;
+    padding-bottom: 3em; }
+    @media only screen and (max-width: 767px) {
+      .hero-banner.pad-small {
+        padding-top: 1.5em;
+        padding-bottom: 1.5em; } }
+  .hero-banner.pad-medium {
+    padding-top: 6em;
+    padding-bottom: 6em; }
+    @media only screen and (max-width: 767px) {
+      .hero-banner.pad-medium {
+        padding-top: 3em;
+        padding-bottom: 3em; } }
+  .hero-banner.pad-large {
+    padding-top: 9em;
+    padding-bottom: 9em; }
+    @media only screen and (max-width: 767px) {
+      .hero-banner.pad-large {
+        padding-top: 4.5em;
+        padding-bottom: 4.5em; } }
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .hero-background.filter.blur {
+    -webkit-filter: blur(4px);
+            filter: blur(4px); }
+  .hero-background.filter.lighten {
+    -webkit-filter: brightness(1.25);
+            filter: brightness(1.25); }
+  .hero-background.filter.darken {
+    -webkit-filter: brightness(0.75);
+            filter: brightness(0.75); }
+  .hero-background.filter.contrast {
+    -webkit-filter: contrast(150%);
+            filter: contrast(150%); }
+  .hero-background.filter.gray {
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%); }
+  .hero-background.filter.hue-rotate {
+    -webkit-filter: hue-rotate(90deg);
+            filter: hue-rotate(90deg); }
+  .hero-background.filter.invert {
+    -webkit-filter: invert(100%);
+            filter: invert(100%); }
+  .hero-background.filter.opacity {
+    -webkit-filter: opacity(50%);
+            filter: opacity(50%); }
+  .hero-background.filter.saturate {
+    -webkit-filter: saturate(200%);
+            filter: saturate(200%); }
+  .hero-background.filter.sepia {
+    -webkit-filter: sepia(100%);
+            filter: sepia(100%); }
+
+.hero-content {
+  z-index: 2;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-flex: 0;
+          flex: 0 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column; }
+
 .flex-row {
   -webkit-box-orient: horizontal !important;
   -webkit-box-direction: normal !important;

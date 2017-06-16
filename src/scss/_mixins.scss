@@ -4,7 +4,7 @@
 // mixin-name() { @content } : mixin with @content directive.
 
 @import './mixins/utilities';
-// clear-bot()
+// clear-both()
 // debug()
 // reset-text()
 // reset-list()
@@ -14,6 +14,7 @@
 // no-decoration()
 // set-link-state-color($link, $visited: null, $hover: null, $active: null)
 // form-inline-target() { @content }
+// filter-set()
 
 @import './mixins/border';
 // border-top-radius($radius)
