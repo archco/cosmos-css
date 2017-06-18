@@ -3,6 +3,7 @@ import CosmosModule from '../lib/cosmos-module.js';
 /************************************************************
   Parallax
 *************************************************************/
+const NAME = 'Parallax';
 const ClassName = {
   PARALLAX: 'parallax',
   HIDE: 'display-hide',
@@ -11,6 +12,10 @@ const ClassName = {
 export default class Parallax extends CosmosModule {
 
   // static
+
+  static get name() {
+    return NAME;
+  }
 
   static get isLoadable() {
     return true;

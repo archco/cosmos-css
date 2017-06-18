@@ -2,8 +2,9 @@ import CosmosModule from '../lib/cosmos-module.js';
 import eu from '../lib/element-util.js';
 
 /************************************************************
-  SipleCRUD
+  SimpleCRUD
 *************************************************************/
+const NAME = 'SimpleCRUD';
 const ClassName = {
   SHOW: 'show',
 };
@@ -21,6 +22,10 @@ const Selector = {
 export default class SimpleCRUD extends CosmosModule {
 
   // static
+
+  static get name() {
+    return NAME;
+  }
 
   static get isLoadable() {
     return true;

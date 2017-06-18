@@ -1200,6 +1200,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Button
 *************************************************************/
+var NAME = 'Button';
 var ClassName = {
   CLOSE: 'btn-close',
   POSITION_CORNER: 'at-corner',
@@ -1346,11 +1347,16 @@ var Button = function (_CosmosModule) {
       b.appendBtnClose(element, callback);
     }
   }, {
-    key: 'isLoadable',
+    key: 'name',
 
 
     // static
 
+    get: function get() {
+      return NAME;
+    }
+  }, {
+    key: 'isLoadable',
     get: function get() {
       return true;
     }
@@ -2096,6 +2102,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Chip
 *************************************************************/
+var NAME = 'Chip';
 var ClassName = {
   CHIP: 'chip'
 };
@@ -2261,6 +2268,11 @@ var Chip = function (_CosmosModule) {
       return img;
     }
   }], [{
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }, {
     key: 'isFunctional',
     get: function get() {
       return true;
@@ -2304,6 +2316,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Collapse
 *************************************************************/
+var NAME = 'Collapse';
 var ClassName = {
   TOGGLE: 'collapse-toggle',
   PANNEL: 'collapse-panel',
@@ -2581,6 +2594,11 @@ var Collapse = function (_CosmosModule) {
       return _elementUtil2.default.getElement(element.dataset.target);
     }
   }], [{
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }, {
     key: 'isLoadable',
     get: function get() {
       return true;
@@ -2629,6 +2647,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   dropdown
 *************************************************************/
+var NAME = 'Dropdown';
 var ClassName = {
   TOGGLE: 'dropdown-toggle',
   SHOW: 'show'
@@ -2732,11 +2751,16 @@ var Dropdown = function (_CosmosModule) {
       }
     }
   }], [{
-    key: 'isLoadable',
+    key: 'name',
 
 
     // static
 
+    get: function get() {
+      return NAME;
+    }
+  }, {
+    key: 'isLoadable',
     get: function get() {
       return true;
     }
@@ -2783,6 +2807,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   message
 *************************************************************/
+var NAME = 'Message';
 var Status = {
   INFO: 'info',
   SUCCESS: 'success',
@@ -2883,6 +2908,11 @@ var Message = function (_CosmosModule) {
       m.show(message, status);
     }
   }, {
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }, {
     key: 'isLoadable',
     get: function get() {
       return true;
@@ -2930,6 +2960,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Modal
 *************************************************************/
+var NAME = 'Modal';
 var ClassName = {
   MODAL: 'modal',
   CONTENT: 'modal-content',
@@ -3156,6 +3187,11 @@ var Modal = function (_CosmosModule) {
       modal.makeDialog(text, title);
     }
   }, {
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }, {
     key: 'isLoadable',
     get: function get() {
       return true;
@@ -3203,6 +3239,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   nav
 *************************************************************/
+var NAME = 'Nav';
 var ClassName = {
   CHANGE: 'change',
   HIDE: 'display-hide'
@@ -3445,11 +3482,16 @@ var Nav = function (_CosmosModule) {
       }
     }
   }], [{
-    key: 'isLoadable',
+    key: 'name',
 
 
     // static
 
+    get: function get() {
+      return NAME;
+    }
+  }, {
+    key: 'isLoadable',
     get: function get() {
       return true;
     }
@@ -3488,6 +3530,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Parallax
 *************************************************************/
+var NAME = 'Parallax';
 var ClassName = {
   PARALLAX: 'parallax',
   HIDE: 'display-hide'
@@ -3557,11 +3600,16 @@ var Parallax = function (_CosmosModule) {
       p.style.height = h + 'px';
     }
   }], [{
-    key: 'isLoadable',
+    key: 'name',
 
 
     // static
 
+    get: function get() {
+      return NAME;
+    }
+  }, {
+    key: 'isLoadable',
     get: function get() {
       return true;
     }
@@ -3604,6 +3652,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Scaffolding
 *************************************************************/
+var NAME = 'Scaffolding';
+
 var Scaffolding = function (_CosmosModule) {
   _inherits(Scaffolding, _CosmosModule);
 
@@ -3620,6 +3670,11 @@ var Scaffolding = function (_CosmosModule) {
       _elementUtil2.default.wrap('table.responsive', 'table-responsive-wrapper');
     }
   }], [{
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }, {
     key: 'isLoadable',
     get: function get() {
       return true;
@@ -3665,8 +3720,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
-  scroll-to
+  ScrollTo
 *************************************************************/
+var NAME = 'ScrollTo';
 var ClassName = {
   CONTAINER: 'scroll-to-container',
   TOTOP: 'scroll-to-top',
@@ -3792,6 +3848,11 @@ var ScrollTo = function (_CosmosModule) {
       if (toBottom) toBottom.classList.add(ClassName.SHOW);
     }
   }], [{
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }, {
     key: 'isLoadable',
     get: function get() {
       return true;
@@ -3833,8 +3894,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /************************************************************
-  SipleCRUD
+  SimpleCRUD
 *************************************************************/
+var NAME = 'SimpleCRUD';
 var ClassName = {
   SHOW: 'show'
 };
@@ -3904,11 +3966,16 @@ var SimpleCRUD = function (_CosmosModule) {
       nodes[name].classList.add(ClassName.SHOW);
     }
   }], [{
-    key: 'isLoadable',
+    key: 'name',
 
 
     // static
 
+    get: function get() {
+      return NAME;
+    }
+  }, {
+    key: 'isLoadable',
     get: function get() {
       return true;
     }
@@ -3951,6 +4018,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Tab
 *************************************************************/
+var NAME = 'Tab';
 var ClassName = {
   TAB: 'tab',
   TAB_VERTICAL: 'tab-vertical',
@@ -4146,11 +4214,16 @@ var Tab = function (_CosmosModule) {
       link.click();
     }
   }], [{
-    key: 'isLoadable',
+    key: 'name',
 
 
     // static
 
+    get: function get() {
+      return NAME;
+    }
+  }, {
+    key: 'isLoadable',
     get: function get() {
       return true;
     }
@@ -4193,6 +4266,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Toast
 *************************************************************/
+var NAME = 'Toast';
 var ClassName = {
   TOAST: 'toast',
   SHOW: 'show',
@@ -4333,6 +4407,11 @@ var Toast = function (_CosmosModule) {
 
       var instance = new this(option);
       return instance.setText(text).setDuration(duration);
+    }
+  }, {
+    key: 'name',
+    get: function get() {
+      return NAME;
     }
   }, {
     key: 'isFunctional',
@@ -4677,6 +4756,7 @@ module.exports = {
 		"postcss-cli": "^3.2.0",
 		"pug": "^2.0.0-rc.2",
 		"pug-cli": "^1.0.0-alpha6",
+		"uglify-es": "github:mishoo/UglifyJS2#harmony-v3.0.18",
 		"webpack": "^2.6.1"
 	},
 	"scripts": {
