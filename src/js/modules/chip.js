@@ -5,6 +5,7 @@ import Button from './button.js';
 /************************************************************
   Chip
 *************************************************************/
+const NAME = 'Chip';
 const ClassName = {
   CHIP: 'chip',
 };
@@ -28,6 +29,10 @@ export default class Chip extends CosmosModule {
   }
 
   // static
+
+  static get name() {
+    return NAME;
+  }
 
   static get isFunctional() {
     return true;

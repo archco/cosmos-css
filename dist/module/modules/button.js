@@ -25,6 +25,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Button
 *************************************************************/
+var NAME = 'Button';
 var ClassName = {
   CLOSE: 'btn-close',
   POSITION_CORNER: 'at-corner',
@@ -171,11 +172,16 @@ var Button = function (_CosmosModule) {
       b.appendBtnClose(element, callback);
     }
   }, {
-    key: 'isLoadable',
+    key: 'name',
 
 
     // static
 
+    get: function get() {
+      return NAME;
+    }
+  }, {
+    key: 'isLoadable',
     get: function get() {
       return true;
     }

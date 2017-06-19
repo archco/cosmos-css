@@ -4,6 +4,7 @@ import eu from '../lib/element-util.js';
 /************************************************************
   Toast
 *************************************************************/
+const NAME = 'Toast';
 const ClassName = {
   TOAST: 'toast',
   SHOW: 'show',
@@ -32,6 +33,10 @@ export default class Toast extends CosmosModule {
   }
 
   // static
+
+  static get name() {
+    return NAME;
+  }
 
   static get isFunctional() {
     return true;

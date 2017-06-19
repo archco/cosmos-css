@@ -29,6 +29,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Modal
 *************************************************************/
+var NAME = 'Modal';
 var ClassName = {
   MODAL: 'modal',
   CONTENT: 'modal-content',
@@ -253,6 +254,11 @@ var Modal = function (_CosmosModule) {
 
       var modal = new Modal();
       modal.makeDialog(text, title);
+    }
+  }, {
+    key: 'name',
+    get: function get() {
+      return NAME;
     }
   }, {
     key: 'isLoadable',

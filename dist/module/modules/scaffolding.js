@@ -25,6 +25,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Scaffolding
 *************************************************************/
+var NAME = 'Scaffolding';
+
 var Scaffolding = function (_CosmosModule) {
   _inherits(Scaffolding, _CosmosModule);
 
@@ -41,6 +43,11 @@ var Scaffolding = function (_CosmosModule) {
       _elementUtil2.default.wrap('table.responsive', 'table-responsive-wrapper');
     }
   }], [{
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }, {
     key: 'isLoadable',
     get: function get() {
       return true;

@@ -25,6 +25,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   dropdown
 *************************************************************/
+var NAME = 'Dropdown';
 var ClassName = {
   TOGGLE: 'dropdown-toggle',
   SHOW: 'show'
@@ -128,11 +129,16 @@ var Dropdown = function (_CosmosModule) {
       }
     }
   }], [{
-    key: 'isLoadable',
+    key: 'name',
 
 
     // static
 
+    get: function get() {
+      return NAME;
+    }
+  }, {
+    key: 'isLoadable',
     get: function get() {
       return true;
     }

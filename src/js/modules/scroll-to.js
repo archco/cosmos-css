@@ -3,8 +3,9 @@ import Util from '../lib/util.js';
 import eu from '../lib/element-util.js';
 
 /************************************************************
-  scroll-to
+  ScrollTo
 *************************************************************/
+const NAME = 'ScrollTo';
 const ClassName = {
   CONTAINER: 'scroll-to-container',
   TOTOP: 'scroll-to-top',
@@ -31,6 +32,10 @@ export default class ScrollTo extends CosmosModule {
   }
 
   // static
+
+  static get name() {
+    return NAME;
+  }
 
   static get isLoadable() {
     return true;

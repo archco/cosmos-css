@@ -25,6 +25,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Collapse
 *************************************************************/
+var NAME = 'Collapse';
 var ClassName = {
   TOGGLE: 'collapse-toggle',
   PANNEL: 'collapse-panel',
@@ -302,6 +303,11 @@ var Collapse = function (_CosmosModule) {
       return _elementUtil2.default.getElement(element.dataset.target);
     }
   }], [{
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }, {
     key: 'isLoadable',
     get: function get() {
       return true;

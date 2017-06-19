@@ -1,6 +1,6 @@
 {
   "name": "cosmos-css",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "The css framework for personal practice.",
   "main": "dist/module/cosmos.js",
   "scss": "src/scss/cosmos.scss",
@@ -10,7 +10,8 @@
   "dependencies": {
     "change-case": "^3.0.1",
     "normalize.css": "^7.0.0",
-    "scss-palette": "^0.3.2"
+    "scss-palette": "^0.3.2",
+    "ua-parser-js": "^0.7.12"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
@@ -26,6 +27,7 @@
     "postcss-cli": "^3.2.0",
     "pug": "^2.0.0-rc.2",
     "pug-cli": "^1.0.0-alpha6",
+    "uglify-es": "github:mishoo/UglifyJS2#harmony-v3.0.18",
     "webpack": "^2.6.1"
   },
   "scripts": {

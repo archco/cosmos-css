@@ -4,6 +4,7 @@ import eu from '../lib/element-util.js';
 /************************************************************
   Collapse
 *************************************************************/
+const NAME = 'Collapse';
 const ClassName = {
   TOGGLE: 'collapse-toggle',
   PANNEL: 'collapse-panel',
@@ -33,6 +34,10 @@ export default class Collapse extends CosmosModule {
   }
 
   // static
+
+  static get name() {
+    return NAME;
+  }
 
   static get isLoadable() {
     return true;

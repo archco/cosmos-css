@@ -25,6 +25,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Tab
 *************************************************************/
+var NAME = 'Tab';
 var ClassName = {
   TAB: 'tab',
   TAB_VERTICAL: 'tab-vertical',
@@ -220,11 +221,16 @@ var Tab = function (_CosmosModule) {
       link.click();
     }
   }], [{
-    key: 'isLoadable',
+    key: 'name',
 
 
     // static
 
+    get: function get() {
+      return NAME;
+    }
+  }, {
+    key: 'isLoadable',
     get: function get() {
       return true;
     }

@@ -4,7 +4,13 @@ import ElementUtil from '../lib/element-util.js';
 /************************************************************
   Scaffolding
 *************************************************************/
+const NAME = 'Scaffolding';
+
 export default class Scaffolding extends CosmosModule {
+
+  static get name() {
+    return NAME;
+  }
 
   static get isLoadable() {
     return true;

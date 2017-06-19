@@ -25,6 +25,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Toast
 *************************************************************/
+var NAME = 'Toast';
 var ClassName = {
   TOAST: 'toast',
   SHOW: 'show',
@@ -165,6 +166,11 @@ var Toast = function (_CosmosModule) {
 
       var instance = new this(option);
       return instance.setText(text).setDuration(duration);
+    }
+  }, {
+    key: 'name',
+    get: function get() {
+      return NAME;
     }
   }, {
     key: 'isFunctional',

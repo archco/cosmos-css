@@ -4,6 +4,7 @@ import eu from '../lib/element-util.js';
 /************************************************************
   Tab
 *************************************************************/
+const NAME = 'Tab';
 const ClassName = {
   TAB: 'tab',
   TAB_VERTICAL: 'tab-vertical',
@@ -23,6 +24,10 @@ const Selector = {
 export default class Tab extends CosmosModule {
 
   // static
+
+  static get name() {
+    return NAME;
+  }
 
   static get isLoadable() {
     return true;
