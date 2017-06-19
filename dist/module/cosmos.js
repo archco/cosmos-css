@@ -11,6 +11,10 @@ var _cosmosModule = require('./lib/cosmos-module.js');
 
 var _cosmosModule2 = _interopRequireDefault(_cosmosModule);
 
+var _uaParserJs = require('ua-parser-js');
+
+var _uaParserJs2 = _interopRequireDefault(_uaParserJs);
+
 var _package = require('../../package.json');
 
 var _package2 = _interopRequireDefault(_package);
@@ -91,7 +95,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*!
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * cosmos-css - The css framework for personal practice.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @version v0.12.0
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @version v0.12.1
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @link https://github.com/archco/cosmos-css#readme
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @license MIT
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
@@ -109,6 +113,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // Functional modules. - nonloadable
 
 
+var Libraries = {
+  Util: _util2.default,
+  Color: _color2.default,
+  ElementUtil: _elementUtil2.default,
+  changeCase: _changeCase2.default,
+  uaParser: _uaParserJs2.default
+};
+
 var Cosmos = function (_CosmosModule) {
   _inherits(Cosmos, _CosmosModule);
 
@@ -117,7 +129,11 @@ var Cosmos = function (_CosmosModule) {
 
     _classCallCheck(this, Cosmos);
 
-    return _possibleConstructorReturn(this, (Cosmos.__proto__ || Object.getPrototypeOf(Cosmos)).call(this, option));
+    var _this = _possibleConstructorReturn(this, (Cosmos.__proto__ || Object.getPrototypeOf(Cosmos)).call(this, option));
+
+    _this.lib = Libraries;
+    _this.userAgent = (0, _uaParserJs2.default)(navigator.userAgent);
+    return _this;
   }
 
   _createClass(Cosmos, [{
@@ -172,12 +188,7 @@ var Cosmos = function (_CosmosModule) {
   }, {
     key: 'lib',
     get: function get() {
-      return {
-        Util: _util2.default,
-        Color: _color2.default,
-        ElementUtil: _elementUtil2.default,
-        changeCase: _changeCase2.default
-      };
+      return Libraries;
     }
   }]);
 

@@ -29,6 +29,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /************************************************************
   Chip
 *************************************************************/
+var NAME = 'Chip';
 var ClassName = {
   CHIP: 'chip'
 };
@@ -194,6 +195,11 @@ var Chip = function (_CosmosModule) {
       return img;
     }
   }], [{
+    key: 'name',
+    get: function get() {
+      return NAME;
+    }
+  }, {
     key: 'isFunctional',
     get: function get() {
       return true;
