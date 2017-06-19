@@ -5,6 +5,7 @@
  * @license MIT
  */
 import CosmosModule from './lib/cosmos-module.js';
+import uaParser from 'ua-parser-js';
 import pkg from '../../package.json';
 
 // Libraries.
@@ -32,9 +33,19 @@ import Button from './modules/button.js';
 import Chip from './modules/chip.js';
 import Toast from './modules/toast.js';
 
+const Libraries = {
+  Util,
+  Color,
+  ElementUtil,
+  changeCase,
+  uaParser,
+};
+
 class Cosmos extends CosmosModule {
   constructor(option = {}) {
     super(option);
+    this.lib = Libraries;
+    this.userAgent = uaParser(navigator.userAgent);
   }
 
   static get version() {
@@ -50,12 +61,7 @@ class Cosmos extends CosmosModule {
   }
 
   static get lib() {
-    return {
-      Util,
-      Color,
-      ElementUtil,
-      changeCase,
-    };
+    return Libraries;
   }
 
   get version() {

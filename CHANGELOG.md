@@ -8,6 +8,9 @@ This changelog started from v0.8.4.
 If want to see more previous information to [Releases](https://github.com/archco/cosmos-css/releases) page.
 
 ## [Unreleased]
+### Added
+- Add dependency: ua-parser-js #173
+
 ### Fixed
 - Fixed: Minified javascript file is not working. #174
 - Fixed compatibility problem: Image and content sizing problem in IE11. #171
