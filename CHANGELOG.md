@@ -10,6 +10,7 @@ If want to see more previous information to [Releases](https://github.com/archco
 ## [Unreleased]
 ### Fixed
 - Fixed: Minified javascript file is not working. #174
+- Fixed compatibility problem: Image and content sizing problem in IE11. #171
 
 ## [0.12.0] - 2017-06-16
 ### Added
