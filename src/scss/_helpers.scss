@@ -110,6 +110,15 @@
 .shadow-inset-near { box-shadow: $shadow-inset-near; }
 .shadow-inset-far { box-shadow: $shadow-inset-far; }
 
+// rounded
+.rounded { border-radius: $radius-normal; }
+.rounded-small { border-radius: $radius-small; }
+.rounded-large { border-radius: $radius-large; }
+.rounded-top { @include border-top-radius($radius-normal); }
+.rounded-right { @include border-right-radius($radius-normal); }
+.rounded-bottom { @include border-bottom-radius($radius-normal); }
+.rounded-left { @include border-left-radius($radius-normal); }
+
 // misc
 .box-line { border: 1px solid $secondary-color; }
 .no-margin { padding: 0; margin: 0;}

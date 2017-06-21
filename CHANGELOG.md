@@ -8,6 +8,8 @@ This changelog started from v0.8.4.
 If want to see more previous information to [Releases](https://github.com/archco/cosmos-css/releases) page.
 
 ## [Unreleased]
+### Added
+- Add scss helper class "rounded". #175
 
 ## [0.12.1] - 2017-06-19
 ### Added
