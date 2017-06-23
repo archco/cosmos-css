@@ -3438,7 +3438,7 @@ ul.pagination {
     -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%); }
   .with-plus.collapse-toggle::after, .accordion .with-plus.accordion-head::after {
-    content: '\002B'; }
+    content: '+'; }
   .with-plus.active.collapse-toggle::after, .accordion .with-plus.active.accordion-head::after {
     content: '\2212'; }
   .with-caret.collapse-toggle::after, .accordion .with-caret.accordion-head::after {
@@ -4188,4 +4188,5 @@ ul.pagination {
   .arrow.left {
     -webkit-transform: rotate(135deg);
             transform: rotate(135deg); }
-/*# sourceMappingURL=style.css.map */
+
+/*# sourceMappingURL=style.css.map*/
