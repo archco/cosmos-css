@@ -11,6 +11,9 @@ If want to see more previous information to [Releases](https://github.com/archco
 ### Added
 - Add scss helper class "rounded". #175
 
+### Changed
+- Modifying npm-scripts. #177
+
 ## [0.12.1] - 2017-06-19
 ### Added
 - Add dependency: ua-parser-js #173
