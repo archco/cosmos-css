@@ -54,7 +54,8 @@ var Default = {
   trigger: '',
   target: '',
   default_title: 'Modal Dialog',
-  enable_outside_close: true };
+  enable_outside_close: true // If true, modal close when click outside of modal-content.
+};
 
 var Modal = function (_CosmosModule) {
   _inherits(Modal, _CosmosModule);

@@ -45,7 +45,8 @@ var Selector = {
 var Default = {
   element: null,
   target: '',
-  is_collapsed: true };
+  is_collapsed: true // initial state.
+};
 
 var Collapse = function (_CosmosModule) {
   _inherits(Collapse, _CosmosModule);

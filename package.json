@@ -10,16 +10,16 @@
   "dependencies": {
     "change-case": "^3.0.1",
     "normalize.css": "^7.0.0",
-    "scss-palette": "^0.3.2",
-    "ua-parser-js": "^0.7.12"
+    "scss-palette": "^0.3.3",
+    "ua-parser-js": "^0.7.13"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.0.0",
+    "babel-loader": "^7.1.0",
     "babel-preset-env": "^1.5.2",
-    "concurrently": "^3.4.0",
+    "concurrently": "^3.5.0",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
     "eslint": "^3.19.0",
@@ -32,8 +32,6 @@
     "pug": "^2.0.0-rc.2",
     "pug-cli": "^1.0.0-alpha6",
     "sass-loader": "^6.0.6",
-    "uglify-es": "github:mishoo/UglifyJS2#harmony-v3.0.18",
-    "watch": "^1.0.2",
     "webpack": "^2.6.1"
   },
   "scripts": {
