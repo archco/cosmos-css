@@ -1,7 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const extractCss = new ExtractTextPlugin('css/style.css');
+const isDev = (process.env.NODE_ENV === 'production') ? false : true;
 const Rules = [
   {
     test: /\.js$/,
@@ -20,26 +21,26 @@ const Rules = [
   },
   {
     test: /\.scss$/,
-    use: extractCss.extract({
+    use: ExtractTextPlugin.extract({
       use: [
         {
-          loader: 'css-loader',
-          options: { sourceMap: true },
+          loader: isDev ? 'css-loader' : 'css-loader?-minimize',
+          options: { sourceMap: isDev },
         },
         {
           loader: 'postcss-loader',
-          options: { sourceMap: true },
+          options: { sourceMap: isDev },
         },
         {
           loader: 'sass-loader',
-          options: { sourceMap: true },
+          options: { sourceMap: isDev },
         },
       ],
     }),
   },
 ];
 
-module.exports = {
+const Config = {
   entry: [
     path.resolve(__dirname, 'src/js/script.js'),
     path.resolve(__dirname, 'src/scss/cosmos.scss'),
@@ -54,6 +55,23 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
-    extractCss,
+    new ExtractTextPlugin('css/style.css'),
   ],
 };
+
+if (!isDev) {
+  Config.output.filename = 'js/script.min.js';
+  Config.devtool = false;
+  Config.plugins = [
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      beautify: false,
+    }),
+    new ExtractTextPlugin('css/style.min.css'),
+  ];
+}
+
+module.exports = Config;

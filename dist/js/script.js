@@ -5709,12 +5709,15 @@ module.exports = {
 		"webpack": "^2.6.1"
 	},
 	"scripts": {
-		"webpack": "cross-env NODE_ENV=development webpack --hide-modules",
+		"ting": "npm run webpack:watch & npm run pug:watch",
 		"test": "echo \"Error: no test specified\" && exit 1",
+		"webpack": "cross-env NODE_ENV=development webpack --hide-modules",
+		"webpack:watch": "npm run webpack -- --watch",
+		"min": "cross-env NODE_ENV=production webpack --hide-modules",
 		"prebuild": "node ./task/banner.js",
 		"build": "npm run dev && npm run production && npm run js-module",
 		"dev": "npm run scss && npm run pug && npm run js",
-		"watch": "node node_modules/concurrently/src/main \"npm run scss:watch\" \"npm run pug:watch\" \"npm run js:watch\"",
+		"watch": "node node_modules/concurrently/src/main \"npm run webpack:watch\" \"npm run pug:watch\"",
 		"production": "npm run scss:min && npm run js:min",
 		"scss": "node node_modules/node-sass/bin/node-sass --source-map true src/scss/cosmos.scss dist/css/style.css",
 		"postscss": "npm run css",
