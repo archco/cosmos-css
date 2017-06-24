@@ -40,7 +40,8 @@ var Default = {
   container: '#chip-container',
   tag: 'span', // chip's tagName. span, div, a ...
   close_button: true, // enable close button.
-  close_action: 'remove' };
+  close_action: 'remove' // close action. remove | hide
+};
 
 var Chip = function (_CosmosModule) {
   _inherits(Chip, _CosmosModule);
