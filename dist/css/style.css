@@ -3926,8 +3926,9 @@ ul.pagination {
 .float-right {
   float: right !important; }
 
-.comment {
-  font-size: .8rem;
+.comment,
+.help {
+  font-size: .8em;
   color: #777777; }
 
 .fixed-top {
